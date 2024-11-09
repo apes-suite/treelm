@@ -14,7 +14,7 @@ module soi_revision_module
   implicit none
   !> The HG revision of the application used for this executable.
   character(len=13), parameter :: soi_solver_revision &
-    &                            = '1f5a31ff05d4'
+    &                            = '09872370327f'
 
   !> Name of the compiler.
   character(len=32), parameter :: soi_FC_name &
