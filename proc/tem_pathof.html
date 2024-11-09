@@ -1,0 +1,925 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_PathOf &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_PathOf
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">10 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_topology_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_topology_module.f90.html'>tem_topology_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_topology_module.html'>tem_topology_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_PathOf</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_pathof.html#src">tem_PathOf</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public elemental function tem_PathOf(TreeID) result(res)  
+</h2>
+    
+
+    <p>This function returns the complete path through the tree from
+a given treeID to the root (all parents).</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-treeid~11"></span>
+              integer(kind=long_k),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>TreeID</strong></td>
+            <td>
+                <p>current treeID</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-res~157"></span>
+          type(<a href='../type/tem_path_type.html'>tem_path_type</a>)
+        </small>
+      </h3>
+      <p>resulting path</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_pathof~~CalledByGraph Pages: 1 -->
+<svg id="proctem_pathofCalledByGraph" width="641pt" height="251pt"
+ viewBox="0.00 0.00 641.00 251.16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_pathof~~CalledByGraph" class="graph" transform="scale(0.35 0.35) rotate(0) translate(4 706)">
+<title>proc~~tem_pathof~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-706 1808,-706 1808,4 -4,4"/>
+<!-- proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_node1" class="node">
+<title>proc~tem_pathof</title>
+<polygon fill="none" stroke="black" points="1804,-473 1730,-473 1730,-449 1804,-449 1804,-473"/>
+<text text-anchor="middle" x="1767" y="-458.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_PathOf</text>
+</g>
+<!-- proc~add_ghostfromfiner -->
+<g id="proc~~tem_pathof~~CalledByGraph_node2" class="node">
+<title>proc~add_ghostfromfiner</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node2"><a xlink:href="../proc/add_ghostfromfiner.html" xlink:title="add_ghostFromFiner">
+<polygon fill="#d9534f" stroke="#d9534f" points="1686,-542 1566,-542 1566,-518 1686,-518 1686,-542"/>
+<text text-anchor="middle" x="1626" y="-527.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_ghostFromFiner</text>
+</a>
+</g>
+</g>
+<!-- proc~add_ghostfromfiner&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge1" class="edge">
+<title>proc~add_ghostfromfiner&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1661.22,-517.99C1671.88,-513.92 1683.57,-509.09 1694,-504 1709.41,-496.47 1725.89,-486.77 1739.18,-478.48"/>
+<polygon fill="#000000" stroke="#000000" points="1741.25,-481.32 1747.83,-473.02 1737.51,-475.4 1741.25,-481.32"/>
+</g>
+<!-- proc~add_ghostfromfiner&#45;&gt;proc~add_ghostfromfiner -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge9" class="edge">
+<title>proc~add_ghostfromfiner&#45;&gt;proc~add_ghostfromfiner</title>
+<path fill="none" stroke="#000000" d="M1602.85,-542.01C1594.77,-550.97 1602.48,-560 1626,-560 1640.33,-560 1648.79,-556.65 1651.39,-552"/>
+<polygon fill="#000000" stroke="#000000" points="1654.75,-551.01 1649.15,-542.01 1647.92,-552.54 1654.75,-551.01"/>
+</g>
+<!-- proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_node3" class="node">
+<title>proc~identify_elements</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node3"><a xlink:href="../proc/identify_elements.html" xlink:title="identify_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="988,-660 881,-660 881,-636 988,-636 988,-660"/>
+<text text-anchor="middle" x="934.5" y="-645.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge2" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M983.13,-660.08C1111.41,-689.66 1469.59,-752.44 1694,-596 1732.98,-568.82 1752.64,-513.7 1760.95,-482.96"/>
+<polygon fill="#000000" stroke="#000000" points="1764.36,-483.75 1763.43,-473.19 1757.58,-482.02 1764.36,-483.75"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge14" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M907.38,-660.01C897.91,-668.97 906.95,-678 934.5,-678 951.72,-678 961.7,-674.47 964.46,-669.64"/>
+<polygon fill="#000000" stroke="#000000" points="967.81,-668.61 961.62,-660.01 961.09,-670.6 967.81,-668.61"/>
+</g>
+<!-- proc~create_allparentneighbors -->
+<g id="proc~~tem_pathof~~CalledByGraph_node11" class="node">
+<title>proc~create_allparentneighbors</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node11"><a xlink:href="../proc/create_allparentneighbors.html" xlink:title="create_allParentNeighbors">
+<polygon fill="#d9534f" stroke="#d9534f" points="845,-622 693,-622 693,-598 845,-598 845,-622"/>
+<text text-anchor="middle" x="769" y="-607.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">create_allParentNeighbors</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~create_allparentneighbors -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge32" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~create_allparentneighbors</title>
+<path fill="none" stroke="#000000" d="M880.73,-642.09C857.4,-637.33 830.45,-630.9 808.98,-624.91"/>
+<polygon fill="#000000" stroke="#000000" points="809.81,-621.51 799.23,-622.11 807.88,-628.23 809.81,-621.51"/>
+</g>
+<!-- proc~identify_stencilneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_node18" class="node">
+<title>proc~identify_stencilneigh</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node18"><a xlink:href="../proc/identify_stencilneigh.html" xlink:title="identify_stencilNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="1188,-609 1065,-609 1065,-585 1188,-585 1188,-609"/>
+<text text-anchor="middle" x="1126.5" y="-594.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_stencilNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge38" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M950.36,-635.88C967.8,-626.84 997.7,-616.15 1024,-609 1033.94,-606.3 1044.5,-603.76 1054.92,-601.54"/>
+<polygon fill="#000000" stroke="#000000" points="1055.73,-604.94 1064.83,-599.51 1054.33,-598.08 1055.73,-604.94"/>
+</g>
+<!-- proc~single_process_element -->
+<g id="proc~~tem_pathof~~CalledByGraph_node20" class="node">
+<title>proc~single_process_element</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node20"><a xlink:href="../proc/single_process_element.html" xlink:title="single_process_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="1196,-651 1057,-651 1057,-627 1196,-627 1196,-651"/>
+<text text-anchor="middle" x="1126.5" y="-636.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">single_process_element</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~single_process_element -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge40" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~single_process_element</title>
+<path fill="none" stroke="#000000" d="M988.17,-645.5C1006.22,-644.65 1026.83,-643.67 1046.5,-642.74"/>
+<polygon fill="#000000" stroke="#000000" points="1046.86,-646.23 1056.69,-642.26 1046.53,-639.24 1046.86,-646.23"/>
+</g>
+<!-- proc~identify_local_element -->
+<g id="proc~~tem_pathof~~CalledByGraph_node4" class="node">
+<title>proc~identify_local_element</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node4"><a xlink:href="../proc/identify_local_element.html" xlink:title="identify_local_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="1460,-580 1327,-580 1327,-556 1460,-556 1460,-580"/>
+<text text-anchor="middle" x="1393.5" y="-565.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_local_element</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge3" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1436.71,-580.01C1497.57,-594.83 1611.71,-613.04 1694,-569 1727.88,-550.87 1748.57,-508.98 1758.61,-483.02"/>
+<polygon fill="#000000" stroke="#000000" points="1762.01,-483.9 1762.16,-473.31 1755.44,-481.5 1762.01,-483.9"/>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~add_ghostfromfiner -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge10" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~add_ghostfromfiner</title>
+<path fill="none" stroke="#000000" d="M1460.24,-557.16C1490.13,-552.23 1525.5,-546.4 1555.8,-541.41"/>
+<polygon fill="#000000" stroke="#000000" points="1556.56,-544.83 1565.86,-539.75 1555.42,-537.92 1556.56,-544.83"/>
+</g>
+<!-- proc~tem_find_allelements -->
+<g id="proc~~tem_pathof~~CalledByGraph_node5" class="node">
+<title>proc~tem_find_allelements</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node5"><a xlink:href="../proc/tem_find_allelements.html" xlink:title="tem_find_allElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="495,-662 368,-662 368,-638 495,-638 495,-662"/>
+<text text-anchor="middle" x="431.5" y="-647.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_allElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M440.72,-637.94C455.93,-616.58 490.64,-572.16 531,-549 625.15,-494.97 659.45,-490 768,-490 768,-490 768,-490 1394.5,-490 1527.88,-490 1561.3,-484.41 1694,-471 1702.3,-470.16 1711.12,-469.09 1719.63,-467.96"/>
+<polygon fill="#000000" stroke="#000000" points="1720.37,-471.39 1729.8,-466.56 1719.42,-464.46 1720.37,-471.39"/>
+</g>
+<!-- proc~build_levelelements -->
+<g id="proc~~tem_pathof~~CalledByGraph_node10" class="node">
+<title>proc~build_levelelements</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node10"><a xlink:href="../proc/build_levelelements.html" xlink:title="build_levelElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="653.5,-662 534.5,-662 534.5,-638 653.5,-638 653.5,-662"/>
+<text text-anchor="middle" x="594" y="-647.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">build_levelElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~build_levelelements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge31" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~build_levelelements</title>
+<path fill="none" stroke="#000000" d="M495.01,-650C504.62,-650 514.58,-650 524.3,-650"/>
+<polygon fill="#000000" stroke="#000000" points="524.33,-653.5 534.33,-650 524.33,-646.5 524.33,-653.5"/>
+</g>
+<!-- proc~identify_additionalneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_node16" class="node">
+<title>proc~identify_additionalneigh</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node16"><a xlink:href="../proc/identify_additionalneigh.html" xlink:title="identify_additionalNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="840,-702 698,-702 698,-678 840,-678 840,-702"/>
+<text text-anchor="middle" x="769" y="-687.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_additionalNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~identify_additionalneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge35" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~identify_additionalneigh</title>
+<path fill="none" stroke="#000000" d="M482.63,-662.01C498.07,-665.35 515.17,-668.69 531,-671 582.93,-678.58 641.73,-683.32 687.77,-686.17"/>
+<polygon fill="#000000" stroke="#000000" points="687.8,-689.68 697.99,-686.78 688.22,-682.69 687.8,-689.68"/>
+</g>
+<!-- proc~tem_findpath -->
+<g id="proc~~tem_pathof~~CalledByGraph_node6" class="node">
+<title>proc~tem_findpath</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node6"><a xlink:href="../proc/tem_findpath.html" xlink:title="tem_findPath">
+<polygon fill="#d9534f" stroke="#d9534f" points="1667,-444 1585,-444 1585,-420 1667,-420 1667,-444"/>
+<text text-anchor="middle" x="1626" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_findPath</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_findpath&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_findpath&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1667.2,-440.39C1683.54,-443.8 1702.52,-447.75 1719.45,-451.29"/>
+<polygon fill="#000000" stroke="#000000" points="1719.18,-454.81 1729.68,-453.42 1720.61,-447.95 1719.18,-454.81"/>
+</g>
+<!-- proc~tem_findpath&#45;&gt;proc~tem_findpath -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge19" class="edge">
+<title>proc~tem_findpath&#45;&gt;proc~tem_findpath</title>
+<path fill="none" stroke="#000000" d="M1602.85,-444.01C1594.77,-452.97 1602.48,-462 1626,-462 1640.33,-462 1648.79,-458.65 1651.39,-454"/>
+<polygon fill="#000000" stroke="#000000" points="1654.75,-453.01 1649.15,-444.01 1647.92,-454.54 1654.75,-453.01"/>
+</g>
+<!-- proc~tem_init_surfdata -->
+<g id="proc~~tem_pathof~~CalledByGraph_node7" class="node">
+<title>proc~tem_init_surfdata</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node7"><a xlink:href="../proc/tem_init_surfdata.html" xlink:title="tem_init_surfData">
+<polygon fill="#d9534f" stroke="#d9534f" points="1679,-402 1573,-402 1573,-378 1679,-378 1679,-402"/>
+<text text-anchor="middle" x="1626" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_surfData</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_surfdata&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_init_surfdata&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1672.06,-402.05C1679.54,-404.64 1687.1,-407.62 1694,-411 1711.49,-419.56 1729.49,-432.06 1743.11,-442.42"/>
+<polygon fill="#000000" stroke="#000000" points="1741.34,-445.48 1751.38,-448.85 1745.64,-439.95 1741.34,-445.48"/>
+</g>
+<!-- proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_node8" class="node">
+<title>proc~tem_posofid</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node8"><a xlink:href="../proc/tem_posofid.html" xlink:title="tem_PosOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1665.5,-255 1586.5,-255 1586.5,-231 1665.5,-231 1665.5,-255"/>
+<text text-anchor="middle" x="1626" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PosOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_posofid&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_posofid&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1634.67,-255.03C1657.31,-290.53 1724.02,-395.16 1752.67,-440.1"/>
+<polygon fill="#000000" stroke="#000000" points="1749.85,-442.19 1758.18,-448.74 1755.76,-438.42 1749.85,-442.19"/>
+</g>
+<!-- proc~tem_treeidcomparison -->
+<g id="proc~~tem_pathof~~CalledByGraph_node9" class="node">
+<title>proc~tem_treeidcomparison</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node9"><a xlink:href="../proc/tem_treeidcomparison.html" xlink:title="tem_TreeIDComparison">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1694,-213 1558,-213 1558,-189 1694,-189 1694,-213"/>
+<text text-anchor="middle" x="1626" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_TreeIDComparison</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_treeidcomparison&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_treeidcomparison&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M1681.96,-213.04C1686.38,-215.49 1690.49,-218.45 1694,-222 1754.1,-282.77 1764.33,-391.77 1765.86,-438.61"/>
+<polygon fill="#000000" stroke="#000000" points="1762.37,-438.94 1766.08,-448.87 1769.37,-438.79 1762.37,-438.94"/>
+</g>
+<!-- proc~build_levelelements&#45;&gt;proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge11" class="edge">
+<title>proc~build_levelelements&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M653.58,-649.65C714.25,-649.3 808.72,-648.74 870.85,-648.37"/>
+<polygon fill="#000000" stroke="#000000" points="870.94,-651.87 880.92,-648.31 870.9,-644.87 870.94,-651.87"/>
+</g>
+<!-- proc~build_levelelements&#45;&gt;proc~identify_additionalneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge34" class="edge">
+<title>proc~build_levelelements&#45;&gt;proc~identify_additionalneigh</title>
+<path fill="none" stroke="#000000" d="M646.91,-662C665.47,-666.29 686.57,-671.17 705.91,-675.64"/>
+<polygon fill="#000000" stroke="#000000" points="705.3,-679.1 715.83,-677.94 706.88,-672.28 705.3,-679.1"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge12" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M845.05,-620.71C862.24,-624.6 879.83,-628.99 894.74,-633.15"/>
+<polygon fill="#000000" stroke="#000000" points="894.03,-636.59 904.6,-635.99 895.96,-629.86 894.03,-636.59"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge37" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M845.39,-607.24C907.24,-604.98 994.17,-601.8 1054.72,-599.59"/>
+<polygon fill="#000000" stroke="#000000" points="1055.09,-603.08 1064.96,-599.21 1054.83,-596.08 1055.09,-603.08"/>
+</g>
+<!-- proc~evaluate_add_spacetime_scalarbycoordinate -->
+<g id="proc~~tem_pathof~~CalledByGraph_node12" class="node">
+<title>proc~evaluate_add_spacetime_scalarbycoordinate</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node12"><a xlink:href="../proc/evaluate_add_spacetime_scalarbycoordinate.html" xlink:title="evaluate_add_spacetime_scalarByCoordinate">
+<polygon fill="#d9534f" stroke="#d9534f" points="1521.5,-234 1265.5,-234 1265.5,-210 1521.5,-210 1521.5,-234"/>
+<text text-anchor="middle" x="1393.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evaluate_add_spacetime_scalarByCoordinate</text>
+</a>
+</g>
+</g>
+<!-- proc~evaluate_add_spacetime_scalarbycoordinate&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge21" class="edge">
+<title>proc~evaluate_add_spacetime_scalarbycoordinate&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1521.55,-233.57C1540.9,-235.34 1559.8,-237.06 1576.04,-238.54"/>
+<polygon fill="#000000" stroke="#000000" points="1576.03,-242.05 1586.3,-239.47 1576.66,-235.08 1576.03,-242.05"/>
+</g>
+<!-- proc~evaluate_add_spacetime_vectorbycoordinate -->
+<g id="proc~~tem_pathof~~CalledByGraph_node13" class="node">
+<title>proc~evaluate_add_spacetime_vectorbycoordinate</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node13"><a xlink:href="../proc/evaluate_add_spacetime_vectorbycoordinate.html" xlink:title="evaluate_add_spacetime_vectorByCoordinate">
+<polygon fill="#d9534f" stroke="#d9534f" points="1522,-192 1265,-192 1265,-168 1522,-168 1522,-192"/>
+<text text-anchor="middle" x="1393.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evaluate_add_spacetime_vectorByCoordinate</text>
+</a>
+</g>
+</g>
+<!-- proc~evaluate_add_spacetime_vectorbycoordinate&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge22" class="edge">
+<title>proc~evaluate_add_spacetime_vectorbycoordinate&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1491.19,-192.07C1501.73,-194.52 1512.19,-197.47 1522,-201 1539.43,-207.28 1541.06,-214.52 1558,-222 1563.85,-224.59 1570.12,-226.99 1576.4,-229.19"/>
+<polygon fill="#000000" stroke="#000000" points="1575.59,-232.61 1586.19,-232.46 1577.81,-225.97 1575.59,-232.61"/>
+</g>
+<!-- proc~evaluate_first_spacetime_scalarbycoordinate -->
+<g id="proc~~tem_pathof~~CalledByGraph_node14" class="node">
+<title>proc~evaluate_first_spacetime_scalarbycoordinate</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node14"><a xlink:href="../proc/evaluate_first_spacetime_scalarbycoordinate.html" xlink:title="evaluate_first_spacetime_scalarByCoordinate">
+<polygon fill="#d9534f" stroke="#d9534f" points="1521.5,-150 1265.5,-150 1265.5,-126 1521.5,-126 1521.5,-150"/>
+<text text-anchor="middle" x="1393.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evaluate_first_spacetime_scalarByCoordinate</text>
+</a>
+</g>
+</g>
+<!-- proc~evaluate_first_spacetime_scalarbycoordinate&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge23" class="edge">
+<title>proc~evaluate_first_spacetime_scalarbycoordinate&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1506.11,-150.05C1511.68,-152.58 1517.03,-155.54 1522,-159 1548.48,-177.41 1532.88,-201.78 1558,-222 1563.49,-226.42 1569.91,-229.91 1576.57,-232.67"/>
+<polygon fill="#000000" stroke="#000000" points="1575.81,-236.12 1586.41,-236.21 1578.19,-229.53 1575.81,-236.12"/>
+</g>
+<!-- proc~evaluate_first_spacetime_vectorbycoordinate -->
+<g id="proc~~tem_pathof~~CalledByGraph_node15" class="node">
+<title>proc~evaluate_first_spacetime_vectorbycoordinate</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node15"><a xlink:href="../proc/evaluate_first_spacetime_vectorbycoordinate.html" xlink:title="evaluate_first_spacetime_vectorByCoordinate">
+<polygon fill="#d9534f" stroke="#d9534f" points="1522,-108 1265,-108 1265,-84 1522,-84 1522,-108"/>
+<text text-anchor="middle" x="1393.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evaluate_first_spacetime_vectorByCoordinate</text>
+</a>
+</g>
+</g>
+<!-- proc~evaluate_first_spacetime_vectorbycoordinate&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge24" class="edge">
+<title>proc~evaluate_first_spacetime_vectorbycoordinate&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1509.01,-108.08C1513.61,-110.64 1517.97,-113.6 1522,-117 1559.67,-148.85 1522.66,-187.58 1558,-222 1563.28,-227.15 1569.81,-231.03 1576.7,-233.97"/>
+<polygon fill="#000000" stroke="#000000" points="1575.64,-237.3 1586.24,-237.41 1578.02,-230.72 1575.64,-237.3"/>
+</g>
+<!-- proc~identify_additionalneigh&#45;&gt;proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge13" class="edge">
+<title>proc~identify_additionalneigh&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M816.85,-677.96C835.58,-673.15 857.32,-667.57 876.92,-662.54"/>
+<polygon fill="#000000" stroke="#000000" points="877.83,-665.92 886.64,-660.04 876.08,-659.14 877.83,-665.92"/>
+</g>
+<!-- proc~identify_halo -->
+<g id="proc~~tem_pathof~~CalledByGraph_node17" class="node">
+<title>proc~identify_halo</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node17"><a xlink:href="../proc/identify_halo.html" xlink:title="identify_halo">
+<polygon fill="#d9534f" stroke="#d9534f" points="975,-542 894,-542 894,-518 975,-518 975,-542"/>
+<text text-anchor="middle" x="934.5" y="-527.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_halo</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_halo&#45;&gt;proc~identify_local_element -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge16" class="edge">
+<title>proc~identify_halo&#45;&gt;proc~identify_local_element</title>
+<path fill="none" stroke="#000000" d="M975.26,-533.31C1051.29,-539.63 1218.44,-553.53 1316.54,-561.68"/>
+<polygon fill="#000000" stroke="#000000" points="1316.43,-565.19 1326.69,-562.53 1317.01,-558.21 1316.43,-565.19"/>
+</g>
+<!-- proc~identify_stencilneigh&#45;&gt;proc~identify_elements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge15" class="edge">
+<title>proc~identify_stencilneigh&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M1098.57,-609.04C1077.99,-614.41 1049.01,-620.2 1024,-627 1015.47,-629.32 1006.56,-632.01 997.82,-634.72"/>
+<polygon fill="#000000" stroke="#000000" points="996.55,-631.45 988.05,-637.78 998.64,-638.13 996.55,-631.45"/>
+</g>
+<!-- proc~setup_indices_spacetime -->
+<g id="proc~~tem_pathof~~CalledByGraph_node19" class="node">
+<title>proc~setup_indices_spacetime</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node19"><a xlink:href="../proc/setup_indices_spacetime.html" xlink:title="setup_indices_spacetime">
+<polygon fill="#d9534f" stroke="#d9534f" points="1466,-66 1321,-66 1321,-42 1466,-42 1466,-66"/>
+<text text-anchor="middle" x="1393.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">setup_indices_spacetime</text>
+</a>
+</g>
+</g>
+<!-- proc~setup_indices_spacetime&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge25" class="edge">
+<title>proc~setup_indices_spacetime&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1466.12,-51.59C1486.35,-54.39 1506.94,-61.05 1522,-75 1571.36,-120.7 1511.97,-172.95 1558,-222 1563.16,-227.5 1569.74,-231.57 1576.75,-234.58"/>
+<polygon fill="#000000" stroke="#000000" points="1575.9,-237.99 1586.49,-238.05 1578.25,-231.39 1575.9,-237.99"/>
+</g>
+<!-- proc~single_process_element&#45;&gt;proc~identify_local_element -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge17" class="edge">
+<title>proc~single_process_element&#45;&gt;proc~identify_local_element</title>
+<path fill="none" stroke="#000000" d="M1190.25,-626.97C1203.12,-624.23 1216.54,-621.19 1229,-618 1269.13,-607.73 1314.1,-593.8 1346.71,-583.25"/>
+<polygon fill="#000000" stroke="#000000" points="1347.98,-586.52 1356.41,-580.09 1345.82,-579.86 1347.98,-586.52"/>
+</g>
+<!-- proc~tem_cano_checkneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_node21" class="node">
+<title>proc~tem_cano_checkneigh</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node21"><a xlink:href="../proc/tem_cano_checkneigh.html" xlink:title="tem_cano_checkNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="1460,-378 1327,-378 1327,-354 1460,-354 1460,-378"/>
+<text text-anchor="middle" x="1393.5" y="-363.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_checkNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge26" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1460.16,-362.98C1480.8,-360.02 1503.12,-354.64 1522,-345 1559.96,-325.63 1592.78,-287.24 1610.64,-263.48"/>
+<polygon fill="#000000" stroke="#000000" points="1613.65,-265.3 1616.73,-255.16 1608,-261.16 1613.65,-265.3"/>
+</g>
+<!-- proc~tem_cano_initsubtree -->
+<g id="proc~~tem_pathof~~CalledByGraph_node22" class="node">
+<title>proc~tem_cano_initsubtree</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node22"><a xlink:href="../proc/tem_cano_initsubtree.html" xlink:title="tem_cano_initSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="1458,-276 1329,-276 1329,-252 1458,-252 1458,-276"/>
+<text text-anchor="middle" x="1393.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_initSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_initsubtree&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge27" class="edge">
+<title>proc~tem_cano_initsubtree&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1458.1,-258.21C1495.29,-254.82 1541.54,-250.6 1575.91,-247.47"/>
+<polygon fill="#000000" stroke="#000000" points="1576.53,-250.93 1586.17,-246.54 1575.9,-243.96 1576.53,-250.93"/>
+</g>
+<!-- proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_pathof~~CalledByGraph_node23" class="node">
+<title>proc~tem_cano_storepntsinsubtree</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node23"><a xlink:href="../proc/tem_cano_storepntsinsubtree.html" xlink:title="tem_cano_storePntsInSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="1478.5,-420 1308.5,-420 1308.5,-396 1478.5,-396 1478.5,-420"/>
+<text text-anchor="middle" x="1393.5" y="-405.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_storePntsInSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_storepntsinsubtree&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge28" class="edge">
+<title>proc~tem_cano_storepntsinsubtree&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1478.5,-403.77C1493.76,-400.4 1508.95,-395.12 1522,-387 1569.57,-357.4 1601.62,-296.95 1616.13,-264.59"/>
+<polygon fill="#000000" stroke="#000000" points="1619.46,-265.71 1620.22,-255.14 1613.03,-262.92 1619.46,-265.71"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_pathof~~CalledByGraph_node24" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node24"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="332,-662 202,-662 202,-638 332,-638 332,-662"/>
+<text text-anchor="middle" x="267" y="-647.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge18" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements</title>
+<path fill="none" stroke="#000000" d="M332.22,-650C340.55,-650 349.12,-650 357.58,-650"/>
+<polygon fill="#000000" stroke="#000000" points="357.8,-653.5 367.8,-650 357.8,-646.5 357.8,-653.5"/>
+</g>
+<!-- proc~tem_findelement -->
+<g id="proc~~tem_pathof~~CalledByGraph_node25" class="node">
+<title>proc~tem_findelement</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node25"><a xlink:href="../proc/tem_findelement.html" xlink:title="tem_findElement">
+<polygon fill="#d9534f" stroke="#d9534f" points="1445,-318 1342,-318 1342,-294 1445,-294 1445,-318"/>
+<text text-anchor="middle" x="1393.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_findElement</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_findelement&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge29" class="edge">
+<title>proc~tem_findelement&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1445.03,-300.33C1468.68,-297 1497.06,-292.04 1522,-285 1545.48,-278.37 1570.87,-268.06 1590.56,-259.31"/>
+<polygon fill="#000000" stroke="#000000" points="1592.07,-262.47 1599.74,-255.16 1589.19,-256.09 1592.07,-262.47"/>
+</g>
+<!-- proc~tem_findelement&#45;&gt;proc~tem_findelement -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge45" class="edge">
+<title>proc~tem_findelement&#45;&gt;proc~tem_findelement</title>
+<path fill="none" stroke="#000000" d="M1355.14,-318.01C1341.74,-326.97 1354.53,-336 1393.5,-336 1418.46,-336 1432.68,-332.29 1436.16,-327.28"/>
+<polygon fill="#000000" stroke="#000000" points="1439.24,-325.61 1431.86,-318.01 1432.89,-328.56 1439.24,-325.61"/>
+</g>
+<!-- proc~tem_unify_vrtx -->
+<g id="proc~~tem_pathof~~CalledByGraph_node26" class="node">
+<title>proc~tem_unify_vrtx</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node26"><a xlink:href="../proc/tem_unify_vrtx.html" xlink:title="tem_unify_vrtx">
+<polygon fill="#d9534f" stroke="#d9534f" points="1439,-24 1348,-24 1348,0 1439,0 1439,-24"/>
+<text text-anchor="middle" x="1393.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_unify_vrtx</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_unify_vrtx&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge30" class="edge">
+<title>proc~tem_unify_vrtx&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M1439.11,-7.46C1466.56,-7.24 1500.48,-12.01 1522,-33 1583.22,-92.7 1501.13,-158.15 1558,-222 1563.02,-227.63 1569.52,-231.77 1576.5,-234.8"/>
+<polygon fill="#000000" stroke="#000000" points="1575.63,-238.21 1586.22,-238.3 1578,-231.62 1575.63,-238.21"/>
+</g>
+<!-- proc~tem_update_surfpos -->
+<g id="proc~~tem_pathof~~CalledByGraph_node27" class="node">
+<title>proc~tem_update_surfpos</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node27"><a xlink:href="../proc/tem_update_surfpos.html" xlink:title="tem_update_surfPos">
+<polygon fill="#d9534f" stroke="#d9534f" points="1453.5,-462 1333.5,-462 1333.5,-438 1453.5,-438 1453.5,-462"/>
+<text text-anchor="middle" x="1393.5" y="-447.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_update_surfPos</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_update_surfpos&#45;&gt;proc~tem_init_surfdata -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge20" class="edge">
+<title>proc~tem_update_surfpos&#45;&gt;proc~tem_init_surfdata</title>
+<path fill="none" stroke="#000000" d="M1453.78,-444C1475.57,-440.82 1500.23,-436.06 1522,-429 1539.02,-423.48 1541.41,-417.7 1558,-411 1562.82,-409.05 1567.9,-407.17 1573.01,-405.39"/>
+<polygon fill="#000000" stroke="#000000" points="1574.46,-408.59 1582.82,-402.09 1572.23,-401.96 1574.46,-408.59"/>
+</g>
+<!-- proc~request_remotehalos -->
+<g id="proc~~tem_pathof~~CalledByGraph_node28" class="node">
+<title>proc~request_remotehalos</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node28"><a xlink:href="../proc/request_remotehalos.html" xlink:title="request_remoteHalos">
+<polygon fill="#d9534f" stroke="#d9534f" points="657,-582 531,-582 531,-558 657,-558 657,-582"/>
+<text text-anchor="middle" x="594" y="-567.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">request_remoteHalos</text>
+</a>
+</g>
+</g>
+<!-- proc~request_remotehalos&#45;&gt;proc~create_allparentneighbors -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge33" class="edge">
+<title>proc~request_remotehalos&#45;&gt;proc~create_allparentneighbors</title>
+<path fill="none" stroke="#000000" d="M646.91,-582C665.47,-586.29 686.57,-591.17 705.91,-595.64"/>
+<polygon fill="#000000" stroke="#000000" points="705.3,-599.1 715.83,-597.94 706.88,-592.28 705.3,-599.1"/>
+</g>
+<!-- proc~request_remotehalos&#45;&gt;proc~identify_halo -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge36" class="edge">
+<title>proc~request_remotehalos&#45;&gt;proc~identify_halo</title>
+<path fill="none" stroke="#000000" d="M657.17,-560.79C669.05,-559.12 681.4,-557.45 693,-556 758.94,-547.73 835.25,-539.75 883.92,-534.86"/>
+<polygon fill="#000000" stroke="#000000" points="884.27,-538.34 893.87,-533.86 883.57,-531.38 884.27,-538.34"/>
+</g>
+<!-- proc~request_remotehalos&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge39" class="edge">
+<title>proc~request_remotehalos&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M657.15,-573.16C756.45,-578.22 950.29,-588.08 1054.75,-593.4"/>
+<polygon fill="#000000" stroke="#000000" points="1054.72,-596.9 1064.89,-593.92 1055.08,-589.91 1054.72,-596.9"/>
+</g>
+<!-- proc~tem_calc_vrtx_coord -->
+<g id="proc~~tem_pathof~~CalledByGraph_node29" class="node">
+<title>proc~tem_calc_vrtx_coord</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node29"><a xlink:href="../proc/tem_calc_vrtx_coord.html" xlink:title="tem_calc_vrtx_coord">
+<polygon fill="#d9534f" stroke="#d9534f" points="1187.5,-24 1065.5,-24 1065.5,0 1187.5,0 1187.5,-24"/>
+<text text-anchor="middle" x="1126.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_calc_vrtx_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_calc_vrtx_coord&#45;&gt;proc~tem_unify_vrtx -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge46" class="edge">
+<title>proc~tem_calc_vrtx_coord&#45;&gt;proc~tem_unify_vrtx</title>
+<path fill="none" stroke="#000000" d="M1187.63,-12C1232.73,-12 1293.96,-12 1337.71,-12"/>
+<polygon fill="#000000" stroke="#000000" points="1337.88,-15.5 1347.88,-12 1337.88,-8.5 1337.88,-15.5"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_pathof~~CalledByGraph_node30" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node30"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="166,-662 0,-662 0,-638 166,-638 166,-662"/>
+<text text-anchor="middle" x="83" y="-647.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge44" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M166.21,-650C174.72,-650 183.33,-650 191.74,-650"/>
+<polygon fill="#000000" stroke="#000000" points="191.88,-653.5 201.88,-650 191.88,-646.5 191.88,-653.5"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_pathof~~CalledByGraph_node31" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~tem_pathof~~CalledByGraph_node31"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="1229,-378 1024,-378 1024,-354 1229,-354 1229,-378"/>
+<text text-anchor="middle" x="1126.5" y="-363.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge41" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh</title>
+<path fill="none" stroke="#000000" d="M1229.2,-366C1258.19,-366 1289.26,-366 1316.44,-366"/>
+<polygon fill="#000000" stroke="#000000" points="1316.65,-369.5 1326.65,-366 1316.65,-362.5 1316.65,-369.5"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge42" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree</title>
+<path fill="none" stroke="#000000" d="M1143.44,-353.92C1168.1,-335.88 1217.59,-302.19 1265,-285 1281.84,-278.9 1300.57,-274.56 1318.38,-271.48"/>
+<polygon fill="#000000" stroke="#000000" points="1319.43,-274.85 1328.74,-269.8 1318.31,-267.94 1319.43,-274.85"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_pathof~~CalledByGraph_edge43" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree</title>
+<path fill="none" stroke="#000000" d="M1203.44,-378.04C1235.59,-383.13 1273.22,-389.1 1306.41,-394.35"/>
+<polygon fill="#000000" stroke="#000000" points="1306.13,-397.85 1316.55,-395.96 1307.22,-390.94 1306.13,-397.85"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_pathofCalledByGraph = svgPanZoom('#proctem_pathofCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">elemental function </span><span class="n">tem_PathOf</span><span class="p">(</span><span class="w"> </span><span class="n">TreeID</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; current treeID</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">TreeID</span>
+<span class="w">    </span><span class="c">!&gt; resulting path</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="n">res</span><span class="p">%</span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">res</span><span class="p">%</span><span class="n">Node</span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treeID</span>
+<span class="w">    </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Node</span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="c">! res%Node(res%Level) = (res%Node(res%Level-1)-1) / 8</span>
+<span class="w">      </span><span class="n">res</span><span class="p">%</span><span class="n">Node</span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ishft</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Node</span><span class="p">(</span><span class="n">res</span><span class="p">%</span><span class="n">Level</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">  end function </span><span class="n">tem_PathOf</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1597 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_varMap_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_varMap_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.4% of total for source files.">166 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_varMap_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_varMap_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_varmap_module.html">tem_varMap_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_varmap_module.f90.html#src">tem_varMap_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_varmap_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_varmap_modulef90EfferentGraph" width="641pt" height="651pt"
+ viewBox="0.00 0.00 641.00 651.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph" class="graph" transform="scale(0.65 0.65) rotate(0) translate(4 990.88)">
+<title>sourcefile~~tem_varmap_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-990.88 975,-990.88 975,4 -4,4"/>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<polygon fill="none" stroke="black" points="971,-816 826,-816 826,-792 971,-792 971,-816"/>
+<text text-anchor="middle" x="898.5" y="-801.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_varMap_module.f90</text>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-878 0,-878 0,-854 98,-854 98,-878"/>
+<text text-anchor="middle" x="49" y="-863.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-928C357.15,-927.85 332.76,-990.77 234,-968"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232,-968C188.77,-958.03 173.24,-969.7 134,-949 105.22,-933.82 79.85,-905.56 64.71,-886.28"/>
+<polygon fill="#000000" stroke="#000000" points="67.34,-883.96 58.5,-878.13 61.78,-888.2 67.34,-883.96"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_dyn_array.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_dyn_array.f90.html" xlink:title="tem_dyn_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-940 177.5,-940 177.5,-916 288.5,-916 288.5,-940"/>
+<text text-anchor="middle" x="233" y="-925.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dyn_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-928C404.8,-927.92 343.88,-927.93 299.07,-927.95"/>
+<polygon fill="#000000" stroke="#000000" points="298.89,-924.45 288.9,-927.95 298.9,-931.45 298.89,-924.45"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_grow_array.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_grow_array.f90.html" xlink:title="tem_grow_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291.5,-24 174.5,-24 174.5,0 291.5,0 291.5,-24"/>
+<text text-anchor="middle" x="233" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_grow_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M895.1,-791.98C883.77,-739 830.23,-525.78 689.5,-454"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.5,-454C642.56,-431.08 497.07,-488.75 460.5,-454"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-454C316.88,-319.41 475.62,-165.46 332,-33 323.49,-25.15 312.79,-19.97 301.61,-16.59"/>
+<polygon fill="#000000" stroke="#000000" points="302.25,-13.14 291.7,-14.06 300.52,-19.92 302.25,-13.14"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="305.5,-898 160.5,-898 160.5,-874 305.5,-874 305.5,-898"/>
+<text text-anchor="middle" x="233" y="-883.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.5,-928C588.23,-945.98 561.39,-928.15 460.5,-928"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-928C442.96,-927.98 362.26,-912.23 302.03,-900.03"/>
+<polygon fill="#000000" stroke="#000000" points="302.68,-896.59 292.18,-898.03 301.28,-903.45 302.68,-896.59"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~tem_spacetime_fun_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/tem_spacetime_fun_module.f90.html" xlink:title="tem_spacetime_fun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="551,-506 368,-506 368,-482 551,-482 551,-506"/>
+<text text-anchor="middle" x="459.5" y="-491.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_fun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.5,-454C672.79,-446.5 582.68,-465.3 520.51,-479.6"/>
+<polygon fill="#000000" stroke="#000000" points="519.36,-476.28 510.41,-481.95 520.94,-483.1 519.36,-476.28"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~tem_spacetime_var_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/tem_spacetime_var_module.f90.html" xlink:title="tem_spacetime_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="780,-672 597,-672 597,-648 780,-648 780,-672"/>
+<text text-anchor="middle" x="688.5" y="-657.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_var_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_var_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M880.12,-791.97C843.49,-766.61 758.2,-707.56 715.22,-677.81"/>
+<polygon fill="#000000" stroke="#000000" points="717.19,-674.91 706.97,-672.1 713.2,-680.67 717.19,-674.91"/>
+</g>
+<!-- sourcefile~tem_stringkeyvaluepair_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~tem_stringkeyvaluepair_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/tem_stringkeyvaluepair_module.f90.html" xlink:title="tem_stringKeyValuePair_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="790,-980 587,-980 587,-956 790,-956 790,-980"/>
+<text text-anchor="middle" x="688.5" y="-965.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stringKeyValuePair_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_stringkeyvaluepair_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_stringkeyvaluepair_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M891.61,-816.14C877.82,-843.18 840.77,-908.66 790,-942 783.84,-946.05 777.08,-949.46 770.07,-952.35"/>
+<polygon fill="#000000" stroke="#000000" points="768.54,-949.19 760.39,-955.96 770.99,-955.74 768.54,-949.19"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_varsys_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_varsys_module.f90.html" xlink:title="tem_varSys_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="529.5,-859 389.5,-859 389.5,-835 529.5,-835 529.5,-859"/>
+<text text-anchor="middle" x="459.5" y="-844.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M884.79,-816.2C854.26,-844.41 773.06,-912.87 689.5,-928"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M687.5,-928C623.46,-939.6 612.46,-896.41 551,-875 538.25,-870.56 524.38,-866.09 511.4,-862.06"/>
+<polygon fill="#000000" stroke="#000000" points="512.28,-858.67 501.7,-859.08 510.23,-865.36 512.28,-858.67"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M177.44,-918.76C163.12,-915.67 147.82,-911.77 134,-907 115.58,-900.64 95.96,-891.22 80.32,-883.02"/>
+<polygon fill="#000000" stroke="#000000" points="81.61,-879.74 71.14,-878.11 78.3,-885.91 81.61,-879.74"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M174.48,-12.42C159.32,-15.41 144.33,-21.46 134,-33 78.3,-95.23 54.91,-717.09 50.71,-843.61"/>
+<polygon fill="#000000" stroke="#000000" points="47.2,-843.87 50.37,-853.98 54.19,-844.1 47.2,-843.87"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M160.33,-878.12C143.03,-876.22 124.75,-874.21 108.16,-872.39"/>
+<polygon fill="#000000" stroke="#000000" points="108.39,-868.9 98.07,-871.28 107.63,-875.85 108.39,-868.9"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M367.6,-499.68C277.78,-506.13 151.33,-517.75 134,-533 86.51,-574.79 60.04,-776.08 52.37,-843.75"/>
+<polygon fill="#000000" stroke="#000000" points="48.88,-843.44 51.26,-853.76 55.84,-844.2 48.88,-843.44"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.34,-481.96C378.74,-478.38 372.77,-473.81 368,-468 306.5,-392.99 396.04,-105.85 332,-33 324.01,-23.91 313.13,-18.21 301.52,-14.73"/>
+<polygon fill="#000000" stroke="#000000" points="302.19,-11.29 291.65,-12.3 300.52,-18.09 302.19,-11.29"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M438.45,-506.16C417.09,-520.31 384.17,-545.76 368,-577 309.72,-689.61 415.51,-764.59 332,-860 327.14,-865.55 321.24,-869.99 314.77,-873.52"/>
+<polygon fill="#000000" stroke="#000000" points="313.22,-870.38 305.65,-877.79 316.19,-876.72 313.22,-870.38"/>
+</g>
+<!-- sourcefile~tem_acoustic_pulse_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_acoustic_pulse_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_acoustic_pulse_module.f90.html" xlink:title="tem_acoustic_pulse_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="324.5,-444 141.5,-444 141.5,-420 324.5,-420 324.5,-444"/>
+<text text-anchor="middle" x="233" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_acoustic_pulse_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_acoustic_pulse_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_acoustic_pulse_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M412.6,-481.92C398.21,-477.84 382.35,-473.03 368,-468 351.64,-462.26 348.54,-458.17 332,-453 324.38,-450.62 316.35,-448.42 308.3,-446.41"/>
+<polygon fill="#000000" stroke="#000000" points="309.03,-442.98 298.49,-444.05 307.4,-449.79 309.03,-442.98"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="295,-818 171,-818 171,-794 295,-794 295,-818"/>
+<text text-anchor="middle" x="233" y="-803.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M439.1,-506.05C417.98,-520.26 384.97,-545.94 368,-577 323.02,-659.33 397.01,-717.36 332,-785 324.6,-792.7 315.11,-797.92 304.97,-801.39"/>
+<polygon fill="#000000" stroke="#000000" points="303.74,-798.11 295.08,-804.22 305.66,-804.84 303.74,-798.11"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_bc_prop_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_bc_prop_module.f90.html" xlink:title="tem_bc_prop_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="306.5,-402 159.5,-402 159.5,-378 306.5,-378 306.5,-402"/>
+<text text-anchor="middle" x="233" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_prop_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_bc_prop_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_bc_prop_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.38,-481.97C384.99,-478.44 375.85,-473.89 368,-468 344.03,-450.02 356.57,-428.15 332,-411 327.11,-407.59 321.77,-404.71 316.19,-402.29"/>
+<polygon fill="#000000" stroke="#000000" points="317.21,-398.93 306.62,-398.63 314.71,-405.47 317.21,-398.93"/>
+</g>
+<!-- sourcefile~tem_coupling_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_coupling_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_coupling_module.f90.html" xlink:title="tem_coupling_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="308.5,-360 157.5,-360 157.5,-336 308.5,-336 308.5,-360"/>
+<text text-anchor="middle" x="233" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_coupling_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_coupling_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_coupling_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M389.52,-481.83C381.64,-478.32 374.21,-473.8 368,-468 333.77,-436.06 367.3,-399.75 332,-369 327.74,-365.29 322.97,-362.18 317.91,-359.58"/>
+<polygon fill="#000000" stroke="#000000" points="319.08,-356.27 308.51,-355.43 316.25,-362.67 319.08,-356.27"/>
+</g>
+<!-- sourcefile~tem_cylindricalwave_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_cylindricalwave_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_cylindricalwave_module.f90.html" xlink:title="tem_cylindricalWave_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="327.5,-318 138.5,-318 138.5,-294 327.5,-294 327.5,-318"/>
+<text text-anchor="middle" x="233" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cylindricalWave_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_cylindricalwave_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_cylindricalwave_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M388.07,-481.98C380.61,-478.43 373.69,-473.87 368,-468 322.95,-421.59 378.61,-371.84 332,-327 330.86,-325.91 329.68,-324.86 328.47,-323.87"/>
+<polygon fill="#000000" stroke="#000000" points="330.16,-320.78 319.93,-318 326.19,-326.55 330.16,-320.78"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~tem_geometry_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/tem_geometry_module.f90.html" xlink:title="tem_geometry_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="311.5,-692 154.5,-692 154.5,-668 311.5,-668 311.5,-692"/>
+<text text-anchor="middle" x="233" y="-677.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_geometry_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M441.51,-506.09C421.69,-520.91 388.97,-547.7 368,-577 344.84,-609.37 362.85,-633.85 332,-659 328.49,-661.86 324.68,-664.36 320.68,-666.53"/>
+<polygon fill="#000000" stroke="#000000" points="319.17,-663.37 311.61,-670.8 322.15,-669.71 319.17,-663.37"/>
+</g>
+<!-- sourcefile~tem_miescatter_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~tem_miescatter_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/tem_miescatter_module.f90.html" xlink:title="tem_miescatter_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="314,-276 152,-276 152,-252 314,-252 314,-276"/>
+<text text-anchor="middle" x="233" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_miescatter_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_miescatter_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_miescatter_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M386.86,-481.85C379.8,-478.31 373.31,-473.78 368,-468 311.95,-406.93 390.12,-344.11 332,-285 329.28,-282.23 326.29,-279.79 323.09,-277.63"/>
+<polygon fill="#000000" stroke="#000000" points="324.63,-274.48 314.21,-272.57 321.16,-280.56 324.63,-274.48"/>
+</g>
+<!-- sourcefile~tem_pointdata_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~tem_pointdata_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/tem_pointdata_module.f90.html" xlink:title="tem_pointData_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="311.5,-650 154.5,-650 154.5,-626 311.5,-626 311.5,-650"/>
+<text text-anchor="middle" x="233" y="-635.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_pointData_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M444.31,-506.25C426.16,-522.11 393.96,-550.8 368,-577 351.17,-593.99 352.7,-605.02 332,-617 328.54,-619 324.91,-620.81 321.18,-622.45"/>
+<polygon fill="#000000" stroke="#000000" points="319.72,-619.27 311.69,-626.18 322.28,-625.78 319.72,-619.27"/>
+</g>
+<!-- sourcefile~tem_polygon_material_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~tem_polygon_material_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/tem_polygon_material_module.f90.html" xlink:title="tem_polygon_material_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="332,-234 134,-234 134,-210 332,-210 332,-234"/>
+<text text-anchor="middle" x="233" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_polygon_material_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_polygon_material_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_polygon_material_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M386.22,-481.81C379.37,-478.27 373.09,-473.75 368,-468 300.85,-392.19 401.71,-316.46 332,-243 331.09,-242.04 330.15,-241.12 329.18,-240.24"/>
+<polygon fill="#000000" stroke="#000000" points="331.27,-237.44 321.2,-234.17 327.04,-243.01 331.27,-237.44"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~tem_shape_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/tem_shape_module.f90.html" xlink:title="tem_shape_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="301.5,-192 164.5,-192 164.5,-168 301.5,-168 301.5,-192"/>
+<text text-anchor="middle" x="233" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M386.07,-481.93C379.25,-478.37 373.02,-473.81 368,-468 289.72,-377.39 413.34,-288.87 332,-201 326.18,-194.71 318.97,-190.07 311.13,-186.67"/>
+<polygon fill="#000000" stroke="#000000" points="312.27,-183.36 301.67,-183.22 309.87,-189.93 312.27,-183.36"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~tem_spatial_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/tem_spatial_module.f90.html" xlink:title="tem_spatial_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-608 163,-608 163,-584 303,-584 303,-608"/>
+<text text-anchor="middle" x="233" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M443.53,-506.16C420.81,-523.99 375.65,-557.04 332,-575 325.89,-577.51 319.44,-579.74 312.88,-581.72"/>
+<polygon fill="#000000" stroke="#000000" points="311.9,-578.36 303.22,-584.43 313.8,-585.1 311.9,-578.36"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~tem_stencil_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/tem_stencil_module.f90.html" xlink:title="tem_stencil_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="302.5,-150 163.5,-150 163.5,-126 302.5,-126 302.5,-150"/>
+<text text-anchor="middle" x="233" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.54,-481.79C378.9,-478.25 372.86,-473.73 368,-468 278.56,-362.56 425.01,-261.3 332,-159 326.49,-152.93 319.68,-148.39 312.25,-145.01"/>
+<polygon fill="#000000" stroke="#000000" points="313.14,-141.61 302.55,-141.33 310.66,-148.15 313.14,-141.61"/>
+</g>
+<!-- sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~tem_subtree_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/tem_subtree_module.f90.html" xlink:title="tem_subTree_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="305.5,-108 160.5,-108 160.5,-84 305.5,-84 305.5,-108"/>
+<text text-anchor="middle" x="233" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.46,-481.86C378.84,-478.3 372.82,-473.77 368,-468 267.38,-347.72 436.69,-233.76 332,-117 327.24,-111.69 321.49,-107.54 315.19,-104.32"/>
+<polygon fill="#000000" stroke="#000000" points="316.2,-100.94 305.63,-100.24 313.45,-107.38 316.2,-100.94"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~tem_subtree_type_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/tem_subtree_type_module.f90.html" xlink:title="tem_subTree_type_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="320,-66 146,-66 146,-42 320,-42 320,-66"/>
+<text text-anchor="middle" x="233" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_type_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.39,-481.91C378.79,-478.35 372.79,-473.79 368,-468 312.1,-400.43 390.19,-140.61 332,-75 330.81,-73.66 329.56,-72.39 328.25,-71.19"/>
+<polygon fill="#000000" stroke="#000000" points="330.26,-68.33 320.18,-65.07 326.03,-73.9 330.26,-68.33"/>
+</g>
+<!-- sourcefile~tem_temporal_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~tem_temporal_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/tem_temporal_module.f90.html" xlink:title="tem_temporal_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="310,-486 156,-486 156,-462 310,-462 310,-486"/>
+<text text-anchor="middle" x="233" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_temporal_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_temporal_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_temporal_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M367.83,-485.92C352.16,-484.53 335.91,-483.08 320.35,-481.69"/>
+<polygon fill="#000000" stroke="#000000" points="320.52,-478.19 310.24,-480.79 319.89,-485.17 320.52,-478.19"/>
+</g>
+<!-- sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~tem_time_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/tem_time_module.f90.html" xlink:title="tem_time_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="297.5,-776 168.5,-776 168.5,-752 297.5,-752 297.5,-776"/>
+<text text-anchor="middle" x="233" y="-761.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M439.34,-506.18C418.44,-520.52 385.62,-546.31 368,-577 330.42,-642.47 385.45,-689.68 332,-743 325.1,-749.89 316.52,-754.76 307.33,-758.18"/>
+<polygon fill="#000000" stroke="#000000" points="306.08,-754.91 297.58,-761.24 308.17,-761.59 306.08,-754.91"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node27" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node27"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="298,-566 168,-566 168,-542 298,-542 298,-566"/>
+<text text-anchor="middle" x="233" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.72,-506.07C389.53,-512.59 359.13,-520.75 332,-528 318.18,-531.69 303.26,-535.66 289.32,-539.36"/>
+<polygon fill="#000000" stroke="#000000" points="288.15,-536.05 279.38,-541.99 289.95,-542.81 288.15,-536.05"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node30" class="node">
+<title>sourcefile~treelmesh_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node30"><a xlink:href="../sourcefile/treelmesh_module.f90.html" xlink:title="treelmesh_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="299,-734 167,-734 167,-710 299,-710 299,-734"/>
+<text text-anchor="middle" x="233" y="-719.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M440.1,-506.15C419.57,-520.65 386.78,-546.75 368,-577 337.73,-625.76 374,-661.9 332,-701 325.38,-707.16 317.42,-711.68 308.92,-714.98"/>
+<polygon fill="#000000" stroke="#000000" points="307.55,-711.75 299.15,-718.21 309.74,-718.4 307.55,-711.75"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-807C434.53,-815.14 259.2,-843.57 234,-846"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M232,-846C190.67,-849.98 144.14,-855.1 108.48,-859.17"/>
+<polygon fill="#000000" stroke="#000000" points="107.78,-855.73 98.25,-860.34 108.58,-862.68 107.78,-855.73"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-889C430.77,-901.8 354.83,-913.34 298.92,-920.49"/>
+<polygon fill="#000000" stroke="#000000" points="298.22,-917.05 288.73,-921.78 299.09,-924 298.22,-917.05"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M682.31,-647.53C667.45,-613.46 621.22,-518.37 551,-473 516.48,-450.7 490.29,-482.31 460.5,-454"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M683.26,-672.19C670.01,-708.37 625.75,-815.86 551,-868 517.13,-891.62 497.99,-871.7 460.5,-889"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-889C405.91,-913.27 338.73,-908.35 291.62,-899.96"/>
+<polygon fill="#000000" stroke="#000000" points="292.06,-896.48 281.59,-898.06 290.76,-903.36 292.06,-896.48"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M675.48,-647.93C652.6,-625.36 600.63,-575.97 551,-542 533.79,-530.22 513.35,-519.16 496.26,-510.63"/>
+<polygon fill="#000000" stroke="#000000" points="497.67,-507.42 487.15,-506.16 494.59,-513.71 497.67,-507.42"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge47" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M680.66,-672.21C663.19,-702.28 613.79,-780.43 551,-821 544.77,-825.03 537.91,-828.44 530.83,-831.34"/>
+<polygon fill="#000000" stroke="#000000" points="529.23,-828.2 521.08,-834.97 531.67,-834.76 529.23,-828.2"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M673.95,-672.35C640.61,-701.88 550.76,-776.37 460.5,-807"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-807C409.26,-823.71 350.37,-822.73 305.26,-817.96"/>
+<polygon fill="#000000" stroke="#000000" points="305.61,-814.48 295.28,-816.82 304.81,-821.44 305.61,-814.48"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-680C413.44,-681.96 363.25,-682.15 321.77,-681.77"/>
+<polygon fill="#000000" stroke="#000000" points="321.74,-678.27 311.7,-681.66 321.66,-685.27 321.74,-678.27"/>
+</g>
+<!-- sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~tem_param_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/tem_param_module.f90.html" xlink:title="tem_param_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="529.5,-732 389.5,-732 389.5,-708 529.5,-708 529.5,-732"/>
+<text text-anchor="middle" x="459.5" y="-717.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M641.84,-672.07C605.59,-681.65 554.76,-695.09 516.13,-705.3"/>
+<polygon fill="#000000" stroke="#000000" points="514.86,-702.01 506.09,-707.95 516.65,-708.78 514.86,-702.01"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-680C442.86,-680.68 361.05,-664.53 300.68,-652.06"/>
+<polygon fill="#000000" stroke="#000000" points="301.31,-648.62 290.81,-650.02 299.89,-655.47 301.31,-648.62"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge42" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.77,-669.85C555.28,-673.87 505.46,-678.04 460.5,-680"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-680C417.44,-681.79 403.12,-682.34 368,-661 346.41,-647.88 353.57,-630.17 332,-617 326.11,-613.41 319.7,-610.42 313.06,-607.94"/>
+<polygon fill="#000000" stroke="#000000" points="313.81,-604.5 303.22,-604.66 311.6,-611.15 313.81,-604.5"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-680C417.44,-681.79 403.12,-677.66 368,-699 346.41,-712.12 353.57,-729.83 332,-743 324.45,-747.61 316.03,-751.22 307.38,-754.04"/>
+<polygon fill="#000000" stroke="#000000" points="306.18,-750.74 297.56,-756.9 308.14,-757.46 306.18,-750.74"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M673.1,-647.99C649.39,-629.01 599.87,-592.62 551,-577 470.93,-551.41 373.89,-548.13 308.44,-549.67"/>
+<polygon fill="#000000" stroke="#000000" points="308.11,-546.18 298.21,-549.96 308.31,-553.18 308.11,-546.18"/>
+</g>
+<!-- sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node28" class="node">
+<title>sourcefile~tem_topology_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node28"><a xlink:href="../sourcefile/tem_topology_module.f90.html" xlink:title="tem_topology_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="535,-652 384,-652 384,-628 535,-628 535,-652"/>
+<text text-anchor="middle" x="459.5" y="-637.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_topology_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.8,-652.01C579.83,-650.51 562.14,-648.96 545.35,-647.48"/>
+<polygon fill="#000000" stroke="#000000" points="545.29,-643.96 535.03,-646.57 544.68,-650.93 545.29,-643.96"/>
+</g>
+<!-- sourcefile~tem_variable_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_node29" class="node">
+<title>sourcefile~tem_variable_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~EfferentGraph_node29"><a xlink:href="../sourcefile/tem_variable_module.f90.html" xlink:title="tem_variable_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="533.5,-610 385.5,-610 385.5,-586 533.5,-586 533.5,-610"/>
+<text text-anchor="middle" x="459.5" y="-595.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_variable_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge46" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_variable_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M649.73,-647.95C622.43,-639.41 584.6,-627.93 551,-619 542.62,-616.77 533.77,-614.55 525.01,-612.44"/>
+<polygon fill="#000000" stroke="#000000" points="525.73,-609.01 515.2,-610.1 524.11,-615.82 525.73,-609.01"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge48" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M458.5,-680C443.09,-680.67 363.49,-696.04 303.41,-707.99"/>
+<polygon fill="#000000" stroke="#000000" points="302.69,-704.57 293.57,-709.96 304.06,-711.43 302.69,-704.57"/>
+</g>
+<!-- sourcefile~tem_stringkeyvaluepair_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge49" class="edge">
+<title>sourcefile~tem_stringkeyvaluepair_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M586.73,-979.87C493.99,-988 353.19,-993.29 234,-968"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge50" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M389.06,-843.11C344.62,-841.5 285.79,-841.01 234,-846"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge52" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M406.19,-859.04C393.26,-863.12 379.75,-868.38 368,-875 349.35,-885.51 351.1,-897.33 332,-907 321.68,-912.23 310.1,-916.16 298.62,-919.11"/>
+<polygon fill="#000000" stroke="#000000" points="297.53,-915.77 288.59,-921.46 299.13,-922.59 297.53,-915.77"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge53" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M389.31,-859.02C365.31,-863.19 338.2,-867.9 313.44,-872.2"/>
+<polygon fill="#000000" stroke="#000000" points="312.6,-868.79 303.35,-873.95 313.8,-875.69 312.6,-868.79"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge51" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M392.66,-834.98C365.23,-829.97 333.32,-824.14 305.34,-819.03"/>
+<polygon fill="#000000" stroke="#000000" points="305.69,-815.54 295.23,-817.18 304.43,-822.42 305.69,-815.54"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge54" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M400.21,-834.97C389.09,-831.39 377.86,-826.81 368,-821 348.51,-809.51 351.88,-795.81 332,-785 324.34,-780.83 315.92,-777.49 307.33,-774.81"/>
+<polygon fill="#000000" stroke="#000000" points="308.17,-771.41 297.6,-772.06 306.27,-778.15 308.17,-771.41"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~EfferentGraph_edge55" class="edge">
+<title>sourcefile~tem_varsys_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.36,-834.91C382.89,-831.39 374.82,-826.85 368,-821 339.02,-796.14 361.81,-766.85 332,-743 325.14,-737.51 317.17,-733.37 308.8,-730.26"/>
+<polygon fill="#000000" stroke="#000000" points="309.81,-726.91 299.22,-727.17 307.66,-733.57 309.81,-726.91"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_varmap_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_varmap_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_varmap_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_varmap_modulef90AfferentGraph" width="641pt" height="184pt"
+ viewBox="0.00 0.00 641.00 184.48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph" class="graph" transform="scale(0.67 0.67) rotate(0) translate(4 272)">
+<title>sourcefile~~tem_varmap_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-272 955,-272 955,4 -4,4"/>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<polygon fill="none" stroke="black" points="145,-108 0,-108 0,-84 145,-84 145,-108"/>
+<text text-anchor="middle" x="72.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_varMap_module.f90</text>
+</g>
+<!-- sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~hvs_output_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/hvs_output_module.f90.html" xlink:title="hvs_output_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="754,-148 618,-148 618,-124 754,-124 754,-148"/>
+<text text-anchor="middle" x="686" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M617.79,-134.36C578.6,-133.81 528.22,-133.81 483.5,-136"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~tem_restart_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/tem_restart_module.f90.html" xlink:title="tem_restart_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="552,-188 413,-188 413,-164 552,-164 552,-188"/>
+<text text-anchor="middle" x="482.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_restart_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M624.54,-148C602.43,-152.39 577.21,-157.4 554.28,-161.95"/>
+<polygon fill="#000000" stroke="#000000" points="553.39,-158.56 544.26,-163.94 554.75,-165.42 553.39,-158.56"/>
+</g>
+<!-- sourcefile~tem_bc_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~tem_bc_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/tem_bc_module.f90.html" xlink:title="tem_bc_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="329.5,-108 211.5,-108 211.5,-84 329.5,-84 329.5,-108"/>
+<text text-anchor="middle" x="270.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M211.49,-96C193.88,-96 174.2,-96 155.34,-96"/>
+<polygon fill="#000000" stroke="#000000" points="155.26,-92.5 145.26,-96 155.26,-99.5 155.26,-92.5"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~tem_convergence_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/tem_convergence_module.f90.html" xlink:title="tem_convergence_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="358,-228 183,-228 183,-204 358,-204 358,-228"/>
+<text text-anchor="middle" x="270.5" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M249.63,-203.83C214.69,-182.44 142.14,-138.03 101.91,-113.4"/>
+<polygon fill="#000000" stroke="#000000" points="103.49,-110.26 93.13,-108.02 99.83,-116.23 103.49,-110.26"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~tem_depend_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/tem_depend_module.f90.html" xlink:title="tem_depend_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="343,-66 198,-66 198,-42 343,-42 343,-66"/>
+<text text-anchor="middle" x="270.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_depend_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M213.33,-66.04C190.37,-70.96 163.63,-76.69 139.73,-81.81"/>
+<polygon fill="#000000" stroke="#000000" points="138.72,-78.45 129.67,-83.96 140.19,-85.29 138.72,-78.45"/>
+</g>
+<!-- sourcefile~tem_operation_var_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~tem_operation_var_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/tem_operation_var_module.f90.html" xlink:title="tem_operation_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="360,-24 181,-24 181,0 360,0 360,-24"/>
+<text text-anchor="middle" x="270.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_operation_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_operation_var_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_operation_var_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M208.3,-24C199.01,-26.55 189.65,-29.53 181,-33 151.31,-44.91 120.05,-64.08 98.94,-78.15"/>
+<polygon fill="#000000" stroke="#000000" points="96.87,-75.33 90.55,-83.83 100.79,-81.13 96.87,-75.33"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.12,-163.94C382.96,-155.25 323.82,-143.73 271.5,-136"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~tem_tracking_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/tem_tracking_module.f90.html" xlink:title="tem_tracking_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="951,-148 803,-148 803,-124 951,-124 951,-148"/>
+<text text-anchor="middle" x="877" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M824.45,-123.98C806.39,-120.33 785.9,-116.8 767,-115 695.33,-108.16 676.74,-108.85 605,-115 550.4,-119.68 538.23,-133.32 483.5,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M481.5,-136C388.21,-138.75 363.83,-149.64 271.5,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.5,-136C224.09,-129.29 173.31,-118.84 134.82,-110.31"/>
+<polygon fill="#000000" stroke="#000000" points="135.34,-106.84 124.81,-108.07 133.81,-113.67 135.34,-106.84"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M802.93,-136C790.22,-136 776.97,-136 764.16,-136"/>
+<polygon fill="#000000" stroke="#000000" points="764,-132.5 754,-136 764,-139.5 764,-132.5"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~tem_simcontrol_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/tem_simcontrol_module.f90.html" xlink:title="tem_simControl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="767,-228 605,-228 605,-204 767,-204 767,-228"/>
+<text text-anchor="middle" x="686" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M847.29,-148.15C814.5,-162.03 760.7,-184.8 724.59,-200.09"/>
+<polygon fill="#000000" stroke="#000000" points="723.2,-196.88 715.36,-204 725.93,-203.32 723.2,-196.88"/>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~tem_abortcriteria_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/tem_abortcriteria_module.f90.html" xlink:title="tem_abortCriteria_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="569,-268 396,-268 396,-244 569,-244 569,-268"/>
+<text text-anchor="middle" x="482.5" y="-253.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.49,-244C395.34,-239.59 368.93,-234.56 344.94,-229.99"/>
+<polygon fill="#000000" stroke="#000000" points="345.3,-226.49 334.83,-228.06 343.99,-233.37 345.3,-226.49"/>
+</g>
+<!-- sourcefile~tem_derived_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~tem_derived_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/tem_derived_module.f90.html" xlink:title="tem_derived_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="555,-24 410,-24 410,0 555,0 555,-24"/>
+<text text-anchor="middle" x="482.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_derived_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_operation_var_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_operation_var_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M409.82,-12C397.13,-12 383.72,-12 370.44,-12"/>
+<polygon fill="#000000" stroke="#000000" points="370.32,-8.5 360.32,-12 370.32,-15.5 370.32,-8.5"/>
+</g>
+<!-- sourcefile~tem_general_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~tem_general_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/tem_general_module.f90.html" xlink:title="tem_general_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="950,-228 804,-228 804,-204 950,-204 950,-228"/>
+<text text-anchor="middle" x="877" y="-213.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_general_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_restart_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820.76,-203.99C803.61,-200.63 784.58,-197.27 767,-195 698.12,-186.09 619.25,-181.23 562.22,-178.67"/>
+<polygon fill="#000000" stroke="#000000" points="562.33,-175.17 552.19,-178.23 562.02,-182.16 562.33,-175.17"/>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M820.76,-228.01C803.61,-231.37 784.58,-234.73 767,-237 704.71,-245.06 634.25,-249.8 579.16,-252.53"/>
+<polygon fill="#000000" stroke="#000000" points="578.88,-249.04 569.06,-253.02 579.21,-256.03 578.88,-249.04"/>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M803.74,-216C795.03,-216 786.06,-216 777.13,-216"/>
+<polygon fill="#000000" stroke="#000000" points="777.1,-212.5 767.1,-216 777.1,-219.5 777.1,-212.5"/>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~tem_ini_condition_module.f90</title>
+<g id="a_sourcefile~~tem_varmap_module.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/tem_ini_condition_module.f90.html" xlink:title="tem_ini_condition_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="568.5,-66 396.5,-66 396.5,-42 568.5,-42 568.5,-66"/>
+<text text-anchor="middle" x="482.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ini_condition_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_depend_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_depend_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M396.39,-54C382.21,-54 367.52,-54 353.42,-54"/>
+<polygon fill="#000000" stroke="#000000" points="353.28,-50.5 343.28,-54 353.28,-57.5 353.28,-50.5"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M604.78,-216C537.29,-216 440.57,-216 368.69,-216"/>
+<polygon fill="#000000" stroke="#000000" points="368.28,-212.5 358.28,-216 368.28,-219.5 368.28,-212.5"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_varmap_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M624.54,-228C602.43,-232.39 577.21,-237.4 554.28,-241.95"/>
+<polygon fill="#000000" stroke="#000000" points="553.39,-238.56 544.26,-243.94 554.75,-245.42 553.39,-238.56"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_varmap_modulef90AfferentGraph = svgPanZoom('#sourcefiletem_varmap_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014-2017 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2014, 2016, 2018-2019 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2015 Jiaxing Qi &lt;jiaxing.qi@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2016-2017 Tobias Schneider &lt;tobias1.schneider@student.uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2016 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016, 2018 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2017 Daniel Petró &lt;daniel.petro@student.uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2018 Jana Gericke &lt;jana.gericke@student.uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">!</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">!</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">!</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">!</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">!&gt; author: Kannan Masilamani</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="c">!! Contains varMap type definition to store requested variable position</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="c">!! in the global varSys and routine to create varMap from given variable</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="c">!! labels</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="c">!!</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="c">!! This is especially useful wherever a set of variables needs to be</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="c">!! provided, for example in tracking objects.</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="c">!! There is a routine to read a list of labels, and one routine to</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="c">!! look these labels up in a variable system, and store the position</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="c">!! of each variable in that system.</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="c">!!</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="k">module </span><span class="n">tem_varMap_module</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">                     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span><span class="p">,</span><span class="w"> </span><span class="n">labelLen</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w">                   </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_state</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_WrongType</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">  </span><span class="k">use </span><span class="n">aot_table_module</span><span class="p">,</span><span class="w">               </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">aot_table_open</span><span class="p">,</span><span class="w"> </span><span class="n">aot_table_close</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">aot_get_val</span><span class="p">,</span><span class="w"> </span><span class="n">aot_exists</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_grow_array_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">grw_labelArray_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">grw_intArray_type</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">init</span><span class="p">,</span><span class="w"> </span><span class="n">append</span><span class="p">,</span><span class="w"> </span><span class="n">truncate</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_dyn_array_module</span><span class="p">,</span><span class="w">           </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">dyn_labelArray_type</span><span class="p">,</span><span class="w"> </span><span class="n">init</span><span class="p">,</span><span class="w"> </span><span class="n">append</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">truncate</span><span class="p">,</span><span class="w"> </span><span class="n">PositionOfVal</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_varSys_module</span><span class="p">,</span><span class="w">              </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_varSys_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">tem_varSys_solverData_evalElem_type</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_stringKeyValuePair_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_stringKeyValuePair_type</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">append</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_spacetime_fun_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_spacetime_fun_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">tem_load_spacetime</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                       </span><span class="n">tem_spacetime_hash_id</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_spacetime_var_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_varSys_append_stfun</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">  </span><span class="c">!&gt; Contains variable labels and their positions in a varSys</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">  </span><span class="k">type </span><span class="n">tem_varMap_type</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="c">!&gt; Array of active variable labels</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_labelArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varName</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="c">!character(len=labelLen), allocatable :: varName(:)</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="c">!&gt; Position of appended variable in the global variable system</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varPos</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">!&gt; number of scalars of variables in varPos</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nScalars</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">  </span><span class="k">end type </span><span class="n">tem_varMap_type</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a>
+<a id="ln-81" name="ln-81" href="#ln-81"></a>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">  </span><span class="c">!&gt; Contains possible variable labels and their nComponents</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">  </span><span class="k">type </span><span class="n">tem_possible_variable_type</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="c">!&gt; Array of possible variable labels</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_labelArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varName</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="c">!&gt; Number of components of variable in dynamic array of varName</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nComponents</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">  </span><span class="k">end type </span><span class="n">tem_possible_variable_type</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">  </span><span class="k">interface </span><span class="n">init</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">init_possible_variable</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">  </span><span class="k">end interface </span><span class="n">init</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">  </span><span class="k">interface </span><span class="n">append</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">append_possible_variable</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">  </span><span class="k">end interface </span><span class="n">append</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">  </span><span class="k">interface </span><span class="n">truncate</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">truncate_possible_variable</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">  </span><span class="k">end interface </span><span class="n">truncate</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a>
+<a id="ln-111" name="ln-111" href="#ln-111"></a>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">  </span><span class="k">interface  </span><span class="n">tem_variable_loadMapping</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">tem_variable_loadMapping_vector</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">tem_variable_loadMapping_single</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">  </span><span class="k">end interface </span><span class="n">tem_variable_loadMapping</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a>
+<a id="ln-119" name="ln-119" href="#ln-119"></a>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="k">contains</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a>
+<a id="ln-122" name="ln-122" href="#ln-122"></a>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">init_possible_variable</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="c">!&gt; Possible variables</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_possible_variable_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="c">!&gt; Minimum length to expand the array</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">length</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="c">! Unique array is used to extract position of variable to get nComponents</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">varName</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nComponents</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">init_possible_variable</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a>
+<a id="ln-138" name="ln-138" href="#ln-138"></a>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">append_possible_variable</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">varName</span><span class="p">,</span><span class="w"> </span><span class="n">nComponents</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">    </span><span class="c">!&gt; Possible variables</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_possible_variable_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">    </span><span class="c">!&gt; variable name</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varName</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">    </span><span class="c">!&gt; number of components</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nComponents</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">internal_pos</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">    </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">varName</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varName</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">internal_pos</span><span class="w">   </span><span class="p">)</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a>
+<a id="ln-156" name="ln-156" href="#ln-156"></a><span class="w">    </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nComponents</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nComponents</span><span class="w">     </span><span class="p">)</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a>
+<a id="ln-159" name="ln-159" href="#ln-159"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">internal_pos</span>
+<a id="ln-160" name="ln-160" href="#ln-160"></a>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">append_possible_variable</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a>
+<a id="ln-164" name="ln-164" href="#ln-164"></a>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">truncate_possible_variable</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-167" name="ln-167" href="#ln-167"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-168" name="ln-168" href="#ln-168"></a><span class="w">    </span><span class="c">!&gt; Possible variables</span>
+<a id="ln-169" name="ln-169" href="#ln-169"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_possible_variable_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a><span class="w">    </span><span class="k">call </span><span class="n">truncate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">varName</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="k">call </span><span class="n">truncate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nComponents</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">truncate_possible_variable</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a>
+<a id="ln-177" name="ln-177" href="#ln-177"></a>
+<a id="ln-178" name="ln-178" href="#ln-178"></a>
+<a id="ln-179" name="ln-179" href="#ln-179"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="w">  </span><span class="c">!&gt; Loads the variable mapping from a table defined by given key</span>
+<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">  </span><span class="c">!! for the variable names defined in possVars list.</span>
+<a id="ln-182" name="ln-182" href="#ln-182"></a><span class="w">  </span><span class="c">!! A variable mapping is used to</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="w">  </span><span class="c">!! link a user defined variable to a variable expected from, e.g., an equation</span>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="w">  </span><span class="c">!! system. These mappings are stored in varDict, which basically is a</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a><span class="w">  </span><span class="c">!! dictionary, whereas the key contains the name of the expected variable and</span>
+<a id="ln-186" name="ln-186" href="#ln-186"></a><span class="w">  </span><span class="c">!! the value contains the name of the user defined variable in the variable</span>
+<a id="ln-187" name="ln-187" href="#ln-187"></a><span class="w">  </span><span class="c">!! table.</span>
+<a id="ln-188" name="ln-188" href="#ln-188"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_variable_loadMapping_vector</span><span class="p">(</span><span class="w"> </span><span class="n">possVars</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">varDict</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="w">                  </span><span class="p">)</span>
+<a id="ln-190" name="ln-190" href="#ln-190"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-191" name="ln-191" href="#ln-191"></a><span class="w">    </span><span class="c">!&gt; Possible variable names expected by the solver</span>
+<a id="ln-192" name="ln-192" href="#ln-192"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_possible_variable_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">possVars</span>
+<a id="ln-193" name="ln-193" href="#ln-193"></a><span class="w">    </span><span class="c">!&gt; lua config file</span>
+<a id="ln-194" name="ln-194" href="#ln-194"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-195" name="ln-195" href="#ln-195"></a><span class="w">    </span><span class="c">!&gt; optional parent handle</span>
+<a id="ln-196" name="ln-196" href="#ln-196"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<a id="ln-197" name="ln-197" href="#ln-197"></a><span class="w">    </span><span class="c">!&gt; optional key for the table</span>
+<a id="ln-198" name="ln-198" href="#ln-198"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<a id="ln-199" name="ln-199" href="#ln-199"></a><span class="w">    </span><span class="c">!&gt; The dictionary that contains the mapping between expected variables</span>
+<a id="ln-200" name="ln-200" href="#ln-200"></a><span class="w">    </span><span class="c">!! and the actual variables defined by the user.</span>
+<a id="ln-201" name="ln-201" href="#ln-201"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varDict</span>
+<a id="ln-202" name="ln-202" href="#ln-202"></a><span class="w">    </span><span class="c">!&gt; Variable system to append anonymous variables to.</span>
+<a id="ln-203" name="ln-203" href="#ln-203"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<a id="ln-204" name="ln-204" href="#ln-204"></a>
+<a id="ln-205" name="ln-205" href="#ln-205"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-206" name="ln-206" href="#ln-206"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">localKey</span>
+<a id="ln-207" name="ln-207" href="#ln-207"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="n">srchandle</span>
+<a id="ln-208" name="ln-208" href="#ln-208"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">(</span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span><span class="p">)</span>
+<a id="ln-209" name="ln-209" href="#ln-209"></a><span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<a id="ln-210" name="ln-210" href="#ln-210"></a>
+<a id="ln-211" name="ln-211" href="#ln-211"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-212" name="ln-212" href="#ln-212"></a><span class="k">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<a id="ln-213" name="ln-213" href="#ln-213"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-214" name="ln-214" href="#ln-214"></a><span class="k">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;source&#39;</span>
+<a id="ln-215" name="ln-215" href="#ln-215"></a><span class="w">    </span><span class="k">endif</span>
+<a id="ln-216" name="ln-216" href="#ln-216"></a><span class="k">    write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Loading the mappings from table: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localkey</span><span class="p">)</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a>
+<a id="ln-218" name="ln-218" href="#ln-218"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-219" name="ln-219" href="#ln-219"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;WARNING: No possible variables are defined!&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-220" name="ln-220" href="#ln-220"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; Definitions from &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localKey</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; are not loaded.&#39;</span>
+<a id="ln-221" name="ln-221" href="#ln-221"></a><span class="w">      </span><span class="k">return</span>
+<a id="ln-222" name="ln-222" href="#ln-222"></a><span class="k">    end if</span>
+<a id="ln-223" name="ln-223" href="#ln-223"></a>
+<a id="ln-224" name="ln-224" href="#ln-224"></a><span class="w">    </span><span class="c">! Try to open the mapping table</span>
+<a id="ln-225" name="ln-225" href="#ln-225"></a><span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-226" name="ln-226" href="#ln-226"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-227" name="ln-227" href="#ln-227"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-228" name="ln-228" href="#ln-228"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">localkey</span><span class="w">   </span><span class="p">)</span>
+<a id="ln-229" name="ln-229" href="#ln-229"></a>
+<a id="ln-230" name="ln-230" href="#ln-230"></a><span class="w">    </span><span class="c">! if mapping table is defined</span>
+<a id="ln-231" name="ln-231" href="#ln-231"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">srchandle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-232" name="ln-232" href="#ln-232"></a><span class="w">      </span><span class="c">! loop over all possible variables</span>
+<a id="ln-233" name="ln-233" href="#ln-233"></a><span class="w">      </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span>
+<a id="ln-234" name="ln-234" href="#ln-234"></a><span class="w">        </span><span class="c">! check if expected variable is defined in lua file</span>
+<a id="ln-235" name="ln-235" href="#ln-235"></a><span class="w">        </span><span class="c">! and if variable exist then store in stringKeyValuePairArray</span>
+<a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">        </span><span class="k">call </span><span class="n">tem_variable_loadMapping_single</span><span class="p">(</span><span class="w">                  </span><span class="p">&amp;</span>
+<a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">expectedName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">varName</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iVar</span><span class="p">),</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-238" name="ln-238" href="#ln-238"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">conf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">thandle</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">varDict</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varDict</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">varSys</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<a id="ln-242" name="ln-242" href="#ln-242"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">nComp</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">nComponents</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iVar</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-243" name="ln-243" href="#ln-243"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">ErrCode</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">(</span><span class="n">iVar</span><span class="p">)</span><span class="w">                 </span><span class="p">)</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="w">      </span><span class="k">end do</span>
+<a id="ln-245" name="ln-245" href="#ln-245"></a>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="k">      call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">)</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-248" name="ln-248" href="#ln-248"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Table &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localKey</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; could not be opened for reading variable mappings!&#39;</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-251" name="ln-251" href="#ln-251"></a>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="k">  end subroutine </span><span class="n">tem_variable_loadMapping_vector</span>
+<a id="ln-253" name="ln-253" href="#ln-253"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-254" name="ln-254" href="#ln-254"></a>
+<a id="ln-255" name="ln-255" href="#ln-255"></a>
+<a id="ln-256" name="ln-256" href="#ln-256"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-257" name="ln-257" href="#ln-257"></a><span class="w">  </span><span class="c">!&gt; Loads the variable mapping from a table for single expected name.</span>
+<a id="ln-258" name="ln-258" href="#ln-258"></a><span class="w">  </span><span class="c">!! A variable mapping is used to</span>
+<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="w">  </span><span class="c">!! link a user defined variable to a variable expected from, e.g., an equation</span>
+<a id="ln-260" name="ln-260" href="#ln-260"></a><span class="w">  </span><span class="c">!! system. These mappings are stored in varDict, which basically is a</span>
+<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">  </span><span class="c">!! dictionary, whereas the key contains the name of the expected variable and</span>
+<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="w">  </span><span class="c">!! the value contains the name of the user defined variable in the variable</span>
+<a id="ln-263" name="ln-263" href="#ln-263"></a><span class="w">  </span><span class="c">!! table.</span>
+<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_variable_loadMapping_single</span><span class="p">(</span><span class="w"> </span><span class="n">expectedName</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-265" name="ln-265" href="#ln-265"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">varDict</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">ncomp</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-266" name="ln-266" href="#ln-266"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">solverData_evalElem</span><span class="p">,</span><span class="w"> </span><span class="n">ErrCode</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-267" name="ln-267" href="#ln-267"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-268" name="ln-268" href="#ln-268"></a><span class="w">    </span><span class="c">!&gt; Expected variable name from config file</span>
+<a id="ln-269" name="ln-269" href="#ln-269"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">expectedName</span>
+<a id="ln-270" name="ln-270" href="#ln-270"></a><span class="w">    </span><span class="c">!&gt; lua config file</span>
+<a id="ln-271" name="ln-271" href="#ln-271"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-272" name="ln-272" href="#ln-272"></a><span class="w">    </span><span class="c">!&gt; table handle</span>
+<a id="ln-273" name="ln-273" href="#ln-273"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<a id="ln-274" name="ln-274" href="#ln-274"></a><span class="w">    </span><span class="c">!&gt; The dictionary that contains the mapping between expected variables</span>
+<a id="ln-275" name="ln-275" href="#ln-275"></a><span class="w">    </span><span class="c">!! and the actual variables defined by the user.</span>
+<a id="ln-276" name="ln-276" href="#ln-276"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varDict</span>
+<a id="ln-277" name="ln-277" href="#ln-277"></a><span class="w">    </span><span class="c">!&gt; Variable system to append anonymous variables to.</span>
+<a id="ln-278" name="ln-278" href="#ln-278"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<a id="ln-279" name="ln-279" href="#ln-279"></a><span class="w">    </span><span class="c">!&gt; Number of components we expect for this variable.</span>
+<a id="ln-280" name="ln-280" href="#ln-280"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nComp</span>
+<a id="ln-281" name="ln-281" href="#ln-281"></a>
+<a id="ln-282" name="ln-282" href="#ln-282"></a><span class="w">    </span><span class="c">!&gt; Routine to convert point information into an element representation.</span>
+<a id="ln-283" name="ln-283" href="#ln-283"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_solverData_evalElem_type</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-284" name="ln-284" href="#ln-284"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">  </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">solverData_evalElem</span>
+<a id="ln-285" name="ln-285" href="#ln-285"></a>
+<a id="ln-286" name="ln-286" href="#ln-286"></a><span class="w">    </span><span class="c">!&gt; Error code</span>
+<a id="ln-287" name="ln-287" href="#ln-287"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ErrCode</span>
+<a id="ln-288" name="ln-288" href="#ln-288"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-289" name="ln-289" href="#ln-289"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varname</span>
+<a id="ln-290" name="ln-290" href="#ln-290"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">anony_name</span>
+<a id="ln-291" name="ln-291" href="#ln-291"></a><span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varExist</span>
+<a id="ln-292" name="ln-292" href="#ln-292"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">errorCode</span>
+<a id="ln-293" name="ln-293" href="#ln-293"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stringKeyValuePair_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">kvp</span>
+<a id="ln-294" name="ln-294" href="#ln-294"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_spacetime_fun_type</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stfun</span><span class="p">(:)</span>
+<a id="ln-295" name="ln-295" href="#ln-295"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">numtest</span>
+<a id="ln-296" name="ln-296" href="#ln-296"></a><span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">check_stfun</span>
+<a id="ln-297" name="ln-297" href="#ln-297"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-298" name="ln-298" href="#ln-298"></a>
+<a id="ln-299" name="ln-299" href="#ln-299"></a><span class="w">    </span><span class="n">varExist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aot_exists</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-300" name="ln-300" href="#ln-300"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-301" name="ln-301" href="#ln-301"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">expectedName</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-302" name="ln-302" href="#ln-302"></a>
+<a id="ln-303" name="ln-303" href="#ln-303"></a><span class="w">    </span><span class="n">check_stfun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varExist</span>
+<a id="ln-304" name="ln-304" href="#ln-304"></a>
+<a id="ln-305" name="ln-305" href="#ln-305"></a><span class="w">    </span><span class="c">! if variable exist load space time function for that variable</span>
+<a id="ln-306" name="ln-306" href="#ln-306"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">varExist</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-307" name="ln-307" href="#ln-307"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Expected variable &#39;</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-308" name="ln-308" href="#ln-308"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; is defined&#39;</span>
+<a id="ln-309" name="ln-309" href="#ln-309"></a><span class="w">      </span><span class="c">! First check, whether this variable definition is a number.</span>
+<a id="ln-310" name="ln-310" href="#ln-310"></a><span class="w">      </span><span class="c">! (They also satisfy strings).</span>
+<a id="ln-311" name="ln-311" href="#ln-311"></a><span class="w">      </span><span class="c">! We do not accept numbers as variable names, instead this</span>
+<a id="ln-312" name="ln-312" href="#ln-312"></a><span class="w">      </span><span class="c">! will be read as constant stfun.</span>
+<a id="ln-313" name="ln-313" href="#ln-313"></a><span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<a id="ln-314" name="ln-314" href="#ln-314"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-315" name="ln-315" href="#ln-315"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">expectedName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-316" name="ln-316" href="#ln-316"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">numtest</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-317" name="ln-317" href="#ln-317"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errorCode</span><span class="w">     </span><span class="p">)</span>
+<a id="ln-318" name="ln-318" href="#ln-318"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">errorCode</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_WrongType</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-319" name="ln-319" href="#ln-319"></a><span class="w">        </span><span class="c">! Not a number, try to interpret it as a string.</span>
+<a id="ln-320" name="ln-320" href="#ln-320"></a><span class="w">        </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<a id="ln-321" name="ln-321" href="#ln-321"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-322" name="ln-322" href="#ln-322"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">expectedName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-323" name="ln-323" href="#ln-323"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">varname</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-324" name="ln-324" href="#ln-324"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errorCode</span><span class="w">     </span><span class="p">)</span>
+<a id="ln-325" name="ln-325" href="#ln-325"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errorCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-326" name="ln-326" href="#ln-326"></a><span class="w">          </span><span class="c">! Found a string, use it to refer to a variable.</span>
+<a id="ln-327" name="ln-327" href="#ln-327"></a><span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Corresponding variable for &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-328" name="ln-328" href="#ln-328"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; found: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span>
+<a id="ln-329" name="ln-329" href="#ln-329"></a><span class="w">          </span><span class="n">check_stfun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-330" name="ln-330" href="#ln-330"></a><span class="w">          </span><span class="n">kvp</span><span class="p">%</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expectedName</span>
+<a id="ln-331" name="ln-331" href="#ln-331"></a><span class="w">          </span><span class="n">kvp</span><span class="p">%</span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varname</span>
+<a id="ln-332" name="ln-332" href="#ln-332"></a><span class="w">          </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varDict</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvp</span><span class="p">)</span>
+<a id="ln-333" name="ln-333" href="#ln-333"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-334" name="ln-334" href="#ln-334"></a><span class="k">      end if</span>
+<a id="ln-335" name="ln-335" href="#ln-335"></a><span class="w">      </span><span class="c">! If the variable is not defined yet, try to get it as an anonymous</span>
+<a id="ln-336" name="ln-336" href="#ln-336"></a><span class="w">      </span><span class="c">! variable in a space-time function.</span>
+<a id="ln-337" name="ln-337" href="#ln-337"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">check_stfun</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-338" name="ln-338" href="#ln-338"></a><span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Did not find a variable name for &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-339" name="ln-339" href="#ln-339"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span>
+<a id="ln-340" name="ln-340" href="#ln-340"></a><span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Trying to load it as an anonymous space&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-341" name="ln-341" href="#ln-341"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; time function&#39;</span>
+<a id="ln-342" name="ln-342" href="#ln-342"></a><span class="w">        </span><span class="k">allocate</span><span class="p">(</span><span class="n">stfun</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-343" name="ln-343" href="#ln-343"></a><span class="w">        </span><span class="k">call </span><span class="n">tem_load_spacetime</span><span class="p">(</span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">stfun</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w">           </span><span class="p">&amp;</span>
+<a id="ln-344" name="ln-344" href="#ln-344"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">conf</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-345" name="ln-345" href="#ln-345"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-346" name="ln-346" href="#ln-346"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-347" name="ln-347" href="#ln-347"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">nComp</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">nComp</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-348" name="ln-348" href="#ln-348"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">errCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errorCode</span><span class="w">           </span><span class="p">)</span>
+<a id="ln-349" name="ln-349" href="#ln-349"></a><span class="w">        </span><span class="c">! use global mesh for anonymous variable</span>
+<a id="ln-350" name="ln-350" href="#ln-350"></a><span class="w">        </span><span class="n">stfun</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-351" name="ln-351" href="#ln-351"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">errorCode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-352" name="ln-352" href="#ln-352"></a><span class="k">          </span><span class="n">kvp</span><span class="p">%</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">expectedName</span>
+<a id="ln-353" name="ln-353" href="#ln-353"></a><span class="w">          </span><span class="n">anony_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_spacetime_hash_id</span><span class="p">(</span><span class="n">me</span><span class="o">=</span><span class="n">stfun</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">conf</span><span class="o">=</span><span class="n">conf</span><span class="p">)</span>
+<a id="ln-354" name="ln-354" href="#ln-354"></a><span class="w">          </span><span class="n">kvp</span><span class="p">%</span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;anon_&#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">anony_name</span><span class="p">)</span>
+<a id="ln-355" name="ln-355" href="#ln-355"></a><span class="w">          </span><span class="k">call </span><span class="n">tem_varSys_append_stFun</span><span class="p">(</span><span class="w">                   </span><span class="p">&amp;</span>
+<a id="ln-356" name="ln-356" href="#ln-356"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">varSys</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-357" name="ln-357" href="#ln-357"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">stfun</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">stfun</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<a id="ln-358" name="ln-358" href="#ln-358"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">varname</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">kvp</span><span class="p">%</span><span class="k">value</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-359" name="ln-359" href="#ln-359"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">nComp</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">nComp</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<a id="ln-360" name="ln-360" href="#ln-360"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">evalType</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;firstonly_asglobal&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-361" name="ln-361" href="#ln-361"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">solverData_evalElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solverData_evalElem</span><span class="w">   </span><span class="p">)</span>
+<a id="ln-362" name="ln-362" href="#ln-362"></a><span class="w">          </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varDict</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">kvp</span><span class="p">)</span>
+<a id="ln-363" name="ln-363" href="#ln-363"></a><span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Found a spacetime function for &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-364" name="ln-364" href="#ln-364"></a><span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span>
+<a id="ln-365" name="ln-365" href="#ln-365"></a><span class="w">        </span><span class="k">else</span>
+<a id="ln-366" name="ln-366" href="#ln-366"></a><span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Expected variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-367" name="ln-367" href="#ln-367"></a><span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; is NOT defined&#39;</span>
+<a id="ln-368" name="ln-368" href="#ln-368"></a><span class="w">          </span><span class="k">deallocate</span><span class="p">(</span><span class="n">stfun</span><span class="p">)</span>
+<a id="ln-369" name="ln-369" href="#ln-369"></a><span class="w">        </span><span class="k">end if</span>
+<a id="ln-370" name="ln-370" href="#ln-370"></a><span class="k">      end if</span>
+<a id="ln-371" name="ln-371" href="#ln-371"></a><span class="k">    else</span>
+<a id="ln-372" name="ln-372" href="#ln-372"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Expected variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">expectedName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-373" name="ln-373" href="#ln-373"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; is NOT defined&#39;</span>
+<a id="ln-374" name="ln-374" href="#ln-374"></a><span class="w">      </span><span class="n">errorCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<a id="ln-375" name="ln-375" href="#ln-375"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-376" name="ln-376" href="#ln-376"></a>
+<a id="ln-377" name="ln-377" href="#ln-377"></a><span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">ErrCode</span><span class="p">))</span><span class="w"> </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">errorCode</span>
+<a id="ln-378" name="ln-378" href="#ln-378"></a>
+<a id="ln-379" name="ln-379" href="#ln-379"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_variable_loadMapping_single</span>
+<a id="ln-380" name="ln-380" href="#ln-380"></a><span class="w">  </span><span class="c">! ***************************************************************************</span>
+<a id="ln-381" name="ln-381" href="#ln-381"></a>
+<a id="ln-382" name="ln-382" href="#ln-382"></a>
+<a id="ln-383" name="ln-383" href="#ln-383"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-384" name="ln-384" href="#ln-384"></a><span class="w">  </span><span class="c">!&gt; Creates a variable map. Therefore it looks for the variables stored in</span>
+<a id="ln-385" name="ln-385" href="#ln-385"></a><span class="w">  </span><span class="c">!! varname in the varSys. If found, the name and the corresponding position</span>
+<a id="ln-386" name="ln-386" href="#ln-386"></a><span class="w">  </span><span class="c">!! in the varSys is added to the resultung varMap.</span>
+<a id="ln-387" name="ln-387" href="#ln-387"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_create_varMap</span><span class="p">(</span><span class="w"> </span><span class="n">varName</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">varMap</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-388" name="ln-388" href="#ln-388"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-389" name="ln-389" href="#ln-389"></a><span class="w">    </span><span class="c">!&gt; array of variable labels</span>
+<a id="ln-390" name="ln-390" href="#ln-390"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varName</span><span class="p">(:)</span>
+<a id="ln-391" name="ln-391" href="#ln-391"></a>
+<a id="ln-392" name="ln-392" href="#ln-392"></a><span class="w">    </span><span class="c">!&gt; variable system to look for varName</span>
+<a id="ln-393" name="ln-393" href="#ln-393"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<a id="ln-394" name="ln-394" href="#ln-394"></a>
+<a id="ln-395" name="ln-395" href="#ln-395"></a><span class="w">    </span><span class="c">!&gt; Contains position of varname in given varSys</span>
+<a id="ln-396" name="ln-396" href="#ln-396"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varMap_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varMap</span>
+<a id="ln-397" name="ln-397" href="#ln-397"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-398" name="ln-398" href="#ln-398"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w"> </span><span class="n">iVar</span>
+<a id="ln-399" name="ln-399" href="#ln-399"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<a id="ln-400" name="ln-400" href="#ln-400"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Create varMap:&#39;</span>
+<a id="ln-401" name="ln-401" href="#ln-401"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="n">varMap</span><span class="p">%</span><span class="n">varName</span><span class="p">)</span>
+<a id="ln-402" name="ln-402" href="#ln-402"></a><span class="w">    </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">)</span>
+<a id="ln-403" name="ln-403" href="#ln-403"></a><span class="w">    </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">varName</span><span class="p">)</span>
+<a id="ln-404" name="ln-404" href="#ln-404"></a><span class="w">      </span><span class="n">varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PositionOfVal</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">%</span><span class="n">varName</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-405" name="ln-405" href="#ln-405"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varName</span><span class="p">(</span><span class="n">iVar</span><span class="p">))</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-406" name="ln-406" href="#ln-406"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">varPos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-407" name="ln-407" href="#ln-407"></a><span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Position of &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varName</span><span class="p">(</span><span class="n">iVar</span><span class="p">))</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-408" name="ln-408" href="#ln-408"></a><span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">varPos</span>
+<a id="ln-409" name="ln-409" href="#ln-409"></a><span class="w">        </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-410" name="ln-410" href="#ln-410"></a><span class="w">        </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varMap</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varName</span><span class="p">(</span><span class="n">iVar</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-411" name="ln-411" href="#ln-411"></a><span class="w">      </span><span class="k">else</span>
+<a id="ln-412" name="ln-412" href="#ln-412"></a><span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varName</span><span class="p">(</span><span class="n">iVar</span><span class="p">))</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-413" name="ln-413" href="#ln-413"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="s1">&#39; not found in varSys&#39;</span>
+<a id="ln-414" name="ln-414" href="#ln-414"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-415" name="ln-415" href="#ln-415"></a><span class="k">    end do</span>
+<a id="ln-416" name="ln-416" href="#ln-416"></a><span class="k">    call </span><span class="n">truncate</span><span class="p">(</span><span class="n">varMap</span><span class="p">%</span><span class="n">varName</span><span class="p">)</span>
+<a id="ln-417" name="ln-417" href="#ln-417"></a><span class="w">    </span><span class="k">call </span><span class="n">truncate</span><span class="p">(</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">)</span>
+<a id="ln-418" name="ln-418" href="#ln-418"></a><span class="w">    </span><span class="n">varMap</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="w"> </span><span class="n">varSys</span><span class="p">%</span><span class="n">method</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w">             </span><span class="p">&amp;</span>
+<a id="ln-419" name="ln-419" href="#ln-419"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">val</span><span class="p">(:)</span><span class="w"> </span><span class="p">)%</span><span class="n">nComponents</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-420" name="ln-420" href="#ln-420"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;nScalars in varMap: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">varMap</span><span class="p">%</span><span class="n">nScalars</span>
+<a id="ln-421" name="ln-421" href="#ln-421"></a>
+<a id="ln-422" name="ln-422" href="#ln-422"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_create_varMap</span>
+<a id="ln-423" name="ln-423" href="#ln-423"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-424" name="ln-424" href="#ln-424"></a>
+<a id="ln-425" name="ln-425" href="#ln-425"></a><span class="k">end module </span><span class="n">tem_varMap_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

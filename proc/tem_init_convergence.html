@@ -1,0 +1,940 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_init_convergence &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_init_convergence
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">96 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_convergence_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_convergence_module.f90.html'>tem_convergence_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_convergence_module.html'>tem_convergence_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_init_convergence</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_init_convergence.html#src">tem_init_convergence</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_init_convergence(me, tree, varSys, bc_prop, globProc, stencil, nDofs)  
+</h2>
+    
+
+    <p>Initialize the convergence subtreee</p>
+<p>Identify, how many and which elements exist on my local process and are
+requested from the convergences
+Empty convergence  are removed, so the convergence(:) might be re-allocated</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~730"></span>
+              type(<a href='../type/tem_convergence_type.html'>tem_convergence_type</a>),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>me</strong>(:)</td>
+            <td>
+                <p>convergence descriptions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~164"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>Global mesh from which the elements are identified and then stored to
+sub-meshes inside the convergences</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~132"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>solver-provided variable systems</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_prop~6"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_prop</strong></td>
+            <td>
+                <p>bc property that used to identify elements of certain BCs</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-globproc~8"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>globProc</strong></td>
+            <td>
+                <p>Process description to use.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencil~23"></span>
+              type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencil</strong></td>
+            <td>
+                <p>stencil used to create subTree of boundary type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~58"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+                <p>The number of dofs for each scalar variable of the equation system</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_init_convergence~~CallsGraph Pages: 1 -->
+<svg id="proctem_init_convergenceCallsGraph" width="603pt" height="704pt"
+ viewBox="0.00 0.00 603.00 704.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_init_convergence~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 700)">
+<title>proc~~tem_init_convergence~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-700 599,-700 599,4 -4,4"/>
+<!-- proc~tem_init_convergence -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node1" class="node">
+<title>proc~tem_init_convergence</title>
+<polygon fill="none" stroke="black" points="130,-444 0,-444 0,-420 130,-420 130,-444"/>
+<text text-anchor="middle" x="65" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_init_convergence</text>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node2" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node2"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="456,-696 389,-696 389,-672 456,-672 456,-696"/>
+<text text-anchor="middle" x="422.5" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge1" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M72.19,-444.21C85.92,-470.29 121.29,-532.14 166,-570 230.38,-624.52 325.02,-657.54 379.21,-673.13"/>
+<polygon fill="#000000" stroke="#000000" points="378.27,-676.5 388.85,-675.84 380.17,-669.76 378.27,-676.5"/>
+</g>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node3" class="node">
+<title>proc~tem_create_subtree_of</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node3"><a xlink:href="../proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="308.5,-444 174.5,-444 174.5,-420 308.5,-420 308.5,-444"/>
+<text text-anchor="middle" x="241.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge2" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M130.48,-432C141.41,-432 152.85,-432 164.05,-432"/>
+<polygon fill="#000000" stroke="#000000" points="164.24,-435.5 174.24,-432 164.24,-428.5 164.24,-435.5"/>
+</g>
+<!-- proc~tem_create_varmap -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node4" class="node">
+<title>proc~tem_create_varmap</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node4"><a xlink:href="../proc/tem_create_varmap.html" xlink:title="tem_create_varMap">
+<polygon fill="#d9534f" stroke="#d9534f" points="300.5,-129 182.5,-129 182.5,-105 300.5,-105 300.5,-129"/>
+<text text-anchor="middle" x="241.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_varMap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_varmap -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge3" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_varmap</title>
+<path fill="none" stroke="#000000" d="M72.84,-419.65C99.28,-371.92 195.01,-199.12 228.68,-138.33"/>
+<polygon fill="#000000" stroke="#000000" points="231.92,-139.71 233.71,-129.26 225.8,-136.31 231.92,-139.71"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node5" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node5"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="487.5,-654 357.5,-654 357.5,-630 487.5,-630 487.5,-654"/>
+<text text-anchor="middle" x="422.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge4" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M80.94,-444.1C122,-476.85 240.99,-568.28 353,-621 357.1,-622.93 361.42,-624.73 365.81,-626.41"/>
+<polygon fill="#000000" stroke="#000000" points="364.9,-629.8 375.49,-629.88 367.26,-623.21 364.9,-629.8"/>
+</g>
+<!-- proc~tem_reduction_spatial_init -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node6" class="node">
+<title>proc~tem_reduction_spatial_init</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node6"><a xlink:href="../proc/tem_reduction_spatial_init.html" xlink:title="tem_reduction_spatial_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="317,-87 166,-87 166,-63 317,-63 317,-87"/>
+<text text-anchor="middle" x="241.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_reduction_spatial_init -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge5" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_reduction_spatial_init</title>
+<path fill="none" stroke="#000000" d="M65.72,-419.84C65.3,-371.4 70.42,-190.2 166,-96 167.11,-94.91 168.27,-93.87 169.47,-92.89"/>
+<polygon fill="#000000" stroke="#000000" points="171.66,-95.64 177.99,-87.15 167.74,-89.83 171.66,-95.64"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node15" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="595,-696 528,-696 528,-672 595,-672 595,-696"/>
+<text text-anchor="middle" x="561.5" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge6" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M456.31,-684C474.79,-684 498.06,-684 517.92,-684"/>
+<polygon fill="#000000" stroke="#000000" points="517.95,-687.5 527.95,-684 517.95,-680.5 517.95,-687.5"/>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge15" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M244.73,-444.13C252.4,-482.32 281.25,-601.2 353,-663 360.41,-669.39 369.74,-673.83 379.1,-676.92"/>
+<polygon fill="#000000" stroke="#000000" points="378.22,-680.31 388.8,-679.68 380.14,-673.58 378.22,-680.31"/>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge16" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M251.66,-444.24C266.43,-464.27 295.97,-505.56 317,-543 335.7,-576.29 324.24,-595.88 353,-621 354.51,-622.32 356.1,-623.56 357.76,-624.71"/>
+<polygon fill="#000000" stroke="#000000" points="356.12,-627.81 366.51,-629.89 359.68,-621.79 356.12,-627.81"/>
+</g>
+<!-- interface~destroy~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node8" class="node">
+<title>interface~destroy~14</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node8"><a xlink:href="../interface/destroy~14.html" xlink:title="destroy">
+<polygon fill="#a7506f" stroke="#a7506f" points="449.5,-318 395.5,-318 395.5,-294 449.5,-294 449.5,-318"/>
+<text text-anchor="middle" x="422.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">destroy</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~destroy~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge7" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~destroy~14</title>
+<path fill="none" stroke="#000000" d="M252.09,-419.72C269.75,-397.92 309.58,-352.36 353,-327 362.95,-321.19 374.67,-316.83 385.57,-313.64"/>
+<polygon fill="#000000" stroke="#000000" points="386.54,-317.01 395.29,-311.03 384.72,-310.25 386.54,-317.01"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node9" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node9"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="449.5,-276 395.5,-276 395.5,-252 449.5,-252 449.5,-276"/>
+<text text-anchor="middle" x="422.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge8" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M248.34,-419.66C262.31,-391.46 300.47,-321.86 353,-285 362.59,-278.27 374.39,-273.65 385.48,-270.5"/>
+<polygon fill="#000000" stroke="#000000" points="386.55,-273.84 395.39,-268 384.83,-267.05 386.55,-273.84"/>
+</g>
+<!-- interface~tem_copypropertybits -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node12" class="node">
+<title>interface~tem_copypropertybits</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node12"><a xlink:href="../interface/tem_copypropertybits.html" xlink:title="tem_copyPropertyBits">
+<polygon fill="#a7506f" stroke="#a7506f" points="486.5,-234 358.5,-234 358.5,-210 486.5,-210 486.5,-234"/>
+<text text-anchor="middle" x="422.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_copyPropertyBits</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~tem_copypropertybits -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge9" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~tem_copypropertybits</title>
+<path fill="none" stroke="#000000" d="M246.16,-419.73C256.81,-386.17 291.01,-292.07 353,-243 354.82,-241.56 356.74,-240.21 358.74,-238.96"/>
+<polygon fill="#000000" stroke="#000000" points="360.75,-241.86 367.9,-234.04 357.43,-235.69 360.75,-241.86"/>
+</g>
+<!-- interface~tem_seteffboundingbox -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node13" class="node">
+<title>interface~tem_seteffboundingbox</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node13"><a xlink:href="../interface/tem_seteffboundingbox.html" xlink:title="tem_setEffBoundingBox">
+<polygon fill="#a7506f" stroke="#a7506f" points="492,-192 353,-192 353,-168 492,-168 492,-192"/>
+<text text-anchor="middle" x="422.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_setEffBoundingBox</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~tem_seteffboundingbox -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge10" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~tem_seteffboundingbox</title>
+<path fill="none" stroke="#000000" d="M244.73,-419.87C252.4,-381.68 281.25,-262.8 353,-201 354.56,-199.66 356.19,-198.41 357.9,-197.23"/>
+<polygon fill="#000000" stroke="#000000" points="360.02,-200.05 366.91,-192 356.5,-194 360.02,-200.05"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node16" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="466.5,-612 378.5,-612 378.5,-588 466.5,-588 466.5,-612"/>
+<text text-anchor="middle" x="422.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge11" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M250.12,-444.01C270.4,-475.62 325.95,-560.02 353,-579 357.83,-582.39 363.22,-585.24 368.79,-587.64"/>
+<polygon fill="#000000" stroke="#000000" points="367.7,-590.97 378.29,-591.27 370.19,-584.43 367.7,-590.97"/>
+</g>
+<!-- mpi_comm_rank -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node17" class="node">
+<title>mpi_comm_rank</title>
+<polygon fill="#777777" stroke="#777777" points="473,-570 372,-570 372,-546 473,-546 473,-570"/>
+<text text-anchor="middle" x="422.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_rank</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge12" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M252.09,-444.28C269.75,-466.08 309.58,-511.64 353,-537 356.05,-538.78 359.26,-540.42 362.56,-541.94"/>
+<polygon fill="#000000" stroke="#000000" points="361.47,-545.27 372.05,-545.87 364.16,-538.81 361.47,-545.27"/>
+</g>
+<!-- mpi_comm_size -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node18" class="node">
+<title>mpi_comm_size</title>
+<polygon fill="#777777" stroke="#777777" points="471,-528 374,-528 374,-504 471,-504 471,-528"/>
+<text text-anchor="middle" x="422.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_size</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_size -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge13" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_size</title>
+<path fill="none" stroke="#000000" d="M261.01,-444.25C282.44,-458.02 319.15,-480.37 353,-495 357.66,-497.01 362.58,-498.92 367.55,-500.7"/>
+<polygon fill="#000000" stroke="#000000" points="366.54,-504.05 377.13,-503.97 368.79,-497.43 366.54,-504.05"/>
+</g>
+<!-- mpi_comm_split -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node19" class="node">
+<title>mpi_comm_split</title>
+<polygon fill="#777777" stroke="#777777" points="472,-486 373,-486 373,-462 472,-462 472,-486"/>
+<text text-anchor="middle" x="422.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_split</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_split -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge14" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_split</title>
+<path fill="none" stroke="#000000" d="M293.79,-444.04C315.38,-449.1 340.63,-455.02 362.94,-460.26"/>
+<polygon fill="#000000" stroke="#000000" points="362.43,-463.74 372.97,-462.61 364.03,-456.92 362.43,-463.74"/>
+</g>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node20" class="node">
+<title>proc~tem_shape2subtree</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node20"><a xlink:href="../proc/tem_shape2subtree.html" xlink:title="tem_shape2subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="481.5,-444 363.5,-444 363.5,-420 481.5,-420 481.5,-444"/>
+<text text-anchor="middle" x="422.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape2subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge17" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M308.64,-432C323.07,-432 338.36,-432 352.88,-432"/>
+<polygon fill="#000000" stroke="#000000" points="353.29,-435.5 363.29,-432 353.29,-428.5 353.29,-435.5"/>
+</g>
+<!-- proc~tem_shape_initlocal -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node21" class="node">
+<title>proc~tem_shape_initlocal</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node21"><a xlink:href="../proc/tem_shape_initlocal.html" xlink:title="tem_shape_initLocal">
+<polygon fill="#d9534f" stroke="#d9534f" points="483,-402 362,-402 362,-378 483,-378 483,-402"/>
+<text text-anchor="middle" x="422.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initLocal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape_initlocal -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge18" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape_initlocal</title>
+<path fill="none" stroke="#000000" d="M293.79,-419.96C314.58,-415.09 338.75,-409.42 360.43,-404.33"/>
+<polygon fill="#000000" stroke="#000000" points="361.26,-407.73 370.2,-402.04 359.66,-400.91 361.26,-407.73"/>
+</g>
+<!-- proc~tem_subtree_from -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node22" class="node">
+<title>proc~tem_subtree_from</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node22"><a xlink:href="../proc/tem_subtree_from.html" xlink:title="tem_subTree_from">
+<polygon fill="#d9534f" stroke="#d9534f" points="477,-360 368,-360 368,-336 477,-336 477,-360"/>
+<text text-anchor="middle" x="422.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_from</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_subtree_from -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge19" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_subtree_from</title>
+<path fill="none" stroke="#000000" d="M261.01,-419.75C282.44,-405.98 319.15,-383.63 353,-369 357.66,-366.99 362.58,-365.08 367.55,-363.3"/>
+<polygon fill="#000000" stroke="#000000" points="368.79,-366.57 377.13,-360.03 366.54,-359.95 368.79,-366.57"/>
+</g>
+<!-- interface~append~31 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node7" class="node">
+<title>interface~append~31</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node7"><a xlink:href="../interface/append~31.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="449.5,-24 395.5,-24 395.5,0 449.5,0 449.5,-24"/>
+<text text-anchor="middle" x="422.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~append~31 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge20" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~append~31</title>
+<path fill="none" stroke="#000000" d="M300.81,-105.47C306.6,-102.92 312.13,-99.81 317,-96 342.41,-76.15 327.81,-53.14 353,-33 362.22,-25.62 374.03,-20.83 385.23,-17.72"/>
+<polygon fill="#000000" stroke="#000000" points="386.35,-21.05 395.25,-15.31 384.71,-14.24 386.35,-21.05"/>
+</g>
+<!-- interface~init~19 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node10" class="node">
+<title>interface~init~19</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node10"><a xlink:href="../interface/init~19.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="449.5,-150 395.5,-150 395.5,-126 449.5,-126 449.5,-150"/>
+<text text-anchor="middle" x="422.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~init~19 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge21" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~init~19</title>
+<path fill="none" stroke="#000000" d="M300.62,-123.82C328.36,-127.07 360.71,-130.87 384.96,-133.71"/>
+<polygon fill="#000000" stroke="#000000" points="384.81,-137.22 395.15,-134.91 385.63,-130.27 384.81,-137.22"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node11" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node11"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="463,-108 382,-108 382,-84 463,-84 463,-108"/>
+<text text-anchor="middle" x="422.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~positionofval~4 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge22" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~positionofval~4</title>
+<path fill="none" stroke="#000000" d="M300.62,-110.18C323.53,-107.49 349.58,-104.44 371.62,-101.85"/>
+<polygon fill="#000000" stroke="#000000" points="372.24,-105.3 381.76,-100.66 371.42,-98.35 372.24,-105.3"/>
+</g>
+<!-- interface~truncate~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_node14" class="node">
+<title>interface~truncate~14</title>
+<g id="a_proc~~tem_init_convergence~~CallsGraph_node14"><a xlink:href="../interface/truncate~14.html" xlink:title="truncate">
+<polygon fill="#a7506f" stroke="#a7506f" points="451.5,-66 393.5,-66 393.5,-42 451.5,-42 451.5,-66"/>
+<text text-anchor="middle" x="422.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">truncate</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~truncate~14 -->
+<g id="proc~~tem_init_convergence~~CallsGraph_edge23" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~truncate~14</title>
+<path fill="none" stroke="#000000" d="M292,-104.95C300.47,-102.35 309.08,-99.36 317,-96 334.05,-88.76 336.03,-82.43 353,-75 362.66,-70.77 373.43,-67.04 383.51,-63.94"/>
+<polygon fill="#000000" stroke="#000000" points="384.7,-67.24 393.31,-61.06 382.73,-60.53 384.7,-67.24"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_init_convergence</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">bc_prop</span><span class="p">,</span><span class="w"> </span><span class="n">globProc</span><span class="p">,&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">stencil</span><span class="p">,</span><span class="w"> </span><span class="n">nDofs</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; convergence descriptions</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_convergence_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; Global mesh from which the elements are identified and then stored to</span>
+<span class="w">    </span><span class="c">!! sub-meshes inside the convergences</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; bc property that used to identify elements of certain BCs</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_bc_prop_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_prop</span>
+<span class="w">    </span><span class="c">!&gt; solver-provided variable systems</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<span class="w">    </span><span class="c">!&gt; Process description to use.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">globProc</span>
+<span class="w">    </span><span class="c">!&gt; stencil used to create subTree of boundary type</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilHeader_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="c">!&gt; The number of dofs for each scalar variable of the equation system</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nDofs</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iConv</span><span class="p">,</span><span class="w"> </span><span class="n">nConv</span><span class="p">,</span><span class="w"> </span><span class="n">nVars</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nChunks</span><span class="p">,</span><span class="w"> </span><span class="n">chunkSize</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">maxComponents</span><span class="p">,</span><span class="w"> </span><span class="n">nPoints</span>
+<span class="w">    </span><span class="c">! temporary convergence array</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_convergence_type</span><span class="w"> </span><span class="p">),</span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tempConv</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Setting up the convergence infrastructure&#39;</span>
+<span class="w">    </span><span class="n">nConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+
+<span class="w">    </span><span class="c">! Allocate the temporary convergence</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">tempConv</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Initializing convergence object &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iConv</span>
+
+<span class="w">      </span><span class="c">! map variables</span>
+<span class="w">      </span><span class="c">! create convergence variable position in the global varSys</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_create_varMap</span><span class="p">(</span><span class="w"> </span><span class="n">varname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">varSys</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">varMap</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="w">          </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! @todo KM: If variable not found in varSys then skip that variable</span>
+<span class="w">      </span><span class="c">! reduction and condition info while copying convergence</span>
+<span class="w">      </span><span class="c">!</span>
+<span class="w">      </span><span class="c">! Terminate if number of variables to check for convergence does not</span>
+<span class="w">      </span><span class="c">! match with variables found in varMap</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">nVals</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">nRequestedVars</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error: Mapping Convergences variables&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variables defined in convergence &#39;</span><span class="o">//</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="s1">&#39;table &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iConv</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; are not found in varSys&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! -----------------------------------------------------------------------</span>
+<span class="w">      </span><span class="c">! identify convergence elements</span>
+<span class="w">      </span><span class="c">! -----------------------------------------------------------------------</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_create_subTree_of</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">bc_prop</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">bc_prop</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">stencil</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">subTree</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">subTree</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">storePnts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="p">(</span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">useGetPoint</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">inShape</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">geometry</span><span class="w">     </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! get rid of the empty convergence in order</span>
+<span class="w">      </span><span class="c">! to avoid empty writes to disk</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">        </span><span class="c">! set convergence communicator</span>
+<span class="w">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span>
+
+<span class="w">        </span><span class="n">nConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nConv</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="n">tempConv</span><span class="p">(</span><span class="w"> </span><span class="n">nConv</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        </span><span class="n">nConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nConv</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">! Increase number of log</span>
+
+<span class="w">        </span><span class="c">! set convergence communicator</span>
+<span class="w">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span>
+<span class="w">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">proc</span><span class="p">%</span><span class="n">rank</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span>
+<span class="w">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span>
+<span class="w">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">        </span><span class="c">! Copy all entries from the log derived type to the temporary one.</span>
+<span class="w">        </span><span class="c">! this might not work on all compilers!!</span>
+<span class="w">        </span><span class="c">! This assignment is realized by operator overloader Copy_convergence</span>
+<span class="w">        </span><span class="n">tempConv</span><span class="p">(</span><span class="w"> </span><span class="n">nConv</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">! useGlobalMesh</span>
+<span class="w">    </span><span class="k">end do</span><span class="w">  </span><span class="c">! nConv</span>
+
+<span class="w">    </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">nConv</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nConv</span>
+<span class="w">      </span><span class="c">! Copy the stuff from the temporary track</span>
+<span class="w">      </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempConv</span><span class="p">(</span><span class="n">iConv</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! number of variables in varMap</span>
+<span class="w">      </span><span class="n">nVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">nVals</span>
+
+<span class="w">      </span><span class="c">! nDofs is valid only for get_element</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">useGetPoint</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nDofs</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! out_config%nDofs is set to -1 if unspecied</span>
+<span class="w">          </span><span class="c">! in the config file. In this case all the dof&#39;s</span>
+<span class="w">          </span><span class="c">! should be dumped</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">nDofs</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nDofs</span>
+<span class="w">          </span><span class="k">else</span>
+<span class="w">            </span><span class="c">! Otherwise the number of dofs dumped should</span>
+<span class="w">            </span><span class="c">! be what&#39;s specified in the config</span>
+<span class="w">            </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">nDofs</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        else</span>
+<span class="k">          </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">        </span><span class="n">nPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">        </span><span class="n">nPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">nPoints</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! max nComponent in current convergence variables</span>
+<span class="w">      </span><span class="n">maxComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">maxval</span><span class="p">(</span><span class="n">varSys</span><span class="p">%</span><span class="n">method</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                     </span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">val</span><span class="p">(:</span><span class="n">nVars</span><span class="p">))%</span><span class="n">nComponents</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">useGetPoint</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">chunkSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">io_buffer_size</span><span class="o">/</span><span class="n">maxComponents</span><span class="p">,</span><span class="w"> </span><span class="n">nPoints</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">chunkSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">io_buffer_size</span><span class="o">/</span><span class="p">(</span><span class="n">maxComponents</span><span class="o">*</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="p">),</span><span class="w"> </span><span class="n">nElems</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">nElems</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="n">chunkSize</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Error in init_convergence: &#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The chosen io_buffer_size of &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">io_buffer_size</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;is too small for evaluating &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">maxComponents</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;scalar values&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Please increase the io_buffer_size to at &amp;</span>
+<span class="s1">          &amp; least &#39;</span><span class="p">,</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">maxComponents</span><span class="o">*</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nDofs</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="mi">131072</span><span class="p">),</span><span class="w"> </span><span class="s1">&#39; MB!&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      </span><span class="n">nChunks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">chunkSize</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">useGetPoint</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">nChunks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ceiling</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">nPoints</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">chunkSize</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">))</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          </span><span class="n">nChunks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ceiling</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">chunkSize</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">))</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      else</span>
+<span class="k">        </span><span class="n">nChunks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nChunks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nChunks</span>
+<span class="w">      </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">chunkSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunkSize</span>
+<span class="w">      </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">nChecks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">      </span><span class="c">! Initialize reduction</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_reduction_spatial_init</span><span class="p">(</span><span class="w">                                 </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">      </span><span class="n">me</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">      </span><span class="n">redSpatial_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">redSpatial_config</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">      </span><span class="n">varSys</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">      </span><span class="n">varPos</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">val</span><span class="p">(:</span><span class="n">nVars</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Allocate some arrays</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">lastState</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">nLastVals</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">lastState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">lastState</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">/</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">nLastVals</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">    deallocate</span><span class="p">(</span><span class="n">tempConv</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_init_convergence</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

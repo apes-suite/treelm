@@ -1,0 +1,1153 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_varSys_append_derVar &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_varSys_append_derVar
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">96 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_varSys_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_varsys_module.f90.html'>tem_varSys_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_varsys_module.html'>tem_varSys_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_varSys_append_derVar</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_varsys_append_dervar.html#src">tem_varSys_append_derVar</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_varSys_append_derVar(me, varname, operType, nComponents, input_varname, input_varIndex, method_data, get_point, get_element, set_params, get_params, setup_indices, get_valOfIndex, pos, wasAdded)  
+</h2>
+    
+
+    <p>Append a new (non-state) variable to the variable system.</p>
+<p>Non-state variables might depend on other variables, and do not modify the
+internal state variable counter.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~493"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Variable system to append the state variable to.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varname~6"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varname</strong></td>
+            <td>
+                <p>Variable to append to the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-opertype~3"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>operType</strong></td>
+            <td>
+                <p>Operation type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ncomponents~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nComponents</strong></td>
+            <td>
+                <p>Number of components in this variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-input_varname"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>input_varname</strong>(:)</td>
+            <td>
+                <p>List of variable names, this variable depends on.</p>
+<p>(Might be empty). The variable will only be appended, if all invars are
+already found in the variable system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-input_varindex~3"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>input_varIndex</strong>(:)</td>
+            <td>
+                <p>Component index to access from input variable nComponents</p>
+<p>(Might be empty). The variable will only be appended, if all index are
+available in input_varname</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-method_data~4"></span>
+              type(c_ptr),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>method_data</strong></td>
+            <td>
+                <p>Data that is required by the methods to obtain the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_point~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_point.html'>tem_varSys_proc_point</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_point</strong></td>
+            <td>
+                <p>Procedure which allows the retrieval of the variable at given points.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_element~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_element.html'>tem_varSys_proc_element</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_element</strong></td>
+            <td>
+                <p>Procedure which allows the retrieval of the variable in an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-set_params~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_setparams.html'>tem_varSys_proc_setParams</a>),
+            </td>
+<td></td>
+              <td>optional,</td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>set_params</strong></td>
+            <td>
+                <p>Procedure which allows to set parameter in method_data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_params~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_getparams.html'>tem_varSys_proc_getParams</a>),
+            </td>
+<td></td>
+              <td>optional,</td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_params</strong></td>
+            <td>
+                <p>Procedure which allows to get parameter in method_data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-setup_indices~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_setupindices.html'>tem_varSys_proc_setupIndices</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>setup_indices</strong></td>
+            <td>
+                <p>Procedure to setup growing array of points, variable value
+in method_data and return index of points set</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_valofindex~5"></span>
+              procedure(<a href='../interface/tem_varsys_proc_getvalofindex.html'>tem_varSys_proc_getValOfIndex</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_valOfIndex</strong></td>
+            <td>
+                <p>Procedure which allows to retrieval of the variable at point or val
+array index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pos~86"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos</strong></td>
+            <td>
+                <p>Position of the variable in the system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wasadded~18"></span>
+              logical,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>wasAdded</strong></td>
+            <td>
+                <p>Indicator, if the variable was actually added to the system.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_varsys_append_dervar~~CallsGraph Pages: 1 -->
+<svg id="proctem_varsys_append_dervarCallsGraph" width="641pt" height="104pt"
+ viewBox="0.00 0.00 641.00 103.99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph" class="graph" transform="scale(0.9 0.9) rotate(0) translate(4 112)">
+<title>proc~~tem_varsys_append_dervar~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 711,-112 711,4 -4,4"/>
+<!-- proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node1" class="node">
+<title>proc~tem_varsys_append_dervar</title>
+<polygon fill="none" stroke="black" points="160,-45 0,-45 0,-21 160,-21 160,-45"/>
+<text text-anchor="middle" x="80" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_varSys_append_derVar</text>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node2" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node2"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="263.5,-66 209.5,-66 209.5,-42 263.5,-42 263.5,-66"/>
+<text text-anchor="middle" x="236.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_dervar&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge1" class="edge">
+<title>proc~tem_varsys_append_dervar&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M160.06,-43.75C173.84,-45.62 187.55,-47.48 199.42,-49.1"/>
+<polygon fill="#000000" stroke="#000000" points="198.95,-52.56 209.33,-50.44 199.9,-45.63 198.95,-52.56"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node3" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node3"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="277,-24 196,-24 196,0 277,0 277,-24"/>
+<text text-anchor="middle" x="236.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_dervar&#45;&gt;interface~positionofval~4 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge2" class="edge">
+<title>proc~tem_varsys_append_dervar&#45;&gt;interface~positionofval~4</title>
+<path fill="none" stroke="#000000" d="M160.06,-22.25C168.83,-21.06 177.57,-19.87 185.82,-18.75"/>
+<polygon fill="#000000" stroke="#000000" points="186.55,-22.19 195.99,-17.37 185.61,-15.25 186.55,-22.19"/>
+</g>
+<!-- proc~append_da_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node4" class="node">
+<title>proc~append_da_label</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node4"><a xlink:href="../proc/append_da_label.html" xlink:title="append_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="425.5,-66 322.5,-66 322.5,-42 425.5,-42 425.5,-66"/>
+<text text-anchor="middle" x="374" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge3" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M263.63,-54C277.38,-54 294.88,-54 311.82,-54"/>
+<polygon fill="#000000" stroke="#000000" points="312.26,-57.5 322.26,-54 312.26,-50.5 312.26,-57.5"/>
+</g>
+<!-- proc~append_da_veclabel -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node5" class="node">
+<title>proc~append_da_veclabel</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node5"><a xlink:href="../proc/append_da_veclabel.html" xlink:title="append_da_veclabel">
+<polygon fill="#d9534f" stroke="#d9534f" points="435,-108 313,-108 313,-84 435,-84 435,-108"/>
+<text text-anchor="middle" x="374" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_veclabel</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_veclabel -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge4" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_veclabel</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M263.63,-62.1C280.81,-67.42 303.82,-74.56 324.31,-80.91"/>
+<polygon fill="#000000" stroke="#000000" points="323.54,-84.33 334.13,-83.95 325.61,-77.65 323.54,-84.33"/>
+</g>
+<!-- proc~posofval_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node6" class="node">
+<title>proc~posofval_label</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node6"><a xlink:href="../proc/posofval_label.html" xlink:title="posofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="418.5,-24 329.5,-24 329.5,0 418.5,0 418.5,-24"/>
+<text text-anchor="middle" x="374" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_label</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval~4&#45;&gt;proc~posofval_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge5" class="edge">
+<title>interface~positionofval~4&#45;&gt;proc~posofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M277.06,-12C290.26,-12 305.19,-12 319.29,-12"/>
+<polygon fill="#000000" stroke="#000000" points="319.36,-15.5 329.36,-12 319.36,-8.5 319.36,-15.5"/>
+</g>
+<!-- interface~expand~19 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node7" class="node">
+<title>interface~expand~19</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node7"><a xlink:href="../interface/expand~19.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="543.5,-87 489.5,-87 489.5,-63 543.5,-63 543.5,-87"/>
+<text text-anchor="middle" x="516.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge6" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M425.72,-61.58C443.39,-64.22 462.85,-67.13 479.12,-69.56"/>
+<polygon fill="#000000" stroke="#000000" points="478.89,-73.07 489.3,-71.08 479.93,-66.14 478.89,-73.07"/>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node8" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node8"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="562,-45 471,-45 471,-21 562,-21 562,-45"/>
+<text text-anchor="middle" x="516.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge7" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M425.72,-46.42C437.15,-44.71 449.33,-42.89 460.91,-41.16"/>
+<polygon fill="#000000" stroke="#000000" points="461.53,-44.61 470.9,-39.67 460.49,-37.68 461.53,-44.61"/>
+</g>
+<!-- proc~append_da_veclabel&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge8" class="edge">
+<title>proc~append_da_veclabel&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M435.4,-86.97C450.31,-84.74 465.82,-82.43 479.17,-80.43"/>
+<polygon fill="#000000" stroke="#000000" points="480,-83.85 489.37,-78.91 478.96,-76.92 480,-83.85"/>
+</g>
+<!-- proc~posofval_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge9" class="edge">
+<title>proc~posofval_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M418.68,-18.53C432.04,-20.53 446.89,-22.75 460.88,-24.84"/>
+<polygon fill="#000000" stroke="#000000" points="460.47,-28.31 470.87,-26.33 461.5,-21.39 460.47,-28.31"/>
+</g>
+<!-- proc~expand_da_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node9" class="node">
+<title>proc~expand_da_label</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node9"><a xlink:href="../proc/expand_da_label.html" xlink:title="expand_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="703.5,-87 601.5,-87 601.5,-63 703.5,-63 703.5,-87"/>
+<text text-anchor="middle" x="652.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~expand~19&#45;&gt;proc~expand_da_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge10" class="edge">
+<title>interface~expand~19&#45;&gt;proc~expand_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M543.65,-75C557.22,-75 574.39,-75 591.02,-75"/>
+<polygon fill="#000000" stroke="#000000" points="591.26,-78.5 601.26,-75 591.26,-71.5 591.26,-78.5"/>
+</g>
+<!-- proc~sortposofval_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_node10" class="node">
+<title>proc~sortposofval_label</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CallsGraph_node10"><a xlink:href="../proc/sortposofval_label.html" xlink:title="sortposofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="707,-45 598,-45 598,-21 707,-21 707,-45"/>
+<text text-anchor="middle" x="652.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortposofval_label</text>
+</a>
+</g>
+</g>
+<!-- interface~sortedposofval~4&#45;&gt;proc~sortposofval_label -->
+<g id="proc~~tem_varsys_append_dervar~~CallsGraph_edge11" class="edge">
+<title>interface~sortedposofval~4&#45;&gt;proc~sortposofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.12,-33C570.33,-33 579.04,-33 587.69,-33"/>
+<polygon fill="#000000" stroke="#000000" points="587.77,-36.5 597.77,-33 587.77,-29.5 587.77,-36.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_varsys_append_dervarCallsGraph = svgPanZoom('#proctem_varsys_append_dervarCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_varsys_append_dervar~~CalledByGraph Pages: 1 -->
+<svg id="proctem_varsys_append_dervarCalledByGraph" width="641pt" height="93pt"
+ viewBox="0.00 0.00 641.00 93.13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph" class="graph" transform="scale(0.6 0.6) rotate(0) translate(4 150)">
+<title>proc~~tem_varsys_append_dervar~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-150 1056,-150 1056,4 -4,4"/>
+<!-- proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node1" class="node">
+<title>proc~tem_varsys_append_dervar</title>
+<polygon fill="none" stroke="black" points="1052,-86 892,-86 892,-62 1052,-62 1052,-86"/>
+<text text-anchor="middle" x="972" y="-71.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_varSys_append_derVar</text>
+</g>
+<!-- proc~tem_varsys_append_meshinfovar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node2" class="node">
+<title>proc~tem_varsys_append_meshinfovar</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node2"><a xlink:href="../proc/tem_varsys_append_meshinfovar.html" xlink:title="tem_varSys_append_meshInfoVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="856,-146 664,-146 664,-122 856,-122 856,-146"/>
+<text text-anchor="middle" x="760" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_meshInfoVar</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_meshinfovar&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_varsys_append_meshinfovar&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M805.99,-121.89C821.82,-117.57 839.72,-112.63 856,-108 877.51,-101.88 901.22,-94.91 921.49,-88.88"/>
+<polygon fill="#000000" stroke="#000000" points="922.56,-92.21 931.14,-86 920.56,-85.5 922.56,-92.21"/>
+</g>
+<!-- proc~tem_varsys_append_opervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node3" class="node">
+<title>proc~tem_varsys_append_opervar</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node3"><a xlink:href="../proc/tem_varsys_append_opervar.html" xlink:title="tem_varSys_append_operVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="628,-106 461,-106 461,-82 628,-82 628,-106"/>
+<text text-anchor="middle" x="544.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_operVar</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_opervar&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_varsys_append_opervar&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M628.05,-90.12C700.87,-86.7 806.76,-81.72 881.58,-78.2"/>
+<polygon fill="#000000" stroke="#000000" points="882.1,-81.68 891.92,-77.72 881.77,-74.69 882.1,-81.68"/>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node4" class="node">
+<title>proc~tem_varsys_append_stfun_raw</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node4"><a xlink:href="../proc/tem_varsys_append_stfun_raw.html" xlink:title="tem_varSys_append_stFun_raw">
+<polygon fill="#d9534f" stroke="#d9534f" points="849,-66 671,-66 671,-42 849,-42 849,-66"/>
+<text text-anchor="middle" x="760" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stFun_raw</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M849.15,-62.39C859.86,-63.42 870.82,-64.46 881.56,-65.48"/>
+<polygon fill="#000000" stroke="#000000" points="881.48,-68.99 891.77,-66.45 882.15,-62.02 881.48,-68.99"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node5" class="node">
+<title>proc~tem_varsys_append_stfunvar</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node5"><a xlink:href="../proc/tem_varsys_append_stfunvar.html" xlink:title="tem_varSys_append_stFunVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="845,-24 675,-24 675,0 845,0 845,-24"/>
+<text text-anchor="middle" x="760" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stFunVar</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M820.83,-24.03C832.56,-26.73 844.72,-29.76 856,-33 881.26,-40.26 909.03,-50.11 930.96,-58.33"/>
+<polygon fill="#000000" stroke="#000000" points="930,-61.71 940.59,-61.98 932.48,-55.17 930,-61.71"/>
+</g>
+<!-- interface~tem_varsys_append_stfun -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node6" class="node">
+<title>interface~tem_varsys_append_stfun</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node6"><a xlink:href="../interface/tem_varsys_append_stfun.html" xlink:title="tem_varSys_append_stfun">
+<polygon fill="#a7506f" stroke="#a7506f" points="620,-64 469,-64 469,-40 620,-40 620,-64"/>
+<text text-anchor="middle" x="544.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stfun</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfun_raw -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge6" class="edge">
+<title>interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfun_raw</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M620.17,-52.7C633.2,-52.82 646.94,-52.95 660.5,-53.08"/>
+<polygon fill="#000000" stroke="#000000" points="660.78,-56.58 670.81,-53.17 660.85,-49.58 660.78,-56.58"/>
+</g>
+<!-- interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfunvar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge7" class="edge">
+<title>interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfunvar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M609.56,-40C633.2,-35.57 660.19,-30.51 684.66,-25.93"/>
+<polygon fill="#000000" stroke="#000000" points="685.44,-29.34 694.62,-24.06 684.15,-22.46 685.44,-29.34"/>
+</g>
+<!-- proc~tem_varsys_append_luavar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node7" class="node">
+<title>proc~tem_varsys_append_luavar</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node7"><a xlink:href="../proc/tem_varsys_append_luavar.html" xlink:title="tem_varSys_append_luaVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="408,-106 249,-106 249,-82 408,-82 408,-106"/>
+<text text-anchor="middle" x="328.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_luaVar</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_luavar&#45;&gt;proc~tem_varsys_append_opervar -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_varsys_append_luavar&#45;&gt;proc~tem_varsys_append_opervar</title>
+<path fill="none" stroke="#000000" d="M408.27,-94C422.08,-94 436.57,-94 450.72,-94"/>
+<polygon fill="#000000" stroke="#000000" points="450.94,-97.5 460.94,-94 450.94,-90.5 450.94,-97.5"/>
+</g>
+<!-- proc~tem_varsys_append_luavar&#45;&gt;interface~tem_varsys_append_stfun -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_varsys_append_luavar&#45;&gt;interface~tem_varsys_append_stfun</title>
+<path fill="none" stroke="#000000" d="M390.82,-81.96C416.23,-76.98 445.87,-71.16 472.24,-65.99"/>
+<polygon fill="#000000" stroke="#000000" points="473.03,-69.4 482.17,-64.04 471.68,-62.53 473.03,-69.4"/>
+</g>
+<!-- proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node8" class="node">
+<title>proc~tem_variable_loadmapping_single</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node8"><a xlink:href="../proc/tem_variable_loadmapping_single.html" xlink:title="tem_variable_loadMapping_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="425,-64 232,-64 232,-40 425,-40 425,-64"/>
+<text text-anchor="middle" x="328.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_varsys_append_stfun -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_varsys_append_stfun</title>
+<path fill="none" stroke="#000000" d="M425.23,-52C436.28,-52 447.49,-52 458.38,-52"/>
+<polygon fill="#000000" stroke="#000000" points="458.72,-55.5 468.72,-52 458.72,-48.5 458.72,-55.5"/>
+</g>
+<!-- interface~tem_variable_loadmapping -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node9" class="node">
+<title>interface~tem_variable_loadmapping</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node9"><a xlink:href="../interface/tem_variable_loadmapping.html" xlink:title="tem_variable_loadMapping">
+<polygon fill="#a7506f" stroke="#a7506f" points="176.5,-85 19.5,-85 19.5,-61 176.5,-61 176.5,-85"/>
+<text text-anchor="middle" x="98" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_variable_loadmapping&#45;&gt;proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge11" class="edge">
+<title>interface~tem_variable_loadmapping&#45;&gt;proc~tem_variable_loadmapping_single</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.68,-65.86C191.22,-64.52 206.64,-63.11 221.86,-61.71"/>
+<polygon fill="#000000" stroke="#000000" points="222.18,-65.19 231.82,-60.79 221.54,-58.22 222.18,-65.19"/>
+</g>
+<!-- proc~tem_variable_loadmapping_vector -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_node10" class="node">
+<title>proc~tem_variable_loadmapping_vector</title>
+<g id="a_proc~~tem_varsys_append_dervar~~CalledByGraph_node10"><a xlink:href="../proc/tem_variable_loadmapping_vector.html" xlink:title="tem_variable_loadMapping_vector">
+<polygon fill="#d9534f" stroke="#d9534f" points="196,-43 0,-43 0,-19 196,-19 196,-43"/>
+<text text-anchor="middle" x="98" y="-28.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping_vector</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_vector&#45;&gt;proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_varsys_append_dervar~~CalledByGraph_edge10" class="edge">
+<title>proc~tem_variable_loadmapping_vector&#45;&gt;proc~tem_variable_loadmapping_single</title>
+<path fill="none" stroke="#000000" d="M196.24,-39.94C204.7,-40.71 213.3,-41.5 221.83,-42.29"/>
+<polygon fill="#000000" stroke="#000000" points="221.53,-45.78 231.81,-43.21 222.17,-38.8 221.53,-45.78"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_varsys_append_dervarCalledByGraph = svgPanZoom('#proctem_varsys_append_dervarCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_varSys_append_derVar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">operType</span><span class="p">,</span><span class="w"> </span><span class="n">nComponents</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">input_varname</span><span class="p">,</span><span class="w"> </span><span class="n">input_varindex</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">method_data</span><span class="p">,</span><span class="w"> </span><span class="n">get_point</span><span class="p">,</span><span class="w"> </span><span class="n">get_element</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">set_params</span><span class="p">,</span><span class="w"> </span><span class="n">get_params</span><span class="p">,</span><span class="w"> </span><span class="n">setup_indices</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">get_valOfIndex</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">wasAdded</span><span class="w">          </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="c">!&gt; Variable system to append the state variable to.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Variable to append to the state.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varname</span>
+
+<span class="w">    </span><span class="c">!&gt; Operation type</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">operType</span>
+
+<span class="w">    </span><span class="c">!&gt; Number of components in this variable.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nComponents</span>
+
+<span class="w">    </span><span class="c">!&gt; List of variable names, this variable depends on.</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! (Might be empty). The variable will only be appended, if all invars are</span>
+<span class="w">    </span><span class="c">!! already found in the variable system.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">input_varname</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; Component index to access from input variable nComponents</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! (Might be empty). The variable will only be appended, if all index are</span>
+<span class="w">    </span><span class="c">!! available in input_varname</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">input_varIndex</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; Data that is required by the methods to obtain the variable.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="kt">c_ptr</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">method_data</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows the retrieval of the variable at given points.</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_point</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_point</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows the retrieval of the variable in an element.</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_element</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_element</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to set parameter in method_data</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_setParams</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">set_params</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to get parameter in method_data</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_getParams</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_params</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure to setup growing array of points, variable value</span>
+<span class="w">    </span><span class="c">!! in method_data and return index of points set</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_setupIndices</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">setup_indices</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to retrieval of the variable at point or val</span>
+<span class="w">    </span><span class="c">!! array index</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_getValOfIndex</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_valOfIndex</span>
+
+<span class="w">    </span><span class="c">!&gt; Position of the variable in the system.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+
+<span class="w">    </span><span class="c">!&gt; Indicator, if the variable was actually added to the system.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">  </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">wasAdded</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">newVar</span><span class="p">,</span><span class="w"> </span><span class="n">nonexisting_input</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_op_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">var_access</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iIn</span><span class="p">,</span><span class="w"> </span><span class="n">nInputs</span><span class="p">,</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w"> </span><span class="n">in_nComp</span><span class="p">,</span><span class="w"> </span><span class="n">nVarIndex</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">inpos</span><span class="p">(:),</span><span class="w"> </span><span class="n">input_varIndex_loc</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">input_varname</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">nInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">input_varname</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">nInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">input_varindex</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">nVarIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">input_varindex</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">nVarIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    allocate</span><span class="p">(</span><span class="n">inpos</span><span class="p">(</span><span class="n">nInputs</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">input_varIndex_loc</span><span class="p">(</span><span class="n">nVarIndex</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">nonexisting_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="c">! Check whether all input variables are present. If not, the variable can&#39;t</span>
+<span class="w">    </span><span class="c">! be added, because variables it depends on are not present.</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iIn</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nInputs</span>
+<span class="w">      </span><span class="n">inpos</span><span class="p">(</span><span class="n">iIn</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PositionOfVal</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">input_varname</span><span class="p">(</span><span class="n">iIn</span><span class="p">))</span>
+<span class="w">      </span><span class="n">nonexisting_input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">inpos</span><span class="p">(</span><span class="n">iIn</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nonexisting_input</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">llerror</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; cant be added due to missing input variable &#39;</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">input_varname</span><span class="p">(</span><span class="n">iIn</span><span class="p">))</span>
+<span class="w">        </span><span class="k">EXIT</span>
+<span class="k">      end if</span>
+
+<span class="w">      </span><span class="c">! allocate and set input_varIndex only if nVarIndex &gt; 0</span>
+<span class="w">      </span><span class="c">! input_varIndex is used only for one nInputs</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">nVarIndex</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">nInputs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! Check whether the component index requested from input_varname</span>
+<span class="w">        </span><span class="c">! is available</span>
+<span class="w">        </span><span class="n">in_nComp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">method</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">inpos</span><span class="p">(</span><span class="n">iIn</span><span class="p">))%</span><span class="n">nComponents</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="nb">maxval</span><span class="p">(</span><span class="n">input_varIndex</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">in_nComp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">  </span><span class="p">(</span><span class="n">nVarIndex</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">in_nComp</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">llerror</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;WARNING: Component index requested &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;is not extractable from variable: &#39;</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">input_varname</span><span class="p">(</span><span class="n">iIn</span><span class="p">))</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">llerror</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Input variable name: &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">input_varname</span><span class="p">(</span><span class="n">iIn</span><span class="p">))</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">llerror</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; nComponents of input_varname: &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">in_nComp</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">llerror</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Requested component index of &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;input var: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">input_varIndex</span>
+<span class="w">          </span><span class="k">EXIT</span>
+<span class="k">        end if</span>
+<span class="w">        </span><span class="c">! Copy input_varIndex</span>
+<span class="w">        </span><span class="n">input_varIndex_loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_varIndex</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    end do</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">nonexisting_input</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">      </span><span class="n">varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">newVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="k">else</span>
+
+<span class="w">      </span><span class="c">! All inputs are found in the variable system, thus this derived</span>
+<span class="w">      </span><span class="c">! quantity can be added now.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varname</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">lldebug</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; was newly added&#39;</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">mypos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">operType</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">operType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">operType</span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">operType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;derived&#39;</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">nInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nInputs</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">nComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nComponents</span>
+<span class="w">        </span><span class="k">allocate</span><span class="p">(</span><span class="n">var_access</span><span class="p">%</span><span class="n">state_varPos</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">        </span><span class="k">allocate</span><span class="p">(</span><span class="n">var_access</span><span class="p">%</span><span class="n">auxField_varPos</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+<span class="w">        </span><span class="k">allocate</span><span class="p">(</span><span class="n">var_access</span><span class="p">%</span><span class="n">input_varPos</span><span class="p">(</span><span class="n">nInputs</span><span class="p">))</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">input_varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inpos</span>
+<span class="w">        </span><span class="k">allocate</span><span class="p">(</span><span class="n">var_access</span><span class="p">%</span><span class="n">input_varIndex</span><span class="p">(</span><span class="n">nVarIndex</span><span class="p">))</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">input_varIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">input_varIndex_loc</span>
+
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">method_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">method_data</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">get_point</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_point</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">get_element</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_element</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">set_params</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">set_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">set_params</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">set_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tem_varSys_setParams_dummy</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">get_params</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">get_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_params</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          </span><span class="n">var_access</span><span class="p">%</span><span class="n">get_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tem_varSys_getParams_dummy</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">setup_indices</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setup_indices</span>
+<span class="w">        </span><span class="n">var_access</span><span class="p">%</span><span class="n">get_valOfIndex</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_valOfIndex</span>
+<span class="w">        </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">var_access</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="n">lldebug</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">varname</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; is already present&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">wasAdded</span><span class="p">))</span><span class="w"> </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_varSys_append_derVar</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

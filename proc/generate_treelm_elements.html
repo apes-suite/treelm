@@ -1,0 +1,832 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>generate_treelm_elements &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>generate_treelm_elements
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">86 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/treelmesh_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/treelmesh_module.f90.html'>treelmesh_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/treelmesh_module.html'>treelmesh_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">generate_treelm_elements</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/generate_treelm_elements.html#src">generate_treelm_elements</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine generate_treelm_elements(me, origin, length, elementcount, myPart, nParts, comm, predefined, bclabel)  
+</h2>
+    
+
+    <p>Generate a predefined line with a given number of elements</p>
+<p>This serves as an simple grid generation for performance or scaling
+analysis without being obliged to use Seeder.
+You have to specify the generic grid parameters in the lua file instead of
+the mesh folder</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span> <span class="n">predefined</span><span class="o">=</span><span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="c1">-- or: &#39;line_bounded&#39;</span>
+         <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span>
+         <span class="n">length</span> <span class="o">=</span> <span class="mf">10.</span><span class="p">,</span>
+         <span class="n">elementcount</span> <span class="o">=</span> <span class="mi">6</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>You have to specify the shape 'line', a bounding box origin, its length
+and the number of elements, which results in different amount elements
+in the grid.\n
+The result of this routine is mainly the treeID list with the additional
+lists for saving the properties.
+The generated line will be a line of elementcount elements along the
+X-Axis with periodicity in all directions.</p>
+<p>It is also possible to generate a mesh with boundary conditions in the X
+direction (west and east), by using the predefined 'line_bounded'.
+In this case these two boundary conditions need to be provided in the
+solver configuration.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~474"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Mesh to generate</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-origin~42"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>origin</strong>(3)</td>
+            <td>
+                <p>Corner of the cube</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~154"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>length</strong></td>
+            <td>
+                <p>Length of cube</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elementcount~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elementcount</strong></td>
+            <td>
+                <p>Number of elements in the line</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~17"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                <p>Partition of the caller (starts with 0)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nparts~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nParts</strong></td>
+            <td>
+                <p>Number of partitions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~37"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>communicator to be used</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-predefined"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>predefined</strong></td>
+            <td>
+                <p>Label describing the internal mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bclabel"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bclabel</strong></td>
+            <td>
+                <p>Label describing the boundary conditions to set for this mesh.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~generate_treelm_elements~~CallsGraph Pages: 1 -->
+<svg id="procgenerate_treelm_elementsCallsGraph" width="309pt" height="74pt"
+ viewBox="0.00 0.00 309.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~generate_treelm_elements~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~generate_treelm_elements~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 305,-70 305,4 -4,4"/>
+<!-- proc~generate_treelm_elements -->
+<g id="proc~~generate_treelm_elements~~CallsGraph_node1" class="node">
+<title>proc~generate_treelm_elements</title>
+<polygon fill="none" stroke="black" points="156,-45 0,-45 0,-21 156,-21 156,-45"/>
+<text text-anchor="middle" x="78" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">generate_treelm_elements</text>
+</g>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~generate_treelm_elements~~CallsGraph_node2" class="node">
+<title>proc~tem_firstidatlevel</title>
+<g id="a_proc~~generate_treelm_elements~~CallsGraph_node2"><a xlink:href="../proc/tem_firstidatlevel.html" xlink:title="tem_FirstIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="301,-66 192,-66 192,-42 301,-42 301,-66"/>
+<text text-anchor="middle" x="246.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_FirstIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~generate_treelm_elements~~CallsGraph_edge1" class="edge">
+<title>proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M156.4,-42.76C164.85,-43.83 173.39,-44.9 181.65,-45.95"/>
+<polygon fill="#000000" stroke="#000000" points="181.21,-49.42 191.57,-47.2 182.09,-42.47 181.21,-49.42"/>
+</g>
+<!-- proc~tem_idofcoord -->
+<g id="proc~~generate_treelm_elements~~CallsGraph_node3" class="node">
+<title>proc~tem_idofcoord</title>
+<g id="a_proc~~generate_treelm_elements~~CallsGraph_node3"><a xlink:href="../proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="293,-24 200,-24 200,0 293,0 293,-24"/>
+<text text-anchor="middle" x="246.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_elements&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~generate_treelm_elements~~CallsGraph_edge2" class="edge">
+<title>proc~generate_treelm_elements&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M156.4,-23.24C167.6,-21.83 178.94,-20.4 189.6,-19.05"/>
+<polygon fill="#000000" stroke="#000000" points="190.11,-22.51 199.6,-17.79 189.24,-15.57 190.11,-22.51"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~generate_treelm_elements~~CalledByGraph Pages: 1 -->
+<svg id="procgenerate_treelm_elementsCalledByGraph" width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 28.37" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~generate_treelm_elements~~CalledByGraph" class="graph" transform="scale(0.89 0.89) rotate(0) translate(4 28)">
+<title>proc~~generate_treelm_elements~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 719,-28 719,4 -4,4"/>
+<!-- proc~generate_treelm_elements -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_node1" class="node">
+<title>proc~generate_treelm_elements</title>
+<polygon fill="none" stroke="black" points="715,-24 559,-24 559,0 715,0 715,-24"/>
+<text text-anchor="middle" x="637" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">generate_treelm_elements</text>
+</g>
+<!-- proc~tem_load_internal -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_node2" class="node">
+<title>proc~tem_load_internal</title>
+<g id="a_proc~~generate_treelm_elements~~CalledByGraph_node2"><a xlink:href="../proc/tem_load_internal.html" xlink:title="tem_load_internal">
+<polygon fill="#d9534f" stroke="#d9534f" points="523,-24 414,-24 414,0 523,0 523,-24"/>
+<text text-anchor="middle" x="468.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_internal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements</title>
+<path fill="none" stroke="#000000" d="M523.1,-12C531.3,-12 539.94,-12 548.64,-12"/>
+<polygon fill="#000000" stroke="#000000" points="548.86,-15.5 558.86,-12 548.86,-8.5 548.86,-15.5"/>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_node3" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~generate_treelm_elements~~CalledByGraph_node3"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-24 316,-24 316,0 378,0 378,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_load_internal -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_edge2" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_load_internal</title>
+<path fill="none" stroke="#000000" d="M378.15,-12C385.99,-12 394.74,-12 403.61,-12"/>
+<polygon fill="#000000" stroke="#000000" points="403.63,-15.5 413.63,-12 403.63,-8.5 403.63,-15.5"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_node4" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~generate_treelm_elements~~CalledByGraph_node4"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M280.39,-12C289.04,-12 297.64,-12 305.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.73,-15.5 315.73,-12 305.73,-8.5 305.73,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_node5" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~generate_treelm_elements~~CalledByGraph_node5"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~generate_treelm_elements~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocgenerate_treelm_elementsCalledByGraph = svgPanZoom('#procgenerate_treelm_elementsCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">generate_treelm_elements</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">predefined</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">bclabel</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Mesh to generate</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Corner of the cube</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; Length of cube</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">length</span>
+<span class="w">    </span><span class="c">!&gt; Number of elements in the line</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elementcount</span>
+<span class="w">    </span><span class="c">!&gt; Partition of the caller (starts with 0)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="c">!&gt; Number of partitions</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="c">!&gt; communicator to be used</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">!&gt; Label describing the internal mesh.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">predefined</span>
+<span class="w">    </span><span class="c">!&gt; Label describing the boundary conditions to set for this mesh.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bclabel</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">firstID</span><span class="p">,</span><span class="w"> </span><span class="n">lastID</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">share</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">remainder</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iPart</span><span class="p">,</span><span class="w"> </span><span class="n">iElem</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lastcoord</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">xbound_pad</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span>
+
+<span class="w">    </span><span class="c">! Face definitions make the first and last face coincide.</span>
+<span class="w">    </span><span class="c">! To allow boundary definitions on both sides, we need to make sure, there</span>
+<span class="w">    </span><span class="c">! is at least one additional element.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">predefined</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;line_bounded&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">xbound_pad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">xbound_pad</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Find an appropriate level of at least 1.</span>
+<span class="w">    </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="nb">ceiling</span><span class="p">(</span><span class="nb">log</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">elementcount</span><span class="o">+</span><span class="n">xbound_pad</span><span class="p">,</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">))</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="o">/</span><span class="w"> </span><span class="nb">log</span><span class="p">(</span><span class="mf">2.0_rk</span><span class="p">)),</span><span class="w">            </span><span class="mi">1</span><span class="w">               </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">BoundingCubeLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="o">*</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="n">level</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                                    </span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">elementcount</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">))</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Generic_Line&#39;</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">predefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">predefined</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comment</span><span class="p">,</span><span class="s1">&#39;(a15,i7,a16,i2,a1)&#39;</span><span class="p">)</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="s1">&#39;Generated with &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; Parts and &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="s1">&#39; elements.&#39;</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;./&#39;</span>
+
+<span class="w">    </span><span class="c">! Boundary property to define periodic boundary</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nProperties</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">property</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">property</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">)</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nProperties</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nProperties</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">(</span><span class="n">nParts</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">(</span><span class="n">nParts</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Compute the treeIDs of the mesh:</span>
+<span class="w">    </span><span class="n">firstID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_firstIdAtLevel</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>
+<span class="w">    </span><span class="n">lastcoord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">lastID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_IdOfCoord</span><span class="p">(</span><span class="n">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">lastcoord</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">level</span><span class="p">],</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Total number of elements in this mesh</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span>
+
+<span class="w">    </span><span class="n">share</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span>
+<span class="w">    </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)))</span>
+
+<span class="w">    </span><span class="c">! The first partition starts always with the firstID</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span>
+
+<span class="w">    </span><span class="c">! Up to remainder partitions have share + 1 elements</span>
+<span class="w">    </span><span class="n">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">coord</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iPart</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">remainder</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">      </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">share</span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">(</span><span class="n">iPart</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_idofcoord</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span><span class="p">)</span>
+<span class="w">      </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">(</span><span class="n">iPart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_idofcoord</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="w">    </span><span class="c">! The remaining elements get exactly the share elements:</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iPart</span><span class="o">=</span><span class="n">remainder</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">nParts</span>
+<span class="w">      </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">share</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">(</span><span class="n">iPart</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_idofcoord</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span><span class="p">)</span>
+<span class="w">      </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">(</span><span class="n">iPart</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_idofcoord</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="w">    </span><span class="c">! The last partition ends always with the lastID</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">(</span><span class="n">nParts</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lastID</span>
+
+<span class="w">    </span><span class="c">! Local data:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">remainder</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">share</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">share</span><span class="o">+</span><span class="mi">1_long_k</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">share</span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">share</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">           </span><span class="o">+</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">remainder</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="w">    </span><span class="c">! All elements have (periodic) boundaries</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">ElemID</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">nElems</span><span class="p">))</span>
+<span class="w">    </span><span class="c">! Please note, that the tem_bc_prop_module will set boundary conditions</span>
+<span class="w">    </span><span class="c">! based on this label accordingly!</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">bclabel</span><span class="p">)</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">bitpos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">prp_hasBnd</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">nElems</span>
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Only has Boundary Property:</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ibset</span><span class="p">(</span><span class="mi">0_long_k</span><span class="p">,</span><span class="w"> </span><span class="n">prp_hasBnd</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Filling the treeIDs:</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">ElemID</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iElem</span>
+<span class="w">      </span><span class="c">! We can only have 2**20 elements per dimension, so in this case where</span>
+<span class="w">      </span><span class="c">! we create a line, we won&#39;t exceed the integer limit. Thus we safely can</span>
+<span class="w">      </span><span class="c">! cast the long integer elemOffset to a normal integer.</span>
+<span class="w">      </span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iElem</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_idofcoord</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="o">=</span><span class="n">firstID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">  end subroutine </span><span class="n">generate_treelm_elements</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

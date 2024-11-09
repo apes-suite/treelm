@@ -1,0 +1,765 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_faceDep_verticalDown &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_faceDep_verticalDown
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">14 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_face_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_face_module.f90.html'>tem_face_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_face_module.html'>tem_face_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_faceDep_verticalDown</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_facedep_verticaldown.html#src">tem_faceDep_verticalDown</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine tem_faceDep_verticalDown(coarseFaces, fineFaces, dir, nEligibleChildren)  
+</h2>
+    
+
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-coarsefaces"></span>
+              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>coarseFaces</strong></td>
+            <td>
+                <p>Face description on the coarse level. The dependencies to the finer
+level will be appended to this face descriptor.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-finefaces"></span>
+              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fineFaces</strong></td>
+            <td>
+                <p>Face description on the finer level.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-dir~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>dir</strong></td>
+            <td>
+                <p>The spatial direction of the face to add the downward dependencies for.
+1 --&gt; x direction
+2 --&gt; y direction
+3 --&gt; z direction</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neligiblechildren~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nEligibleChildren</strong></td>
+            <td>
+                <p>The number of eligible children for the vertical face dependency</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_facedep_verticaldown~~CallsGraph Pages: 1 -->
+<svg id="proctem_facedep_verticaldownCallsGraph" width="641pt" height="213pt"
+ viewBox="0.00 0.00 641.00 213.08" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph" class="graph" transform="scale(0.88 0.88) rotate(0) translate(4 238)">
+<title>proc~~tem_facedep_verticaldown~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 724,-238 724,4 -4,4"/>
+<!-- proc~tem_facedep_verticaldown -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node1" class="node">
+<title>proc~tem_facedep_verticaldown</title>
+<polygon fill="none" stroke="black" points="159,-87 0,-87 0,-63 159,-63 159,-87"/>
+<text text-anchor="middle" x="79.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_faceDep_verticalDown</text>
+</g>
+<!-- proc~tem_adddep_down -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node2" class="node">
+<title>proc~tem_adddep_down</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node2"><a xlink:href="../proc/tem_adddep_down.html" xlink:title="tem_addDep_down">
+<polygon fill="#d9534f" stroke="#d9534f" points="310,-129 195,-129 195,-105 310,-105 310,-129"/>
+<text text-anchor="middle" x="252.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_addDep_down</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_verticaldown&#45;&gt;proc~tem_adddep_down -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge1" class="edge">
+<title>proc~tem_facedep_verticaldown&#45;&gt;proc~tem_adddep_down</title>
+<path fill="none" stroke="#000000" d="M129.5,-87.04C149.18,-91.87 172.03,-97.48 192.6,-102.53"/>
+<polygon fill="#000000" stroke="#000000" points="191.94,-105.98 202.49,-104.96 193.61,-99.18 191.94,-105.98"/>
+</g>
+<!-- proc~tem_getface_prp -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node3" class="node">
+<title>proc~tem_getface_prp</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node3"><a xlink:href="../proc/tem_getface_prp.html" xlink:title="tem_getFace_prp">
+<polygon fill="#d9534f" stroke="#d9534f" points="304.5,-87 200.5,-87 200.5,-63 304.5,-63 304.5,-87"/>
+<text text-anchor="middle" x="252.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_getFace_prp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_verticaldown&#45;&gt;proc~tem_getface_prp -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge2" class="edge">
+<title>proc~tem_facedep_verticaldown&#45;&gt;proc~tem_getface_prp</title>
+<path fill="none" stroke="#000000" d="M159.49,-75C169.75,-75 180.14,-75 190.06,-75"/>
+<polygon fill="#000000" stroke="#000000" points="190.2,-78.5 200.2,-75 190.2,-71.5 190.2,-78.5"/>
+</g>
+<!-- proc~tem_reqdep_down -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node4" class="node">
+<title>proc~tem_reqdep_down</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node4"><a xlink:href="../proc/tem_reqdep_down.html" xlink:title="tem_reqDep_down">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="308.5,-45 196.5,-45 196.5,-21 308.5,-21 308.5,-45"/>
+<text text-anchor="middle" x="252.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reqDep_down</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_verticaldown&#45;&gt;proc~tem_reqdep_down -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge3" class="edge">
+<title>proc~tem_facedep_verticaldown&#45;&gt;proc~tem_reqdep_down</title>
+<path fill="none" stroke="#000000" d="M129.5,-62.96C149.18,-58.13 172.03,-52.52 192.6,-47.47"/>
+<polygon fill="#000000" stroke="#000000" points="193.61,-50.82 202.49,-45.04 191.94,-44.02 193.61,-50.82"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node5" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node5"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="447.5,-234 366.5,-234 366.5,-210 447.5,-210 447.5,-234"/>
+<text text-anchor="middle" x="407" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;interface~positionofval~4 -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge4" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;interface~positionofval~4</title>
+<path fill="none" stroke="#000000" d="M263.98,-129.23C279.99,-147.24 312.26,-180.92 346,-201 349.42,-203.04 353.07,-204.92 356.82,-206.65"/>
+<polygon fill="#000000" stroke="#000000" points="355.68,-209.96 366.25,-210.63 358.4,-203.51 355.68,-209.96"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node6" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node6"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="440.5,-192 373.5,-192 373.5,-168 440.5,-168 440.5,-192"/>
+<text text-anchor="middle" x="407" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge5" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M278.36,-129.02C296.84,-137.77 322.76,-149.68 346,-159 351.64,-161.26 357.64,-163.53 363.57,-165.68"/>
+<polygon fill="#000000" stroke="#000000" points="362.82,-169.13 373.42,-169.19 365.17,-162.54 362.82,-169.13"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node7" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node7"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="453.5,-150 360.5,-150 360.5,-126 453.5,-126 453.5,-150"/>
+<text text-anchor="middle" x="407" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge6" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M310.29,-124.82C323.25,-126.6 337.02,-128.5 349.95,-130.28"/>
+<polygon fill="#000000" stroke="#000000" points="349.73,-133.78 360.11,-131.68 350.68,-126.85 349.73,-133.78"/>
+</g>
+<!-- proc~tem_directchildren -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node8" class="node">
+<title>proc~tem_directchildren</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node8"><a xlink:href="../proc/tem_directchildren.html" xlink:title="tem_directChildren">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="463.5,-108 350.5,-108 350.5,-84 463.5,-84 463.5,-108"/>
+<text text-anchor="middle" x="407" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_directChildren</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;proc~tem_directchildren -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge7" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;proc~tem_directchildren</title>
+<path fill="none" stroke="#000000" d="M310.29,-109.18C320.13,-107.82 330.44,-106.41 340.49,-105.02"/>
+<polygon fill="#000000" stroke="#000000" points="341.01,-108.48 350.44,-103.65 340.05,-101.55 341.01,-108.48"/>
+</g>
+<!-- proc~tem_eligiblechildren -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node9" class="node">
+<title>proc~tem_eligiblechildren</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node9"><a xlink:href="../proc/tem_eligiblechildren.html" xlink:title="tem_eligibleChildren">
+<polygon fill="#d9534f" stroke="#d9534f" points="468,-66 346,-66 346,-42 468,-42 468,-66"/>
+<text text-anchor="middle" x="407" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eligibleChildren</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;proc~tem_eligiblechildren -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge8" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;proc~tem_eligiblechildren</title>
+<path fill="none" stroke="#000000" d="M288.85,-104.93C295.95,-102.21 303.28,-99.18 310,-96 326.74,-88.08 329.18,-82.76 346,-75 350.06,-73.13 354.33,-71.32 358.65,-69.61"/>
+<polygon fill="#000000" stroke="#000000" points="360,-72.84 368.11,-66.02 357.52,-66.3 360,-72.84"/>
+</g>
+<!-- proc~tem_idofcoord -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node10" class="node">
+<title>proc~tem_idofcoord</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node10"><a xlink:href="../proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="453.5,-24 360.5,-24 360.5,0 453.5,0 453.5,-24"/>
+<text text-anchor="middle" x="407" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_adddep_down&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge9" class="edge">
+<title>proc~tem_adddep_down&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M296.05,-104.96C301.06,-102.48 305.85,-99.52 310,-96 334.59,-75.13 321.21,-53.63 346,-33 347.72,-31.57 349.55,-30.23 351.45,-28.98"/>
+<polygon fill="#000000" stroke="#000000" points="353.21,-32.01 360.21,-24.05 349.78,-25.9 353.21,-32.01"/>
+</g>
+<!-- proc~posofval_label -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node12" class="node">
+<title>proc~posofval_label</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node12"><a xlink:href="../proc/posofval_label.html" xlink:title="posofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="593,-234 504,-234 504,-210 593,-210 593,-234"/>
+<text text-anchor="middle" x="548.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_label</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval~4&#45;&gt;proc~posofval_label -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge10" class="edge">
+<title>interface~positionofval~4&#45;&gt;proc~posofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M447.6,-222C461.87,-222 478.22,-222 493.51,-222"/>
+<polygon fill="#000000" stroke="#000000" points="493.88,-225.5 503.88,-222 493.88,-218.5 493.88,-225.5"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node11" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="582,-192 515,-192 515,-168 582,-168 582,-192"/>
+<text text-anchor="middle" x="548.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge11" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M440.71,-180C459.86,-180 484.26,-180 504.9,-180"/>
+<polygon fill="#000000" stroke="#000000" points="505,-183.5 515,-180 505,-176.5 505,-183.5"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node13" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node13"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="588,-150 509,-150 509,-126 588,-126 588,-150"/>
+<text text-anchor="middle" x="548.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge12" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M453.68,-138C468,-138 483.87,-138 498.41,-138"/>
+<polygon fill="#000000" stroke="#000000" points="498.73,-141.5 508.73,-138 498.73,-134.5 498.73,-141.5"/>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_node14" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CallsGraph_node14"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="720,-234 629,-234 629,-210 720,-210 720,-234"/>
+<text text-anchor="middle" x="674.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- proc~posofval_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_facedep_verticaldown~~CallsGraph_edge13" class="edge">
+<title>proc~posofval_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M593.22,-222C601.45,-222 610.15,-222 618.67,-222"/>
+<polygon fill="#000000" stroke="#000000" points="618.92,-225.5 628.92,-222 618.92,-218.5 618.92,-225.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_facedep_verticaldownCallsGraph = svgPanZoom('#proctem_facedep_verticaldownCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_facedep_verticaldown~~CalledByGraph Pages: 1 -->
+<svg id="proctem_facedep_verticaldownCalledByGraph" width="487pt" height="32pt"
+ viewBox="0.00 0.00 487.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_facedep_verticaldown~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 483,-28 483,4 -4,4"/>
+<!-- proc~tem_facedep_verticaldown -->
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph_node1" class="node">
+<title>proc~tem_facedep_verticaldown</title>
+<polygon fill="none" stroke="black" points="479,-24 320,-24 320,0 479,0 479,-24"/>
+<text text-anchor="middle" x="399.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_faceDep_verticalDown</text>
+</g>
+<!-- proc~tem_facedep_vertical -->
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph_node2" class="node">
+<title>proc~tem_facedep_vertical</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CalledByGraph_node2"><a xlink:href="../proc/tem_facedep_vertical.html" xlink:title="tem_faceDep_vertical">
+<polygon fill="#d9534f" stroke="#d9534f" points="284,-24 155,-24 155,0 284,0 284,-24"/>
+<text text-anchor="middle" x="219.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceDep_vertical</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticaldown -->
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticaldown</title>
+<path fill="none" stroke="#000000" d="M284.01,-12C292.33,-12 300.98,-12 309.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="309.76,-15.5 319.76,-12 309.76,-8.5 309.76,-15.5"/>
+</g>
+<!-- proc~tem_build_face_info -->
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph_node3" class="node">
+<title>proc~tem_build_face_info</title>
+<g id="a_proc~~tem_facedep_verticaldown~~CalledByGraph_node3"><a xlink:href="../proc/tem_build_face_info.html" xlink:title="tem_build_face_info">
+<polygon fill="#d9534f" stroke="#d9534f" points="119,-24 0,-24 0,0 119,0 119,-24"/>
+<text text-anchor="middle" x="59.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_face_info</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_facedep_vertical -->
+<g id="proc~~tem_facedep_verticaldown~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_facedep_vertical</title>
+<path fill="none" stroke="#000000" d="M119.33,-12C127.57,-12 136.11,-12 144.58,-12"/>
+<polygon fill="#000000" stroke="#000000" points="144.85,-15.5 154.85,-12 144.85,-8.5 144.85,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_faceDep_verticalDown</span><span class="p">(</span><span class="w"> </span><span class="n">coarseFaces</span><span class="p">,</span><span class="w"> </span><span class="n">fineFaces</span><span class="p">,</span><span class="w"> </span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                                     </span><span class="p">&amp;</span><span class="w"> </span><span class="n">nEligibleChildren</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Face description on the coarse level. The dependencies to the finer</span>
+<span class="w">    </span><span class="c">!! level will be appended to this face descriptor.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_face_descriptor_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">coarseFaces</span>
+<span class="w">    </span><span class="c">!&gt; Face description on the finer level.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_face_descriptor_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fineFaces</span>
+<span class="w">    </span><span class="c">!&gt; The spatial direction of the face to add the downward dependencies for.</span>
+<span class="w">    </span><span class="c">!! 1 --&gt; x direction</span>
+<span class="w">    </span><span class="c">!! 2 --&gt; y direction</span>
+<span class="w">    </span><span class="c">!! 3 --&gt; z direction</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dir</span>
+<span class="w">    </span><span class="c">!&gt; The number of eligible children for the vertical face dependency</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nEligibleChildren</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iFace</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">,</span><span class="w"> </span><span class="n">rightPrp</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="c">! Run over all the faces and add the downward depndency (depending on the</span>
+<span class="w">    </span><span class="c">! properties of the face).</span>
+<span class="w">    </span><span class="n">faceLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">iFace</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">coarseFaces</span><span class="p">%</span><span class="n">faceList</span><span class="p">%</span><span class="n">faceId</span><span class="p">%</span><span class="n">nVals</span>
+
+<span class="w">      </span><span class="c">! get its properties from left and right</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_getFace_prp</span><span class="p">(</span><span class="w"> </span><span class="n">coarseFaces</span><span class="p">,</span><span class="w"> </span><span class="n">iFace</span><span class="p">,</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">,</span><span class="w"> </span><span class="n">rightPrp</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! check if this face requires downwards dependencies. If yes, we just add</span>
+<span class="w">      </span><span class="c">! this dependency to the coarse face descriptor.</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">tem_reqDep_down</span><span class="p">(</span><span class="n">leftPrp</span><span class="p">,</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">tem_addDep_down</span><span class="p">(</span><span class="w"> </span><span class="n">iFace</span><span class="p">,</span><span class="w"> </span><span class="n">coarseFaces</span><span class="p">,</span><span class="w"> </span><span class="n">fineFaces</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                            </span><span class="p">&amp;</span><span class="w"> </span><span class="n">dir</span><span class="p">,</span><span class="w"> </span><span class="n">nEligibleChildren</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    end do </span><span class="n">faceLoop</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_faceDep_verticalDown</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

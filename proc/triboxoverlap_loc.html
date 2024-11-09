@@ -1,0 +1,776 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>triBoxOverlap_loc &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>triBoxOverlap_loc
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">41 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_triangle_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_triangle_module.f90.html'>tem_triangle_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_triangle_module.html'>tem_triangle_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">triBoxOverlap_loc</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/triboxoverlap_loc.html#src">triBoxOverlap_loc</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  function triBoxOverlap_loc(boxCenter, boxHalfwidth, triNodes) result(overlaps)  
+</h2>
+    
+
+    <p>This routine checks for triangle box overlap</p>
+<p>this routine is conversion of c-code tribox3.c triBoxOverlap function.
+use separating axis theorem to test overlap between triangle and box
+ need to test for overlap in these directions:
+ 1) the {x,y,z}-directions (actually, since we use the AABB of the triangle
+    we do not even need to test these)
+ 2) normal of the triangle
+ 3) separating axis test. crossproduct(edge from tri, {x,y,z}-directin)
+    this gives 3x3=9 more 7tests
+This code is available at:
+http://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tribox3.txt</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boxcenter"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boxCenter</strong>(3)</td>
+            <td>
+                <p>box center</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boxhalfwidth"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boxHalfwidth</strong>(3)</td>
+            <td>
+                <p>halfwidth of the box</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-trinodes"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>triNodes</strong>(3,3)</td>
+            <td>
+                <p>nodes of the triangle
+1st index denote x,y,z coordinates and
+2nd index denote nodes</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-overlaps~2"></span>
+          logical
+        </small>
+      </h3>
+      
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~triboxoverlap_loc~~CallsGraph Pages: 1 -->
+<svg id="proctriboxoverlap_locCallsGraph" width="390pt" height="112pt"
+ viewBox="0.00 0.00 390.00 112.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~triboxoverlap_loc~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 108)">
+<title>proc~~triboxoverlap_loc~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-108 386,-108 386,4 -4,4"/>
+<!-- proc~triboxoverlap_loc -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_node1" class="node">
+<title>proc~triboxoverlap_loc</title>
+<polygon fill="none" stroke="black" points="106,-64 0,-64 0,-40 106,-40 106,-64"/>
+<text text-anchor="middle" x="53" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50">triBoxOverlap_loc</text>
+</g>
+<!-- proc~axistest -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_node2" class="node">
+<title>proc~axistest</title>
+<g id="a_proc~~triboxoverlap_loc~~CallsGraph_node2"><a xlink:href="../proc/axistest.html" xlink:title="Axistest">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="221,-104 167,-104 167,-80 221,-80 221,-104"/>
+<text text-anchor="middle" x="194" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Axistest</text>
+</a>
+</g>
+</g>
+<!-- proc~triboxoverlap_loc&#45;&gt;proc~axistest -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_edge1" class="edge">
+<title>proc~triboxoverlap_loc&#45;&gt;proc~axistest</title>
+<path fill="none" stroke="#000000" d="M95.7,-64C115.23,-69.62 138.25,-76.25 157,-81.64"/>
+<polygon fill="#000000" stroke="#000000" points="156.07,-85.02 166.65,-84.42 158.01,-78.29 156.07,-85.02"/>
+</g>
+<!-- proc~cross_product3d -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_node3" class="node">
+<title>proc~cross_product3d</title>
+<g id="a_proc~~triboxoverlap_loc~~CallsGraph_node3"><a xlink:href="../proc/cross_product3d.html" xlink:title="cross_product3D">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="382,-84 282,-84 282,-60 382,-60 382,-84"/>
+<text text-anchor="middle" x="332" y="-69.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">cross_product3D</text>
+</a>
+</g>
+</g>
+<!-- proc~triboxoverlap_loc&#45;&gt;proc~cross_product3d -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_edge2" class="edge">
+<title>proc~triboxoverlap_loc&#45;&gt;proc~cross_product3d</title>
+<path fill="none" stroke="#000000" d="M106.1,-55.76C153.21,-59.16 222.53,-64.17 271.74,-67.72"/>
+<polygon fill="#000000" stroke="#000000" points="271.7,-71.23 281.92,-68.46 272.2,-64.25 271.7,-71.23"/>
+</g>
+<!-- proc~planeboxoverlap -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_node4" class="node">
+<title>proc~planeboxoverlap</title>
+<g id="a_proc~~triboxoverlap_loc~~CallsGraph_node4"><a xlink:href="../proc/planeboxoverlap.html" xlink:title="planeBoxOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="246,-24 142,-24 142,0 246,0 246,-24"/>
+<text text-anchor="middle" x="194" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">planeBoxOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~triboxoverlap_loc&#45;&gt;proc~planeboxoverlap -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_edge3" class="edge">
+<title>proc~triboxoverlap_loc&#45;&gt;proc~planeboxoverlap</title>
+<path fill="none" stroke="#000000" d="M95.7,-40C110.01,-35.88 126.19,-31.23 141.19,-26.91"/>
+<polygon fill="#000000" stroke="#000000" points="142.2,-30.26 150.84,-24.13 140.27,-23.53 142.2,-30.26"/>
+</g>
+<!-- proc~axistest&#45;&gt;proc~cross_product3d -->
+<g id="proc~~triboxoverlap_loc~~CallsGraph_edge4" class="edge">
+<title>proc~axistest&#45;&gt;proc~cross_product3d</title>
+<path fill="none" stroke="#000000" d="M221.22,-88.14C235.55,-86.04 253.91,-83.34 271.5,-80.75"/>
+<polygon fill="#000000" stroke="#000000" points="272.35,-84.16 281.73,-79.25 271.33,-77.24 272.35,-84.16"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~triboxoverlap_loc~~CalledByGraph Pages: 1 -->
+<svg id="proctriboxoverlap_locCalledByGraph" width="641pt" height="59pt"
+ viewBox="0.00 0.00 641.00 59.14" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~triboxoverlap_loc~~CalledByGraph" class="graph" transform="scale(0.47 0.47) rotate(0) translate(4 122.22)">
+<title>proc~~triboxoverlap_loc~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-122.22 1364,-122.22 1364,4 -4,4"/>
+<!-- proc~triboxoverlap_loc -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node1" class="node">
+<title>proc~triboxoverlap_loc</title>
+<polygon fill="none" stroke="black" points="1360,-104 1254,-104 1254,-80 1360,-80 1360,-104"/>
+<text text-anchor="middle" x="1307" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50">triBoxOverlap_loc</text>
+</g>
+<!-- proc~tem_trianglecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node2" class="node">
+<title>proc~tem_trianglecubeoverlap</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node2"><a xlink:href="../proc/tem_trianglecubeoverlap.html" xlink:title="tem_triangleCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1218,-104 1068,-104 1068,-80 1218,-80 1218,-104"/>
+<text text-anchor="middle" x="1143" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_triangleCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_trianglecubeoverlap&#45;&gt;proc~triboxoverlap_loc -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_trianglecubeoverlap&#45;&gt;proc~triboxoverlap_loc</title>
+<path fill="none" stroke="#000000" d="M1218.36,-92C1226.78,-92 1235.3,-92 1243.55,-92"/>
+<polygon fill="#000000" stroke="#000000" points="1243.82,-95.5 1253.82,-92 1243.82,-88.5 1243.82,-95.5"/>
+</g>
+<!-- proc~tem_planecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node3" class="node">
+<title>proc~tem_planecubeoverlap</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node3"><a xlink:href="../proc/tem_planecubeoverlap.html" xlink:title="tem_planeCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1032,-64 893,-64 893,-40 1032,-40 1032,-64"/>
+<text text-anchor="middle" x="962.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_planeCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_planecubeoverlap&#45;&gt;proc~tem_trianglecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_planecubeoverlap&#45;&gt;proc~tem_trianglecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M1017.06,-64C1036.29,-68.31 1058.18,-73.22 1078.21,-77.7"/>
+<polygon fill="#000000" stroke="#000000" points="1077.65,-81.17 1088.17,-79.94 1079.18,-74.34 1077.65,-81.17"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node4" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node4"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="529,-104 324,-104 324,-80 529,-80 529,-104"/>
+<text text-anchor="middle" x="426.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_trianglecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_trianglecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M529.19,-103.03C541.25,-104.14 553.39,-105.16 565,-106 772.02,-120.92 825.16,-123.27 1032,-106 1040.34,-105.3 1049.02,-104.44 1057.69,-103.49"/>
+<polygon fill="#000000" stroke="#000000" points="1058.29,-106.94 1067.83,-102.33 1057.5,-99.98 1058.29,-106.94"/>
+</g>
+<!-- proc~tem_stlcubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node5" class="node">
+<title>proc~tem_stlcubeoverlap</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node5"><a xlink:href="../proc/tem_stlcubeoverlap.html" xlink:title="tem_stlCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="854,-104 733,-104 733,-80 854,-80 854,-104"/>
+<text text-anchor="middle" x="793.5" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stlCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_stlcubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_stlcubeoverlap</title>
+<path fill="none" stroke="#000000" d="M529.17,-92C590.8,-92 667.84,-92 722.64,-92"/>
+<polygon fill="#000000" stroke="#000000" points="722.95,-95.5 732.95,-92 722.95,-88.5 722.95,-95.5"/>
+</g>
+<!-- proc~tem_cano_initsubtree -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node7" class="node">
+<title>proc~tem_cano_initsubtree</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node7"><a xlink:href="../proc/tem_cano_initsubtree.html" xlink:title="tem_cano_initSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="694,-64 565,-64 565,-40 694,-40 694,-64"/>
+<text text-anchor="middle" x="629.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_initSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge10" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree</title>
+<path fill="none" stroke="#000000" d="M487.81,-80C509.87,-75.61 535.02,-70.6 557.9,-66.05"/>
+<polygon fill="#000000" stroke="#000000" points="558.76,-69.45 567.89,-64.06 557.4,-62.58 558.76,-69.45"/>
+</g>
+<!-- proc~tem_stlcubeoverlap&#45;&gt;proc~tem_trianglecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_stlcubeoverlap&#45;&gt;proc~tem_trianglecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M854.24,-92C910.3,-92 994.72,-92 1057.65,-92"/>
+<polygon fill="#000000" stroke="#000000" points="1057.95,-95.5 1067.95,-92 1057.95,-88.5 1057.95,-95.5"/>
+</g>
+<!-- proc~tem_boxcubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node6" class="node">
+<title>proc~tem_boxcubeoverlap</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node6"><a xlink:href="../proc/tem_boxcubeoverlap.html" xlink:title="tem_boxCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="857,-24 730,-24 730,0 857,0 857,-24"/>
+<text text-anchor="middle" x="793.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_boxCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_boxcubeoverlap&#45;&gt;proc~tem_planecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_boxcubeoverlap&#45;&gt;proc~tem_planecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M844.61,-24C862.44,-28.27 882.71,-33.13 901.3,-37.58"/>
+<polygon fill="#000000" stroke="#000000" points="900.6,-41.01 911.14,-39.94 902.23,-34.2 900.6,-41.01"/>
+</g>
+<!-- proc~tem_cano_initsubtree&#45;&gt;proc~tem_planecubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_cano_initsubtree&#45;&gt;proc~tem_planecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M694.32,-52C748.02,-52 825.03,-52 882.59,-52"/>
+<polygon fill="#000000" stroke="#000000" points="882.74,-55.5 892.74,-52 882.74,-48.5 882.74,-55.5"/>
+</g>
+<!-- proc~tem_cano_initsubtree&#45;&gt;proc~tem_boxcubeoverlap -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_cano_initsubtree&#45;&gt;proc~tem_boxcubeoverlap</title>
+<path fill="none" stroke="#000000" d="M679.11,-40C696.33,-35.75 715.89,-30.92 733.86,-26.48"/>
+<polygon fill="#000000" stroke="#000000" points="734.78,-29.86 743.65,-24.06 733.1,-23.06 734.78,-29.86"/>
+</g>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node8" class="node">
+<title>proc~tem_shape2subtree</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node8"><a xlink:href="../proc/tem_shape2subtree.html" xlink:title="tem_shape2subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="288,-104 170,-104 170,-80 288,-80 288,-104"/>
+<text text-anchor="middle" x="229" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape2subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters</title>
+<path fill="none" stroke="#000000" d="M288.13,-92C296.22,-92 304.74,-92 313.42,-92"/>
+<polygon fill="#000000" stroke="#000000" points="313.67,-95.5 323.67,-92 313.67,-88.5 313.67,-95.5"/>
+</g>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_node9" class="node">
+<title>proc~tem_create_subtree_of</title>
+<g id="a_proc~~triboxoverlap_loc~~CalledByGraph_node9"><a xlink:href="../proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="134,-104 0,-104 0,-80 134,-80 134,-104"/>
+<text text-anchor="middle" x="67" y="-89.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~triboxoverlap_loc~~CalledByGraph_edge11" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M134,-92C142.45,-92 151.11,-92 159.59,-92"/>
+<polygon fill="#000000" stroke="#000000" points="159.82,-95.5 169.82,-92 159.82,-88.5 159.82,-95.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctriboxoverlap_locCalledByGraph = svgPanZoom('#proctriboxoverlap_locCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">triBoxOverlap_loc</span><span class="p">(</span><span class="w"> </span><span class="n">boxCenter</span><span class="p">,</span><span class="w"> </span><span class="n">boxHalfwidth</span><span class="p">,</span><span class="w"> </span><span class="n">triNodes</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                         </span><span class="k">result</span><span class="p">(</span><span class="n">overlaps</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!--------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="c">!&gt; box center</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boxCenter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; halfwidth of the box</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boxHalfwidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; nodes of the triangle</span>
+<span class="w">    </span><span class="c">!! 1st index denote x,y,z coordinates and</span>
+<span class="w">    </span><span class="c">!! 2nd index denote nodes</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">triNodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">overlaps</span>
+<span class="w">    </span><span class="c">!--------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dirVec1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">dirVec2</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">dirVec3</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mmin</span><span class="p">,</span><span class="w"> </span><span class="n">mmax</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">edge1</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">edge2</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">edge3</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!--------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="n">overlaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="n">dirVec1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">    </span><span class="n">dirVec2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">    </span><span class="n">dirVec3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! move everything so that the box center is in (0,0,0)</span>
+<span class="w">    </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triNodes</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">boxCenter</span>
+<span class="w">    </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triNodes</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">boxCenter</span>
+<span class="w">    </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triNodes</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">boxCenter</span>
+
+<span class="w">    </span><span class="c">! compute triangle edges</span>
+<span class="w">    </span><span class="n">edge1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">edge2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">    </span><span class="n">edge3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span>
+
+
+<span class="w">    </span><span class="c">! separating axis test</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec1</span><span class="p">,</span><span class="w"> </span><span class="n">edge1</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec1</span><span class="p">,</span><span class="w"> </span><span class="n">edge2</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec1</span><span class="p">,</span><span class="w"> </span><span class="n">edge3</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec2</span><span class="p">,</span><span class="w"> </span><span class="n">edge1</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec2</span><span class="p">,</span><span class="w"> </span><span class="n">edge2</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec2</span><span class="p">,</span><span class="w"> </span><span class="n">edge3</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec3</span><span class="p">,</span><span class="w"> </span><span class="n">edge1</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec3</span><span class="p">,</span><span class="w"> </span><span class="n">edge2</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+<span class="k">    if</span><span class="p">(</span><span class="n">axistest</span><span class="p">(</span><span class="n">dirVec3</span><span class="p">,</span><span class="w"> </span><span class="n">edge3</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+
+
+<span class="w">    </span><span class="c">! Bullet 1:</span>
+<span class="w">    </span><span class="c">!  first test overlap in the {x,y,z}-directions</span>
+<span class="w">    </span><span class="c">!  find min, max of the triangle each direction, and test for overlap in</span>
+<span class="w">    </span><span class="c">!  that direction -- this is equivalent to testing a minimal AABB around</span>
+<span class="w">    </span><span class="c">!  the triangle against the AABB</span>
+<span class="w">    </span><span class="c">! test in X-direction</span>
+<span class="w">    </span><span class="n">mmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="n">mmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">mmin</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">mmax</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+
+<span class="w">    </span><span class="c">! test in Y-direction</span>
+<span class="w">    </span><span class="n">mmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="n">mmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">mmin</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">mmax</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+
+<span class="w">    </span><span class="c">! test in Z-direction</span>
+<span class="w">    </span><span class="n">mmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="n">mmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">nodes</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">mmin</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">mmax</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="n">boxhalfwidth</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">return</span>
+
+
+<span class="w">    </span><span class="c">! Bullet 2:</span>
+<span class="w">    </span><span class="c">!  test if the box intersects the plane of the triangle</span>
+<span class="w">    </span><span class="c">!  compute plane equation of triangle: normal*x+d=0</span>
+<span class="w">    </span><span class="n">normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cross_product3D</span><span class="p">(</span><span class="n">edge1</span><span class="p">,</span><span class="n">edge2</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">planeBoxOverlap</span><span class="p">(</span><span class="n">normal</span><span class="p">,</span><span class="w"> </span><span class="n">nodes</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">boxhalfwidth</span><span class="p">))</span><span class="w"> </span><span class="k">return</span>
+
+<span class="k">    </span><span class="n">overlaps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+
+<span class="w">  </span><span class="k">end function </span><span class="n">triBoxOverlap_loc</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

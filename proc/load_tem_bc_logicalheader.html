@@ -1,0 +1,694 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>load_tem_BC_logicalHeader &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>load_tem_BC_logicalHeader
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">25 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_bc_prop_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_bc_prop_module.f90.html'>tem_bc_prop_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_bc_prop_module.html'>tem_bc_prop_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">load_tem_BC_logicalHeader</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/load_tem_bc_logicalheader.html#src">load_tem_BC_logicalHeader</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine load_tem_BC_logicalHeader(nBCtypes, propname, basename, flag_per_BC, myPart, comm)  
+</h2>
+    
+
+    <p>load bc realarray data from disk</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nbctypes~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nBCtypes</strong></td>
+            <td>
+                <p>Number of boundary condition types</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-propname~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>propname</strong></td>
+            <td>
+                <p>Name of the property to load</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-basename~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>basename</strong></td>
+            <td>
+                <p>Name of the file, the data is stored in, will be appended with
+".lua" for the header information and ".lsb" or ".msb" for the
+binary data.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-flag_per_bc~2"></span>
+              logical,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>flag_per_BC</strong>(nBCtypes)</td>
+            <td>
+                <p>The flags to set for each boundary condition type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                <p>Partition to load</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~15"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>Communicator to use</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_tem_bc_logicalheader~~CallsGraph Pages: 1 -->
+<svg id="procload_tem_bc_logicalheaderCallsGraph" width="306pt" height="242pt"
+ viewBox="0.00 0.00 306.00 242.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 238)">
+<title>proc~~load_tem_bc_logicalheader~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-238 302,-238 302,4 -4,4"/>
+<!-- proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node1" class="node">
+<title>proc~load_tem_bc_logicalheader</title>
+<polygon fill="none" stroke="black" points="162,-129 0,-129 0,-105 162,-105 162,-129"/>
+<text text-anchor="middle" x="81" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_tem_BC_logicalHeader</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="284.5,-234 211.5,-234 211.5,-210 284.5,-210 284.5,-234"/>
+<text text-anchor="middle" x="248" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_get_val -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge1" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M96.66,-129.27C118,-146.73 159.28,-179.05 198,-201 200.82,-202.6 203.78,-204.15 206.8,-205.64"/>
+<polygon fill="#000000" stroke="#000000" points="205.37,-208.84 215.91,-209.91 208.34,-202.5 205.37,-208.84"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="295.5,-192 200.5,-192 200.5,-168 295.5,-168 295.5,-192"/>
+<text text-anchor="middle" x="248" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_table_close -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge2" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M113.81,-129.15C140.03,-139.16 177.41,-153.43 205.89,-164.3"/>
+<polygon fill="#000000" stroke="#000000" points="204.97,-167.7 215.56,-168 207.47,-161.16 204.97,-167.7"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="295,-150 201,-150 201,-126 295,-126 295,-150"/>
+<text text-anchor="middle" x="248" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_table_open -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge3" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M162.08,-127.19C171.75,-128.42 181.46,-129.66 190.68,-130.83"/>
+<polygon fill="#000000" stroke="#000000" points="190.49,-134.34 200.85,-132.13 191.38,-127.39 190.49,-134.34"/>
+</g>
+<!-- close_config -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node5" class="node">
+<title>close_config</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/close_config.html" xlink:title="close_config">
+<polygon fill="#d9534f" stroke="#d9534f" points="287.5,-108 208.5,-108 208.5,-84 287.5,-84 287.5,-108"/>
+<text text-anchor="middle" x="248" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">close_config</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;close_config -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge4" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;close_config</title>
+<path fill="none" stroke="#000000" d="M162.08,-106.81C174.4,-105.24 186.8,-103.66 198.16,-102.22"/>
+<polygon fill="#000000" stroke="#000000" points="198.8,-105.66 208.28,-100.93 197.92,-98.72 198.8,-105.66"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node6" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="281.5,-66 214.5,-66 214.5,-42 281.5,-42 281.5,-66"/>
+<text text-anchor="middle" x="248" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;mpi_bcast -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge5" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M113.81,-104.85C140.03,-94.84 177.41,-80.57 205.89,-69.7"/>
+<polygon fill="#000000" stroke="#000000" points="207.47,-72.84 215.56,-66 204.97,-66.3 207.47,-72.84"/>
+</g>
+<!-- open_config_file -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_node7" class="node">
+<title>open_config_file</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CallsGraph_node7"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/open_config_file.html" xlink:title="open_config_file">
+<polygon fill="#d9534f" stroke="#d9534f" points="298,-24 198,-24 198,0 298,0 298,-24"/>
+<text text-anchor="middle" x="248" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">open_config_file</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;open_config_file -->
+<g id="proc~~load_tem_bc_logicalheader~~CallsGraph_edge6" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;open_config_file</title>
+<path fill="none" stroke="#000000" d="M96.66,-104.73C118,-87.27 159.28,-54.95 198,-33 200.82,-31.4 203.78,-29.85 206.8,-28.36"/>
+<polygon fill="#000000" stroke="#000000" points="208.34,-31.5 215.91,-24.09 205.37,-25.16 208.34,-31.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_tem_bc_logicalheader~~CalledByGraph Pages: 1 -->
+<svg id="procload_tem_bc_logicalheaderCalledByGraph" width="331pt" height="74pt"
+ viewBox="0.00 0.00 331.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~load_tem_bc_logicalheader~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 327,-70 327,4 -4,4"/>
+<!-- proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph_node1" class="node">
+<title>proc~load_tem_bc_logicalheader</title>
+<polygon fill="none" stroke="black" points="323,-45 161,-45 161,-21 323,-21 323,-45"/>
+<text text-anchor="middle" x="242" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_tem_BC_logicalHeader</text>
+</g>
+<!-- proc~load_tem_bc_normal -->
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph_node2" class="node">
+<title>proc~load_tem_bc_normal</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CalledByGraph_node2"><a xlink:href="../proc/load_tem_bc_normal.html" xlink:title="load_tem_BC_normal">
+<polygon fill="#d9534f" stroke="#d9534f" points="125,-66 0,-66 0,-42 125,-42 125,-66"/>
+<text text-anchor="middle" x="62.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem_BC_normal</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph_edge1" class="edge">
+<title>proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_logicalheader</title>
+<path fill="none" stroke="#000000" d="M125.08,-46.71C133.36,-45.73 141.98,-44.71 150.63,-43.69"/>
+<polygon fill="#000000" stroke="#000000" points="151.25,-47.14 160.77,-42.49 150.43,-40.19 151.25,-47.14"/>
+</g>
+<!-- proc~load_tem_bc_qval -->
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph_node3" class="node">
+<title>proc~load_tem_bc_qval</title>
+<g id="a_proc~~load_tem_bc_logicalheader~~CalledByGraph_node3"><a xlink:href="../proc/load_tem_bc_qval.html" xlink:title="load_tem_BC_qVal">
+<polygon fill="#d9534f" stroke="#d9534f" points="117,-24 8,-24 8,0 117,0 117,-24"/>
+<text text-anchor="middle" x="62.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem_BC_qVal</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_qval&#45;&gt;proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_logicalheader~~CalledByGraph_edge2" class="edge">
+<title>proc~load_tem_bc_qval&#45;&gt;proc~load_tem_bc_logicalheader</title>
+<path fill="none" stroke="#000000" d="M117.24,-18.36C127.89,-19.62 139.35,-20.97 150.83,-22.33"/>
+<polygon fill="#000000" stroke="#000000" points="150.58,-25.83 160.92,-23.53 151.4,-18.87 150.58,-25.83"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">load_tem_BC_logicalHeader</span><span class="p">(</span><span class="w"> </span><span class="n">nBCtypes</span><span class="p">,</span><span class="w"> </span><span class="n">propname</span><span class="p">,</span><span class="w"> </span><span class="n">basename</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">flag_per_BC</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w">     </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Number of boundary condition types</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">nBCtypes</span>
+<span class="w">    </span><span class="c">!&gt; Name of the property to load</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">propname</span>
+<span class="w">    </span><span class="c">!&gt; Name of the file, the data is stored in, will be appended with</span>
+<span class="w">    </span><span class="c">!! &quot;.lua&quot; for the header information and &quot;.lsb&quot; or &quot;.msb&quot; for the</span>
+<span class="w">    </span><span class="c">!! binary data.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">basename</span>
+<span class="w">    </span><span class="c">!&gt; The flags to set for each boundary condition type</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">flag_per_BC</span><span class="p">(</span><span class="n">nBCtypes</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; Partition to load</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="c">!&gt; Communicator to use</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">flu_State</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="c">! lua flu state to read lua file</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">headerfile</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="c">! set header file name</span>
+<span class="w">    </span><span class="n">headerfile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">basename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;.lua&#39;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">root</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! Now read whether each boundary has q value</span>
+<span class="w">      </span><span class="k">call </span><span class="n">open_config_file</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">headerfile</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">propName</span><span class="p">)</span>
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nBCtypes</span>
+<span class="w">        </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">flag_per_BC</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w">          </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">      call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">close_config</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="n">flag_per_BC</span><span class="p">,</span><span class="w"> </span><span class="n">nBCtypes</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">load_tem_BC_logicalHeader</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

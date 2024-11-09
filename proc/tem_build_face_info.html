@@ -1,0 +1,804 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_build_face_info &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_build_face_info
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">32 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_face_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_face_module.f90.html'>tem_face_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_face_module.html'>tem_face_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_build_face_info</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_build_face_info.html#src">tem_build_face_info</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_build_face_info(tree, boundary, commPattern, proc, faces, nEligibleChildren)  
+</h2>
+    
+
+    <p>This routine builds a description of the faces on each level. The
+resulting array of <a href="../type/tem_face_type.html">tem_face_type</a> ranges from the minimal level
+of the mesh to the maximal level of the mesh.</p>
+<p>\todo Remove all the unnecessary faces from the face descriptor</p>
+<p>\todo JZ: this is very memory consuming since we store them in different
+arrays several times.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~168"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>Tree representation of the mesh to buid the faces for.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary~3"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boundary</strong></td>
+            <td>
+                <p>The boundaries of your simulation domain.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-commpattern~7"></span>
+              type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>commPattern</strong></td>
+            <td>
+                <p>The communication pattern you use for the buffer.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~37"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+                <p>Process description to use.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~3"></span>
+              type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong>(:)</td>
+            <td>
+                <p>The created face descriptors (one for each level).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neligiblechildren~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nEligibleChildren</strong></td>
+            <td>
+                <p>The number of eligible children for the vertical face dependency</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_build_face_info~~CallsGraph Pages: 1 -->
+<svg id="proctem_build_face_infoCallsGraph" width="564pt" height="536pt"
+ viewBox="0.00 0.00 564.00 536.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_build_face_info~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 532)">
+<title>proc~~tem_build_face_info~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-532 560,-532 560,4 -4,4"/>
+<!-- proc~tem_build_face_info -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node1" class="node">
+<title>proc~tem_build_face_info</title>
+<polygon fill="none" stroke="black" points="119,-308 0,-308 0,-284 119,-284 119,-308"/>
+<text text-anchor="middle" x="59.5" y="-293.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_build_face_info</text>
+</g>
+<!-- proc~tem_build_facebuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node2" class="node">
+<title>proc~tem_build_facebuffers</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node2"><a xlink:href="../proc/tem_build_facebuffers.html" xlink:title="tem_build_faceBuffers">
+<polygon fill="#d9534f" stroke="#d9534f" points="304,-486 172,-486 172,-462 304,-462 304,-486"/>
+<text text-anchor="middle" x="238" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_faceBuffers</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_build_facebuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge1" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_build_facebuffers</title>
+<path fill="none" stroke="#000000" d="M69.07,-308.18C84.75,-330.05 119.72,-376.86 155,-411 172.25,-427.69 193.84,-444.13 210.54,-456.03"/>
+<polygon fill="#000000" stroke="#000000" points="208.59,-458.93 218.78,-461.82 212.61,-453.2 208.59,-458.93"/>
+</g>
+<!-- proc~tem_build_facelists -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node3" class="node">
+<title>proc~tem_build_facelists</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node3"><a xlink:href="../proc/tem_build_facelists.html" xlink:title="tem_build_faceLists">
+<polygon fill="#d9534f" stroke="#d9534f" points="296.5,-402 179.5,-402 179.5,-378 296.5,-378 296.5,-402"/>
+<text text-anchor="middle" x="238" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_faceLists</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_build_facelists -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge2" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_build_facelists</title>
+<path fill="none" stroke="#000000" d="M76.2,-308.09C94.42,-321.72 125.71,-343.95 155,-359 166.1,-364.71 178.51,-369.94 190.25,-374.42"/>
+<polygon fill="#000000" stroke="#000000" points="189.31,-377.8 199.9,-377.99 191.74,-371.24 189.31,-377.8"/>
+</g>
+<!-- proc~tem_collect_faces -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node4" class="node">
+<title>proc~tem_collect_faces</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node4"><a xlink:href="../proc/tem_collect_faces.html" xlink:title="tem_collect_faces">
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-350 184,-350 184,-326 292,-326 292,-350"/>
+<text text-anchor="middle" x="238" y="-335.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_collect_faces</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_collect_faces -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge3" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_collect_faces</title>
+<path fill="none" stroke="#000000" d="M111.08,-308.04C131.48,-312.89 155.19,-318.53 176.5,-323.6"/>
+<polygon fill="#000000" stroke="#000000" points="175.88,-327.05 186.41,-325.96 177.5,-320.24 175.88,-327.05"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node5" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node5"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="321,-287 155,-287 155,-263 321,-263 321,-287"/>
+<text text-anchor="middle" x="238" y="-272.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_dimbydim_construction -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge4" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_dimbydim_construction</title>
+<path fill="none" stroke="#000000" d="M119.27,-289.01C127.49,-288.03 136.09,-287.01 144.74,-285.98"/>
+<polygon fill="#000000" stroke="#000000" points="145.39,-289.42 154.91,-284.77 144.56,-282.47 145.39,-289.42"/>
+</g>
+<!-- proc~tem_extend_remoteprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node6" class="node">
+<title>proc~tem_extend_remoteprp</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node6"><a xlink:href="../proc/tem_extend_remoteprp.html" xlink:title="tem_extend_remotePrp">
+<polygon fill="#d9534f" stroke="#d9534f" points="306,-192 170,-192 170,-168 306,-168 306,-192"/>
+<text text-anchor="middle" x="238" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_extend_remotePrp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_extend_remoteprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge5" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_extend_remoteprp</title>
+<path fill="none" stroke="#000000" d="M79.05,-283.81C110.39,-263.21 173.9,-221.47 210.11,-197.67"/>
+<polygon fill="#000000" stroke="#000000" points="212.26,-200.45 218.69,-192.03 208.41,-194.6 212.26,-200.45"/>
+</g>
+<!-- proc~tem_facedep_vertical -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node7" class="node">
+<title>proc~tem_facedep_vertical</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node7"><a xlink:href="../proc/tem_facedep_vertical.html" xlink:title="tem_faceDep_vertical">
+<polygon fill="#d9534f" stroke="#d9534f" points="302.5,-87 173.5,-87 173.5,-63 302.5,-63 302.5,-87"/>
+<text text-anchor="middle" x="238" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceDep_vertical</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_facedep_vertical -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge6" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_facedep_vertical</title>
+<path fill="none" stroke="#000000" d="M67.94,-283.78C83.11,-259.22 119.2,-202.51 155,-159 174.43,-135.39 199.25,-110.61 216.47,-94.13"/>
+<polygon fill="#000000" stroke="#000000" points="218.95,-96.6 223.8,-87.18 214.13,-91.52 218.95,-96.6"/>
+</g>
+<!-- proc~tem_build_facerecvbuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node10" class="node">
+<title>proc~tem_build_facerecvbuffers</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node10"><a xlink:href="../proc/tem_build_facerecvbuffers.html" xlink:title="tem_build_faceRecvBuffers">
+<polygon fill="#d9534f" stroke="#d9534f" points="535,-528 378,-528 378,-504 535,-504 535,-528"/>
+<text text-anchor="middle" x="456.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_faceRecvBuffers</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_facebuffers&#45;&gt;proc~tem_build_facerecvbuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge7" class="edge">
+<title>proc~tem_build_facebuffers&#45;&gt;proc~tem_build_facerecvbuffers</title>
+<path fill="none" stroke="#000000" d="M301.04,-486.04C326.75,-491.02 356.73,-496.84 383.4,-502.01"/>
+<polygon fill="#000000" stroke="#000000" points="382.97,-505.49 393.45,-503.96 384.3,-498.62 382.97,-505.49"/>
+</g>
+<!-- proc~tem_build_facesendbuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node11" class="node">
+<title>proc~tem_build_facesendbuffers</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node11"><a xlink:href="../proc/tem_build_facesendbuffers.html" xlink:title="tem_build_faceSendBuffers">
+<polygon fill="#d9534f" stroke="#d9534f" points="536,-486 377,-486 377,-462 536,-462 536,-486"/>
+<text text-anchor="middle" x="456.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_faceSendBuffers</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_facebuffers&#45;&gt;proc~tem_build_facesendbuffers -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge8" class="edge">
+<title>proc~tem_build_facebuffers&#45;&gt;proc~tem_build_facesendbuffers</title>
+<path fill="none" stroke="#000000" d="M304.25,-474C323.83,-474 345.65,-474 366.49,-474"/>
+<polygon fill="#000000" stroke="#000000" points="366.63,-477.5 376.63,-474 366.63,-470.5 366.63,-477.5"/>
+</g>
+<!-- proc~tem_build_computelist -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node9" class="node">
+<title>proc~tem_build_computelist</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node9"><a xlink:href="../proc/tem_build_computelist.html" xlink:title="tem_build_computeList">
+<polygon fill="#d9534f" stroke="#d9534f" points="524.5,-444 388.5,-444 388.5,-420 524.5,-420 524.5,-444"/>
+<text text-anchor="middle" x="456.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_computeList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_facelists&#45;&gt;proc~tem_build_computelist -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge9" class="edge">
+<title>proc~tem_build_facelists&#45;&gt;proc~tem_build_computelist</title>
+<path fill="none" stroke="#000000" d="M296.73,-401.2C323.29,-406.35 355.06,-412.52 383.19,-417.97"/>
+<polygon fill="#000000" stroke="#000000" points="382.89,-421.48 393.37,-419.95 384.22,-414.61 382.89,-421.48"/>
+</g>
+<!-- proc~tem_build_fromfinerlist -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node12" class="node">
+<title>proc~tem_build_fromfinerlist</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node12"><a xlink:href="../proc/tem_build_fromfinerlist.html" xlink:title="tem_build_fromFinerList">
+<polygon fill="#d9534f" stroke="#d9534f" points="526,-402 387,-402 387,-378 526,-378 526,-402"/>
+<text text-anchor="middle" x="456.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_fromFinerList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_facelists&#45;&gt;proc~tem_build_fromfinerlist -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge10" class="edge">
+<title>proc~tem_build_facelists&#45;&gt;proc~tem_build_fromfinerlist</title>
+<path fill="none" stroke="#000000" d="M296.73,-390C321.28,-390 350.3,-390 376.76,-390"/>
+<polygon fill="#000000" stroke="#000000" points="376.77,-393.5 386.77,-390 376.77,-386.5 376.77,-393.5"/>
+</g>
+<!-- proc~tem_get_faces -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node19" class="node">
+<title>proc~tem_get_faces</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node19"><a xlink:href="../proc/tem_get_faces.html" xlink:title="tem_get_faces">
+<polygon fill="#d9534f" stroke="#d9534f" points="501.5,-360 411.5,-360 411.5,-336 501.5,-336 501.5,-360"/>
+<text text-anchor="middle" x="456.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_get_faces</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_collect_faces&#45;&gt;proc~tem_get_faces -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge11" class="edge">
+<title>proc~tem_collect_faces&#45;&gt;proc~tem_get_faces</title>
+<path fill="none" stroke="#000000" d="M292.24,-340.46C325.37,-341.99 367.87,-343.95 401.2,-345.49"/>
+<polygon fill="#000000" stroke="#000000" points="401.07,-348.99 411.22,-345.95 401.4,-342 401.07,-348.99"/>
+</g>
+<!-- interface~tem_stencil_dump -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node8" class="node">
+<title>interface~tem_stencil_dump</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node8"><a xlink:href="../interface/tem_stencil_dump.html" xlink:title="tem_stencil_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="511,-318 402,-318 402,-294 511,-294 511,-318"/>
+<text text-anchor="middle" x="456.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;interface~tem_stencil_dump -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge12" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;interface~tem_stencil_dump</title>
+<path fill="none" stroke="#000000" d="M321.16,-286.76C344.6,-290.12 369.78,-293.73 391.93,-296.9"/>
+<polygon fill="#000000" stroke="#000000" points="391.49,-300.37 401.88,-298.32 392.48,-293.44 391.49,-300.37"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node13" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node13"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="521.5,-276 391.5,-276 391.5,-252 521.5,-252 521.5,-276"/>
+<text text-anchor="middle" x="456.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge13" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M321.16,-270.83C340.83,-269.83 361.72,-268.76 381.02,-267.78"/>
+<polygon fill="#000000" stroke="#000000" points="381.45,-271.27 391.26,-267.26 381.1,-264.28 381.45,-271.27"/>
+</g>
+<!-- proc~tem_define_dimstencil -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node14" class="node">
+<title>proc~tem_define_dimstencil</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node14"><a xlink:href="../proc/tem_define_dimstencil.html" xlink:title="tem_define_dimStencil">
+<polygon fill="#d9534f" stroke="#d9534f" points="523.5,-234 389.5,-234 389.5,-210 523.5,-210 523.5,-234"/>
+<text text-anchor="middle" x="456.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_define_dimStencil</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_define_dimstencil -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge14" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_define_dimstencil</title>
+<path fill="none" stroke="#000000" d="M281.18,-262.96C303.62,-256.71 331.73,-249.12 357,-243 366.56,-240.69 376.67,-238.38 386.64,-236.18"/>
+<polygon fill="#000000" stroke="#000000" points="387.5,-239.57 396.52,-234.02 386.01,-232.73 387.5,-239.57"/>
+</g>
+<!-- proc~tem_extend_commfromcoarserprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node15" class="node">
+<title>proc~tem_extend_commfromcoarserprp</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node15"><a xlink:href="../proc/tem_extend_commfromcoarserprp.html" xlink:title="tem_extend_commFromCoarserPrp">
+<polygon fill="#d9534f" stroke="#d9534f" points="556,-192 357,-192 357,-168 556,-168 556,-192"/>
+<text text-anchor="middle" x="456.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_extend_commFromCoarserPrp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_extend_remoteprp&#45;&gt;proc~tem_extend_commfromcoarserprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge15" class="edge">
+<title>proc~tem_extend_remoteprp&#45;&gt;proc~tem_extend_commfromcoarserprp</title>
+<path fill="none" stroke="#000000" d="M306.02,-180C319.01,-180 332.93,-180 346.86,-180"/>
+<polygon fill="#000000" stroke="#000000" points="347,-183.5 357,-180 347,-176.5 347,-183.5"/>
+</g>
+<!-- proc~tem_extend_commfromfinerprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node16" class="node">
+<title>proc~tem_extend_commfromfinerprp</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node16"><a xlink:href="../proc/tem_extend_commfromfinerprp.html" xlink:title="tem_extend_commFromFinerPrp">
+<polygon fill="#d9534f" stroke="#d9534f" points="548.5,-150 364.5,-150 364.5,-126 548.5,-126 548.5,-150"/>
+<text text-anchor="middle" x="456.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_extend_commFromFinerPrp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_extend_remoteprp&#45;&gt;proc~tem_extend_commfromfinerprp -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge16" class="edge">
+<title>proc~tem_extend_remoteprp&#45;&gt;proc~tem_extend_commfromfinerprp</title>
+<path fill="none" stroke="#000000" d="M301.04,-167.96C326.75,-162.98 356.73,-157.16 383.4,-151.99"/>
+<polygon fill="#000000" stroke="#000000" points="384.3,-155.38 393.45,-150.04 382.97,-148.51 384.3,-155.38"/>
+</g>
+<!-- proc~tem_facedep_verticaldown -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node17" class="node">
+<title>proc~tem_facedep_verticaldown</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node17"><a xlink:href="../proc/tem_facedep_verticaldown.html" xlink:title="tem_faceDep_verticalDown">
+<polygon fill="#d9534f" stroke="#d9534f" points="536,-108 377,-108 377,-84 536,-84 536,-108"/>
+<text text-anchor="middle" x="456.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceDep_verticalDown</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticaldown -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge17" class="edge">
+<title>proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticaldown</title>
+<path fill="none" stroke="#000000" d="M302.79,-81.19C322.81,-83.13 345.3,-85.31 366.73,-87.39"/>
+<polygon fill="#000000" stroke="#000000" points="366.53,-90.89 376.82,-88.37 367.21,-83.92 366.53,-90.89"/>
+</g>
+<!-- proc~tem_facedep_verticalup -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node18" class="node">
+<title>proc~tem_facedep_verticalup</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node18"><a xlink:href="../proc/tem_facedep_verticalup.html" xlink:title="tem_faceDep_verticalUp">
+<polygon fill="#d9534f" stroke="#d9534f" points="528,-66 385,-66 385,-42 528,-42 528,-66"/>
+<text text-anchor="middle" x="456.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceDep_verticalUp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticalup -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge18" class="edge">
+<title>proc~tem_facedep_vertical&#45;&gt;proc~tem_facedep_verticalup</title>
+<path fill="none" stroke="#000000" d="M302.79,-68.81C325.38,-66.62 351.1,-64.13 374.9,-61.82"/>
+<polygon fill="#000000" stroke="#000000" points="375.36,-65.29 384.97,-60.84 374.68,-58.32 375.36,-65.29"/>
+</g>
+<!-- proc~tem_init_facedep -->
+<g id="proc~~tem_build_face_info~~CallsGraph_node20" class="node">
+<title>proc~tem_init_facedep</title>
+<g id="a_proc~~tem_build_face_info~~CallsGraph_node20"><a xlink:href="../proc/tem_init_facedep.html" xlink:title="tem_init_faceDep">
+<polygon fill="#d9534f" stroke="#d9534f" points="509.5,-24 403.5,-24 403.5,0 509.5,0 509.5,-24"/>
+<text text-anchor="middle" x="456.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_faceDep</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_facedep_vertical&#45;&gt;proc~tem_init_facedep -->
+<g id="proc~~tem_build_face_info~~CallsGraph_edge19" class="edge">
+<title>proc~tem_facedep_vertical&#45;&gt;proc~tem_init_facedep</title>
+<path fill="none" stroke="#000000" d="M269.7,-62.82C293.3,-53.76 326.87,-41.53 357,-33 368.63,-29.71 381.17,-26.66 393.27,-23.97"/>
+<polygon fill="#000000" stroke="#000000" points="394.27,-27.33 403.3,-21.79 392.78,-20.49 394.27,-27.33"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_build_face_info</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w"> </span><span class="n">commPattern</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">                                </span><span class="p">&amp;</span><span class="w"> </span><span class="n">nEligibleChildren</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Tree representation of the mesh to buid the faces for.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+
+<span class="w">    </span><span class="c">!&gt; The boundaries of your simulation domain.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_prop_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">boundary</span>
+
+<span class="w">    </span><span class="c">!&gt; The communication pattern you use for the buffer.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_commpattern_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">commPattern</span>
+
+<span class="w">    </span><span class="c">!&gt; Process description to use.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+
+<span class="w">    </span><span class="c">!&gt; The number of eligible children for the vertical face dependency</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nEligibleChildren</span>
+
+<span class="w">    </span><span class="c">!&gt; The created face descriptors (one for each level).</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_face_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">faces</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">! Level descriptor for each spatial direction and each level of your mesh.</span>
+<span class="w">    </span><span class="c">! The level descriptor have to be constructed with the dimension by</span>
+<span class="w">    </span><span class="c">! dimension stencils (+1, 0, -1) for each spatial direction.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                                         </span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDescX</span><span class="p">(:)</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDescY</span><span class="p">(:)</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDescZ</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">faces</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! create the level desriptor in a dim-by-dim manner.</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Building dim-by-dim level descriptors for faces ...&#39;</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_dimByDim_construction</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w"> </span><span class="n">commPattern</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">levelDescX</span><span class="p">,</span><span class="w"> </span><span class="n">levelDescY</span><span class="p">,</span><span class="w"> </span><span class="n">levelDescZ</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<span class="w">      </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDescX</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">      </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDescY</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">      </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDescZ</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">    deallocate</span><span class="p">(</span><span class="n">levelDescX</span><span class="p">,</span><span class="w"> </span><span class="n">levelDescY</span><span class="p">,</span><span class="w"> </span><span class="n">levelDescZ</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! First we collect all the faces. A face is always identified by its left</span>
+<span class="w">    </span><span class="c">! element tree id.</span>
+<span class="w">    </span><span class="c">! We collect all the faces, even if only one element next to the face</span>
+<span class="w">    </span><span class="c">! exists.</span>
+<span class="w">    </span><span class="c">! Therefore, we run over fluids, ghostFromCoarser, ghostFromFiner and halo</span>
+<span class="w">    </span><span class="c">! elements.</span>
+<span class="w">    </span><span class="c">! We attach two-sided properties to the faces, too (depending on the element</span>
+<span class="w">    </span><span class="c">! left and right to the face).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_collect_faces</span><span class="p">(</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Now, we have to check all the faces which have the communication property</span>
+<span class="w">    </span><span class="c">! again.</span>
+<span class="w">    </span><span class="c">! We have to check if the halo element next to it is refined/from coarser on</span>
+<span class="w">    </span><span class="c">! the remote rank. So, we extend the faces&#39; properties.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_extend_remotePrp</span><span class="p">(</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Now, we build the vertical dependency of the faces.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_faceDep_vertical</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">faces</span><span class="p">,</span><span class="w"> </span><span class="n">nEligibleChildren</span><span class="w">                    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">!&gt; \todo Remove all the unnecessary faces from the face descriptor</span>
+
+<span class="w">    </span><span class="c">! Build the buffers for sent/received faces.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_build_faceBuffers</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">faces</span><span class="p">,</span><span class="w"> </span><span class="n">levelDesc</span><span class="w">                            </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Build the iterators for the faces. These ones will be used by the solvers.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_build_faceLists</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">nEligibleChildren</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="w">                   </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">!&gt; \todo JZ: this is very memory consuming since we store them in different</span>
+<span class="w">    </span><span class="c">!! arrays several times.</span>
+<span class="w">    </span><span class="c">! Buffer the dimension by dimension descriptor</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<span class="w">      </span><span class="n">faces</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">dimByDimDesc</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">      </span><span class="n">faces</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">dimByDimDesc</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">      </span><span class="n">faces</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">dimByDimDesc</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">iLevel</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_build_face_info</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

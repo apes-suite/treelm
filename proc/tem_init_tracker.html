@@ -1,0 +1,815 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_init_tracker &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_init_tracker
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">41 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_tracking_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_tracking_module.f90.html'>tem_tracking_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_tracking_module.html'>tem_tracking_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_init_tracker</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_init_tracker.html#src">tem_init_tracker</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_init_tracker(me, tree, solver, varSys, nDofs, globProc, solSpec_unit)  
+</h2>
+    
+
+    <p>Initialize the tracker entities:
+* create varMap, i.e. map requested variables to global variable system
+* initialize spatial reduction
+* initialize hvs output</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~440"></span>
+              type(<a href='../type/tem_tracking_type.html'>tem_tracking_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>tracking entities</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~94"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>Global mesh from which the elements are identified and then stored to
+sub-meshes inside the trackers</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-solver~5"></span>
+              type(<a href='../type/tem_solvehead_type.html'>tem_solveHead_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>solver</strong></td>
+            <td>
+                <p>Global solver information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~34"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>solver-provided variable systems</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~10"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+                <p>The number of dofs for each scalar variable of the equation system</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-globproc~3"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>globProc</strong></td>
+            <td>
+                <p>Process description to use.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-solspec_unit~3"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>solSpec_unit</strong></td>
+            <td>
+                <p>Solver specific unit for restart header</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_init_tracker~~CallsGraph Pages: 1 -->
+<svg id="proctem_init_trackerCallsGraph" width="569pt" height="431pt"
+ viewBox="0.00 0.00 569.00 431.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_init_tracker~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 427)">
+<title>proc~~tem_init_tracker~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-427 565,-427 565,4 -4,4"/>
+<!-- proc~tem_init_tracker -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node1" class="node">
+<title>proc~tem_init_tracker</title>
+<polygon fill="none" stroke="black" points="99,-171 0,-171 0,-147 99,-147 99,-171"/>
+<text text-anchor="middle" x="49.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_init_tracker</text>
+</g>
+<!-- proc~hvs_output_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node2" class="node">
+<title>proc~hvs_output_init</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node2"><a xlink:href="../proc/hvs_output_init.html" xlink:title="hvs_output_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="256.5,-213 164.5,-213 164.5,-189 256.5,-189 256.5,-213"/>
+<text text-anchor="middle" x="210.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker&#45;&gt;proc~hvs_output_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge1" class="edge">
+<title>proc~tem_init_tracker&#45;&gt;proc~hvs_output_init</title>
+<path fill="none" stroke="#000000" d="M96.06,-171.04C114.35,-175.87 135.58,-181.47 154.7,-186.53"/>
+<polygon fill="#000000" stroke="#000000" points="153.92,-189.94 164.48,-189.11 155.71,-183.17 153.92,-189.94"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node3" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node3"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="244,-171 177,-171 177,-147 244,-147 244,-171"/>
+<text text-anchor="middle" x="210.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge2" class="edge">
+<title>proc~tem_init_tracker&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M99.07,-159C120.63,-159 145.79,-159 166.65,-159"/>
+<polygon fill="#000000" stroke="#000000" points="166.81,-162.5 176.81,-159 166.81,-155.5 166.81,-162.5"/>
+</g>
+<!-- proc~tem_create_varmap -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node4" class="node">
+<title>proc~tem_create_varmap</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node4"><a xlink:href="../proc/tem_create_varmap.html" xlink:title="tem_create_varMap">
+<polygon fill="#d9534f" stroke="#d9534f" points="442,-360 324,-360 324,-336 442,-336 442,-360"/>
+<text text-anchor="middle" x="383" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_varMap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker&#45;&gt;proc~tem_create_varmap -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge3" class="edge">
+<title>proc~tem_init_tracker&#45;&gt;proc~tem_create_varmap</title>
+<path fill="none" stroke="#000000" d="M65.65,-171.23C82.23,-184.39 109.83,-205.65 135,-222 214.93,-273.93 235.13,-287.77 322,-327 326.07,-328.84 330.35,-330.62 334.68,-332.32"/>
+<polygon fill="#000000" stroke="#000000" points="333.56,-335.64 344.16,-335.89 336.03,-329.09 333.56,-335.64"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node5" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node5"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="275.5,-129 145.5,-129 145.5,-105 275.5,-105 275.5,-129"/>
+<text text-anchor="middle" x="210.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge4" class="edge">
+<title>proc~tem_init_tracker&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M96.06,-146.96C114.19,-142.18 135.22,-136.62 154.21,-131.6"/>
+<polygon fill="#000000" stroke="#000000" points="155.16,-134.98 163.93,-129.04 153.37,-128.21 155.16,-134.98"/>
+</g>
+<!-- proc~tem_reduction_spatial_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node6" class="node">
+<title>proc~tem_reduction_spatial_init</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node6"><a xlink:href="../proc/tem_reduction_spatial_init.html" xlink:title="tem_reduction_spatial_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="286,-87 135,-87 135,-63 286,-63 286,-87"/>
+<text text-anchor="middle" x="210.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker&#45;&gt;proc~tem_reduction_spatial_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge5" class="edge">
+<title>proc~tem_init_tracker&#45;&gt;proc~tem_reduction_spatial_init</title>
+<path fill="none" stroke="#000000" d="M63.53,-146.85C79.32,-132.74 107.26,-109.67 135,-96 139.04,-94.01 143.3,-92.18 147.66,-90.5"/>
+<polygon fill="#000000" stroke="#000000" points="149.04,-93.73 157.29,-87.07 146.69,-87.13 149.04,-93.73"/>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~tem_create_varmap -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge11" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~tem_create_varmap</title>
+<path fill="none" stroke="#000000" d="M223.78,-213.22C238.89,-228.45 265.11,-255.45 286,-280 303.05,-300.04 300.69,-311.56 322,-327 324.11,-328.53 326.34,-329.96 328.66,-331.28"/>
+<polygon fill="#000000" stroke="#000000" points="327.39,-334.57 337.9,-335.94 330.54,-328.31 327.39,-334.57"/>
+</g>
+<!-- proc~hvs_ascii_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node12" class="node">
+<title>proc~hvs_ascii_init</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node12"><a xlink:href="../proc/hvs_ascii_init.html" xlink:title="hvs_ascii_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="424,-318 342,-318 342,-294 424,-294 424,-318"/>
+<text text-anchor="middle" x="383" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_ascii_init</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~hvs_ascii_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge6" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~hvs_ascii_init</title>
+<path fill="none" stroke="#000000" d="M224.5,-213.09C244.25,-230.91 283.58,-264.34 322,-285 325.3,-286.78 328.79,-288.45 332.35,-290.02"/>
+<polygon fill="#000000" stroke="#000000" points="331.29,-293.37 341.87,-293.93 333.95,-286.89 331.29,-293.37"/>
+</g>
+<!-- proc~hvs_asciispatial_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node13" class="node">
+<title>proc~hvs_asciispatial_init</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node13"><a xlink:href="../proc/hvs_asciispatial_init.html" xlink:title="hvs_asciiSpatial_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="442,-276 324,-276 324,-252 442,-252 442,-276"/>
+<text text-anchor="middle" x="383" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_asciiSpatial_init</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~hvs_asciispatial_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge7" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~hvs_asciispatial_init</title>
+<path fill="none" stroke="#000000" d="M242.85,-213.17C264.93,-221.68 295.2,-233.22 322,-243 326.93,-244.8 332.09,-246.65 337.24,-248.48"/>
+<polygon fill="#000000" stroke="#000000" points="336.45,-251.91 347.04,-251.94 338.78,-245.31 336.45,-251.91"/>
+</g>
+<!-- proc~hvs_vtk_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node14" class="node">
+<title>proc~hvs_vtk_init</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node14"><a xlink:href="../proc/hvs_vtk_init.html" xlink:title="hvs_vtk_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="419.5,-234 346.5,-234 346.5,-210 419.5,-210 419.5,-234"/>
+<text text-anchor="middle" x="383" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_vtk_init</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~hvs_vtk_init -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge8" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~hvs_vtk_init</title>
+<path fill="none" stroke="#000000" d="M256.74,-206.57C281.26,-209.59 311.48,-213.31 336.1,-216.35"/>
+<polygon fill="#000000" stroke="#000000" points="335.92,-219.85 346.27,-217.6 336.78,-212.9 335.92,-219.85"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node15" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node15"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="425.5,-192 340.5,-192 340.5,-168 425.5,-168 425.5,-192"/>
+<text text-anchor="middle" x="383" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge9" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M256.74,-195.43C279.34,-192.64 306.8,-189.26 330.24,-186.38"/>
+<polygon fill="#000000" stroke="#000000" points="330.85,-189.83 340.35,-185.13 330,-182.88 330.85,-189.83"/>
+</g>
+<!-- proc~tem_calc_vrtx_coord -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node16" class="node">
+<title>proc~tem_calc_vrtx_coord</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node16"><a xlink:href="../proc/tem_calc_vrtx_coord.html" xlink:title="tem_calc_vrtx_coord">
+<polygon fill="#d9534f" stroke="#d9534f" points="444,-150 322,-150 322,-126 444,-126 444,-150"/>
+<text text-anchor="middle" x="383" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_calc_vrtx_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~tem_calc_vrtx_coord -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge10" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~tem_calc_vrtx_coord</title>
+<path fill="none" stroke="#000000" d="M256.65,-190.26C266.49,-187.37 276.72,-183.94 286,-180 303.05,-172.76 305.18,-166.76 322,-159 326.06,-157.13 330.33,-155.32 334.65,-153.61"/>
+<polygon fill="#000000" stroke="#000000" points="336,-156.84 344.11,-150.02 333.52,-150.3 336,-156.84"/>
+</g>
+<!-- proc~tem_dump_subtree -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node17" class="node">
+<title>proc~tem_dump_subtree</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node17"><a xlink:href="../proc/tem_dump_subtree.html" xlink:title="tem_dump_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="440.5,-108 325.5,-108 325.5,-84 440.5,-84 440.5,-108"/>
+<text text-anchor="middle" x="383" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dump_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~tem_dump_subtree -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge12" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~tem_dump_subtree</title>
+<path fill="none" stroke="#000000" d="M256.71,-194.26C267.08,-191.15 277.53,-186.62 286,-180 311.41,-160.15 297.21,-137.63 322,-117 323.72,-115.57 325.55,-114.23 327.45,-112.98"/>
+<polygon fill="#000000" stroke="#000000" points="329.21,-116.01 336.21,-108.05 325.78,-109.9 329.21,-116.01"/>
+</g>
+<!-- proc~tem_init_restart -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node18" class="node">
+<title>proc~tem_init_restart</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node18"><a xlink:href="../proc/tem_init_restart.html" xlink:title="tem_init_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="430.5,-66 335.5,-66 335.5,-42 430.5,-42 430.5,-66"/>
+<text text-anchor="middle" x="383" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_init&#45;&gt;proc~tem_init_restart -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge13" class="edge">
+<title>proc~hvs_output_init&#45;&gt;proc~tem_init_restart</title>
+<path fill="none" stroke="#000000" d="M256.87,-195.58C267.47,-192.45 277.99,-187.57 286,-180 321.84,-146.1 287.23,-109.99 322,-75 323.43,-73.56 324.96,-72.22 326.58,-70.97"/>
+<polygon fill="#000000" stroke="#000000" points="328.68,-73.79 335.23,-65.46 324.91,-67.88 328.68,-73.79"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node11" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="416.5,-24 349.5,-24 349.5,0 416.5,0 416.5,-24"/>
+<text text-anchor="middle" x="383" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge14" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M244.19,-156.57C258.6,-153.94 274.77,-148.62 286,-138 321.84,-104.1 287.23,-67.99 322,-33 326.97,-28 333.18,-24.19 339.72,-21.29"/>
+<polygon fill="#000000" stroke="#000000" points="341.29,-24.44 349.42,-17.65 338.83,-17.88 341.29,-24.44"/>
+</g>
+<!-- interface~append~31 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node7" class="node">
+<title>interface~append~31</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node7"><a xlink:href="../interface/append~31.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="547.5,-423 493.5,-423 493.5,-399 547.5,-399 547.5,-423"/>
+<text text-anchor="middle" x="520.5" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~append~31 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge15" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~append~31</title>
+<path fill="none" stroke="#000000" d="M410.13,-360.15C431.21,-369.95 461.09,-383.84 484.29,-394.63"/>
+<polygon fill="#000000" stroke="#000000" points="482.91,-397.85 493.45,-398.89 485.86,-391.5 482.91,-397.85"/>
+</g>
+<!-- interface~init~19 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node8" class="node">
+<title>interface~init~19</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node8"><a xlink:href="../interface/init~19.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="547.5,-381 493.5,-381 493.5,-357 547.5,-357 547.5,-381"/>
+<text text-anchor="middle" x="520.5" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~init~19 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge16" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~init~19</title>
+<path fill="none" stroke="#000000" d="M442.25,-357.03C456.15,-359.18 470.59,-361.42 483.17,-363.37"/>
+<polygon fill="#000000" stroke="#000000" points="482.84,-366.86 493.25,-364.93 483.91,-359.94 482.84,-366.86"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node9" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node9"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="561,-339 480,-339 480,-315 561,-315 561,-339"/>
+<text text-anchor="middle" x="520.5" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~positionofval~4 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge17" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~positionofval~4</title>
+<path fill="none" stroke="#000000" d="M442.25,-338.97C451.32,-337.57 460.63,-336.12 469.5,-334.75"/>
+<polygon fill="#000000" stroke="#000000" points="470.32,-338.16 479.67,-333.17 469.25,-331.25 470.32,-338.16"/>
+</g>
+<!-- interface~truncate~14 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_node10" class="node">
+<title>interface~truncate~14</title>
+<g id="a_proc~~tem_init_tracker~~CallsGraph_node10"><a xlink:href="../interface/truncate~14.html" xlink:title="truncate">
+<polygon fill="#a7506f" stroke="#a7506f" points="549.5,-297 491.5,-297 491.5,-273 549.5,-273 549.5,-297"/>
+<text text-anchor="middle" x="520.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">truncate</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_varmap&#45;&gt;interface~truncate~14 -->
+<g id="proc~~tem_init_tracker~~CallsGraph_edge18" class="edge">
+<title>proc~tem_create_varmap&#45;&gt;interface~truncate~14</title>
+<path fill="none" stroke="#000000" d="M421.89,-335.98C429.32,-333.27 436.99,-330.24 444,-327 460.82,-319.24 463.82,-315.02 480,-306 482.4,-304.66 484.89,-303.3 487.4,-301.93"/>
+<polygon fill="#000000" stroke="#000000" points="489.29,-304.88 496.44,-297.06 485.98,-298.72 489.29,-304.88"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_init_tracker</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">solver</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">nDofs</span><span class="p">,</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">solSpec_unit</span><span class="w">                               </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; tracking entities</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_tracking_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Global mesh from which the elements are identified and then stored to</span>
+<span class="w">    </span><span class="c">!! sub-meshes inside the trackers</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; Global solver information</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_solveHead_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">solver</span>
+<span class="w">    </span><span class="c">!&gt; solver-provided variable systems</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                 </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<span class="w">    </span><span class="c">!&gt; The number of dofs for each scalar variable of the equation system</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">nDofs</span>
+<span class="w">    </span><span class="c">!&gt; Process description to use.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">globProc</span>
+<span class="w">    </span><span class="c">!&gt; Solver specific unit for restart header</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">solSpec_unit</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iLog</span><span class="p">,</span><span class="w"> </span><span class="n">nVars</span><span class="p">,</span><span class="w"> </span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="n">iConfig</span>
+<span class="w">    </span><span class="c">! prefix for tracking label to differiate tracking for different scheme</span>
+<span class="w">    </span><span class="c">! with same tracking label</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">prefix</span>
+<span class="w">    </span><span class="c">! tracking%config%prefix//tracking%config%label</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">basename</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Initialize tracking objects&#39;</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! prefix for tracking label to differiate tracking for different scheme</span>
+<span class="w">    </span><span class="c">! with same tracking label</span>
+<span class="w">    </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">solver</span><span class="p">%</span><span class="n">simName</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">control</span><span class="p">%</span><span class="n">active</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">      do </span><span class="n">iLog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">control</span><span class="p">%</span><span class="n">nActive</span>
+<span class="w">        </span><span class="n">iConfig</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">pntConfig</span>
+
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="s2">&quot;(A,I0,A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Track object: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iLog</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;, label: &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">label</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! map variables</span>
+<span class="w">        </span><span class="c">! create tracking variable position in the global varSys</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_create_varMap</span><span class="p">(</span><span class="w"> </span><span class="n">varname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">varSys</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">varMap</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">varMap</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">        </span><span class="n">nVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">nVals</span>
+<span class="w">        </span><span class="c">! Abort if none variables of the variable defined in current</span>
+<span class="w">        </span><span class="c">! tracking object are found in varSys</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">nVars</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">varname</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Some of the following variables are not found:&#39;</span>
+<span class="w">          </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">varName</span><span class="p">)</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">varName</span><span class="p">(</span><span class="n">iVar</span><span class="p">))</span>
+<span class="w">          </span><span class="k">end do</span>
+<span class="k">          call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">        </span><span class="n">basename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">        </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">label</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! Init spatial reduction</span>
+<span class="w">        </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">output_file</span><span class="p">%</span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                            </span><span class="p">%</span><span class="n">redSpatial_config</span><span class="p">%</span><span class="n">active</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">redSpatial_config</span><span class="p">%</span><span class="n">active</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! Initialize reduction</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_reduction_spatial_init</span><span class="p">(</span><span class="w">                                     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">output_file</span><span class="p">%</span><span class="n">ascii</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="p">%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w">                              </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">  </span><span class="n">redSpatial_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">redSpatial_config</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">             </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                                     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">             </span><span class="n">varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="p">%</span><span class="n">val</span><span class="p">(:</span><span class="n">nVars</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="w">        </span><span class="c">! Initialize output</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">hvs_output_init</span><span class="p">(</span><span class="n">out_file</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">output_file</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">out_config</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">output_config</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">tree</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">varSys</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">varPos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                                 </span><span class="p">%</span><span class="n">val</span><span class="p">(:</span><span class="n">nVars</span><span class="p">),</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">basename</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">basename</span><span class="p">),</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">globProc</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">timeControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">timeControl</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">solver</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">solver</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">geometry</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">geometry</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">nDofs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">nDofs</span><span class="p">,</span><span class="w">                            </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">solSpec_unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solSpec_unit</span><span class="w">                     </span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          call </span><span class="n">hvs_output_init</span><span class="p">(</span><span class="n">out_file</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">output_file</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">out_config</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">output_config</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">tree</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">varSys</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">varPos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">varPos</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                                 </span><span class="p">%</span><span class="n">val</span><span class="p">(:</span><span class="n">nVars</span><span class="p">),</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">subTree</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">instance</span><span class="p">(</span><span class="n">iLog</span><span class="p">)%</span><span class="n">subTree</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">basename</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">basename</span><span class="p">),</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">globProc</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">timeControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">timeControl</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">solver</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">solver</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">geometry</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">config</span><span class="p">(</span><span class="n">iConfig</span><span class="p">)%</span><span class="n">geometry</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">nDofs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">nDofs</span><span class="p">,</span><span class="w">                            </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">solspec_unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solSpec_unit</span><span class="w">                     </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end do</span>
+
+<span class="k">    end if</span><span class="w"> </span><span class="c">! if tracking active</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_init_tracker</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

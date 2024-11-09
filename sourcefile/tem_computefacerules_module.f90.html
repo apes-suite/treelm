@@ -1,0 +1,1539 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_computeFaceRules_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_computeFaceRules_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for source files.">136 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_computeFaceRules_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_computeFaceRules_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_comptefacerules_module.html">tem_compteFaceRules_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_computefacerules_module.f90.html#src">tem_computeFaceRules_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_computefacerules_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_computefacerules_modulef90EfferentGraph" width="641pt" height="364pt"
+ viewBox="0.00 0.00 641.00 363.98" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph" class="graph" transform="scale(0.33 0.33) rotate(0) translate(4 1096.45)">
+<title>sourcefile~~tem_computefacerules_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1096.45 1934,-1096.45 1934,4 -4,4"/>
+<!-- sourcefile~tem_computefacerules_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_computefacerules_module.f90</title>
+<polygon fill="none" stroke="black" points="1930,-805.97 1725,-805.97 1725,-781.97 1930,-781.97 1930,-805.97"/>
+<text text-anchor="middle" x="1827.5" y="-791.57" font-family="Helvetica,sans-Serif" font-size="10.50">tem_computeFaceRules_module.f90</text>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="476.5,-711.97 352.5,-711.97 352.5,-687.97 476.5,-687.97 476.5,-711.97"/>
+<text text-anchor="middle" x="414.5" y="-697.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1611,-773.97C1528.26,-746.39 1305.72,-773.97 1218.5,-773.97 1218.5,-773.97 1218.5,-773.97 1017,-773.97 798.02,-773.97 738.13,-787.31 526,-732.97 509.04,-728.63 506.61,-722.5 490,-716.97 487.77,-716.23 485.49,-715.51 483.18,-714.81"/>
+<polygon fill="#000000" stroke="#000000" points="484.14,-711.44 473.56,-712.06 482.21,-718.17 484.14,-711.44"/>
+</g>
+<!-- sourcefile~tem_facedata_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_facedata_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_facedata_module.f90.html" xlink:title="tem_faceData_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1689,-825.97 1535,-825.97 1535,-801.97 1689,-801.97 1689,-825.97"/>
+<text text-anchor="middle" x="1612" y="-811.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_faceData_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_facedata_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_facedata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1724.75,-803.5C1716.2,-804.31 1707.61,-805.11 1699.19,-805.9"/>
+<polygon fill="#000000" stroke="#000000" points="1698.65,-802.43 1689.02,-806.85 1699.31,-809.4 1698.65,-802.43"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291,-389.97 146,-389.97 146,-365.97 291,-365.97 291,-389.97"/>
+<text text-anchor="middle" x="218.5" y="-375.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_computefacerules_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1724.79,-794.2C1688.7,-791.75 1648.31,-786.07 1613,-773.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1611,-773.97C1398.42,-701.17 1100.78,-147.53 893,-61.97 817.49,-30.88 589.37,-29.47 526,-80.97 483.45,-115.55 529.66,-161.11 490,-198.97 465.28,-222.57 443.59,-198.52 415.5,-217.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-217.97C384.99,-236.8 365.43,-215.31 339,-236.97 310.4,-260.41 326.1,-283.1 303,-311.97 287.67,-331.14 265.76,-348.19 248.23,-360.15"/>
+<polygon fill="#000000" stroke="#000000" points="245.92,-357.49 239.53,-365.93 249.79,-363.32 245.92,-357.49"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408.46,-687.86C387.92,-638.49 311.16,-454.6 303,-443.97 288.15,-424.63 266.41,-407.68 248.84,-395.81"/>
+<polygon fill="#000000" stroke="#000000" points="250.37,-392.63 240.09,-390.08 246.54,-398.49 250.37,-392.63"/>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-469.97 0,-469.97 0,-445.97 98,-445.97 98,-469.97"/>
+<text text-anchor="middle" x="49" y="-455.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369.66,-712.01C310.16,-725.55 203.32,-739.59 134,-688.97 65.72,-639.12 52.81,-528.08 50.47,-480.41"/>
+<polygon fill="#000000" stroke="#000000" points="53.96,-480.1 50.09,-470.24 46.96,-480.36 53.96,-480.1"/>
+</g>
+<!-- sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~soi_revision_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/soi_revision_module.f90.html" xlink:title="soi_revision_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-759.97 148.5,-759.97 148.5,-735.97 288.5,-735.97 288.5,-759.97"/>
+<text text-anchor="middle" x="218.5" y="-745.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.55,-712.09C338.25,-718.59 305.66,-726.65 278.03,-733.49"/>
+<polygon fill="#000000" stroke="#000000" points="276.97,-730.15 268.1,-735.95 278.65,-736.94 276.97,-730.15"/>
+</g>
+<!-- sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~tem_comm_env_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/tem_comm_env_module.f90.html" xlink:title="tem_comm_env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="300,-637.97 137,-637.97 137,-613.97 300,-613.97 300,-637.97"/>
+<text text-anchor="middle" x="218.5" y="-623.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.63,-687.86C369.74,-676.13 334.82,-658.47 303,-646.97 297,-644.81 290.69,-642.78 284.32,-640.9"/>
+<polygon fill="#000000" stroke="#000000" points="284.9,-637.43 274.32,-638.08 283,-644.17 284.9,-637.43"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_lua_requires_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_lua_requires_module.f90.html" xlink:title="tem_lua_requires_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-679.97 134,-679.97 134,-655.97 303,-655.97 303,-679.97"/>
+<text text-anchor="middle" x="218.5" y="-665.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_lua_requires_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.38,-689.89C336.66,-687.3 319.46,-684.46 302.82,-681.72"/>
+<polygon fill="#000000" stroke="#000000" points="302.98,-678.2 292.54,-680.02 301.84,-685.1 302.98,-678.2"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="283.5,-73.97 153.5,-73.97 153.5,-49.97 283.5,-49.97 283.5,-73.97"/>
+<text text-anchor="middle" x="218.5" y="-59.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.2,-687.61C392.79,-658.83 357.3,-584.78 339,-518.97 310.69,-417.17 329.74,-386.2 303,-283.97 283.2,-208.27 246.79,-122.64 229.33,-83.53"/>
+<polygon fill="#000000" stroke="#000000" points="232.43,-81.88 225.14,-74.2 226.05,-84.75 232.43,-81.88"/>
+</g>
+<!-- sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-1081.97C927.54,-1077.81 905.02,-1079.55 815.5,-1081.97"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~tem_comm_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/tem_comm_module.f90.html" xlink:title="tem_comm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="884,-863.97 745,-863.97 745,-839.97 884,-839.97 884,-863.97"/>
+<text text-anchor="middle" x="814.5" y="-849.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_comm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1599.11,-826.11C1570.52,-854.33 1494.32,-923.77 1414.5,-947.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1412.5,-947.97C1351.22,-966.55 1351.16,-893.5 1292,-868.97 1177.5,-821.5 1140.06,-785.37 1019,-811.97"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_construction_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_construction_module.f90.html" xlink:title="tem_construction_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1499,-745.97 1328,-745.97 1328,-721.97 1499,-721.97 1499,-745.97"/>
+<text text-anchor="middle" x="1413.5" y="-731.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_construction_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_construction_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_construction_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1573.64,-801.95C1561.26,-797.77 1547.45,-792.88 1535,-787.97 1505.57,-776.37 1472.86,-761.59 1448.95,-750.42"/>
+<polygon fill="#000000" stroke="#000000" points="1450.14,-747.12 1439.6,-746.03 1447.16,-753.45 1450.14,-747.12"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_dyn_array.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_dyn_array.f90.html" xlink:title="tem_dyn_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="668.5,-945.97 557.5,-945.97 557.5,-921.97 668.5,-921.97 668.5,-945.97"/>
+<text text-anchor="middle" x="613" y="-931.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dyn_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-1081.97C1131.14,-1102.41 1106.68,-1086.06 1019,-1081.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-1081.97C925.96,-1077.73 902.85,-1069.95 815.5,-1043.97"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_grow_array.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_grow_array.f90.html" xlink:title="tem_grow_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="671.5,-903.97 554.5,-903.97 554.5,-879.97 671.5,-879.97 671.5,-903.97"/>
+<text text-anchor="middle" x="613" y="-889.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_grow_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_facedata_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1412.5,-947.97C1313.28,-981.68 1321.08,-1060.57 1218.5,-1081.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-1081.97C1157.39,-1094.31 758.07,-929.54 700,-912.97 692.22,-910.75 684.01,-908.56 675.87,-906.48"/>
+<polygon fill="#000000" stroke="#000000" points="676.56,-903.04 666.01,-903.99 674.85,-909.83 676.56,-903.04"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M192.06,-390.12C163.36,-403.83 116.53,-426.2 84.54,-441.47"/>
+<polygon fill="#000000" stroke="#000000" points="82.65,-438.5 75.13,-445.97 85.66,-444.82 82.65,-438.5"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M744.57,-855.12C706.07,-856.09 657.28,-856.01 614,-851.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-851.97C572.49,-848.29 559.51,-849.23 526,-827.97 482.13,-800.14 446.1,-749.61 428.04,-721.07"/>
+<polygon fill="#000000" stroke="#000000" points="430.86,-718.96 422.62,-712.3 424.9,-722.64 430.86,-718.96"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-851.97C478,-839.48 413.89,-832.79 339,-720.97 269.91,-617.83 364.21,-551.98 303,-443.97 291.36,-423.44 270.55,-406.96 252.62,-395.61"/>
+<polygon fill="#000000" stroke="#000000" points="253.93,-392.32 243.56,-390.15 250.32,-398.31 253.93,-392.32"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-851.97C523.89,-838.53 504.61,-890.54 415.5,-891.97"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M794.53,-864.11C772.55,-877.71 734.88,-899.59 700,-912.97 693.19,-915.58 685.96,-917.95 678.68,-920.07"/>
+<polygon fill="#000000" stroke="#000000" points="677.48,-916.77 668.78,-922.81 679.35,-923.52 677.48,-916.77"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M753.64,-863.97C730.95,-868.52 704.95,-873.74 681.59,-878.42"/>
+<polygon fill="#000000" stroke="#000000" points="680.87,-874.99 671.76,-880.39 682.25,-881.86 680.87,-874.99"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-714.97C1171.63,-696.11 1155.67,-716.53 1107,-716.97 848.79,-719.33 783.65,-731.19 526,-713.97 513.36,-713.13 499.96,-711.8 487.01,-710.29"/>
+<polygon fill="#000000" stroke="#000000" points="487.09,-706.77 476.75,-709.05 486.25,-713.72 487.09,-706.77"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C860.08,-350.16 874.74,-241.2 700,-175.97 627.55,-148.93 600.23,-154.28 526,-175.97 507.78,-181.3 507.42,-191.42 490,-198.97 458.65,-212.57 443.32,-198.13 415.5,-217.97"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1327.63,-736.68C1292.64,-735.03 1252.43,-729.44 1218.5,-714.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-714.97C1094.34,-662.9 1164.39,-556.73 1107,-436.97 1024.07,-263.92 1058.94,-158.34 893,-61.97 709.48,44.6 620.97,-8.87 415.5,-61.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-61.97C325.64,-67.52 298.49,16.9 219.5,-21.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-21.97C183.35,-38.78 160.57,-13.73 134,-40.97 78.1,-98.29 56.63,-357.68 51.37,-435.7"/>
+<polygon fill="#000000" stroke="#000000" points="47.87,-435.65 50.71,-445.85 54.85,-436.1 47.87,-435.65"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-596.97C644.89,-654.22 592.83,-659.15 415.5,-642.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-642.97C380.01,-639.12 343.18,-635.69 310.69,-632.94"/>
+<polygon fill="#000000" stroke="#000000" points="310.56,-629.41 300.3,-632.07 309.97,-636.39 310.56,-629.41"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_comm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-714.97C1126.35,-677.07 1114.51,-790.99 1019,-811.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-811.97C974.95,-821.21 927.75,-830.63 889.61,-838.01"/>
+<polygon fill="#000000" stroke="#000000" points="888.77,-834.6 879.62,-839.93 890.1,-841.48 888.77,-834.6"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1409.71,-746.1C1400.38,-783.66 1366.61,-898.77 1292,-952.97 1204.78,-1016.33 918.6,-1075.46 815.5,-1043.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-1043.97C778.94,-1033.69 764.37,-1042.23 736,-1019.97 711.53,-1000.77 724.53,-979.09 700,-959.97 693.53,-954.93 686.08,-950.86 678.34,-947.58"/>
+<polygon fill="#000000" stroke="#000000" points="679.38,-944.23 668.79,-943.95 676.9,-950.77 679.38,-944.23"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1374.92,-746.06C1262.34,-781.91 928.7,-885.6 815.5,-891.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-891.97C769.69,-894.39 720.39,-894.41 681.75,-893.82"/>
+<polygon fill="#000000" stroke="#000000" points="681.72,-890.32 671.67,-893.65 681.6,-897.32 681.72,-890.32"/>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-61.97C374.9,-71.95 330.52,-72.7 293.96,-70.62"/>
+<polygon fill="#000000" stroke="#000000" points="294.07,-67.12 283.86,-69.97 293.61,-74.11 294.07,-67.12"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_bc_prop_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_bc_prop_module.f90.html" xlink:title="tem_bc_prop_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="888,-540.97 741,-540.97 741,-516.97 888,-516.97 888,-540.97"/>
+<text text-anchor="middle" x="814.5" y="-526.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_prop_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_bc_prop_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_bc_prop_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C966.72,-418.67 948.92,-481.9 893,-502.97 883.34,-506.61 872.91,-510.28 862.93,-513.67"/>
+<polygon fill="#000000" stroke="#000000" points="861.51,-510.46 853.14,-516.96 863.74,-517.1 861.51,-510.46"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~tem_debug_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/tem_debug_module.f90.html" xlink:title="tem_debug_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="484,-189.97 345,-189.97 345,-165.97 484,-165.97 484,-189.97"/>
+<text text-anchor="middle" x="414.5" y="-175.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_debug_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-714.97C1081.7,-657.52 1142.28,-530.17 1019,-450.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C857.82,-348.71 975.52,-176.93 815.5,-75.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-75.97C705.42,-7.78 634.31,-13.15 526,-80.97 496.01,-99.75 516.63,-128.68 490,-151.97 485.81,-155.64 481.08,-158.79 476.07,-161.51"/>
+<polygon fill="#000000" stroke="#000000" points="474.34,-158.46 466.84,-165.94 477.37,-164.77 474.34,-158.46"/>
+</g>
+<!-- sourcefile~tem_element_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~tem_element_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/tem_element_module.f90.html" xlink:title="tem_element_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1292,-901.97 1143,-901.97 1143,-877.97 1292,-877.97 1292,-901.97"/>
+<text text-anchor="middle" x="1217.5" y="-887.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_element_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_element_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_element_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1404.32,-746.2C1386.71,-771.64 1342.66,-830.67 1292,-863.97 1286.23,-867.77 1279.83,-871.09 1273.29,-873.96"/>
+<polygon fill="#000000" stroke="#000000" points="1271.62,-870.87 1263.66,-877.87 1274.25,-877.35 1271.62,-870.87"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~tem_geometry_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/tem_geometry_module.f90.html" xlink:title="tem_geometry_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="893,-422.97 736,-422.97 736,-398.97 893,-398.97 893,-422.97"/>
+<text text-anchor="middle" x="814.5" y="-408.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_geometry_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C983.54,-429.48 940.99,-419.12 903.63,-414.27"/>
+<polygon fill="#000000" stroke="#000000" points="903.58,-410.74 893.24,-413.05 902.76,-417.69 903.58,-410.74"/>
+</g>
+<!-- sourcefile~tem_halo_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~tem_halo_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/tem_halo_module.f90.html" xlink:title="tem_halo_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1281.5,-943.97 1153.5,-943.97 1153.5,-919.97 1281.5,-919.97 1281.5,-943.97"/>
+<text text-anchor="middle" x="1217.5" y="-929.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_halo_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_halo_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_halo_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1407.8,-745.99C1394.66,-777.99 1354.37,-865.91 1292,-910.97 1289.88,-912.5 1287.66,-913.92 1285.35,-915.24"/>
+<polygon fill="#000000" stroke="#000000" points="1283.52,-912.24 1276.12,-919.82 1286.63,-918.51 1283.52,-912.24"/>
+</g>
+<!-- sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~tem_param_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/tem_param_module.f90.html" xlink:title="tem_param_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="683,-481.97 543,-481.97 543,-457.97 683,-457.97 683,-481.97"/>
+<text text-anchor="middle" x="613" y="-467.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-450.97C771.07,-446.8 723.54,-450.98 685.53,-456.47"/>
+<polygon fill="#000000" stroke="#000000" points="684.94,-453.01 675.57,-457.96 685.98,-459.94 684.94,-453.01"/>
+</g>
+<!-- sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~tem_property_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/tem_property_module.f90.html" xlink:title="tem_property_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="489.5,-509.97 339.5,-509.97 339.5,-485.97 489.5,-485.97 489.5,-509.97"/>
+<text text-anchor="middle" x="414.5" y="-495.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_property_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C957.67,-412.86 950.82,-509.6 893,-549.97 859.97,-573.03 854.17,-585.69 815.5,-596.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-596.97C676.04,-637.08 508.93,-553.08 443.59,-515.21"/>
+<polygon fill="#000000" stroke="#000000" points="445.09,-512.03 434.7,-509.98 441.54,-518.06 445.09,-512.03"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~tem_stencil_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/tem_stencil_module.f90.html" xlink:title="tem_stencil_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1087.5,-707.97 948.5,-707.97 948.5,-683.97 1087.5,-683.97 1087.5,-707.97"/>
+<text text-anchor="middle" x="1018" y="-693.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1216.5,-714.97C1179.49,-699.41 1135.25,-694.08 1098.03,-692.89"/>
+<polygon fill="#000000" stroke="#000000" points="1097.8,-689.39 1087.73,-692.66 1097.64,-696.39 1097.8,-689.39"/>
+</g>
+<!-- sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~tem_topology_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/tem_topology_module.f90.html" xlink:title="tem_topology_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="490,-269.97 339,-269.97 339,-245.97 490,-245.97 490,-269.97"/>
+<text text-anchor="middle" x="414.5" y="-255.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_topology_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-75.97C758.84,-36.12 579.14,-134.12 526,-175.97 502.75,-194.28 513.24,-213.65 490,-231.97 485.31,-235.67 480.06,-238.86 474.58,-241.61"/>
+<polygon fill="#000000" stroke="#000000" points="472.87,-238.54 465.19,-245.83 475.74,-244.92 472.87,-238.54"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~treelmesh_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/treelmesh_module.f90.html" xlink:title="treelmesh_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="679,-363.97 547,-363.97 547,-339.97 679,-339.97 679,-363.97"/>
+<text text-anchor="middle" x="613" y="-349.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_construction_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-450.97C941.65,-402.57 904.63,-459.73 815.5,-450.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-450.97C778.21,-447.5 765.04,-452.34 736,-431.97 712.38,-415.41 723.17,-395.16 700,-377.97 694.82,-374.13 689.07,-370.85 683.07,-368.05"/>
+<polygon fill="#000000" stroke="#000000" points="684.06,-364.67 673.48,-364.04 681.35,-371.13 684.06,-364.67"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M561.58,-921.96C508.3,-909.47 429.98,-891.74 415.5,-891.97"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M554.39,-891.48C515.22,-891.27 462.23,-891.22 415.5,-891.97"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M147.61,-655.78C142.73,-653.34 138.12,-650.44 134,-646.97 81.76,-603.02 60.78,-520.11 53.45,-480.35"/>
+<polygon fill="#000000" stroke="#000000" points="56.87,-479.6 51.72,-470.34 49.97,-480.79 56.87,-479.6"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge42" class="edge">
+<title>sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M212.3,-74.26C188.51,-130.5 89.85,-363.77 59.15,-436.33"/>
+<polygon fill="#000000" stroke="#000000" points="55.81,-435.26 55.14,-445.83 62.26,-437.98 55.81,-435.26"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M796.87,-541.02C775.33,-556.24 736.23,-582.54 700,-599.97 622.4,-637.31 527.07,-667.95 468.83,-685.09"/>
+<polygon fill="#000000" stroke="#000000" points="467.72,-681.76 459.1,-687.92 469.68,-688.48 467.72,-681.76"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge46" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M740.9,-523.01C703.03,-519.66 655.96,-515.12 614,-509.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-509.97C573.15,-505.21 562.14,-506.01 526,-490.97 472.1,-468.55 472.9,-430.6 415.5,-419.97"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M774.54,-541.04C667,-572.12 359.13,-645.8 134,-547.97 101.75,-533.96 76.27,-500.79 62.16,-478.88"/>
+<polygon fill="#000000" stroke="#000000" points="65.07,-476.92 56.83,-470.26 59.12,-480.6 65.07,-476.92"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M754.79,-516.85C747.72,-513.33 741.19,-508.81 736,-502.97 684.11,-444.6 754.92,-386.5 700,-330.97 672.48,-303.14 645.58,-335.11 614,-311.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-311.97C580.42,-288.84 555.89,-318.25 526,-292.97 493.42,-265.42 520.9,-233.4 490,-203.97 486.25,-200.4 481.99,-197.32 477.44,-194.66"/>
+<polygon fill="#000000" stroke="#000000" points="478.91,-191.48 468.41,-190.04 475.72,-197.71 478.91,-191.48"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge47" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M772.65,-516.89C741.31,-507.62 697.9,-494.78 664.41,-484.88"/>
+<polygon fill="#000000" stroke="#000000" points="665.38,-481.52 654.8,-482.04 663.4,-488.23 665.38,-481.52"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge48" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-509.97C575.36,-505.97 534.71,-503.21 499.94,-501.36"/>
+<polygon fill="#000000" stroke="#000000" points="499.99,-497.85 489.82,-500.83 499.63,-504.84 499.99,-497.85"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge50" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-311.97C580.42,-288.84 563.81,-303.11 526,-292.97 504.38,-287.17 480.7,-279.81 460.81,-273.33"/>
+<polygon fill="#000000" stroke="#000000" points="461.69,-269.93 451.09,-270.14 459.5,-276.58 461.69,-269.93"/>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge51" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M755.96,-516.86C748.54,-513.34 741.59,-508.82 736,-502.97 696.01,-461.22 740.61,-419.12 700,-377.97 696.49,-374.41 692.51,-371.34 688.23,-368.68"/>
+<polygon fill="#000000" stroke="#000000" points="689.55,-365.42 679.08,-363.79 686.25,-371.59 689.55,-365.42"/>
+</g>
+<!-- sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node27" class="node">
+<title>sourcefile~tem_prophead_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node27"><a xlink:href="../sourcefile/tem_prophead_module.f90.html" xlink:title="tem_prophead_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="296.5,-538.97 140.5,-538.97 140.5,-514.97 296.5,-514.97 296.5,-538.97"/>
+<text text-anchor="middle" x="218.5" y="-524.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_prophead_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge49" class="edge">
+<title>sourcefile~tem_bc_prop_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-509.97C557.95,-504.07 544.3,-516.17 490,-518.97 428.84,-522.13 359.83,-524.15 306.83,-525.37"/>
+<polygon fill="#000000" stroke="#000000" points="306.7,-521.87 296.78,-525.59 306.86,-528.87 306.7,-521.87"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge53" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M359.51,-190.07C351.93,-193.58 344.77,-198.12 339,-203.97 303.47,-240 332.06,-270.55 303,-311.97 289.17,-331.68 267.79,-348.42 250.13,-360.11"/>
+<polygon fill="#000000" stroke="#000000" points="247.83,-357.43 241.29,-365.76 251.6,-363.33 247.83,-357.43"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge52" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M371.08,-190.06C360.31,-193.86 348.97,-198.51 339,-203.97 279.74,-236.44 278.44,-264.92 219.5,-297.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-297.97C177.87,-320.2 167.37,-326.13 134,-356.97 106.74,-382.17 80.19,-416.15 64.47,-437.56"/>
+<polygon fill="#000000" stroke="#000000" points="61.45,-435.75 58.42,-445.91 67.12,-439.86 61.45,-435.75"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge54" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M371.54,-165.88C360.66,-162.06 349.15,-157.39 339,-151.97 301.46,-131.92 263.01,-100.66 240.2,-80.76"/>
+<polygon fill="#000000" stroke="#000000" points="242.35,-77.98 232.54,-73.98 237.71,-83.23 242.35,-77.98"/>
+</g>
+<!-- sourcefile~tem_element_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge55" class="edge">
+<title>sourcefile~tem_element_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-887.97C977.65,-895.23 957.59,-878.98 929,-906.97 879.7,-955.23 940.14,-1007.6 893,-1057.97 868.36,-1084.3 851.55,-1082.82 815.5,-1081.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-1081.97C777.45,-1081.12 769.51,-1071.29 736,-1057.97 639.39,-1019.59 617.87,-1003.63 526,-954.97 476.04,-928.51 471.39,-900.47 415.5,-891.97"/>
+</g>
+<!-- sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge57" class="edge">
+<title>sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-887.97C927.04,-904.55 905.01,-911.1 815.5,-929.97"/>
+</g>
+<!-- sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge58" class="edge">
+<title>sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1142.77,-882.56C1105.39,-880.49 1059.47,-880.51 1019,-887.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1017,-887.97C928.91,-904.21 904.93,-886.93 815.5,-891.97"/>
+</g>
+<!-- sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge59" class="edge">
+<title>sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_stencil_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1204.15,-877.84C1170.89,-845.17 1079.29,-755.19 1038.74,-715.37"/>
+<polygon fill="#000000" stroke="#000000" points="1040.94,-712.61 1031.35,-708.1 1036.03,-717.61 1040.94,-712.61"/>
+</g>
+<!-- sourcefile~tem_arrayofarrays_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~tem_arrayofarrays_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/tem_arrayofarrays_module.f90.html" xlink:title="tem_arrayofarrays_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1107,-939.97 929,-939.97 929,-915.97 1107,-915.97 1107,-939.97"/>
+<text text-anchor="middle" x="1018" y="-925.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_arrayofarrays_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_arrayofarrays_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge56" class="edge">
+<title>sourcefile~tem_element_module.f90&#45;&gt;sourcefile~tem_arrayofarrays_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1154.01,-902C1134.1,-905.83 1111.91,-910.1 1091.36,-914.05"/>
+<polygon fill="#000000" stroke="#000000" points="1090.58,-910.64 1081.42,-915.96 1091.9,-917.51 1090.58,-910.64"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge63" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M735.89,-402.68C699,-398.96 654.26,-394.8 614,-391.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-391.97C524,-385.8 502.24,-436.03 415.5,-419.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-419.97C369.02,-411.74 319.15,-400.91 281.11,-392.31"/>
+<polygon fill="#000000" stroke="#000000" points="281.73,-388.86 271.2,-390.06 280.18,-395.68 281.73,-388.86"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge60" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M811.29,-398.82C803.6,-360 774.26,-237.96 700,-175.97 572.19,-69.29 483.42,-158.81 339,-75.97 319.64,-64.87 322.61,-51.62 303,-40.97 269.55,-22.81 253.71,-5.29 219.5,-21.97"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge67" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M754.76,-398.87C747.7,-395.35 741.17,-390.82 736,-384.97 683.09,-325.18 756.01,-265.87 700,-208.97 672.54,-181.08 649.86,-205.66 614,-189.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-189.97C529.23,-153.76 505.79,-141.01 415.5,-137.97"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge61" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-189.97C575.51,-174.01 531.52,-170.09 494.42,-170.56"/>
+<polygon fill="#000000" stroke="#000000" points="494.06,-167.07 484.15,-170.81 494.23,-174.07 494.06,-167.07"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge64" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M772.65,-423.05C741.31,-432.32 697.9,-445.16 664.41,-455.07"/>
+<polygon fill="#000000" stroke="#000000" points="663.4,-451.71 654.8,-457.91 665.38,-458.43 663.4,-451.71"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge65" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M735.72,-415.22C677.17,-419.86 595.42,-429.43 526,-448.97 498.2,-456.8 468.35,-470.37 446.69,-481.25"/>
+<polygon fill="#000000" stroke="#000000" points="444.96,-478.21 437.65,-485.88 448.15,-484.44 444.96,-478.21"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge68" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-189.97C576.14,-174.28 562.16,-193.98 526,-208.97 508.46,-216.24 507.08,-223.68 490,-231.97 482.12,-235.8 473.53,-239.34 465.08,-242.49"/>
+<polygon fill="#000000" stroke="#000000" points="463.86,-239.21 455.63,-245.88 466.23,-245.8 463.86,-239.21"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge69" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M772.65,-398.89C741.31,-389.62 697.9,-376.78 664.41,-366.88"/>
+<polygon fill="#000000" stroke="#000000" points="665.38,-363.52 654.8,-364.04 663.4,-370.23 665.38,-363.52"/>
+</g>
+<!-- sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~tem_float_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/tem_float_module.f90.html" xlink:title="tem_float_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="677.5,-283.97 548.5,-283.97 548.5,-259.97 677.5,-259.97 677.5,-283.97"/>
+<text text-anchor="middle" x="613" y="-269.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_float_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge62" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_float_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M757.72,-398.81C749.79,-395.3 742.22,-390.78 736,-384.97 705.41,-356.42 731.01,-326.07 700,-297.97 696.06,-294.4 691.63,-291.32 686.93,-288.66"/>
+<polygon fill="#000000" stroke="#000000" points="688.12,-285.34 677.6,-284.05 685.02,-291.61 688.12,-285.34"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node29" class="node">
+<title>sourcefile~tem_subtree_type_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node29"><a xlink:href="../sourcefile/tem_subtree_type_module.f90.html" xlink:title="tem_subTree_type_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="700,-241.97 526,-241.97 526,-217.97 700,-217.97 700,-241.97"/>
+<text text-anchor="middle" x="613" y="-227.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_type_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge66" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M755.86,-398.95C748.46,-395.42 741.54,-390.87 736,-384.97 693.75,-340.05 744.1,-294.07 700,-250.97 698.9,-249.9 697.76,-248.88 696.57,-247.9"/>
+<polygon fill="#000000" stroke="#000000" points="698.45,-244.95 688.23,-242.17 694.49,-250.72 698.45,-244.95"/>
+</g>
+<!-- sourcefile~tem_halo_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge71" class="edge">
+<title>sourcefile~tem_halo_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1153.29,-943.48C1138.18,-945.76 1122.06,-947.81 1107,-948.97 1028.12,-955.06 1007.84,-955.53 929,-948.97 878.03,-944.74 865.67,-920.02 815.5,-929.97"/>
+</g>
+<!-- sourcefile~tem_halo_module.f90&#45;&gt;sourcefile~tem_arrayofarrays_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge70" class="edge">
+<title>sourcefile~tem_halo_module.f90&#45;&gt;sourcefile~tem_arrayofarrays_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1153.47,-930.7C1142,-930.46 1129.79,-930.22 1117.59,-929.97"/>
+<polygon fill="#000000" stroke="#000000" points="1117.42,-926.47 1107.35,-929.76 1117.28,-933.46 1117.42,-926.47"/>
+</g>
+<!-- sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge72" class="edge">
+<title>sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M542.84,-468.71C464.4,-467.07 332.69,-463.73 219.5,-457.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-457.97C181.22,-455.76 140.45,-455.71 108.21,-456.23"/>
+<polygon fill="#000000" stroke="#000000" points="107.99,-452.74 98.06,-456.42 108.12,-459.74 107.99,-452.74"/>
+</g>
+<!-- sourcefile~tem_property_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge73" class="edge">
+<title>sourcefile~tem_property_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M373.09,-485.88C334.17,-475.14 273.42,-460.72 219.5,-457.97"/>
+</g>
+<!-- sourcefile~tem_property_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge74" class="edge">
+<title>sourcefile~tem_property_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.33,-509.06C328.6,-510.66 317.47,-512.33 306.52,-513.96"/>
+<polygon fill="#000000" stroke="#000000" points="305.9,-510.52 296.53,-515.46 306.94,-517.44 305.9,-510.52"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge76" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-699.97C570.62,-697.22 524.23,-697.09 486.91,-697.7"/>
+<polygon fill="#000000" stroke="#000000" points="486.58,-694.2 476.64,-697.89 486.71,-701.2 486.58,-694.2"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge82" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1012.57,-683.57C999.79,-649.65 959.47,-554.83 893,-507.97 864.01,-487.54 845.97,-507.12 815.5,-488.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-488.97C782.52,-470.52 768.93,-479.67 736,-464.97 678.3,-439.22 677.03,-396.4 614,-391.97"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge75" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-697.97C672.13,-712.57 653.73,-775.66 526,-837.97 476.87,-861.94 470.15,-891.09 415.5,-891.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-891.97C277.79,-893.54 222.47,-871.9 134,-768.97 59.48,-682.27 50.41,-535.74 49.78,-480.2"/>
+<polygon fill="#000000" stroke="#000000" points="53.28,-480.06 49.75,-470.07 46.28,-480.08 53.28,-480.06"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge77" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M948.27,-693.5C909.24,-692.89 859.52,-693.43 815.5,-697.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-697.97C725.3,-707.08 702.48,-705.85 614,-699.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M612,-699.97C521.27,-693.94 506.06,-651.23 415.5,-642.97"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge78" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_comm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1006.69,-708.2C982.03,-737.2 919.72,-808.99 893,-825.97 886.82,-829.9 879.99,-833.3 873.02,-836.22"/>
+<polygon fill="#000000" stroke="#000000" points="871.53,-833.05 863.47,-839.92 874.06,-839.57 871.53,-833.05"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge79" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1013.35,-708.02C1001.88,-743.84 963.09,-850.58 893,-905.97 864.71,-928.33 850.87,-922.96 815.5,-929.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-929.97C769.11,-938.78 718.08,-939.64 678.74,-938.37"/>
+<polygon fill="#000000" stroke="#000000" points="678.87,-934.87 668.74,-937.99 678.61,-941.87 678.87,-934.87"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge81" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M983.09,-708.14C928.28,-728.67 818.09,-773.65 736,-830.97 717.7,-843.75 719.23,-854.64 700,-865.97 693.03,-870.08 685.34,-873.59 677.53,-876.58"/>
+<polygon fill="#000000" stroke="#000000" points="676.23,-873.33 667.97,-879.97 678.56,-879.93 676.23,-873.33"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge84" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1012.33,-683.74C991.83,-630.1 910,-417.12 893,-389.97 825.03,-281.42 813.32,-235.67 700,-175.97 587.14,-116.51 543,-142.26 415.5,-137.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-137.97C356.35,-121.94 292.76,-95.24 254.46,-78.13"/>
+<polygon fill="#000000" stroke="#000000" points="255.84,-74.91 245.29,-74 252.97,-81.29 255.84,-74.91"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge80" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1014.71,-683.92C1006.34,-643.02 973.49,-508.13 893,-436.97 888.88,-433.33 884.23,-430.19 879.31,-427.5"/>
+<polygon fill="#000000" stroke="#000000" points="880.73,-424.3 870.21,-423.1 877.69,-430.6 880.73,-424.3"/>
+</g>
+<!-- sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge83" class="edge">
+<title>sourcefile~tem_stencil_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M813.5,-488.97C793.48,-477.05 739.81,-472.4 693.18,-470.68"/>
+<polygon fill="#000000" stroke="#000000" points="693.15,-467.18 683.04,-470.35 692.92,-474.18 693.15,-467.18"/>
+</g>
+<!-- sourcefile~tem_topology_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge85" class="edge">
+<title>sourcefile~tem_topology_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.83,-262.63C301.12,-267.57 255.79,-277.62 219.5,-297.97"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge87" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M597.08,-364.01C577.38,-380.82 543.17,-413.28 526,-448.97 485.33,-533.52 543.7,-580.04 490,-656.97 482.24,-668.1 470.6,-676.74 458.82,-683.26"/>
+<polygon fill="#000000" stroke="#000000" points="457.16,-680.18 449.84,-687.85 460.34,-686.42 457.16,-680.18"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge89" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-297.97C348.3,-280.46 275.85,-330.21 240.8,-359.03"/>
+<polygon fill="#000000" stroke="#000000" points="238.1,-356.72 232.72,-365.85 242.62,-362.07 238.1,-356.72"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge86" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-297.97C371.87,-286.79 257.1,-276.88 219.5,-297.97"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge92" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.14,-339.92C547.49,-333.03 517.12,-324.32 490,-316.97 457.02,-308.04 448.5,-306.84 415.5,-297.97"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M413.5,-297.97C380.5,-289.11 366.02,-299.88 339,-278.97 272.38,-227.42 237.75,-127.74 225.16,-83.74"/>
+<polygon fill="#000000" stroke="#000000" points="228.52,-82.76 222.49,-74.06 221.77,-84.63 228.52,-82.76"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge90" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M595.58,-364.17C561.04,-389.84 480.67,-449.55 440.01,-479.76"/>
+<polygon fill="#000000" stroke="#000000" points="437.67,-477.14 431.73,-485.91 441.84,-482.76 437.67,-477.14"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge93" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M555.35,-339.88C545.12,-336.32 534.88,-331.77 526,-325.97 505.41,-312.54 510.31,-297.83 490,-283.97 484.37,-280.13 478.12,-276.8 471.7,-273.93"/>
+<polygon fill="#000000" stroke="#000000" points="472.81,-270.6 462.23,-270.04 470.15,-277.08 472.81,-270.6"/>
+</g>
+<!-- sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~tem_global_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/tem_global_module.f90.html" xlink:title="tem_global_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="483.5,-391.97 345.5,-391.97 345.5,-367.97 483.5,-367.97 483.5,-391.97"/>
+<text text-anchor="middle" x="414.5" y="-377.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_global_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge88" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_global_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M546.84,-361.26C529.84,-363.68 511.35,-366.31 493.75,-368.82"/>
+<polygon fill="#000000" stroke="#000000" points="492.92,-365.41 483.51,-370.28 493.91,-372.34 492.92,-365.41"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node28" class="node">
+<title>sourcefile~tem_sparta_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_node28"><a xlink:href="../sourcefile/tem_sparta_module.f90.html" xlink:title="tem_sparta_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="484,-349.97 345,-349.97 345,-325.97 484,-325.97 484,-349.97"/>
+<text text-anchor="middle" x="414.5" y="-335.57" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_sparta_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_sparta_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~EfferentGraph_edge91" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_sparta_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M546.84,-347.33C530.03,-346.13 511.76,-344.83 494.33,-343.59"/>
+<polygon fill="#000000" stroke="#000000" points="494.41,-340.09 484.19,-342.87 493.92,-347.07 494.41,-340.09"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_computefacerules_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_computefacerules_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_computefacerules_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_computefacerules_modulef90AfferentGraph" width="377pt" height="32pt"
+ viewBox="0.00 0.00 377.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_computefacerules_module.f90~~AfferentGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>sourcefile~~tem_computefacerules_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 373,-28 373,4 -4,4"/>
+<!-- sourcefile~tem_computefacerules_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~tem_computefacerules_module.f90</title>
+<polygon fill="none" stroke="black" points="205,-24 0,-24 0,0 205,0 205,-24"/>
+<text text-anchor="middle" x="102.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_computeFaceRules_module.f90</text>
+</g>
+<!-- sourcefile~tem_face_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~tem_face_module.f90</title>
+<g id="a_sourcefile~~tem_computefacerules_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/tem_face_module.f90.html" xlink:title="tem_face_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="369,-24 241,-24 241,0 369,0 369,-24"/>
+<text text-anchor="middle" x="305" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_face_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_computefacerules_module.f90 -->
+<g id="sourcefile~~tem_computefacerules_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_computefacerules_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M240.84,-12C232.67,-12 224.12,-12 215.45,-12"/>
+<polygon fill="#000000" stroke="#000000" points="215.24,-8.5 205.24,-12 215.24,-15.5 215.24,-8.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2014 Jens Zudrop &lt;j.zudrop@grs-sim.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2016 Tobias Schneider &lt;tobias1.schneider@student.uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2019 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">!</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">!</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">!</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">!</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">!&gt; author: Jens Zudrop</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">!! Module with routines to decide whether a faces is a compute face or not.</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="k">module </span><span class="n">tem_compteFaceRules_module</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="w">  </span><span class="c">! include treelm modules</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_faceData_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_face_descriptor_type</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">tem_notExist_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fluidFace_prp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_bndFace_prp</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="k">  private</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_isComputeFace</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="k">contains</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">  </span><span class="c">!&gt; summary: Function to decide if a certain face is computed on the given rank</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="c">!! and level or not.</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">  </span><span class="k">function </span><span class="n">tem_isComputeFace</span><span class="p">(</span><span class="n">facePos</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">,</span><span class="w"> </span><span class="n">nEligibleChildren</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">isCompute</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">    </span><span class="c">!&gt; The position of the face you want to check.</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">facePos</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">    </span><span class="c">!&gt; The description of the faces.</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_face_descriptor_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">faces</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="c">!&gt; Logical determine if given face is compute face or not.</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">isCompute</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">    </span><span class="c">!&gt; The number of eligible children for the vertical face dependency</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nEligibleChildren</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">,</span><span class="w"> </span><span class="n">rightPrp</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">    </span><span class="c">! In general we apply the following rule to determine which rank is</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">    </span><span class="c">! computing a certain face:</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">    </span><span class="c">! The owner (i.e. the rank) of the left element of a face computes the face.</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">    </span><span class="c">! There are some exceptions for this rule, namely:</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">    </span><span class="c">! If the left/right element is from finer, the finer level will compute</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">    </span><span class="c">! the face.</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="c">! Furthermore, if the from finer is from remote, the remote process has to</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="c">! compute this face.</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="n">leftPrp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">faceList</span><span class="p">%</span><span class="n">leftPrp</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">facePos</span><span class="p">)</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="n">rightPrp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">faceList</span><span class="p">%</span><span class="n">rightPrp</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">facePos</span><span class="p">)</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">! So, start making our decision by considering all the cases explicitly.</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">! Fluid-fluid face (purely local)</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="c">! Fluid-ghostFromFiner face (purley local, no remote property set)</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">nEligibleChildren</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="k">        </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="c">! GhostFromFiner-fluid face (purley local, no remote property set)</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">nEligibleChildren</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="k">        </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="c">! GhostFromFiner-GhostFromFiner face (purley local, no remote property set)</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">    </span><span class="c">! --&gt; two ghost cells meet each other somehow. However, we do not have to</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="c">!     compute these faces.</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="c">! Fluid-ghostFromCoarser (purely local, no remote property set)</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="c">! GhostFromCoarser-fluid face (purely local, no remote property set)</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="c">! GhostFromCoarser-ghostFromCoarser face (purely local, no remote property</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">    </span><span class="c">! set)</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">    </span><span class="c">! --&gt; Two ghost from coarser elements meet each other somehow. However, we</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">    </span><span class="c">!     do not compute them.</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">    </span><span class="c">! Fluid-remote face (the halo is not refined)</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">    </span><span class="c">! Remote-fluid face (the halo is not refined)</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                </span><span class="p">&amp;</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">    </span><span class="c">! Remote-notExisting face (the remote is not refined)</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                </span><span class="p">&amp;</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="c">! notExisting-remote face (the remote is not refined)</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                  </span><span class="p">&amp;</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">    </span><span class="c">! notExisting-GhostFromFiner face (purely local, no remote property set)</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                  </span><span class="p">&amp;</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="c">! GhostFromFiner-notExisting face (purely local, no remote property set)</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">    </span><span class="c">! Remote-remote face (sometimes, these faces can meet each other)</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                </span><span class="p">&amp;</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">    </span><span class="c">! GhostFromCoarser-remote face (is computed on the remote rank, as</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">    </span><span class="c">! my rank is living on the coarser level)</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="c">! Remote-GhostFromCoarser face (is computed on the remote rank, as</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">    </span><span class="c">! my rank is living on the coarser level)</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                </span><span class="p">&amp;</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">    </span><span class="c">! fluid-remote+fromCoaser face (the remote elements are actually coming</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">    </span><span class="c">! from a higher level, so everything will be computed on my rank).</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="w">    </span><span class="c">! remote+fromCoarser-fluid face (the remote elements are actually coming</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="w">    </span><span class="c">! from a higher level, so everything will be computed on my rank).</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-160" name="ln-160" href="#ln-160"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">    </span><span class="c">! notExist-remote+fromCoaser face (nothing has to be done for this face,</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a><span class="w">    </span><span class="c">! since no element of this face is located on my rank)</span>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                  </span><span class="p">&amp;</span>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-167" name="ln-167" href="#ln-167"></a><span class="w">    </span><span class="c">! remote+fromCoarser-remote face (nothing has to be done for this face,</span>
+<a id="ln-168" name="ln-168" href="#ln-168"></a><span class="w">    </span><span class="c">! since no element of this face is located on my rank)</span>
+<a id="ln-169" name="ln-169" href="#ln-169"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="c">! remote+fromCoarser-remote+fromCoaser face (nothing has to be done for</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a><span class="w">    </span><span class="c">! this face, since no element of this face is located on my rank)</span>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromCoarserFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-177" name="ln-177" href="#ln-177"></a><span class="w">    </span><span class="c">! fromFiner - notExist face</span>
+<a id="ln-178" name="ln-178" href="#ln-178"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-179" name="ln-179" href="#ln-179"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">    </span><span class="c">! notExist - fromFiner face</span>
+<a id="ln-182" name="ln-182" href="#ln-182"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                  </span><span class="p">&amp;</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a><span class="w">    </span><span class="c">! fromCoarser - notExist face</span>
+<a id="ln-186" name="ln-186" href="#ln-186"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-187" name="ln-187" href="#ln-187"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-188" name="ln-188" href="#ln-188"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="w">    </span><span class="c">! notExist - fromCoarser face</span>
+<a id="ln-190" name="ln-190" href="#ln-190"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                  </span><span class="p">&amp;</span>
+<a id="ln-191" name="ln-191" href="#ln-191"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-192" name="ln-192" href="#ln-192"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-193" name="ln-193" href="#ln-193"></a>
+<a id="ln-194" name="ln-194" href="#ln-194"></a><span class="w">    </span><span class="c">! fluid-remote+fromFiner face (nothing is computed here, it will we be</span>
+<a id="ln-195" name="ln-195" href="#ln-195"></a><span class="w">    </span><span class="c">! computed on the finer level remotely)</span>
+<a id="ln-196" name="ln-196" href="#ln-196"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-197" name="ln-197" href="#ln-197"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-198" name="ln-198" href="#ln-198"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-199" name="ln-199" href="#ln-199"></a><span class="w">    </span><span class="c">! remote+fromFiner-fluid face (nothing is computed here, it will we be</span>
+<a id="ln-200" name="ln-200" href="#ln-200"></a><span class="w">    </span><span class="c">! computed on the finer level remotely)</span>
+<a id="ln-201" name="ln-201" href="#ln-201"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-202" name="ln-202" href="#ln-202"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-203" name="ln-203" href="#ln-203"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-204" name="ln-204" href="#ln-204"></a><span class="w">    </span><span class="c">! remote+fromFiner-remote face (everything is remote, so nothing to compute</span>
+<a id="ln-205" name="ln-205" href="#ln-205"></a><span class="w">    </span><span class="c">! here)</span>
+<a id="ln-206" name="ln-206" href="#ln-206"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-207" name="ln-207" href="#ln-207"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-208" name="ln-208" href="#ln-208"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-209" name="ln-209" href="#ln-209"></a><span class="w">    </span><span class="c">! remote-remote+fromFiner face (everything is remote, so nothing to compute</span>
+<a id="ln-210" name="ln-210" href="#ln-210"></a><span class="w">    </span><span class="c">! here)</span>
+<a id="ln-211" name="ln-211" href="#ln-211"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="w"> </span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                               </span><span class="p">&amp;</span>
+<a id="ln-212" name="ln-212" href="#ln-212"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromFinerFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-213" name="ln-213" href="#ln-213"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-214" name="ln-214" href="#ln-214"></a><span class="w">    </span><span class="c">! notExist-remote+fromFiner face (nothing is on my rank)</span>
+<a id="ln-215" name="ln-215" href="#ln-215"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="w"> </span><span class="n">tem_notExist_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                 </span><span class="p">&amp;</span>
+<a id="ln-216" name="ln-216" href="#ln-216"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromFinerFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-218" name="ln-218" href="#ln-218"></a><span class="w">    </span><span class="c">! remote+fromFiner-notExist face (nothing is on my rank)</span>
+<a id="ln-219" name="ln-219" href="#ln-219"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_remoteFace_prp</span><span class="p">,</span><span class="w"> </span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">    </span><span class="p">&amp;</span>
+<a id="ln-220" name="ln-220" href="#ln-220"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_notExist_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-221" name="ln-221" href="#ln-221"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-222" name="ln-222" href="#ln-222"></a><span class="w">    </span><span class="c">! fromFiner-fromCoarser face (everything is local, this is an intermediate</span>
+<a id="ln-223" name="ln-223" href="#ln-223"></a><span class="w">    </span><span class="c">! face level (i.e. leveljumps of difference larger than 1 occure here) )</span>
+<a id="ln-224" name="ln-224" href="#ln-224"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-225" name="ln-225" href="#ln-225"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-226" name="ln-226" href="#ln-226"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-227" name="ln-227" href="#ln-227"></a>
+<a id="ln-228" name="ln-228" href="#ln-228"></a><span class="w">    </span><span class="c">! fromCoarser-fromFiner face (everything is local, this is an intermediate</span>
+<a id="ln-229" name="ln-229" href="#ln-229"></a><span class="w">    </span><span class="c">! face level (i.e. leveljumps of difference larger than 1 occure here) )</span>
+<a id="ln-230" name="ln-230" href="#ln-230"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-231" name="ln-231" href="#ln-231"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-232" name="ln-232" href="#ln-232"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-233" name="ln-233" href="#ln-233"></a>
+<a id="ln-234" name="ln-234" href="#ln-234"></a><span class="w">    </span><span class="c">! fromFiner+remote - fromCoarser face (we do not have to recv info here, but</span>
+<a id="ln-235" name="ln-235" href="#ln-235"></a><span class="w">    </span><span class="c">! we send it)</span>
+<a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-238" name="ln-238" href="#ln-238"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-239" name="ln-239" href="#ln-239"></a>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">    </span><span class="c">! fromCoarser - remote+fromFiner face (we do not recv info here, but we send</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">    </span><span class="c">! it)</span>
+<a id="ln-242" name="ln-242" href="#ln-242"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-243" name="ln-243" href="#ln-243"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-245" name="ln-245" href="#ln-245"></a>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="w">    </span><span class="c">! remote+fromFiner - remote+fromFiner face (everything is remote, nothing to</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">    </span><span class="c">! be done)</span>
+<a id="ln-248" name="ln-248" href="#ln-248"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-251" name="ln-251" href="#ln-251"></a>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">    </span><span class="c">! remote+fromFiner - fromFiner face (everything is from finer, nothing to be</span>
+<a id="ln-253" name="ln-253" href="#ln-253"></a><span class="w">    </span><span class="c">! done)</span>
+<a id="ln-254" name="ln-254" href="#ln-254"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-255" name="ln-255" href="#ln-255"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-256" name="ln-256" href="#ln-256"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-257" name="ln-257" href="#ln-257"></a>
+<a id="ln-258" name="ln-258" href="#ln-258"></a><span class="w">    </span><span class="c">! fromFiner - remote+fromFiner face (everything is from finer, nothing to be</span>
+<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="w">    </span><span class="c">! done)</span>
+<a id="ln-260" name="ln-260" href="#ln-260"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-263" name="ln-263" href="#ln-263"></a>
+<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="w">    </span><span class="c">! fromFiner - remote face (nothing to be done)</span>
+<a id="ln-265" name="ln-265" href="#ln-265"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-266" name="ln-266" href="#ln-266"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-267" name="ln-267" href="#ln-267"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-268" name="ln-268" href="#ln-268"></a>
+<a id="ln-269" name="ln-269" href="#ln-269"></a><span class="w">    </span><span class="c">! remote - fromFiner face (nothing to be done)</span>
+<a id="ln-270" name="ln-270" href="#ln-270"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                </span><span class="p">&amp;</span>
+<a id="ln-271" name="ln-271" href="#ln-271"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-272" name="ln-272" href="#ln-272"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-273" name="ln-273" href="#ln-273"></a>
+<a id="ln-274" name="ln-274" href="#ln-274"></a><span class="w">    </span><span class="c">! remote+fromCoarser - fromCoarser face (elements are on coarser</span>
+<a id="ln-275" name="ln-275" href="#ln-275"></a><span class="w">    </span><span class="c">! level, here and remote so nothing to be done)</span>
+<a id="ln-276" name="ln-276" href="#ln-276"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-277" name="ln-277" href="#ln-277"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-278" name="ln-278" href="#ln-278"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-279" name="ln-279" href="#ln-279"></a>
+<a id="ln-280" name="ln-280" href="#ln-280"></a><span class="w">    </span><span class="c">! fromCoarser - remote+fromCoarser face (elements are on coarser</span>
+<a id="ln-281" name="ln-281" href="#ln-281"></a><span class="w">    </span><span class="c">! level, here and remote so nothing to be done)</span>
+<a id="ln-282" name="ln-282" href="#ln-282"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-283" name="ln-283" href="#ln-283"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-284" name="ln-284" href="#ln-284"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-285" name="ln-285" href="#ln-285"></a>
+<a id="ln-286" name="ln-286" href="#ln-286"></a><span class="w">    </span><span class="c">! fluid - boundary face</span>
+<a id="ln-287" name="ln-287" href="#ln-287"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-288" name="ln-288" href="#ln-288"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-289" name="ln-289" href="#ln-289"></a>
+<a id="ln-290" name="ln-290" href="#ln-290"></a><span class="w">    </span><span class="c">! boundary - fluid face</span>
+<a id="ln-291" name="ln-291" href="#ln-291"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fluidFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-292" name="ln-292" href="#ln-292"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<a id="ln-293" name="ln-293" href="#ln-293"></a>
+<a id="ln-294" name="ln-294" href="#ln-294"></a><span class="w">    </span><span class="c">! remote - boundary face (nothing to be done)</span>
+<a id="ln-295" name="ln-295" href="#ln-295"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-296" name="ln-296" href="#ln-296"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-297" name="ln-297" href="#ln-297"></a>
+<a id="ln-298" name="ln-298" href="#ln-298"></a><span class="w">    </span><span class="c">! boundary - remote face (nothing to be done)</span>
+<a id="ln-299" name="ln-299" href="#ln-299"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-300" name="ln-300" href="#ln-300"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-301" name="ln-301" href="#ln-301"></a>
+<a id="ln-302" name="ln-302" href="#ln-302"></a><span class="w">    </span><span class="c">! fromFiner - boundary face (nothing to be done)</span>
+<a id="ln-303" name="ln-303" href="#ln-303"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                             </span><span class="p">&amp;</span>
+<a id="ln-304" name="ln-304" href="#ln-304"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-305" name="ln-305" href="#ln-305"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-306" name="ln-306" href="#ln-306"></a>
+<a id="ln-307" name="ln-307" href="#ln-307"></a><span class="w">    </span><span class="c">! boundary - fromFiner face (nothing to be done)</span>
+<a id="ln-308" name="ln-308" href="#ln-308"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                   </span><span class="p">&amp;</span>
+<a id="ln-309" name="ln-309" href="#ln-309"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromFinerFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-310" name="ln-310" href="#ln-310"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-311" name="ln-311" href="#ln-311"></a>
+<a id="ln-312" name="ln-312" href="#ln-312"></a><span class="w">    </span><span class="c">! fromFiner+remote - boundary face (nothing to be done)</span>
+<a id="ln-313" name="ln-313" href="#ln-313"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-314" name="ln-314" href="#ln-314"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-315" name="ln-315" href="#ln-315"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-316" name="ln-316" href="#ln-316"></a>
+<a id="ln-317" name="ln-317" href="#ln-317"></a><span class="w">    </span><span class="c">! boundary - fromFiner+remote face (nothing to be done)</span>
+<a id="ln-318" name="ln-318" href="#ln-318"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                   </span><span class="p">&amp;</span>
+<a id="ln-319" name="ln-319" href="#ln-319"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="nb">ior</span><span class="p">(</span><span class="n">tem_fromFinerFace_prp</span><span class="p">,</span><span class="n">tem_remoteFace_prp</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-320" name="ln-320" href="#ln-320"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-321" name="ln-321" href="#ln-321"></a>
+<a id="ln-322" name="ln-322" href="#ln-322"></a><span class="w">    </span><span class="c">! fromCoarser - boundary face (nothing to be done)</span>
+<a id="ln-323" name="ln-323" href="#ln-323"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                           </span><span class="p">&amp;</span>
+<a id="ln-324" name="ln-324" href="#ln-324"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-325" name="ln-325" href="#ln-325"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-326" name="ln-326" href="#ln-326"></a>
+<a id="ln-327" name="ln-327" href="#ln-327"></a><span class="w">    </span><span class="c">! boundary - fromCoarser face (nothing to be done)</span>
+<a id="ln-328" name="ln-328" href="#ln-328"></a><span class="w">    </span><span class="k">elseif</span><span class="p">(</span><span class="w"> </span><span class="n">leftPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_bndFace_prp</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w">                                   </span><span class="p">&amp;</span>
+<a id="ln-329" name="ln-329" href="#ln-329"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">     </span><span class="n">rightPrp</span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="n">tem_fromCoarserFace_prp</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-330" name="ln-330" href="#ln-330"></a><span class="k">      </span><span class="n">isCompute</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<a id="ln-331" name="ln-331" href="#ln-331"></a>
+<a id="ln-332" name="ln-332" href="#ln-332"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-333" name="ln-333" href="#ln-333"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ERROR in tem_isComputeFace: not able to decide whether &#39;</span><span class="o">//</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-334" name="ln-334" href="#ln-334"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">        </span><span class="s1">&#39;face is computed locally or not, stopping&#39;</span>
+<a id="ln-335" name="ln-335" href="#ln-335"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;left elem pos: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">faceList</span><span class="p">%</span><span class="n">leftElemPos</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">facePos</span><span class="p">)</span>
+<a id="ln-336" name="ln-336" href="#ln-336"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;right elem pos: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">faces</span><span class="p">%</span><span class="n">faceList</span><span class="p">%</span><span class="n">rightElemPos</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">facePos</span><span class="p">)</span>
+<a id="ln-337" name="ln-337" href="#ln-337"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;left face prp: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">leftPrp</span>
+<a id="ln-338" name="ln-338" href="#ln-338"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;right face prp: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">rightPrp</span>
+<a id="ln-339" name="ln-339" href="#ln-339"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-340" name="ln-340" href="#ln-340"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-341" name="ln-341" href="#ln-341"></a>
+<a id="ln-342" name="ln-342" href="#ln-342"></a><span class="k">  end function </span><span class="n">tem_isComputeFace</span>
+<a id="ln-343" name="ln-343" href="#ln-343"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-344" name="ln-344" href="#ln-344"></a>
+<a id="ln-345" name="ln-345" href="#ln-345"></a><span class="k">end module </span><span class="n">tem_compteFaceRules_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

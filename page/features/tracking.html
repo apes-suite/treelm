@@ -1,0 +1,605 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Tracking Module Description &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Tracking Module Description</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>TreElm Overview</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Feature Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Tracking Module Description</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="../bibliography.html">Bibliography</a>
+              <a class="nav-link" href="../codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="../face_details.html">Face Details</a>
+              <a class="nav-link" href="index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link active disabled" href="tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="../implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="../motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="../octree.html">Distributed Octree</a>
+              <a class="nav-link" href="../requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>update</p>
+</div>
+<h1 id="tracking">Tracking</h1>
+<p>During the runtime of simulations, the user needs to keep track of the 
+simultation state without being obliged to write out the complete domain 
+to disk.
+This is achieved by tracking objects, at which the state is evaluated 
+at certain defined intervals and then written to disk.</p>
+<h2 id="tracking-format">Tracking format</h2>
+<p>We support three formats for tracking.</p>
+<ul>
+<li>"ascii" </li>
+</ul>
+<p>Transient data: simple gnuplot-style 
+A simple ascii file which creates a small header and then writes at each 
+defined time step a column wise representation of all variables and points. 
+This is not efficient and should only be used for simple point-tracking 
+objects.
+Each process writes its own file.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;./tracking/&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>"asciiSpatial" </li>
+</ul>
+<p>Spatial Data: This format stores solution data along with coordinates in 
+single data file for every timestep. Therefore, there would be multiple 
+files depending on the total number of time-steps. 
+It is ideal for tracking <em>line</em> and <em>plane</em>.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;asciiSpatial&#39;</span><span class="p">,</span>
+<span class="p">},</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;./tracking/&#39;</span>
+</code></pre></div>
+
+<ul>
+<li>"Harvester Format"</li>
+</ul>
+<p>Writes all participating elements to a treelm mesh and creates for each 
+required time step a restart file. The output is done in <code>vtk</code> and <code>pvd</code> files
+that can be visualised with <code>Paraview</code>.</p>
+<p>This is a scalable tracking object which works regardless of number of 
+processes.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;vtk&#39;</span><span class="p">,</span> 
+<span class="p">},</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;./output/&#39;</span>
+</code></pre></div>
+
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>We strongly encourage you to use the Harvester format. 
+We will demonstrate each format in the examples of tracking point, 
+line and plane in the following sections.</p>
+</div>
+<h2 id="tracking-variable-types">Tracking variable types</h2>
+<ul>
+<li>"variables" </li>
+</ul>
+<p>All variables defined in the <a href="../../module/tem_varsys_module.html">tem_varSys_module</a> can be tracked.
+  See <a href="../../module/tem_variable_module.html">tem_variable_module</a> for how to define variables.
+  @note Note
+       Examples are given <a href="variables/index.html">here</a>.</p>
+<ul>
+<li>
+<p>derived variables: all variables defined in the global variable system 
+  can be tracked</p>
+</li>
+<li>
+<p>spacetime: as analytical result, can be defined in lua file</p>
+</li>
+<li>
+<p><a href="../../module/tem_reduction_spatial_module.html">tem_reduction_spatial_module</a> reductions, e.g. difference, sum or
+  average of defined variables</p>
+</li>
+</ul>
+<h2 id="tracking-shapes">Tracking shapes</h2>
+<p>We show the tracking with simple shapes here. 
+Get an overview over all existing shapes in <a href="../../module/tem_shape_module.html">tem_shape_module</a> and examples
+are given <a href="canonicalShapes.html">here</a></p>
+<ul>
+<li>zero-dimensional: point </li>
+<li>one-dimensional: line </li>
+<li>two-dimensional: plane</li>
+<li>three-dimensional: cubes</li>
+</ul>
+<p>So far point, line, plane are implemented in <a href="../../module/tem_shape_module.html">tem_shape_module</a>.</p>
+<h2 id="usage">Usage</h2>
+<p>The user specifies the desired parameters in the configuration file 
+(in the scheme table) as</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">-- if you want to have a analytical solution as reference, you can add </span>
+<span class="c1">--  a spacetime variable first</span>
+<span class="c1">-- define single new (spacetime) variable</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="p">{</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;spacetime&#39;</span><span class="p">,</span> 
+    <span class="n">ncomponents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun1</span> 
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;spacetime2&#39;</span><span class="p">,</span> 
+    <span class="n">ncomponents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun2</span> 
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;dens_diff&#39;</span><span class="p">,</span> 
+    <span class="n">ncomponents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;operation&#39;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;difference&#39;</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;density&#39;</span><span class="p">,</span><span class="s1">&#39;spacetime&#39;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span> 
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;wss_diff&#39;</span><span class="p">,</span> 
+    <span class="n">ncomponents</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> 
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;operation&#39;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;difference&#39;</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;wss&#39;</span><span class="p">,</span><span class="s1">&#39;spacetime2&#39;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">-- Tracking</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span> 
+    <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;probe_error&#39;</span><span class="p">,</span>
+    <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;velocity&#39;</span><span class="p">,</span><span class="s1">&#39;dens_diff&#39;</span><span class="p">,</span><span class="s1">&#39;wss_diff&#39;</span>
+    <span class="p">},</span>
+    <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;./tracking/&#39;</span><span class="p">,</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span>
+    <span class="p">},</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> 
+      <span class="n">min</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> 
+      <span class="n">max</span> <span class="o">=</span> <span class="mi">4000</span> 
+    <span class="p">},</span>
+    <span class="n">reduction</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;l2norm&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;l2norm&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;l2norm&#39;</span>
+    <span class="p">},</span>  
+    <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> 
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+      <span class="n">object</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="n">origin</span> <span class="o">=</span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span>
+        <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span> 
+        <span class="n">segments</span><span class="o">=</span><span class="p">{</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div>
+
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>More examples for how to use the variable System can be found <a href="variables/index.html">here</a>.</p>
+</div>
+<h3 id="reduction">Reduction</h3>
+<p>The <a href="../../module/tem_reduction_spatial_module.html">tem_reduction_spatial_module</a> takes a set of input quantities and reduces them 
+according to the chosen operation.
+You can choose between the following operations:
+- average: Average of all occurring values
+- sum: Sum of all occurring values
+- max: Maximum of all occurring values
+- min: Minimum of all occurring values
+- l2norm: L2 norm of all values, i.e. L_2(x) = sqrt( sum( x_i^2 ))
+- linfnorm: L_inf norm of all values, i.e. L_inf(x) = max( | x_i | )</p>
+<div class="codehilite"><pre><span></span><code><span class="n">reduction</span> <span class="o">=</span> <span class="p">{</span>
+              <span class="s1">&#39;norm&#39;</span> <span class="c1">-- &#39;average&#39; or &#39;sum&#39;</span>
+            <span class="p">}</span>
+</code></pre></div>
+
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>The table of reductions has to correspond to the number of entries in the
+tracking variable table. For each variable, specify a reduction as</p>
+</div>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;pressure&#39;</span><span class="p">,</span> <span class="s1">&#39;velMag&#39;</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">},</span>
+  <span class="n">reduction</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;average&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">l2norm</span><span class="s1">&#39; }</span>
+<span class="s1">}</span>
+</code></pre></div>
+
+<h3 id="using-different-shapes">Using different shapes</h3>
+<p>Here, a point at the location {0.,0.,0.} is defined as a pressure probe. 
+The interval is set to 1, meaning at each time step, the pressure has to 
+be written.
+The probing starts at simulation time 1000 and lasts until 4000.
+The tracking write both pressure and velocityX in a single file.
+Use ref_value to normalize the output.</p>
+<div class="codehilite"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="nx">Name</span><span class="p">:</span><span class="w">       </span><span class="nx">GaussPulse_TestSimulation</span><span class="w">     </span><span class="nx">Date</span><span class="w"> </span><span class="mi">2011</span><span class="o">-</span><span class="mi">060</span><span class="o">-</span><span class="mi">27</span><span class="w">  </span><span class="nx">Time</span><span class="w"> </span><span class="mi">11</span><span class="p">:</span><span class="mi">43</span><span class="w"> </span><span class="nx">CEST</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">Probe</span><span class="w"> </span><span class="k">type</span><span class="p">:</span><span class="w"> </span><span class="nx">Point</span><span class="w"> </span><span class="nx">at</span><span class="w"> </span><span class="p">{</span><span class="m m-Double">0.0</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="w"> </span><span class="m m-Double">0.0</span><span class="p">}</span><span class="w"> </span>
+<span class="err">#</span><span class="w"> </span><span class="nx">Quantities</span><span class="p">:</span><span class="w"> </span><span class="nx">pressure</span><span class="p">,</span><span class="w"> </span><span class="nx">velocityX</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">tMin</span><span class="p">:</span><span class="w">       </span><span class="mi">1000</span><span class="p">,</span><span class="w">     </span><span class="nx">tMax</span><span class="p">:</span><span class="w">    </span><span class="mi">4000</span><span class="p">,</span><span class="w">     </span><span class="nx">Interval</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="err">#</span><span class="w"> </span><span class="nx">ref_value</span><span class="p">:</span><span class="w"> </span><span class="m m-Double">1.0</span><span class="p">,</span><span class="w"> </span><span class="m m-Double">0.01</span>
+<span class="err">#</span><span class="w">   </span><span class="nx">iTime</span><span class="w">     </span><span class="nx">rTime</span><span class="w">      </span><span class="nx">Pressure</span><span class="w">           </span><span class="nx">velocityX</span>
+<span class="mi">1000</span><span class="w">          </span><span class="m m-Double">1000.0</span><span class="w">     </span><span class="m m-Double">1.0241818</span><span class="w">          </span><span class="m m-Double">0.00158287</span>
+<span class="mi">1001</span><span class="w">          </span><span class="m m-Double">1001.0</span><span class="w">     </span><span class="m m-Double">1.0251427</span><span class="w">          </span><span class="m m-Double">0.00152617</span>
+<span class="o">...</span><span class="w">                                      </span>
+<span class="mi">4000</span><span class="w">          </span><span class="m m-Double">4000.0</span><span class="w">     </span><span class="m m-Double">1.7162511</span><span class="w">          </span><span class="m m-Double">0.01273673</span>
+</code></pre></div>
+
+<p>The shape is defined as a canonical object. 
+The different shapes are basically derivatives of a simple cube. 
+A cube with no length in any direction is a point, a cube with length along 
+only one axis is a line whereas a cube with length along two axes is simply 
+treated as plane by the underlying code. 
+One example each for Point, Line and Plane is shown below.</p>
+<h4 id="point-tracking">Point Tracking</h4>
+<p><em>Example: tracking a point in ASCII format</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Velocity&#39;</span><span class="p">,</span> 
+<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;velocity&#39;</span><span class="p">},</span>   <span class="c1">-- options: density, velocity</span>
+
+<span class="c1">--   Tracking over a point</span>
+<span class="n">shape</span><span class="o">=</span><span class="p">{</span><span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span> <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">}</span> <span class="p">},</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="p">{</span><span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span><span class="p">},</span>     <span class="c1">-- if no max given: active for all times</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">},</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Once, the above section is executed within the musubi.lua file, an output in 
+the asciiTransient format is generated in the output folder specified 
+(tracking in this particular example). 
+Now, we open the result file inside tracking folder, the structure of which 
+looks like below:</p>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> Rank of the process:       0
+<span class="gh">#</span>               time     velocity_01     velocity_02     velocity_03
+1.0000  0.000000000000  0.000000000000  0.000000000000
+2.0000  0.000000000000  0.000000000000  0.000000000000
+3.0000  0.000000000000  0.000000000000  0.000000000000
+4.0000  0.000000000000  0.000000000000  0.000000000000
+...
+...
+1997.0000 -0.006065558329  0.000443400622 -0.000003481789
+1998.0000 -0.006063901533  0.000443795703 -0.000003286949
+1999.0000 -0.006061596302  0.000443327890 -0.000003534752
+2000.0000 -0.006059665212  0.000443720604 -0.000003339771
+</code></pre></div>
+
+<p>Here, it can be noticed that 3 velocity components for all time steps at the 
+point (0.5, 0.5, 0.5) are stored. The interval was chosen as 1, so they are 
+tracked for each time step. If the interval was chosen as say 10, then the 
+tracking would have been done after 10 units of simulated time.</p>
+<h4 id="line-tracking">Line Tracking</h4>
+<p>We need to set the origin and the direction vector, 
+as e.g. {origin={0.,0.,0.}, vec={1.0,1.0,1.0}}.
+The line is represented as a list of points in the tracking facility. 
+The number of subdivisions and its distribution of the points on the line 
+needs to be set, as e.g. <code>segments=500, distribution='equal'</code>. 
+Make sure to specify enough segments to take into account all the required 
+elements on the line. 
+Elements are added only once, so it might be beneficial to specify much more 
+segments than actually needed to consider elements on the highest levels as 
+well.</p>
+<p><em>Example: Tracking a line in ASCII Spatial format</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;line_probe&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">},</span> <span class="c1">-- state (=pdfs), pressure, density etc</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span> 
+            <span class="n">object</span><span class="o">=</span><span class="p">{</span>
+              <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">},</span> 
+              <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.0</span><span class="p">}},</span>
+              <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">300</span><span class="p">},</span>
+              <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">}</span> 
+          <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">format</span><span class="o">=</span><span class="s1">&#39;asciispatial&#39;</span><span class="p">},</span> 
+  <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">time</span> <span class="o">=</span> <span class="p">{</span><span class="n">interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">800</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>After, the above tracking is executed within musubi.lua file multiple res 
+files are obtained inside the tracking folder each specific to particular 
+time step. If you open any one of the 'res' files, there will be six data 
+columns: three coordinate and three velocity components. 
+An example is shown below: </p>
+<div class="codehilite"><pre><span></span><code><span class="gh">#</span> Rank of the process:       0
+<span class="gh">#</span>         coordX          coordY          coordZ     velocity_01     velocity_02     velocity_03
+0.51562500      0.51562500      0.51562500 -0.000998448727 -0.000118182367  0.000007560959
+0.51562500      0.54687500      0.51562500 -0.000922746216  0.000011023243 -0.000000130462
+0.51562500      0.57812500      0.51562500 -0.001083956104  0.000038534363 -0.000003774649
+...
+0.51562500      0.64062500      0.51562500 -0.001343981219 -0.000131107478 -0.000004381864
+0.51562500      0.67187500      0.51562500 -0.001261956611  0.000081027056  0.000000215364
+0.51562500      0.70312500      0.51562500 -0.001733303068  0.000060154818  0.000005793207
+</code></pre></div>
+
+<p>Out of three coordinate components, only 'coordY' is varying and 'coordX', 
+'coordZ' remain constant. This is according to our tracking input with 
+<code>origin = {0.5, 0.5, 0.5}, vec = {0.0, 0.2, 0.0}</code>.
+You can now make a line plot with any one of velocity components with 
+respect to 'coordY' in <a href="http://www.gnuplot.info/">gnuplot</a>.</p>
+<h4 id="plane-tracking">Plane Tracking</h4>
+<p>We need to set the origin and the direction vectors, as e.g. 
+<code>object = {origin={0.,0.,0.}, vec={{1.0,1.0,1.0},{0.0,-1.0,1.0}}}</code>.
+The plane is, just as the line, represented as a list of points in the 
+tracking facility. 
+The number of subdivisions in each direction and its distribution of the 
+points on the plane needs to be set, 
+as e.g. <code>segments1=500, segments2=300, distribution='equal'</code>. 
+Make sure to specify enough segments to take into account all the required 
+elements on the line. 
+Elements are added only once, so it might be beneficial to specify much more 
+segments than actually needed to consider elements on the highest levels 
+as well.</p>
+<p><em> Example: tracking a plane in harvester format</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;plane_probe&#39;</span><span class="p">,</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">},</span> <span class="c1">-- state (=pdfs), pressure, density etc</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span> 
+            <span class="n">object</span><span class="o">=</span><span class="p">{</span>
+              <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">75.</span><span class="p">,</span><span class="o">-</span><span class="mf">15.</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span> 
+              <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mf">150.</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mf">0.</span><span class="p">}},</span>
+              <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">300</span><span class="p">,</span> <span class="mi">300</span><span class="p">},</span>
+              <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;equal&#39;</span><span class="p">}</span> 
+          <span class="p">},</span>
+  <span class="n">output</span> <span class="o">=</span> <span class="p">{</span><span class="n">format</span><span class="o">=</span><span class="s1">&#39;vtk&#39;</span><span class="p">},</span> 
+  <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">time</span> <span class="o">=</span> <span class="p">{</span><span class="n">interval</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">800</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>It will result in <code>vtk</code> files at the given time steps and one <code>pvd</code> file
+that is an animation file over all <code>vtk</code> files.</p>
+<h4 id="global-mesh-tracking">Global mesh tracking</h4>
+<p><em> Example: tracking the whole mesh</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="p">...</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;all&#39;</span> <span class="p">},</span>
+  <span class="c1">-- or:</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;global&#39;</span> <span class="p">},</span>
+  <span class="c1">-- or:</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;globalmesh&#39;</span> <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="boundary-elements-tracking">Boundary elements tracking</h4>
+<p><em> Example: tracking the boundary elements</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="p">...</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;property&#39;</span><span class="p">,</span> <span class="n">property</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;boundary&#39;</span><span class="p">}</span> <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+<span class="c1">-- or:</span>
+
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="p">...</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;boundary&#39;</span><span class="p">,</span> <span class="n">boundary</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;bnd_name1&#39;</span><span class="p">,</span><span class="s1">&#39;bnd_name2&#39;</span><span class="p">}</span> <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><em> Example: tracking solid elements</em></p>
+<div class="codehilite"><pre><span></span><code><span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span> 
+  <span class="p">...</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;property&#39;</span><span class="p">,</span> <span class="n">property</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;solidified&#39;</span><span class="p">}</span> <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h2 id="design-and-implementation">Design and Implementation</h2>
+<p>The user-specified tracking shapes have to be translated to a set of
+elements, on which the defined quantities are calculated and written to disk
+in a suitable format.</p>
+<p>All elements are converted to a set of points.
+For each point, the correspoinding treeID is added to the element list of
+the tracker as <code>track%elems( iLevel )%elem(1:nElems)</code>. 
+Each element will only be added once.
+All these elements are then treated in the main loop within the tracker
+routine.</p>
+<h2 id="peonsharvest_seriespy">peons/harvest_series.py</h2>
+<p>Each solver comes with a harvesting tool that allows the postprocessing
+of restart data after the simulation has been run.
+If this harvesting is to be done on a set of files, this may become a
+little tedious.
+To ease the post-processing there is a small Python script available in
+<code>peons/harvest_series.py</code>, which takes care of the execution of the
+post-processing script for multiple restart files.
+It can be used as easily as running</p>
+<div class="codehilite"><pre><span></span><code><span class="n">peons/harvest_series.py restart_*.lua</span>
+</code></pre></div>
+
+<p>The main argument this script expects is a list of files to work on.
+There specification may make use of shell globbing patterns as in the
+example above.</p>
+<p>Aside from the files to process there are various other options that
+can be specified, like the name of the harvesting executable, the
+name of the Lua executable and the template to use to construct the
+input file for the harvesting tool.
+These options may always be provided as command-line arguments, but
+can also be stored in a configuration file. By default harvest_series
+will look for a file named series.config to read its configuration,
+but you can tell it where to look for it via the <code>-c</code> option.</p>
+<p>In the configuration file you provide the options to use in the form
+of:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">option</span><span class="o">:</span><span class="w"> </span><span class="n">value</span>
+</code></pre></div>
+
+<p>Thus, for example you could provide the name of the harvesting tool
+as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">harvester</span><span class="o">:</span><span class="w"> </span><span class="n">build</span><span class="o">/</span><span class="n">atl_harvesting</span>
+</code></pre></div>
+
+<p>See the Python ConfigParser module documentation for more details on
+the syntax of the configuration file.
+You may provide a list of files to process in the config file. In this
+case the files should be separated by commas, you may still use
+globbing patterns in the file name specification.</p>
+<p>Have a look at the available options with the <code>-h</code> option:</p>
+<div class="codehilite"><pre><span></span><code>peons/harvest_series.py -h
+</code></pre></div>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

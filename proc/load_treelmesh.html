@@ -1,0 +1,951 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>load_treelmesh &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>load_treelmesh
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">87 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/treelmesh_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/treelmesh_module.f90.html'>treelmesh_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/treelmesh_module.html'>treelmesh_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">load_treelmesh</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/load_treelmesh.html#src">load_treelmesh</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine load_treelmesh(me, nParts)  
+</h2>
+    
+
+    <p>This subroutine reads a mesh in treelm format from disk at the
+specified directory name.</p>
+<p>The mesh is so small, it probably is better to read it on one process
+and distribute the resulting data via the network.
+single proc read</p>
+<p>single proc read</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~469"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Structure to load the mesh to</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nparts~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nParts</strong></td>
+            <td>
+                <p>Directory containing the mesh informations
+Partition to use on the calling process (= MPI Rank in comm)
+Number of partitions, the mesh is partitioned into (= Number of MPI
+processes in comm).</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_treelmesh~~CallsGraph Pages: 1 -->
+<svg id="procload_treelmeshCallsGraph" width="522pt" height="616pt"
+ viewBox="0.00 0.00 522.00 616.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_treelmesh~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 612)">
+<title>proc~~load_treelmesh~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-612 518,-612 518,4 -4,4"/>
+<!-- proc~load_treelmesh -->
+<g id="proc~~load_treelmesh~~CallsGraph_node1" class="node">
+<title>proc~load_treelmesh</title>
+<polygon fill="none" stroke="black" points="94,-314 0,-314 0,-290 94,-290 94,-314"/>
+<text text-anchor="middle" x="47" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_treelmesh</text>
+</g>
+<!-- mpi_allgather -->
+<g id="proc~~load_treelmesh~~CallsGraph_node2" class="node">
+<title>mpi_allgather</title>
+<polygon fill="#777777" stroke="#777777" points="245.5,-608 159.5,-608 159.5,-584 245.5,-584 245.5,-608"/>
+<text text-anchor="middle" x="202.5" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allgather</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_allgather -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge1" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_allgather</title>
+<path fill="none" stroke="#000000" d="M47.83,-314.1C47.9,-356.44 54.01,-499.47 130,-575 135.43,-580.39 142.16,-584.41 149.31,-587.41"/>
+<polygon fill="#000000" stroke="#000000" points="148.63,-590.88 159.23,-590.89 150.95,-584.28 148.63,-590.88"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~load_treelmesh~~CallsGraph_node3" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="236,-566 169,-566 169,-542 236,-542 236,-566"/>
+<text text-anchor="middle" x="202.5" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_bcast -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge2" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M48.59,-314.09C51.11,-352.16 64.15,-470.71 130,-533 137.91,-540.48 148.34,-545.31 158.78,-548.43"/>
+<polygon fill="#000000" stroke="#000000" points="158.16,-551.88 168.71,-550.92 159.86,-545.09 158.16,-551.88"/>
+</g>
+<!-- mpi_file_close -->
+<g id="proc~~load_treelmesh~~CallsGraph_node4" class="node">
+<title>mpi_file_close</title>
+<polygon fill="#777777" stroke="#777777" points="246.5,-524 158.5,-524 158.5,-500 246.5,-500 246.5,-524"/>
+<text text-anchor="middle" x="202.5" y="-509.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_close</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_file_close -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge3" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_file_close</title>
+<path fill="none" stroke="#000000" d="M49.69,-314.25C54.96,-347.76 74.24,-441.75 130,-491 135.47,-495.83 141.99,-499.55 148.85,-502.42"/>
+<polygon fill="#000000" stroke="#000000" points="147.73,-505.73 158.33,-505.82 150.1,-499.15 147.73,-505.73"/>
+</g>
+<!-- mpi_file_open -->
+<g id="proc~~load_treelmesh~~CallsGraph_node5" class="node">
+<title>mpi_file_open</title>
+<polygon fill="#777777" stroke="#777777" points="246,-482 159,-482 159,-458 246,-458 246,-482"/>
+<text text-anchor="middle" x="202.5" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_open</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_file_open -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge4" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_file_open</title>
+<path fill="none" stroke="#000000" d="M51.37,-314.36C59.73,-342.63 84.1,-412.35 130,-449 135.7,-453.55 142.36,-457.12 149.27,-459.91"/>
+<polygon fill="#000000" stroke="#000000" points="148.2,-463.24 158.8,-463.26 150.52,-456.64 148.2,-463.24"/>
+</g>
+<!-- mpi_file_read_all -->
+<g id="proc~~load_treelmesh~~CallsGraph_node6" class="node">
+<title>mpi_file_read_all</title>
+<polygon fill="#777777" stroke="#777777" points="253.5,-440 151.5,-440 151.5,-416 253.5,-416 253.5,-440"/>
+<text text-anchor="middle" x="202.5" y="-425.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_read_all</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_file_read_all -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge5" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_file_read_all</title>
+<path fill="none" stroke="#000000" d="M54.11,-314.07C65.8,-335.94 93.46,-382.18 130,-407 133.71,-409.52 137.73,-411.75 141.91,-413.71"/>
+<polygon fill="#000000" stroke="#000000" points="140.66,-416.98 151.23,-417.59 143.35,-410.52 140.66,-416.98"/>
+</g>
+<!-- mpi_file_set_view -->
+<g id="proc~~load_treelmesh~~CallsGraph_node7" class="node">
+<title>mpi_file_set_view</title>
+<polygon fill="#777777" stroke="#777777" points="255,-398 150,-398 150,-374 255,-374 255,-398"/>
+<text text-anchor="middle" x="202.5" y="-383.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_set_view</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_file_set_view -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge6" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_file_set_view</title>
+<path fill="none" stroke="#000000" d="M60.6,-314.12C75.88,-328.2 102.96,-351.25 130,-365 133.93,-367 138.09,-368.84 142.34,-370.53"/>
+<polygon fill="#000000" stroke="#000000" points="141.14,-373.82 151.73,-373.98 143.55,-367.24 141.14,-373.82"/>
+</g>
+<!-- mpi_type_commit -->
+<g id="proc~~load_treelmesh~~CallsGraph_node8" class="node">
+<title>mpi_type_commit</title>
+<polygon fill="#777777" stroke="#777777" points="256,-356 149,-356 149,-332 256,-332 256,-356"/>
+<text text-anchor="middle" x="202.5" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_commit</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_type_commit -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge7" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_type_commit</title>
+<path fill="none" stroke="#000000" d="M91.99,-314.04C109.33,-318.78 129.42,-324.28 147.62,-329.26"/>
+<polygon fill="#000000" stroke="#000000" points="146.94,-332.7 157.51,-331.96 148.78,-325.95 146.94,-332.7"/>
+</g>
+<!-- mpi_type_contiguous -->
+<g id="proc~~load_treelmesh~~CallsGraph_node9" class="node">
+<title>mpi_type_contiguous</title>
+<polygon fill="#777777" stroke="#777777" points="265,-314 140,-314 140,-290 265,-290 265,-314"/>
+<text text-anchor="middle" x="202.5" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_contiguous</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_type_contiguous -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge8" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_type_contiguous</title>
+<path fill="none" stroke="#000000" d="M94.06,-302C105.3,-302 117.6,-302 129.73,-302"/>
+<polygon fill="#000000" stroke="#000000" points="129.86,-305.5 139.86,-302 129.86,-298.5 129.86,-305.5"/>
+</g>
+<!-- mpi_type_free -->
+<g id="proc~~load_treelmesh~~CallsGraph_node10" class="node">
+<title>mpi_type_free</title>
+<polygon fill="#777777" stroke="#777777" points="246.5,-272 158.5,-272 158.5,-248 246.5,-248 246.5,-272"/>
+<text text-anchor="middle" x="202.5" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_free</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_type_free -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge9" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_type_free</title>
+<path fill="none" stroke="#000000" d="M91.99,-289.96C109.63,-285.14 130.13,-279.53 148.58,-274.48"/>
+<polygon fill="#000000" stroke="#000000" points="149.58,-277.83 158.3,-271.82 147.73,-271.08 149.58,-277.83"/>
+</g>
+<!-- mpi_type_size -->
+<g id="proc~~load_treelmesh~~CallsGraph_node11" class="node">
+<title>mpi_type_size</title>
+<polygon fill="#777777" stroke="#777777" points="246,-230 159,-230 159,-206 246,-206 246,-230"/>
+<text text-anchor="middle" x="202.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_size</text>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;mpi_type_size -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge10" class="edge">
+<title>proc~load_treelmesh&#45;&gt;mpi_type_size</title>
+<path fill="none" stroke="#000000" d="M60.6,-289.88C75.88,-275.8 102.96,-252.75 130,-239 136.04,-235.93 142.61,-233.23 149.23,-230.89"/>
+<polygon fill="#000000" stroke="#000000" points="150.51,-234.15 158.91,-227.71 148.32,-227.5 150.51,-234.15"/>
+</g>
+<!-- proc~check_mpi_error -->
+<g id="proc~~load_treelmesh~~CallsGraph_node12" class="node">
+<title>proc~check_mpi_error</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node12"><a xlink:href="../proc/check_mpi_error.html" xlink:title="check_mpi_error">
+<polygon fill="#d9534f" stroke="#d9534f" points="253,-108 152,-108 152,-84 253,-84 253,-108"/>
+<text text-anchor="middle" x="202.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_mpi_error</text>
+</a>
+</g>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;proc~check_mpi_error -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge11" class="edge">
+<title>proc~load_treelmesh&#45;&gt;proc~check_mpi_error</title>
+<path fill="none" stroke="#000000" d="M50.22,-289.58C56.61,-257.31 78.05,-170.01 130,-122 133.84,-118.45 138.21,-115.37 142.84,-112.71"/>
+<polygon fill="#000000" stroke="#000000" points="144.66,-115.72 152.02,-108.09 141.51,-109.46 144.66,-115.72"/>
+</g>
+<!-- proc~gather_property -->
+<g id="proc~~load_treelmesh~~CallsGraph_node13" class="node">
+<title>proc~gather_property</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node13"><a xlink:href="../proc/gather_property.html" xlink:title="gather_property">
+<polygon fill="#d9534f" stroke="#d9534f" points="251.5,-66 153.5,-66 153.5,-42 251.5,-42 251.5,-66"/>
+<text text-anchor="middle" x="202.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">gather_property</text>
+</a>
+</g>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;proc~gather_property -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge12" class="edge">
+<title>proc~load_treelmesh&#45;&gt;proc~gather_property</title>
+<path fill="none" stroke="#000000" d="M48.68,-289.85C51.46,-252.14 65.15,-136.01 130,-75 134.06,-71.18 138.79,-68.05 143.83,-65.48"/>
+<polygon fill="#000000" stroke="#000000" points="145.39,-68.62 153.19,-61.45 142.62,-62.19 145.39,-68.62"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_node14" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node14"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="394.5,-148 327.5,-148 327.5,-124 394.5,-124 394.5,-148"/>
+<text text-anchor="middle" x="361" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;proc~tem_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge13" class="edge">
+<title>proc~load_treelmesh&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M50.68,-289.84C57.79,-260.73 80.13,-187.12 130,-155 186.61,-118.54 268,-121.76 317.25,-128.28"/>
+<polygon fill="#000000" stroke="#000000" points="316.86,-131.76 327.25,-129.7 317.85,-124.83 316.86,-131.76"/>
+</g>
+<!-- proc~tem_create_endiansuffix -->
+<g id="proc~~load_treelmesh~~CallsGraph_node15" class="node">
+<title>proc~tem_create_endiansuffix</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node15"><a xlink:href="../proc/tem_create_endiansuffix.html" xlink:title="tem_create_EndianSuffix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="275,-24 130,-24 130,0 275,0 275,-24"/>
+<text text-anchor="middle" x="202.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_EndianSuffix</text>
+</a>
+</g>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge14" class="edge">
+<title>proc~load_treelmesh&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M47.89,-289.78C48.2,-247.69 55.05,-107.19 130,-33 131.12,-31.89 132.3,-30.84 133.52,-29.84"/>
+<polygon fill="#000000" stroke="#000000" points="135.84,-32.5 142.2,-24.04 131.94,-26.69 135.84,-32.5"/>
+</g>
+<!-- proc~tem_open -->
+<g id="proc~~load_treelmesh~~CallsGraph_node16" class="node">
+<title>proc~tem_open</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node16"><a xlink:href="../proc/tem_open.html" xlink:title="tem_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="235.5,-188 169.5,-188 169.5,-164 235.5,-164 235.5,-188"/>
+<text text-anchor="middle" x="202.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open</text>
+</a>
+</g>
+</g>
+<!-- proc~load_treelmesh&#45;&gt;proc~tem_open -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge15" class="edge">
+<title>proc~load_treelmesh&#45;&gt;proc~tem_open</title>
+<path fill="none" stroke="#000000" d="M54.11,-289.93C65.8,-268.06 93.46,-221.82 130,-197 138.84,-190.99 149.42,-186.68 159.69,-183.59"/>
+<polygon fill="#000000" stroke="#000000" points="160.64,-186.96 169.39,-180.98 158.82,-180.2 160.64,-186.96"/>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;proc~tem_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge17" class="edge">
+<title>proc~check_mpi_error&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M250.46,-108C271.81,-113.46 296.89,-119.87 317.66,-125.18"/>
+<polygon fill="#000000" stroke="#000000" points="316.92,-128.6 327.47,-127.69 318.65,-121.82 316.92,-128.6"/>
+</g>
+<!-- mpi_error_string -->
+<g id="proc~~load_treelmesh~~CallsGraph_node18" class="node">
+<title>mpi_error_string</title>
+<polygon fill="#777777" stroke="#777777" points="411,-106 311,-106 311,-82 411,-82 411,-106"/>
+<text text-anchor="middle" x="361" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_error_string</text>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;mpi_error_string -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge16" class="edge">
+<title>proc~check_mpi_error&#45;&gt;mpi_error_string</title>
+<path fill="none" stroke="#000000" d="M253.02,-95.37C268.15,-95.17 284.95,-94.96 300.66,-94.76"/>
+<polygon fill="#000000" stroke="#000000" points="300.85,-98.26 310.8,-94.63 300.76,-91.26 300.85,-98.26"/>
+</g>
+<!-- mpi_exscan -->
+<g id="proc~~load_treelmesh~~CallsGraph_node19" class="node">
+<title>mpi_exscan</title>
+<polygon fill="#777777" stroke="#777777" points="398.5,-64 323.5,-64 323.5,-40 398.5,-40 398.5,-64"/>
+<text text-anchor="middle" x="361" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_exscan</text>
+</g>
+<!-- proc~gather_property&#45;&gt;mpi_exscan -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge18" class="edge">
+<title>proc~gather_property&#45;&gt;mpi_exscan</title>
+<path fill="none" stroke="#000000" d="M251.73,-53.38C271.22,-53.13 293.64,-52.85 313,-52.6"/>
+<polygon fill="#000000" stroke="#000000" points="313.16,-56.1 323.11,-52.47 313.07,-49.1 313.16,-56.1"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_node17" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="514,-148 447,-148 447,-124 514,-124 514,-148"/>
+<text text-anchor="middle" x="480.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge19" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M394.73,-136C407.72,-136 422.83,-136 436.67,-136"/>
+<polygon fill="#000000" stroke="#000000" points="436.95,-139.5 446.95,-136 436.95,-132.5 436.95,-139.5"/>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~tem_abort -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge21" class="edge">
+<title>proc~tem_open&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M235.55,-167.81C259.23,-161.76 291.71,-153.45 317.55,-146.85"/>
+<polygon fill="#000000" stroke="#000000" points="318.64,-150.18 327.46,-144.32 316.9,-143.4 318.64,-150.18"/>
+</g>
+<!-- proc~newunit -->
+<g id="proc~~load_treelmesh~~CallsGraph_node20" class="node">
+<title>proc~newunit</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node20"><a xlink:href="../proc/newunit.html" xlink:title="newunit">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="388.5,-232 333.5,-232 333.5,-208 388.5,-208 388.5,-232"/>
+<text text-anchor="middle" x="361" y="-217.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">newunit</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~newunit -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge20" class="edge">
+<title>proc~tem_open&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M235.55,-185.01C261.16,-192.21 297.06,-202.3 323.73,-209.8"/>
+<polygon fill="#000000" stroke="#000000" points="322.88,-213.2 333.45,-212.54 324.77,-206.46 322.88,-213.2"/>
+</g>
+<!-- proc~upper_to_lower -->
+<g id="proc~~load_treelmesh~~CallsGraph_node21" class="node">
+<title>proc~upper_to_lower</title>
+<g id="a_proc~~load_treelmesh~~CallsGraph_node21"><a xlink:href="../proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="408,-190 314,-190 314,-166 408,-166 408,-190"/>
+<text text-anchor="middle" x="361" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~upper_to_lower -->
+<g id="proc~~load_treelmesh~~CallsGraph_edge22" class="edge">
+<title>proc~tem_open&#45;&gt;proc~upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M235.55,-176.41C255.09,-176.66 280.62,-176.99 303.47,-177.28"/>
+<polygon fill="#000000" stroke="#000000" points="303.71,-180.78 313.75,-177.41 303.79,-173.78 303.71,-180.78"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_treelmesh~~CalledByGraph Pages: 1 -->
+<svg id="procload_treelmeshCalledByGraph" width="516pt" height="32pt"
+ viewBox="0.00 0.00 516.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_treelmesh~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~load_treelmesh~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 512,-28 512,4 -4,4"/>
+<!-- proc~load_treelmesh -->
+<g id="proc~~load_treelmesh~~CalledByGraph_node1" class="node">
+<title>proc~load_treelmesh</title>
+<polygon fill="none" stroke="black" points="508,-24 414,-24 414,0 508,0 508,-24"/>
+<text text-anchor="middle" x="461" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_treelmesh</text>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~load_treelmesh~~CalledByGraph_node2" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~load_treelmesh~~CalledByGraph_node2"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-24 316,-24 316,0 378,0 378,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~load_treelmesh -->
+<g id="proc~~load_treelmesh~~CalledByGraph_edge1" class="edge">
+<title>proc~load_tem&#45;&gt;proc~load_treelmesh</title>
+<path fill="none" stroke="#000000" d="M378.01,-12C386.02,-12 394.93,-12 403.85,-12"/>
+<polygon fill="#000000" stroke="#000000" points="403.87,-15.5 413.87,-12 403.87,-8.5 403.87,-15.5"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~load_treelmesh~~CalledByGraph_node3" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~load_treelmesh~~CalledByGraph_node3"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~load_treelmesh~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M280.39,-12C289.04,-12 297.64,-12 305.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.73,-15.5 315.73,-12 305.73,-8.5 305.73,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~load_treelmesh~~CalledByGraph_node4" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~load_treelmesh~~CalledByGraph_node4"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~load_treelmesh~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">load_treelmesh</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Structure to load the mesh to</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Directory containing the mesh informations</span>
+<span class="w">    </span><span class="c">! character(len=*), intent(in) :: dirname</span>
+<span class="w">    </span><span class="c">!&gt; Partition to use on the calling process (= MPI Rank in comm)</span>
+<span class="w">    </span><span class="c">! integer, intent(in) :: myPart</span>
+<span class="w">    </span><span class="c">!&gt; Number of partitions, the mesh is partitioned into (= Number of MPI</span>
+<span class="w">    </span><span class="c">!! processes in comm).</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ex</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iElem</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iProp</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fh</span><span class="p">,</span><span class="w"> </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iostatus</span><span class="p">(</span><span class="w"> </span><span class="n">MPI_STATUS_SIZE</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">file_rec_len</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">typesize</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">ElemFileName</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">EndianSuffix</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">globbuffer</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">MPI_OFFSET_KIND</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">displacement</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">EndianSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_create_EndianSuffix</span><span class="p">()</span>
+<span class="w">    </span><span class="n">ElemFileName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">dirname</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;elemlist&#39;</span><span class="o">//</span><span class="n">EndianSuffix</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Load mesh from file: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">ElemFileName</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">)</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nProperties</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">(</span><span class="n">nParts</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">(</span><span class="n">nParts</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! Only one process should check the file existence</span>
+<span class="w">      </span><span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">ElemFileName</span><span class="p">),</span><span class="w"> </span><span class="n">exist</span><span class="o">=</span><span class="n">ex</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">ex</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ERROR: File &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">ElemFileName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; not found!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Aborting.&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end if</span>
+
+<span class="k">    allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">buffer</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">io_buffer_size</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;using MPI to read&#39;</span>
+
+<span class="w">      </span><span class="c">! Create a contiguous type to describe the vector per element</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_contiguous</span><span class="p">(</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w"> </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;type etype in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_commit</span><span class="p">(</span><span class="w">     </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;commit etype in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_size</span><span class="p">(</span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">typesize</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;typesize in load_treelmesh&#39;</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Create a MPI Subarray  as ftype for file view</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_contiguous</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;type ftype in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_commit</span><span class="p">(</span><span class="w">     </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;commit ftype in load_treelmesh&#39;</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Calculate displacement for file view</span>
+<span class="w">      </span><span class="n">displacement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">typesize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1_MPI_OFFSET_KIND</span>
+
+<span class="w">      </span><span class="c">! Set the view for each process on the file above</span>
+<span class="w">      </span><span class="c">! Open the binary file for MPI I/O (Write)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_File_open</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">ElemFileName</span><span class="p">),</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_MODE_RDONLY</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INFO_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">fh</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;file_open in load_treelmesh&#39;</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_File_set_view</span><span class="p">(</span><span class="w"> </span><span class="n">fh</span><span class="p">,</span><span class="w"> </span><span class="n">displacement</span><span class="p">,</span><span class="w"> </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;native&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">MPI_INFO_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                     </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;set_view in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! Read data from the file</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_File_read_all</span><span class="p">(</span><span class="w"> </span><span class="n">fh</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">iostatus</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;read_all in load_treelmesh&#39;</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">!Free the MPI_Datatypes which were created and close the file</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_free</span><span class="w"> </span><span class="p">(</span><span class="n">etype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;free etype in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Type_free</span><span class="w"> </span><span class="p">(</span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;free ftype in load_treelmesh&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_File_close</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span><span class="w">    </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;close file in load_treelmesh&#39;</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! END IO-part</span>
+
+<span class="w">    </span><span class="k">else</span>
+
+<span class="w">      </span><span class="c">!&gt; The mesh is so small, it probably is better to read it on one process</span>
+<span class="w">      </span><span class="c">!! and distribute the resulting data via the network.</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;using one process to read and broadcast&#39;</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">globbuffer</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c">!! single proc read</span>
+
+<span class="w">        </span><span class="k">inquire</span><span class="p">(</span><span class="n">iolength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">file_rec_len</span><span class="p">)</span><span class="w"> </span><span class="n">globbuffer</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_open</span><span class="p">(</span><span class="w"> </span><span class="n">newunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fh</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="k">file</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">ElemFileName</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">recl</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">file_rec_len</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">action</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;read&#39;</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="nb">access</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;direct&#39;</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">form</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;unformatted&#39;</span><span class="w">       </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">read</span><span class="p">(</span><span class="n">fh</span><span class="p">,</span><span class="w"> </span><span class="n">rec</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="n">globbuffer</span>
+
+<span class="w">        </span><span class="k">close</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">!! single proc read</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="w"> </span><span class="n">globbuffer</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="p">),</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                              </span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">globbuffer</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">:(</span><span class="n">me</span><span class="p">%</span><span class="n">ElemOffset</span><span class="o">+</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">      </span><span class="k">deallocate</span><span class="p">(</span><span class="n">globbuffer</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">end if</span><span class="w"> </span><span class="c">! END IO-part</span>
+
+<span class="w">    </span><span class="c">! Fill the tree with what was read in buffer from disk</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">iElem</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">iElem</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">    deallocate</span><span class="p">(</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! clear the prp_sendHalo property since the distribution of elements</span>
+<span class="w">    </span><span class="c">! might have changed</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iElem</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">ibclr</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">iElem</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">prp_sendHalo</span><span class="w">                </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">    call </span><span class="n">MPI_allgather</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="p">%</span><span class="n">Part_First</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_allgather</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="p">%</span><span class="n">Part_Last</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">               </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iProp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nProperties</span>
+<span class="w">      </span><span class="k">call </span><span class="n">gather_Property</span><span class="p">(</span><span class="w"> </span><span class="n">Property</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="n">iProp</span><span class="p">),</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">Header</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">Property</span><span class="p">(</span><span class="n">iProp</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">BitField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">comm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="w">             </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">    write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Done, reading the mesh!&#39;</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">load_treelmesh</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

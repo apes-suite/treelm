@@ -1,0 +1,901 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_time_load &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_time_load
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">31 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_time_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_time_module.f90.html'>tem_time_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_time_module.html'>tem_time_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_time_load</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_time_load.html#src">tem_time_load</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_time_load(me, conf, key, parent, clock_start)  
+</h2>
+    
+
+    <p>Reading a time description from a Lua script given by conf.</p>
+<p>The time description has to be provided in the table given by thandle.
+ The time can be given in terms of:
+ - iter: number of iterations
+ - sim: simulated time
+ - clock: running time used to compute the simulation
+ Thus, the configuration looks like:
+ \verbatim
+ time = { iter = 123, sim = 1.23, clock = 12.3 }
+ \end verbatim
+ Omitted time defintions are set to the maximal representable number,
+ indicating something like never.
+ If the time is not provided as a table, it is interpreted as a setting of
+ the sim time, the other entries are set to never.</p>
+<p>The optional argument clock_start is useful to overwrite the current time
+ by the settings in a loaded restart header.
+ With clock_start the old reference wtime from tem_time_reset can be
+ maintained, while iterations and simulation time can be inherited from
+ the configuration.</p>
+<p>\todo HK: maybe provide the possibility to add up run times from loaded
+          data instead of resetting it.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~247"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Time to be read from the Lua script</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~45"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>Handle to the Lua script.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~16"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+                <p>Name of the table containing the time definition. Default: 'time'.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-parent~12"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>parent</strong></td>
+            <td>
+                <p>Handle to the parent table.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-clock_start~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>clock_start</strong></td>
+            <td>
+                <p>Reference MPI_Wtime mark to use for computation of wallclock</p>
+<p>This is basically only useful to update the time object for a read in
+restart without distorting the clock measurement.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_time_load~~CallsGraph Pages: 1 -->
+<svg id="proctem_time_loadCallsGraph" width="230pt" height="158pt"
+ viewBox="0.00 0.00 230.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_time_load~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~tem_time_load~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 226,-154 226,4 -4,4"/>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_time_load~~CallsGraph_node1" class="node">
+<title>proc~tem_time_load</title>
+<polygon fill="none" stroke="black" points="91,-87 0,-87 0,-63 91,-63 91,-87"/>
+<text text-anchor="middle" x="45.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_time_load</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_time_load~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_time_load~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="211,-150 138,-150 138,-126 211,-126 211,-150"/>
+<text text-anchor="middle" x="174.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_time_load~~CallsGraph_edge1" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M68.88,-87.11C84.94,-95.69 107.15,-107.35 127,-117 130.12,-118.52 133.38,-120.06 136.65,-121.59"/>
+<polygon fill="#000000" stroke="#000000" points="135.29,-124.82 145.84,-125.82 138.22,-118.46 135.29,-124.82"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_time_load~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_time_load~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="222,-108 127,-108 127,-84 222,-84 222,-108"/>
+<text text-anchor="middle" x="174.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_time_load~~CallsGraph_edge2" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M91.28,-82.4C99.59,-83.78 108.38,-85.23 116.99,-86.66"/>
+<polygon fill="#000000" stroke="#000000" points="116.54,-90.13 126.98,-88.31 117.69,-83.22 116.54,-90.13"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_time_load~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_time_load~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="221.5,-66 127.5,-66 127.5,-42 221.5,-42 221.5,-66"/>
+<text text-anchor="middle" x="174.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_time_load~~CallsGraph_edge3" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M91.28,-67.6C99.69,-66.2 108.59,-64.73 117.31,-63.29"/>
+<polygon fill="#000000" stroke="#000000" points="118.12,-66.71 127.41,-61.62 116.97,-59.8 118.12,-66.71"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~tem_time_load~~CallsGraph_node5" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="209.5,-24 139.5,-24 139.5,0 209.5,0 209.5,-24"/>
+<text text-anchor="middle" x="174.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_time_load&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_time_load~~CallsGraph_edge4" class="edge">
+<title>proc~tem_time_load&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M68.88,-62.89C84.94,-54.31 107.15,-42.65 127,-33 130.12,-31.48 133.38,-29.94 136.65,-28.41"/>
+<polygon fill="#000000" stroke="#000000" points="138.22,-31.54 145.84,-24.18 135.29,-25.18 138.22,-31.54"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_time_load~~CalledByGraph Pages: 1 -->
+<svg id="proctem_time_loadCalledByGraph" width="641pt" height="250pt"
+ viewBox="0.00 0.00 641.00 250.26" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_time_load~~CalledByGraph" class="graph" transform="scale(0.77 0.77) rotate(0) translate(4 322)">
+<title>proc~~tem_time_load~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 831,-322 831,4 -4,4"/>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node1" class="node">
+<title>proc~tem_time_load</title>
+<polygon fill="none" stroke="black" points="827,-213 736,-213 736,-189 827,-189 827,-213"/>
+<text text-anchor="middle" x="781.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_time_load</text>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_time_load~~CalledByGraph_node2" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node2"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="700,-276 558,-276 558,-252 700,-252 700,-276"/>
+<text text-anchor="middle" x="629" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M659.02,-251.85C682.72,-241.93 716.43,-227.82 742.32,-216.98"/>
+<polygon fill="#000000" stroke="#000000" points="743.95,-220.09 751.83,-213 741.25,-213.64 743.95,-220.09"/>
+</g>
+<!-- proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node3" class="node">
+<title>proc~tem_timecontrol_load</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node3"><a xlink:href="../proc/tem_timecontrol_load.html" xlink:title="tem_timeControl_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="694,-192 564,-192 564,-168 694,-168 694,-192"/>
+<text text-anchor="middle" x="629" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M694.26,-188.97C704.81,-190.44 715.65,-191.95 725.93,-193.39"/>
+<polygon fill="#000000" stroke="#000000" points="725.61,-196.87 735.99,-194.79 726.57,-189.94 725.61,-196.87"/>
+</g>
+<!-- proc~tem_balance_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node4" class="node">
+<title>proc~tem_balance_load</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node4"><a xlink:href="../proc/tem_balance_load.html" xlink:title="tem_balance_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="488.5,-276 378.5,-276 378.5,-252 488.5,-252 488.5,-276"/>
+<text text-anchor="middle" x="433.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_balance_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_balance_load&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M488.52,-253.73C499.78,-250.84 511.43,-247.29 522,-243 551.33,-231.08 582.14,-211.91 602.94,-197.85"/>
+<polygon fill="#000000" stroke="#000000" points="604.95,-200.71 611.21,-192.16 600.98,-194.94 604.95,-200.71"/>
+</g>
+<!-- proc~tem_load_adapt -->
+<g id="proc~~tem_time_load~~CalledByGraph_node5" class="node">
+<title>proc~tem_load_adapt</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node5"><a xlink:href="../proc/tem_load_adapt.html" xlink:title="tem_load_adapt">
+<polygon fill="#d9534f" stroke="#d9534f" points="482.5,-192 384.5,-192 384.5,-168 482.5,-168 482.5,-192"/>
+<text text-anchor="middle" x="433.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_adapt</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_adapt&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_load_adapt&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M482.83,-180C504.28,-180 530.01,-180 553.81,-180"/>
+<polygon fill="#000000" stroke="#000000" points="553.87,-183.5 563.87,-180 553.87,-176.5 553.87,-183.5"/>
+</g>
+<!-- proc~tem_load_convergenceheader -->
+<g id="proc~~tem_time_load~~CalledByGraph_node6" class="node">
+<title>proc~tem_load_convergenceheader</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node6"><a xlink:href="../proc/tem_load_convergenceheader.html" xlink:title="tem_load_convergenceHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="522,-150 345,-150 345,-126 522,-126 522,-150"/>
+<text text-anchor="middle" x="433.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_convergenceHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_convergenceheader&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_load_convergenceheader&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M489.95,-150.04C512.62,-154.96 539.01,-160.69 562.62,-165.81"/>
+<polygon fill="#000000" stroke="#000000" points="562.03,-169.26 572.54,-167.96 563.51,-162.42 562.03,-169.26"/>
+</g>
+<!-- proc~tem_load_output -->
+<g id="proc~~tem_time_load~~CalledByGraph_node7" class="node">
+<title>proc~tem_load_output</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node7"><a xlink:href="../proc/tem_load_output.html" xlink:title="tem_load_output">
+<polygon fill="#d9534f" stroke="#d9534f" points="484.5,-108 382.5,-108 382.5,-84 484.5,-84 484.5,-108"/>
+<text text-anchor="middle" x="433.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_output</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_output&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_load_output&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M484.83,-105.35C497.21,-108.39 510.28,-112.24 522,-117 551.33,-128.92 582.14,-148.09 602.94,-162.15"/>
+<polygon fill="#000000" stroke="#000000" points="600.98,-165.06 611.21,-167.84 604.95,-159.29 600.98,-165.06"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_time_load~~CalledByGraph_node8" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node8"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="484.5,-318 382.5,-318 382.5,-294 484.5,-294 484.5,-318"/>
+<text text-anchor="middle" x="433.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M484.58,-295.13C508.41,-289.96 537.2,-283.71 562.71,-278.17"/>
+<polygon fill="#000000" stroke="#000000" points="563.65,-281.55 572.68,-276.01 562.16,-274.71 563.65,-281.55"/>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M484.76,-299.57C497.54,-296.46 510.8,-291.85 522,-285 542.97,-272.17 540.83,-260.59 558,-243 573.27,-227.35 591.7,-210.86 605.81,-198.67"/>
+<polygon fill="#000000" stroke="#000000" points="608.24,-201.2 613.56,-192.04 603.69,-195.88 608.24,-201.2"/>
+</g>
+<!-- proc~tem_load_surfdata -->
+<g id="proc~~tem_time_load~~CalledByGraph_node9" class="node">
+<title>proc~tem_load_surfdata</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node9"><a xlink:href="../proc/tem_load_surfdata.html" xlink:title="tem_load_surfData">
+<polygon fill="#d9534f" stroke="#d9534f" points="490,-66 377,-66 377,-42 490,-42 490,-66"/>
+<text text-anchor="middle" x="433.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_surfData</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_surfdata&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_load_surfdata&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M490.36,-62.6C501.26,-65.59 512.31,-69.6 522,-75 560.5,-96.44 594.64,-135.75 613.21,-159.71"/>
+<polygon fill="#000000" stroke="#000000" points="610.5,-161.93 619.33,-167.79 616.08,-157.7 610.5,-161.93"/>
+</g>
+<!-- proc~tem_load_trackingconfig -->
+<g id="proc~~tem_time_load~~CalledByGraph_node10" class="node">
+<title>proc~tem_load_trackingconfig</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node10"><a xlink:href="../proc/tem_load_trackingconfig.html" xlink:title="tem_load_trackingConfig">
+<polygon fill="#d9534f" stroke="#d9534f" points="506,-24 361,-24 361,0 506,0 506,-24"/>
+<text text-anchor="middle" x="433.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_trackingConfig</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge10" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M504.73,-24.01C510.82,-26.47 516.68,-29.43 522,-33 569.63,-64.95 603.17,-125.92 618.54,-158.39"/>
+<polygon fill="#000000" stroke="#000000" points="615.53,-160.23 622.89,-167.86 621.9,-157.31 615.53,-160.23"/>
+</g>
+<!-- proc~tem_simcontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node11" class="node">
+<title>proc~tem_simcontrol_load</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node11"><a xlink:href="../proc/tem_simcontrol_load.html" xlink:title="tem_simControl_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="495.5,-234 371.5,-234 371.5,-210 495.5,-210 495.5,-234"/>
+<text text-anchor="middle" x="433.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_simcontrol_load&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge11" class="edge">
+<title>proc~tem_simcontrol_load&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M489.95,-209.96C512.62,-205.04 539.01,-199.31 562.62,-194.19"/>
+<polygon fill="#000000" stroke="#000000" points="563.51,-197.58 572.54,-192.04 562.03,-190.74 563.51,-197.58"/>
+</g>
+<!-- proc~tem_convergence_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node12" class="node">
+<title>proc~tem_convergence_load</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node12"><a xlink:href="../proc/tem_convergence_load.html" xlink:title="tem_convergence_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="309,-150 172,-150 172,-126 309,-126 309,-150"/>
+<text text-anchor="middle" x="240.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_load&#45;&gt;proc~tem_load_convergenceheader -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge13" class="edge">
+<title>proc~tem_convergence_load&#45;&gt;proc~tem_load_convergenceheader</title>
+<path fill="none" stroke="#000000" d="M309.11,-138C317.44,-138 326.08,-138 334.74,-138"/>
+<polygon fill="#000000" stroke="#000000" points="334.91,-141.5 344.91,-138 334.91,-134.5 334.91,-141.5"/>
+</g>
+<!-- proc~tem_load_general -->
+<g id="proc~~tem_time_load~~CalledByGraph_node13" class="node">
+<title>proc~tem_load_general</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node13"><a xlink:href="../proc/tem_load_general.html" xlink:title="tem_load_general">
+<polygon fill="#d9534f" stroke="#d9534f" points="295,-255 186,-255 186,-231 295,-231 295,-255"/>
+<text text-anchor="middle" x="240.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_general</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_general&#45;&gt;proc~tem_balance_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge12" class="edge">
+<title>proc~tem_load_general&#45;&gt;proc~tem_balance_load</title>
+<path fill="none" stroke="#000000" d="M295.21,-248.91C317.9,-251.4 344.51,-254.33 368.23,-256.93"/>
+<polygon fill="#000000" stroke="#000000" points="367.87,-260.42 378.2,-258.03 368.64,-253.46 367.87,-260.42"/>
+</g>
+<!-- proc~tem_load_general&#45;&gt;proc~tem_simcontrol_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge15" class="edge">
+<title>proc~tem_load_general&#45;&gt;proc~tem_simcontrol_load</title>
+<path fill="none" stroke="#000000" d="M295.21,-237.09C315.69,-234.84 339.36,-232.24 361.22,-229.84"/>
+<polygon fill="#000000" stroke="#000000" points="361.9,-233.28 371.45,-228.71 361.13,-226.33 361.9,-233.28"/>
+</g>
+<!-- proc~tem_load_tracking -->
+<g id="proc~~tem_time_load~~CalledByGraph_node14" class="node">
+<title>proc~tem_load_tracking</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node14"><a xlink:href="../proc/tem_load_tracking.html" xlink:title="tem_load_tracking">
+<polygon fill="#d9534f" stroke="#d9534f" points="296,-24 185,-24 185,0 296,0 296,-24"/>
+<text text-anchor="middle" x="240.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_tracking</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_tracking&#45;&gt;proc~tem_load_trackingconfig -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge14" class="edge">
+<title>proc~tem_load_tracking&#45;&gt;proc~tem_load_trackingconfig</title>
+<path fill="none" stroke="#000000" d="M296.23,-12C313.16,-12 332.19,-12 350.54,-12"/>
+<polygon fill="#000000" stroke="#000000" points="350.65,-15.5 360.65,-12 350.65,-8.5 350.65,-15.5"/>
+</g>
+<!-- proc~tem_abortcriteria_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_node15" class="node">
+<title>proc~tem_abortcriteria_load</title>
+<g id="a_proc~~tem_time_load~~CalledByGraph_node15"><a xlink:href="../proc/tem_abortcriteria_load.html" xlink:title="tem_abortCriteria_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="136,-150 0,-150 0,-126 136,-126 136,-150"/>
+<text text-anchor="middle" x="68" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_abortcriteria_load&#45;&gt;proc~tem_convergence_load -->
+<g id="proc~~tem_time_load~~CalledByGraph_edge16" class="edge">
+<title>proc~tem_abortcriteria_load&#45;&gt;proc~tem_convergence_load</title>
+<path fill="none" stroke="#000000" d="M136.39,-138C144.66,-138 153.16,-138 161.58,-138"/>
+<polygon fill="#000000" stroke="#000000" points="161.77,-141.5 171.77,-138 161.77,-134.5 161.77,-141.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_time_loadCalledByGraph = svgPanZoom('#proctem_time_loadCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_time_load</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">clock_start</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Time to be read from the Lua script</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Handle to the Lua script.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+
+<span class="w">    </span><span class="c">!&gt; Name of the table containing the time definition. Default: &#39;time&#39;.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+
+<span class="w">    </span><span class="c">!&gt; Handle to the parent table.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+
+<span class="w">    </span><span class="c">!&gt; Reference MPI_Wtime mark to use for computation of wallclock</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! This is basically only useful to update the time object for a read in</span>
+<span class="w">    </span><span class="c">!! restart without distorting the clock measurement.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">clock_start</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iErr</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">loc_key</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">loc_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">loc_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;time&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">loc_key</span><span class="w">  </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thandle</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! The time is given as a table load its components accordingly.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">sim</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;sim&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">sim</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iErr</span><span class="w">          </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">iter</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;iter&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iter</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iErr</span><span class="w">           </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">clock</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;clock&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">clock</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iErr</span><span class="w">            </span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! The time is not given as a table, try to interpret it as a setting for</span>
+<span class="w">      </span><span class="c">! the simtime.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">loc_key</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">sim</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">sim</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iErr</span><span class="w">          </span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">iter</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">iter</span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">clock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">clock</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">!&gt;\todo HK: maybe provide the possibility to add up run times from loaded</span>
+<span class="w">    </span><span class="c">!!          data instead of resetting it.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">clock_start</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">clock_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">clock_start</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">clock_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_Wtime</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_time_load</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,695 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_findPath &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_findPath
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">24 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_geometry_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_geometry_module.f90.html'>tem_geometry_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_geometry_module.html'>tem_geometry_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_findPath</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_findpath.html#src">tem_findPath</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public recursive subroutine tem_findPath(Path, eligible_child, ElemList, pathlist, nElems, otherLevel)  
+</h2>
+    
+
+    <p>Recursive routine to find all actual (eligible) leave nodes in the
+ local partition for a given treeID.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>HK: when doing this for the complete domain it would probably better
+          just compute the ID on the finest level along with the information
+          on the level of each leaf, in order to speed up things a little.
+          This way comparison would be just a simple integer comparison.</p>
+</div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-path"></span>
+              type(<a href='../type/tem_path_type.html'>tem_path_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>Path</strong></td>
+            <td>
+                <p>Path to the leaf to find in the array of Elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-eligible_child~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>eligible_child</strong>(:)</td>
+            <td>
+                <p>Candidate childs, which might be considered as neighbors</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elemlist~2"></span>
+              type(<a href='../type/tem_longlist.html'>tem_longList</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>ElemList</strong></td>
+            <td>
+                <p>linked list of resulting elements building the neighbor</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pathlist"></span>
+              type(<a href='../type/tem_path_type.html'>tem_path_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pathlist</strong>(nElems)</td>
+            <td>
+                <p>array of paths</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~56"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+                <p>number of elements in list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-otherlevel~3"></span>
+              logical,
+            </td>
+<td>intent(inout),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>otherLevel</strong></td>
+            <td>
+                <p>entry is on another level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_findpath~~CallsGraph Pages: 1 -->
+<svg id="proctem_findpathCallsGraph" width="456pt" height="452pt"
+ viewBox="0.00 0.00 456.00 452.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_findpath~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 448)">
+<title>proc~~tem_findpath~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-448 452,-448 452,4 -4,4"/>
+<!-- proc~tem_findpath -->
+<g id="proc~~tem_findpath~~CallsGraph_node1" class="node">
+<title>proc~tem_findpath</title>
+<polygon fill="none" stroke="black" points="82,-192 0,-192 0,-168 82,-168 82,-192"/>
+<text text-anchor="middle" x="41" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_findPath</text>
+</g>
+<!-- proc~tem_findpath&#45;&gt;proc~tem_findpath -->
+<g id="proc~~tem_findpath~~CallsGraph_edge2" class="edge">
+<title>proc~tem_findpath&#45;&gt;proc~tem_findpath</title>
+<path fill="none" stroke="#000000" d="M20.83,-192.01C13.78,-200.97 20.51,-210 41,-210 53.49,-210 60.86,-206.65 63.12,-202"/>
+<polygon fill="#000000" stroke="#000000" points="66.53,-201.16 61.17,-192.01 59.66,-202.5 66.53,-201.16"/>
+</g>
+<!-- interface~append~30 -->
+<g id="proc~~tem_findpath~~CallsGraph_node2" class="node">
+<title>interface~append~30</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node2"><a xlink:href="../interface/append~30.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="191,-234 137,-234 137,-210 191,-210 191,-234"/>
+<text text-anchor="middle" x="164" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_findpath&#45;&gt;interface~append~30 -->
+<g id="proc~~tem_findpath~~CallsGraph_edge1" class="edge">
+<title>proc~tem_findpath&#45;&gt;interface~append~30</title>
+<path fill="none" stroke="#000000" d="M76.67,-192.04C92.52,-197.54 111.28,-204.05 127.25,-209.59"/>
+<polygon fill="#000000" stroke="#000000" points="126.19,-212.93 136.79,-212.9 128.49,-206.32 126.19,-212.93"/>
+</g>
+<!-- proc~tem_pathof -->
+<g id="proc~~tem_findpath~~CallsGraph_node3" class="node">
+<title>proc~tem_pathof</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node3"><a xlink:href="../proc/tem_pathof.html" xlink:title="tem_PathOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="201,-192 127,-192 127,-168 201,-168 201,-192"/>
+<text text-anchor="middle" x="164" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PathOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_findpath&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_findpath~~CallsGraph_edge3" class="edge">
+<title>proc~tem_findpath&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M82.29,-180C93.34,-180 105.41,-180 116.77,-180"/>
+<polygon fill="#000000" stroke="#000000" points="116.95,-183.5 126.95,-180 116.95,-176.5 116.95,-183.5"/>
+</g>
+<!-- proc~tem_posofpath -->
+<g id="proc~~tem_findpath~~CallsGraph_node4" class="node">
+<title>proc~tem_posofpath</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node4"><a xlink:href="../proc/tem_posofpath.html" xlink:title="tem_PosOfPath">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="210,-150 118,-150 118,-126 210,-126 210,-150"/>
+<text text-anchor="middle" x="164" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PosOfPath</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_findpath&#45;&gt;proc~tem_posofpath -->
+<g id="proc~~tem_findpath~~CallsGraph_edge4" class="edge">
+<title>proc~tem_findpath&#45;&gt;proc~tem_posofpath</title>
+<path fill="none" stroke="#000000" d="M76.67,-167.96C89.71,-163.44 104.72,-158.23 118.52,-153.44"/>
+<polygon fill="#000000" stroke="#000000" points="120.02,-156.62 128.32,-150.04 117.73,-150.01 120.02,-156.62"/>
+</g>
+<!-- proc~tem_appenddp1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node5" class="node">
+<title>proc~tem_appenddp1darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node5"><a xlink:href="../proc/tem_appenddp1darray.html" xlink:title="tem_appendDp1dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415.5,-444 278.5,-444 278.5,-420 415.5,-420 415.5,-444"/>
+<text text-anchor="middle" x="347" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendDp1dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appenddp1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge5" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appenddp1darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M166.42,-234.48C170.99,-268.58 188.56,-363.94 246,-411 252.66,-416.45 260.38,-420.6 268.53,-423.73"/>
+<polygon fill="#000000" stroke="#000000" points="267.66,-427.13 278.26,-426.95 269.87,-420.48 267.66,-427.13"/>
+</g>
+<!-- proc~tem_appenddp2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node6" class="node">
+<title>proc~tem_appenddp2darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node6"><a xlink:href="../proc/tem_appenddp2darray.html" xlink:title="tem_appendDp2dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415.5,-402 278.5,-402 278.5,-378 415.5,-378 415.5,-402"/>
+<text text-anchor="middle" x="347" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendDp2dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appenddp2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge6" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appenddp2darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.98,-234.19C175.61,-262.7 198.69,-333.99 246,-369 252.82,-374.04 260.57,-377.94 268.68,-380.93"/>
+<polygon fill="#000000" stroke="#000000" points="267.73,-384.3 278.33,-384.05 269.89,-377.64 267.73,-384.3"/>
+</g>
+<!-- proc~tem_appendint1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node7" class="node">
+<title>proc~tem_appendint1darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node7"><a xlink:href="../proc/tem_appendint1darray.html" xlink:title="tem_appendInt1dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-360 279,-360 279,-336 415,-336 415,-360"/>
+<text text-anchor="middle" x="347" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendInt1dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendint1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge7" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendint1darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M170.64,-234C181.72,-256.19 208.56,-303.51 246,-327 253.13,-331.47 261.05,-335.01 269.22,-337.8"/>
+<polygon fill="#000000" stroke="#000000" points="268.32,-341.18 278.9,-340.75 270.36,-334.49 268.32,-341.18"/>
+</g>
+<!-- proc~tem_appendint2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node8" class="node">
+<title>proc~tem_appendint2darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node8"><a xlink:href="../proc/tem_appendint2darray.html" xlink:title="tem_appendInt2dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-318 279,-318 279,-294 415,-294 415,-318"/>
+<text text-anchor="middle" x="347" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendInt2dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendint2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge8" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendint2darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M176.98,-234.24C191.82,-248.66 218.52,-272.26 246,-285 253.27,-288.37 261.08,-291.2 269.02,-293.58"/>
+<polygon fill="#000000" stroke="#000000" points="268.17,-296.98 278.74,-296.27 270.04,-290.23 268.17,-296.98"/>
+</g>
+<!-- proc~tem_appendintlist -->
+<g id="proc~~tem_findpath~~CallsGraph_node9" class="node">
+<title>proc~tem_appendintlist</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node9"><a xlink:href="../proc/tem_appendintlist.html" xlink:title="tem_appendIntList">
+<polygon fill="#d9534f" stroke="#d9534f" points="402.5,-276 291.5,-276 291.5,-252 402.5,-252 402.5,-276"/>
+<text text-anchor="middle" x="347" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendIntList</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendintlist -->
+<g id="proc~~tem_findpath~~CallsGraph_edge9" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendintlist</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.19,-229.12C207.01,-233.34 227.61,-238.69 246,-243 257.47,-245.69 269.72,-248.4 281.57,-250.93"/>
+<polygon fill="#000000" stroke="#000000" points="280.89,-254.37 291.4,-253.02 282.35,-247.52 280.89,-254.37"/>
+</g>
+<!-- proc~tem_appendintlong1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node10" class="node">
+<title>proc~tem_appendintlong1darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node10"><a xlink:href="../proc/tem_appendintlong1darray.html" xlink:title="tem_appendIntLong1dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="428,-234 266,-234 266,-210 428,-210 428,-234"/>
+<text text-anchor="middle" x="347" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendIntLong1dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendintlong1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge10" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendintlong1darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.32,-222C208.56,-222 232.21,-222 255.83,-222"/>
+<polygon fill="#000000" stroke="#000000" points="255.93,-225.5 265.93,-222 255.93,-218.5 255.93,-225.5"/>
+</g>
+<!-- proc~tem_appendintlong2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node11" class="node">
+<title>proc~tem_appendintlong2darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node11"><a xlink:href="../proc/tem_appendintlong2darray.html" xlink:title="tem_appendIntLong2dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="428,-192 266,-192 266,-168 428,-168 428,-192"/>
+<text text-anchor="middle" x="347" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendIntLong2dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendintlong2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge11" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendintlong2darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.19,-214.88C207.01,-210.66 227.61,-205.31 246,-201 255.88,-198.68 266.34,-196.35 276.63,-194.13"/>
+<polygon fill="#000000" stroke="#000000" points="277.36,-197.55 286.41,-192.04 275.9,-190.71 277.36,-197.55"/>
+</g>
+<!-- proc~tem_appendintlongarrayto1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node12" class="node">
+<title>proc~tem_appendintlongarrayto1darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node12"><a xlink:href="../proc/tem_appendintlongarrayto1darray.html" xlink:title="tem_appendIntLongArrayTo1dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="448,-150 246,-150 246,-126 448,-126 448,-150"/>
+<text text-anchor="middle" x="347" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendIntLongArrayTo1dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendintlongarrayto1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge12" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendintlongarrayto1darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.3,-212.01C197.73,-208.97 204.37,-205.27 210,-201 229.58,-186.13 224.84,-171.53 246,-159 249.07,-157.18 252.27,-155.52 255.57,-154"/>
+<polygon fill="#000000" stroke="#000000" points="257.17,-157.13 265.09,-150.09 254.51,-150.66 257.17,-157.13"/>
+</g>
+<!-- proc~tem_appendlonglist -->
+<g id="proc~~tem_findpath~~CallsGraph_node13" class="node">
+<title>proc~tem_appendlonglist</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node13"><a xlink:href="../proc/tem_appendlonglist.html" xlink:title="tem_appendLongList">
+<polygon fill="#d9534f" stroke="#d9534f" points="409,-108 285,-108 285,-84 409,-84 409,-108"/>
+<text text-anchor="middle" x="347" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendLongList</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendlonglist -->
+<g id="proc~~tem_findpath~~CallsGraph_edge13" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendlonglist</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.35,-213.56C198.07,-210.44 204.84,-206.33 210,-201 238.26,-171.83 214.58,-142.74 246,-117 254.4,-110.11 264.51,-105.32 275.03,-102.01"/>
+<polygon fill="#000000" stroke="#000000" points="276.02,-105.37 284.76,-99.38 274.19,-98.61 276.02,-105.37"/>
+</g>
+<!-- proc~tem_appendsp1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node14" class="node">
+<title>proc~tem_appendsp1darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node14"><a xlink:href="../proc/tem_appendsp1darray.html" xlink:title="tem_appendSp1dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-66 279,-66 279,-42 415,-42 415,-66"/>
+<text text-anchor="middle" x="347" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendSp1dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendsp1darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge14" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendsp1darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.34,-214.2C198.22,-211.06 205.08,-206.77 210,-201 247.8,-156.69 203.38,-114.69 246,-75 252.72,-68.74 260.81,-64.16 269.45,-60.82"/>
+<polygon fill="#000000" stroke="#000000" points="270.59,-64.13 278.99,-57.67 268.4,-57.48 270.59,-64.13"/>
+</g>
+<!-- proc~tem_appendsp2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_node15" class="node">
+<title>proc~tem_appendsp2darray</title>
+<g id="a_proc~~tem_findpath~~CallsGraph_node15"><a xlink:href="../proc/tem_appendsp2darray.html" xlink:title="tem_appendSp2dArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="415,-24 279,-24 279,0 415,0 415,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendSp2dArray</text>
+</a>
+</g>
+</g>
+<!-- interface~append~30&#45;&gt;proc~tem_appendsp2darray -->
+<g id="proc~~tem_findpath~~CallsGraph_edge15" class="edge">
+<title>interface~append~30&#45;&gt;proc~tem_appendsp2darray</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M191.13,-214.62C198.17,-211.47 205.17,-207.07 210,-201 257.58,-141.27 191.89,-86.89 246,-33 252.55,-26.47 260.59,-21.73 269.22,-18.32"/>
+<polygon fill="#000000" stroke="#000000" points="270.42,-21.62 278.79,-15.13 268.2,-14.98 270.42,-21.62"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">recursive subroutine </span><span class="n">tem_findPath</span><span class="p">(</span><span class="w"> </span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">eligible_child</span><span class="p">,</span><span class="w"> </span><span class="n">ElemList</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">Pathlist</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">otherLevel</span><span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Path to the leaf to find in the array of Elements</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">Path</span>
+<span class="w">    </span><span class="c">!&gt; Candidate childs, which might be considered as neighbors</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">eligible_child</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; linked list of resulting elements building the neighbor</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_longList</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ElemList</span>
+<span class="w">    </span><span class="c">!&gt; number of elements in list</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">nElems</span>
+<span class="w">    </span><span class="c">!&gt; array of paths</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">pathlist</span><span class="p">(</span><span class="n">nElems</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; entry is on another level</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="k">optional</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">otherLevel</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">off</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">childPath</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="c">! binary search of the Path in the array of actual present elements</span>
+<span class="w">    </span><span class="c">! Return pos &lt; 0 if</span>
+<span class="w">    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_PosOfPath</span><span class="p">(</span><span class="n">Path</span><span class="p">,</span><span class="w"> </span><span class="n">Pathlist</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! If the neighbor is on a level higher than myself, it should be</span>
+<span class="w">    </span><span class="c">! delivered by binary search</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! Element actually exists, append it to the list</span>
+<span class="w">       </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="n">ElemList</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! Element is a GhostFromFiner, look for childs</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">otherLevel</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">otherLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">      </span><span class="n">off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">%</span><span class="n">Node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">8</span>
+<span class="w">      </span><span class="k">do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">eligible_child</span><span class="p">)</span>
+<span class="w">        </span><span class="n">childPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_pathOf</span><span class="p">(</span><span class="n">off</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">eligible_child</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_findPath</span><span class="p">(</span><span class="w"> </span><span class="n">childPath</span><span class="p">,</span><span class="w"> </span><span class="n">eligible_child</span><span class="p">,</span><span class="w"> </span><span class="n">ElemList</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                </span><span class="n">Pathlist</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">otherLevel</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">    else</span><span class="w"> </span><span class="c">! pos == 0</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_findPath</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

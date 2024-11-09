@@ -1,0 +1,692 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_pop_from_track_rq &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_pop_from_track_rq
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">18 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_lua_requires_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_lua_requires_module.f90.html'>tem_lua_requires_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_lua_requires_module.html'>tem_lua_requires_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_pop_from_track_rq</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_pop_from_track_rq.html#src">tem_pop_from_track_rq</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_pop_from_track_rq(L, modname, buffer)  
+</h2>
+    
+
+    <p>Subroutine to pop the code from the tracked required files.</p>
+<p>This routine reads the given module from the previously stored list of
+required codes into the buffer and removes it from the table in Lua.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l~5"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>L</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-modname"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>modname</strong></td>
+            <td>
+                <p>Name of the module to pop.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-buffer~13"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/cbuf_type.html'>cbuf_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>buffer</strong></td>
+            <td>
+                <p>Buffer to hold the code.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_pop_from_track_rq~~CallsGraph Pages: 1 -->
+<svg id="proctem_pop_from_track_rqCallsGraph" width="288pt" height="284pt"
+ viewBox="0.00 0.00 288.00 284.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 280)">
+<title>proc~~tem_pop_from_track_rq~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-280 284,-280 284,4 -4,4"/>
+<!-- proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node1" class="node">
+<title>proc~tem_pop_from_track_rq</title>
+<polygon fill="none" stroke="black" points="138,-150 0,-150 0,-126 138,-126 138,-150"/>
+<text text-anchor="middle" x="69" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_pop_from_track_rq</text>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node2" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="274.5,-276 179.5,-276 179.5,-252 274.5,-252 274.5,-276"/>
+<text text-anchor="middle" x="227" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_close -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge1" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M79.35,-150.29C96.18,-171.71 133.62,-216.14 174,-243 176.39,-244.59 178.93,-246.1 181.54,-247.51"/>
+<polygon fill="#000000" stroke="#000000" points="180.09,-250.7 190.61,-251.98 183.18,-244.42 180.09,-250.7"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node3" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="274,-234 180,-234 180,-210 274,-210 274,-234"/>
+<text text-anchor="middle" x="227" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_open -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge2" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M87.91,-150.07C108.24,-163.48 142.67,-185.31 174,-201 177.33,-202.67 180.83,-204.31 184.36,-205.89"/>
+<polygon fill="#000000" stroke="#000000" points="183.17,-209.18 193.74,-209.91 185.93,-202.75 183.17,-209.18"/>
+</g>
+<!-- aot_table_push -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node4" class="node">
+<title>aot_table_push</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_push.html" xlink:title="aot_table_push">
+<polygon fill="#d9534f" stroke="#d9534f" points="273.5,-192 180.5,-192 180.5,-168 273.5,-168 273.5,-192"/>
+<text text-anchor="middle" x="227" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_push</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_push -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge3" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_push</title>
+<path fill="none" stroke="#000000" d="M114.7,-150.04C132.41,-154.8 152.93,-160.33 171.5,-165.33"/>
+<polygon fill="#000000" stroke="#000000" points="170.72,-168.74 181.29,-167.96 172.54,-161.98 170.72,-168.74"/>
+</g>
+<!-- aot_table_set_top -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node5" class="node">
+<title>aot_table_set_top</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_set_top.html" xlink:title="aot_table_set_top">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-150 174,-150 174,-126 280,-126 280,-150"/>
+<text text-anchor="middle" x="227" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_set_top</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_set_top -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge4" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_set_top</title>
+<path fill="none" stroke="#000000" d="M138.42,-138C146.71,-138 155.15,-138 163.35,-138"/>
+<polygon fill="#000000" stroke="#000000" points="163.58,-141.5 173.58,-138 163.58,-134.5 163.58,-141.5"/>
+</g>
+<!-- flu_dump -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node6" class="node">
+<title>flu_dump</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node6"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/flu_dump.html" xlink:title="flu_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="258,-108 196,-108 196,-84 258,-84 258,-108"/>
+<text text-anchor="middle" x="227" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_dump -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge5" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_dump</title>
+<path fill="none" stroke="#000000" d="M114.7,-125.96C137.09,-119.94 163.98,-112.7 185.72,-106.85"/>
+<polygon fill="#000000" stroke="#000000" points="186.87,-110.16 195.62,-104.18 185.05,-103.4 186.87,-110.16"/>
+</g>
+<!-- flu_pop -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node7" class="node">
+<title>flu_pop</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node7"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flu_pop.html" xlink:title="flu_pop">
+<polygon fill="#d9534f" stroke="#d9534f" points="254,-66 200,-66 200,-42 254,-42 254,-66"/>
+<text text-anchor="middle" x="227" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_pop</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_pop -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge6" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_pop</title>
+<path fill="none" stroke="#000000" d="M87.91,-125.93C108.24,-112.52 142.67,-90.69 174,-75 179.3,-72.35 185.02,-69.77 190.65,-67.38"/>
+<polygon fill="#000000" stroke="#000000" points="192.06,-70.59 199.98,-63.56 189.4,-64.11 192.06,-70.59"/>
+</g>
+<!-- flu_pushnil -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_node8" class="node">
+<title>flu_pushnil</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CallsGraph_node8"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flu_pushnil.html" xlink:title="flu_pushnil">
+<polygon fill="#d9534f" stroke="#d9534f" points="262,-24 192,-24 192,0 262,0 262,-24"/>
+<text text-anchor="middle" x="227" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_pushnil</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_pushnil -->
+<g id="proc~~tem_pop_from_track_rq~~CallsGraph_edge7" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_pushnil</title>
+<path fill="none" stroke="#000000" d="M79.35,-125.71C96.18,-104.29 133.62,-59.86 174,-33 176.76,-31.17 179.7,-29.45 182.73,-27.85"/>
+<polygon fill="#000000" stroke="#000000" points="184.48,-30.89 191.98,-23.41 181.45,-24.58 184.48,-30.89"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_pop_from_track_rq~~CalledByGraph Pages: 1 -->
+<svg id="proctem_pop_from_track_rqCalledByGraph" width="641pt" height="74pt"
+ viewBox="0.00 0.00 641.00 73.54" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph" class="graph" transform="scale(0.99 0.99) rotate(0) translate(4 70)">
+<title>proc~~tem_pop_from_track_rq~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 641,-70 641,4 -4,4"/>
+<!-- proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_node1" class="node">
+<title>proc~tem_pop_from_track_rq</title>
+<polygon fill="none" stroke="black" points="637,-45 499,-45 499,-21 637,-21 637,-45"/>
+<text text-anchor="middle" x="568" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_pop_from_track_rq</text>
+</g>
+<!-- proc~tem_open_distconf -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_node2" class="node">
+<title>proc~tem_open_distconf</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CalledByGraph_node2"><a xlink:href="../proc/tem_open_distconf.html" xlink:title="tem_open_distconf">
+<polygon fill="#d9534f" stroke="#d9534f" points="446,-66 333,-66 333,-42 446,-42 446,-66"/>
+<text text-anchor="middle" x="389.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open_distconf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_pop_from_track_rq</title>
+<path fill="none" stroke="#000000" d="M446.35,-47.36C459.76,-45.76 474.32,-44.03 488.55,-42.33"/>
+<polygon fill="#000000" stroke="#000000" points="489.31,-45.77 498.82,-41.11 488.48,-38.82 489.31,-45.77"/>
+</g>
+<!-- proc~tem_open_distconf_array -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_node3" class="node">
+<title>proc~tem_open_distconf_array</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CalledByGraph_node3"><a xlink:href="../proc/tem_open_distconf_array.html" xlink:title="tem_open_distconf_array">
+<polygon fill="#d9534f" stroke="#d9534f" points="463,-24 316,-24 316,0 463,0 463,-24"/>
+<text text-anchor="middle" x="389.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open_distconf_array</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf_array&#45;&gt;proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_open_distconf_array&#45;&gt;proc~tem_pop_from_track_rq</title>
+<path fill="none" stroke="#000000" d="M463.05,-20.63C471.6,-21.65 480.34,-22.69 488.95,-23.71"/>
+<polygon fill="#000000" stroke="#000000" points="488.64,-27.2 498.99,-24.91 489.47,-20.25 488.64,-27.2"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_node4" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CalledByGraph_node4"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-66 138,-66 138,-42 280,-42 280,-66"/>
+<text text-anchor="middle" x="209" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf</title>
+<path fill="none" stroke="#000000" d="M280.04,-54C293.97,-54 308.56,-54 322.35,-54"/>
+<polygon fill="#000000" stroke="#000000" points="322.72,-57.5 332.72,-54 322.72,-50.5 322.72,-57.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_node5" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_pop_from_track_rq~~CalledByGraph_node5"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-66 0,-66 0,-42 102,-42 102,-66"/>
+<text text-anchor="middle" x="51" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_pop_from_track_rq~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-54C110.41,-54 119.08,-54 127.78,-54"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-57.5 137.99,-54 127.99,-50.5 127.99,-57.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_pop_from_track_rqCalledByGraph = svgPanZoom('#proctem_pop_from_track_rqCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_pop_from_track_rq</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">modname</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt;</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">L</span>
+<span class="w">    </span><span class="c">!&gt; Name of the module to pop.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">modname</span>
+<span class="w">    </span><span class="c">!&gt; Buffer to hold the code.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">cbuf_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">track_handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">code_handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buflen</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w">                                          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">track_handle</span><span class="p">,</span><span class="w">                               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;track_rq&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w">                                          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">track_handle</span><span class="p">,</span><span class="w">                               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code_handle</span><span class="p">,</span><span class="w">                                </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;code&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Get field track_rq.code[modname].</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_push</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code_handle</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">modname</span><span class="p">))</span>
+<span class="w">    </span><span class="c">! Dump to buffer</span>
+<span class="w">    </span><span class="k">call </span><span class="n">flu_dump</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buflen</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Pop it from the stack again.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">flu_pop</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! Set field track_rq.code[modname] to nil.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">flu_pushNil</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_set_top</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">code_handle</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">modname</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">code_handle</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">track_handle</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_pop_from_track_rq</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

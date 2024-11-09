@@ -1,0 +1,1233 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_load_internal &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_load_internal
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">121 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/treelmesh_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/treelmesh_module.f90.html'>treelmesh_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/treelmesh_module.html'>treelmesh_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_load_internal</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_load_internal.html#src">tem_load_internal</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_load_internal(me, conf, thandle, myPart, nParts, comm)  
+</h2>
+    
+
+    <p>Load an internally generated mesh</p>
+<p>The predefined meshes are illustrated in the following configuration
+ snippet:</p>
+<div class="codehilite"><pre><span></span><code> <span class="c1">-- use the predefined full cube</span>
+ <span class="n">mesh</span> <span class="o">=</span> <span class="p">{</span> <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;cube&#39;</span><span class="p">,</span>
+          <span class="c1">-- for a single element in Z-direction use slice:</span>
+          <span class="c1">-- predefined = &#39;slice&#39;,</span>
+
+          <span class="c1">-- for just a line (single element in Y and Z) use line:</span>
+          <span class="c1">-- predefined = &#39;line&#39;,</span>
+          <span class="c1">-- If you set the refinementLevel to 0, a single element will</span>
+          <span class="c1">-- be created with treeID=1 on level 1, with the bounding cube</span>
+          <span class="c1">-- redefined such, that the element fills the original</span>
+          <span class="c1">-- specification for the bounding cube.</span>
+          <span class="c1">-- The line can also be generated with an arbitrary number of</span>
+          <span class="c1">-- elements instead of a level. In this case the length refers</span>
+          <span class="c1">-- to the overall length of the given elements not the extent of</span>
+          <span class="c1">-- the cube. Periodicity is assumed in X direction as well.</span>
+          <span class="c1">-- To create the line with a certain number of elements set the</span>
+          <span class="c1">-- element_count instead of the refinementLevel. If both are</span>
+          <span class="c1">-- given, the element_count overrules the refinementLevel.</span>
+
+          <span class="c1">-- for a line with boundary conditions line_bounded:</span>
+          <span class="c1">-- predefined = &#39;line_bounded&#39;</span>
+          <span class="c1">-- Like line, but needs to have `element_count` given, not</span>
+          <span class="c1">-- `refinementLevel`. This mesh defines boundary conditions in the</span>
+          <span class="c1">-- X direction as west (on the left) and east (on the right), that</span>
+          <span class="c1">-- then need to be defined in the solver configuration.</span>
+ <span class="c1">-- origin of the cube</span>
+ <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">},</span>
+ <span class="c1">-- length of the cube</span>
+ <span class="n">length</span> <span class="o">=</span> <span class="mf">10.</span><span class="p">,</span>
+ <span class="c1">-- refinement level to resolve the cube</span>
+ <span class="n">refinementLevel</span> <span class="o">=</span> <span class="mi">4</span> <span class="p">}</span>
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~468"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Structure to load the mesh to</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~88"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>Directory containing the mesh informations</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-thandle~38"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>thandle</strong></td>
+            <td>
+                <p>Handle for the table to read the description
+of the mesh from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~13"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                <p>Partition to use on the calling process (= MPI Rank in comm)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nparts~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nParts</strong></td>
+            <td>
+                <p>Number of partitions, the mesh is partitioned into (= Number of MPI
+processes in comm).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~33"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>MPI Communicator to use</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_internal~~CallsGraph Pages: 1 -->
+<svg id="proctem_load_internalCallsGraph" width="462pt" height="410pt"
+ viewBox="0.00 0.00 462.00 410.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_internal~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 406)">
+<title>proc~~tem_load_internal~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 458,-406 458,4 -4,4"/>
+<!-- proc~tem_load_internal -->
+<g id="proc~~tem_load_internal~~CallsGraph_node1" class="node">
+<title>proc~tem_load_internal</title>
+<polygon fill="none" stroke="black" points="109,-213 0,-213 0,-189 109,-189 109,-213"/>
+<text text-anchor="middle" x="54.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_internal</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_load_internal~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="259.5,-402 186.5,-402 186.5,-378 259.5,-378 259.5,-402"/>
+<text text-anchor="middle" x="223" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge1" class="edge">
+<title>proc~tem_load_internal&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M58.44,-213.31C66.51,-244.43 92.06,-326.73 145,-369 153.95,-376.15 165.16,-380.87 176.22,-383.99"/>
+<polygon fill="#000000" stroke="#000000" points="175.73,-387.47 186.28,-386.42 177.38,-380.67 175.73,-387.47"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_load_internal~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="270.5,-360 175.5,-360 175.5,-336 270.5,-336 270.5,-360"/>
+<text text-anchor="middle" x="223" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge2" class="edge">
+<title>proc~tem_load_internal&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M60.67,-213.17C72.03,-238.43 101.67,-296.73 145,-327 151.17,-331.31 158.19,-334.74 165.42,-337.46"/>
+<polygon fill="#000000" stroke="#000000" points="164.75,-340.93 175.34,-340.75 166.95,-334.28 164.75,-340.93"/>
+</g>
+<!-- aot_table_length -->
+<g id="proc~~tem_load_internal~~CallsGraph_node4" class="node">
+<title>aot_table_length</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_length.html" xlink:title="aot_table_length">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="273.5,-318 172.5,-318 172.5,-294 273.5,-294 273.5,-318"/>
+<text text-anchor="middle" x="223" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_length</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;aot_table_length -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge3" class="edge">
+<title>proc~tem_load_internal&#45;&gt;aot_table_length</title>
+<path fill="none" stroke="#000000" d="M65.13,-213.25C80.19,-231.6 111.15,-266.07 145,-285 150.48,-288.06 156.42,-290.7 162.51,-292.96"/>
+<polygon fill="#000000" stroke="#000000" points="161.53,-296.33 172.12,-296.23 163.78,-289.7 161.53,-296.33"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_load_internal~~CallsGraph_node5" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="270,-276 176,-276 176,-252 270,-252 270,-276"/>
+<text text-anchor="middle" x="223" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge4" class="edge">
+<title>proc~tem_load_internal&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M78.58,-213.18C96.38,-222.24 121.8,-234.47 145,-243 151.79,-245.5 159.02,-247.85 166.23,-250.02"/>
+<polygon fill="#000000" stroke="#000000" points="165.41,-253.42 175.99,-252.85 167.36,-246.7 165.41,-253.42"/>
+</g>
+<!-- proc~generate_treelm_cube -->
+<g id="proc~~tem_load_internal~~CallsGraph_node6" class="node">
+<title>proc~generate_treelm_cube</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node6"><a xlink:href="../proc/generate_treelm_cube.html" xlink:title="generate_treelm_cube">
+<polygon fill="#d9534f" stroke="#d9534f" points="289.5,-234 156.5,-234 156.5,-210 289.5,-210 289.5,-234"/>
+<text text-anchor="middle" x="223" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_cube</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_cube -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge5" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_cube</title>
+<path fill="none" stroke="#000000" d="M109.1,-207.76C120.95,-209.25 133.72,-210.87 146.27,-212.45"/>
+<polygon fill="#000000" stroke="#000000" points="145.9,-215.93 156.26,-213.71 146.77,-208.98 145.9,-215.93"/>
+</g>
+<!-- proc~generate_treelm_elements -->
+<g id="proc~~tem_load_internal~~CallsGraph_node7" class="node">
+<title>proc~generate_treelm_elements</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node7"><a xlink:href="../proc/generate_treelm_elements.html" xlink:title="generate_treelm_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="301,-192 145,-192 145,-168 301,-168 301,-192"/>
+<text text-anchor="middle" x="223" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge6" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements</title>
+<path fill="none" stroke="#000000" d="M109.1,-194.24C117.39,-193.19 126.13,-192.09 134.92,-190.98"/>
+<polygon fill="#000000" stroke="#000000" points="135.37,-194.45 144.86,-189.73 134.5,-187.51 135.37,-194.45"/>
+</g>
+<!-- proc~generate_treelm_line -->
+<g id="proc~~tem_load_internal~~CallsGraph_node8" class="node">
+<title>proc~generate_treelm_line</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node8"><a xlink:href="../proc/generate_treelm_line.html" xlink:title="generate_treelm_line">
+<polygon fill="#d9534f" stroke="#d9534f" points="286,-150 160,-150 160,-126 286,-126 286,-150"/>
+<text text-anchor="middle" x="223" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_line</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_line -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge7" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_line</title>
+<path fill="none" stroke="#000000" d="M78.58,-188.82C96.38,-179.76 121.8,-167.53 145,-159 150.8,-156.87 156.92,-154.84 163.07,-152.94"/>
+<polygon fill="#000000" stroke="#000000" points="164.13,-156.28 172.72,-150.08 162.14,-149.57 164.13,-156.28"/>
+</g>
+<!-- proc~generate_treelm_single -->
+<g id="proc~~tem_load_internal~~CallsGraph_node9" class="node">
+<title>proc~generate_treelm_single</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node9"><a xlink:href="../proc/generate_treelm_single.html" xlink:title="generate_treelm_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="292,-66 154,-66 154,-42 292,-42 292,-66"/>
+<text text-anchor="middle" x="223" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_single -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge8" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_single</title>
+<path fill="none" stroke="#000000" d="M60.67,-188.83C72.03,-163.57 101.67,-105.27 145,-75 147.4,-73.33 149.92,-71.79 152.53,-70.37"/>
+<polygon fill="#000000" stroke="#000000" points="154.19,-73.46 161.72,-66 151.18,-67.13 154.19,-73.46"/>
+</g>
+<!-- proc~generate_treelm_slice -->
+<g id="proc~~tem_load_internal~~CallsGraph_node10" class="node">
+<title>proc~generate_treelm_slice</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node10"><a xlink:href="../proc/generate_treelm_slice.html" xlink:title="generate_treelm_slice">
+<polygon fill="#d9534f" stroke="#d9534f" points="288,-108 158,-108 158,-84 288,-84 288,-108"/>
+<text text-anchor="middle" x="223" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_slice</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_slice -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge9" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_slice</title>
+<path fill="none" stroke="#000000" d="M65.13,-188.75C80.19,-170.4 111.15,-135.93 145,-117 148.44,-115.08 152.06,-113.32 155.79,-111.72"/>
+<polygon fill="#000000" stroke="#000000" points="157.17,-114.94 165.22,-108.05 154.63,-108.42 157.17,-114.94"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_load_internal~~CallsGraph_node11" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node11"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="256.5,-24 189.5,-24 189.5,0 256.5,0 256.5,-24"/>
+<text text-anchor="middle" x="223" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge10" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M58.44,-188.69C66.51,-157.57 92.06,-75.27 145,-33 154.81,-25.16 167.33,-20.25 179.4,-17.16"/>
+<polygon fill="#000000" stroke="#000000" points="180.35,-20.53 189.37,-14.97 178.85,-13.7 180.35,-20.53"/>
+</g>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_node14" class="node">
+<title>proc~tem_firstidatlevel</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node14"><a xlink:href="../proc/tem_firstidatlevel.html" xlink:title="tem_FirstIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="450,-192 341,-192 341,-168 450,-168 450,-192"/>
+<text text-anchor="middle" x="395.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_FirstIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_cube&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge11" class="edge">
+<title>proc~generate_treelm_cube&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M272.86,-209.96C292.48,-205.13 315.26,-199.52 335.77,-194.47"/>
+<polygon fill="#000000" stroke="#000000" points="336.76,-197.83 345.63,-192.04 335.09,-191.03 336.76,-197.83"/>
+</g>
+<!-- proc~tem_lastidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_node16" class="node">
+<title>proc~tem_lastidatlevel</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node16"><a xlink:href="../proc/tem_lastidatlevel.html" xlink:title="tem_LastIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="450,-234 341,-234 341,-210 450,-210 450,-234"/>
+<text text-anchor="middle" x="395.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LastIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_cube&#45;&gt;proc~tem_lastidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge12" class="edge">
+<title>proc~generate_treelm_cube&#45;&gt;proc~tem_lastidatlevel</title>
+<path fill="none" stroke="#000000" d="M289.92,-222C303.36,-222 317.48,-222 330.84,-222"/>
+<polygon fill="#000000" stroke="#000000" points="330.89,-225.5 340.89,-222 330.89,-218.5 330.89,-225.5"/>
+</g>
+<!-- proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge13" class="edge">
+<title>proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M301.27,-180C311.1,-180 321.08,-180 330.67,-180"/>
+<polygon fill="#000000" stroke="#000000" points="330.9,-183.5 340.9,-180 330.9,-176.5 330.9,-183.5"/>
+</g>
+<!-- proc~tem_idofcoord -->
+<g id="proc~~tem_load_internal~~CallsGraph_node15" class="node">
+<title>proc~tem_idofcoord</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node15"><a xlink:href="../proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="442,-150 349,-150 349,-126 442,-126 442,-150"/>
+<text text-anchor="middle" x="395.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_elements&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge14" class="edge">
+<title>proc~generate_treelm_elements&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M272.86,-167.96C293.5,-162.88 317.65,-156.93 338.96,-151.68"/>
+<polygon fill="#000000" stroke="#000000" points="339.98,-155.03 348.85,-149.24 338.31,-148.24 339.98,-155.03"/>
+</g>
+<!-- proc~generate_treelm_line&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge15" class="edge">
+<title>proc~generate_treelm_line&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M272.86,-150.04C292.48,-154.87 315.26,-160.48 335.77,-165.53"/>
+<polygon fill="#000000" stroke="#000000" points="335.09,-168.97 345.63,-167.96 336.76,-162.17 335.09,-168.97"/>
+</g>
+<!-- proc~generate_treelm_line&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge16" class="edge">
+<title>proc~generate_treelm_line&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M286.04,-138C303.23,-138 321.78,-138 338.6,-138"/>
+<polygon fill="#000000" stroke="#000000" points="338.81,-141.5 348.81,-138 338.81,-134.5 338.81,-141.5"/>
+</g>
+<!-- proc~tem_coordof_2d_id -->
+<g id="proc~~tem_load_internal~~CallsGraph_node13" class="node">
+<title>proc~tem_coordof_2d_id</title>
+<g id="a_proc~~tem_load_internal~~CallsGraph_node13"><a xlink:href="../proc/tem_coordof_2d_id.html" xlink:title="tem_CoordOf_2d_Id">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="454,-108 337,-108 337,-84 454,-84 454,-108"/>
+<text text-anchor="middle" x="395.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOf_2d_Id</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_slice&#45;&gt;proc~tem_coordof_2d_id -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge17" class="edge">
+<title>proc~generate_treelm_slice&#45;&gt;proc~tem_coordof_2d_id</title>
+<path fill="none" stroke="#000000" d="M288.46,-96C301.03,-96 314.25,-96 326.93,-96"/>
+<polygon fill="#000000" stroke="#000000" points="326.95,-99.5 336.95,-96 326.95,-92.5 326.95,-99.5"/>
+</g>
+<!-- proc~generate_treelm_slice&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge18" class="edge">
+<title>proc~generate_treelm_slice&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M282.76,-108.02C289.16,-110.48 295.38,-113.44 301,-117 321.77,-130.15 316.79,-144.99 337,-159 339.26,-160.56 341.64,-162.03 344.11,-163.39"/>
+<polygon fill="#000000" stroke="#000000" points="342.79,-166.64 353.31,-167.92 345.88,-160.36 342.79,-166.64"/>
+</g>
+<!-- proc~generate_treelm_slice&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge19" class="edge">
+<title>proc~generate_treelm_slice&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M272.86,-108.04C293.5,-113.12 317.65,-119.07 338.96,-124.32"/>
+<polygon fill="#000000" stroke="#000000" points="338.31,-127.76 348.85,-126.76 339.98,-120.97 338.31,-127.76"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_load_internal~~CallsGraph_node12" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="429,-24 362,-24 362,0 429,0 429,-24"/>
+<text text-anchor="middle" x="395.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_load_internal~~CallsGraph_edge20" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M256.87,-12C283.76,-12 322,-12 351.35,-12"/>
+<polygon fill="#000000" stroke="#000000" points="351.73,-15.5 361.73,-12 351.73,-8.5 351.73,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_internal~~CalledByGraph Pages: 1 -->
+<svg id="proctem_load_internalCalledByGraph" width="531pt" height="32pt"
+ viewBox="0.00 0.00 531.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_internal~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_load_internal~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 527,-28 527,4 -4,4"/>
+<!-- proc~tem_load_internal -->
+<g id="proc~~tem_load_internal~~CalledByGraph_node1" class="node">
+<title>proc~tem_load_internal</title>
+<polygon fill="none" stroke="black" points="523,-24 414,-24 414,0 523,0 523,-24"/>
+<text text-anchor="middle" x="468.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_internal</text>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~tem_load_internal~~CalledByGraph_node2" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~tem_load_internal~~CalledByGraph_node2"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-24 316,-24 316,0 378,0 378,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_load_internal -->
+<g id="proc~~tem_load_internal~~CalledByGraph_edge1" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_load_internal</title>
+<path fill="none" stroke="#000000" d="M378.15,-12C385.99,-12 394.74,-12 403.61,-12"/>
+<polygon fill="#000000" stroke="#000000" points="403.63,-15.5 413.63,-12 403.63,-8.5 403.63,-15.5"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_load_internal~~CalledByGraph_node3" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_load_internal~~CalledByGraph_node3"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~tem_load_internal~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M280.39,-12C289.04,-12 297.64,-12 305.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.73,-15.5 315.73,-12 305.73,-8.5 305.73,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_load_internal~~CalledByGraph_node4" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_load_internal~~CalledByGraph_node4"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_load_internal~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_internal</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Structure to load the mesh to</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Directory containing the mesh informations</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; Handle for the table to read the description</span>
+<span class="w">    </span><span class="c">!! of the mesh from.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="c">!&gt; Partition to use on the calling process (= MPI Rank in comm)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="c">!&gt; Number of partitions, the mesh is partitioned into (= Number of MPI</span>
+<span class="w">    </span><span class="c">!! processes in comm).</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="c">!&gt; MPI Communicator to use</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">meshtype</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">length</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elementcount</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sub_handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">orig_err</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">meshtype</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;predefined&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;cube&#39;</span><span class="w">        </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">meshtype</span><span class="p">))</span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;cube&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Creating a full cubical mesh without boundaries&#39;</span>
+
+<span class="w">      </span><span class="c">! Get the origin of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;origin&#39;</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aot_table_length</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="w">          </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">           </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end do</span>
+<span class="k">      else</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Origin specified for the mesh to generate has to &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="o">//</span><span class="s1">&#39;have 3 entries!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Default to {0., 0., 0.} &#39;</span>
+<span class="w">        </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">sub_handle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the length of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the refinement level:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;refinementLevel&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Now generate a mesh with the gathered configuration parameters</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! Only if the level is greater than 0, actually create mesh.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">generate_treelm_cube</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">level</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="c">! Meshes on level 0 have only one element, but we need treeids &gt; 0,</span>
+<span class="w">        </span><span class="c">! thus we create single elements on level 1 with treeid=1, and</span>
+<span class="w">        </span><span class="c">! redefine the bounding cube accordingly.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">generate_treelm_single</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+
+<span class="k">    case</span><span class="p">(</span><span class="s1">&#39;slice&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Creating a slice (single element in Z) mesh&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="o">//</span><span class="s1">&#39; without boundaries&#39;</span>
+
+<span class="w">      </span><span class="c">! Get the origin of the cube:</span>
+<span class="w">      </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;origin&#39;</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aot_table_length</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        do </span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span>
+<span class="w">          </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="n">i</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w">           </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end do</span>
+<span class="k">      else</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Origin specified for the mesh to generate has to &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;have 2 entries!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Default to {0., 0.} &#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">sub_handle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the length of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the refinement level:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;refinementLevel&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Now generate a mesh with the gathered configuration parameters</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! Only if the level is greater than 0, actually create mesh.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">generate_treelm_slice</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">level</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="c">! Meshes on level 0 have only one element, but we need treeids &gt; 0,</span>
+<span class="w">        </span><span class="c">! thus we create single elements on level 1 with treeid=1, and</span>
+<span class="w">        </span><span class="c">! redefine the bounding cube accordingly.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">generate_treelm_single</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+
+<span class="k">    case</span><span class="p">(</span><span class="s1">&#39;line&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Creating a line (single element in Y and Z) mesh&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; without boundaries&#39;</span>
+
+<span class="w">      </span><span class="c">! Get the origin of the cube:</span>
+<span class="w">      </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;origin&#39;</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aot_table_length</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Origin specified for the mesh to generate has&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; to have 1 entry!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Default to {0.} &#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">sub_handle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the length of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the refinement level:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;refinementLevel&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">                 </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the element count:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;element_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">               </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">elementcount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="n">level</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;For the line mesh you need to specify either&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;the element_count or the refinementLevel!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;STOPPING...&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! Now generate a mesh with the gathered configuration parameters</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elementcount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">generate_treelm_elements</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">origin</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">length</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">elementcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">myPart</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">nParts</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">comm</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">predefined</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">meshtype</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">bclabel</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;internal 1D BC&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">((</span><span class="n">level</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="n">elementcount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! Only if the level is greater than 0, actually create mesh.</span>
+<span class="w">          </span><span class="k">call </span><span class="n">generate_treelm_line</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">level</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">    </span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">          </span><span class="c">! Meshes on level 0 have only one element, but we need treeids &gt; 0,</span>
+<span class="w">          </span><span class="c">! thus we create single elements on level 1 with treeid=1, and</span>
+<span class="w">          </span><span class="c">! redefine the bounding cube accordingly.</span>
+<span class="w">          </span><span class="k">call </span><span class="n">generate_treelm_single</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">      </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+
+<span class="k">    case</span><span class="p">(</span><span class="s1">&#39;line_bounded&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Creating a line (single element in Y and Z) mesh&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; WITH boundaries&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Boundaries west and east have to be provided!&#39;</span>
+
+<span class="w">      </span><span class="c">! Get the origin of the cube:</span>
+<span class="w">      </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;origin&#39;</span><span class="w">    </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">aot_table_length</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Origin specified for the mesh to generate has&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; to have 1 entry!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Default to {0.} &#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">Default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w">           </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">sub_handle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the length of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the element count:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;element_count&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">               </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">elementcount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;For the bounded line mesh you need to specify&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;the element_count!&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;STOPPING...&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! Now generate a mesh with the gathered configuration parameters</span>
+<span class="w">      </span><span class="k">call </span><span class="n">generate_treelm_elements</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">origin</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">length</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">elementcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elementcount</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">myPart</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">nParts</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">comm</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">predefined</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">meshtype</span><span class="p">),</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">bclabel</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;bounded internal 1D BC&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;single&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Creating a single element mesh without boundaries&#39;</span>
+
+<span class="w">      </span><span class="c">! Get the origin of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orig_err</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;origin&#39;</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Get the length of the cube:</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span><span class="w">    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Now generate a mesh with the gathered configuration parameters</span>
+<span class="w">      </span><span class="k">call </span><span class="n">generate_treelm_single</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">myPart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">    </span><span class="p">)</span>
+
+
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Do not know how to generate mesh &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">meshtype</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">end select</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_load_internal</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

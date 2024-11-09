@@ -1,0 +1,1227 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_create_subTree_of &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_create_subTree_of
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">114 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_subTree_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_subtree_module.f90.html'>tem_subTree_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_subtree_module.html'>tem_subTree_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_create_subTree_of</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_create_subtree_of.html#src">tem_create_subTree_of</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_create_subTree_of(inTree, subTree, inShape, levelDesc, bc_prop, storePnts, stencil, prefix)  
+</h2>
+    
+
+    <p>Create a subTree from a given inTree and an array of shapes.</p>
+<p>All elements to the inTree%treeID are collected into the subTree%map2global
+array and a sub-communicator with participating processes is created.
+Additionally how many and which elements exist on my local process and are
+requested from the shapes is identified.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-intree~8"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inTree</strong></td>
+            <td>
+                <p>Global mesh from which the elements are identified and then stored to</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-subtree~8"></span>
+              type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>subTree</strong></td>
+            <td>
+                <p>new mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-inshape"></span>
+              type(<a href='../type/tem_shape_type.html'>tem_shape_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inShape</strong>(:)</td>
+            <td>
+                <p>shape objects on which to work</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leveldesc~2"></span>
+              type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>levelDesc</strong>(:)</td>
+            <td>
+                <p>optional level descriptor needed for local shape</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_prop~3"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_prop</strong></td>
+            <td>
+                <p>bc property which is used to identify elements belong to certain BCs</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-storepnts~4"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>storePnts</strong></td>
+            <td>
+                <p>To store space points in subTree</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencil~3"></span>
+              type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencil</strong></td>
+            <td>
+                <p>stencil used to find bcID on certain links</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-prefix~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>prefix</strong></td>
+            <td>
+                <p>prefix for the subTree</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_create_subtree_of~~CallsGraph Pages: 1 -->
+<svg id="proctem_create_subtree_ofCallsGraph" width="641pt" height="636pt"
+ viewBox="0.00 0.00 641.00 636.19" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_create_subtree_of~~CallsGraph" class="graph" transform="scale(0.96 0.96) rotate(0) translate(4 658)">
+<title>proc~~tem_create_subtree_of~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-658 663,-658 663,4 -4,4"/>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node1" class="node">
+<title>proc~tem_create_subtree_of</title>
+<polygon fill="none" stroke="black" points="134,-347 0,-347 0,-323 134,-323 134,-347"/>
+<text text-anchor="middle" x="67" y="-332.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_create_subTree_of</text>
+</g>
+<!-- interface~destroy~14 -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node2" class="node">
+<title>interface~destroy~14</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node2"><a xlink:href="../interface/destroy~14.html" xlink:title="destroy">
+<polygon fill="#a7506f" stroke="#a7506f" points="266.5,-643 212.5,-643 212.5,-619 266.5,-619 266.5,-643"/>
+<text text-anchor="middle" x="239.5" y="-628.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">destroy</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~destroy~14 -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge1" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~destroy~14</title>
+<path fill="none" stroke="#000000" d="M69.41,-347.28C74.75,-388.4 97.24,-522.93 170,-600 178.82,-609.34 190.99,-616.09 202.62,-620.84"/>
+<polygon fill="#000000" stroke="#000000" points="201.59,-624.19 212.18,-624.39 204.02,-617.63 201.59,-624.19"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node3" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node3"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="266.5,-591 212.5,-591 212.5,-567 266.5,-567 266.5,-591"/>
+<text text-anchor="middle" x="239.5" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge2" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M71.58,-347.3C81.91,-381.11 114.65,-476.89 170,-537 179.32,-547.12 191.63,-555.68 203.24,-562.37"/>
+<polygon fill="#000000" stroke="#000000" points="201.87,-565.62 212.32,-567.34 205.23,-559.47 201.87,-565.62"/>
+</g>
+<!-- interface~tem_copypropertybits -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node4" class="node">
+<title>interface~tem_copypropertybits</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node4"><a xlink:href="../interface/tem_copypropertybits.html" xlink:title="tem_copyPropertyBits">
+<polygon fill="#a7506f" stroke="#a7506f" points="303.5,-528 175.5,-528 175.5,-504 303.5,-504 303.5,-528"/>
+<text text-anchor="middle" x="239.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_copyPropertyBits</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~tem_copypropertybits -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge3" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~tem_copypropertybits</title>
+<path fill="none" stroke="#000000" d="M74.51,-347.25C88.9,-373.44 125.68,-435.82 170,-476 179.82,-484.91 191.94,-492.77 203.24,-499.12"/>
+<polygon fill="#000000" stroke="#000000" points="201.61,-502.21 212.07,-503.87 204.93,-496.05 201.61,-502.21"/>
+</g>
+<!-- interface~tem_seteffboundingbox -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node5" class="node">
+<title>interface~tem_seteffboundingbox</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node5"><a xlink:href="../interface/tem_seteffboundingbox.html" xlink:title="tem_setEffBoundingBox">
+<polygon fill="#a7506f" stroke="#a7506f" points="309,-467 170,-467 170,-443 309,-443 309,-467"/>
+<text text-anchor="middle" x="239.5" y="-452.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_setEffBoundingBox</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;interface~tem_seteffboundingbox -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge4" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;interface~tem_seteffboundingbox</title>
+<path fill="none" stroke="#000000" d="M77.31,-347.25C93.77,-368.06 130.06,-410.39 170,-434 173.04,-435.8 176.24,-437.45 179.54,-438.97"/>
+<polygon fill="#000000" stroke="#000000" points="178.44,-442.31 189.02,-442.93 181.14,-435.85 178.44,-442.31"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node6" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="283.5,-425 195.5,-425 195.5,-401 283.5,-401 283.5,-425"/>
+<text text-anchor="middle" x="239.5" y="-410.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge5" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M89.95,-347.07C110.38,-358.09 141.83,-374.52 170,-387 177.94,-390.52 186.52,-394.01 194.83,-397.24"/>
+<polygon fill="#000000" stroke="#000000" points="193.82,-400.6 204.41,-400.89 196.31,-394.06 193.82,-400.6"/>
+</g>
+<!-- mpi_comm_rank -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node7" class="node">
+<title>mpi_comm_rank</title>
+<polygon fill="#777777" stroke="#777777" points="501,-402 400,-402 400,-378 501,-378 501,-402"/>
+<text text-anchor="middle" x="450.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_rank</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge6" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M129.39,-347.01C142.75,-349.47 156.83,-351.93 170,-354 245.53,-365.89 333,-376.68 389.68,-383.28"/>
+<polygon fill="#000000" stroke="#000000" points="389.57,-386.79 399.9,-384.46 390.37,-379.84 389.57,-386.79"/>
+</g>
+<!-- mpi_comm_size -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node8" class="node">
+<title>mpi_comm_size</title>
+<polygon fill="#777777" stroke="#777777" points="499,-360 402,-360 402,-336 499,-336 499,-360"/>
+<text text-anchor="middle" x="450.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_size</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_size -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge7" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_size</title>
+<path fill="none" stroke="#000000" d="M134.02,-337.25C206.64,-339.72 322.21,-343.66 391.48,-346.02"/>
+<polygon fill="#000000" stroke="#000000" points="391.65,-349.53 401.77,-346.37 391.89,-342.53 391.65,-349.53"/>
+</g>
+<!-- mpi_comm_split -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node9" class="node">
+<title>mpi_comm_split</title>
+<polygon fill="#777777" stroke="#777777" points="289,-150 190,-150 190,-126 289,-126 289,-150"/>
+<text text-anchor="middle" x="239.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_split</text>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;mpi_comm_split -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge8" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;mpi_comm_split</title>
+<path fill="none" stroke="#000000" d="M71.64,-322.66C81.7,-290.64 113.04,-204.26 170,-159 173.29,-156.39 176.9,-154.1 180.69,-152.1"/>
+<polygon fill="#000000" stroke="#000000" points="182.17,-155.27 189.8,-147.91 179.25,-148.9 182.17,-155.27"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node10" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node10"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="484,-192 417,-192 417,-168 484,-168 484,-192"/>
+<text text-anchor="middle" x="450.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge9" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M86.35,-322.93C106.42,-309.99 139.79,-289.24 170,-274 245.25,-236.05 264.41,-225.64 345,-201 364.95,-194.9 387.6,-190.1 406.69,-186.64"/>
+<polygon fill="#000000" stroke="#000000" points="407.36,-190.07 416.61,-184.9 406.16,-183.18 407.36,-190.07"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node11" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node11"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="304.5,-108 174.5,-108 174.5,-84 304.5,-84 304.5,-108"/>
+<text text-anchor="middle" x="239.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge10" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M70.13,-322.78C77.19,-285.95 103.29,-174.96 170,-117 171.51,-115.68 173.11,-114.45 174.77,-113.3"/>
+<polygon fill="#000000" stroke="#000000" points="176.69,-116.23 183.53,-108.14 173.14,-110.19 176.69,-116.23"/>
+</g>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node12" class="node">
+<title>proc~tem_shape2subtree</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node12"><a xlink:href="../proc/tem_shape2subtree.html" xlink:title="tem_shape2subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="298.5,-192 180.5,-192 180.5,-168 298.5,-168 298.5,-192"/>
+<text text-anchor="middle" x="239.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape2subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge11" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M76.39,-322.82C92.51,-300.08 129.77,-250.54 170,-218 179.91,-209.98 191.75,-202.74 202.78,-196.78"/>
+<polygon fill="#000000" stroke="#000000" points="204.53,-199.81 211.79,-192.09 201.3,-193.6 204.53,-199.81"/>
+</g>
+<!-- proc~tem_shape_initlocal -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node13" class="node">
+<title>proc~tem_shape_initlocal</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node13"><a xlink:href="../proc/tem_shape_initlocal.html" xlink:title="tem_shape_initLocal">
+<polygon fill="#d9534f" stroke="#d9534f" points="300,-66 179,-66 179,-42 300,-42 300,-66"/>
+<text text-anchor="middle" x="239.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initLocal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape_initlocal -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge12" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape_initlocal</title>
+<path fill="none" stroke="#000000" d="M69.1,-322.87C73.47,-281.71 93.35,-146.01 170,-75 171.32,-73.78 172.7,-72.63 174.15,-71.55"/>
+<polygon fill="#000000" stroke="#000000" points="176.33,-74.31 182.96,-66.05 172.62,-68.37 176.33,-74.31"/>
+</g>
+<!-- proc~tem_subtree_from -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node14" class="node">
+<title>proc~tem_subtree_from</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node14"><a xlink:href="../proc/tem_subtree_from.html" xlink:title="tem_subTree_from">
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-307 185,-307 185,-283 294,-283 294,-307"/>
+<text text-anchor="middle" x="239.5" y="-292.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_from</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_subtree_from -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge13" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_subtree_from</title>
+<path fill="none" stroke="#000000" d="M119.16,-323C137.45,-318.71 158.25,-313.83 177.3,-309.36"/>
+<polygon fill="#000000" stroke="#000000" points="178.15,-312.75 187.09,-307.06 176.55,-305.94 178.15,-312.75"/>
+</g>
+<!-- proc~destroy_ga2d_real -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node19" class="node">
+<title>proc~destroy_ga2d_real</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node19"><a xlink:href="../proc/destroy_ga2d_real.html" xlink:title="destroy_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="505,-654 396,-654 396,-630 505,-630 505,-654"/>
+<text text-anchor="middle" x="450.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">destroy_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~destroy~14&#45;&gt;proc~destroy_ga2d_real -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge14" class="edge">
+<title>interface~destroy~14&#45;&gt;proc~destroy_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.55,-632.37C296.14,-633.93 345.52,-636.53 385.52,-638.63"/>
+<polygon fill="#000000" stroke="#000000" points="385.57,-642.14 395.74,-639.17 385.94,-635.15 385.57,-642.14"/>
+</g>
+<!-- proc~init_ga2d_real -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node20" class="node">
+<title>proc~init_ga2d_real</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node20"><a xlink:href="../proc/init_ga2d_real.html" xlink:title="init_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="494,-612 407,-612 407,-588 494,-588 494,-612"/>
+<text text-anchor="middle" x="450.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~init~14&#45;&gt;proc~init_ga2d_real -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge15" class="edge">
+<title>interface~init~14&#45;&gt;proc~init_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M266.55,-581.62C299,-584.88 355.23,-590.53 396.81,-594.71"/>
+<polygon fill="#000000" stroke="#000000" points="396.48,-598.19 406.78,-595.71 397.18,-591.23 396.48,-598.19"/>
+</g>
+<!-- proc~tem_copypropertybitsfromleveldesc -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node21" class="node">
+<title>proc~tem_copypropertybitsfromleveldesc</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node21"><a xlink:href="../proc/tem_copypropertybitsfromleveldesc.html" xlink:title="tem_copyPropertyBitsFromLevelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="555,-570 346,-570 346,-546 555,-546 555,-570"/>
+<text text-anchor="middle" x="450.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_copyPropertyBitsFromLevelDesc</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_copypropertybits&#45;&gt;proc~tem_copypropertybitsfromleveldesc -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge16" class="edge">
+<title>interface~tem_copypropertybits&#45;&gt;proc~tem_copypropertybitsfromleveldesc</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M300.39,-528.04C325.1,-533 353.9,-538.79 379.56,-543.95"/>
+<polygon fill="#000000" stroke="#000000" points="379.11,-547.42 389.6,-545.96 380.49,-540.56 379.11,-547.42"/>
+</g>
+<!-- proc~tem_copypropertybitsfromtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node22" class="node">
+<title>proc~tem_copypropertybitsfromtree</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node22"><a xlink:href="../proc/tem_copypropertybitsfromtree.html" xlink:title="tem_copyPropertyBitsFromTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="538.5,-528 362.5,-528 362.5,-504 538.5,-504 538.5,-528"/>
+<text text-anchor="middle" x="450.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_copyPropertyBitsFromTree</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_copypropertybits&#45;&gt;proc~tem_copypropertybitsfromtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge17" class="edge">
+<title>interface~tem_copypropertybits&#45;&gt;proc~tem_copypropertybitsfromtree</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M303.77,-516C319,-516 335.61,-516 351.99,-516"/>
+<polygon fill="#000000" stroke="#000000" points="352.15,-519.5 362.15,-516 352.15,-512.5 352.15,-519.5"/>
+</g>
+<!-- proc~tem_seteffboundingbox_fromsubtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node23" class="node">
+<title>proc~tem_seteffboundingbox_fromsubtree</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node23"><a xlink:href="../proc/tem_seteffboundingbox_fromsubtree.html" xlink:title="tem_setEffBoundingBox_fromSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="556,-486 345,-486 345,-462 556,-462 556,-486"/>
+<text text-anchor="middle" x="450.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_setEffBoundingBox_fromSubTree</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_seteffboundingbox&#45;&gt;proc~tem_seteffboundingbox_fromsubtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge18" class="edge">
+<title>interface~tem_seteffboundingbox&#45;&gt;proc~tem_seteffboundingbox_fromsubtree</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M309.22,-461.25C317.43,-461.99 325.98,-462.77 334.62,-463.56"/>
+<polygon fill="#000000" stroke="#000000" points="334.51,-467.06 344.79,-464.48 335.15,-460.09 334.51,-467.06"/>
+</g>
+<!-- proc~tem_seteffboundingbox_fromtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node24" class="node">
+<title>proc~tem_seteffboundingbox_fromtree</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node24"><a xlink:href="../proc/tem_seteffboundingbox_fromtree.html" xlink:title="tem_setEffBoundingBox_fromTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="546,-444 355,-444 355,-420 546,-420 546,-444"/>
+<text text-anchor="middle" x="450.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_setEffBoundingBox_fromTree</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_seteffboundingbox&#45;&gt;proc~tem_seteffboundingbox_fromtree -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge19" class="edge">
+<title>interface~tem_seteffboundingbox&#45;&gt;proc~tem_seteffboundingbox_fromtree</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M309.22,-447.44C320.66,-446.18 332.74,-444.85 344.82,-443.52"/>
+<polygon fill="#000000" stroke="#000000" points="345.41,-446.98 354.96,-442.4 344.64,-440.02 345.41,-446.98"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node15" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="659,-192 592,-192 592,-168 659,-168 659,-192"/>
+<text text-anchor="middle" x="625.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge20" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M484.04,-180C511.62,-180 551.39,-180 581.57,-180"/>
+<polygon fill="#000000" stroke="#000000" points="581.81,-183.5 591.81,-180 581.81,-176.5 581.81,-183.5"/>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge21" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M298.72,-180C333.01,-180 375.63,-180 406.8,-180"/>
+<polygon fill="#000000" stroke="#000000" points="406.91,-183.5 416.91,-180 406.91,-176.5 406.91,-183.5"/>
+</g>
+<!-- proc~tem_shape_findelembybclabels -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node25" class="node">
+<title>proc~tem_shape_findelembybclabels</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node25"><a xlink:href="../proc/tem_shape_findelembybclabels.html" xlink:title="tem_shape_findElemByBCLabels">
+<polygon fill="#d9534f" stroke="#d9534f" points="543.5,-150 357.5,-150 357.5,-126 543.5,-126 543.5,-150"/>
+<text text-anchor="middle" x="450.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_findElemByBCLabels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_findelembybclabels -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge22" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_findelembybclabels</title>
+<path fill="none" stroke="#000000" d="M298.72,-168.3C323.89,-163.24 353.54,-157.28 379.87,-151.99"/>
+<polygon fill="#000000" stroke="#000000" points="380.66,-155.4 389.78,-150 379.28,-148.54 380.66,-155.4"/>
+</g>
+<!-- proc~tem_shape_initbylevels -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node26" class="node">
+<title>proc~tem_shape_initbylevels</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node26"><a xlink:href="../proc/tem_shape_initbylevels.html" xlink:title="tem_shape_initByLevels">
+<polygon fill="#d9534f" stroke="#d9534f" points="520.5,-108 380.5,-108 380.5,-84 520.5,-84 520.5,-108"/>
+<text text-anchor="middle" x="450.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initByLevels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge23" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels</title>
+<path fill="none" stroke="#000000" d="M291.36,-168C297.55,-165.51 303.59,-162.54 309,-159 329.57,-145.53 323.79,-129.43 345,-117 352.91,-112.36 361.68,-108.73 370.67,-105.89"/>
+<polygon fill="#000000" stroke="#000000" points="371.82,-109.21 380.49,-103.11 369.92,-102.47 371.82,-109.21"/>
+</g>
+<!-- proc~tem_shape_initpropelements -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node27" class="node">
+<title>proc~tem_shape_initpropelements</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node27"><a xlink:href="../proc/tem_shape_initpropelements.html" xlink:title="tem_shape_initPropElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="533.5,-66 367.5,-66 367.5,-42 533.5,-42 533.5,-66"/>
+<text text-anchor="middle" x="450.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initPropElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initpropelements -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge24" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initpropelements</title>
+<path fill="none" stroke="#000000" d="M295.92,-167.83C300.66,-165.4 305.11,-162.49 309,-159 339.22,-131.86 313.47,-100.61 345,-75 349.03,-71.73 353.42,-68.92 358.06,-66.52"/>
+<polygon fill="#000000" stroke="#000000" points="359.57,-69.68 367.25,-62.38 356.69,-63.3 359.57,-69.68"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node28" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~tem_create_subtree_of~~CallsGraph_node28"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="553,-24 348,-24 348,0 553,0 553,-24"/>
+<text text-anchor="middle" x="450.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge25" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters</title>
+<path fill="none" stroke="#000000" d="M297.06,-167.96C301.45,-165.51 305.52,-162.55 309,-159 349.79,-117.42 302.2,-72.5 345,-33 346.15,-31.94 347.33,-30.93 348.55,-29.96"/>
+<polygon fill="#000000" stroke="#000000" points="350.73,-32.71 357.06,-24.21 346.81,-26.91 350.73,-32.71"/>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge27" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M253.57,-307.06C272.34,-323.67 308.67,-353.33 345,-369 358.94,-375.01 374.69,-379.33 389.64,-382.42"/>
+<polygon fill="#000000" stroke="#000000" points="389.36,-385.93 399.84,-384.37 390.67,-379.05 389.36,-385.93"/>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;mpi_comm_size -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge28" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;mpi_comm_size</title>
+<path fill="none" stroke="#000000" d="M277.01,-307.15C296.96,-313.54 322.19,-321.23 345,-327 360.16,-330.83 376.69,-334.42 392.05,-337.52"/>
+<polygon fill="#000000" stroke="#000000" points="391.45,-340.96 401.94,-339.47 392.81,-334.1 391.45,-340.96"/>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge31" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M260.19,-283C274.5,-273.8 293.93,-260.28 309,-246 327.59,-228.38 323.13,-214.33 345,-201 363.44,-189.77 386.77,-184.41 406.71,-181.91"/>
+<polygon fill="#000000" stroke="#000000" points="407.21,-185.38 416.79,-180.84 406.47,-178.41 407.21,-185.38"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node16" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="484,-318 417,-318 417,-294 484,-294 484,-318"/>
+<text text-anchor="middle" x="450.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;mpi_bcast -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge26" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M294.05,-297.82C329.08,-299.66 374.23,-302.04 406.83,-303.75"/>
+<polygon fill="#000000" stroke="#000000" points="406.78,-307.26 416.95,-304.29 407.15,-300.27 406.78,-307.26"/>
+</g>
+<!-- mpi_exscan -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node17" class="node">
+<title>mpi_exscan</title>
+<polygon fill="#777777" stroke="#777777" points="488,-276 413,-276 413,-252 488,-252 488,-276"/>
+<text text-anchor="middle" x="450.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_exscan</text>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;mpi_exscan -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge29" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;mpi_exscan</title>
+<path fill="none" stroke="#000000" d="M294.05,-287.06C327.66,-282.07 370.59,-275.7 402.81,-270.93"/>
+<polygon fill="#000000" stroke="#000000" points="403.49,-274.36 412.87,-269.43 402.47,-267.44 403.49,-274.36"/>
+</g>
+<!-- mpi_reduce -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_node18" class="node">
+<title>mpi_reduce</title>
+<polygon fill="#777777" stroke="#777777" points="488,-234 413,-234 413,-210 488,-210 488,-234"/>
+<text text-anchor="middle" x="450.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_reduce</text>
+</g>
+<!-- proc~tem_subtree_from&#45;&gt;mpi_reduce -->
+<g id="proc~~tem_create_subtree_of~~CallsGraph_edge30" class="edge">
+<title>proc~tem_subtree_from&#45;&gt;mpi_reduce</title>
+<path fill="none" stroke="#000000" d="M260.62,-282.98C281.17,-271.19 314.33,-253.51 345,-243 363.46,-236.68 384.45,-232 402.75,-228.68"/>
+<polygon fill="#000000" stroke="#000000" points="403.35,-232.13 412.6,-226.98 402.15,-225.23 403.35,-232.13"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_create_subtree_ofCallsGraph = svgPanZoom('#proctem_create_subtree_ofCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_create_subtree_of~~CalledByGraph Pages: 1 -->
+<svg id="proctem_create_subtree_ofCalledByGraph" width="367pt" height="158pt"
+ viewBox="0.00 0.00 367.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_create_subtree_of~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~tem_create_subtree_of~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 363,-154 363,4 -4,4"/>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_node1" class="node">
+<title>proc~tem_create_subtree_of</title>
+<polygon fill="none" stroke="black" points="359,-87 225,-87 225,-63 359,-63 359,-87"/>
+<text text-anchor="middle" x="292" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_create_subTree_of</text>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_node2" class="node">
+<title>proc~tem_create_subtree_of_st_funlist</title>
+<g id="a_proc~~tem_create_subtree_of~~CalledByGraph_node2"><a xlink:href="../proc/tem_create_subtree_of_st_funlist.html" xlink:title="tem_create_subTree_of_st_funList">
+<polygon fill="#d9534f" stroke="#d9534f" points="189,-150 0,-150 0,-126 189,-126 189,-150"/>
+<text text-anchor="middle" x="94.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of_st_funList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-125.93C167.24,-123.3 178.53,-120.31 189,-117 211.65,-109.85 236.3,-99.77 255.69,-91.27"/>
+<polygon fill="#000000" stroke="#000000" points="257.32,-94.38 265.04,-87.13 254.48,-87.98 257.32,-94.38"/>
+</g>
+<!-- proc~tem_init_convergence -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_node3" class="node">
+<title>proc~tem_init_convergence</title>
+<g id="a_proc~~tem_create_subtree_of~~CalledByGraph_node3"><a xlink:href="../proc/tem_init_convergence.html" xlink:title="tem_init_convergence">
+<polygon fill="#d9534f" stroke="#d9534f" points="159.5,-108 29.5,-108 29.5,-84 159.5,-84 159.5,-108"/>
+<text text-anchor="middle" x="94.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_convergence</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M159.51,-89.12C177.18,-87.23 196.52,-85.15 214.8,-83.19"/>
+<polygon fill="#000000" stroke="#000000" points="215.26,-86.66 224.83,-82.11 214.51,-79.7 215.26,-86.66"/>
+</g>
+<!-- proc~tem_init_tracker_subtree -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_node4" class="node">
+<title>proc~tem_init_tracker_subtree</title>
+<g id="a_proc~~tem_create_subtree_of~~CalledByGraph_node4"><a xlink:href="../proc/tem_init_tracker_subtree.html" xlink:title="tem_init_tracker_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="167,-66 22,-66 22,-42 167,-42 167,-66"/>
+<text text-anchor="middle" x="94.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_tracker_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M167.19,-61.7C182.65,-63.36 199.06,-65.12 214.69,-66.8"/>
+<polygon fill="#000000" stroke="#000000" points="214.52,-70.3 224.84,-67.89 215.27,-63.34 214.52,-70.3"/>
+</g>
+<!-- proc~tem_write_debugmesh -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_node5" class="node">
+<title>proc~tem_write_debugmesh</title>
+<g id="a_proc~~tem_create_subtree_of~~CalledByGraph_node5"><a xlink:href="../proc/tem_write_debugmesh.html" xlink:title="tem_write_debugMesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="160.5,-24 28.5,-24 28.5,0 160.5,0 160.5,-24"/>
+<text text-anchor="middle" x="94.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_write_debugMesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_create_subtree_of~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-24.07C167.24,-26.7 178.53,-29.69 189,-33 211.65,-40.15 236.3,-50.23 255.69,-58.73"/>
+<polygon fill="#000000" stroke="#000000" points="254.48,-62.02 265.04,-62.87 257.32,-55.62 254.48,-62.02"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_create_subTree_of</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="n">inShape</span><span class="p">,</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">bc_prop</span><span class="p">,</span><span class="w"> </span><span class="n">storePnts</span><span class="p">,</span><span class="w"> </span><span class="n">stencil</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Global mesh from which the elements are identified and then stored to</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                     </span><span class="kd">::</span><span class="w"> </span><span class="n">inTree</span>
+<span class="w">    </span><span class="c">!&gt; new mesh</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_subTree_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">subTree</span>
+<span class="w">    </span><span class="c">!&gt; shape objects on which to work</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_shape_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">inShape</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; optional level descriptor needed for local shape</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; bc property which is used to identify elements belong to certain BCs</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_bc_prop_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">       </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_prop</span>
+<span class="w">    </span><span class="c">!&gt; To store space points in subTree</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">storePnts</span>
+<span class="w">    </span><span class="c">!&gt; stencil used to find bcID on certain links</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_stencilHeader_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="c">!&gt; prefix for the subTree</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">prefix</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">! local growing array for the map to the global tree</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_map2global</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_grwPoints_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_grwPnts</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">map2globalTemp</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmp_treeID</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="n">iElem</span>
+<span class="w">    </span><span class="c">! mpi variables for parallel writing of the log-wise trees</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="c">! if the local rank has part of the tracking object</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">participateInMesh</span><span class="p">,</span><span class="w"> </span><span class="n">globalParticipateInMesh</span>
+<span class="w">    </span><span class="c">! if any element be found for this iShape</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_countElems</span><span class="p">(</span><span class="w"> </span><span class="n">globalMaxLevels</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_countPnts</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_storePnts</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">storePnts</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">local_storePnts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">storePnts</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">local_storePnts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="n">inShape</span><span class="p">(:)%</span><span class="n">shapeID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tem_global_shape</span><span class="p">)</span>
+<span class="w">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">useLocalMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="n">inShape</span><span class="p">(:)%</span><span class="n">shapeID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">tem_local_shape</span><span class="p">)</span>
+<span class="w">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">created_new_comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Subtree encompasses all fluid elements&#39;</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">useLocalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levelDesc</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Subtree encompasses all elements of local domain&#39;</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ERROR:levelDesc is not passed to &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;tem_create_subTree_of&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;      levelDesc is required to create &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;subTree for tem_local_shape!&#39;</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+<span class="k">    end if</span>
+
+<span class="w">    </span><span class="c">! Prepare output structure</span>
+<span class="w">    </span><span class="c">! init here the sub-tree mesh</span>
+<span class="w">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span>
+<span class="w">    </span><span class="c">! initialize the number of elements on this partition with 0</span>
+<span class="w">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">check_shapes</span><span class="p">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">useLocalMesh</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">local_countElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">local_countPnts</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">local_map2global</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">128</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">do </span><span class="n">iShape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="w"> </span><span class="n">inShape</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">call </span><span class="n">tem_shape2subTree</span><span class="p">(</span><span class="n">me</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">inShape</span><span class="p">(</span><span class="n">iShape</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">iShape</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">inTree</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">storePnts</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">local_storePnts</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">map2global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_map2global</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">grwPnts</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">local_grwPnts</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">countElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_countElems</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">countPnts</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">local_countPnts</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">bcIDs</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">bc_ID</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">bc_prop</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">bc_prop</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">stencil</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="w">           </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">end do</span><span class="w"> </span><span class="c">! iShape</span>
+
+<span class="w">      </span><span class="n">participateInMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">local_countElems</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="n">local_countPnts</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! abort if no elements are found for the given shape</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_ALLREDUCE</span><span class="p">(</span><span class="w"> </span><span class="n">participateInMesh</span><span class="p">,</span><span class="w"> </span><span class="n">globalParticipateInMesh</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_LOR</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">globalParticipateInMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Error: No elements found for &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">dirname</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; in the mesh&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    else </span><span class="n">check_shapes</span>
+<span class="w">      </span><span class="c">! For local or global shapes we always participate</span>
+<span class="w">      </span><span class="n">participateInMesh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if </span><span class="n">check_shapes</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">predefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Exchange information about the mesh</span>
+<span class="w">    </span><span class="c">! Now create a new communicator with ranks that own parts of the sub-mesh</span>
+<span class="w">    </span><span class="c">! This is done with the color</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">participateInMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! Not participating, set color to undefined</span>
+<span class="w">      </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_UNDEFINED</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Input rank as a key to keep sorting as in global communicator</span>
+<span class="w">    </span><span class="c">! reorder process ranks into tracking communicator</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">useLocalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPI_COMM_SELF</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_shape_initLocal</span><span class="p">(</span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="n">tmp_treeID</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      call </span><span class="n">mpi_comm_split</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                      </span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iError</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="n">mpi_success</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39; There was an error splitting the communicator&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39; for the tracking subset. Aborting...&#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">created_new_comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">participateInMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      call </span><span class="n">mpi_comm_size</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">mpi_comm_rank</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalmesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">subTree</span><span class="p">%</span><span class="n">useLocalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_subTree_from</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">treeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmp_treeID</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="c">! update the property list of the newly defined tree according to the</span>
+<span class="w">          </span><span class="c">! the local shape (simply copy the bits)</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_copyPropertyBits</span><span class="p">(</span><span class="w"> </span><span class="n">levelDesc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="c">! NOT useLocalMesh</span>
+<span class="w">          </span><span class="c">! Copy the created dynamic local_tIDlist to a long integer array</span>
+<span class="w">          </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">map2globalTemp</span><span class="p">(</span><span class="n">local_map2global</span><span class="p">%</span><span class="n">nVals</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="c">! Assign list of links to the temporary list, first sorting</span>
+<span class="w">          </span><span class="k">do </span><span class="n">iElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">local_map2global</span><span class="p">%</span><span class="n">nVals</span>
+<span class="w">            </span><span class="n">map2globalTemp</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_map2global</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">                       </span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">local_map2global</span><span class="p">%</span><span class="n">sorted</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="k">end do</span>
+
+<span class="k">          call </span><span class="n">tem_subTree_from</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">map2global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">map2globalTemp</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">grwPnts</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">local_grwPnts</span><span class="w">   </span><span class="p">)</span>
+<span class="w">          </span><span class="k">call </span><span class="n">destroy</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_grwPnts</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">          </span><span class="c">! copy property bits from the global tree</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_copyPropertyBits</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">         </span><span class="k">deallocate</span><span class="p">(</span><span class="w"> </span><span class="n">map2globalTemp</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span><span class="w"> </span><span class="c">! useLocalMesh with level desc</span>
+
+<span class="w">        </span><span class="c">! Calculate the effective extents of the tracking sub-tree bounding box</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_setEffBoundingBox</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">else</span><span class="w"> </span><span class="c">! useGlobalMesh</span>
+
+<span class="w">        </span><span class="c">! assign the global properties to the subTree</span>
+<span class="w">        </span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">        </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span>
+
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">! not global mesh?</span>
+
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="c">! NOT participating in subtree</span>
+<span class="w">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">map2global</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">nPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">subTree</span><span class="p">%</span><span class="n">glob_nPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0_long_k</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">points</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span><span class="w"> </span><span class="c">! Participate in subtree?</span>
+
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Found corresponding nElems: &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">destroy</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_map2global</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="w"> </span><span class="n">fUnit</span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_create_subTree_of</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

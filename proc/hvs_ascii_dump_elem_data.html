@@ -1,0 +1,889 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>hvs_ascii_dump_elem_data &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>hvs_ascii_dump_elem_data
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">66 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/hvs_ascii_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/hvs_ascii_module.f90.html'>hvs_ascii_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/hvs_ascii_module.html'>hvs_ascii_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">hvs_ascii_dump_elem_data</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/hvs_ascii_dump_elem_data.html#src">hvs_ascii_dump_elem_data</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine hvs_ascii_dump_elem_data(ascii, outProc, varpos, varsys, mesh, time, subtree, nDofs)  
+</h2>
+    
+
+    <p>Write single log for the right scheme into its ascii file. This routine dumps
+the element data</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ascii~4"></span>
+              type(<a href='../type/hvs_ascii_type.html'>hvs_ascii_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>ascii</strong></td>
+            <td>
+                <p>ascii file to write data to.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-outproc~4"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>outProc</strong></td>
+            <td>
+                <p>Parallel environment to use for  the output.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varpos~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varpos</strong>(:)</td>
+            <td>
+                <p>Position of the variable to write</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~15"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varsys</strong></td>
+            <td>
+                <p>Description of the available variable system to get the given varnames
+from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~8"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+                <p>Mesh to write the data on.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~85"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Point in time to use for this data.</p>
+<p>Can be important for space-time function evaluations.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-subtree~9"></span>
+              type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>subtree</strong></td>
+            <td>
+                <p>Optional restriction of the elements to output.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~34"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+                <p>The number of dofs for each scalar variable of the equation system</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~hvs_ascii_dump_elem_data~~CallsGraph Pages: 1 -->
+<svg id="prochvs_ascii_dump_elem_dataCallsGraph" width="641pt" height="195pt"
+ viewBox="0.00 0.00 641.00 195.43" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph" class="graph" transform="scale(0.98 0.98) rotate(0) translate(4 196)">
+<title>proc~~hvs_ascii_dump_elem_data~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-196 652,-196 652,4 -4,4"/>
+<!-- proc~hvs_ascii_dump_elem_data -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node1" class="node">
+<title>proc~hvs_ascii_dump_elem_data</title>
+<polygon fill="none" stroke="black" points="157,-108 0,-108 0,-84 157,-84 157,-108"/>
+<text text-anchor="middle" x="78.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50">hvs_ascii_dump_elem_data</text>
+</g>
+<!-- proc~tem_get_element_chunk -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node2" class="node">
+<title>proc~tem_get_element_chunk</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node2"><a xlink:href="../proc/tem_get_element_chunk.html" xlink:title="tem_get_element_chunk">
+<polygon fill="#d9534f" stroke="#d9534f" points="354,-192 211,-192 211,-168 354,-168 354,-192"/>
+<text text-anchor="middle" x="282.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_get_element_chunk</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_get_element_chunk -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge1" class="edge">
+<title>proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_get_element_chunk</title>
+<path fill="none" stroke="#000000" d="M97.61,-108.11C119.4,-122.19 157.49,-145.23 193,-159 198.8,-161.25 204.9,-163.3 211.09,-165.17"/>
+<polygon fill="#000000" stroke="#000000" points="210.26,-168.57 220.84,-167.94 212.18,-161.84 210.26,-168.57"/>
+</g>
+<!-- proc~tem_reduction_spatial_append -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node3" class="node">
+<title>proc~tem_reduction_spatial_append</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node3"><a xlink:href="../proc/tem_reduction_spatial_append.html" xlink:title="tem_reduction_spatial_append">
+<polygon fill="#d9534f" stroke="#d9534f" points="370,-150 195,-150 195,-126 370,-126 370,-150"/>
+<text text-anchor="middle" x="282.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_append</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_append -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge2" class="edge">
+<title>proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_append</title>
+<path fill="none" stroke="#000000" d="M137.39,-108.04C161.16,-112.98 188.85,-118.74 213.57,-123.88"/>
+<polygon fill="#000000" stroke="#000000" points="213.1,-127.35 223.61,-125.96 214.53,-120.5 213.1,-127.35"/>
+</g>
+<!-- proc~tem_reduction_spatial_close -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node4" class="node">
+<title>proc~tem_reduction_spatial_close</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node4"><a xlink:href="../proc/tem_reduction_spatial_close.html" xlink:title="tem_reduction_spatial_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="364,-108 201,-108 201,-84 364,-84 364,-108"/>
+<text text-anchor="middle" x="282.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_close</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_close -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge3" class="edge">
+<title>proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_close</title>
+<path fill="none" stroke="#000000" d="M157.02,-96C168.01,-96 179.39,-96 190.6,-96"/>
+<polygon fill="#000000" stroke="#000000" points="190.84,-99.5 200.84,-96 190.84,-92.5 190.84,-99.5"/>
+</g>
+<!-- proc~tem_reduction_spatial_open -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node5" class="node">
+<title>proc~tem_reduction_spatial_open</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node5"><a xlink:href="../proc/tem_reduction_spatial_open.html" xlink:title="tem_reduction_spatial_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="363.5,-66 201.5,-66 201.5,-42 363.5,-42 363.5,-66"/>
+<text text-anchor="middle" x="282.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_open -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge4" class="edge">
+<title>proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_open</title>
+<path fill="none" stroke="#000000" d="M137.39,-83.96C161.16,-79.02 188.85,-73.26 213.57,-68.12"/>
+<polygon fill="#000000" stroke="#000000" points="214.53,-71.5 223.61,-66.04 213.1,-64.65 214.53,-71.5"/>
+</g>
+<!-- proc~tem_reduction_spatial_tochunk -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node6" class="node">
+<title>proc~tem_reduction_spatial_tochunk</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node6"><a xlink:href="../proc/tem_reduction_spatial_tochunk.html" xlink:title="tem_reduction_spatial_toChunk">
+<polygon fill="#d9534f" stroke="#d9534f" points="372,-24 193,-24 193,0 372,0 372,-24"/>
+<text text-anchor="middle" x="282.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_toChunk</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_tochunk -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge5" class="edge">
+<title>proc~hvs_ascii_dump_elem_data&#45;&gt;proc~tem_reduction_spatial_tochunk</title>
+<path fill="none" stroke="#000000" d="M97.61,-83.89C119.4,-69.81 157.49,-46.77 193,-33 198.8,-30.75 204.9,-28.7 211.09,-26.83"/>
+<polygon fill="#000000" stroke="#000000" points="212.18,-30.16 220.84,-24.06 210.26,-23.43 212.18,-30.16"/>
+</g>
+<!-- proc~tem_elemsize -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node8" class="node">
+<title>proc~tem_elemsize</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node8"><a xlink:href="../proc/tem_elemsize.html" xlink:title="tem_ElemSize">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="496,-150 408,-150 408,-126 496,-126 496,-150"/>
+<text text-anchor="middle" x="452" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSize</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_reduction_spatial_append&#45;&gt;proc~tem_elemsize -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge6" class="edge">
+<title>proc~tem_reduction_spatial_append&#45;&gt;proc~tem_elemsize</title>
+<path fill="none" stroke="#000000" d="M370.19,-138C379.6,-138 388.96,-138 397.8,-138"/>
+<polygon fill="#000000" stroke="#000000" points="397.9,-141.5 407.9,-138 397.9,-134.5 397.9,-141.5"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node9" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node9"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="629.5,-190 550.5,-190 550.5,-166 629.5,-166 629.5,-190"/>
+<text text-anchor="middle" x="590" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_reduction_spatial_append&#45;&gt;proc~tem_levelof -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge7" class="edge">
+<title>proc~tem_reduction_spatial_append&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M350.26,-150.05C368.91,-153.2 389.21,-156.43 408,-159 452.59,-165.1 503.6,-170.29 540.07,-173.7"/>
+<polygon fill="#000000" stroke="#000000" points="540.15,-177.22 550.43,-174.66 540.79,-170.25 540.15,-177.22"/>
+</g>
+<!-- mpi_reduce -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node7" class="node">
+<title>mpi_reduce</title>
+<polygon fill="#777777" stroke="#777777" points="489.5,-108 414.5,-108 414.5,-84 489.5,-84 489.5,-108"/>
+<text text-anchor="middle" x="452" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_reduce</text>
+</g>
+<!-- proc~tem_reduction_spatial_close&#45;&gt;mpi_reduce -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge8" class="edge">
+<title>proc~tem_reduction_spatial_close&#45;&gt;mpi_reduce</title>
+<path fill="none" stroke="#000000" d="M364.31,-96C378.03,-96 391.86,-96 404.32,-96"/>
+<polygon fill="#000000" stroke="#000000" points="404.43,-99.5 414.43,-96 404.43,-92.5 404.43,-99.5"/>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_levelof -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge10" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M493.8,-150C508.44,-154.31 525.08,-159.2 540.32,-163.68"/>
+<polygon fill="#000000" stroke="#000000" points="539.51,-167.09 550.09,-166.56 541.48,-160.38 539.51,-167.09"/>
+</g>
+<!-- proc~tem_elemsizelevel -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_node10" class="node">
+<title>proc~tem_elemsizelevel</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CallsGraph_node10"><a xlink:href="../proc/tem_elemsizelevel.html" xlink:title="tem_ElemSizeLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="648,-148 532,-148 532,-124 648,-124 648,-148"/>
+<text text-anchor="middle" x="590" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSizeLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CallsGraph_edge9" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M496.03,-137.37C504.2,-137.25 512.92,-137.12 521.63,-136.99"/>
+<polygon fill="#000000" stroke="#000000" points="521.87,-140.49 531.82,-136.84 521.77,-133.49 521.87,-140.49"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprochvs_ascii_dump_elem_dataCallsGraph = svgPanZoom('#prochvs_ascii_dump_elem_dataCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~hvs_ascii_dump_elem_data~~CalledByGraph Pages: 1 -->
+<svg id="prochvs_ascii_dump_elem_dataCalledByGraph" width="416pt" height="32pt"
+ viewBox="0.00 0.00 416.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~hvs_ascii_dump_elem_data~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 412,-28 412,4 -4,4"/>
+<!-- proc~hvs_ascii_dump_elem_data -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph_node1" class="node">
+<title>proc~hvs_ascii_dump_elem_data</title>
+<polygon fill="none" stroke="black" points="408,-24 251,-24 251,0 408,0 408,-24"/>
+<text text-anchor="middle" x="329.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">hvs_ascii_dump_elem_data</text>
+</g>
+<!-- proc~hvs_output_write -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph_node2" class="node">
+<title>proc~hvs_output_write</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CalledByGraph_node2"><a xlink:href="../proc/hvs_output_write.html" xlink:title="hvs_output_write">
+<polygon fill="#d9534f" stroke="#d9534f" points="215,-24 113,-24 113,0 215,0 215,-24"/>
+<text text-anchor="middle" x="164" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_write</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_write&#45;&gt;proc~hvs_ascii_dump_elem_data -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph_edge1" class="edge">
+<title>proc~hvs_output_write&#45;&gt;proc~hvs_ascii_dump_elem_data</title>
+<path fill="none" stroke="#000000" d="M215.39,-12C223.48,-12 232.06,-12 240.72,-12"/>
+<polygon fill="#000000" stroke="#000000" points="240.92,-15.5 250.92,-12 240.92,-8.5 240.92,-15.5"/>
+</g>
+<!-- proc~tem_tracker -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph_node3" class="node">
+<title>proc~tem_tracker</title>
+<g id="a_proc~~hvs_ascii_dump_elem_data~~CalledByGraph_node3"><a xlink:href="../proc/tem_tracker.html" xlink:title="tem_tracker">
+<polygon fill="#d9534f" stroke="#d9534f" points="77,-24 0,-24 0,0 77,0 77,-24"/>
+<text text-anchor="middle" x="38.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracker</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tracker&#45;&gt;proc~hvs_output_write -->
+<g id="proc~~hvs_ascii_dump_elem_data~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_tracker&#45;&gt;proc~hvs_output_write</title>
+<path fill="none" stroke="#000000" d="M77.23,-12C85.28,-12 93.98,-12 102.65,-12"/>
+<polygon fill="#000000" stroke="#000000" points="102.76,-15.5 112.76,-12 102.76,-8.5 102.76,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">hvs_ascii_dump_elem_data</span><span class="p">(</span><span class="w"> </span><span class="n">ascii</span><span class="p">,</span><span class="w"> </span><span class="n">outProc</span><span class="p">,</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="n">nDofs</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; ascii file to write data to.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">hvs_ascii_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ascii</span>
+
+<span class="w">    </span><span class="c">!&gt; Parallel environment to use for  the output.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">outProc</span>
+
+<span class="w">    </span><span class="c">!&gt; Position of the variable to write</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varpos</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; Description of the available variable system to get the given varnames</span>
+<span class="w">    </span><span class="c">!! from.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varsys</span>
+
+<span class="w">    </span><span class="c">!&gt; Mesh to write the data on.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mesh</span>
+
+<span class="w">    </span><span class="c">!&gt; Point in time to use for this data.</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! Can be important for space-time function evaluations.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
+
+<span class="w">    </span><span class="c">!&gt; Optional restriction of the elements to output.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_subtree_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">subtree</span>
+
+<span class="w">    </span><span class="c">!&gt; The number of dofs for each scalar variable of the equation system</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nDofs</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nVars</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">nScalars</span><span class="p">,</span><span class="w"> </span><span class="n">elemOff</span><span class="p">,</span><span class="w"> </span><span class="n">nChunkElems</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nDofs_out</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nScalars_out</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iElem</span><span class="p">,</span><span class="w"> </span><span class="n">iChunk</span><span class="p">,</span><span class="w"> </span><span class="n">iScalar</span><span class="p">,</span><span class="w"> </span><span class="n">iDof</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buf_start</span><span class="p">,</span><span class="w"> </span><span class="n">buf_end</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elemPos</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4000</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">log_output</span><span class="w"> </span><span class="c">! output buffer</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">res</span><span class="p">(</span><span class="n">io_buffer_size</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Number of variables to dump</span>
+<span class="w">    </span><span class="n">nVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">varPos</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Number of scalars in current output</span>
+<span class="w">    </span><span class="n">nScalars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">varSys</span><span class="p">%</span><span class="n">method</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">varPos</span><span class="p">(:))%</span><span class="n">nComponents</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">subTree</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! open spatial reduction</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_reduction_spatial_open</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="p">(:</span><span class="n">nVars</span><span class="p">)</span><span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! allocate elemPos to size of chunkSize</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">elemPos</span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">chunkSize</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Process all chunks to derive the quantities defined in the tracking object</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iChunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">nChunks</span>
+<span class="w">      </span><span class="c">! Number of elements read so far in previous chunks.</span>
+<span class="w">      </span><span class="n">elemOff</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">iChunk</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">ascii</span><span class="p">%</span><span class="n">chunkSize</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! number of elements written to THIS chunk</span>
+<span class="w">      </span><span class="n">nChunkElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">chunkSize</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="o">-</span><span class="n">elemOff</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Compute the element lower and upper bound for the current chunk</span>
+<span class="w">      </span><span class="n">buf_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemOff</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">buf_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemOff</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nChunkElems</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">subTree</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">elemPos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nChunkElems</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">map2Global</span><span class="p">(</span><span class="n">buf_start</span><span class="p">:</span><span class="n">buf_end</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">elemPos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nChunkElems</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">iElem</span><span class="p">,</span><span class="w"> </span><span class="n">iElem</span><span class="o">=</span><span class="n">buf_start</span><span class="p">,</span><span class="w"> </span><span class="n">buf_end</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! evaluate all variables on current chunk</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_get_element_chunk</span><span class="p">(</span><span class="n">varSys</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varPos</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nChunkElems</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="nb">time</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">tree</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nElems</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nChunkElems</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nDofs</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">nDofs</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">res</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="w">                     </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! preform spatial reduction</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">tem_reduction_spatial_append</span><span class="p">(</span><span class="w">                                 </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">chunk</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nChunkElems</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">treeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                      </span><span class="n">elemPos</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">nChunkElems</span><span class="p">)</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">tree</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w">                          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">nDofs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nDofs</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="w">                         </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span><span class="w"> </span><span class="c">! iChunk</span>
+
+<span class="w">    </span><span class="n">ndofs_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ndofs</span>
+<span class="w">    </span><span class="n">nscalars_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nscalars</span>
+
+<span class="w">    </span><span class="c">! If a reduction is present in the tracking, then the output is</span>
+<span class="w">    </span><span class="c">! changed completely to only the reduced values</span>
+<span class="w">    </span><span class="c">! For each variable, a reduction has to be assigned</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">      </span><span class="c">! Perform the global reduction on the data which was appended</span>
+<span class="w">      </span><span class="c">! inside trackVariable by tem_reduction_spatial_append</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_reduction_spatial_close</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">proc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">outProc</span><span class="w">           </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Re-assign the chunk here to the stuff which was produced in the</span>
+<span class="w">      </span><span class="c">! reduction operation</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_reduction_spatial_toChunk</span><span class="p">(</span><span class="n">me</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">redSpatial</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">chunk</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">nChunkElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nChunkElems</span><span class="w">       </span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">ndofs_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">nscalars_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">redSpatial</span><span class="p">(:)%</span><span class="n">nComponents</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! If reduction is active only root of this output</span>
+<span class="w">    </span><span class="c">! dumps data else all process writes their own result file</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">outProc</span><span class="p">%</span><span class="n">rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">isReduce</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">      </span><span class="c">! First assemble the complete row consisting of the time ...</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="w"> </span><span class="n">log_output</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(e24.16e3)&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="nb">time</span><span class="p">%</span><span class="n">sim</span>
+
+<span class="w">      </span><span class="c">! add all the scalars entries of the variable systems for each elements</span>
+
+<span class="w">      </span><span class="k">do </span><span class="n">iElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nChunkElems</span>
+<span class="w">        </span><span class="k">do </span><span class="n">iDof</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nDofs_out</span>
+<span class="w">          </span><span class="k">do </span><span class="n">iScalar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nScalars_out</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="w"> </span><span class="n">log_output</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a,1x,e24.16e3)&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">log_output</span><span class="p">),</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">    </span><span class="n">res</span><span class="p">(</span><span class="w"> </span><span class="p">((</span><span class="n">iElem</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">nDofs_out</span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">iDof</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">nScalars_out</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iScalar</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="k">end do</span>
+<span class="k">        end do</span>
+<span class="k">      end do</span>
+<span class="w">      </span><span class="c">! then write into the ascii file</span>
+<span class="w">      </span><span class="k">write</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">ascii</span><span class="p">%</span><span class="n">outunit</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a)&#39;</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">log_output</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    deallocate</span><span class="p">(</span><span class="n">elemPos</span><span class="p">)</span>
+<span class="w">    </span><span class="k">deallocate</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">hvs_ascii_dump_elem_data</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

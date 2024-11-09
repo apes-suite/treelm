@@ -1,0 +1,898 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_convergence_check &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_convergence_check
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">23 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_convergence_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_convergence_module.f90.html'>tem_convergence_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_convergence_module.html'>tem_convergence_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_convergence_check</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_convergence_check.html#src">tem_convergence_check</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_convergence_check(me, time, status, varSys, tree)  
+</h2>
+    
+
+    <p>This routine runs over each convergence object and check for convergence
+of each requested quantities timeControl is active on current time</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~732"></span>
+              type(<a href='../type/tem_convergence_type.html'>tem_convergence_type</a>),
+            </td>
+<td>intent(inout),</td>
+              <td></td>            <td>
+              target
+            </td>
+            <td>::</td>
+            <td><strong>me</strong>(:)</td>
+            <td>
+                <p>convergence descriptions</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~134"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>current simulation time</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-status~14"></span>
+              type(<a href='../type/tem_status_type.html'>tem_status_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>status</strong></td>
+            <td>
+                <p>Status bits</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~133"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>global variable system</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~165"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>global tree</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_convergence_check~~CallsGraph Pages: 1 -->
+<svg id="proctem_convergence_checkCallsGraph" width="641pt" height="302pt"
+ viewBox="0.00 0.00 641.00 302.12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_convergence_check~~CallsGraph" class="graph" transform="scale(0.67 0.67) rotate(0) translate(4 448)">
+<title>proc~~tem_convergence_check~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-448 955,-448 955,4 -4,4"/>
+<!-- proc~tem_convergence_check -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node1" class="node">
+<title>proc~tem_convergence_check</title>
+<polygon fill="none" stroke="black" points="145,-276 0,-276 0,-252 145,-252 145,-276"/>
+<text text-anchor="middle" x="72.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_convergence_check</text>
+</g>
+<!-- proc~tem_convergence_check_element -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node2" class="node">
+<title>proc~tem_convergence_check_element</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node2"><a xlink:href="../proc/tem_convergence_check_element.html" xlink:title="tem_convergence_check_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="376,-276 181,-276 181,-252 376,-252 376,-276"/>
+<text text-anchor="middle" x="278.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_check_element</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check&#45;&gt;proc~tem_convergence_check_element -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge1" class="edge">
+<title>proc~tem_convergence_check&#45;&gt;proc~tem_convergence_check_element</title>
+<path fill="none" stroke="#000000" d="M145.14,-264C153.47,-264 162.1,-264 170.78,-264"/>
+<polygon fill="#000000" stroke="#000000" points="170.97,-267.5 180.97,-264 170.97,-260.5 170.97,-267.5"/>
+</g>
+<!-- proc~tem_convergence_check_point -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node3" class="node">
+<title>proc~tem_convergence_check_point</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node3"><a xlink:href="../proc/tem_convergence_check_point.html" xlink:title="tem_convergence_check_point">
+<polygon fill="#d9534f" stroke="#d9534f" points="367.5,-318 189.5,-318 189.5,-294 367.5,-294 367.5,-318"/>
+<text text-anchor="middle" x="278.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_check_point</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check&#45;&gt;proc~tem_convergence_check_point -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge2" class="edge">
+<title>proc~tem_convergence_check&#45;&gt;proc~tem_convergence_check_point</title>
+<path fill="none" stroke="#000000" d="M131.96,-276.04C156.07,-281 184.18,-286.79 209.24,-291.95"/>
+<polygon fill="#000000" stroke="#000000" points="208.53,-295.37 219.03,-293.96 209.94,-288.52 208.53,-295.37"/>
+</g>
+<!-- proc~tem_timecontrol_check -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node4" class="node">
+<title>proc~tem_timecontrol_check</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node4"><a xlink:href="../proc/tem_timecontrol_check.html" xlink:title="tem_timeControl_check">
+<polygon fill="#d9534f" stroke="#d9534f" points="347.5,-150 209.5,-150 209.5,-126 347.5,-126 347.5,-150"/>
+<text text-anchor="middle" x="278.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_check</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check&#45;&gt;proc~tem_timecontrol_check -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge3" class="edge">
+<title>proc~tem_convergence_check&#45;&gt;proc~tem_timecontrol_check</title>
+<path fill="none" stroke="#000000" d="M93.06,-251.92C129.39,-229.48 207.38,-181.31 249.37,-155.37"/>
+<polygon fill="#000000" stroke="#000000" points="251.33,-158.28 258,-150.04 247.65,-152.32 251.33,-158.28"/>
+</g>
+<!-- proc~tem_convergence_evaluate -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node6" class="node">
+<title>proc~tem_convergence_evaluate</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node6"><a xlink:href="../proc/tem_convergence_evaluate.html" xlink:title="tem_convergence_evaluate">
+<polygon fill="#d9534f" stroke="#d9534f" points="586.5,-234 426.5,-234 426.5,-210 586.5,-210 586.5,-234"/>
+<text text-anchor="middle" x="506.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_evaluate</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_element&#45;&gt;proc~tem_convergence_evaluate -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge4" class="edge">
+<title>proc~tem_convergence_check_element&#45;&gt;proc~tem_convergence_evaluate</title>
+<path fill="none" stroke="#000000" d="M344.26,-251.96C371.21,-246.96 402.67,-241.11 430.61,-235.92"/>
+<polygon fill="#000000" stroke="#000000" points="431.54,-239.31 440.73,-234.04 430.26,-232.42 431.54,-239.31"/>
+</g>
+<!-- proc~tem_get_element_chunk -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node7" class="node">
+<title>proc~tem_get_element_chunk</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node7"><a xlink:href="../proc/tem_get_element_chunk.html" xlink:title="tem_get_element_chunk">
+<polygon fill="#d9534f" stroke="#d9534f" points="578,-192 435,-192 435,-168 578,-168 578,-192"/>
+<text text-anchor="middle" x="506.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_get_element_chunk</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_element&#45;&gt;proc~tem_get_element_chunk -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge5" class="edge">
+<title>proc~tem_convergence_check_element&#45;&gt;proc~tem_get_element_chunk</title>
+<path fill="none" stroke="#000000" d="M300.91,-251.98C326.6,-238 371.31,-215.05 412,-201 418.7,-198.69 425.77,-196.56 432.88,-194.62"/>
+<polygon fill="#000000" stroke="#000000" points="433.8,-198 442.59,-192.1 432.04,-191.23 433.8,-198"/>
+</g>
+<!-- proc~tem_reduction_spatial_append -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node9" class="node">
+<title>proc~tem_reduction_spatial_append</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node9"><a xlink:href="../proc/tem_reduction_spatial_append.html" xlink:title="tem_reduction_spatial_append">
+<polygon fill="#d9534f" stroke="#d9534f" points="594,-360 419,-360 419,-336 594,-336 594,-360"/>
+<text text-anchor="middle" x="506.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_append -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge6" class="edge">
+<title>proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_append</title>
+<path fill="none" stroke="#000000" d="M357.09,-276.11C363.71,-278.55 370.11,-281.48 376,-285 397.11,-297.6 390.93,-314.33 412,-327 415.01,-328.81 418.17,-330.47 421.42,-331.98"/>
+<polygon fill="#000000" stroke="#000000" points="420.22,-335.28 430.8,-335.88 422.91,-328.81 420.22,-335.28"/>
+</g>
+<!-- proc~tem_reduction_spatial_close -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node10" class="node">
+<title>proc~tem_reduction_spatial_close</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node10"><a xlink:href="../proc/tem_reduction_spatial_close.html" xlink:title="tem_reduction_spatial_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="588,-318 425,-318 425,-294 588,-294 588,-318"/>
+<text text-anchor="middle" x="506.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_close -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge7" class="edge">
+<title>proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_close</title>
+<path fill="none" stroke="#000000" d="M344.26,-276.04C371.21,-281.04 402.67,-286.89 430.61,-292.08"/>
+<polygon fill="#000000" stroke="#000000" points="430.26,-295.58 440.73,-293.96 431.54,-288.69 430.26,-295.58"/>
+</g>
+<!-- proc~tem_reduction_spatial_open -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node11" class="node">
+<title>proc~tem_reduction_spatial_open</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node11"><a xlink:href="../proc/tem_reduction_spatial_open.html" xlink:title="tem_reduction_spatial_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="587.5,-276 425.5,-276 425.5,-252 587.5,-252 587.5,-276"/>
+<text text-anchor="middle" x="506.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_reduction_spatial_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_open -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge8" class="edge">
+<title>proc~tem_convergence_check_element&#45;&gt;proc~tem_reduction_spatial_open</title>
+<path fill="none" stroke="#000000" d="M376.33,-264C389.18,-264 402.33,-264 415.07,-264"/>
+<polygon fill="#000000" stroke="#000000" points="415.19,-267.5 425.19,-264 415.19,-260.5 415.19,-267.5"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node5" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node5"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="549,-402 464,-402 464,-378 549,-378 549,-402"/>
+<text text-anchor="middle" x="506.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge9" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M300.91,-318.02C326.6,-332 371.31,-354.95 412,-369 425.41,-373.63 440.27,-377.51 454.12,-380.62"/>
+<polygon fill="#000000" stroke="#000000" points="453.47,-384.06 463.99,-382.75 454.95,-377.22 453.47,-384.06"/>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_convergence_evaluate -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge10" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_convergence_evaluate</title>
+<path fill="none" stroke="#000000" d="M357.09,-293.89C363.71,-291.45 370.11,-288.52 376,-285 397.11,-272.4 390.93,-255.67 412,-243 415.01,-241.19 418.17,-239.53 421.42,-238.02"/>
+<polygon fill="#000000" stroke="#000000" points="422.91,-241.19 430.8,-234.12 420.22,-234.72 422.91,-241.19"/>
+</g>
+<!-- proc~tem_get_point_chunk -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node8" class="node">
+<title>proc~tem_get_point_chunk</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node8"><a xlink:href="../proc/tem_get_point_chunk.html" xlink:title="tem_get_point_chunk">
+<polygon fill="#d9534f" stroke="#d9534f" points="569.5,-444 443.5,-444 443.5,-420 569.5,-420 569.5,-444"/>
+<text text-anchor="middle" x="506.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_get_point_chunk</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_get_point_chunk -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge11" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_get_point_chunk</title>
+<path fill="none" stroke="#000000" d="M291,-318.2C312.55,-340.28 361.41,-386.84 412,-411 418.79,-414.24 426.09,-416.99 433.52,-419.32"/>
+<polygon fill="#000000" stroke="#000000" points="432.74,-422.74 443.32,-422.16 434.68,-416.02 432.74,-422.74"/>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_append -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge12" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_append</title>
+<path fill="none" stroke="#000000" d="M344.26,-318.04C371.21,-323.04 402.67,-328.89 430.61,-334.08"/>
+<polygon fill="#000000" stroke="#000000" points="430.26,-337.58 440.73,-335.96 431.54,-330.69 430.26,-337.58"/>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_close -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge13" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_close</title>
+<path fill="none" stroke="#000000" d="M367.52,-306C382.98,-306 399.09,-306 414.62,-306"/>
+<polygon fill="#000000" stroke="#000000" points="414.73,-309.5 424.73,-306 414.73,-302.5 414.73,-309.5"/>
+</g>
+<!-- proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_open -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge14" class="edge">
+<title>proc~tem_convergence_check_point&#45;&gt;proc~tem_reduction_spatial_open</title>
+<path fill="none" stroke="#000000" d="M344.26,-293.96C371.21,-288.96 402.67,-283.11 430.61,-277.92"/>
+<polygon fill="#000000" stroke="#000000" points="431.54,-281.31 440.73,-276.04 430.26,-274.42 431.54,-281.31"/>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node12" class="node">
+<title>proc~tem_timecontrol_globaltriggered</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node12"><a xlink:href="../proc/tem_timecontrol_globaltriggered.html" xlink:title="tem_timeControl_globalTriggered">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="601,-108 412,-108 412,-84 601,-84 601,-108"/>
+<text text-anchor="middle" x="506.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_globalTriggered</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_globaltriggered -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge15" class="edge">
+<title>proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_globaltriggered</title>
+<path fill="none" stroke="#000000" d="M344.26,-125.96C371.21,-120.96 402.67,-115.11 430.61,-109.92"/>
+<polygon fill="#000000" stroke="#000000" points="431.54,-113.31 440.73,-108.04 430.26,-106.42 431.54,-113.31"/>
+</g>
+<!-- proc~tem_timecontrol_update -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node13" class="node">
+<title>proc~tem_timecontrol_update</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node13"><a xlink:href="../proc/tem_timecontrol_update.html" xlink:title="tem_timeControl_update">
+<polygon fill="#d9534f" stroke="#d9534f" points="578.5,-150 434.5,-150 434.5,-126 578.5,-126 578.5,-150"/>
+<text text-anchor="middle" x="506.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_update</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_update -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge16" class="edge">
+<title>proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_update</title>
+<path fill="none" stroke="#000000" d="M347.61,-138C371.72,-138 399.07,-138 424.16,-138"/>
+<polygon fill="#000000" stroke="#000000" points="424.39,-141.5 434.39,-138 424.39,-134.5 424.39,-141.5"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node20" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node20"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="761,-402 668,-402 668,-378 761,-378 761,-402"/>
+<text text-anchor="middle" x="714.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge17" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M549.19,-390C580.4,-390 623.44,-390 657.63,-390"/>
+<polygon fill="#000000" stroke="#000000" points="657.94,-393.5 667.94,-390 657.94,-386.5 657.94,-393.5"/>
+</g>
+<!-- proc~tem_elemsizelevel -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node22" class="node">
+<title>proc~tem_elemsizelevel</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node22"><a xlink:href="../proc/tem_elemsizelevel.html" xlink:title="tem_ElemSizeLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="947.5,-422 831.5,-422 831.5,-398 947.5,-398 947.5,-422"/>
+<text text-anchor="middle" x="889.5" y="-407.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSizeLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge18" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M549.28,-398.53C574.55,-403.24 607.49,-408.62 637,-411 705.67,-416.53 723.11,-411.36 792,-411 801.45,-410.95 811.42,-410.88 821.22,-410.79"/>
+<polygon fill="#000000" stroke="#000000" points="821.38,-414.29 831.35,-410.69 821.32,-407.29 821.38,-414.29"/>
+</g>
+<!-- proc~evaluate_residual -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node18" class="node">
+<title>proc~evaluate_residual</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node18"><a xlink:href="../proc/evaluate_residual.html" xlink:title="evaluate_residual">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="767.5,-194 661.5,-194 661.5,-170 767.5,-170 767.5,-194"/>
+<text text-anchor="middle" x="714.5" y="-179.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evaluate_residual</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_evaluate&#45;&gt;proc~evaluate_residual -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge19" class="edge">
+<title>proc~tem_convergence_evaluate&#45;&gt;proc~evaluate_residual</title>
+<path fill="none" stroke="#000000" d="M569.31,-210C595.25,-204.96 625.38,-199.11 651.36,-194.07"/>
+<polygon fill="#000000" stroke="#000000" points="652.32,-197.45 661.47,-192.1 650.98,-190.57 652.32,-197.45"/>
+</g>
+<!-- proc~tem_comparator -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node19" class="node">
+<title>proc~tem_comparator</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node19"><a xlink:href="../proc/tem_comparator.html" xlink:title="tem_comparator">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="765.5,-236 663.5,-236 663.5,-212 765.5,-212 765.5,-236"/>
+<text text-anchor="middle" x="714.5" y="-221.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comparator</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_evaluate&#45;&gt;proc~tem_comparator -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge20" class="edge">
+<title>proc~tem_convergence_evaluate&#45;&gt;proc~tem_comparator</title>
+<path fill="none" stroke="#000000" d="M586.56,-222.77C608.59,-222.98 632.17,-223.21 652.96,-223.41"/>
+<polygon fill="#000000" stroke="#000000" points="653.2,-226.91 663.23,-223.51 653.26,-219.91 653.2,-226.91"/>
+</g>
+<!-- proc~tem_elemsize -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node21" class="node">
+<title>proc~tem_elemsize</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node21"><a xlink:href="../proc/tem_elemsize.html" xlink:title="tem_ElemSize">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="758.5,-360 670.5,-360 670.5,-336 758.5,-336 758.5,-360"/>
+<text text-anchor="middle" x="714.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSize</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_reduction_spatial_append&#45;&gt;proc~tem_elemsize -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge21" class="edge">
+<title>proc~tem_reduction_spatial_append&#45;&gt;proc~tem_elemsize</title>
+<path fill="none" stroke="#000000" d="M594.27,-348C616.64,-348 640.07,-348 660.18,-348"/>
+<polygon fill="#000000" stroke="#000000" points="660.37,-351.5 670.37,-348 660.37,-344.5 660.37,-351.5"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node23" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node23"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="929,-360 850,-360 850,-336 929,-336 929,-360"/>
+<text text-anchor="middle" x="889.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_reduction_spatial_append&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge22" class="edge">
+<title>proc~tem_reduction_spatial_append&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M568.84,-335.98C590.31,-332.33 614.64,-328.8 637,-327 705.67,-321.47 723.51,-319.63 792,-327 807.8,-328.7 824.81,-331.92 840.08,-335.34"/>
+<polygon fill="#000000" stroke="#000000" points="839.31,-338.75 849.84,-337.6 840.89,-331.93 839.31,-338.75"/>
+</g>
+<!-- mpi_reduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node16" class="node">
+<title>mpi_reduce</title>
+<polygon fill="#777777" stroke="#777777" points="752,-280 677,-280 677,-256 752,-256 752,-280"/>
+<text text-anchor="middle" x="714.5" y="-265.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_reduce</text>
+</g>
+<!-- proc~tem_reduction_spatial_close&#45;&gt;mpi_reduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge23" class="edge">
+<title>proc~tem_reduction_spatial_close&#45;&gt;mpi_reduce</title>
+<path fill="none" stroke="#000000" d="M572.68,-293.98C603.33,-288.32 639.18,-281.71 667.03,-276.57"/>
+<polygon fill="#000000" stroke="#000000" points="667.71,-280.01 676.91,-274.75 666.44,-273.12 667.71,-280.01"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node14" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="758.5,-66 670.5,-66 670.5,-42 758.5,-42 758.5,-66"/>
+<text text-anchor="middle" x="714.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge24" class="edge">
+<title>proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M566.53,-83.96C596.1,-77.94 631.61,-70.7 660.33,-64.84"/>
+<polygon fill="#000000" stroke="#000000" points="661.08,-68.26 670.18,-62.83 659.68,-61.4 661.08,-68.26"/>
+</g>
+<!-- mpi_iallreduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node15" class="node">
+<title>mpi_iallreduce</title>
+<polygon fill="#777777" stroke="#777777" points="760,-24 669,-24 669,0 760,0 760,-24"/>
+<text text-anchor="middle" x="714.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_iallreduce</text>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_iallreduce -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge25" class="edge">
+<title>proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_iallreduce</title>
+<path fill="none" stroke="#000000" d="M529.41,-83.79C554.72,-70.05 597.93,-47.72 637,-33 644.08,-30.33 651.64,-27.84 659.16,-25.58"/>
+<polygon fill="#000000" stroke="#000000" points="660.33,-28.88 668.96,-22.73 658.38,-22.16 660.33,-28.88"/>
+</g>
+<!-- mpi_wait -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node17" class="node">
+<title>mpi_wait</title>
+<polygon fill="#777777" stroke="#777777" points="744.5,-108 684.5,-108 684.5,-84 744.5,-84 744.5,-108"/>
+<text text-anchor="middle" x="714.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wait</text>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_wait -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge26" class="edge">
+<title>proc~tem_timecontrol_globaltriggered&#45;&gt;mpi_wait</title>
+<path fill="none" stroke="#000000" d="M601.16,-96C626.98,-96 653.59,-96 674.43,-96"/>
+<polygon fill="#000000" stroke="#000000" points="674.46,-99.5 684.46,-96 674.46,-92.5 674.46,-99.5"/>
+</g>
+<!-- proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node24" class="node">
+<title>proc~tem_timecontrol_triggered</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node24"><a xlink:href="../proc/tem_timecontrol_triggered.html" xlink:title="tem_timeControl_triggered">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="792,-150 637,-150 637,-126 792,-126 792,-150"/>
+<text text-anchor="middle" x="714.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_triggered</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered&#45;&gt;proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge27" class="edge">
+<title>proc~tem_timecontrol_globaltriggered&#45;&gt;proc~tem_timecontrol_triggered</title>
+<path fill="none" stroke="#000000" d="M566.53,-108.04C590.88,-113 619.27,-118.79 644.57,-123.95"/>
+<polygon fill="#000000" stroke="#000000" points="643.96,-127.39 654.46,-125.96 645.36,-120.54 643.96,-127.39"/>
+</g>
+<!-- proc~tem_timecontrol_update&#45;&gt;proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge28" class="edge">
+<title>proc~tem_timecontrol_update&#45;&gt;proc~tem_timecontrol_triggered</title>
+<path fill="none" stroke="#000000" d="M578.68,-138C594.04,-138 610.45,-138 626.34,-138"/>
+<polygon fill="#000000" stroke="#000000" points="626.69,-141.5 636.69,-138 626.69,-134.5 626.69,-141.5"/>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge29" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M761.41,-378.86C785.69,-372.96 815.49,-365.72 840.13,-359.74"/>
+<polygon fill="#000000" stroke="#000000" points="841.1,-363.11 849.99,-357.35 839.45,-356.31 841.1,-363.11"/>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge30" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M758.7,-358.77C769.65,-361.8 781.33,-365.29 792,-369 812.6,-376.17 835.05,-385.61 853.12,-393.62"/>
+<polygon fill="#000000" stroke="#000000" points="852.1,-397 862.66,-397.9 854.97,-390.62 852.1,-397"/>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge31" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M758.71,-348C783.34,-348 814.28,-348 839.77,-348"/>
+<polygon fill="#000000" stroke="#000000" points="839.96,-351.5 849.96,-348 839.96,-344.5 839.96,-351.5"/>
+</g>
+<!-- proc~tem_time_ge_trigger -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node25" class="node">
+<title>proc~tem_time_ge_trigger</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node25"><a xlink:href="../proc/tem_time_ge_trigger.html" xlink:title="tem_time_ge_trigger">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="951,-192 828,-192 828,-168 951,-168 951,-192"/>
+<text text-anchor="middle" x="889.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_ge_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_ge_trigger -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge32" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_ge_trigger</title>
+<path fill="none" stroke="#000000" d="M765.07,-150.04C785.07,-154.89 808.31,-160.53 829.19,-165.6"/>
+<polygon fill="#000000" stroke="#000000" points="828.37,-169 838.92,-167.96 830.03,-162.2 828.37,-169"/>
+</g>
+<!-- proc~tem_time_gt_trigger -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node26" class="node">
+<title>proc~tem_time_gt_trigger</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node26"><a xlink:href="../proc/tem_time_gt_trigger.html" xlink:title="tem_time_gt_trigger">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="949.5,-150 829.5,-150 829.5,-126 949.5,-126 949.5,-150"/>
+<text text-anchor="middle" x="889.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_gt_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_gt_trigger -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge33" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_gt_trigger</title>
+<path fill="none" stroke="#000000" d="M792.14,-138C801.1,-138 810.21,-138 819.07,-138"/>
+<polygon fill="#000000" stroke="#000000" points="819.33,-141.5 829.33,-138 819.33,-134.5 819.33,-141.5"/>
+</g>
+<!-- proc~tem_time_never -->
+<g id="proc~~tem_convergence_check~~CallsGraph_node27" class="node">
+<title>proc~tem_time_never</title>
+<g id="a_proc~~tem_convergence_check~~CallsGraph_node27"><a xlink:href="../proc/tem_time_never.html" xlink:title="tem_time_never">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="939,-108 840,-108 840,-84 939,-84 939,-108"/>
+<text text-anchor="middle" x="889.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_never</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_convergence_check~~CallsGraph_edge34" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M765.07,-125.96C785.33,-121.05 808.91,-115.32 830,-110.2"/>
+<polygon fill="#000000" stroke="#000000" points="830.92,-113.58 839.81,-107.82 829.27,-106.78 830.92,-113.58"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_convergence_checkCallsGraph = svgPanZoom('#proctem_convergence_checkCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_convergence_check</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; convergence descriptions</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_convergence_type</span><span class="p">),</span><span class="w"> </span><span class="k">target</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; current simulation time</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
+<span class="w">    </span><span class="c">!&gt; Status bits</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_status_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">status</span>
+<span class="w">    </span><span class="c">!&gt; global variable system</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<span class="w">    </span><span class="c">!&gt; global tree</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iConv</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">triggered</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">res</span><span class="p">(</span><span class="n">io_buffer_size</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Run over all convergence objects</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iConv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Skip this convergence object, if there are no entries in the</span>
+<span class="w">      </span><span class="c">! variable system</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">varMap</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">cycle</span>
+
+<span class="w">      </span><span class="c">! Determine, if it is now the time to perform the convergence for each</span>
+<span class="w">      </span><span class="c">! convergence object</span>
+<span class="w">      </span><span class="c">! check time control and update it if triggered</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_timeControl_check</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">now</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">comm</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iConv</span><span class="w"> </span><span class="p">)%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">triggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">triggered</span><span class="w">                       </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! check convergence if timeControl is triggered</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">triggered</span><span class="w"> </span><span class="p">)</span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">)%</span><span class="n">header</span><span class="p">%</span><span class="n">useGetPoint</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_convergence_check_point</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                               </span><span class="nb">time</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tree</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">res</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          call </span><span class="n">tem_convergence_check_element</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">iConv</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                 </span><span class="nb">time</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">status</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">tree</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                 </span><span class="n">res</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">res</span><span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span><span class="w">  </span><span class="c">! do convergence? interval, tmin, tmax check</span>
+<span class="w">    </span><span class="k">end do</span><span class="w"> </span><span class="c">! iConv</span>
+
+<span class="w">    </span><span class="k">deallocate</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_convergence_check</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,771 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_restart_readHeader &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_restart_readHeader
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">29 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_restart_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_restart_module.f90.html'>tem_restart_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_restart_module.html'>tem_restart_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_restart_readHeader</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_restart_readheader.html#src">tem_restart_readHeader</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine tem_restart_readHeader(me, timing, globProc, tree)  
+</h2>
+    
+
+    <p>read the restart header lua file and hand the information to the
+required data types, re-set the time ...</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~80"></span>
+              type(<a href='../type/tem_restart_type.html'>tem_restart_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>the restart header info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timing~4"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timing</strong></td>
+            <td>
+                <p>the timing for re-setting the times</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-globproc~2"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>globProc</strong></td>
+            <td>
+                <p>Global communicator</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~7"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>mesh, provided in treelm format</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_restart_readheader~~CallsGraph Pages: 1 -->
+<svg id="proctem_restart_readheaderCallsGraph" width="311pt" height="452pt"
+ viewBox="0.00 0.00 311.00 452.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_restart_readheader~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 448)">
+<title>proc~~tem_restart_readheader~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-448 307,-448 307,4 -4,4"/>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node1" class="node">
+<title>proc~tem_restart_readheader</title>
+<polygon fill="none" stroke="black" points="142,-234 0,-234 0,-210 142,-210 142,-234"/>
+<text text-anchor="middle" x="71" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_restart_readHeader</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="277,-444 204,-444 204,-420 277,-420 277,-444"/>
+<text text-anchor="middle" x="240.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_get_val -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge1" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M75.44,-234.16C85.47,-267.45 117.87,-360.93 178,-411 182.84,-415.03 188.48,-418.3 194.36,-420.95"/>
+<polygon fill="#000000" stroke="#000000" points="193.12,-424.22 203.7,-424.62 195.68,-417.7 193.12,-424.22"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="288,-402 193,-402 193,-378 288,-378 288,-402"/>
+<text text-anchor="middle" x="240.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_table_close -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge2" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M77.54,-234.23C90.82,-262.2 127.18,-331.36 178,-369 180.06,-370.53 182.24,-371.95 184.51,-373.27"/>
+<polygon fill="#000000" stroke="#000000" points="183.07,-376.47 193.56,-377.9 186.25,-370.23 183.07,-376.47"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="287.5,-360 193.5,-360 193.5,-336 287.5,-336 287.5,-360"/>
+<text text-anchor="middle" x="240.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_table_open -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge3" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M81.16,-234.17C98.04,-255.79 136.17,-301.07 178,-327 180.78,-328.72 183.72,-330.33 186.75,-331.81"/>
+<polygon fill="#000000" stroke="#000000" points="185.46,-335.07 196.02,-335.93 188.3,-328.67 185.46,-335.07"/>
+</g>
+<!-- close_config -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node5" class="node">
+<title>close_config</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/close_config.html" xlink:title="close_config">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-318 201,-318 201,-294 280,-294 280,-318"/>
+<text text-anchor="middle" x="240.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">close_config</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;close_config -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge4" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;close_config</title>
+<path fill="none" stroke="#000000" d="M89.76,-234.11C110.32,-247.77 145.54,-270.01 178,-285 182.32,-286.99 186.88,-288.9 191.49,-290.7"/>
+<polygon fill="#000000" stroke="#000000" points="190.37,-294.01 200.96,-294.21 192.81,-287.45 190.37,-294.01"/>
+</g>
+<!-- interface~tem_varsys_dump -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node6" class="node">
+<title>interface~tem_varsys_dump</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node6"><a xlink:href="../interface/tem_varsys_dump.html" xlink:title="tem_varSys_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="295.5,-276 185.5,-276 185.5,-252 295.5,-252 295.5,-276"/>
+<text text-anchor="middle" x="240.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_dump -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge5" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_dump</title>
+<path fill="none" stroke="#000000" d="M120,-234.04C139.19,-238.85 161.45,-244.43 181.53,-249.46"/>
+<polygon fill="#000000" stroke="#000000" points="180.94,-252.93 191.49,-251.96 182.65,-246.14 180.94,-252.93"/>
+</g>
+<!-- interface~tem_varsys_load -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node7" class="node">
+<title>interface~tem_varsys_load</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node7"><a xlink:href="../interface/tem_varsys_load.html" xlink:title="tem_varSys_load">
+<polygon fill="#a7506f" stroke="#a7506f" points="292,-234 189,-234 189,-210 292,-210 292,-234"/>
+<text text-anchor="middle" x="240.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_load -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge6" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_load</title>
+<path fill="none" stroke="#000000" d="M142.06,-222C154.2,-222 166.73,-222 178.59,-222"/>
+<polygon fill="#000000" stroke="#000000" points="178.82,-225.5 188.82,-222 178.82,-218.5 178.82,-225.5"/>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node8" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node8"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="271.5,-192 209.5,-192 209.5,-168 271.5,-168 271.5,-192"/>
+<text text-anchor="middle" x="240.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge7" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M120,-209.96C145.21,-203.64 175.73,-195.99 199.62,-190"/>
+<polygon fill="#000000" stroke="#000000" points="200.57,-193.37 209.42,-187.54 198.87,-186.58 200.57,-193.37"/>
+</g>
+<!-- proc~tem_open_distconf -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node9" class="node">
+<title>proc~tem_open_distconf</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node9"><a xlink:href="../proc/tem_open_distconf.html" xlink:title="tem_open_distconf">
+<polygon fill="#d9534f" stroke="#d9534f" points="297,-150 184,-150 184,-126 297,-126 297,-150"/>
+<text text-anchor="middle" x="240.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open_distconf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge8" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf</title>
+<path fill="none" stroke="#000000" d="M89.76,-209.89C110.32,-196.23 145.54,-173.99 178,-159 182.09,-157.11 186.39,-155.3 190.75,-153.59"/>
+<polygon fill="#000000" stroke="#000000" points="192.17,-156.8 200.31,-150.02 189.72,-150.24 192.17,-156.8"/>
+</g>
+<!-- proc~tem_time_dump -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node10" class="node">
+<title>proc~tem_time_dump</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node10"><a xlink:href="../proc/tem_time_dump.html" xlink:title="tem_time_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="290,-108 191,-108 191,-84 290,-84 290,-108"/>
+<text text-anchor="middle" x="240.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_dump -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge9" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_dump</title>
+<path fill="none" stroke="#000000" d="M81.16,-209.83C98.04,-188.21 136.17,-142.93 178,-117 180.78,-115.28 183.72,-113.67 186.75,-112.19"/>
+<polygon fill="#000000" stroke="#000000" points="188.3,-115.33 196.02,-108.07 185.46,-108.93 188.3,-115.33"/>
+</g>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node11" class="node">
+<title>proc~tem_time_load</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node11"><a xlink:href="../proc/tem_time_load.html" xlink:title="tem_time_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="286,-66 195,-66 195,-42 286,-42 286,-66"/>
+<text text-anchor="middle" x="240.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge10" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M77.54,-209.77C90.82,-181.8 127.18,-112.64 178,-75 180.46,-73.18 183.09,-71.51 185.82,-69.97"/>
+<polygon fill="#000000" stroke="#000000" points="187.41,-73.09 194.84,-65.54 184.32,-66.81 187.41,-73.09"/>
+</g>
+<!-- proc~tem_time_sim_stamp -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_node12" class="node">
+<title>proc~tem_time_sim_stamp</title>
+<g id="a_proc~~tem_restart_readheader~~CallsGraph_node12"><a xlink:href="../proc/tem_time_sim_stamp.html" xlink:title="tem_time_sim_stamp">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="303,-24 178,-24 178,0 303,0 303,-24"/>
+<text text-anchor="middle" x="240.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_sim_stamp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_sim_stamp -->
+<g id="proc~~tem_restart_readheader~~CallsGraph_edge11" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_sim_stamp</title>
+<path fill="none" stroke="#000000" d="M75.44,-209.84C85.47,-176.55 117.87,-83.07 178,-33 179.73,-31.56 181.56,-30.22 183.46,-28.97"/>
+<polygon fill="#000000" stroke="#000000" points="185.22,-32 192.23,-24.05 181.8,-25.89 185.22,-32"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_restart_readheader~~CalledByGraph Pages: 1 -->
+<svg id="proctem_restart_readheaderCalledByGraph" width="288pt" height="32pt"
+ viewBox="0.00 0.00 288.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_restart_readheader~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_restart_readheader~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 284,-28 284,4 -4,4"/>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_restart_readheader~~CalledByGraph_node1" class="node">
+<title>proc~tem_restart_readheader</title>
+<polygon fill="none" stroke="black" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_restart_readHeader</text>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_restart_readheader~~CalledByGraph_node2" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_restart_readheader~~CalledByGraph_node2"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_restart_readheader~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_restart_readHeader</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; the restart header info</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_restart_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; the timing for re-setting the times</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timing</span>
+<span class="w">    </span><span class="c">!&gt; Global communicator</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_comm_env_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">globProc</span>
+<span class="w">    </span><span class="c">!&gt; mesh, provided in treelm format</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">flu_State</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">buffer</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Opening Restart Header &#39;</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readFileName</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Open the restart header file</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_open_distconf</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readFileName</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">proc</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="w">                          </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the number of elements from the restart header file for sanity check</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nElems&#39;</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the solver name</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;solver&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">        </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">solverTag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Solver: &#39;</span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">solverTag</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the solver config file</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;solver_configFile&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">solverConfigFile</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                          </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the number of dofs for each scalar variable of the equation system</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;nDofs&#39;</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">read_file</span><span class="p">%</span><span class="n">nDofs</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w">                   </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">load_tem</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">            </span><span class="n">conf</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">            </span><span class="n">myPart</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">%</span><span class="n">rank</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">            </span><span class="n">nParts</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">%</span><span class="n">comm_size</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">            </span><span class="n">comm</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">%</span><span class="n">comm</span><span class="w">       </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the timestamp from the header</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_time_load</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">key</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;time_point&#39;</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">clock_start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">%</span><span class="n">clock_start</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">tem_time_sim_stamp</span><span class="p">(</span><span class="n">timing</span><span class="p">))</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Restarting from point in time:&#39;</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_time_dump</span><span class="p">(</span><span class="n">timing</span><span class="p">,</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Load the variable systems</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_varSys_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_varSys_dump</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">outUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;binary_name&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load the binary file names for each variable system defined</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">pos</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                         </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">close_config</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_restart_readHeader</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

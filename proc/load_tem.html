@@ -1,0 +1,1024 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>load_tem &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>load_tem
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">102 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/treelmesh_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/treelmesh_module.f90.html'>treelmesh_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/treelmesh_module.html'>treelmesh_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">load_tem</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/load_tem.html#src">load_tem</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine load_tem(me, conf, myPart, nParts, comm, levelWeight, meshDir, parent)  
+</h2>
+    
+
+    <p>Load the treelmesh</p>
+<p>Depending on the configuration given in conf, this will either load a
+a \ref tem_distributed_octree "tree mesh" from disk with the given prefix
+or \ref tem_load_internal "create the mesh internally".</p>
+<div class="alert alert-success">
+<dl>
+<dt>Todo</dt>
+<dd>
+<p>to calculate levelWeight, global has to be loaded fisrt,
+   maybe load_global shoule be moved out of this routine</p>
+</dd>
+</dl>
+</div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~465"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Structure to load the mesh to</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~87"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>Directory containing the mesh informations</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~12"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                <p>Partition to use on the calling process (= MPI Rank in comm)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nparts~5"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nParts</strong></td>
+            <td>
+                <p>Number of partitions, the mesh is partitioned into (= Number of MPI
+processes in comm).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~32"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>MPI Communicator to use
+now defaults to the one given in the tree%global%comm</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-levelweight~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>levelWeight</strong>(globalMaxLevels)</td>
+            <td>
+                <p>Balancing weight for elements on different levels.
+If these weights are present, the mesh is partitioned initially according
+to the given weights.
+This can not be combined with given offsets. If offset is also provided
+they will overwrite the levelWeight distribution.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-meshdir"></span>
+              character(len=*),
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>meshDir</strong></td>
+            <td>
+                <p>output Mesh directory name</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-parent~19"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>parent</strong></td>
+            <td>
+                <p>optional parent handle</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_tem~~CallsGraph Pages: 1 -->
+<svg id="procload_temCallsGraph" width="251pt" height="620pt"
+ viewBox="0.00 0.00 251.00 620.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_tem~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 616)">
+<title>proc~~load_tem~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-616 247,-616 247,4 -4,4"/>
+<!-- proc~load_tem -->
+<g id="proc~~load_tem~~CallsGraph_node1" class="node">
+<title>proc~load_tem</title>
+<polygon fill="none" stroke="black" points="62,-318 0,-318 0,-294 62,-294 62,-318"/>
+<text text-anchor="middle" x="31" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_tem</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~load_tem~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~load_tem~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="207,-612 134,-612 134,-588 207,-588 207,-612"/>
+<text text-anchor="middle" x="170.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;aot_get_val -->
+<g id="proc~~load_tem~~CallsGraph_edge1" class="edge">
+<title>proc~load_tem&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M33.32,-318.05C38.75,-365.67 60.92,-540.08 98,-579 105.03,-586.38 114.5,-591.2 124.24,-594.35"/>
+<polygon fill="#000000" stroke="#000000" points="123.43,-597.75 134,-596.97 125.25,-590.99 123.43,-597.75"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~load_tem~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~load_tem~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="218,-570 123,-570 123,-546 218,-546 218,-570"/>
+<text text-anchor="middle" x="170.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;aot_table_close -->
+<g id="proc~~load_tem~~CallsGraph_edge2" class="edge">
+<title>proc~load_tem&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M31.66,-318.03C31.28,-355.9 35.41,-473.95 98,-537 102.32,-541.35 107.49,-544.81 113.05,-547.56"/>
+<polygon fill="#000000" stroke="#000000" points="112.12,-550.96 122.7,-551.55 114.79,-544.5 112.12,-550.96"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~load_tem~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~load_tem~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="217.5,-528 123.5,-528 123.5,-504 217.5,-504 217.5,-528"/>
+<text text-anchor="middle" x="170.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;aot_table_open -->
+<g id="proc~~load_tem~~CallsGraph_edge3" class="edge">
+<title>proc~load_tem&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M32.57,-318.19C34.78,-351.55 45.61,-445.18 98,-495 102.61,-499.39 108.1,-502.86 113.94,-505.62"/>
+<polygon fill="#000000" stroke="#000000" points="112.77,-508.92 123.36,-509.38 115.37,-502.42 112.77,-508.92"/>
+</g>
+<!-- proc~dump_meshheader -->
+<g id="proc~~load_tem~~CallsGraph_node5" class="node">
+<title>proc~dump_meshheader</title>
+<g id="a_proc~~load_tem~~CallsGraph_node5"><a xlink:href="../proc/dump_meshheader.html" xlink:title="dump_meshHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="229.5,-486 111.5,-486 111.5,-462 229.5,-462 229.5,-486"/>
+<text text-anchor="middle" x="170.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dump_meshHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~dump_meshheader -->
+<g id="proc~~load_tem~~CallsGraph_edge4" class="edge">
+<title>proc~load_tem&#45;&gt;proc~dump_meshheader</title>
+<path fill="none" stroke="#000000" d="M33.96,-318.32C39.1,-346.5 55.62,-416.04 98,-453 99.54,-454.34 101.15,-455.59 102.84,-456.77"/>
+<polygon fill="#000000" stroke="#000000" points="101.33,-459.94 111.73,-462 104.88,-453.91 101.33,-459.94"/>
+</g>
+<!-- proc~exchange_elements -->
+<g id="proc~~load_tem~~CallsGraph_node6" class="node">
+<title>proc~exchange_elements</title>
+<g id="a_proc~~load_tem~~CallsGraph_node6"><a xlink:href="../proc/exchange_elements.html" xlink:title="exchange_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="230,-444 111,-444 111,-420 230,-420 230,-444"/>
+<text text-anchor="middle" x="170.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">exchange_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~exchange_elements -->
+<g id="proc~~load_tem~~CallsGraph_edge5" class="edge">
+<title>proc~load_tem&#45;&gt;proc~exchange_elements</title>
+<path fill="none" stroke="#000000" d="M36.26,-318.07C44.61,-339.95 65.2,-386.19 98,-411 100.03,-412.54 102.17,-413.96 104.4,-415.28"/>
+<polygon fill="#000000" stroke="#000000" points="102.82,-418.41 113.31,-419.88 106.03,-412.18 102.82,-418.41"/>
+</g>
+<!-- proc~load_tem_global -->
+<g id="proc~~load_tem~~CallsGraph_node7" class="node">
+<title>proc~load_tem_global</title>
+<g id="a_proc~~load_tem~~CallsGraph_node7"><a xlink:href="../proc/load_tem_global.html" xlink:title="load_tem_global">
+<polygon fill="#d9534f" stroke="#d9534f" points="220.5,-402 120.5,-402 120.5,-378 220.5,-378 220.5,-402"/>
+<text text-anchor="middle" x="170.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem_global</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~load_tem_global -->
+<g id="proc~~load_tem~~CallsGraph_edge6" class="edge">
+<title>proc~load_tem&#45;&gt;proc~load_tem_global</title>
+<path fill="none" stroke="#000000" d="M41.87,-318.5C53.73,-332.72 74.96,-355.69 98,-369 101.95,-371.28 106.17,-373.33 110.51,-375.18"/>
+<polygon fill="#000000" stroke="#000000" points="109.55,-378.56 120.14,-378.88 112.06,-372.02 109.55,-378.56"/>
+</g>
+<!-- proc~load_treelmesh -->
+<g id="proc~~load_tem~~CallsGraph_node8" class="node">
+<title>proc~load_treelmesh</title>
+<g id="a_proc~~load_tem~~CallsGraph_node8"><a xlink:href="../proc/load_treelmesh.html" xlink:title="load_treelmesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="217.5,-360 123.5,-360 123.5,-336 217.5,-336 217.5,-360"/>
+<text text-anchor="middle" x="170.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_treelmesh</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~load_treelmesh -->
+<g id="proc~~load_tem~~CallsGraph_edge7" class="edge">
+<title>proc~load_tem&#45;&gt;proc~load_treelmesh</title>
+<path fill="none" stroke="#000000" d="M62.18,-315.76C73.41,-319.35 86.27,-323.41 98,-327 104.48,-328.98 111.31,-331.03 118.06,-333.04"/>
+<polygon fill="#000000" stroke="#000000" points="117.28,-336.46 127.86,-335.94 119.27,-329.75 117.28,-336.46"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~load_tem~~CallsGraph_node9" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~load_tem~~CallsGraph_node9"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="204,-318 137,-318 137,-294 204,-294 204,-318"/>
+<text text-anchor="middle" x="170.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_abort -->
+<g id="proc~~load_tem~~CallsGraph_edge8" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M62.17,-306C81.11,-306 105.82,-306 126.75,-306"/>
+<polygon fill="#000000" stroke="#000000" points="127,-309.5 137,-306 127,-302.5 127,-309.5"/>
+</g>
+<!-- proc~tem_balance_sparta -->
+<g id="proc~~load_tem~~CallsGraph_node10" class="node">
+<title>proc~tem_balance_sparta</title>
+<g id="a_proc~~load_tem~~CallsGraph_node10"><a xlink:href="../proc/tem_balance_sparta.html" xlink:title="tem_balance_sparta">
+<polygon fill="#d9534f" stroke="#d9534f" points="231,-276 110,-276 110,-252 231,-252 231,-276"/>
+<text text-anchor="middle" x="170.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_balance_sparta</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_balance_sparta -->
+<g id="proc~~load_tem~~CallsGraph_edge9" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_balance_sparta</title>
+<path fill="none" stroke="#000000" d="M62.18,-296.24C73.41,-292.65 86.27,-288.59 98,-285 104.48,-283.02 111.31,-280.97 118.06,-278.96"/>
+<polygon fill="#000000" stroke="#000000" points="119.27,-282.25 127.86,-276.06 117.28,-275.54 119.27,-282.25"/>
+</g>
+<!-- proc~tem_create_endiansuffix -->
+<g id="proc~~load_tem~~CallsGraph_node11" class="node">
+<title>proc~tem_create_endiansuffix</title>
+<g id="a_proc~~load_tem~~CallsGraph_node11"><a xlink:href="../proc/tem_create_endiansuffix.html" xlink:title="tem_create_EndianSuffix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="243,-234 98,-234 98,-210 243,-210 243,-234"/>
+<text text-anchor="middle" x="170.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_EndianSuffix</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~load_tem~~CallsGraph_edge10" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M41.87,-293.5C53.73,-279.28 74.96,-256.31 98,-243 101.21,-241.14 104.6,-239.44 108.09,-237.88"/>
+<polygon fill="#000000" stroke="#000000" points="109.55,-241.06 117.5,-234.06 106.92,-234.58 109.55,-241.06"/>
+</g>
+<!-- proc~tem_destroy_sparta -->
+<g id="proc~~load_tem~~CallsGraph_node12" class="node">
+<title>proc~tem_destroy_sparta</title>
+<g id="a_proc~~load_tem~~CallsGraph_node12"><a xlink:href="../proc/tem_destroy_sparta.html" xlink:title="tem_destroy_sparta">
+<polygon fill="#d9534f" stroke="#d9534f" points="229,-192 112,-192 112,-168 229,-168 229,-192"/>
+<text text-anchor="middle" x="170.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_destroy_sparta</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_destroy_sparta -->
+<g id="proc~~load_tem~~CallsGraph_edge11" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_destroy_sparta</title>
+<path fill="none" stroke="#000000" d="M36.26,-293.93C44.61,-272.05 65.2,-225.81 98,-201 100.03,-199.46 102.17,-198.04 104.4,-196.72"/>
+<polygon fill="#000000" stroke="#000000" points="106.03,-199.82 113.31,-192.12 102.82,-193.59 106.03,-199.82"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~load_tem~~CallsGraph_node13" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~load_tem~~CallsGraph_node13"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="235.5,-150 105.5,-150 105.5,-126 235.5,-126 235.5,-150"/>
+<text text-anchor="middle" x="170.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~load_tem~~CallsGraph_edge12" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M33.96,-293.68C39.1,-265.5 55.62,-195.96 98,-159 99.54,-157.66 101.15,-156.41 102.84,-155.23"/>
+<polygon fill="#000000" stroke="#000000" points="104.88,-158.09 111.73,-150 101.33,-152.06 104.88,-158.09"/>
+</g>
+<!-- proc~tem_init_sparta -->
+<g id="proc~~load_tem~~CallsGraph_node14" class="node">
+<title>proc~tem_init_sparta</title>
+<g id="a_proc~~load_tem~~CallsGraph_node14"><a xlink:href="../proc/tem_init_sparta.html" xlink:title="tem_init_sparta">
+<polygon fill="#d9534f" stroke="#d9534f" points="217.5,-108 123.5,-108 123.5,-84 217.5,-84 217.5,-108"/>
+<text text-anchor="middle" x="170.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_sparta</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_init_sparta -->
+<g id="proc~~load_tem~~CallsGraph_edge13" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_init_sparta</title>
+<path fill="none" stroke="#000000" d="M32.57,-293.81C34.78,-260.45 45.61,-166.82 98,-117 102.61,-112.61 108.1,-109.14 113.94,-106.38"/>
+<polygon fill="#000000" stroke="#000000" points="115.37,-109.58 123.36,-102.62 112.77,-103.08 115.37,-109.58"/>
+</g>
+<!-- proc~tem_load_internal -->
+<g id="proc~~load_tem~~CallsGraph_node15" class="node">
+<title>proc~tem_load_internal</title>
+<g id="a_proc~~load_tem~~CallsGraph_node15"><a xlink:href="../proc/tem_load_internal.html" xlink:title="tem_load_internal">
+<polygon fill="#d9534f" stroke="#d9534f" points="225,-66 116,-66 116,-42 225,-42 225,-66"/>
+<text text-anchor="middle" x="170.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_internal</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_load_internal -->
+<g id="proc~~load_tem~~CallsGraph_edge14" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_load_internal</title>
+<path fill="none" stroke="#000000" d="M31.66,-293.97C31.28,-256.1 35.41,-138.05 98,-75 100.66,-72.32 103.65,-69.97 106.85,-67.93"/>
+<polygon fill="#000000" stroke="#000000" points="108.58,-70.97 115.75,-63.17 105.28,-64.79 108.58,-70.97"/>
+</g>
+<!-- proc~tem_load_weights -->
+<g id="proc~~load_tem~~CallsGraph_node16" class="node">
+<title>proc~tem_load_weights</title>
+<g id="a_proc~~load_tem~~CallsGraph_node16"><a xlink:href="../proc/tem_load_weights.html" xlink:title="tem_load_weights">
+<polygon fill="#d9534f" stroke="#d9534f" points="224.5,-24 116.5,-24 116.5,0 224.5,0 224.5,-24"/>
+<text text-anchor="middle" x="170.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_weights</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_load_weights -->
+<g id="proc~~load_tem~~CallsGraph_edge15" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_load_weights</title>
+<path fill="none" stroke="#000000" d="M33.32,-293.95C38.75,-246.33 60.92,-71.92 98,-33 100.78,-30.08 103.95,-27.56 107.36,-25.39"/>
+<polygon fill="#000000" stroke="#000000" points="109.08,-28.44 116.28,-20.66 105.8,-22.25 109.08,-28.44"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_tem~~CalledByGraph Pages: 1 -->
+<svg id="procload_temCalledByGraph" width="386pt" height="32pt"
+ viewBox="0.00 0.00 386.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_tem~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~load_tem~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 382,-28 382,4 -4,4"/>
+<!-- proc~load_tem -->
+<g id="proc~~load_tem~~CalledByGraph_node1" class="node">
+<title>proc~load_tem</title>
+<polygon fill="none" stroke="black" points="378,-24 316,-24 316,0 378,0 378,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_tem</text>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~load_tem~~CalledByGraph_node2" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~load_tem~~CalledByGraph_node2"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~load_tem~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M280.39,-12C289.04,-12 297.64,-12 305.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.73,-15.5 315.73,-12 305.73,-8.5 305.73,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~load_tem~~CalledByGraph_node3" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~load_tem~~CalledByGraph_node3"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~load_tem~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">load_tem</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">levelWeight</span><span class="p">,</span><span class="w"> </span><span class="n">meshDir</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Structure to load the mesh to</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Directory containing the mesh informations</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; Partition to use on the calling process (= MPI Rank in comm)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="c">!&gt; Number of partitions, the mesh is partitioned into (= Number of MPI</span>
+<span class="w">    </span><span class="c">!! processes in comm).</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="c">!&gt; MPI Communicator to use</span>
+<span class="w">    </span><span class="c">!! now defaults to the one given in the tree%global%comm</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">!&gt; Balancing weight for elements on different levels.</span>
+<span class="w">    </span><span class="c">!! If these weights are present, the mesh is partitioned initially according</span>
+<span class="w">    </span><span class="c">!! to the given weights.</span>
+<span class="w">    </span><span class="c">!! This can not be combined with given offsets. If offset is also provided</span>
+<span class="w">    </span><span class="c">!! they will overwrite the levelWeight distribution.</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">levelWeight</span><span class="p">(</span><span class="n">globalMaxLevels</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; output Mesh directory name</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">meshDir</span>
+<span class="w">    </span><span class="c">!&gt; optional parent handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_handle</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dirname</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">EndianSuffix</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mesh_error</span><span class="p">,</span><span class="w"> </span><span class="n">weights_error</span>
+<span class="w">    </span><span class="c">! The communicator which is used</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">commLocal</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">weights</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">chunksize</span><span class="p">,</span><span class="w"> </span><span class="n">remainder</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">found_weights</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_sparta_type</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sparta</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="c">! Use the incoming communicator</span>
+<span class="w">    </span><span class="n">commLocal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">EndianSuffix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_create_EndianSuffix</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c">! Make sure the dirname has some sane value.</span>
+<span class="w">    </span><span class="n">dirname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_handle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mesh&#39;</span><span class="w">      </span><span class="p">)</span>
+
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tem_handle</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c">! key mesh is a table</span>
+
+<span class="w">      </span><span class="c">! The mesh is actually given as a table, parse it and</span>
+<span class="w">      </span><span class="c">! generate a mesh internally.</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Generating an internally defined mesh&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_load_internal</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">tem_handle</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">commLocal</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="c">! tem_handle == 0, mesh is not a table</span>
+<span class="w">      </span><span class="c">! The mesh is not a table, try to interpret it as a string.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mesh&#39;</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">dirname</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh_error</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;mesh/&#39;</span><span class="w">     </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">mesh_error</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_Fatal</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error occured, while retrieving mesh folder!&#39;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">mesh_error</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">))</span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable not existent!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Using the default value mesh folder: mesh/&#39;</span>
+<span class="w">        </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">mesh_error</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_WrongType</span><span class="p">))</span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable has wrong type!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;STOPPING&#39;</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+
+<span class="w">      </span><span class="c">! Load global information</span>
+<span class="w">      </span><span class="c">! @todo: this routine may already be called outside</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">associated</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">property</span><span class="p">))</span><span class="w"> </span><span class="k">deallocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">property</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">load_tem_global</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">,</span><span class="w"> </span><span class="n">dirname</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">commLocal</span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Homogeneous distribution</span>
+<span class="w">      </span><span class="n">chunksize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">      </span><span class="n">remainder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">mod</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">))</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">remainder</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chunksize</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="o">+</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="n">remainder</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">load_treelmesh</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">nParts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! If requested, provide the directory name to the caller.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">meshDir</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">meshDir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">dirname</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Make sure each process has at least one element!</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="o">/</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error occured:&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Less elements then processes, this is not&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;supported! And you should reconfigure your&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;setup.&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Restart this simulation with at most &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; processes!&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">me</span><span class="p">%</span><span class="n">levelWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">levelWeight</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">levelWeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelWeight</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Get the name for the weights file.</span>
+<span class="w">    </span><span class="c">! This defaults to the mesh prefix with weights appended.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;weights&#39;</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">weights_file</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weights_error</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">               </span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">btest</span><span class="p">(</span><span class="n">weights_error</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">weights_file</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        inquire</span><span class="p">(</span><span class="k">file</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">weights_file</span><span class="p">)</span><span class="o">//</span><span class="n">EndianSuffix</span><span class="p">,</span><span class="w"> </span><span class="n">exist</span><span class="o">=</span><span class="n">found_weights</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">found_weights</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Weight file &#39;</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">weights_file</span><span class="p">)</span><span class="o">//</span><span class="n">EndianSuffix</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; can NOT be found!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;May proceed WITHOUT BALANCING!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!&#39;</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+<span class="k">    end if</span>
+
+<span class="k">    call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;write_weights&#39;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">write_weights</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weights_error</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">weights_file</span><span class="w">   </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">write_weights</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The computational weight of each element will be&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;written at the end of the simulation into file&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">write_weights</span><span class="p">)</span><span class="o">//</span><span class="n">EndianSuffix</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;If this is not desired, set write_weights explicitly&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;to an empty string.&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Do sparta balancing, but only if there are actually multiple processes.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      allocate</span><span class="p">(</span><span class="w"> </span><span class="n">weights</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_load_weights</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">weights</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weights</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">found_weights</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">found_weights</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">tem_init_sparta</span><span class="p">(</span><span class="w"> </span><span class="n">sparta</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_balance_Sparta</span><span class="p">(</span><span class="n">weight</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">weights</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">myPart</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">nParts</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">comm</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">commLocal</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">myElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">sparta</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">sparta</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">offset</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">elemOffset</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">exchange_elements</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">sparta</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_destroy_sparta</span><span class="p">(</span><span class="w"> </span><span class="n">sparta</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      deallocate</span><span class="p">(</span><span class="w"> </span><span class="n">weights</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Output basic mesh infos to the screen</span>
+<span class="w">    </span><span class="k">call </span><span class="n">dump_meshHeader</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">tem_handle</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">load_tem</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

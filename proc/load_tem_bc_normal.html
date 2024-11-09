@@ -1,0 +1,764 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>load_tem_BC_normal &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>load_tem_BC_normal
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">11 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_bc_prop_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_bc_prop_module.f90.html'>tem_bc_prop_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_bc_prop_module.html'>tem_bc_prop_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">load_tem_BC_normal</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/load_tem_bc_normal.html#src">load_tem_BC_normal</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine load_tem_BC_normal(me, offset, nElems, basename, myPart, comm)  
+</h2>
+    
+
+    <p>load bc qVal header from lua file, qVal from qVal.lsb</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~351"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Boundary condition construct to load the data into</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-offset~22"></span>
+              integer(kind=long_k),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>offset</strong></td>
+            <td>
+                <p>Offset of the local set of elements in the global list</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~23"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+                <p>Local number of elements that have qVal</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-basename~9"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>basename</strong></td>
+            <td>
+                <p>Name of the file, the data is stored in, will be appended with
+".lua" for the header information and ".lsb" or ".msb" for the
+binary data.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                <p>Partition to load</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~20"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>Communicator to use</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~load_tem_bc_normal~~CallsGraph Pages: 1 -->
+<svg id="procload_tem_bc_normalCallsGraph" width="641pt" height="601pt"
+ viewBox="0.00 0.00 641.00 600.88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~load_tem_bc_normal~~CallsGraph" class="graph" transform="scale(0.85 0.85) rotate(0) translate(4 700)">
+<title>proc~~load_tem_bc_normal~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-700 747,-700 747,4 -4,4"/>
+<!-- proc~load_tem_bc_normal -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node1" class="node">
+<title>proc~load_tem_bc_normal</title>
+<polygon fill="none" stroke="black" points="125,-402 0,-402 0,-378 125,-378 125,-402"/>
+<text text-anchor="middle" x="62.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50">load_tem_BC_normal</text>
+</g>
+<!-- proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node2" class="node">
+<title>proc~load_tem_bc_logicalheader</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node2"><a xlink:href="../proc/load_tem_bc_logicalheader.html" xlink:title="load_tem_BC_logicalHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="323,-570 161,-570 161,-546 323,-546 323,-570"/>
+<text text-anchor="middle" x="242" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem_BC_logicalHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_logicalheader -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge1" class="edge">
+<title>proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_logicalheader</title>
+<path fill="none" stroke="#000000" d="M76.27,-402.08C106.56,-430.76 183.05,-503.15 220.16,-538.28"/>
+<polygon fill="#000000" stroke="#000000" points="218.2,-541.24 227.87,-545.57 223.01,-536.16 218.2,-541.24"/>
+</g>
+<!-- proc~load_tem_bc_realarray -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node3" class="node">
+<title>proc~load_tem_bc_realarray</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node3"><a xlink:href="../proc/load_tem_bc_realarray.html" xlink:title="load_tem_BC_realArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="310,-255 174,-255 174,-231 310,-231 310,-255"/>
+<text text-anchor="middle" x="242" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem_BC_realArray</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_realarray -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge2" class="edge">
+<title>proc~load_tem_bc_normal&#45;&gt;proc~load_tem_bc_realarray</title>
+<path fill="none" stroke="#000000" d="M78.03,-377.97C108.97,-352.34 181.58,-292.21 218.53,-261.61"/>
+<polygon fill="#000000" stroke="#000000" points="220.8,-264.27 226.27,-255.2 216.34,-258.88 220.8,-264.27"/>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node4" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="468,-696 395,-696 395,-672 468,-672 468,-696"/>
+<text text-anchor="middle" x="431.5" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_get_val -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge3" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M253.18,-570.31C271.89,-592.15 313.97,-637.77 359,-663 367.04,-667.5 376.14,-671.13 385.09,-674.01"/>
+<polygon fill="#000000" stroke="#000000" points="384.1,-677.37 394.69,-676.86 386.1,-670.66 384.1,-677.37"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node5" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="479,-654 384,-654 384,-630 479,-630 479,-654"/>
+<text text-anchor="middle" x="431.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_table_close -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge4" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M262.08,-570.01C284.58,-583.77 323.41,-606.31 359,-621 364.01,-623.07 369.29,-625.02 374.62,-626.84"/>
+<polygon fill="#000000" stroke="#000000" points="373.64,-630.2 384.23,-629.97 375.81,-623.55 373.64,-630.2"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node6" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node6"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="478.5,-612 384.5,-612 384.5,-588 478.5,-588 478.5,-612"/>
+<text text-anchor="middle" x="431.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;aot_table_open -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge5" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M296.73,-570.04C321.08,-575.49 349.86,-581.94 374.48,-587.45"/>
+<polygon fill="#000000" stroke="#000000" points="373.87,-590.9 384.39,-589.67 375.4,-584.07 373.87,-590.9"/>
+</g>
+<!-- close_config -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node7" class="node">
+<title>close_config</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node7"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/close_config.html" xlink:title="close_config">
+<polygon fill="#d9534f" stroke="#d9534f" points="471,-570 392,-570 392,-546 471,-546 471,-570"/>
+<text text-anchor="middle" x="431.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">close_config</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;close_config -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge6" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;close_config</title>
+<path fill="none" stroke="#000000" d="M323.06,-558C343.03,-558 363.85,-558 381.78,-558"/>
+<polygon fill="#000000" stroke="#000000" points="381.98,-561.5 391.98,-558 381.98,-554.5 381.98,-561.5"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node8" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="465,-528 398,-528 398,-504 465,-504 465,-528"/>
+<text text-anchor="middle" x="431.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;mpi_bcast -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge7" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M296.73,-545.96C325.71,-539.47 360.97,-531.58 388.01,-525.52"/>
+<polygon fill="#000000" stroke="#000000" points="388.95,-528.89 397.94,-523.29 387.42,-522.06 388.95,-528.89"/>
+</g>
+<!-- open_config_file -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node18" class="node">
+<title>open_config_file</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node18"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/open_config_file.html" xlink:title="open_config_file">
+<polygon fill="#d9534f" stroke="#d9534f" points="481.5,-486 381.5,-486 381.5,-462 481.5,-462 481.5,-486"/>
+<text text-anchor="middle" x="431.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">open_config_file</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_logicalheader&#45;&gt;open_config_file -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge8" class="edge">
+<title>proc~load_tem_bc_logicalheader&#45;&gt;open_config_file</title>
+<path fill="none" stroke="#000000" d="M262.08,-545.99C284.58,-532.23 323.41,-509.69 359,-495 364.01,-492.93 369.29,-490.98 374.62,-489.16"/>
+<polygon fill="#000000" stroke="#000000" points="375.81,-492.45 384.23,-486.03 373.64,-485.8 375.81,-492.45"/>
+</g>
+<!-- mpi_comm_split -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node9" class="node">
+<title>mpi_comm_split</title>
+<polygon fill="#777777" stroke="#777777" points="481,-444 382,-444 382,-420 481,-420 481,-444"/>
+<text text-anchor="middle" x="431.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_split</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_comm_split -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge9" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_comm_split</title>
+<path fill="none" stroke="#000000" d="M247.97,-255.28C261.16,-286.31 300.12,-368.42 359,-411 363.15,-414 367.73,-416.58 372.51,-418.79"/>
+<polygon fill="#000000" stroke="#000000" points="371.29,-422.07 381.87,-422.6 373.93,-415.59 371.29,-422.07"/>
+</g>
+<!-- mpi_file_close -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node10" class="node">
+<title>mpi_file_close</title>
+<polygon fill="#777777" stroke="#777777" points="475.5,-402 387.5,-402 387.5,-378 475.5,-378 475.5,-402"/>
+<text text-anchor="middle" x="431.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_close</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_file_close -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge10" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_file_close</title>
+<path fill="none" stroke="#000000" d="M250.72,-255.07C267.38,-280.13 309.25,-338.08 359,-369 364.76,-372.58 371.16,-375.57 377.69,-378.07"/>
+<polygon fill="#000000" stroke="#000000" points="376.7,-381.43 387.3,-381.39 378.99,-374.82 376.7,-381.43"/>
+</g>
+<!-- mpi_file_open -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node11" class="node">
+<title>mpi_file_open</title>
+<polygon fill="#777777" stroke="#777777" points="475,-360 388,-360 388,-336 475,-336 475,-360"/>
+<text text-anchor="middle" x="431.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_open</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_file_open -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge11" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_file_open</title>
+<path fill="none" stroke="#000000" d="M256.29,-255C276.88,-273.02 318.37,-307.06 359,-327 365.01,-329.95 371.51,-332.56 378.06,-334.86"/>
+<polygon fill="#000000" stroke="#000000" points="377.04,-338.21 387.63,-337.99 379.22,-331.56 377.04,-338.21"/>
+</g>
+<!-- mpi_file_read_all -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node12" class="node">
+<title>mpi_file_read_all</title>
+<polygon fill="#777777" stroke="#777777" points="482.5,-318 380.5,-318 380.5,-294 482.5,-294 482.5,-318"/>
+<text text-anchor="middle" x="431.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_read_all</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_file_read_all -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge12" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_file_read_all</title>
+<path fill="none" stroke="#000000" d="M274.82,-255.12C298.03,-263.81 330.3,-275.6 359,-285 365.13,-287.01 371.59,-289.03 378.01,-290.99"/>
+<polygon fill="#000000" stroke="#000000" points="377.44,-294.47 388.02,-293.99 379.45,-287.77 377.44,-294.47"/>
+</g>
+<!-- mpi_file_set_view -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node13" class="node">
+<title>mpi_file_set_view</title>
+<polygon fill="#777777" stroke="#777777" points="484,-276 379,-276 379,-252 484,-252 484,-276"/>
+<text text-anchor="middle" x="431.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_set_view</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_file_set_view -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge13" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_file_set_view</title>
+<path fill="none" stroke="#000000" d="M310.16,-250.52C329.22,-252.66 349.89,-254.97 368.62,-257.07"/>
+<polygon fill="#000000" stroke="#000000" points="368.48,-260.58 378.81,-258.21 369.26,-253.62 368.48,-260.58"/>
+</g>
+<!-- mpi_type_commit -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node14" class="node">
+<title>mpi_type_commit</title>
+<polygon fill="#777777" stroke="#777777" points="485,-234 378,-234 378,-210 485,-210 485,-234"/>
+<text text-anchor="middle" x="431.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_commit</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_type_commit -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge14" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_type_commit</title>
+<path fill="none" stroke="#000000" d="M310.16,-235.48C328.96,-233.37 349.31,-231.09 367.83,-229.02"/>
+<polygon fill="#000000" stroke="#000000" points="368.37,-232.48 377.92,-227.89 367.59,-225.52 368.37,-232.48"/>
+</g>
+<!-- mpi_type_contiguous -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node15" class="node">
+<title>mpi_type_contiguous</title>
+<polygon fill="#777777" stroke="#777777" points="494,-192 369,-192 369,-168 494,-168 494,-192"/>
+<text text-anchor="middle" x="431.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_contiguous</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_type_contiguous -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge15" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_type_contiguous</title>
+<path fill="none" stroke="#000000" d="M274.82,-230.88C298.03,-222.19 330.3,-210.4 359,-201 365.13,-198.99 371.59,-196.97 378.01,-195.01"/>
+<polygon fill="#000000" stroke="#000000" points="379.45,-198.23 388.02,-192.01 377.44,-191.53 379.45,-198.23"/>
+</g>
+<!-- mpi_type_free -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node16" class="node">
+<title>mpi_type_free</title>
+<polygon fill="#777777" stroke="#777777" points="475.5,-150 387.5,-150 387.5,-126 475.5,-126 475.5,-150"/>
+<text text-anchor="middle" x="431.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_free</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_type_free -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge16" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_type_free</title>
+<path fill="none" stroke="#000000" d="M256.29,-231C276.88,-212.98 318.37,-178.94 359,-159 364.79,-156.16 371.04,-153.63 377.35,-151.39"/>
+<polygon fill="#000000" stroke="#000000" points="378.86,-154.58 387.26,-148.12 376.66,-147.93 378.86,-154.58"/>
+</g>
+<!-- mpi_type_size -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node17" class="node">
+<title>mpi_type_size</title>
+<polygon fill="#777777" stroke="#777777" points="475,-108 388,-108 388,-84 475,-84 475,-108"/>
+<text text-anchor="middle" x="431.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_size</text>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;mpi_type_size -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge17" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;mpi_type_size</title>
+<path fill="none" stroke="#000000" d="M250.72,-230.93C267.38,-205.87 309.25,-147.92 359,-117 364.83,-113.37 371.32,-110.35 377.94,-107.83"/>
+<polygon fill="#000000" stroke="#000000" points="379.35,-111.05 387.67,-104.5 377.08,-104.43 379.35,-111.05"/>
+</g>
+<!-- proc~check_mpi_error -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node19" class="node">
+<title>proc~check_mpi_error</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node19"><a xlink:href="../proc/check_mpi_error.html" xlink:title="check_mpi_error">
+<polygon fill="#d9534f" stroke="#d9534f" points="482,-66 381,-66 381,-42 482,-42 482,-66"/>
+<text text-anchor="middle" x="431.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_mpi_error</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;proc~check_mpi_error -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge18" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;proc~check_mpi_error</title>
+<path fill="none" stroke="#000000" d="M247.97,-230.72C261.16,-199.69 300.12,-117.58 359,-75 362.86,-72.21 367.09,-69.79 371.5,-67.68"/>
+<polygon fill="#000000" stroke="#000000" points="372.88,-70.9 380.75,-63.8 370.17,-64.44 372.88,-70.9"/>
+</g>
+<!-- proc~tem_create_endiansuffix -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node20" class="node">
+<title>proc~tem_create_endiansuffix</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node20"><a xlink:href="../proc/tem_create_endiansuffix.html" xlink:title="tem_create_EndianSuffix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="504,-24 359,-24 359,0 504,0 504,-24"/>
+<text text-anchor="middle" x="431.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_EndianSuffix</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem_bc_realarray&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge19" class="edge">
+<title>proc~load_tem_bc_realarray&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M246.14,-230.91C256.09,-194.99 290.44,-87.98 359,-33 360.8,-31.55 362.7,-30.21 364.68,-28.95"/>
+<polygon fill="#000000" stroke="#000000" points="366.63,-31.87 373.75,-24.03 363.29,-25.72 366.63,-31.87"/>
+</g>
+<!-- mpi_error_string -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node21" class="node">
+<title>mpi_error_string</title>
+<polygon fill="#777777" stroke="#777777" points="640,-87 540,-87 540,-63 640,-63 640,-87"/>
+<text text-anchor="middle" x="590" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_error_string</text>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;mpi_error_string -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge20" class="edge">
+<title>proc~check_mpi_error&#45;&gt;mpi_error_string</title>
+<path fill="none" stroke="#000000" d="M482.02,-60.64C497.15,-62.68 513.95,-64.93 529.66,-67.04"/>
+<polygon fill="#000000" stroke="#000000" points="529.43,-70.54 539.8,-68.4 530.36,-63.6 529.43,-70.54"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node22" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~load_tem_bc_normal~~CallsGraph_node22"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="623.5,-45 556.5,-45 556.5,-21 623.5,-21 623.5,-45"/>
+<text text-anchor="middle" x="590" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;proc~tem_abort -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge21" class="edge">
+<title>proc~check_mpi_error&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M482.02,-47.36C502.61,-44.59 526.28,-41.42 546.11,-38.75"/>
+<polygon fill="#000000" stroke="#000000" points="546.65,-42.21 556.1,-37.42 545.72,-35.28 546.65,-42.21"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_node23" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="743,-45 676,-45 676,-21 743,-21 743,-45"/>
+<text text-anchor="middle" x="709.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~load_tem_bc_normal~~CallsGraph_edge22" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M623.73,-33C636.72,-33 651.83,-33 665.67,-33"/>
+<polygon fill="#000000" stroke="#000000" points="665.95,-36.5 675.95,-33 665.95,-29.5 665.95,-36.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocload_tem_bc_normalCallsGraph = svgPanZoom('#procload_tem_bc_normalCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">load_tem_BC_normal</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">basename</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Boundary condition construct to load the data into</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_BC_prop_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; Offset of the local set of elements in the global list</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">offset</span>
+<span class="w">    </span><span class="c">!&gt; Local number of elements that have qVal</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">nElems</span>
+<span class="w">    </span><span class="c">!&gt; Name of the file, the data is stored in, will be appended with</span>
+<span class="w">    </span><span class="c">!! &quot;.lua&quot; for the header information and &quot;.lsb&quot; or &quot;.msb&quot; for the</span>
+<span class="w">    </span><span class="c">!! binary data.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">basename</span>
+<span class="w">    </span><span class="c">!&gt; Partition to load</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span>
+<span class="w">    </span><span class="c">!&gt; Communicator to use</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                   </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">load_tem_BC_logicalHeader</span><span class="p">(</span><span class="w"> </span><span class="n">nBCtypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nBCtypes</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">propName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasNormal&#39;</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">basename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">basename</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">flag_per_BC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">hasNormal</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">myPart</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">comm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">             </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">normal</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">nElems</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">load_tem_BC_realArray</span><span class="p">(</span><span class="w"> </span><span class="n">offset</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">propname</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hasNormal&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">arraylen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">nElems</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">nElems</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">propdat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">normal</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">basename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">basename</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">myPart</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">comm</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">comm</span><span class="w">         </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">load_tem_BC_normal</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

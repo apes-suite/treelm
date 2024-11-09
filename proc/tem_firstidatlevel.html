@@ -1,0 +1,773 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_FirstIdAtLevel &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_FirstIdAtLevel
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">5 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_topology_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_topology_module.f90.html'>tem_topology_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_topology_module.html'>tem_topology_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_FirstIdAtLevel</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_firstidatlevel.html#src">tem_FirstIdAtLevel</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public elemental function tem_FirstIdAtLevel(level) result(res)  
+</h2>
+    
+
+    <p>This function delivers the refinement level of a TreeID</p>
+<p>The refinement level of a
+\ref treelmesh_module::treelmesh_type::treeid "treeID" is found by
+repeatedly computing the parents with the equation used in the
+[tem_ParentOf function] (@ref tem_parentatlevel) and
+counting the iterations, until the universal root is reached.</p>
+<p>First TreeID in the complete tree on a given level</p>
+<p>e.g. level 1:  1 ..  8   -&gt; offset = 1
+     level 2:  9 .. 72   -&gt; offset = 9
+     level 3: 73 ..      -&gt; offset = 73</p>
+<p>A level offset is calculated by summing all the nodes of coarser levels.
+With a level count starting at \f$0\f$ on the coarsest level (the universal
+root node), this offset \f$s\f$ for a given level \f$L\f$ can be computed by
+the follwing equation:
+\f[
+  s = \sum\limits_{i=0}^{L-1} 8^i = \frac{8^{L} - 1}{7}
+\f]</p>
+<div class="alert alert-success">
+<dl>
+<dt>Todo</dt>
+<dd>
+<p>calling to this function can be replaced by accessing array
+   firstIdAtLevel which explicitly stores the results</p>
+</dd>
+</dl>
+</div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-level~24"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>level</strong></td>
+            <td>
+                <p>level to check</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-res~153"></span>
+          integer(kind=long_k)
+        </small>
+      </h3>
+      <p>resulting first treeID</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_firstidatlevel~~CalledByGraph Pages: 1 -->
+<svg id="proctem_firstidatlevelCalledByGraph" width="641pt" height="204pt"
+ viewBox="0.00 0.00 641.00 203.88" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_firstidatlevel~~CalledByGraph" class="graph" transform="scale(0.55 0.55) rotate(0) translate(4 364)">
+<title>proc~~tem_firstidatlevel~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 1153,-364 1153,4 -4,4"/>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node1" class="node">
+<title>proc~tem_firstidatlevel</title>
+<polygon fill="none" stroke="black" points="1149,-192 1040,-192 1040,-168 1149,-168 1149,-192"/>
+<text text-anchor="middle" x="1094.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_FirstIdAtLevel</text>
+</g>
+<!-- proc~generate_treelm_cube -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node2" class="node">
+<title>proc~generate_treelm_cube</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node2"><a xlink:href="../proc/generate_treelm_cube.html" xlink:title="generate_treelm_cube">
+<polygon fill="#d9534f" stroke="#d9534f" points="985.5,-360 852.5,-360 852.5,-336 985.5,-336 985.5,-360"/>
+<text text-anchor="middle" x="919" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_cube</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_cube&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge1" class="edge">
+<title>proc~generate_treelm_cube&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M985.6,-337.06C992.15,-334.4 998.43,-331.1 1004,-327 1047.67,-294.86 1074.4,-234.41 1086.27,-201.94"/>
+<polygon fill="#000000" stroke="#000000" points="1089.72,-202.68 1089.72,-192.09 1083.11,-200.37 1089.72,-202.68"/>
+</g>
+<!-- proc~generate_treelm_elements -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node3" class="node">
+<title>proc~generate_treelm_elements</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node3"><a xlink:href="../proc/generate_treelm_elements.html" xlink:title="generate_treelm_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="997,-318 841,-318 841,-294 997,-294 997,-318"/>
+<text text-anchor="middle" x="919" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge2" class="edge">
+<title>proc~generate_treelm_elements&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M985.41,-293.98C991.93,-291.52 998.25,-288.56 1004,-285 1038.33,-263.72 1066.26,-224.92 1081.33,-200.91"/>
+<polygon fill="#000000" stroke="#000000" points="1084.42,-202.57 1086.64,-192.21 1078.45,-198.92 1084.42,-202.57"/>
+</g>
+<!-- proc~generate_treelm_line -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node4" class="node">
+<title>proc~generate_treelm_line</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node4"><a xlink:href="../proc/generate_treelm_line.html" xlink:title="generate_treelm_line">
+<polygon fill="#d9534f" stroke="#d9534f" points="982,-276 856,-276 856,-252 982,-252 982,-276"/>
+<text text-anchor="middle" x="919" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_line</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_line&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge3" class="edge">
+<title>proc~generate_treelm_line&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M979.68,-251.99C988.02,-249.48 996.35,-246.5 1004,-243 1029.24,-231.45 1054.82,-212.56 1072.13,-198.48"/>
+<polygon fill="#000000" stroke="#000000" points="1074.47,-201.08 1079.93,-192 1070,-195.7 1074.47,-201.08"/>
+</g>
+<!-- proc~generate_treelm_slice -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node5" class="node">
+<title>proc~generate_treelm_slice</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node5"><a xlink:href="../proc/generate_treelm_slice.html" xlink:title="generate_treelm_slice">
+<polygon fill="#d9534f" stroke="#d9534f" points="984,-234 854,-234 854,-210 984,-210 984,-234"/>
+<text text-anchor="middle" x="919" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">generate_treelm_slice</text>
+</a>
+</g>
+</g>
+<!-- proc~generate_treelm_slice&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge4" class="edge">
+<title>proc~generate_treelm_slice&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M969.72,-209.96C989.77,-205.11 1013.08,-199.47 1034.02,-194.4"/>
+<polygon fill="#000000" stroke="#000000" points="1034.88,-197.79 1043.77,-192.04 1033.23,-190.99 1034.88,-197.79"/>
+</g>
+<!-- proc~load_bc_intern_1d -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node6" class="node">
+<title>proc~load_bc_intern_1d</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node6"><a xlink:href="../proc/load_bc_intern_1d.html" xlink:title="load_BC_intern_1D">
+<polygon fill="#d9534f" stroke="#d9534f" points="975,-192 863,-192 863,-168 975,-168 975,-192"/>
+<text text-anchor="middle" x="919" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_BC_intern_1D</text>
+</a>
+</g>
+</g>
+<!-- proc~load_bc_intern_1d&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge5" class="edge">
+<title>proc~load_bc_intern_1d&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M975.37,-180C992.62,-180 1011.77,-180 1029.55,-180"/>
+<polygon fill="#000000" stroke="#000000" points="1029.84,-183.5 1039.84,-180 1029.84,-176.5 1029.84,-183.5"/>
+</g>
+<!-- proc~tem_calc_neighbors -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node7" class="node">
+<title>proc~tem_calc_neighbors</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node7"><a xlink:href="../proc/tem_calc_neighbors.html" xlink:title="tem_calc_neighbors">
+<polygon fill="#d9534f" stroke="#d9534f" points="978.5,-150 859.5,-150 859.5,-126 978.5,-126 978.5,-150"/>
+<text text-anchor="middle" x="919" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_calc_neighbors</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_calc_neighbors&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_calc_neighbors&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M969.72,-150.04C989.77,-154.89 1013.08,-160.53 1034.02,-165.6"/>
+<polygon fill="#000000" stroke="#000000" points="1033.23,-169.01 1043.77,-167.96 1034.88,-162.21 1033.23,-169.01"/>
+</g>
+<!-- proc~tem_cano_checkneigh -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node8" class="node">
+<title>proc~tem_cano_checkneigh</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node8"><a xlink:href="../proc/tem_cano_checkneigh.html" xlink:title="tem_cano_checkNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="985.5,-70 852.5,-70 852.5,-46 985.5,-46 985.5,-70"/>
+<text text-anchor="middle" x="919" y="-55.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_checkNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M973.82,-70.09C984.27,-73.67 994.82,-78.24 1004,-84 1035.72,-103.9 1063.6,-137.82 1079.5,-159.55"/>
+<polygon fill="#000000" stroke="#000000" points="1076.71,-161.67 1085.37,-167.77 1082.41,-157.6 1076.71,-161.67"/>
+</g>
+<!-- proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node9" class="node">
+<title>proc~tem_cano_storepntsinsubtree</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node9"><a xlink:href="../proc/tem_cano_storepntsinsubtree.html" xlink:title="tem_cano_storePntsInSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="1004,-28 834,-28 834,-4 1004,-4 1004,-28"/>
+<text text-anchor="middle" x="919" y="-13.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_storePntsInSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_storepntsinsubtree&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_cano_storepntsinsubtree&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M988.1,-28.07C993.74,-30.52 999.14,-33.47 1004,-37 1046.79,-68.09 1073.75,-126.47 1085.92,-158.18"/>
+<polygon fill="#000000" stroke="#000000" points="1082.73,-159.66 1089.48,-167.83 1089.3,-157.23 1082.73,-159.66"/>
+</g>
+<!-- proc~tem_shape_initbylevels -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node10" class="node">
+<title>proc~tem_shape_initbylevels</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node10"><a xlink:href="../proc/tem_shape_initbylevels.html" xlink:title="tem_shape_initByLevels">
+<polygon fill="#d9534f" stroke="#d9534f" points="765.5,-108 625.5,-108 625.5,-84 765.5,-84 765.5,-108"/>
+<text text-anchor="middle" x="695.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initByLevels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M765.51,-90.3C829.28,-87.42 925.7,-89.24 1004,-117 1030.63,-126.44 1056.51,-146.16 1073.54,-161.04"/>
+<polygon fill="#000000" stroke="#000000" points="1071.37,-163.8 1081.15,-167.89 1076.05,-158.6 1071.37,-163.8"/>
+</g>
+<!-- proc~init_tem_bc_prop -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node11" class="node">
+<title>proc~init_tem_bc_prop</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node11"><a xlink:href="../proc/init_tem_bc_prop.html" xlink:title="init_tem_bc_prop">
+<polygon fill="#d9534f" stroke="#d9534f" points="747,-192 644,-192 644,-168 747,-168 747,-192"/>
+<text text-anchor="middle" x="695.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_tem_bc_prop</text>
+</a>
+</g>
+</g>
+<!-- proc~init_tem_bc_prop&#45;&gt;proc~load_bc_intern_1d -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge14" class="edge">
+<title>proc~init_tem_bc_prop&#45;&gt;proc~load_bc_intern_1d</title>
+<path fill="none" stroke="#000000" d="M747.04,-180C778.28,-180 818.71,-180 852.41,-180"/>
+<polygon fill="#000000" stroke="#000000" points="852.63,-183.5 862.63,-180 852.63,-176.5 852.63,-183.5"/>
+</g>
+<!-- proc~tem_init_elemlevels -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node12" class="node">
+<title>proc~tem_init_elemlevels</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node12"><a xlink:href="../proc/tem_init_elemlevels.html" xlink:title="tem_init_elemLevels">
+<polygon fill="#d9534f" stroke="#d9534f" points="756,-150 635,-150 635,-126 756,-126 756,-150"/>
+<text text-anchor="middle" x="695.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_elemLevels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_calc_neighbors -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge15" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_calc_neighbors</title>
+<path fill="none" stroke="#000000" d="M756.15,-138C784.8,-138 819.31,-138 849.08,-138"/>
+<polygon fill="#000000" stroke="#000000" points="849.39,-141.5 859.39,-138 849.39,-134.5 849.39,-141.5"/>
+</g>
+<!-- proc~tem_load_internal -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node13" class="node">
+<title>proc~tem_load_internal</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node13"><a xlink:href="../proc/tem_load_internal.html" xlink:title="tem_load_internal">
+<polygon fill="#d9534f" stroke="#d9534f" points="750,-297 641,-297 641,-273 750,-273 750,-297"/>
+<text text-anchor="middle" x="695.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_internal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_cube -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge10" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_cube</title>
+<path fill="none" stroke="#000000" d="M733.99,-297.02C761.55,-305.72 799.97,-317.55 834,-327 841.83,-329.17 850.09,-331.36 858.26,-333.47"/>
+<polygon fill="#000000" stroke="#000000" points="857.59,-336.91 868.14,-335.98 859.32,-330.12 857.59,-336.91"/>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge11" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_elements</title>
+<path fill="none" stroke="#000000" d="M750.12,-290.08C774.19,-292.37 803.21,-295.12 830.31,-297.69"/>
+<polygon fill="#000000" stroke="#000000" points="830.3,-301.2 840.59,-298.66 830.96,-294.23 830.3,-301.2"/>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_line -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge12" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_line</title>
+<path fill="none" stroke="#000000" d="M750.12,-279.92C778.76,-277.2 814.42,-273.82 845.51,-270.87"/>
+<polygon fill="#000000" stroke="#000000" points="846.23,-274.32 855.85,-269.89 845.57,-267.35 846.23,-274.32"/>
+</g>
+<!-- proc~tem_load_internal&#45;&gt;proc~generate_treelm_slice -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge13" class="edge">
+<title>proc~tem_load_internal&#45;&gt;proc~generate_treelm_slice</title>
+<path fill="none" stroke="#000000" d="M733.99,-272.98C761.55,-264.28 799.97,-252.45 834,-243 841.83,-240.83 850.09,-238.64 858.26,-236.53"/>
+<polygon fill="#000000" stroke="#000000" points="859.32,-239.88 868.14,-234.02 857.59,-233.09 859.32,-239.88"/>
+</g>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node14" class="node">
+<title>proc~tem_shape2subtree</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node14"><a xlink:href="../proc/tem_shape2subtree.html" xlink:title="tem_shape2subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="551,-87 433,-87 433,-63 551,-63 551,-87"/>
+<text text-anchor="middle" x="492" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape2subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge18" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels</title>
+<path fill="none" stroke="#000000" d="M551.01,-81.05C571.09,-83.14 593.94,-85.52 615.41,-87.76"/>
+<polygon fill="#000000" stroke="#000000" points="615.19,-91.25 625.49,-88.81 615.91,-84.29 615.19,-91.25"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node15" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node15"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="798,-66 593,-66 593,-42 798,-42 798,-66"/>
+<text text-anchor="middle" x="695.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge22" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters</title>
+<path fill="none" stroke="#000000" d="M551.01,-68.95C561.07,-67.91 571.83,-66.78 582.76,-65.65"/>
+<polygon fill="#000000" stroke="#000000" points="583.25,-69.11 592.83,-64.6 582.52,-62.15 583.25,-69.11"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge16" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh</title>
+<path fill="none" stroke="#000000" d="M798.17,-55.84C813,-56.1 828.04,-56.38 842.23,-56.63"/>
+<polygon fill="#000000" stroke="#000000" points="842.34,-60.13 852.4,-56.82 842.46,-53.14 842.34,-60.13"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge17" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree</title>
+<path fill="none" stroke="#000000" d="M766.58,-41.98C789.32,-38.08 814.71,-33.72 838.1,-29.71"/>
+<polygon fill="#000000" stroke="#000000" points="838.73,-33.15 847.99,-28.01 837.54,-26.25 838.73,-33.15"/>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node16" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node16"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="523,-297 461,-297 461,-273 523,-273 523,-297"/>
+<text text-anchor="middle" x="492" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_load_internal -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge20" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_load_internal</title>
+<path fill="none" stroke="#000000" d="M523.17,-285C551.45,-285 594.63,-285 630.57,-285"/>
+<polygon fill="#000000" stroke="#000000" points="630.98,-288.5 640.98,-285 630.98,-281.5 630.98,-288.5"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node17" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node17"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="557,-150 427,-150 427,-126 557,-126 557,-150"/>
+<text text-anchor="middle" x="492" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge19" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels</title>
+<path fill="none" stroke="#000000" d="M557.03,-138C578.52,-138 602.59,-138 624.51,-138"/>
+<polygon fill="#000000" stroke="#000000" points="624.75,-141.5 634.75,-138 624.75,-134.5 624.75,-141.5"/>
+</g>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node18" class="node">
+<title>proc~tem_create_subtree_of</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node18"><a xlink:href="../proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="375,-87 241,-87 241,-63 375,-63 375,-87"/>
+<text text-anchor="middle" x="308" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge21" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M375.22,-75C390.73,-75 407.28,-75 422.87,-75"/>
+<polygon fill="#000000" stroke="#000000" points="422.95,-78.5 432.95,-75 422.95,-71.5 422.95,-78.5"/>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node19" class="node">
+<title>proc~tem_create_subtree_of_st_funlist</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node19"><a xlink:href="../proc/tem_create_subtree_of_st_funlist.html" xlink:title="tem_create_subTree_of_st_funList">
+<polygon fill="#d9534f" stroke="#d9534f" points="189,-150 0,-150 0,-126 189,-126 189,-150"/>
+<text text-anchor="middle" x="94.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of_st_funList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge25" class="edge">
+<title>proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M154.13,-125.97C165.75,-123.27 177.81,-120.23 189,-117 215.2,-109.42 244.06,-99.19 266.68,-90.72"/>
+<polygon fill="#000000" stroke="#000000" points="268.16,-93.9 276.28,-87.09 265.69,-87.35 268.16,-93.9"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node20" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node20"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="391,-150 225,-150 225,-126 391,-126 391,-150"/>
+<text text-anchor="middle" x="308" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge24" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M391.21,-138C399.72,-138 408.33,-138 416.74,-138"/>
+<polygon fill="#000000" stroke="#000000" points="416.88,-141.5 426.88,-138 416.88,-134.5 416.88,-141.5"/>
+</g>
+<!-- proc~tem_init_convergence -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node21" class="node">
+<title>proc~tem_init_convergence</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node21"><a xlink:href="../proc/tem_init_convergence.html" xlink:title="tem_init_convergence">
+<polygon fill="#d9534f" stroke="#d9534f" points="159.5,-108 29.5,-108 29.5,-84 159.5,-84 159.5,-108"/>
+<text text-anchor="middle" x="94.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_convergence</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge26" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M159.53,-89.64C181.98,-87.41 207.42,-84.89 230.78,-82.57"/>
+<polygon fill="#000000" stroke="#000000" points="231.39,-86.03 240.99,-81.55 230.69,-79.06 231.39,-86.03"/>
+</g>
+<!-- proc~tem_init_tracker_subtree -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node22" class="node">
+<title>proc~tem_init_tracker_subtree</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node22"><a xlink:href="../proc/tem_init_tracker_subtree.html" xlink:title="tem_init_tracker_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="167,-66 22,-66 22,-42 167,-42 167,-66"/>
+<text text-anchor="middle" x="94.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_tracker_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge27" class="edge">
+<title>proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M167.1,-61.11C187.6,-63.14 210.01,-65.37 230.77,-67.43"/>
+<polygon fill="#000000" stroke="#000000" points="230.52,-70.92 240.81,-68.43 231.21,-63.96 230.52,-70.92"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node23" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node23"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="379,-297 237,-297 237,-273 379,-273 379,-297"/>
+<text text-anchor="middle" x="308" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge23" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M379.11,-285C403.26,-285 429.5,-285 450.49,-285"/>
+<polygon fill="#000000" stroke="#000000" points="450.64,-288.5 460.64,-285 450.64,-281.5 450.64,-288.5"/>
+</g>
+<!-- proc~tem_write_debugmesh -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_node24" class="node">
+<title>proc~tem_write_debugmesh</title>
+<g id="a_proc~~tem_firstidatlevel~~CalledByGraph_node24"><a xlink:href="../proc/tem_write_debugmesh.html" xlink:title="tem_write_debugMesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="160.5,-24 28.5,-24 28.5,0 160.5,0 160.5,-24"/>
+<text text-anchor="middle" x="94.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_write_debugMesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_firstidatlevel~~CalledByGraph_edge28" class="edge">
+<title>proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M154.13,-24.03C165.75,-26.73 177.81,-29.77 189,-33 215.2,-40.58 244.06,-50.81 266.68,-59.28"/>
+<polygon fill="#000000" stroke="#000000" points="265.69,-62.65 276.28,-62.91 268.16,-56.1 265.69,-62.65"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_firstidatlevelCalledByGraph = svgPanZoom('#proctem_firstidatlevelCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">elemental function </span><span class="n">tem_FirstIdAtLevel</span><span class="p">(</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; level to check</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">level</span>
+<span class="w">    </span><span class="c">!&gt; resulting first treeID</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="mi">8_long_k</span><span class="o">**</span><span class="n">level</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1_long_k</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">7_long_k</span>
+
+<span class="w">  </span><span class="k">end function </span><span class="n">tem_FirstIdAtLevel</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

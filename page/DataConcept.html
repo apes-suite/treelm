@@ -1,0 +1,275 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Data Concept &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Data Concept</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>TreElm Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Data Concept</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link active disabled" href="DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="bibliography.html">Bibliography</a>
+              <a class="nav-link" href="codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="face_details.html">Face Details</a>
+              <a class="nav-link" href="features/index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="features/dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="features/spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="features/tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="features/tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="features/variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="features/variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="features/variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="features/variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="octree.html">Distributed Octree</a>
+              <a class="nav-link" href="requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <h1 id="sketch-of-the-data-concept-deployed-in-treelm">Sketch of the data concept deployed in treelm</h1>
+<p>Illustrated with a small example to show the tree numbering, and distribution
+in 2D. An overview image of the example is given in 2DIllustration.svg.
+In the middle is a obstacle (4 elements on the finest level), and
+the domain is distributed to 6 processes.</p>
+<p>A breadth first numbering scheme of all nodes in the complete tree is
+used, with the positive half of a 64 bit integer, this leaves
+us with 20 bits for the finest representable level in each
+direction. (1 bit is used by the upper part of the tree).
+A second 8 byte integer is used to provide a pointer to possibly
+further informations about the element.
+The integer in this second entry provides the index of this element
+in the list of all elements with special properties, like boundary conditions,
+deformations or attached material properties. If it is 0, there
+is no additional information.</p>
+<p>With this hierarchical scheme of storing the data it is possible to directly
+access each information of an element in a distributed manner, but store only
+a minimal set of informations for each element.</p>
+<p>Neighborhoods are implicitly given by the tree topology, or if necessary has
+to specified separately for the elements in the additional property
+informations. The logic here is, that the neighborhood needs to be reconstructed
+anyway in the case of elements on different levels. And with the help of putting
+the neighborhood informations separately if necessary it is possible to support
+arbitrary unstructured meshes, with any kind of connectivity between the
+elements.</p>
+<p>To identify which elements are located on which processes, the
+outermost left and right treeIDs of the process local leaves are
+gathered on each process (allgather).</p>
+<p>In the given example this would look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">treeID_left</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="p">[</span><span class="w">  </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="mi">72</span><span class="p">]</span>
+<span class="n">treeID_right</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">33</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w"> </span><span class="mi">71</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">]</span>
+</code></pre></div>
+
+<p>From this information, the boundary of each partition can be derived on each
+level of the tree:
+The parent of a any node is given by the following integer operation:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">treeID</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="c">! 2D</span>
+<span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">treeID</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="c">! 3D</span>
+</code></pre></div>
+
+<p>For example the node with treeID 8 has to be found for element 3 (tree ID = 7)
+in all the partitions.</p>
+<ul>
+<li>Get the upper boundary for the level, the neighbor is located in:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">! highest tree ID of the searched level</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treeID</span><span class="w"> </span><span class="c">! 8 in this example</span>
+<span class="w">  </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">level</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ub</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">4</span><span class="o">**</span><span class="n">level</span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>
+<span class="w">  </span><span class="k">end do</span>
+</code></pre></div>
+
+<ul>
+<li>Now get the parents of the bounding leaves on each partition, until
+  they are at least on the same level, as the searched tree ID:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="k">do </span><span class="n">iRank</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nRanks</span>
+<span class="w">    </span><span class="n">left</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treeID_left</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span>
+<span class="w">    </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ub</span><span class="p">)</span>
+<span class="w">      </span><span class="n">left</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">left</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">    </span><span class="n">right</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treeID_right</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span>
+<span class="w">    </span><span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ub</span><span class="p">)</span>
+<span class="w">      </span><span class="n">right</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">right</span><span class="p">(</span><span class="n">iRank</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">4</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">  end do</span>
+
+<span class="w">  </span><span class="c">!! In the example, this results (for treeID 8) in</span>
+<span class="w">  </span><span class="c">!! left  = [ 5,  8, 11, 13, 15, 17 ]</span>
+<span class="w">  </span><span class="c">!! right = [ 8, 10, 12, 14, 17, 20 ]</span>
+<span class="w">  </span><span class="c">!! That is, it is now known which partition contributes</span>
+<span class="w">  </span><span class="c">!! to which interval on the given level:</span>
+<span class="w">  </span><span class="c">!! rank 0:  5 -  8</span>
+<span class="w">  </span><span class="c">!! rank 1:  8 - 10</span>
+<span class="w">  </span><span class="c">!! rank 2: 11 - 12</span>
+<span class="w">  </span><span class="c">!! rank 3: 13 - 14</span>
+<span class="w">  </span><span class="c">!! rank 4: 15 - 17</span>
+<span class="w">  </span><span class="c">!! rank 5: 17 - 20</span>
+
+<span class="w">  </span><span class="c">!! When looking for the construction of node 8 by its childs it is therefore</span>
+<span class="w">  </span><span class="c">!! necessary to ask rank 0 and rank 1 for their contribution.</span>
+</code></pre></div>
+
+<p>With this only the local elemental data necessary communication structures need
+to be stored on each process, the tree does not have to be actually stored.</p>
+<p>The required data on disk is just the <a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a> and an additional bit field, to
+provide the possibility to indicate further properties for each element.
+For example boundary conditions would be such a property.
+Thus there are just 16 byte per element + additional informations where needed.
+To find additional elemental data, where needed, it is necessary to build a
+prefix sum, for each used property in order to find the local offset, as direct
+links for each of the possible 64 properties would be too large. As an allgather
+is required anyway, the much cheaper prefix sum shouldn't be a problem anyway.</p>
+<p>A comment on visualization output: it should be straight forward to allow the
+output of the mesh down to a specified tree level only, allowing drastically
+reduced output file sizes.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

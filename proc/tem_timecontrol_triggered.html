@@ -1,0 +1,698 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_timeControl_triggered &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_timeControl_triggered
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">26 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_timeControl_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_timecontrol_module.f90.html'>tem_timeControl_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_timecontrol_module.html'>tem_timeControl_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_timeControl_triggered</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_timecontrol_triggered.html#src">tem_timeControl_triggered</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  function tem_timeControl_triggered(me, now) result(hasTriggered)  
+</h2>
+    
+
+    <p>Returns if the timeControl has triggered since last update.</p>
+<p>This is true if now &gt;= me%trigger and with in the bounds of min and max.
+Please note that, to allow arbitrary settings of min and interval, this
+routine might change the timeControl data given in me, by setting the
+trigger to now, when min is reached for the first time.
+This is required to allow independent time definitions for min, max and
+interval.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~545"></span>
+              type(<a href='../type/tem_timecontrol_type.html'>tem_timeControl_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Time control to check if it was triggered.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-now~6"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>now</strong></td>
+            <td>
+                <p>Current time that is to be used as comparison for the trigger check.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-hastriggered"></span>
+          logical
+        </small>
+      </h3>
+      <p>Result indicating if the time control has triggered.</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_timecontrol_triggered~~CallsGraph Pages: 1 -->
+<svg id="proctem_timecontrol_triggeredCallsGraph" width="322pt" height="116pt"
+ viewBox="0.00 0.00 322.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>proc~~tem_timecontrol_triggered~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 318,-112 318,4 -4,4"/>
+<!-- proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_node1" class="node">
+<title>proc~tem_timecontrol_triggered</title>
+<polygon fill="none" stroke="black" points="155,-66 0,-66 0,-42 155,-42 155,-66"/>
+<text text-anchor="middle" x="77.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_timeControl_triggered</text>
+</g>
+<!-- proc~tem_time_ge_trigger -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_node2" class="node">
+<title>proc~tem_time_ge_trigger</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CallsGraph_node2"><a xlink:href="../proc/tem_time_ge_trigger.html" xlink:title="tem_time_ge_trigger">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="314,-108 191,-108 191,-84 314,-84 314,-108"/>
+<text text-anchor="middle" x="252.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_ge_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_ge_trigger -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_edge1" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_ge_trigger</title>
+<path fill="none" stroke="#000000" d="M128.07,-66.04C148.07,-70.89 171.31,-76.53 192.19,-81.6"/>
+<polygon fill="#000000" stroke="#000000" points="191.37,-85 201.92,-83.96 193.03,-78.2 191.37,-85"/>
+</g>
+<!-- proc~tem_time_gt_trigger -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_node3" class="node">
+<title>proc~tem_time_gt_trigger</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CallsGraph_node3"><a xlink:href="../proc/tem_time_gt_trigger.html" xlink:title="tem_time_gt_trigger">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="312.5,-66 192.5,-66 192.5,-42 312.5,-42 312.5,-66"/>
+<text text-anchor="middle" x="252.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_gt_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_gt_trigger -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_edge2" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_gt_trigger</title>
+<path fill="none" stroke="#000000" d="M155.14,-54C164.1,-54 173.21,-54 182.07,-54"/>
+<polygon fill="#000000" stroke="#000000" points="182.33,-57.5 192.33,-54 182.33,-50.5 182.33,-57.5"/>
+</g>
+<!-- proc~tem_time_never -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_node4" class="node">
+<title>proc~tem_time_never</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CallsGraph_node4"><a xlink:href="../proc/tem_time_never.html" xlink:title="tem_time_never">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="302,-24 203,-24 203,0 302,0 302,-24"/>
+<text text-anchor="middle" x="252.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_never</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_timecontrol_triggered~~CallsGraph_edge3" class="edge">
+<title>proc~tem_timecontrol_triggered&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M128.07,-41.96C148.33,-37.05 171.91,-31.32 193,-26.2"/>
+<polygon fill="#000000" stroke="#000000" points="193.92,-29.58 202.81,-23.82 192.27,-22.78 193.92,-29.58"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_timecontrol_triggered~~CalledByGraph Pages: 1 -->
+<svg id="proctem_timecontrol_triggeredCalledByGraph" width="641pt" height="82pt"
+ viewBox="0.00 0.00 641.00 82.27" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph" class="graph" transform="scale(0.72 0.72) rotate(0) translate(4 111)">
+<title>proc~~tem_timecontrol_triggered~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-111 892,-111 892,4 -4,4"/>
+<!-- proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node1" class="node">
+<title>proc~tem_timecontrol_triggered</title>
+<polygon fill="none" stroke="black" points="888,-87 733,-87 733,-63 888,-63 888,-87"/>
+<text text-anchor="middle" x="810.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_timeControl_triggered</text>
+</g>
+<!-- proc~tem_simcontrol_syncupdate -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node2" class="node">
+<title>proc~tem_simcontrol_syncupdate</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node2"><a xlink:href="../proc/tem_simcontrol_syncupdate.html" xlink:title="tem_simControl_syncUpdate">
+<polygon fill="#d9534f" stroke="#d9534f" points="472,-107 309,-107 309,-83 472,-83 472,-107"/>
+<text text-anchor="middle" x="390.5" y="-92.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_syncUpdate</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_simcontrol_syncupdate&#45;&gt;proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_simcontrol_syncupdate&#45;&gt;proc~tem_timecontrol_triggered</title>
+<path fill="none" stroke="#000000" d="M472.09,-99.45C533.79,-101.84 620.95,-103.04 697,-96 712.99,-94.52 730.09,-91.88 746.01,-88.97"/>
+<polygon fill="#000000" stroke="#000000" points="747.1,-92.32 756.28,-87.02 745.8,-85.44 747.1,-92.32"/>
+</g>
+<!-- proc~tem_timecontrol_update -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node4" class="node">
+<title>proc~tem_timecontrol_update</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node4"><a xlink:href="../proc/tem_timecontrol_update.html" xlink:title="tem_timeControl_update">
+<polygon fill="#d9534f" stroke="#d9534f" points="674.5,-87 530.5,-87 530.5,-63 674.5,-63 674.5,-87"/>
+<text text-anchor="middle" x="602.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_update</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_simcontrol_syncupdate&#45;&gt;proc~tem_timecontrol_update -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_simcontrol_syncupdate&#45;&gt;proc~tem_timecontrol_update</title>
+<path fill="none" stroke="#000000" d="M472.09,-87.32C487.84,-85.82 504.37,-84.25 520.14,-82.75"/>
+<polygon fill="#000000" stroke="#000000" points="520.76,-86.21 530.39,-81.77 520.1,-79.24 520.76,-86.21"/>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node3" class="node">
+<title>proc~tem_timecontrol_globaltriggered</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node3"><a xlink:href="../proc/tem_timecontrol_globaltriggered.html" xlink:title="tem_timeControl_globalTriggered">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="697,-45 508,-45 508,-21 697,-21 697,-45"/>
+<text text-anchor="middle" x="602.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_globalTriggered</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_globaltriggered&#45;&gt;proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_timecontrol_globaltriggered&#45;&gt;proc~tem_timecontrol_triggered</title>
+<path fill="none" stroke="#000000" d="M662.53,-45.04C686.88,-50 715.27,-55.79 740.57,-60.95"/>
+<polygon fill="#000000" stroke="#000000" points="739.96,-64.39 750.46,-62.96 741.36,-57.54 739.96,-64.39"/>
+</g>
+<!-- proc~tem_timecontrol_update&#45;&gt;proc~tem_timecontrol_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_timecontrol_update&#45;&gt;proc~tem_timecontrol_triggered</title>
+<path fill="none" stroke="#000000" d="M674.68,-75C690.04,-75 706.45,-75 722.34,-75"/>
+<polygon fill="#000000" stroke="#000000" points="722.69,-78.5 732.69,-75 722.69,-71.5 722.69,-78.5"/>
+</g>
+<!-- proc~tem_timecontrol_check -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node5" class="node">
+<title>proc~tem_timecontrol_check</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node5"><a xlink:href="../proc/tem_timecontrol_check.html" xlink:title="tem_timeControl_check">
+<polygon fill="#d9534f" stroke="#d9534f" points="459.5,-45 321.5,-45 321.5,-21 459.5,-21 459.5,-45"/>
+<text text-anchor="middle" x="390.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_check</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_globaltriggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_globaltriggered</title>
+<path fill="none" stroke="#000000" d="M459.68,-33C471.78,-33 484.62,-33 497.44,-33"/>
+<polygon fill="#000000" stroke="#000000" points="497.71,-36.5 507.71,-33 497.71,-29.5 497.71,-36.5"/>
+</g>
+<!-- proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_update -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_timecontrol_check&#45;&gt;proc~tem_timecontrol_update</title>
+<path fill="none" stroke="#000000" d="M451.68,-45.04C476.5,-50 505.44,-55.79 531.23,-60.95"/>
+<polygon fill="#000000" stroke="#000000" points="530.82,-64.43 541.31,-62.96 532.19,-57.57 530.82,-64.43"/>
+</g>
+<!-- proc~tem_convergence_check -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node6" class="node">
+<title>proc~tem_convergence_check</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node6"><a xlink:href="../proc/tem_convergence_check.html" xlink:title="tem_convergence_check">
+<polygon fill="#d9534f" stroke="#d9534f" points="265.5,-66 120.5,-66 120.5,-42 265.5,-42 265.5,-66"/>
+<text text-anchor="middle" x="193" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_check</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_convergence_check&#45;&gt;proc~tem_timecontrol_check -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_convergence_check&#45;&gt;proc~tem_timecontrol_check</title>
+<path fill="none" stroke="#000000" d="M265.69,-46.3C280.47,-44.71 296.12,-43.03 311.13,-41.42"/>
+<polygon fill="#000000" stroke="#000000" points="311.83,-44.86 321.4,-40.32 311.08,-37.9 311.83,-44.86"/>
+</g>
+<!-- proc~tem_tracking_has_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node7" class="node">
+<title>proc~tem_tracking_has_triggered</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node7"><a xlink:href="../proc/tem_tracking_has_triggered.html" xlink:title="tem_tracking_has_triggered">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="273,-24 113,-24 113,0 273,0 273,-24"/>
+<text text-anchor="middle" x="193" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_has_triggered</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tracking_has_triggered&#45;&gt;proc~tem_timecontrol_check -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_tracking_has_triggered&#45;&gt;proc~tem_timecontrol_check</title>
+<path fill="none" stroke="#000000" d="M273.24,-20.51C285.85,-21.87 298.88,-23.27 311.47,-24.62"/>
+<polygon fill="#000000" stroke="#000000" points="311.13,-28.1 321.44,-25.69 311.88,-21.14 311.13,-28.1"/>
+</g>
+<!-- proc~tem_tracker -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_node8" class="node">
+<title>proc~tem_tracker</title>
+<g id="a_proc~~tem_timecontrol_triggered~~CalledByGraph_node8"><a xlink:href="../proc/tem_tracker.html" xlink:title="tem_tracker">
+<polygon fill="#d9534f" stroke="#d9534f" points="77,-24 0,-24 0,0 77,0 77,-24"/>
+<text text-anchor="middle" x="38.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracker</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tracker&#45;&gt;proc~tem_tracking_has_triggered -->
+<g id="proc~~tem_timecontrol_triggered~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_tracker&#45;&gt;proc~tem_tracking_has_triggered</title>
+<path fill="none" stroke="#000000" d="M77.2,-12C85.14,-12 93.85,-12 102.8,-12"/>
+<polygon fill="#000000" stroke="#000000" points="102.98,-15.5 112.98,-12 102.98,-8.5 102.98,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_timecontrol_triggeredCalledByGraph = svgPanZoom('#proctem_timecontrol_triggeredCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">tem_timeControl_triggered</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">hasTriggered</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Time control to check if it was triggered.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_timeControl_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Current time that is to be used as comparison for the trigger check.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">now</span>
+
+<span class="w">    </span><span class="c">!&gt; Result indicating if the time control has triggered.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">hasTriggered</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">hasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="c">! Time control intervals *only* are checked every check_iter iteration,</span>
+<span class="w">    </span><span class="c">! in between the intervals, the triggered status remains false.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">now</span><span class="p">%</span><span class="n">iter</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">check_iter</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="w">      </span><span class="c">! As long as the min was not reached yet, we need to do some extra checks,</span>
+<span class="w">      </span><span class="c">! to ensure that the trigger can be set correctly when min is reached for</span>
+<span class="w">      </span><span class="c">! first time.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">min_reached</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">        </span><span class="n">me</span><span class="p">%</span><span class="n">min_reached</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_ge_trigger</span><span class="p">(</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="nb">min</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! &#39;Now&#39; has reached min, set the trigger accordingly for all those</span>
+<span class="w">        </span><span class="c">! entries that are relevant in the interval configuration.</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">min_reached</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">me</span><span class="p">%</span><span class="n">trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_never</span><span class="p">()</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">sim</span><span class="w">   </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">sim</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">me</span><span class="p">%</span><span class="n">trigger</span><span class="p">%</span><span class="n">sim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">%</span><span class="n">sim</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">          if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">iter</span><span class="w">  </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">iter</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">me</span><span class="p">%</span><span class="n">trigger</span><span class="p">%</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">%</span><span class="n">iter</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">          if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">clock</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">interval</span><span class="p">%</span><span class="n">clock</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">me</span><span class="p">%</span><span class="n">trigger</span><span class="p">%</span><span class="n">clock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">%</span><span class="n">clock</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        end if</span>
+
+<span class="k">      end if</span>
+
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">min_reached</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">tem_time_gt_trigger</span><span class="p">(</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="nb">max</span><span class="p">))</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">hasTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_ge_trigger</span><span class="p">(</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">trigger</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    end if</span>
+
+<span class="k">  end function </span><span class="n">tem_timeControl_triggered</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

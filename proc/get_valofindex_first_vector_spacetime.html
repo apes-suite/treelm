@@ -1,0 +1,1055 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>get_valOfIndex_first_vector_spacetime &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>get_valOfIndex_first_vector_spacetime
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">35 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_spacetime_var_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_spacetime_var_module.f90.html'>tem_spacetime_var_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_spacetime_var_module.html'>tem_spacetime_var_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">get_valOfIndex_first_vector_spacetime</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/get_valofindex_first_vector_spacetime.html#src">get_valOfIndex_first_vector_spacetime</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public recursive subroutine get_valOfIndex_first_vector_spacetime(fun, varSys, time, iLevel, idx, idxLen, nVals, res)  
+</h2>
+    
+
+    <p>This routine returns value at the given index. If value is pre-computed
+and value at given index is returned else value is computing on the
+points for given index.</p>
+<p>If a variable has more than one spacetime function, then result is
+first spacetime function in the overlapping region.</p>
+<p>For vectorial variable</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~76"></span>
+              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+                <p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~80"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~79"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ilevel~50"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iLevel</strong></td>
+            <td>
+                <p>Level on which values are requested</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idx~31"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idx</strong>(:)</td>
+            <td>
+                <p>Index of points in the growing array and variable val array to
+return.
+Size: nVals</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-idxlen~17"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>idxLen</strong>(:)</td>
+            <td>
+                <p>With idx as start index in contiguous memory,
+idxLength defines length of each contiguous memory
+Size: nVals</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nvals~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nVals</strong></td>
+            <td>
+                <p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~151"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+                <p>Resulting values for the requested variable.</p>
+<p>Dimension: n requested entries x nComponents of this variable
+Access: (iElem-1)*fun%nComponents + iComp</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~get_valofindex_first_vector_spacetime~~CallsGraph Pages: 1 -->
+<svg id="procget_valofindex_first_vector_spacetimeCallsGraph" width="641pt" height="355pt"
+ viewBox="0.00 0.00 641.00 355.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph" class="graph" transform="scale(0.57 0.57) rotate(0) translate(4 624.85)">
+<title>proc~~get_valofindex_first_vector_spacetime~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-624.85 1130,-624.85 1130,4 -4,4"/>
+<!-- proc~get_valofindex_first_vector_spacetime -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node1" class="node">
+<title>proc~get_valofindex_first_vector_spacetime</title>
+<polygon fill="none" stroke="black" points="217,-212.85 0,-212.85 0,-188.85 217,-188.85 217,-212.85"/>
+<text text-anchor="middle" x="108.5" y="-198.45" font-family="Helvetica,sans-Serif" font-size="10.50">get_valOfIndex_first_vector_spacetime</text>
+</g>
+<!-- interface~tem_spacetime_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node2" class="node">
+<title>interface~tem_spacetime_for</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node2"><a xlink:href="../interface/tem_spacetime_for.html" xlink:title="tem_spacetime_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="385.5,-254.85 270.5,-254.85 270.5,-230.85 385.5,-230.85 385.5,-254.85"/>
+<text text-anchor="middle" x="328" y="-240.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for</text>
+</a>
+</g>
+</g>
+<!-- proc~get_valofindex_first_vector_spacetime&#45;&gt;interface~tem_spacetime_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge1" class="edge">
+<title>proc~get_valofindex_first_vector_spacetime&#45;&gt;interface~tem_spacetime_for</title>
+<path fill="none" stroke="#000000" d="M171.83,-212.88C199.44,-218.22 231.97,-224.5 260.1,-229.93"/>
+<polygon fill="#000000" stroke="#000000" points="259.76,-233.43 270.24,-231.89 261.09,-226.56 259.76,-233.43"/>
+</g>
+<!-- proc~tem_varsys_check_inargs -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node3" class="node">
+<title>proc~tem_varsys_check_inargs</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node3"><a xlink:href="../proc/tem_varsys_check_inargs.html" xlink:title="tem_varSys_check_inArgs">
+<polygon fill="#d9534f" stroke="#d9534f" points="403,-212.85 253,-212.85 253,-188.85 403,-188.85 403,-212.85"/>
+<text text-anchor="middle" x="328" y="-198.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_check_inArgs</text>
+</a>
+</g>
+</g>
+<!-- proc~get_valofindex_first_vector_spacetime&#45;&gt;proc~tem_varsys_check_inargs -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge2" class="edge">
+<title>proc~get_valofindex_first_vector_spacetime&#45;&gt;proc~tem_varsys_check_inargs</title>
+<path fill="none" stroke="#000000" d="M217.29,-200.85C225.88,-200.85 234.47,-200.85 242.85,-200.85"/>
+<polygon fill="#000000" stroke="#000000" points="242.96,-204.35 252.96,-200.85 242.96,-197.35 242.96,-204.35"/>
+</g>
+<!-- tem_positioninsorted -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node4" class="node">
+<title>tem_positioninsorted</title>
+<polygon fill="#777777" stroke="#777777" points="390,-170.85 266,-170.85 266,-146.85 390,-146.85 390,-170.85"/>
+<text text-anchor="middle" x="328" y="-156.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_positioninsorted</text>
+</g>
+<!-- proc~get_valofindex_first_vector_spacetime&#45;&gt;tem_positioninsorted -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge3" class="edge">
+<title>proc~get_valofindex_first_vector_spacetime&#45;&gt;tem_positioninsorted</title>
+<path fill="none" stroke="#000000" d="M171.83,-188.81C198.1,-183.74 228.82,-177.81 255.97,-172.57"/>
+<polygon fill="#000000" stroke="#000000" points="256.64,-176 265.79,-170.67 255.31,-169.13 256.64,-176"/>
+</g>
+<!-- proc~tem_spacetime_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node5" class="node">
+<title>proc~tem_spacetime_for_coord</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node5"><a xlink:href="../proc/tem_spacetime_for_coord.html" xlink:title="tem_spacetime_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="835.5,-494.85 684.5,-494.85 684.5,-470.85 835.5,-470.85 835.5,-494.85"/>
+<text text-anchor="middle" x="760" y="-480.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for_coord</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge4" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M345.12,-255.02C391.81,-289.8 532.15,-390.89 662,-449.85 676.62,-456.48 692.98,-462.54 708.04,-467.61"/>
+<polygon fill="#000000" stroke="#000000" points="707.13,-470.99 717.72,-470.78 709.31,-464.34 707.13,-470.99"/>
+</g>
+<!-- proc~tem_spacetime_for_stcoord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node6" class="node">
+<title>proc~tem_spacetime_for_stcoord</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node6"><a xlink:href="../proc/tem_spacetime_for_stcoord.html" xlink:title="tem_spacetime_for_stcoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="612.5,-479.85 452.5,-479.85 452.5,-455.85 612.5,-455.85 612.5,-479.85"/>
+<text text-anchor="middle" x="532.5" y="-465.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for_stcoord</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_stcoord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge5" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_stcoord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M337.51,-254.99C355.23,-279.94 397.85,-338.39 439,-382.85 461.56,-407.22 490,-432.67 509.35,-449.29"/>
+<polygon fill="#000000" stroke="#000000" points="507.16,-452.02 517.04,-455.85 511.7,-446.7 507.16,-452.02"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node7" class="node">
+<title>proc~tem_spacetime_for_treeids</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node7"><a xlink:href="../proc/tem_spacetime_for_treeids.html" xlink:title="tem_spacetime_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="838.5,-132.85 681.5,-132.85 681.5,-108.85 838.5,-108.85 838.5,-132.85"/>
+<text text-anchor="middle" x="760" y="-118.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_treeids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge6" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M384.15,-230.8C390.73,-228.33 397.17,-225.38 403,-221.85 422.9,-209.8 418.62,-195.07 439,-183.85 510.94,-144.23 604.1,-129.28 671.32,-123.77"/>
+<polygon fill="#000000" stroke="#000000" points="671.76,-127.24 681.47,-122.99 671.23,-120.26 671.76,-127.24"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node8" class="node">
+<title>proc~tem_spacetime_scalar_for_index</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node8"><a xlink:href="../proc/tem_spacetime_scalar_for_index.html" xlink:title="tem_spacetime_scalar_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="625.5,-311.85 439.5,-311.85 439.5,-287.85 625.5,-287.85 625.5,-311.85"/>
+<text text-anchor="middle" x="532.5" y="-297.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_scalar_for_index</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_scalar_for_index -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge7" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_scalar_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M371.95,-254.94C403.09,-263.7 445.4,-275.61 478.62,-284.96"/>
+<polygon fill="#000000" stroke="#000000" points="478.04,-288.44 488.62,-287.78 479.94,-281.7 478.04,-288.44"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node9" class="node">
+<title>proc~tem_spacetime_vector_for_coord</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node9"><a xlink:href="../proc/tem_spacetime_vector_for_coord.html" xlink:title="tem_spacetime_vector_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="855,-174.85 665,-174.85 665,-150.85 855,-150.85 855,-174.85"/>
+<text text-anchor="middle" x="760" y="-160.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_coord</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge8" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.51,-231.99C402.69,-228.71 421.61,-225.11 439,-221.85 522.4,-206.2 618.11,-188.6 682.96,-176.73"/>
+<polygon fill="#000000" stroke="#000000" points="683.89,-180.12 693.09,-174.88 682.63,-173.23 683.89,-180.12"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node10" class="node">
+<title>proc~tem_spacetime_vector_for_index</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node10"><a xlink:href="../proc/tem_spacetime_vector_for_index.html" xlink:title="tem_spacetime_vector_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="626,-254.85 439,-254.85 439,-230.85 626,-230.85 626,-254.85"/>
+<text text-anchor="middle" x="532.5" y="-240.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_index</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_index -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge9" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.68,-242.85C399.08,-242.85 413.79,-242.85 428.54,-242.85"/>
+<polygon fill="#000000" stroke="#000000" points="428.75,-246.35 438.75,-242.85 428.75,-239.35 428.75,-246.35"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node11" class="node">
+<title>proc~tem_spacetime_vector_for_treeids</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node11"><a xlink:href="../proc/tem_spacetime_vector_for_treeids.html" xlink:title="tem_spacetime_vector_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="858,-90.85 662,-90.85 662,-66.85 858,-66.85 858,-90.85"/>
+<text text-anchor="middle" x="760" y="-76.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_treeids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge10" class="edge">
+<title>interface~tem_spacetime_for&#45;&gt;proc~tem_spacetime_vector_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M385.72,-232.89C392.04,-230.07 397.99,-226.46 403,-221.85 436.52,-190.98 403.54,-154.46 439,-125.85 497.92,-78.31 583.54,-67.81 651.39,-68.52"/>
+<polygon fill="#000000" stroke="#000000" points="651.63,-72.02 661.7,-68.71 651.76,-65.02 651.63,-72.02"/>
+</g>
+<!-- interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node13" class="node">
+<title>interface~tem_spacetime_lua_for</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node13"><a xlink:href="../interface/tem_spacetime_lua_for.html" xlink:title="tem_spacetime_lua_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="1078,-286.85 942,-286.85 942,-262.85 1078,-262.85 1078,-286.85"/>
+<text text-anchor="middle" x="1010" y="-272.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_lua_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge11" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M835.73,-471.46C843.94,-467.81 851.63,-463.05 858,-456.85 898.21,-417.72 858.45,-379.26 894,-335.85 911.05,-315.03 937.13,-300.37 960.14,-290.66"/>
+<polygon fill="#000000" stroke="#000000" points="961.47,-293.9 969.44,-286.92 958.86,-287.4 961.47,-293.9"/>
+</g>
+<!-- interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node14" class="node">
+<title>interface~tem_spatial_for</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node14"><a xlink:href="../interface/tem_spatial_for.html" xlink:title="tem_spatial_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="1057,-90.85 963,-90.85 963,-66.85 1057,-66.85 1057,-90.85"/>
+<text text-anchor="middle" x="1010" y="-76.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge12" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M772.9,-470.68C793.91,-448.4 837.33,-398.64 858,-347.85 898.33,-248.76 822.75,-189.65 894,-109.85 908.8,-93.27 931.44,-85.15 952.74,-81.3"/>
+<polygon fill="#000000" stroke="#000000" points="953.36,-84.75 962.71,-79.78 952.3,-77.83 953.36,-84.75"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node16" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node16"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="1043.5,-142.85 976.5,-142.85 976.5,-118.85 1043.5,-118.85 1043.5,-142.85"/>
+<text text-anchor="middle" x="1010" y="-128.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_abort -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge13" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M772.64,-470.57C793.24,-448.12 836.02,-398.09 858,-347.85 890,-274.7 841.65,-232.14 894,-171.85 912.2,-150.89 941.87,-140.65 966.52,-135.64"/>
+<polygon fill="#000000" stroke="#000000" points="967.16,-139.08 976.38,-133.85 965.91,-132.19 967.16,-139.08"/>
+</g>
+<!-- proc~tem_eval_acoustic_pulse -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node17" class="node">
+<title>proc~tem_eval_acoustic_pulse</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node17"><a xlink:href="../proc/tem_eval_acoustic_pulse.html" xlink:title="tem_eval_acoustic_pulse">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1082.5,-452.85 937.5,-452.85 937.5,-428.85 1082.5,-428.85 1082.5,-452.85"/>
+<text text-anchor="middle" x="1010" y="-438.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eval_acoustic_pulse</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_acoustic_pulse -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge14" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_acoustic_pulse</title>
+<path fill="none" stroke="#000000" d="M832.07,-470.81C862.03,-465.74 897.07,-459.8 928.03,-454.56"/>
+<polygon fill="#000000" stroke="#000000" points="928.65,-458.01 937.92,-452.89 927.48,-451.11 928.65,-458.01"/>
+</g>
+<!-- proc~tem_eval_cylindricalwave -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node18" class="node">
+<title>proc~tem_eval_cylindricalwave</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node18"><a xlink:href="../proc/tem_eval_cylindricalwave.html" xlink:title="tem_eval_cylindricalWave">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1085.5,-410.85 934.5,-410.85 934.5,-386.85 1085.5,-386.85 1085.5,-410.85"/>
+<text text-anchor="middle" x="1010" y="-396.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eval_cylindricalWave</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_cylindricalwave -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge15" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_cylindricalwave</title>
+<path fill="none" stroke="#000000" d="M825.32,-470.84C836.65,-467.29 848,-462.72 858,-456.85 877.79,-445.24 873.75,-430.64 894,-419.85 903.46,-414.8 913.91,-410.95 924.55,-408"/>
+<polygon fill="#000000" stroke="#000000" points="925.49,-411.38 934.34,-405.55 923.79,-404.59 925.49,-411.38"/>
+</g>
+<!-- proc~tem_eval_miescatter_displz -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node19" class="node">
+<title>proc~tem_eval_miescatter_displz</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node19"><a xlink:href="../proc/tem_eval_miescatter_displz.html" xlink:title="tem_eval_miescatter_displz">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1089.5,-368.85 930.5,-368.85 930.5,-344.85 1089.5,-344.85 1089.5,-368.85"/>
+<text text-anchor="middle" x="1010" y="-354.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eval_miescatter_displz</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_displz -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge16" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_displz</title>
+<path fill="none" stroke="#000000" d="M834.44,-470.79C842.97,-467.26 851.08,-462.71 858,-456.85 887.45,-431.92 863.56,-401.56 894,-377.85 901.92,-371.67 911.08,-367.1 920.7,-363.74"/>
+<polygon fill="#000000" stroke="#000000" points="921.9,-367.04 930.45,-360.78 919.86,-360.34 921.9,-367.04"/>
+</g>
+<!-- proc~tem_eval_miescatter_magnx -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node20" class="node">
+<title>proc~tem_eval_miescatter_magnx</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node20"><a xlink:href="../proc/tem_eval_miescatter_magnx.html" xlink:title="tem_eval_miescatter_magnx">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1093,-620.85 927,-620.85 927,-596.85 1093,-596.85 1093,-620.85"/>
+<text text-anchor="middle" x="1010" y="-606.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eval_miescatter_magnx</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_magnx -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge17" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_magnx</title>
+<path fill="none" stroke="#000000" d="M772.13,-494.89C793.45,-517.16 842.53,-564.59 894,-587.85 901.3,-591.15 909.08,-593.93 917.02,-596.27"/>
+<polygon fill="#000000" stroke="#000000" points="916.19,-599.67 926.76,-598.92 918.03,-592.92 916.19,-599.67"/>
+</g>
+<!-- proc~tem_eval_miescatter_magny -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node21" class="node">
+<title>proc~tem_eval_miescatter_magny</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node21"><a xlink:href="../proc/tem_eval_miescatter_magny.html" xlink:title="tem_eval_miescatter_magny">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1093,-578.85 927,-578.85 927,-554.85 1093,-554.85 1093,-578.85"/>
+<text text-anchor="middle" x="1010" y="-564.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eval_miescatter_magny</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_magny -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge18" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_eval_miescatter_magny</title>
+<path fill="none" stroke="#000000" d="M781.95,-494.89C807.57,-509.12 852.66,-532.54 894,-545.85 901.69,-548.33 909.77,-550.54 917.93,-552.51"/>
+<polygon fill="#000000" stroke="#000000" points="917.38,-555.98 927.91,-554.8 918.95,-549.15 917.38,-555.98"/>
+</g>
+<!-- proc~tem_polygon_material_movement_multi -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node22" class="node">
+<title>proc~tem_polygon_material_movement_multi</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node22"><a xlink:href="../proc/tem_polygon_material_movement_multi.html" xlink:title="tem_polygon_material_movement_multi">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1123.5,-536.85 896.5,-536.85 896.5,-512.85 1123.5,-512.85 1123.5,-536.85"/>
+<text text-anchor="middle" x="1010" y="-522.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_polygon_material_movement_multi</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_polygon_material_movement_multi -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge19" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_polygon_material_movement_multi</title>
+<path fill="none" stroke="#000000" d="M832.07,-494.88C862.03,-499.96 897.07,-505.89 928.03,-511.14"/>
+<polygon fill="#000000" stroke="#000000" points="927.48,-514.59 937.92,-512.81 928.65,-507.69 927.48,-514.59"/>
+</g>
+<!-- proc~tem_polygon_material_movement_single -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node23" class="node">
+<title>proc~tem_polygon_material_movement_single</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node23"><a xlink:href="../proc/tem_polygon_material_movement_single.html" xlink:title="tem_polygon_material_movement_single">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1126,-494.85 894,-494.85 894,-470.85 1126,-470.85 1126,-494.85"/>
+<text text-anchor="middle" x="1010" y="-480.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_polygon_material_movement_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_polygon_material_movement_single -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge20" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_polygon_material_movement_single</title>
+<path fill="none" stroke="#000000" d="M835.74,-482.85C850.86,-482.85 867.15,-482.85 883.47,-482.85"/>
+<polygon fill="#000000" stroke="#000000" points="883.62,-486.35 893.62,-482.85 883.62,-479.35 883.62,-486.35"/>
+</g>
+<!-- proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node24" class="node">
+<title>proc~tem_temporal_for</title>
+<g id="a_proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node24"><a xlink:href="../proc/tem_temporal_for.html" xlink:title="tem_temporal_for">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1064,-204.85 956,-204.85 956,-180.85 1064,-180.85 1064,-204.85"/>
+<text text-anchor="middle" x="1010" y="-190.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_temporal_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge21" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M776.53,-470.74C797.97,-453.19 836.45,-418.64 858,-380.85 887.06,-329.88 857.13,-299.48 894,-253.85 910.85,-232.99 936.79,-218.37 959.77,-208.67"/>
+<polygon fill="#000000" stroke="#000000" points="961.09,-211.92 969.06,-204.95 958.48,-205.42 961.09,-211.92"/>
+</g>
+<!-- proc~tem_spacetime_for_stcoord&#45;&gt;proc~tem_spacetime_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge22" class="edge">
+<title>proc~tem_spacetime_for_stcoord&#45;&gt;proc~tem_spacetime_for_coord</title>
+<path fill="none" stroke="#000000" d="M612.69,-473.12C632.55,-474.44 653.95,-475.86 674.08,-477.2"/>
+<polygon fill="#000000" stroke="#000000" points="673.96,-480.7 684.17,-477.87 674.42,-473.72 673.96,-480.7"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge23" class="edge">
+<title>proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M838.55,-130.83C845.52,-133.7 852.15,-137.31 858,-141.85 886.26,-163.79 869.01,-188.25 894,-213.85 913.56,-233.89 941.14,-248.82 964.38,-258.9"/>
+<polygon fill="#000000" stroke="#000000" points="963.13,-262.17 973.71,-262.78 965.82,-255.71 963.13,-262.17"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge24" class="edge">
+<title>proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M832.07,-108.81C870.37,-102.33 916.96,-94.44 952.72,-88.38"/>
+<polygon fill="#000000" stroke="#000000" points="953.7,-91.76 962.97,-86.64 952.53,-84.86 953.7,-91.76"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids&#45;&gt;proc~tem_abort -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge25" class="edge">
+<title>proc~tem_spacetime_for_treeids&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M838.79,-123.99C880.76,-125.68 930.96,-127.7 965.93,-129.11"/>
+<polygon fill="#000000" stroke="#000000" points="966.13,-132.62 976.27,-129.53 966.41,-125.63 966.13,-132.62"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge26" class="edge">
+<title>proc~tem_spacetime_for_treeids&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M821.54,-132.85C833.67,-135.57 846.29,-138.62 858,-141.85 895.38,-152.17 937.09,-166.48 967.19,-177.31"/>
+<polygon fill="#000000" stroke="#000000" points="966.33,-180.73 976.92,-180.84 968.72,-174.14 966.33,-180.73"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;proc~tem_spacetime_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge31" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;proc~tem_spacetime_for_coord</title>
+<path fill="none" stroke="#000000" d="M565.24,-312.02C585.16,-321.12 610.01,-335.35 626,-354.85 656.48,-392.02 626.72,-424.2 662,-456.85 665.9,-460.46 670.24,-463.57 674.87,-466.27"/>
+<polygon fill="#000000" stroke="#000000" points="673.58,-469.54 684.08,-470.94 676.75,-463.29 673.58,-469.54"/>
+</g>
+<!-- ids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node12" class="node">
+<title>ids</title>
+<polygon fill="#777777" stroke="#777777" points="787,-296.85 733,-296.85 733,-272.85 787,-272.85 787,-296.85"/>
+<text text-anchor="middle" x="760" y="-282.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">ids</text>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;ids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge27" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;ids</title>
+<path fill="none" stroke="#000000" d="M625.54,-293.73C659.58,-291.46 696.23,-289.02 722.49,-287.28"/>
+<polygon fill="#000000" stroke="#000000" points="722.97,-290.75 732.72,-286.6 722.51,-283.77 722.97,-290.75"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge28" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M562.01,-311.96C581.78,-321.44 607.73,-336.13 626,-354.85 648.8,-378.2 633.83,-402.37 662,-418.85 737.2,-462.83 785.17,-466.64 858,-418.85 891.62,-396.79 866.7,-365.37 894,-335.85 912.81,-315.5 939.98,-300.65 963.19,-290.7"/>
+<polygon fill="#000000" stroke="#000000" points="964.61,-293.9 972.52,-286.87 961.94,-287.43 964.61,-293.9"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge29" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M591.2,-287.71C604.34,-282.4 617.05,-274.78 626,-263.85 684.9,-191.95 590.85,-117.65 662,-57.85 704.61,-22.04 865.95,-48.73 952.81,-66.45"/>
+<polygon fill="#000000" stroke="#000000" points="952.27,-69.91 962.77,-68.51 953.69,-63.06 952.27,-69.91"/>
+</g>
+<!-- posids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node15" class="node">
+<title>posids</title>
+<polygon fill="#777777" stroke="#777777" points="787,-254.85 733,-254.85 733,-230.85 787,-230.85 787,-254.85"/>
+<text text-anchor="middle" x="760" y="-240.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posids</text>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;posids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge30" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;posids</title>
+<path fill="none" stroke="#000000" d="M574.13,-287.79C599.33,-280.48 632.43,-271.19 662,-263.85 682.08,-258.87 704.67,-253.94 723,-250.11"/>
+<polygon fill="#000000" stroke="#000000" points="723.88,-253.5 732.96,-248.04 722.46,-246.64 723.88,-253.5"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge32" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M554.34,-312.01C609.39,-342.39 761.11,-414.5 858,-347.85 894.86,-322.5 864.35,-287.35 894,-253.85 912.17,-233.32 938.93,-218.55 962.07,-208.69"/>
+<polygon fill="#000000" stroke="#000000" points="963.46,-211.91 971.4,-204.9 960.82,-205.43 963.46,-211.91"/>
+</g>
+<!-- tem_precice_read -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_node25" class="node">
+<title>tem_precice_read</title>
+<polygon fill="#777777" stroke="#777777" points="813.5,-338.85 706.5,-338.85 706.5,-314.85 813.5,-314.85 813.5,-338.85"/>
+<text text-anchor="middle" x="760" y="-324.45" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_precice_read</text>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;tem_precice_read -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge33" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;tem_precice_read</title>
+<path fill="none" stroke="#000000" d="M625.54,-310.87C649.3,-313.72 674.34,-316.71 696.22,-319.33"/>
+<polygon fill="#000000" stroke="#000000" points="696.02,-322.83 706.36,-320.55 696.85,-315.88 696.02,-322.83"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge34" class="edge">
+<title>proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M788.01,-175.05C832.95,-195.34 923.06,-236.04 973.22,-258.69"/>
+<polygon fill="#000000" stroke="#000000" points="971.84,-261.91 982.4,-262.83 974.72,-255.53 971.84,-261.91"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge35" class="edge">
+<title>proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M835.72,-150.8C843.44,-148.35 851.01,-145.4 858,-141.85 877.09,-132.16 875.16,-120.02 894,-109.85 912.13,-100.06 933.57,-93.2 952.99,-88.46"/>
+<polygon fill="#000000" stroke="#000000" points="953.97,-91.83 962.94,-86.18 952.41,-85.01 953.97,-91.83"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord&#45;&gt;proc~tem_abort -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge36" class="edge">
+<title>proc~tem_spacetime_vector_for_coord&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M854.05,-150.84C892.7,-145.86 935.64,-140.32 966.49,-136.33"/>
+<polygon fill="#000000" stroke="#000000" points="967,-139.8 976.47,-135.05 966.1,-132.86 967,-139.8"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge37" class="edge">
+<title>proc~tem_spacetime_vector_for_coord&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M855.11,-174.23C885.37,-177.89 918.14,-181.86 945.64,-185.19"/>
+<polygon fill="#000000" stroke="#000000" points="945.56,-188.7 955.91,-186.43 946.4,-181.75 945.56,-188.7"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;proc~tem_spacetime_vector_for_coord -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge42" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;proc~tem_spacetime_vector_for_coord</title>
+<path fill="none" stroke="#000000" d="M559.19,-230.83C584.84,-219.12 625.6,-201.31 662,-188.85 673.91,-184.77 686.82,-180.93 699.21,-177.51"/>
+<polygon fill="#000000" stroke="#000000" points="700.27,-180.85 709.01,-174.86 698.45,-174.09 700.27,-180.85"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;ids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge38" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;ids</title>
+<path fill="none" stroke="#000000" d="M598.12,-254.88C638.52,-262.41 689.06,-271.82 722.61,-278.07"/>
+<polygon fill="#000000" stroke="#000000" points="722.39,-281.59 732.86,-279.98 723.67,-274.71 722.39,-281.59"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge39" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M583.25,-254.87C598.26,-260.32 613.94,-268.04 626,-278.85 651.76,-301.93 632.42,-329.92 662,-347.85 736.49,-393.01 773.09,-367.3 858,-347.85 882.23,-342.3 941.31,-311.68 977.97,-291.9"/>
+<polygon fill="#000000" stroke="#000000" points="980.1,-294.73 987.23,-286.88 976.77,-288.57 980.1,-294.73"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge40" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M536.22,-230.67C545.58,-191.92 580.56,-71.38 662,-24.85 766.23,34.7 915.39,-29.29 978.72,-62.02"/>
+<polygon fill="#000000" stroke="#000000" points="977.29,-65.22 987.77,-66.79 980.56,-59.03 977.29,-65.22"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;posids -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge41" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;posids</title>
+<path fill="none" stroke="#000000" d="M626.2,-242.85C660.15,-242.85 696.61,-242.85 722.72,-242.85"/>
+<polygon fill="#000000" stroke="#000000" points="722.89,-246.35 732.89,-242.85 722.89,-239.35 722.89,-246.35"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge43" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M600.71,-230.84C620.42,-227.6 642.03,-224.31 662,-221.85 760.73,-209.68 875.91,-201.17 945.59,-196.65"/>
+<polygon fill="#000000" stroke="#000000" points="946.2,-200.11 955.96,-195.98 945.75,-193.13 946.2,-200.11"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;tem_precice_read -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge44" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;tem_precice_read</title>
+<path fill="none" stroke="#000000" d="M571.46,-254.98C588.61,-261.12 608.83,-269.3 626,-278.85 643.48,-288.57 643.81,-297.54 662,-305.85 672.78,-310.77 684.76,-314.56 696.53,-317.48"/>
+<polygon fill="#000000" stroke="#000000" points="695.8,-320.9 706.33,-319.72 697.36,-314.08 695.8,-320.9"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spacetime_lua_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge45" class="edge">
+<title>proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spacetime_lua_for</title>
+<path fill="none" stroke="#000000" d="M845.38,-90.91C849.92,-93.41 854.18,-96.37 858,-99.85 897.27,-135.64 860,-173.02 894,-213.85 911.29,-234.61 937.5,-249.28 960.54,-259.02"/>
+<polygon fill="#000000" stroke="#000000" points="959.27,-262.28 969.85,-262.77 961.88,-255.79 959.27,-262.28"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge46" class="edge">
+<title>proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M858.3,-78.85C890.19,-78.85 924.55,-78.85 952.4,-78.85"/>
+<polygon fill="#000000" stroke="#000000" points="952.73,-82.35 962.73,-78.85 952.73,-75.35 952.73,-82.35"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids&#45;&gt;proc~tem_abort -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge47" class="edge">
+<title>proc~tem_spacetime_vector_for_treeids&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M818.52,-90.91C863.76,-100.4 925.78,-113.4 966.59,-121.96"/>
+<polygon fill="#000000" stroke="#000000" points="965.98,-125.4 976.48,-124.03 967.41,-118.55 965.98,-125.4"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids&#45;&gt;proc~tem_temporal_for -->
+<g id="proc~~get_valofindex_first_vector_spacetime~~CallsGraph_edge48" class="edge">
+<title>proc~tem_spacetime_vector_for_treeids&#45;&gt;proc~tem_temporal_for</title>
+<path fill="none" stroke="#000000" d="M840.87,-90.88C846.91,-93.35 852.7,-96.31 858,-99.85 881.37,-115.47 871.69,-134.75 894,-151.85 909.19,-163.49 927.97,-172.02 945.91,-178.18"/>
+<polygon fill="#000000" stroke="#000000" points="945.18,-181.62 955.77,-181.37 947.33,-174.96 945.18,-181.62"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocget_valofindex_first_vector_spacetimeCallsGraph = svgPanZoom('#procget_valofindex_first_vector_spacetimeCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">recursive subroutine </span><span class="n">get_valOfIndex_first_vector_spacetime</span><span class="p">(</span><span class="w"> </span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                                         </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                                         </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">idxLen</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                                         </span><span class="n">nVals</span><span class="p">,</span><span class="w"> </span><span class="n">res</span><span class="w">    </span><span class="p">)</span>
+<span class="w">    </span><span class="c">!--------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="c">!&gt; Description of the method to obtain the variables, here some preset</span>
+<span class="w">    </span><span class="c">!! values might be stored, like the space time function to use or the</span>
+<span class="w">    </span><span class="c">!! required variables.</span>
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">tem_varSys_op_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fun</span>
+
+<span class="w">    </span><span class="c">!&gt; The variable system to obtain the variable from.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+
+<span class="w">    </span><span class="c">!&gt; Point in time at which to evaluate the variable.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
+
+<span class="w">    </span><span class="c">!&gt; Level on which values are requested</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span>
+
+<span class="w">    </span><span class="c">!&gt; Index of points in the growing array and variable val array to</span>
+<span class="w">    </span><span class="c">!! return.</span>
+<span class="w">    </span><span class="c">!! Size: nVals</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idx</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; With idx as start index in contiguous memory,</span>
+<span class="w">    </span><span class="c">!! idxLength defines length of each contiguous memory</span>
+<span class="w">    </span><span class="c">!! Size: nVals</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">idxLen</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; Number of values to obtain for this variable (vectorized access).</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nVals</span>
+
+<span class="w">    </span><span class="c">!&gt; Resulting values for the requested variable.</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! Dimension: n requested entries x nComponents of this variable</span>
+<span class="w">    </span><span class="c">!! Access: (iElem-1)*fun%nComponents + iComp</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!--------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iStFun</span><span class="p">,</span><span class="w"> </span><span class="n">iVal</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_st_fun_listElem_type</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fPtr</span>
+<span class="w">    </span><span class="c">! element wise output</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">st_res</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="p">%</span><span class="n">nComponents</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">found</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="k">call </span><span class="nb">C_F_POINTER</span><span class="p">(</span><span class="w"> </span><span class="n">fun</span><span class="p">%</span><span class="n">method_Data</span><span class="p">,</span><span class="w"> </span><span class="n">fPtr</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+
+<span class="w">    </span><span class="c">! check if number of index are the same as number of values asked for</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_varsys_check_inArgs</span><span class="p">(</span><span class="w"> </span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">,</span><span class="w"> </span><span class="n">idxLen</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">    </span><span class="n">nVals</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;get_valOfIndex_first_vector_spacetime&#39;</span><span class="w">         </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nVals</span>
+<span class="w">      </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">      </span><span class="n">stLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">iStFun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">fPtr</span><span class="p">%</span><span class="n">nVals</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fPtr</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iStFun</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">useGlobalMesh</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          if</span><span class="w"> </span><span class="p">(</span><span class="n">idx</span><span class="p">(</span><span class="n">iVal</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c">! position of element matches with any of map2global then</span>
+<span class="w">            </span><span class="c">! this element is part of this subTree</span>
+<span class="w">            </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_PositionInSorted</span><span class="p">(</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">me</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">fPtr</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iStFun</span><span class="p">)%</span><span class="n">subTree</span><span class="p">%</span><span class="n">map2global</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">val</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">fPtr</span><span class="p">%</span><span class="n">pntData</span><span class="p">%</span><span class="n">pntLvl</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">                             </span><span class="p">%</span><span class="n">elemPos</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">idx</span><span class="p">(</span><span class="n">iVal</span><span class="p">))</span><span class="w">          </span><span class="p">)</span>
+
+<span class="w">            </span><span class="n">found</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">pos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        end if</span><span class="w"> </span><span class="c">! global mesh</span>
+
+<span class="w">        </span><span class="c">! We found the one value we were looking for, so we can stop now</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">found</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">st_res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_spacetime_for</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">fPtr</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iStFun</span><span class="p">),</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">grwPnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fPtr</span><span class="p">%</span><span class="n">pntData</span><span class="p">%</span><span class="n">pntLvl</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                                      </span><span class="p">%</span><span class="n">grwPnt</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">idx</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="w"> </span><span class="n">idx</span><span class="p">(</span><span class="n">iVal</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="p">),</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">nVals</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">                          </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ilevel</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="nb">time</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">nComps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p">%</span><span class="n">nComponents</span><span class="w">             </span><span class="p">)</span>
+
+<span class="w">          </span><span class="n">res</span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">iVal</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">fun</span><span class="p">%</span><span class="n">nComponents</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">iVal</span><span class="o">*</span><span class="n">fun</span><span class="p">%</span><span class="n">nComponents</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">st_res</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="p">:)</span>
+
+<span class="w">          </span><span class="k">exit </span><span class="n">stLoop</span>
+<span class="w">        </span><span class="k">end if</span><span class="w"> </span><span class="c">! found</span>
+<span class="w">      </span><span class="k">end do </span><span class="n">stLoop</span>
+<span class="w">    </span><span class="k">end do</span><span class="w"> </span><span class="c">!iVal</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">get_valOfIndex_first_vector_spacetime</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

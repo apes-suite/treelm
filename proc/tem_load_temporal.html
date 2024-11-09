@@ -1,0 +1,1090 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_load_temporal &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_load_temporal
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">57 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_temporal_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_temporal_module.f90.html'>tem_temporal_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_temporal_module.html'>tem_temporal_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_load_temporal</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_load_temporal.html#src">tem_load_temporal</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_load_temporal(me, conf, parent, key)  
+</h2>
+    
+
+    <p>This subroutine load temporal table defined for a boundary.\n</p>
+<p>If temporal is defined as lua function then set kind = temporal_lua
+ else if temporal block is defined then load temporal table for predefined
+ Fortran function variables and set kind = temporal_\a function_name
+ else temporal is a constant value and set kind = temporal_const.\n
+ \n
+ Valid definitions:
+ \li Constant
+ ~~~~~~~~~~~~~~~~~~~~~{.lua}
+ temporal = 1.0
+ ~~~~~~~~~~~~~~~~~~~~~
+ \li lua_function
+ ~~~~~~~~~~~~~~~~~~~~~
+ temporal = 'linear'
+ ~~~~~~~~~~~~~~~~~~~~~
+ Example: \a linear lua function
+ \verbatim
+ function linear(iTime)
+  local to_time = 1000
+  if iTime &lt; to_time then
+    return iTime/to_time
+  else
+    return 1.0
+  end
+end
+ \endverbatim
+ \li Predefined Fortran function
+ ~~~~~~~~~~~~~~~~~~~~~{.lua}
+ temporal = {predefined="Fortranfun_name",
+              min_factor = 0.0, max_factor = 1.0,
+              from_time = 0.0, to_time = 1000.0}
+ ~~~~~~~~~~~~~~~~~~~~~
+ \li Data from a file (periodic data supported)
+ ~~~~~~~~~~~~~~~~~~~~~{.lua}
+ temporal = {predefined="datafile",
+              filename='data.dat',      -- path/name of the datafile
+              intp='linear',            -- interpolation between the time tics ('linear','none')
+              periodic= true}           -- is the data periodic?
+ ~~~~~~~~~~~~~~~~~~~~~
+ \n</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~30"></span>
+              type(<a href='../type/tem_temporal_type.html'>tem_temporal_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>boundary temporal type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~12"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>lua state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-parent~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>parent</strong></td>
+            <td>
+                <p>parent handle contains temporal table</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+                <p>state variable key string defined in lua</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_temporal~~CallsGraph Pages: 1 -->
+<svg id="proctem_load_temporalCallsGraph" width="641pt" height="282pt"
+ viewBox="0.00 0.00 641.00 282.45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_temporal~~CallsGraph" class="graph" transform="scale(0.79 0.79) rotate(0) translate(4 355.12)">
+<title>proc~~tem_load_temporal~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-355.12 811,-355.12 811,4 -4,4"/>
+<!-- proc~tem_load_temporal -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node1" class="node">
+<title>proc~tem_load_temporal</title>
+<polygon fill="none" stroke="black" points="116,-187.12 0,-187.12 0,-163.12 116,-163.12 116,-187.12"/>
+<text text-anchor="middle" x="58" y="-172.72" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_temporal</text>
+</g>
+<!-- aot_fun_close -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node2" class="node">
+<title>aot_fun_close</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_fun_close.html" xlink:title="aot_fun_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="265.5,-351.12 180.5,-351.12 180.5,-327.12 265.5,-327.12 265.5,-351.12"/>
+<text text-anchor="middle" x="223" y="-336.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;aot_fun_close -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge1" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;aot_fun_close</title>
+<path fill="none" stroke="#000000" d="M63.44,-187.15C74.2,-214.64 104.35,-282.44 152,-318.12 157.6,-322.31 164.02,-325.67 170.67,-328.37"/>
+<polygon fill="#000000" stroke="#000000" points="169.89,-331.8 180.49,-331.85 172.23,-325.21 169.89,-331.8"/>
+</g>
+<!-- aot_fun_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node3" class="node">
+<title>aot_fun_open</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_fun_open.html" xlink:title="aot_fun_open">
+<polygon fill="#a7506f" stroke="#a7506f" points="265.5,-309.12 180.5,-309.12 180.5,-285.12 265.5,-285.12 265.5,-309.12"/>
+<text text-anchor="middle" x="223" y="-294.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;aot_fun_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge2" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;aot_fun_open</title>
+<path fill="none" stroke="#000000" d="M67.95,-187.44C83.14,-207.54 115.86,-247.53 152,-271.12 157.76,-274.89 164.14,-278.21 170.64,-281.1"/>
+<polygon fill="#000000" stroke="#000000" points="169.6,-284.46 180.18,-285.05 172.28,-278 169.6,-284.46"/>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node4" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="413.5,-143.12 340.5,-143.12 340.5,-119.12 413.5,-119.12 413.5,-143.12"/>
+<text text-anchor="middle" x="377" y="-128.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge3" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M107.05,-163.12C121.44,-159.84 137.3,-156.53 152,-154.12 213.2,-144.11 284.57,-137.67 330.01,-134.23"/>
+<polygon fill="#000000" stroke="#000000" points="330.42,-137.71 340.13,-133.48 329.9,-130.73 330.42,-137.71"/>
+</g>
+<!-- aot_reference_for -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node5" class="node">
+<title>aot_reference_for</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_reference_for.html" xlink:title="aot_reference_for">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="276,-229.12 170,-229.12 170,-205.12 276,-205.12 276,-229.12"/>
+<text text-anchor="middle" x="223" y="-214.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_reference_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;aot_reference_for -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge4" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;aot_reference_for</title>
+<path fill="none" stroke="#000000" d="M105.71,-187.16C124.38,-191.97 146.05,-197.55 165.59,-202.59"/>
+<polygon fill="#000000" stroke="#000000" points="164.73,-205.98 175.28,-205.09 166.47,-199.2 164.73,-205.98"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node6" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node6"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="424,-268.12 330,-268.12 330,-244.12 424,-244.12 424,-268.12"/>
+<text text-anchor="middle" x="377" y="-253.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge5" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M71.95,-187.17C88.89,-202.1 120.17,-226.94 152,-238.12 206.75,-257.36 273.51,-260.32 319.83,-259.42"/>
+<polygon fill="#000000" stroke="#000000" points="320.07,-262.91 329.97,-259.16 319.88,-255.92 320.07,-262.91"/>
+</g>
+<!-- proc~load_temporal_cos -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node7" class="node">
+<title>proc~load_temporal_cos</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node7"><a xlink:href="../proc/load_temporal_cos.html" xlink:title="load_temporal_cos">
+<polygon fill="#d9534f" stroke="#d9534f" points="279.5,-107.12 166.5,-107.12 166.5,-83.12 279.5,-83.12 279.5,-107.12"/>
+<text text-anchor="middle" x="223" y="-92.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_temporal_cos</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;proc~load_temporal_cos -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge6" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;proc~load_temporal_cos</title>
+<path fill="none" stroke="#000000" d="M77.72,-162.98C96.15,-151.33 125.32,-133.71 152,-121.12 159.75,-117.47 168.17,-113.96 176.39,-110.78"/>
+<polygon fill="#000000" stroke="#000000" points="177.78,-114 185.9,-107.2 175.31,-107.45 177.78,-114"/>
+</g>
+<!-- proc~load_temporal_from_file -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node8" class="node">
+<title>proc~load_temporal_from_file</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node8"><a xlink:href="../proc/load_temporal_from_file.html" xlink:title="load_temporal_from_file">
+<polygon fill="#d9534f" stroke="#d9534f" points="294,-187.12 152,-187.12 152,-163.12 294,-163.12 294,-187.12"/>
+<text text-anchor="middle" x="223" y="-172.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_temporal_from_file</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;proc~load_temporal_from_file -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge7" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;proc~load_temporal_from_file</title>
+<path fill="none" stroke="#000000" d="M116.01,-175.12C124.32,-175.12 133.01,-175.12 141.68,-175.12"/>
+<polygon fill="#000000" stroke="#000000" points="141.83,-178.62 151.83,-175.12 141.83,-171.62 141.83,-178.62"/>
+</g>
+<!-- proc~load_temporal_linear -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node9" class="node">
+<title>proc~load_temporal_linear</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node9"><a xlink:href="../proc/load_temporal_linear.html" xlink:title="load_temporal_linear">
+<polygon fill="#d9534f" stroke="#d9534f" points="286,-65.12 160,-65.12 160,-41.12 286,-41.12 286,-65.12"/>
+<text text-anchor="middle" x="223" y="-50.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_temporal_linear</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;proc~load_temporal_linear -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge8" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;proc~load_temporal_linear</title>
+<path fill="none" stroke="#000000" d="M66.93,-162.9C81.32,-141.68 113.81,-98.02 152,-74.12 154.8,-72.37 157.75,-70.76 160.79,-69.28"/>
+<polygon fill="#000000" stroke="#000000" points="162.37,-72.41 170.15,-65.21 159.58,-65.99 162.37,-72.41"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node10" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node10"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="666.5,-123.12 599.5,-123.12 599.5,-99.12 666.5,-99.12 666.5,-123.12"/>
+<text text-anchor="middle" x="633" y="-108.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_temporal&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge9" class="edge">
+<title>proc~tem_load_temporal&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M62.51,-162.96C71.64,-133.91 99.16,-60.79 152,-32.12 305.37,51.08 523.82,-51.47 602.41,-94.14"/>
+<polygon fill="#000000" stroke="#000000" points="600.84,-97.27 611.29,-99.03 604.22,-91.14 600.84,-97.27"/>
+</g>
+<!-- proc~load_temporal_cos&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge10" class="edge">
+<title>proc~load_temporal_cos&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M275.04,-107.21C292.92,-111.45 312.87,-116.17 330.29,-120.3"/>
+<polygon fill="#000000" stroke="#000000" points="329.68,-123.75 340.21,-122.65 331.29,-116.94 329.68,-123.75"/>
+</g>
+<!-- proc~load_temporal_cos&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge11" class="edge">
+<title>proc~load_temporal_cos&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M279.88,-97.31C362.25,-100.55 514.53,-106.52 588.89,-109.43"/>
+<polygon fill="#000000" stroke="#000000" points="589.15,-112.95 599.27,-109.84 589.42,-105.95 589.15,-112.95"/>
+</g>
+<!-- proc~load_temporal_from_file&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge12" class="edge">
+<title>proc~load_temporal_from_file&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M265.53,-163.1C285.7,-157.26 309.98,-150.23 330.63,-144.26"/>
+<polygon fill="#000000" stroke="#000000" points="331.81,-147.56 340.45,-141.42 329.87,-140.83 331.81,-147.56"/>
+</g>
+<!-- proc~load_temporal_from_file&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge13" class="edge">
+<title>proc~load_temporal_from_file&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M275.44,-187.14C281.92,-189.63 288.27,-192.6 294,-196.12 313.81,-208.32 311.19,-220.43 330,-234.12 332.35,-235.83 334.85,-237.47 337.43,-239.01"/>
+<polygon fill="#000000" stroke="#000000" points="335.92,-242.18 346.37,-243.93 339.3,-236.05 335.92,-242.18"/>
+</g>
+<!-- proc~load_temporal_from_file&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge15" class="edge">
+<title>proc~load_temporal_from_file&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M294.07,-168.45C332.53,-164.45 381,-158.82 424,-152.12 481.62,-143.15 547.59,-129.58 589.5,-120.54"/>
+<polygon fill="#000000" stroke="#000000" points="590.33,-123.94 599.36,-118.4 588.85,-117.1 590.33,-123.94"/>
+</g>
+<!-- proc~load_datafile -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node12" class="node">
+<title>proc~load_datafile</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node12"><a xlink:href="../proc/load_datafile.html" xlink:title="load_datafile">
+<polygon fill="#d9534f" stroke="#d9534f" points="418,-225.12 336,-225.12 336,-201.12 418,-201.12 418,-225.12"/>
+<text text-anchor="middle" x="377" y="-210.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_datafile</text>
+</a>
+</g>
+</g>
+<!-- proc~load_temporal_from_file&#45;&gt;proc~load_datafile -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge14" class="edge">
+<title>proc~load_temporal_from_file&#45;&gt;proc~load_datafile</title>
+<path fill="none" stroke="#000000" d="M272.09,-187.15C289.25,-191.44 308.61,-196.28 325.94,-200.61"/>
+<polygon fill="#000000" stroke="#000000" points="325.31,-204.06 335.86,-203.09 327.01,-197.27 325.31,-204.06"/>
+</g>
+<!-- proc~load_temporal_linear&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge16" class="edge">
+<title>proc~load_temporal_linear&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M271.46,-65.14C279.16,-67.71 286.91,-70.71 294,-74.12 315.61,-84.55 337.81,-100.36 353.66,-112.68"/>
+<polygon fill="#000000" stroke="#000000" points="351.76,-115.64 361.76,-119.12 356.11,-110.16 351.76,-115.64"/>
+</g>
+<!-- proc~load_temporal_linear&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge17" class="edge">
+<title>proc~load_temporal_linear&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M286.41,-62C370.24,-73.91 517.01,-94.78 589.3,-105.05"/>
+<polygon fill="#000000" stroke="#000000" points="589.01,-108.55 599.41,-106.49 590,-101.62 589.01,-108.55"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node11" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="807,-123.12 740,-123.12 740,-99.12 807,-99.12 807,-123.12"/>
+<text text-anchor="middle" x="773.5" y="-108.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge18" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M666.82,-111.12C685.62,-111.12 709.43,-111.12 729.69,-111.12"/>
+<polygon fill="#000000" stroke="#000000" points="729.91,-114.62 739.91,-111.12 729.91,-107.62 729.91,-114.62"/>
+</g>
+<!-- proc~load_datafile&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge21" class="edge">
+<title>proc~load_datafile&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M407.88,-201.12C453.71,-182.72 541.4,-147.51 592.44,-127.01"/>
+<polygon fill="#000000" stroke="#000000" points="593.86,-130.21 601.84,-123.24 591.25,-123.72 593.86,-130.21"/>
+</g>
+<!-- interface~append~14 -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node13" class="node">
+<title>interface~append~14</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node13"><a xlink:href="../interface/append~14.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="520,-309.12 466,-309.12 466,-285.12 520,-285.12 520,-309.12"/>
+<text text-anchor="middle" x="493" y="-294.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~load_datafile&#45;&gt;interface~append~14 -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge19" class="edge">
+<title>proc~load_datafile&#45;&gt;interface~append~14</title>
+<path fill="none" stroke="#000000" d="M407.74,-225.16C413.38,-228.04 419.06,-231.38 424,-235.12 443.33,-249.76 441.7,-260.22 460,-276.12 461.13,-277.1 462.31,-278.07 463.51,-279.03"/>
+<polygon fill="#000000" stroke="#000000" points="461.62,-281.98 471.77,-285.04 465.74,-276.32 461.62,-281.98"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node14" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node14"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="520,-267.12 466,-267.12 466,-243.12 520,-243.12 520,-267.12"/>
+<text text-anchor="middle" x="493" y="-252.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~load_datafile&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge20" class="edge">
+<title>proc~load_datafile&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M410.67,-225.16C424.89,-230.4 441.59,-236.55 456.16,-241.92"/>
+<polygon fill="#000000" stroke="#000000" points="455.24,-245.31 465.84,-245.48 457.66,-238.74 455.24,-245.31"/>
+</g>
+<!-- proc~tem_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node15" class="node">
+<title>proc~tem_open</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node15"><a xlink:href="../proc/tem_open.html" xlink:title="tem_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="526,-225.12 460,-225.12 460,-201.12 526,-201.12 526,-225.12"/>
+<text text-anchor="middle" x="493" y="-210.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open</text>
+</a>
+</g>
+</g>
+<!-- proc~load_datafile&#45;&gt;proc~tem_open -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge22" class="edge">
+<title>proc~load_datafile&#45;&gt;proc~tem_open</title>
+<path fill="none" stroke="#000000" d="M418.19,-213.12C428.38,-213.12 439.36,-213.12 449.66,-213.12"/>
+<polygon fill="#000000" stroke="#000000" points="449.67,-216.62 459.67,-213.12 449.67,-209.62 449.67,-216.62"/>
+</g>
+<!-- proc~append_arrayga2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node16" class="node">
+<title>proc~append_arrayga2d_real</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node16"><a xlink:href="../proc/append_arrayga2d_real.html" xlink:title="append_arrayga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="702.5,-351.12 563.5,-351.12 563.5,-327.12 702.5,-327.12 702.5,-351.12"/>
+<text text-anchor="middle" x="633" y="-336.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_arrayga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~append~14&#45;&gt;proc~append_arrayga2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge23" class="edge">
+<title>interface~append~14&#45;&gt;proc~append_arrayga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520.14,-305.25C532.78,-309.17 548.17,-313.91 562,-318.12 568.44,-320.08 575.22,-322.14 581.92,-324.15"/>
+<polygon fill="#000000" stroke="#000000" points="581.05,-327.55 591.64,-327.07 583.07,-320.84 581.05,-327.55"/>
+</g>
+<!-- proc~append_singlega2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node17" class="node">
+<title>proc~append_singlega2d_real</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node17"><a xlink:href="../proc/append_singlega2d_real.html" xlink:title="append_singlega2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="704,-309.12 562,-309.12 562,-285.12 704,-285.12 704,-309.12"/>
+<text text-anchor="middle" x="633" y="-294.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_singlega2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~append~14&#45;&gt;proc~append_singlega2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge24" class="edge">
+<title>interface~append~14&#45;&gt;proc~append_singlega2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520.28,-297.12C529.54,-297.12 540.48,-297.12 551.84,-297.12"/>
+<polygon fill="#000000" stroke="#000000" points="551.9,-300.62 561.9,-297.12 551.9,-293.62 551.9,-300.62"/>
+</g>
+<!-- proc~init_ga2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node18" class="node">
+<title>proc~init_ga2d_real</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node18"><a xlink:href="../proc/init_ga2d_real.html" xlink:title="init_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="676.5,-267.12 589.5,-267.12 589.5,-243.12 676.5,-243.12 676.5,-267.12"/>
+<text text-anchor="middle" x="633" y="-252.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~init~14&#45;&gt;proc~init_ga2d_real -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge25" class="edge">
+<title>interface~init~14&#45;&gt;proc~init_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M520.28,-255.12C536.94,-255.12 559.07,-255.12 579.24,-255.12"/>
+<polygon fill="#000000" stroke="#000000" points="579.26,-258.62 589.26,-255.12 579.26,-251.62 579.26,-258.62"/>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge27" class="edge">
+<title>proc~tem_open&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M509.61,-201.05C514.92,-196.78 520.82,-191.86 526,-187.12 542.93,-171.64 543.79,-164.08 562,-150.12 572.81,-141.85 585.58,-134.2 597.23,-127.91"/>
+<polygon fill="#000000" stroke="#000000" points="599.05,-130.91 606.28,-123.17 595.8,-124.71 599.05,-130.91"/>
+</g>
+<!-- proc~newunit -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node19" class="node">
+<title>proc~newunit</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node19"><a xlink:href="../proc/newunit.html" xlink:title="newunit">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="660.5,-225.12 605.5,-225.12 605.5,-201.12 660.5,-201.12 660.5,-225.12"/>
+<text text-anchor="middle" x="633" y="-210.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">newunit</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~newunit -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge26" class="edge">
+<title>proc~tem_open&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M526.01,-213.12C546.67,-213.12 573.62,-213.12 595.17,-213.12"/>
+<polygon fill="#000000" stroke="#000000" points="595.27,-216.62 605.27,-213.12 595.27,-209.62 595.27,-216.62"/>
+</g>
+<!-- proc~upper_to_lower -->
+<g id="proc~~tem_load_temporal~~CallsGraph_node20" class="node">
+<title>proc~upper_to_lower</title>
+<g id="a_proc~~tem_load_temporal~~CallsGraph_node20"><a xlink:href="../proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="680,-183.12 586,-183.12 586,-159.12 680,-159.12 680,-183.12"/>
+<text text-anchor="middle" x="633" y="-168.72" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~upper_to_lower -->
+<g id="proc~~tem_load_temporal~~CallsGraph_edge28" class="edge">
+<title>proc~tem_open&#45;&gt;proc~upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M526.15,-203.14C537.48,-199.63 550.3,-195.69 562,-192.12 568.44,-190.16 575.22,-188.11 581.92,-186.09"/>
+<polygon fill="#000000" stroke="#000000" points="583.07,-189.4 591.64,-183.17 581.05,-182.7 583.07,-189.4"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_load_temporalCallsGraph = svgPanZoom('#proctem_load_temporalCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_temporal~~CalledByGraph Pages: 1 -->
+<svg id="proctem_load_temporalCalledByGraph" width="641pt" height="43pt"
+ viewBox="0.00 0.00 641.00 43.32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_temporal~~CalledByGraph" class="graph" transform="scale(0.59 0.59) rotate(0) translate(4 70)">
+<title>proc~~tem_load_temporal~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 1091,-70 1091,4 -4,4"/>
+<!-- proc~tem_load_temporal -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node1" class="node">
+<title>proc~tem_load_temporal</title>
+<polygon fill="none" stroke="black" points="1087,-45 971,-45 971,-21 1087,-21 1087,-45"/>
+<text text-anchor="middle" x="1029" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_temporal</text>
+</g>
+<!-- proc~load_spacetime_predefined -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node2" class="node">
+<title>proc~load_spacetime_predefined</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node2"><a xlink:href="../proc/load_spacetime_predefined.html" xlink:title="load_spacetime_predefined">
+<polygon fill="#d9534f" stroke="#d9534f" points="935,-45 775,-45 775,-21 935,-21 935,-45"/>
+<text text-anchor="middle" x="855" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_spacetime_predefined</text>
+</a>
+</g>
+</g>
+<!-- proc~load_spacetime_predefined&#45;&gt;proc~tem_load_temporal -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge1" class="edge">
+<title>proc~load_spacetime_predefined&#45;&gt;proc~tem_load_temporal</title>
+<path fill="none" stroke="#000000" d="M935.2,-33C943.73,-33 952.34,-33 960.71,-33"/>
+<polygon fill="#000000" stroke="#000000" points="960.77,-36.5 970.77,-33 960.77,-29.5 960.77,-36.5"/>
+</g>
+<!-- proc~tem_load_spacetime_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node3" class="node">
+<title>proc~tem_load_spacetime_single</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node3"><a xlink:href="../proc/tem_load_spacetime_single.html" xlink:title="tem_load_spacetime_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="739,-45 579,-45 579,-21 739,-21 739,-45"/>
+<text text-anchor="middle" x="659" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_predefined -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_predefined</title>
+<path fill="none" stroke="#000000" d="M739.19,-33C747.53,-33 756.05,-33 764.5,-33"/>
+<polygon fill="#000000" stroke="#000000" points="764.75,-36.5 774.75,-33 764.75,-29.5 764.75,-36.5"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" d="M627.25,-45.01C616.17,-53.97 626.75,-63 659,-63 679.16,-63 690.85,-59.47 694.08,-54.64"/>
+<polygon fill="#000000" stroke="#000000" points="697.32,-53.32 690.75,-45.01 690.71,-55.61 697.32,-53.32"/>
+</g>
+<!-- interface~tem_load_spacetime -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node4" class="node">
+<title>interface~tem_load_spacetime</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node4"><a xlink:href="../interface/tem_load_spacetime.html" xlink:title="tem_load_spacetime">
+<polygon fill="#a7506f" stroke="#a7506f" points="352,-45 229,-45 229,-21 352,-21 352,-45"/>
+<text text-anchor="middle" x="290.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge5" class="edge">
+<title>interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.24,-33.73C364.1,-33.84 376.44,-33.94 388,-34 456.89,-34.36 474.11,-34.3 543,-34 551.32,-33.96 559.99,-33.91 568.66,-33.85"/>
+<polygon fill="#000000" stroke="#000000" points="568.84,-37.35 578.82,-33.78 568.79,-30.35 568.84,-37.35"/>
+</g>
+<!-- proc~tem_load_spacetime_table -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node5" class="node">
+<title>proc~tem_load_spacetime_table</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node5"><a xlink:href="../proc/tem_load_spacetime_table.html" xlink:title="tem_load_spacetime_table">
+<polygon fill="#d9534f" stroke="#d9534f" points="543,-25 388,-25 388,-1 543,-1 543,-25"/>
+<text text-anchor="middle" x="465.5" y="-10.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime_table</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_table -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge8" class="edge">
+<title>interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_table</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.01,-26C360.34,-25.04 369.03,-24.04 377.72,-23.03"/>
+<polygon fill="#000000" stroke="#000000" points="378.38,-26.48 387.91,-21.85 377.57,-19.53 378.38,-26.48"/>
+</g>
+<!-- proc~tem_load_spacetime_table&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_load_spacetime_table&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" d="M543.01,-20.99C551.47,-21.87 560.14,-22.78 568.74,-23.68"/>
+<polygon fill="#000000" stroke="#000000" points="568.48,-27.17 578.79,-24.73 569.21,-20.21 568.48,-27.17"/>
+</g>
+<!-- proc~tem_variable_load_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node6" class="node">
+<title>proc~tem_variable_load_single</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node6"><a xlink:href="../proc/tem_variable_load_single.html" xlink:title="tem_variable_load_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="170.5,-66 22.5,-66 22.5,-42 170.5,-42 170.5,-66"/>
+<text text-anchor="middle" x="96.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_load_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_load_single&#45;&gt;interface~tem_load_spacetime -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_variable_load_single&#45;&gt;interface~tem_load_spacetime</title>
+<path fill="none" stroke="#000000" d="M170.63,-46C186.37,-44.28 202.97,-42.46 218.62,-40.75"/>
+<polygon fill="#000000" stroke="#000000" points="219.19,-44.21 228.75,-39.64 218.43,-37.25 219.19,-44.21"/>
+</g>
+<!-- proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_node7" class="node">
+<title>proc~tem_variable_loadmapping_single</title>
+<g id="a_proc~~tem_load_temporal~~CalledByGraph_node7"><a xlink:href="../proc/tem_variable_loadmapping_single.html" xlink:title="tem_variable_loadMapping_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="193,-24 0,-24 0,0 193,0 193,-24"/>
+<text text-anchor="middle" x="96.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_load_spacetime -->
+<g id="proc~~tem_load_temporal~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_load_spacetime</title>
+<path fill="none" stroke="#000000" d="M193.22,-22.47C201.83,-23.41 210.45,-24.35 218.79,-25.27"/>
+<polygon fill="#000000" stroke="#000000" points="218.5,-28.75 228.82,-26.36 219.26,-21.8 218.5,-28.75"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_load_temporalCalledByGraph = svgPanZoom('#proctem_load_temporalCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_temporal</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; boundary temporal type</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_temporal_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; lua state</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; parent handle contains temporal table</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<span class="w">    </span><span class="c">!&gt; state variable key string defined in lua</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">aot_fun_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fun</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_key</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">local_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">local_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;temporal&#39;</span>
+<span class="w">    </span><span class="k">endif</span>
+
+<span class="w">    </span><span class="c">! First test for a lua function</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_fun_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                                          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">                                        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="n">fun</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="p">,</span><span class="w">                                           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="n">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">local_key</span><span class="w"> </span><span class="p">))</span>
+
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fun</span><span class="p">%</span><span class="n">handle</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! This temporal modifier is defined as a Lua function</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun&#39;</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">lua_fun_ref</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aot_reference_for</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;    Defined lua temporal function&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_fun_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fun</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! It is not defined as a function, try to interpret it as a table</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                                     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">                                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">                                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">local_key</span><span class="w"> </span><span class="p">))</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thandle</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                                      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">                                   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;predefined&#39;</span><span class="p">,</span><span class="w">                              </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">,</span><span class="w">                                   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;unknown&#39;</span><span class="p">,</span><span class="w">                                 </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;   A predefined temporal function is chosen: &#39;</span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                </span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">)</span>
+<span class="w">        </span><span class="k">select case</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">))</span>
+<span class="w">        </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;smooth&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="c">! Load the standard parameters necessary to describe the</span>
+<span class="w">          </span><span class="c">! temporal behavior of the BC.</span>
+<span class="w">          </span><span class="k">call </span><span class="n">load_temporal_linear</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">linear</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">conf</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;datafile&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="c">! Load the filename for the datafile</span>
+<span class="w">          </span><span class="k">call </span><span class="n">load_temporal_from_file</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">from_file</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">conf</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                            </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">case</span><span class="p">(</span><span class="s1">&#39;cos&#39;</span><span class="p">)</span>
+<span class="w">          </span><span class="k">call </span><span class="n">load_temporal_cos</span><span class="p">(</span><span class="w"> </span><span class="n">freq</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">freq</span><span class="p">,&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">phi</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">phi</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">offset</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">conf</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">case </span><span class="n">default</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;ERROR in definition of the temporal &#39;</span><span class="o">//</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">            </span><span class="s1">&#39; boundary Conditions:&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Selected an unknown temporal boundary&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">)</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">        </span><span class="k">end select</span>
+<span class="k">      else</span>
+<span class="w">        </span><span class="c">! As the entry for the variable is neither a function nor a table, try</span>
+<span class="w">        </span><span class="c">! to interpret it as a constant variable</span>
+<span class="w">        </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                                      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">                                    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">local_key</span><span class="p">),</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">const</span><span class="p">,</span><span class="w">                                  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_WrongType</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;FATAL Error occured in definition of the &#39;</span><span class="o">//</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                </span><span class="s1">&#39;temporal boundary conditions&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;while retrieving temporal constant:&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Variable has wrong type (should be a &#39;</span><span class="o">//</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                </span><span class="s1">&#39;real number)!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;STOPPING&#39;</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! &quot;temporal&quot; variable not specified</span>
+<span class="w">          </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;none&#39;</span>
+<span class="w">          </span><span class="n">me</span><span class="p">%</span><span class="n">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;const&#39;</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+<span class="k">    end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_load_temporal</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

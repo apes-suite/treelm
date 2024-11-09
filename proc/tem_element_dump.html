@@ -1,0 +1,947 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_element_dump &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_element_dump
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">41 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_element_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_element_module.f90.html'>tem_element_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_element_module.html'>tem_element_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_element_dump</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_element_dump.html#src">tem_element_dump</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_element_dump(me, elemPos, nUnit, compact, header, stencil)  
+</h2>
+    
+
+    <p>Write element information to disk</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~723"></span>
+              type(<a href='../type/tem_element_type.html'>tem_element_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>element object</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~36"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elemPos</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nunit~10"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nUnit</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-compact~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>compact</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-header~11"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>header</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencil~22"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencil</strong></td>
+            <td>
+                <p>Whether to write stencil information</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_element_dump~~CallsGraph Pages: 1 -->
+<svg id="proctem_element_dumpCallsGraph" width="641pt" height="368pt"
+ viewBox="0.00 0.00 641.00 368.08" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_element_dump~~CallsGraph" class="graph" transform="scale(0.9 0.9) rotate(0) translate(4 406)">
+<title>proc~~tem_element_dump~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 710,-406 710,4 -4,4"/>
+<!-- proc~tem_element_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_node1" class="node">
+<title>proc~tem_element_dump</title>
+<polygon fill="none" stroke="black" points="119,-234 0,-234 0,-210 119,-210 119,-234"/>
+<text text-anchor="middle" x="59.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_element_dump</text>
+</g>
+<!-- interface~tem_stencil_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_node2" class="node">
+<title>interface~tem_stencil_dump</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node2"><a xlink:href="../interface/tem_stencil_dump.html" xlink:title="tem_stencil_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="264,-234 155,-234 155,-210 264,-210 264,-234"/>
+<text text-anchor="middle" x="209.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_element_dump&#45;&gt;interface~tem_stencil_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge1" class="edge">
+<title>proc~tem_element_dump&#45;&gt;interface~tem_stencil_dump</title>
+<path fill="none" stroke="#000000" d="M119.42,-222C127.67,-222 136.19,-222 144.53,-222"/>
+<polygon fill="#000000" stroke="#000000" points="144.58,-225.5 154.58,-222 144.58,-218.5 144.58,-225.5"/>
+</g>
+<!-- proc~tem_stencilelement_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_node3" class="node">
+<title>proc~tem_stencilelement_dump</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node3"><a xlink:href="../proc/tem_stencilelement_dump.html" xlink:title="tem_stencilElement_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="454,-255 300,-255 300,-231 454,-231 454,-255"/>
+<text text-anchor="middle" x="377" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencilElement_dump</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_stencil_dump&#45;&gt;proc~tem_stencilelement_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge2" class="edge">
+<title>interface~tem_stencil_dump&#45;&gt;proc~tem_stencilelement_dump</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.23,-228.82C272.53,-229.87 281.27,-230.98 290.07,-232.1"/>
+<polygon fill="#000000" stroke="#000000" points="289.63,-235.57 299.99,-233.36 290.51,-228.62 289.63,-235.57"/>
+</g>
+<!-- proc~tem_stencilheader_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_node4" class="node">
+<title>proc~tem_stencilheader_dump</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node4"><a xlink:href="../proc/tem_stencilheader_dump.html" xlink:title="tem_stencilHeader_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="451.5,-213 302.5,-213 302.5,-189 451.5,-189 451.5,-213"/>
+<text text-anchor="middle" x="377" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencilHeader_dump</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_stencil_dump&#45;&gt;proc~tem_stencilheader_dump -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge3" class="edge">
+<title>interface~tem_stencil_dump&#45;&gt;proc~tem_stencilheader_dump</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M264.23,-215.18C273.27,-214.04 282.83,-212.82 292.42,-211.61"/>
+<polygon fill="#000000" stroke="#000000" points="292.9,-215.07 302.38,-210.34 292.02,-208.13 292.9,-215.07"/>
+</g>
+<!-- proc~tem_printarray -->
+<g id="proc~~tem_element_dump~~CallsGraph_node6" class="node">
+<title>proc~tem_printarray</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node6"><a xlink:href="../proc/tem_printarray.html" xlink:title="tem_printArray">
+<polygon fill="#d9534f" stroke="#d9534f" points="583,-255 490,-255 490,-231 583,-231 583,-255"/>
+<text text-anchor="middle" x="536.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_printArray</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_stencilelement_dump&#45;&gt;proc~tem_printarray -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge4" class="edge">
+<title>proc~tem_stencilelement_dump&#45;&gt;proc~tem_printarray</title>
+<path fill="none" stroke="#000000" d="M454.44,-243C462.93,-243 471.45,-243 479.62,-243"/>
+<polygon fill="#000000" stroke="#000000" points="479.73,-246.5 489.73,-243 479.73,-239.5 479.73,-246.5"/>
+</g>
+<!-- interface~tem_tostr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node5" class="node">
+<title>interface~tem_tostr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node5"><a xlink:href="../interface/tem_tostr.html" xlink:title="tem_toStr">
+<polygon fill="#a7506f" stroke="#a7506f" points="568.5,-213 504.5,-213 504.5,-189 568.5,-189 568.5,-213"/>
+<text text-anchor="middle" x="536.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_toStr</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_stencilheader_dump&#45;&gt;interface~tem_tostr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge5" class="edge">
+<title>proc~tem_stencilheader_dump&#45;&gt;interface~tem_tostr</title>
+<path fill="none" stroke="#000000" d="M451.68,-201C466.33,-201 481.22,-201 494.31,-201"/>
+<polygon fill="#000000" stroke="#000000" points="494.38,-204.5 504.38,-201 494.38,-197.5 494.38,-204.5"/>
+</g>
+<!-- proc~tem_b2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_node7" class="node">
+<title>proc~tem_b2str</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node7"><a xlink:href="../proc/tem_b2str.html" xlink:title="tem_b2str">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="695.5,-402 629.5,-402 629.5,-378 695.5,-378 695.5,-402"/>
+<text text-anchor="middle" x="662.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_b2str</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_b2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge6" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_b2str</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.52,-210.71C573.97,-213.6 579.13,-217.3 583,-222 625.78,-273.91 576.91,-316.53 619,-369 619.81,-370.01 620.68,-370.98 621.61,-371.9"/>
+<polygon fill="#000000" stroke="#000000" points="619.48,-374.68 629.49,-378.16 623.83,-369.2 619.48,-374.68"/>
+</g>
+<!-- proc~tem_b2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node8" class="node">
+<title>proc~tem_b2str_arr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node8"><a xlink:href="../proc/tem_b2str_arr.html" xlink:title="tem_b2str_arr">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="706,-360 619,-360 619,-336 706,-336 706,-360"/>
+<text text-anchor="middle" x="662.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_b2str_arr</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_b2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge7" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_b2str_arr</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.66,-211.24C573.97,-214.07 579.04,-217.61 583,-222 616.06,-258.62 586.43,-289.95 619,-327 619.86,-327.97 620.77,-328.91 621.72,-329.8"/>
+<polygon fill="#000000" stroke="#000000" points="619.7,-332.66 629.78,-335.91 623.93,-327.08 619.7,-332.66"/>
+</g>
+<!-- proc~tem_d2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_node9" class="node">
+<title>proc~tem_d2str</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node9"><a xlink:href="../proc/tem_d2str.html" xlink:title="tem_d2str">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="695.5,-318 629.5,-318 629.5,-294 695.5,-294 695.5,-318"/>
+<text text-anchor="middle" x="662.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_d2str</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_d2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge8" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_d2str</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.96,-212.37C574,-215.04 578.9,-218.24 583,-222 606.77,-243.79 595.52,-262.89 619,-285 620.12,-286.06 621.31,-287.07 622.55,-288.05"/>
+<polygon fill="#000000" stroke="#000000" points="620.98,-291.21 631.23,-293.87 624.88,-285.4 620.98,-291.21"/>
+</g>
+<!-- proc~tem_d2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node10" class="node">
+<title>proc~tem_d2str_arr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node10"><a xlink:href="../proc/tem_d2str_arr.html" xlink:title="tem_d2str_arr">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="706,-276 619,-276 619,-252 706,-252 706,-276"/>
+<text text-anchor="middle" x="662.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_d2str_arr</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_d2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge9" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_d2str_arr</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.65,-213.02C570.74,-215.85 577.14,-218.95 583,-222 599.43,-230.56 602.69,-234.23 619,-243 621.67,-244.44 624.45,-245.89 627.25,-247.33"/>
+<polygon fill="#000000" stroke="#000000" points="625.68,-250.46 636.18,-251.85 628.84,-244.21 625.68,-250.46"/>
+</g>
+<!-- proc~tem_i2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_node11" class="node">
+<title>proc~tem_i2str</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node11"><a xlink:href="../proc/tem_i2str.html" xlink:title="tem_i2str">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="693.5,-234 631.5,-234 631.5,-210 693.5,-210 693.5,-234"/>
+<text text-anchor="middle" x="662.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_i2str</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_i2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge10" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_i2str</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.79,-206.3C584.59,-208.98 603.96,-212.26 620.9,-215.12"/>
+<polygon fill="#000000" stroke="#000000" points="620.63,-218.63 631.08,-216.85 621.8,-211.73 620.63,-218.63"/>
+</g>
+<!-- proc~tem_i2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node12" class="node">
+<title>proc~tem_i2str_arr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node12"><a xlink:href="../proc/tem_i2str_arr.html" xlink:title="tem_i2str_arr">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="704,-192 621,-192 621,-168 704,-168 704,-192"/>
+<text text-anchor="middle" x="662.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_i2str_arr</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_i2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge11" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_i2str_arr</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.79,-195.7C581.49,-193.55 596.49,-191.01 610.69,-188.61"/>
+<polygon fill="#000000" stroke="#000000" points="611.56,-192.01 620.83,-186.89 610.39,-185.11 611.56,-192.01"/>
+</g>
+<!-- proc~tem_l2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_node13" class="node">
+<title>proc~tem_l2str</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node13"><a xlink:href="../proc/tem_l2str.html" xlink:title="tem_l2str">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="693.5,-150 631.5,-150 631.5,-126 693.5,-126 693.5,-150"/>
+<text text-anchor="middle" x="662.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_l2str</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_l2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge12" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_l2str</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M560.63,-188.95C576.92,-180.49 599.25,-168.97 619,-159 621.78,-157.6 624.66,-156.15 627.55,-154.71"/>
+<polygon fill="#000000" stroke="#000000" points="629.35,-157.73 636.74,-150.14 626.23,-151.46 629.35,-157.73"/>
+</g>
+<!-- proc~tem_l2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node14" class="node">
+<title>proc~tem_l2str_arr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node14"><a xlink:href="../proc/tem_l2str_arr.html" xlink:title="tem_l2str_arr">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="704,-108 621,-108 621,-84 704,-84 704,-108"/>
+<text text-anchor="middle" x="662.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_l2str_arr</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_l2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge13" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_l2str_arr</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M546.97,-188.88C561.16,-171.32 589.44,-138.54 619,-117 620.84,-115.66 622.77,-114.37 624.76,-113.12"/>
+<polygon fill="#000000" stroke="#000000" points="626.77,-116.01 633.72,-108.01 623.3,-109.93 626.77,-116.01"/>
+</g>
+<!-- proc~tem_r2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_node15" class="node">
+<title>proc~tem_r2str</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node15"><a xlink:href="../proc/tem_r2str.html" xlink:title="tem_r2str">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="694.5,-66 630.5,-66 630.5,-42 694.5,-42 694.5,-66"/>
+<text text-anchor="middle" x="662.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_r2str</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_r2str -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge14" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_r2str</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M542.72,-188.7C553.64,-164.21 581.07,-108.79 619,-75 620.31,-73.83 621.7,-72.72 623.14,-71.65"/>
+<polygon fill="#000000" stroke="#000000" points="625.32,-74.41 631.83,-66.05 621.53,-68.52 625.32,-74.41"/>
+</g>
+<!-- proc~tem_r2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_node16" class="node">
+<title>proc~tem_r2str_arr</title>
+<g id="a_proc~~tem_element_dump~~CallsGraph_node16"><a xlink:href="../proc/tem_r2str_arr.html" xlink:title="tem_r2str_arr">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="705,-24 620,-24 620,0 705,0 705,-24"/>
+<text text-anchor="middle" x="662.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_r2str_arr</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_tostr&#45;&gt;proc~tem_r2str_arr -->
+<g id="proc~~tem_element_dump~~CallsGraph_edge15" class="edge">
+<title>interface~tem_tostr&#45;&gt;proc~tem_r2str_arr</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M540.45,-188.83C548.32,-158.75 572.41,-79.93 619,-33 620.05,-31.94 621.17,-30.93 622.33,-29.96"/>
+<polygon fill="#000000" stroke="#000000" points="624.41,-32.78 630.59,-24.18 620.39,-27.04 624.41,-32.78"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_element_dumpCallsGraph = svgPanZoom('#proctem_element_dumpCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_element_dump~~CalledByGraph Pages: 1 -->
+<svg id="proctem_element_dumpCalledByGraph" width="641pt" height="74pt"
+ viewBox="0.00 0.00 641.00 73.74" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_element_dump~~CalledByGraph" class="graph" transform="scale(0.65 0.65) rotate(0) translate(4 110)">
+<title>proc~~tem_element_dump~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-110 987,-110 987,4 -4,4"/>
+<!-- proc~tem_element_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node1" class="node">
+<title>proc~tem_element_dump</title>
+<polygon fill="none" stroke="black" points="983,-66 864,-66 864,-42 983,-42 983,-66"/>
+<text text-anchor="middle" x="923.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_element_dump</text>
+</g>
+<!-- proc~tem_elemlist_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node2" class="node">
+<title>proc~tem_elemlist_dump</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node2"><a xlink:href="../proc/tem_elemlist_dump.html" xlink:title="tem_elemList_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="828,-66 708,-66 708,-42 828,-42 828,-66"/>
+<text text-anchor="middle" x="768" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_elemList_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_elemlist_dump&#45;&gt;proc~tem_element_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_elemlist_dump&#45;&gt;proc~tem_element_dump</title>
+<path fill="none" stroke="#000000" d="M828.35,-54C836.62,-54 845.19,-54 853.62,-54"/>
+<polygon fill="#000000" stroke="#000000" points="853.82,-57.5 863.82,-54 853.82,-50.5 853.82,-57.5"/>
+</g>
+<!-- proc~build_levelelements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node3" class="node">
+<title>proc~build_levelelements</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node3"><a xlink:href="../proc/build_levelelements.html" xlink:title="build_levelElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="661,-66 542,-66 542,-42 661,-42 661,-66"/>
+<text text-anchor="middle" x="601.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">build_levelElements</text>
+</a>
+</g>
+</g>
+<!-- proc~build_levelelements&#45;&gt;proc~tem_elemlist_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge2" class="edge">
+<title>proc~build_levelelements&#45;&gt;proc~tem_elemlist_dump</title>
+<path fill="none" stroke="#000000" d="M661.42,-54C673.24,-54 685.75,-54 697.87,-54"/>
+<polygon fill="#000000" stroke="#000000" points="697.93,-57.5 707.93,-54 697.93,-50.5 697.93,-57.5"/>
+</g>
+<!-- proc~communicate_elements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node4" class="node">
+<title>proc~communicate_elements</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node4"><a xlink:href="../proc/communicate_elements.html" xlink:title="communicate_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="672,-24 531,-24 531,0 672,0 672,-24"/>
+<text text-anchor="middle" x="601.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">communicate_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~communicate_elements&#45;&gt;proc~tem_elemlist_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge3" class="edge">
+<title>proc~communicate_elements&#45;&gt;proc~tem_elemlist_dump</title>
+<path fill="none" stroke="#000000" d="M649.64,-24.04C668.48,-28.85 690.35,-34.43 710.07,-39.46"/>
+<polygon fill="#000000" stroke="#000000" points="709.3,-42.88 719.85,-41.96 711.03,-36.1 709.3,-42.88"/>
+</g>
+<!-- proc~tem_init_elemlevels -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node5" class="node">
+<title>proc~tem_init_elemlevels</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node5"><a xlink:href="../proc/tem_init_elemlevels.html" xlink:title="tem_init_elemLevels">
+<polygon fill="#d9534f" stroke="#d9534f" points="492,-106 371,-106 371,-82 492,-82 492,-106"/>
+<text text-anchor="middle" x="431.5" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_elemLevels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_elemlist_dump -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_elemlist_dump</title>
+<path fill="none" stroke="#000000" d="M492.31,-91.55C540.91,-89.02 611.15,-84.09 672,-75 683.88,-73.22 696.48,-70.82 708.5,-68.26"/>
+<polygon fill="#000000" stroke="#000000" points="709.4,-71.65 718.42,-66.09 707.91,-64.81 709.4,-71.65"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node6" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node6"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="332,-85 202,-85 202,-61 332,-61 332,-85"/>
+<text text-anchor="middle" x="267" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels</title>
+<path fill="none" stroke="#000000" d="M332.22,-81.3C341.61,-82.51 351.3,-83.77 360.79,-84.99"/>
+<polygon fill="#000000" stroke="#000000" points="360.61,-88.5 370.97,-86.31 361.5,-81.55 360.61,-88.5"/>
+</g>
+<!-- proc~tem_find_allelements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node7" class="node">
+<title>proc~tem_find_allelements</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node7"><a xlink:href="../proc/tem_find_allelements.html" xlink:title="tem_find_allElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="495,-64 368,-64 368,-40 495,-40 495,-64"/>
+<text text-anchor="middle" x="431.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_allElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge9" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements</title>
+<path fill="none" stroke="#000000" d="M332.22,-64.7C340.64,-63.61 349.31,-62.49 357.86,-61.39"/>
+<polygon fill="#000000" stroke="#000000" points="358.34,-64.86 367.8,-60.1 357.44,-57.91 358.34,-64.86"/>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~build_levelelements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~build_levelelements</title>
+<path fill="none" stroke="#000000" d="M495.06,-52.74C507.01,-52.89 519.58,-53.04 531.72,-53.18"/>
+<polygon fill="#000000" stroke="#000000" points="531.74,-56.68 541.79,-53.3 531.83,-49.68 531.74,-56.68"/>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~communicate_elements -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~communicate_elements</title>
+<path fill="none" stroke="#000000" d="M482.91,-40C500.85,-35.73 521.24,-30.87 539.94,-26.42"/>
+<polygon fill="#000000" stroke="#000000" points="540.92,-29.78 549.84,-24.06 539.3,-22.97 540.92,-29.78"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_element_dump~~CalledByGraph_node8" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_element_dump~~CalledByGraph_node8"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="166,-85 0,-85 0,-61 166,-61 166,-85"/>
+<text text-anchor="middle" x="83" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_element_dump~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M166.21,-73C174.72,-73 183.33,-73 191.74,-73"/>
+<polygon fill="#000000" stroke="#000000" points="191.88,-76.5 201.88,-73 191.88,-69.5 191.88,-76.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_element_dumpCalledByGraph = svgPanZoom('#proctem_element_dumpCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_element_dump</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w"> </span><span class="n">nUnit</span><span class="p">,</span><span class="w"> </span><span class="n">compact</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="p">,</span><span class="w"> </span><span class="n">stencil</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; element object</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_element_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt;</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elemPos</span>
+<span class="w">    </span><span class="c">!&gt;</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nUnit</span>
+<span class="w">    </span><span class="c">!&gt;</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">compact</span>
+<span class="w">    </span><span class="c">!&gt;</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">header</span>
+<span class="w">    </span><span class="c">!&gt; Whether to write stencil information</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iStencil</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">locCompact</span><span class="p">,</span><span class="w"> </span><span class="n">locStencil</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="n">locStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">stencil</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">locStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="k">endif</span>
+
+<span class="k">    if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">compact</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">locCompact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">compact</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">locCompact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+<span class="w">    </span><span class="k">endif</span>
+
+<span class="k">    if</span><span class="p">(</span><span class="w"> </span><span class="n">locCompact</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! in compact format</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="p">(</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s1">&#39;(a10,6(a8))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;treeID&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;prop&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;eType&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;process&#39;</span><span class="p">,&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="s1">&#39;haloNst&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;pntTID&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;stencil&#39;</span>
+<span class="w">        </span><span class="k">endif</span>
+<span class="k">      endif</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s1">&#39;(I10,I8,A12,4I8)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">tID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">eT_labels</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">eType</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)),</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">me</span><span class="p">%</span><span class="n">sourceProc</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">me</span><span class="p">%</span><span class="n">haloNesting</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">me</span><span class="p">%</span><span class="n">pntTID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">me</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)%</span><span class="n">nVals</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! in detailed format</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w">    </span><span class="s1">&#39;---------------------------------------------&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w">    </span><span class="s1">&#39;Element&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   treeID      &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">tID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   property    &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">property</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A,A)&quot;</span><span class="p">)</span><span class="w">  </span><span class="s1">&#39;   eType       &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">eT_labels</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">eType</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">))</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   srcProc     &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">sourceProc</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   haloNesting &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">haloNesting</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">nUnit</span><span class="p">,</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w">    </span><span class="s1">&#39;---------------------------------------------&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">locStencil</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      do </span><span class="n">iStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)%</span><span class="n">nVals</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_stencil_dump</span><span class="p">(</span><span class="w">                                         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">       </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">       </span><span class="n">nUnit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">nUnit</span><span class="p">,</span><span class="w">                                     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">       </span><span class="n">neighID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">neighID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">)%</span><span class="n">val</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">       </span><span class="n">tIDonly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">    end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_element_dump</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

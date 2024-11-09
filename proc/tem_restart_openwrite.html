@@ -1,0 +1,1130 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_restart_openWrite &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_restart_openWrite
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">55 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_restart_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_restart_module.f90.html'>tem_restart_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_restart_module.html'>tem_restart_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_restart_openWrite</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_restart_openwrite.html#src">tem_restart_openWrite</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_restart_openWrite(me, tree, timing, varSys, subTree, label, suffix)  
+</h2>
+    
+
+    <p>open the restart dump file and write out the 'normal' restart header as
+well as the mesh.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~78"></span>
+              type(<a href='../type/tem_restart_type.html'>tem_restart_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>the restart infotmation</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~5"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>mesh, provided in treelm format</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timing~2"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timing</strong></td>
+            <td>
+                <p>current simulation time information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~3"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>the used var systeme</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-subtree~2"></span>
+              type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
+            </td>
+<td>intent(inout),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>subTree</strong></td>
+            <td>
+                <p>optional subTree of the given tree</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-label~2"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>label</strong></td>
+            <td>
+                <p>additional label for the filename (needed for tracking in harvester
+format)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-suffix"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>suffix</strong></td>
+            <td>
+                <p>optional suffix (if present NO timestamp will be added!!!!)</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_restart_openwrite~~CallsGraph Pages: 1 -->
+<svg id="proctem_restart_openwriteCallsGraph" width="641pt" height="554pt"
+ viewBox="0.00 0.00 641.00 553.70" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_restart_openwrite~~CallsGraph" class="graph" transform="scale(0.81 0.81) rotate(0) translate(4 681)">
+<title>proc~~tem_restart_openwrite~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-681 789,-681 789,4 -4,4"/>
+<!-- proc~tem_restart_openwrite -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node1" class="node">
+<title>proc~tem_restart_openwrite</title>
+<polygon fill="none" stroke="black" points="133,-521 0,-521 0,-497 133,-497 133,-521"/>
+<text text-anchor="middle" x="66.5" y="-506.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_restart_openWrite</text>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node2" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="285.5,-677 197.5,-677 197.5,-653 285.5,-653 285.5,-677"/>
+<text text-anchor="middle" x="241.5" y="-662.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge1" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M73.92,-521.25C87.86,-546.73 123.36,-605.84 169,-639 174.67,-643.12 181.07,-646.65 187.64,-649.66"/>
+<polygon fill="#000000" stroke="#000000" points="186.75,-653.08 197.33,-653.7 189.45,-646.62 186.75,-653.08"/>
+</g>
+<!-- mpi_file_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node3" class="node">
+<title>mpi_file_open</title>
+<polygon fill="#777777" stroke="#777777" points="620,-671 533,-671 533,-647 620,-647 620,-671"/>
+<text text-anchor="middle" x="576.5" y="-656.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_open</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_file_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge2" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_file_open</title>
+<path fill="none" stroke="#000000" d="M80.1,-521.14C98.21,-537.85 133.36,-567.62 169,-583 288.55,-634.59 442.73,-651.23 522.47,-656.54"/>
+<polygon fill="#000000" stroke="#000000" points="522.55,-660.05 532.75,-657.19 522.99,-653.07 522.55,-660.05"/>
+</g>
+<!-- mpi_file_set_view -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node4" class="node">
+<title>mpi_file_set_view</title>
+<polygon fill="#777777" stroke="#777777" points="629,-629 524,-629 524,-605 629,-605 629,-629"/>
+<text text-anchor="middle" x="576.5" y="-614.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_set_view</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_file_set_view -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge3" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_file_set_view</title>
+<path fill="none" stroke="#000000" d="M90.66,-521.05C110.84,-531.06 141.15,-544.91 169,-553 288.42,-587.68 433.36,-604.78 513.92,-612.18"/>
+<polygon fill="#000000" stroke="#000000" points="513.62,-615.67 523.9,-613.08 514.25,-608.7 513.62,-615.67"/>
+</g>
+<!-- proc~check_mpi_error -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node5" class="node">
+<title>proc~check_mpi_error</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node5"><a xlink:href="../proc/check_mpi_error.html" xlink:title="check_mpi_error">
+<polygon fill="#d9534f" stroke="#d9534f" points="627,-587 526,-587 526,-563 627,-563 627,-587"/>
+<text text-anchor="middle" x="576.5" y="-572.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_mpi_error</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~check_mpi_error -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge4" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~check_mpi_error</title>
+<path fill="none" stroke="#000000" d="M120.79,-521.01C136.29,-524.23 153.27,-527.51 169,-530 291.49,-549.41 436.05,-563.28 515.56,-570.14"/>
+<polygon fill="#000000" stroke="#000000" points="515.6,-573.65 525.87,-571.02 516.2,-566.68 515.6,-573.65"/>
+</g>
+<!-- proc~dump_treelmesh -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node6" class="node">
+<title>proc~dump_treelmesh</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node6"><a xlink:href="../proc/dump_treelmesh.html" xlink:title="dump_treelmesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="460,-482 358,-482 358,-458 460,-458 460,-482"/>
+<text text-anchor="middle" x="409" y="-467.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dump_treelmesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~dump_treelmesh -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge5" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~dump_treelmesh</title>
+<path fill="none" stroke="#000000" d="M119.17,-496.97C135.08,-493.63 152.69,-490.29 169,-488 229.59,-479.49 299.43,-474.81 347.9,-472.38"/>
+<polygon fill="#000000" stroke="#000000" points="348.09,-475.87 357.9,-471.89 347.75,-468.88 348.09,-475.87"/>
+</g>
+<!-- proc~tem_create_endiansuffix -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node7" class="node">
+<title>proc~tem_create_endiansuffix</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node7"><a xlink:href="../proc/tem_create_endiansuffix.html" xlink:title="tem_create_EndianSuffix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="649,-209 504,-209 504,-185 649,-185 649,-209"/>
+<text text-anchor="middle" x="576.5" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_EndianSuffix</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge6" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M95.06,-496.93C115.23,-488.46 143.43,-477.38 169,-470 234.07,-451.23 420.36,-459.14 468,-411 529.38,-348.98 445.5,-282.74 504,-218 504.9,-217 505.85,-216.05 506.84,-215.14"/>
+<polygon fill="#000000" stroke="#000000" points="509.15,-217.78 515.09,-209.01 504.98,-212.16 509.15,-217.78"/>
+</g>
+<!-- proc~tem_dump_subtree -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node8" class="node">
+<title>proc~tem_dump_subtree</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node8"><a xlink:href="../proc/tem_dump_subtree.html" xlink:title="tem_dump_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="299,-521 184,-521 184,-497 299,-497 299,-521"/>
+<text text-anchor="middle" x="241.5" y="-506.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dump_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_dump_subtree -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge7" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_dump_subtree</title>
+<path fill="none" stroke="#000000" d="M133.4,-509C146.51,-509 160.29,-509 173.44,-509"/>
+<polygon fill="#000000" stroke="#000000" points="173.82,-512.5 183.82,-509 173.82,-505.5 173.82,-512.5"/>
+</g>
+<!-- proc~tem_restart_writeheader -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node9" class="node">
+<title>proc~tem_restart_writeheader</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node9"><a xlink:href="../proc/tem_restart_writeheader.html" xlink:title="tem_restart_writeHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="314,-255 169,-255 169,-231 314,-231 314,-255"/>
+<text text-anchor="middle" x="241.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_writeHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_restart_writeheader -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge8" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_restart_writeheader</title>
+<path fill="none" stroke="#000000" d="M75.38,-496.88C102.57,-455.08 192.63,-316.6 227.01,-263.75"/>
+<polygon fill="#000000" stroke="#000000" points="230.05,-265.48 232.57,-255.19 224.18,-261.67 230.05,-265.48"/>
+</g>
+<!-- proc~tem_time_sim_stamp -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node10" class="node">
+<title>proc~tem_time_sim_stamp</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node10"><a xlink:href="../proc/tem_time_sim_stamp.html" xlink:title="tem_time_sim_stamp">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="304,-213 179,-213 179,-189 304,-189 304,-213"/>
+<text text-anchor="middle" x="241.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_sim_stamp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_time_sim_stamp -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge9" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_time_sim_stamp</title>
+<path fill="none" stroke="#000000" d="M68.03,-496.84C70.63,-452.94 85.54,-301.05 169,-222 170.29,-220.78 171.65,-219.62 173.07,-218.54"/>
+<polygon fill="#000000" stroke="#000000" points="175.17,-221.35 181.72,-213.02 171.4,-215.45 175.17,-221.35"/>
+</g>
+<!-- mpi_error_string -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node17" class="node">
+<title>mpi_error_string</title>
+<polygon fill="#777777" stroke="#777777" points="785,-608 685,-608 685,-584 785,-584 785,-608"/>
+<text text-anchor="middle" x="735" y="-593.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_error_string</text>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;mpi_error_string -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge10" class="edge">
+<title>proc~check_mpi_error&#45;&gt;mpi_error_string</title>
+<path fill="none" stroke="#000000" d="M627.02,-581.64C642.15,-583.68 658.95,-585.93 674.66,-588.04"/>
+<polygon fill="#000000" stroke="#000000" points="674.43,-591.54 684.8,-589.4 675.36,-584.6 674.43,-591.54"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node27" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node27"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="768.5,-566 701.5,-566 701.5,-542 768.5,-542 768.5,-566"/>
+<text text-anchor="middle" x="735" y="-551.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~check_mpi_error&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge11" class="edge">
+<title>proc~check_mpi_error&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M627.02,-568.36C647.61,-565.59 671.28,-562.42 691.11,-559.75"/>
+<polygon fill="#000000" stroke="#000000" points="691.65,-563.21 701.1,-558.42 690.72,-556.28 691.65,-563.21"/>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_file_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge14" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_file_open</title>
+<path fill="none" stroke="#000000" d="M413.33,-482.26C422.38,-513.25 450.43,-595.28 504,-638 509.7,-642.55 516.36,-646.11 523.28,-648.9"/>
+<polygon fill="#000000" stroke="#000000" points="522.21,-652.24 532.8,-652.25 524.53,-645.63 522.21,-652.24"/>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_file_set_view -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge15" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_file_set_view</title>
+<path fill="none" stroke="#000000" d="M415.64,-482.1C427.99,-507.23 459.86,-565.3 504,-596 507.25,-598.26 510.75,-600.28 514.39,-602.09"/>
+<polygon fill="#000000" stroke="#000000" points="513.09,-605.34 523.66,-606.15 515.9,-598.93 513.09,-605.34"/>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;proc~check_mpi_error -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge21" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;proc~check_mpi_error</title>
+<path fill="none" stroke="#000000" d="M420.3,-482.15C436.36,-500.35 469.19,-534.64 504,-554 507.92,-556.18 512.09,-558.16 516.38,-559.94"/>
+<polygon fill="#000000" stroke="#000000" points="515.28,-563.27 525.87,-563.55 517.77,-556.73 515.28,-563.27"/>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge23" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M451.1,-457.85C457.57,-454.31 463.57,-449.78 468,-444 529.85,-363.26 436.82,-294.36 504,-218 504.77,-217.13 505.57,-216.29 506.41,-215.48"/>
+<polygon fill="#000000" stroke="#000000" points="508.87,-218 514.66,-209.12 504.6,-212.45 508.87,-218"/>
+</g>
+<!-- mpi_exscan -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node18" class="node">
+<title>mpi_exscan</title>
+<polygon fill="#777777" stroke="#777777" points="614,-377 539,-377 539,-353 614,-353 614,-377"/>
+<text text-anchor="middle" x="576.5" y="-362.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_exscan</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_exscan -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge12" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_exscan</title>
+<path fill="none" stroke="#000000" d="M445.73,-457.99C453.6,-454.29 461.52,-449.66 468,-444 490.84,-424.03 479.86,-404.37 504,-386 511.41,-380.36 520.3,-376.23 529.26,-373.21"/>
+<polygon fill="#000000" stroke="#000000" points="530.35,-376.54 538.94,-370.35 528.36,-369.83 530.35,-376.54"/>
+</g>
+<!-- mpi_file_close -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node19" class="node">
+<title>mpi_file_close</title>
+<polygon fill="#777777" stroke="#777777" points="620.5,-335 532.5,-335 532.5,-311 620.5,-311 620.5,-335"/>
+<text text-anchor="middle" x="576.5" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_close</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_file_close -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge13" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_file_close</title>
+<path fill="none" stroke="#000000" d="M448.75,-457.89C455.84,-454.3 462.67,-449.75 468,-444 500.11,-409.36 469.61,-376.39 504,-344 509.37,-338.94 515.9,-335.09 522.81,-332.17"/>
+<polygon fill="#000000" stroke="#000000" points="524.16,-335.4 532.38,-328.72 521.79,-328.81 524.16,-335.4"/>
+</g>
+<!-- mpi_file_write_all -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node20" class="node">
+<title>mpi_file_write_all</title>
+<polygon fill="#777777" stroke="#777777" points="628.5,-293 524.5,-293 524.5,-269 628.5,-269 628.5,-293"/>
+<text text-anchor="middle" x="576.5" y="-278.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_write_all</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_file_write_all -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge16" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_file_write_all</title>
+<path fill="none" stroke="#000000" d="M449.79,-457.98C456.63,-454.41 463.1,-449.83 468,-444 509.89,-394.15 458.83,-348.89 504,-302 507.22,-298.66 510.94,-295.84 514.95,-293.47"/>
+<polygon fill="#000000" stroke="#000000" points="516.71,-296.5 524.14,-288.95 513.62,-290.22 516.71,-296.5"/>
+</g>
+<!-- mpi_type_commit -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node21" class="node">
+<title>mpi_type_commit</title>
+<polygon fill="#777777" stroke="#777777" points="630,-251 523,-251 523,-227 630,-227 630,-251"/>
+<text text-anchor="middle" x="576.5" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_commit</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_type_commit -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge17" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_type_commit</title>
+<path fill="none" stroke="#000000" d="M450.64,-457.88C457.24,-454.33 463.4,-449.79 468,-444 519.83,-378.75 447.86,-321.58 504,-260 506.89,-256.83 510.24,-254.12 513.87,-251.82"/>
+<polygon fill="#000000" stroke="#000000" points="515.55,-254.89 522.78,-247.15 512.3,-248.69 515.55,-254.89"/>
+</g>
+<!-- mpi_type_contiguous -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node22" class="node">
+<title>mpi_type_contiguous</title>
+<polygon fill="#777777" stroke="#777777" points="639,-545 514,-545 514,-521 639,-521 639,-545"/>
+<text text-anchor="middle" x="576.5" y="-530.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_contiguous</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_type_contiguous -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge18" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_type_contiguous</title>
+<path fill="none" stroke="#000000" d="M434.76,-482.16C453.5,-491.1 480.02,-503.16 504,-512 509.52,-514.03 515.34,-516.01 521.17,-517.88"/>
+<polygon fill="#000000" stroke="#000000" points="520.36,-521.29 530.95,-520.92 522.44,-514.61 520.36,-521.29"/>
+</g>
+<!-- mpi_type_free -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node23" class="node">
+<title>mpi_type_free</title>
+<polygon fill="#777777" stroke="#777777" points="620.5,-503 532.5,-503 532.5,-479 620.5,-479 620.5,-503"/>
+<text text-anchor="middle" x="576.5" y="-488.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_free</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_type_free -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge19" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_type_free</title>
+<path fill="none" stroke="#000000" d="M460.1,-476.36C479.71,-478.85 502.23,-481.7 522.14,-484.23"/>
+<polygon fill="#000000" stroke="#000000" points="521.92,-487.73 532.28,-485.52 522.8,-480.79 521.92,-487.73"/>
+</g>
+<!-- mpi_type_size -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node24" class="node">
+<title>mpi_type_size</title>
+<polygon fill="#777777" stroke="#777777" points="620,-461 533,-461 533,-437 620,-437 620,-461"/>
+<text text-anchor="middle" x="576.5" y="-446.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_type_size</text>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;mpi_type_size -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge20" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;mpi_type_size</title>
+<path fill="none" stroke="#000000" d="M460.1,-463.64C479.96,-461.12 502.81,-458.22 522.91,-455.67"/>
+<polygon fill="#000000" stroke="#000000" points="523.35,-459.15 532.83,-454.41 522.47,-452.2 523.35,-459.15"/>
+</g>
+<!-- proc~dump_tem_global -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node25" class="node">
+<title>proc~dump_tem_global</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node25"><a xlink:href="../proc/dump_tem_global.html" xlink:title="dump_tem_global">
+<polygon fill="#d9534f" stroke="#d9534f" points="630.5,-419 522.5,-419 522.5,-395 630.5,-395 630.5,-419"/>
+<text text-anchor="middle" x="576.5" y="-404.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dump_tem_global</text>
+</a>
+</g>
+</g>
+<!-- proc~dump_treelmesh&#45;&gt;proc~dump_tem_global -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge22" class="edge">
+<title>proc~dump_treelmesh&#45;&gt;proc~dump_tem_global</title>
+<path fill="none" stroke="#000000" d="M437.03,-457.87C464.19,-445.69 502.28,-428.63 504,-428 509.52,-425.97 515.34,-423.99 521.17,-422.12"/>
+<polygon fill="#000000" stroke="#000000" points="522.44,-425.39 530.95,-419.08 520.36,-418.71 522.44,-425.39"/>
+</g>
+<!-- proc~tem_dump_subtree&#45;&gt;proc~dump_treelmesh -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge24" class="edge">
+<title>proc~tem_dump_subtree&#45;&gt;proc~dump_treelmesh</title>
+<path fill="none" stroke="#000000" d="M293.51,-496.98C310.74,-492.92 330.13,-488.35 347.99,-484.14"/>
+<polygon fill="#000000" stroke="#000000" points="348.8,-487.55 357.73,-481.85 347.19,-480.73 348.8,-487.55"/>
+</g>
+<!-- aot_out_close -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node11" class="node">
+<title>aot_out_close</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node11"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_out_close.html" xlink:title="aot_out_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="451.5,-192 366.5,-192 366.5,-168 451.5,-168 451.5,-192"/>
+<text text-anchor="middle" x="409" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;aot_out_close -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge25" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;aot_out_close</title>
+<path fill="none" stroke="#000000" d="M289.62,-230.93C297.87,-228.32 306.28,-225.33 314,-222 331.01,-214.67 333.22,-208.85 350,-201 353.87,-199.19 357.95,-197.43 362.07,-195.75"/>
+<polygon fill="#000000" stroke="#000000" points="363.65,-198.89 371.7,-192 361.11,-192.37 363.65,-198.89"/>
+</g>
+<!-- aot_out_close_table -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node12" class="node">
+<title>aot_out_close_table</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node12"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_out_close_table.html" xlink:title="aot_out_close_table">
+<polygon fill="#d9534f" stroke="#d9534f" points="468,-150 350,-150 350,-126 468,-126 468,-150"/>
+<text text-anchor="middle" x="409" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_close_table</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;aot_out_close_table -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge26" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;aot_out_close_table</title>
+<path fill="none" stroke="#000000" d="M299.2,-230.91C304.49,-228.47 309.53,-225.53 314,-222 339.3,-202.01 325.32,-179.76 350,-159 351.57,-157.68 353.22,-156.44 354.95,-155.28"/>
+<polygon fill="#000000" stroke="#000000" points="357.1,-158.08 364.03,-150.07 353.61,-152.01 357.1,-158.08"/>
+</g>
+<!-- aot_out_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node13" class="node">
+<title>aot_out_open</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node13"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_out_open.html" xlink:title="aot_out_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="451.5,-108 366.5,-108 366.5,-84 451.5,-84 451.5,-108"/>
+<text text-anchor="middle" x="409" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;aot_out_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge27" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;aot_out_open</title>
+<path fill="none" stroke="#000000" d="M301.67,-230.83C306.16,-228.4 310.35,-225.49 314,-222 349.65,-187.9 315.42,-152.18 350,-117 352.22,-114.74 354.7,-112.73 357.35,-110.93"/>
+<polygon fill="#000000" stroke="#000000" points="359.3,-113.85 366.28,-105.88 355.85,-107.75 359.3,-113.85"/>
+</g>
+<!-- aot_out_open_table -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node14" class="node">
+<title>aot_out_open_table</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node14"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_out_open_table.html" xlink:title="aot_out_open_table">
+<polygon fill="#d9534f" stroke="#d9534f" points="467.5,-66 350.5,-66 350.5,-42 467.5,-42 467.5,-66"/>
+<text text-anchor="middle" x="409" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_open_table</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;aot_out_open_table -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge28" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;aot_out_open_table</title>
+<path fill="none" stroke="#000000" d="M302.35,-230.98C306.64,-228.52 310.6,-225.55 314,-222 360.47,-173.37 305.05,-125.04 350,-75 350.89,-74.01 351.82,-73.07 352.8,-72.18"/>
+<polygon fill="#000000" stroke="#000000" points="355.04,-74.88 361.03,-66.14 350.9,-69.23 355.04,-74.88"/>
+</g>
+<!-- aot_out_val -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node15" class="node">
+<title>aot_out_val</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node15"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_out_val~2.html" xlink:title="aot_out_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="445.5,-24 372.5,-24 372.5,0 445.5,0 445.5,-24"/>
+<text text-anchor="middle" x="409" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;aot_out_val -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge29" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;aot_out_val</title>
+<path fill="none" stroke="#000000" d="M302.89,-230.97C307,-228.51 310.78,-225.55 314,-222 371.45,-158.66 294.53,-98.08 350,-33 353.6,-28.77 358.13,-25.4 363.05,-22.7"/>
+<polygon fill="#000000" stroke="#000000" points="364.57,-25.85 372.24,-18.54 361.68,-19.48 364.57,-25.85"/>
+</g>
+<!-- interface~tem_varsys_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node16" class="node">
+<title>interface~tem_varsys_out</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node16"><a xlink:href="../interface/tem_varsys_out.html" xlink:title="tem_varSys_out">
+<polygon fill="#a7506f" stroke="#a7506f" points="457.5,-402 360.5,-402 360.5,-378 457.5,-378 457.5,-402"/>
+<text text-anchor="middle" x="409" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_out</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;interface~tem_varsys_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge30" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;interface~tem_varsys_out</title>
+<path fill="none" stroke="#000000" d="M249.81,-255.23C265.27,-280.1 303.67,-336.9 350,-369 352.35,-370.63 354.84,-372.15 357.42,-373.56"/>
+<polygon fill="#000000" stroke="#000000" points="355.92,-376.72 366.44,-377.96 358.99,-370.43 355.92,-376.72"/>
+</g>
+<!-- proc~newunit -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node26" class="node">
+<title>proc~newunit</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node26"><a xlink:href="../proc/newunit.html" xlink:title="newunit">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="436.5,-360 381.5,-360 381.5,-336 436.5,-336 436.5,-360"/>
+<text text-anchor="middle" x="409" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">newunit</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;proc~newunit -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge31" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M255.12,-255.06C274.28,-272.85 312.49,-306.25 350,-327 356.7,-330.71 364.18,-333.98 371.49,-336.78"/>
+<polygon fill="#000000" stroke="#000000" points="370.65,-340.19 381.25,-340.28 373.02,-333.61 370.65,-340.19"/>
+</g>
+<!-- proc~tem_mesh_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node28" class="node">
+<title>proc~tem_mesh_out</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node28"><a xlink:href="../proc/tem_mesh_out.html" xlink:title="tem_mesh_out">
+<polygon fill="#d9534f" stroke="#d9534f" points="454.5,-318 363.5,-318 363.5,-294 454.5,-294 454.5,-318"/>
+<text text-anchor="middle" x="409" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_mesh_out</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;proc~tem_mesh_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge32" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;proc~tem_mesh_out</title>
+<path fill="none" stroke="#000000" d="M273,-255.15C294.48,-263.65 323.93,-275.19 350,-285 354.76,-286.79 359.76,-288.64 364.73,-290.47"/>
+<polygon fill="#000000" stroke="#000000" points="363.62,-293.79 374.21,-293.93 366.02,-287.21 363.62,-293.79"/>
+</g>
+<!-- proc~tem_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node29" class="node">
+<title>proc~tem_open</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node29"><a xlink:href="../proc/tem_open.html" xlink:title="tem_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="442,-276 376,-276 376,-252 442,-252 442,-276"/>
+<text text-anchor="middle" x="409" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;proc~tem_open -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge33" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;proc~tem_open</title>
+<path fill="none" stroke="#000000" d="M314.13,-252.09C331.76,-254.33 350.07,-256.65 365.79,-258.64"/>
+<polygon fill="#000000" stroke="#000000" points="365.36,-262.12 375.72,-259.9 366.24,-255.17 365.36,-262.12"/>
+</g>
+<!-- proc~tem_time_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_node30" class="node">
+<title>proc~tem_time_out</title>
+<g id="a_proc~~tem_restart_openwrite~~CallsGraph_node30"><a xlink:href="../proc/tem_time_out.html" xlink:title="tem_time_out">
+<polygon fill="#d9534f" stroke="#d9534f" points="451.5,-234 366.5,-234 366.5,-210 451.5,-210 451.5,-234"/>
+<text text-anchor="middle" x="409" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_out</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_writeheader&#45;&gt;proc~tem_time_out -->
+<g id="proc~~tem_restart_openwrite~~CallsGraph_edge34" class="edge">
+<title>proc~tem_restart_writeheader&#45;&gt;proc~tem_time_out</title>
+<path fill="none" stroke="#000000" d="M314.13,-233.91C328.33,-232.11 342.98,-230.25 356.35,-228.55"/>
+<polygon fill="#000000" stroke="#000000" points="356.83,-232.02 366.31,-227.29 355.95,-225.08 356.83,-232.02"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_restart_openwriteCallsGraph = svgPanZoom('#proctem_restart_openwriteCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_restart_openwrite~~CalledByGraph Pages: 1 -->
+<svg id="proctem_restart_openwriteCalledByGraph" width="393pt" height="32pt"
+ viewBox="0.00 0.00 393.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_restart_openwrite~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_restart_openwrite~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 389,-28 389,4 -4,4"/>
+<!-- proc~tem_restart_openwrite -->
+<g id="proc~~tem_restart_openwrite~~CalledByGraph_node1" class="node">
+<title>proc~tem_restart_openwrite</title>
+<polygon fill="none" stroke="black" points="385,-24 252,-24 252,0 385,0 385,-24"/>
+<text text-anchor="middle" x="318.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_restart_openWrite</text>
+</g>
+<!-- proc~hvs_output_open -->
+<g id="proc~~tem_restart_openwrite~~CalledByGraph_node2" class="node">
+<title>proc~hvs_output_open</title>
+<g id="a_proc~~tem_restart_openwrite~~CalledByGraph_node2"><a xlink:href="../proc/hvs_output_open.html" xlink:title="hvs_output_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="216,-24 113,-24 113,0 216,0 216,-24"/>
+<text text-anchor="middle" x="164.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~tem_restart_openwrite -->
+<g id="proc~~tem_restart_openwrite~~CalledByGraph_edge1" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~tem_restart_openwrite</title>
+<path fill="none" stroke="#000000" d="M216.11,-12C224.37,-12 233.08,-12 241.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="241.96,-15.5 251.96,-12 241.96,-8.5 241.96,-15.5"/>
+</g>
+<!-- proc~tem_tracker -->
+<g id="proc~~tem_restart_openwrite~~CalledByGraph_node3" class="node">
+<title>proc~tem_tracker</title>
+<g id="a_proc~~tem_restart_openwrite~~CalledByGraph_node3"><a xlink:href="../proc/tem_tracker.html" xlink:title="tem_tracker">
+<polygon fill="#d9534f" stroke="#d9534f" points="77,-24 0,-24 0,0 77,0 77,-24"/>
+<text text-anchor="middle" x="38.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracker</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tracker&#45;&gt;proc~hvs_output_open -->
+<g id="proc~~tem_restart_openwrite~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_tracker&#45;&gt;proc~hvs_output_open</title>
+<path fill="none" stroke="#000000" d="M77.04,-12C85.14,-12 93.89,-12 102.62,-12"/>
+<polygon fill="#000000" stroke="#000000" points="102.81,-15.5 112.81,-12 102.81,-8.5 102.81,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_restart_openWrite</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">suffix</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; the restart infotmation</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_restart_type</span><span class="p">)</span><span class="w">                          </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; mesh, provided in treelm format</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">)</span><span class="w">                            </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; current simulation time information</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">timing</span>
+<span class="w">    </span><span class="c">!&gt; the used var systeme</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">               </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+<span class="w">    </span><span class="c">!&gt; optional subTree of the given tree</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_subTree_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">subTree</span>
+<span class="w">    </span><span class="c">!&gt; additional label for the filename (needed for tracking in harvester</span>
+<span class="w">    </span><span class="c">!! format)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">label</span>
+<span class="w">    </span><span class="c">!&gt; optional suffix (if present NO timestamp will be added!!!!)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">suffix</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">! variables to catch possible MPI I/O errors</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">prefix</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">meshChange_loc</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_global_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">global_loc</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="c">! Update the timestamp</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">timestamp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">tem_time_sim_stamp</span><span class="p">(</span><span class="n">timing</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Set the iteration to know when the last restart file was written</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">lastWritten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">subTree</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">global_loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">global_loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">meshChange_loc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_loc</span><span class="p">%</span><span class="n">meshChange</span>
+
+<span class="w">    </span><span class="c">! communicate wether the mesh has changed since last time dumping it</span>
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_ALLREDUCE</span><span class="p">(</span><span class="w"> </span><span class="n">meshChange_loc</span><span class="p">,</span><span class="w"> </span><span class="n">global_loc</span><span class="p">%</span><span class="n">meshChange</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_LOR</span><span class="p">,</span><span class="w"> </span><span class="n">global_loc</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! if the mesh has changed ...</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">meshChange</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! ... set the meshChange to false</span>
+<span class="w">      </span><span class="n">global_loc</span><span class="p">%</span><span class="n">meshChange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">      </span><span class="c">! ... get the position of the last path seperator</span>
+<span class="w">      </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">INDEX</span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">dirname</span><span class="p">),</span><span class="w"> </span><span class="n">pathSep</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">dirname</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">pos</span><span class="p">))</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">dirname</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">pos</span><span class="p">))</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! change the dirname using NO timestamp but the suffix</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">dirname</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="c">! ... change the dirname</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">global_loc</span><span class="p">%</span><span class="n">dirname</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">prefix</span><span class="p">)</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                             </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">timestamp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;_&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="w">      </span><span class="c">! ... remove a possible predefined tag</span>
+<span class="w">      </span><span class="n">global_loc</span><span class="p">%</span><span class="n">predefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="c">! ... copy back the global information to the tree or subTree and dump it</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">subTree</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">subTree</span><span class="p">%</span><span class="n">global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_loc</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_dump_subTree</span><span class="p">(</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">global_loc</span>
+<span class="w">        </span><span class="k">call </span><span class="n">dump_treelmesh</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">suffix</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! define the name of the file to write the binary data to without</span>
+<span class="w">      </span><span class="c">! timestamp but using the suffix</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binName</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binPrefix</span><span class="w"> </span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                               </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">suffix</span><span class="w"> </span><span class="p">)</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                               </span><span class="o">//</span><span class="w"> </span><span class="n">tem_create_EndianSuffix</span><span class="p">()</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! define the name of the file to write the binary data to</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binName</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binPrefix</span><span class="w"> </span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                               </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">timestamp</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                               </span><span class="o">//</span><span class="w"> </span><span class="n">tem_create_EndianSuffix</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! open the binary file for MPI I/O</span>
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_FILE_OPEN</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">comm</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binName</span><span class="w"> </span><span class="p">),</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_MODE_WRONLY</span><span class="o">+</span><span class="n">MPI_MODE_CREATE</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_INFO_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">binaryUnit</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">iError</span><span class="w">                           </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;File open of &#39;</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">binName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; for writing in &#39;</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;tem_restart_openWrite&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_FILE_SET_VIEW</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">binaryUnit</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">write_file</span><span class="p">%</span><span class="n">displacement</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">me</span><span class="p">%</span><span class="n">write_file</span><span class="p">%</span><span class="n">vectype</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">me</span><span class="p">%</span><span class="n">write_file</span><span class="p">%</span><span class="n">ftype</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;native&quot;</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">MPI_INFO_NULL</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                          </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">check_mpi_error</span><span class="p">(</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="s1">&#39;set File view in tem_restart_openWrite&#39;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! write out a regular restart header</span>
+<span class="w">    </span><span class="c">! @todo: if [[tem_restart_writeHeader]] is only called here, then it should</span>
+<span class="w">    </span><span class="c">!       not be public. It would be better not to call it here, but let user</span>
+<span class="w">    </span><span class="c">!       decide where to call it.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_restart_writeHeader</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">tree</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">subTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">timing</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">varSys</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">suffix</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">suffix</span><span class="w">   </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_restart_openWrite</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

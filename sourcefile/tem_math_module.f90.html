@@ -1,0 +1,1401 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_math_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_math_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for source files.">85 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_math_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_math_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_math_module.html">tem_math_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_math_module.f90.html#src">tem_math_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_math_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_math_modulef90EfferentGraph" width="641pt" height="314pt"
+ viewBox="0.00 0.00 641.00 314.22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph" class="graph" transform="scale(0.77 0.77) rotate(0) translate(4 403.36)">
+<title>sourcefile~~tem_math_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-403.36 827,-403.36 827,4 -4,4"/>
+<!-- sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_math_module.f90</title>
+<polygon fill="none" stroke="black" points="823,-231 690,-231 690,-207 823,-207 823,-231"/>
+<text text-anchor="middle" x="756.5" y="-216.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_math_module.f90</text>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-188 0,-188 0,-164 98,-164 98,-188"/>
+<text text-anchor="middle" x="49" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_math_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_math_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M583.5,-302C422.61,-342.18 377.35,-434.83 219.5,-384"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="471,-314 347,-314 347,-290 471,-290 471,-314"/>
+<text text-anchor="middle" x="409" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M583.5,-302C550.54,-310.23 512.94,-311.21 481.19,-309.73"/>
+<polygon fill="#000000" stroke="#000000" points="481.28,-306.23 471.1,-309.17 480.89,-313.22 481.28,-306.23"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291,-230 146,-230 146,-206 291,-206 291,-230"/>
+<text text-anchor="middle" x="218.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M737.13,-231.21C706.98,-250.49 644.45,-287.28 585.5,-302"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M583.5,-302C506.72,-321.17 489.12,-263.63 410,-262"/>
+</g>
+<!-- sourcefile~tem_matrix_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~tem_matrix_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/tem_matrix_module.f90.html" xlink:title="tem_matrix_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="654,-168 515,-168 515,-144 654,-144 654,-168"/>
+<text text-anchor="middle" x="584.5" y="-153.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_matrix_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_matrix_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_math_module.f90&#45;&gt;sourcefile~tem_matrix_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M722.72,-206.85C695.59,-196.8 656.87,-182.45 627.47,-171.55"/>
+<polygon fill="#000000" stroke="#000000" points="628.48,-168.2 617.89,-168 626.05,-174.76 628.48,-168.2"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.41,-314.24C371.42,-328.44 336.34,-351.6 303,-365 267.68,-379.19 255.73,-395.66 219.5,-384"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-384C181.27,-372.34 163.4,-389.17 134,-365 81.27,-321.64 60.53,-238.44 53.35,-198.49"/>
+<polygon fill="#000000" stroke="#000000" points="56.77,-197.72 51.67,-188.44 49.87,-198.88 56.77,-197.72"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M367.15,-289.99C357.52,-286.25 347.57,-281.61 339,-276 319.8,-263.43 322.88,-250.45 303,-239 299.77,-237.14 296.37,-235.44 292.87,-233.89"/>
+<polygon fill="#000000" stroke="#000000" points="294,-230.57 283.42,-230.12 291.41,-237.07 294,-230.57"/>
+</g>
+<!-- sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~soi_revision_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/soi_revision_module.f90.html" xlink:title="soi_revision_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-356 148.5,-356 148.5,-332 288.5,-332 288.5,-356"/>
+<text text-anchor="middle" x="218.5" y="-341.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M353.98,-314.04C332,-318.93 306.42,-324.63 283.5,-329.74"/>
+<polygon fill="#000000" stroke="#000000" points="282.52,-326.37 273.52,-331.96 284.05,-333.2 282.52,-326.37"/>
+</g>
+<!-- sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~tem_comm_env_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/tem_comm_env_module.f90.html" xlink:title="tem_comm_env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="300,-314 137,-314 137,-290 300,-290 300,-314"/>
+<text text-anchor="middle" x="218.5" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M346.8,-302C335.21,-302 322.86,-302 310.57,-302"/>
+<polygon fill="#000000" stroke="#000000" points="310.29,-298.5 300.29,-302 310.29,-305.5 310.29,-298.5"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_lua_requires_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_lua_requires_module.f90.html" xlink:title="tem_lua_requires_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-272 134,-272 134,-248 303,-248 303,-272"/>
+<text text-anchor="middle" x="218.5" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_lua_requires_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M353.98,-289.96C332,-285.07 306.42,-279.37 283.5,-274.26"/>
+<polygon fill="#000000" stroke="#000000" points="284.05,-270.8 273.52,-272.04 282.52,-277.63 284.05,-270.8"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="283.5,-188 153.5,-188 153.5,-164 283.5,-164 283.5,-188"/>
+<text text-anchor="middle" x="218.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M399.41,-289.83C383.2,-267.78 345.83,-221.29 303,-197 299.59,-195.06 296,-193.3 292.3,-191.71"/>
+<polygon fill="#000000" stroke="#000000" points="293.52,-188.43 282.93,-188.05 290.98,-194.95 293.52,-188.43"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M169.5,-205.96C150.31,-201.15 128.05,-195.57 107.97,-190.54"/>
+<polygon fill="#000000" stroke="#000000" points="108.56,-187.07 98.01,-188.04 106.85,-193.86 108.56,-187.07"/>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408,-136C324.72,-126.88 303.11,-130.68 219.5,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-136C175.18,-138.69 128.34,-150.68 94.98,-160.84"/>
+<polygon fill="#000000" stroke="#000000" points="93.59,-157.6 85.08,-163.92 95.67,-164.29 93.59,-157.6"/>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M575.82,-168.32C560.33,-192.27 523.01,-245.41 479,-276 473.69,-279.69 467.78,-282.94 461.73,-285.77"/>
+<polygon fill="#000000" stroke="#000000" points="459.96,-282.73 452.16,-289.89 462.73,-289.16 459.96,-282.73"/>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.11,-168.36C548.1,-196.62 481.29,-263.47 410,-262"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408,-262C401.39,-261.86 331.69,-245.27 278.95,-232.5"/>
+<polygon fill="#000000" stroke="#000000" points="279.53,-229.04 268.99,-230.09 277.88,-235.85 279.53,-229.04"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~tem_debug_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/tem_debug_module.f90.html" xlink:title="tem_debug_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="478.5,-188 339.5,-188 339.5,-164 478.5,-164 478.5,-188"/>
+<text text-anchor="middle" x="409" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_debug_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M514.93,-163.9C506.35,-164.89 497.52,-165.91 488.81,-166.92"/>
+<polygon fill="#000000" stroke="#000000" points="488.18,-163.47 478.64,-168.09 488.98,-170.42 488.18,-163.47"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_dyn_array.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_dyn_array.f90.html" xlink:title="tem_dyn_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="274,-108 163,-108 163,-84 274,-84 274,-108"/>
+<text text-anchor="middle" x="218.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dyn_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M514.71,-147.89C482.86,-144.18 444.51,-139.78 410,-136"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M408,-136C362.4,-131.01 311.58,-119.89 274.2,-110.64"/>
+<polygon fill="#000000" stroke="#000000" points="274.58,-107.13 264.03,-108.09 272.88,-113.92 274.58,-107.13"/>
+</g>
+<!-- sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_float_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_float_module.f90.html" xlink:title="tem_float_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="473.5,-108 344.5,-108 344.5,-84 473.5,-84 473.5,-108"/>
+<text text-anchor="middle" x="409" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_float_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_float_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M548.39,-143.86C521.26,-134.47 483.53,-121.43 454.31,-111.32"/>
+<polygon fill="#000000" stroke="#000000" points="455.36,-107.98 444.76,-108.02 453.07,-114.6 455.36,-107.98"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_grow_array.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_grow_array.f90.html" xlink:title="tem_grow_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="467.5,-66 350.5,-66 350.5,-42 467.5,-42 467.5,-66"/>
+<text text-anchor="middle" x="409" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_grow_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.04,-143.84C552.45,-126.32 515.7,-93.98 479,-75 475.25,-73.06 471.28,-71.26 467.23,-69.61"/>
+<polygon fill="#000000" stroke="#000000" points="468.26,-66.26 457.67,-66.01 465.8,-72.81 468.26,-66.26"/>
+</g>
+<!-- sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_param_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_param_module.f90.html" xlink:title="tem_param_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="479,-24 339,-24 339,0 479,0 479,-24"/>
+<text text-anchor="middle" x="409" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_matrix_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M576.54,-143.86C561.78,-119.23 524.91,-63.14 479,-33 476.41,-31.3 473.69,-29.74 470.86,-28.29"/>
+<polygon fill="#000000" stroke="#000000" points="472.16,-25.04 461.61,-24.09 469.26,-31.41 472.16,-25.04"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M376.71,-163.92C339.62,-150.88 275.76,-132.42 219.5,-136"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M353.98,-188.04C332,-192.93 306.42,-198.63 283.5,-203.74"/>
+<polygon fill="#000000" stroke="#000000" points="282.52,-200.37 273.52,-205.96 284.05,-207.2 282.52,-200.37"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M339.41,-176C324.62,-176 308.91,-176 293.9,-176"/>
+<polygon fill="#000000" stroke="#000000" points="293.64,-172.5 283.64,-176 293.64,-179.5 293.64,-172.5"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_dyn_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M170.72,-108.14C158.52,-111.95 145.56,-116.61 134,-122 112.79,-131.9 90.59,-146.37 74.34,-157.85"/>
+<polygon fill="#000000" stroke="#000000" points="72.05,-155.18 65.97,-163.86 76.14,-160.87 72.05,-155.18"/>
+</g>
+<!-- sourcefile~tem_float_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_float_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M363.96,-83.99C312.65,-70.37 233.12,-50.6 219.5,-55"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_grow_array.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.49,-45.43C312.4,-41.89 261.85,-41.31 219.5,-55"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.19,-247.9C149.21,-245.42 141.29,-242.47 134,-239 110.18,-227.64 86.44,-208.98 70.3,-194.91"/>
+<polygon fill="#000000" stroke="#000000" points="72.39,-192.08 62.6,-188.04 67.73,-197.31 72.39,-192.08"/>
+</g>
+<!-- sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M342.24,-24.03C305.67,-31.46 259.58,-42.04 219.5,-55"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-55C181.19,-66.74 166.41,-54.86 134,-75 101.65,-95.1 75.76,-131.96 61.67,-155.15"/>
+<polygon fill="#000000" stroke="#000000" points="58.59,-153.49 56.53,-163.88 64.62,-157.04 58.59,-153.49"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M153.22,-176C138.52,-176 122.97,-176 108.53,-176"/>
+<polygon fill="#000000" stroke="#000000" points="108.24,-172.5 98.24,-176 108.24,-179.5 108.24,-172.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_math_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_math_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_math_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_math_modulef90AfferentGraph" width="641pt" height="161pt"
+ viewBox="0.00 0.00 641.00 161.22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph" class="graph" transform="scale(0.39 0.39) rotate(0) translate(4 411)">
+<title>sourcefile~~tem_math_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-411 1646,-411 1646,4 -4,4"/>
+<!-- sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~tem_math_module.f90</title>
+<polygon fill="none" stroke="black" points="133,-270 0,-270 0,-246 133,-246 133,-270"/>
+<text text-anchor="middle" x="66.5" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_math_module.f90</text>
+</g>
+<!-- sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~tem_line_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/tem_line_module.f90.html" xlink:title="tem_line_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="480.5,-173 356.5,-173 356.5,-149 480.5,-149 480.5,-173"/>
+<text text-anchor="middle" x="418.5" y="-158.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_line_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_math_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M373.88,-173.09C309.69,-190.88 189.93,-224.07 120.68,-243.26"/>
+<polygon fill="#000000" stroke="#000000" points="119.55,-239.94 110.84,-245.99 121.42,-246.69 119.55,-239.94"/>
+</g>
+<!-- sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~tem_triangle_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/tem_triangle_module.f90.html" xlink:title="tem_triangle_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="315,-270 169,-270 169,-246 315,-246 315,-270"/>
+<text text-anchor="middle" x="242" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_triangle_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.72,-173.02C372.32,-177.04 361.02,-181.82 351,-187 320.87,-202.58 288.66,-224.52 267.34,-239.87"/>
+<polygon fill="#000000" stroke="#000000" points="265.21,-237.09 259.18,-245.81 269.32,-242.75 265.21,-237.09"/>
+</g>
+<!-- sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~tem_plane_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/tem_plane_module.f90.html" xlink:title="tem_plane_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="486,-280 351,-280 351,-256 486,-256 486,-280"/>
+<text text-anchor="middle" x="418.5" y="-265.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_plane_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_math_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M410.21,-280.31C388.57,-315.07 321.32,-410.66 243,-398"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M241,-398C168.09,-386.21 107.47,-314.21 81.33,-278.31"/>
+<polygon fill="#000000" stroke="#000000" points="84.09,-276.14 75.44,-270.02 78.38,-280.2 84.09,-276.14"/>
+</g>
+<!-- sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.53,-264.16C342.17,-263.68 333.55,-263.19 325,-262.7"/>
+<polygon fill="#000000" stroke="#000000" points="325.19,-259.2 315.01,-262.13 324.79,-266.19 325.19,-259.2"/>
+</g>
+<!-- sourcefile~tem_stlbio_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~tem_stlbio_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/tem_stlbio_module.f90.html" xlink:title="tem_stlbIO_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="657,-370 522,-370 522,-346 657,-346 657,-370"/>
+<text text-anchor="middle" x="589.5" y="-355.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stlbIO_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_stlbio_module.f90&#45;&gt;sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_stlbio_module.f90&#45;&gt;sourcefile~tem_math_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M553.43,-370.08C519.61,-380.83 466.76,-395.25 419.5,-398"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.5,-398C340.08,-402.51 319.56,-410.37 243,-398"/>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~tem_surfacedata_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/tem_surfacedata_module.f90.html" xlink:title="tem_surfaceData_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1635.5,-407 1465.5,-407 1465.5,-383 1635.5,-383 1635.5,-407"/>
+<text text-anchor="middle" x="1550.5" y="-392.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_surfaceData_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_math_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M770.5,-398C614.89,-386.92 575.24,-388.92 419.5,-398"/>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_stlbio_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_stlbio_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1465.48,-398.54C1322.87,-403.84 1024.38,-411.8 772.5,-398"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M770.5,-398C725.11,-394.77 674.64,-382.79 638.71,-372.78"/>
+<polygon fill="#000000" stroke="#000000" points="639.56,-369.38 628.98,-370.02 637.65,-376.12 639.56,-369.38"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~tem_spacetime_fun_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/tem_spacetime_fun_module.f90.html" xlink:title="tem_spacetime_fun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1423,-266 1240,-266 1240,-242 1423,-242 1423,-266"/>
+<text text-anchor="middle" x="1331.5" y="-251.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_fun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1481.07,-382.93C1473,-379.4 1465.38,-374.86 1459,-369 1426.04,-338.76 1456.74,-304.38 1423,-275 1421.49,-273.69 1419.92,-272.46 1418.3,-271.3"/>
+<polygon fill="#000000" stroke="#000000" points="1420.1,-268.3 1409.74,-266.09 1416.46,-274.28 1420.1,-268.3"/>
+</g>
+<!-- sourcefile~tem_triangle_module.f90&#45;&gt;sourcefile~tem_math_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_triangle_module.f90&#45;&gt;sourcefile~tem_math_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M168.93,-258C160.52,-258 151.93,-258 143.47,-258"/>
+<polygon fill="#000000" stroke="#000000" points="143.24,-254.5 133.24,-258 143.24,-261.5 143.24,-254.5"/>
+</g>
+<!-- sourcefile~tem_box_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~tem_box_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/tem_box_module.f90.html" xlink:title="tem_box_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="651.5,-252 527.5,-252 527.5,-228 651.5,-228 651.5,-252"/>
+<text text-anchor="middle" x="589.5" y="-237.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_box_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_plane_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M527.49,-250.11C517.31,-251.79 506.65,-253.56 496.14,-255.3"/>
+<polygon fill="#000000" stroke="#000000" points="495.44,-251.87 486.14,-256.96 496.58,-258.78 495.44,-251.87"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~tem_canonical_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/tem_canonical_module.f90.html" xlink:title="tem_canonical_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="850,-252 693,-252 693,-228 850,-228 850,-252"/>
+<text text-anchor="middle" x="771.5" y="-237.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_canonical_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_line_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M752.62,-227.85C721.4,-207.66 654.17,-168.76 590.5,-162"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_plane_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M715.04,-252.02C696.66,-255.53 676.03,-258.97 657,-261 603.5,-266.7 542.87,-268.41 496.25,-268.72"/>
+<polygon fill="#000000" stroke="#000000" points="496.21,-265.22 486.23,-268.76 496.24,-272.22 496.21,-265.22"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_box_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_box_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M692.86,-240C682.51,-240 671.94,-240 661.71,-240"/>
+<polygon fill="#000000" stroke="#000000" points="661.61,-236.5 651.61,-240 661.61,-243.5 661.61,-236.5"/>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~tem_cylinder_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/tem_cylinder_module.f90.html" xlink:title="tem_cylinder_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="845.5,-172 697.5,-172 697.5,-148 845.5,-148 845.5,-172"/>
+<text text-anchor="middle" x="771.5" y="-157.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cylinder_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_line_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M697.19,-164.68C664.46,-165.78 625.46,-165.71 590.5,-162"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M588.5,-162C556.52,-158.6 520.94,-157.93 490.71,-158.27"/>
+<polygon fill="#000000" stroke="#000000" points="490.62,-154.77 480.68,-158.43 490.73,-161.77 490.62,-154.77"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~tem_shape_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/tem_shape_module.f90.html" xlink:title="tem_shape_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1023,-223 886,-223 886,-199 1023,-199 1023,-223"/>
+<text text-anchor="middle" x="954.5" y="-208.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.74,-209.74C800.66,-208.74 650.29,-208.88 522,-219 454.3,-224.34 377.96,-235.36 322.27,-244.33"/>
+<polygon fill="#000000" stroke="#000000" points="321.42,-240.92 312.11,-245.98 322.55,-247.83 321.42,-240.92"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M885.84,-221.84C876.7,-223.3 867.22,-224.82 857.82,-226.33"/>
+<polygon fill="#000000" stroke="#000000" points="856.99,-222.92 847.67,-227.96 858.1,-229.83 856.99,-222.92"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cylinder_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cylinder_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M910.61,-198.91C885,-191.7 852.29,-182.48 825.13,-174.83"/>
+<polygon fill="#000000" stroke="#000000" points="825.97,-171.43 815.4,-172.09 824.08,-178.17 825.97,-171.43"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~tem_stl_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/tem_stl_module.f90.html" xlink:title="tem_stl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="830,-330 713,-330 713,-306 830,-306 830,-330"/>
+<text text-anchor="middle" x="771.5" y="-315.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_stl_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_stl_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M933.09,-223.07C900.96,-242.06 838.45,-279.01 801.61,-300.79"/>
+<polygon fill="#000000" stroke="#000000" points="799.66,-297.88 792.84,-305.98 803.23,-303.9 799.66,-297.88"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_stlbio_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_stlbio_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M716.49,-330C697,-334.33 674.82,-339.26 654.55,-343.77"/>
+<polygon fill="#000000" stroke="#000000" points="653.78,-340.35 644.78,-345.94 655.3,-347.19 653.78,-340.35"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M712.7,-317.83C631.37,-316.74 478.8,-311.5 351,-289 329.9,-285.28 307.02,-279.05 287.77,-273.14"/>
+<polygon fill="#000000" stroke="#000000" points="288.66,-269.75 278.07,-270.1 286.56,-276.43 288.66,-269.75"/>
+</g>
+<!-- sourcefile~hvs_ascii_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~hvs_ascii_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/hvs_ascii_module.f90.html" xlink:title="hvs_ascii_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1194.5,-226 1068.5,-226 1068.5,-202 1194.5,-202 1194.5,-226"/>
+<text text-anchor="middle" x="1131.5" y="-211.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_ascii_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_ascii_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~hvs_ascii_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1068.31,-212.93C1056.99,-212.74 1045.05,-212.54 1033.34,-212.33"/>
+<polygon fill="#000000" stroke="#000000" points="1033.19,-208.83 1023.13,-212.16 1033.07,-215.83 1033.19,-208.83"/>
+</g>
+<!-- sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~hvs_output_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/hvs_output_module.f90.html" xlink:title="hvs_output_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1399.5,-166 1263.5,-166 1263.5,-142 1399.5,-142 1399.5,-166"/>
+<text text-anchor="middle" x="1331.5" y="-151.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1263.47,-163.07C1208.47,-170.64 1128.6,-181.95 1059,-193 1050.49,-194.35 1041.6,-195.82 1032.76,-197.31"/>
+<polygon fill="#000000" stroke="#000000" points="1032.09,-193.87 1022.82,-199 1033.26,-200.77 1032.09,-193.87"/>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~hvs_ascii_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge28" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~hvs_ascii_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1290.43,-166.14C1259.06,-175.65 1215.28,-188.91 1181.77,-199.07"/>
+<polygon fill="#000000" stroke="#000000" points="1180.73,-195.73 1172.17,-201.98 1182.76,-202.43 1180.73,-195.73"/>
+</g>
+<!-- sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node17" class="node">
+<title>sourcefile~tem_subtree_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/tem_subtree_module.f90.html" xlink:title="tem_subTree_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1204,-146 1059,-146 1059,-122 1204,-122 1204,-146"/>
+<text text-anchor="middle" x="1131.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge42" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1263.47,-147.23C1247.67,-145.63 1230.66,-143.92 1214.3,-142.26"/>
+<polygon fill="#000000" stroke="#000000" points="1214.51,-138.77 1204.21,-141.24 1213.81,-145.73 1214.51,-138.77"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~tem_convergence_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/tem_convergence_module.f90.html" xlink:title="tem_convergence_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1419,-66 1244,-66 1244,-42 1419,-42 1419,-66"/>
+<text text-anchor="middle" x="1331.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1243.77,-66C1208.62,-72.28 1168.02,-81.36 1132.5,-94"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1130.5,-94C1099.52,-105.02 1087.71,-96.98 1059,-113 1022.98,-133.1 989.98,-168.58 971.34,-190.88"/>
+<polygon fill="#000000" stroke="#000000" points="968.55,-188.77 964.93,-198.73 973.97,-193.2 968.55,-188.77"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1275.62,-66.13C1263.55,-69.79 1251.07,-74.37 1240,-80 1221.93,-89.19 1221.74,-98.19 1204,-108 1197.09,-111.82 1189.51,-115.27 1181.95,-118.32"/>
+<polygon fill="#000000" stroke="#000000" points="1180.52,-115.12 1172.43,-121.97 1183.02,-121.66 1180.52,-115.12"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1239.92,-251.24C1186.95,-248.74 1118.93,-243.99 1059,-235 1043.06,-232.61 1025.95,-229.06 1010.32,-225.41"/>
+<polygon fill="#000000" stroke="#000000" points="1010.83,-221.93 1000.29,-223.01 1009.2,-228.74 1010.83,-221.93"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~tem_spatial_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/tem_spatial_module.f90.html" xlink:title="tem_spatial_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1201.5,-306 1061.5,-306 1061.5,-282 1201.5,-282 1201.5,-306"/>
+<text text-anchor="middle" x="1131.5" y="-291.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1271.09,-266C1249.36,-270.39 1224.59,-275.4 1202.05,-279.95"/>
+<polygon fill="#000000" stroke="#000000" points="1201.32,-276.53 1192.21,-281.94 1202.7,-283.39 1201.32,-276.53"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1310.43,-241.83C1275.05,-220.4 1201.53,-175.84 1160.95,-151.24"/>
+<polygon fill="#000000" stroke="#000000" points="1162.7,-148.21 1152.33,-146.02 1159.07,-154.2 1162.7,-148.21"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1061.47,-283.59C1004.12,-274.94 922.17,-262.58 860.18,-253.22"/>
+<polygon fill="#000000" stroke="#000000" points="860.43,-249.72 850.02,-251.69 859.38,-256.64 860.43,-249.72"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1094.06,-281.98C1082.68,-277.9 1070.19,-273.08 1059,-268 1032.92,-256.16 1004.5,-240.28 984.05,-228.29"/>
+<polygon fill="#000000" stroke="#000000" points="985.64,-225.17 975.26,-223.08 982.08,-231.19 985.64,-225.17"/>
+</g>
+<!-- sourcefile~tem_subtree_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_subtree_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1094.93,-146.07C1083.36,-150.23 1070.54,-155.08 1059,-160 1034.51,-170.45 1007.54,-183.8 987.27,-194.22"/>
+<polygon fill="#000000" stroke="#000000" points="985.46,-191.22 978.19,-198.93 988.68,-197.44 985.46,-191.22"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node18" class="node">
+<title>sourcefile~tem_tracking_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/tem_tracking_module.f90.html" xlink:title="tem_tracking_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1624.5,-108 1476.5,-108 1476.5,-84 1624.5,-84 1624.5,-108"/>
+<text text-anchor="middle" x="1550.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1476.14,-93.34C1434.08,-92.31 1380.3,-91.83 1332.5,-94"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1330.5,-94C1242.59,-97.98 1215.41,-64.5 1132.5,-94"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1495.3,-108.05C1483.31,-110.86 1470.7,-113.93 1459,-117 1433.24,-123.75 1404.76,-132.01 1381.35,-139.01"/>
+<polygon fill="#000000" stroke="#000000" points="1380.23,-135.69 1371.66,-141.93 1382.24,-142.4 1380.23,-135.69"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1330.5,-94C1279.63,-96.3 1222.77,-108.86 1183.08,-119.3"/>
+<polygon fill="#000000" stroke="#000000" points="1182.13,-115.93 1173.38,-121.9 1183.94,-122.69 1182.13,-115.93"/>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node19" class="node">
+<title>sourcefile~tem_abortcriteria_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node19"><a xlink:href="../sourcefile/tem_abortcriteria_module.f90.html" xlink:title="tem_abortCriteria_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1637,-66 1464,-66 1464,-42 1637,-42 1637,-66"/>
+<text text-anchor="middle" x="1550.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1463.74,-54C1452.37,-54 1440.66,-54 1429.13,-54"/>
+<polygon fill="#000000" stroke="#000000" points="1429.06,-50.5 1419.06,-54 1429.06,-57.5 1429.06,-50.5"/>
+</g>
+<!-- sourcefile~tem_bc_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node20" class="node">
+<title>sourcefile~tem_bc_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node20"><a xlink:href="../sourcefile/tem_bc_module.f90.html" xlink:title="tem_bc_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1609.5,-150 1491.5,-150 1491.5,-126 1609.5,-126 1609.5,-150"/>
+<text text-anchor="middle" x="1550.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1491.33,-147.72C1480.31,-150.61 1469.09,-154.3 1459,-159 1417.36,-178.41 1376.12,-213.01 1352.55,-234.67"/>
+<polygon fill="#000000" stroke="#000000" points="1349.89,-232.36 1344.97,-241.74 1354.67,-237.48 1349.89,-232.36"/>
+</g>
+<!-- sourcefile~tem_derived_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node21" class="node">
+<title>sourcefile~tem_derived_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node21"><a xlink:href="../sourcefile/tem_derived_module.f90.html" xlink:title="tem_derived_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1623,-318 1478,-318 1478,-294 1623,-294 1623,-318"/>
+<text text-anchor="middle" x="1550.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_derived_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1495.81,-293.94C1483.68,-291.11 1470.88,-288.03 1459,-285 1442.91,-280.9 1439.09,-279.1 1423,-275 1414.28,-272.78 1405.06,-270.53 1395.97,-268.36"/>
+<polygon fill="#000000" stroke="#000000" points="1396.73,-264.95 1386.19,-266.06 1395.12,-271.76 1396.73,-264.95"/>
+</g>
+<!-- sourcefile~tem_face_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node22" class="node">
+<title>sourcefile~tem_face_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node22"><a xlink:href="../sourcefile/tem_face_module.f90.html" xlink:title="tem_face_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1614.5,-276 1486.5,-276 1486.5,-252 1614.5,-252 1614.5,-276"/>
+<text text-anchor="middle" x="1550.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_face_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1486.44,-261.09C1469.76,-260.33 1451.33,-259.48 1433.19,-258.64"/>
+<polygon fill="#000000" stroke="#000000" points="1433.31,-255.14 1423.16,-258.18 1432.98,-262.13 1433.31,-255.14"/>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node23" class="node">
+<title>sourcefile~tem_ini_condition_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node23"><a xlink:href="../sourcefile/tem_ini_condition_module.f90.html" xlink:title="tem_ini_condition_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1417.5,-308 1245.5,-308 1245.5,-284 1417.5,-284 1417.5,-308"/>
+<text text-anchor="middle" x="1331.5" y="-293.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ini_condition_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1245.38,-295.14C1234.23,-295.03 1222.83,-294.91 1211.78,-294.8"/>
+<polygon fill="#000000" stroke="#000000" points="1211.78,-291.3 1201.74,-294.7 1211.71,-298.3 1211.78,-291.3"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node24" class="node">
+<title>sourcefile~tem_simcontrol_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node24"><a xlink:href="../sourcefile/tem_simcontrol_module.f90.html" xlink:title="tem_simControl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1631.5,-24 1469.5,-24 1469.5,0 1631.5,0 1631.5,-24"/>
+<text text-anchor="middle" x="1550.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1487.32,-24.04C1461.55,-29.02 1431.5,-34.84 1404.76,-40.01"/>
+<polygon fill="#000000" stroke="#000000" points="1403.85,-36.63 1394.69,-41.96 1405.18,-43.5 1403.85,-36.63"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node25" class="node">
+<title>sourcefile~tem_spacetime_var_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node25"><a xlink:href="../sourcefile/tem_spacetime_var_module.f90.html" xlink:title="tem_spacetime_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1642,-360 1459,-360 1459,-336 1642,-336 1642,-360"/>
+<text text-anchor="middle" x="1550.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1475.88,-335.93C1469.92,-333.48 1464.2,-330.53 1459,-327 1435.75,-311.21 1446.25,-290.79 1423,-275 1420.56,-273.34 1418.01,-271.82 1415.37,-270.41"/>
+<polygon fill="#000000" stroke="#000000" points="1416.66,-267.15 1406.12,-266.07 1413.69,-273.48 1416.66,-267.15"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1458.76,-341.58C1396.9,-336.55 1313.23,-328.46 1240,-317 1224.69,-314.6 1208.27,-311.41 1192.99,-308.17"/>
+<polygon fill="#000000" stroke="#000000" points="1193.65,-304.73 1183.14,-306.04 1192.18,-311.58 1193.65,-304.73"/>
+</g>
+<!-- sourcefile~tem_variable_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node26" class="node">
+<title>sourcefile~tem_variable_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node26"><a xlink:href="../sourcefile/tem_variable_module.f90.html" xlink:title="tem_variable_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1624.5,-234 1476.5,-234 1476.5,-210 1624.5,-210 1624.5,-234"/>
+<text text-anchor="middle" x="1550.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_variable_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_variable_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1476.34,-232.79C1459.57,-235.26 1441.54,-237.92 1424.11,-240.49"/>
+<polygon fill="#000000" stroke="#000000" points="1423.31,-237.07 1413.93,-241.99 1424.33,-244 1423.31,-237.07"/>
+</g>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_node27" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<g id="a_sourcefile~~tem_math_module.f90~~AfferentGraph_node27"><a xlink:href="../sourcefile/tem_varmap_module.f90.html" xlink:title="tem_varMap_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1623,-192 1478,-192 1478,-168 1623,-168 1623,-192"/>
+<text text-anchor="middle" x="1550.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varMap_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_math_module.f90~~AfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1491.17,-192.01C1480.38,-194.66 1469.28,-197.68 1459,-201 1427.05,-211.32 1391.93,-226.35 1366.81,-237.77"/>
+<polygon fill="#000000" stroke="#000000" points="1365.33,-234.6 1357.7,-241.95 1368.25,-240.96 1365.33,-234.6"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_math_modulef90AfferentGraph = svgPanZoom('#sourcefiletem_math_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2012 Manuel Hasert &lt;m.hasert@grs-sim.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2012, 2014 Jiaxing Qi &lt;jiaxing.qi@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2013, 2019 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2013-2014 Simon Zimny &lt;s.zimny@grs-sim.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2013, 2018-2019 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2016 Tobias Schneider &lt;tobias1.schneider@student.uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">!</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">!</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">!</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">!</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">!&gt; Some generic matrix and vector function</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">!!</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="k">module </span><span class="n">tem_math_module</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="w">  </span><span class="c">! include treelm modules</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_matrix_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_matrix_type</span><span class="p">,</span><span class="w"> </span><span class="n">invert_matrix</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="k">  private</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">invert_matrix</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_matrix_type</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_intp_trilinearReduced</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cross_product3D</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">inamuroDelta3D</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">  </span><span class="k">interface </span><span class="n">tem_intp_trilinearReduced</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">tem_intp_trilinearReduced_scal</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">    </span><span class="k">module procedure </span><span class="n">tem_intp_trilinearReduced_vect</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">  </span><span class="k">end interface</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="k">  contains</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">  </span><span class="c">!&gt; This function returns the tri-linearly interpolated values from the seven</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">  </span><span class="c">!! source points to the target position located at targetCoord.</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="c">!! The source points are arranged in a square from (0,0,0)x(1,1,1)</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">  </span><span class="c">!! The order of the source points are according to the morton curve</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">  </span><span class="c">!! \[</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">  </span><span class="c">!! \begin{matrix}</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">  </span><span class="c">!!  1 &amp; 2 &amp; 3 &amp; 4 \\</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">  </span><span class="c">!! (0,0,0); &amp; (1,0,0); &amp; (0,1,0); &amp; (1,1,0) \\</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">  </span><span class="c">!!  5 &amp; 6 &amp; 7 \\</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="c">!! (0,0,1); &amp; (1,0,1); &amp; (0,1,1) \\</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">  </span><span class="c">!! \end{matrix}</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">  </span><span class="c">!! \]</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">  </span><span class="k">function </span><span class="n">tem_intp_trilinearReduced_scal</span><span class="p">(</span><span class="w"> </span><span class="n">srcVal</span><span class="p">,</span><span class="w"> </span><span class="n">targetCoord</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="c">!&gt; source values of the square corners</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">!&gt; interpolation location within the square</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">!&gt; interpolated value</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_northFront</span><span class="p">,</span><span class="w"> </span><span class="n">phi_southFront</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_northBack</span><span class="p">,</span><span class="w"> </span><span class="n">phi_southBack</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_front</span><span class="p">,</span><span class="w"> </span><span class="n">phi_back</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="c">! Linear interpolation on the cube front side (z = 0 )</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="n">phi_northFront</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="n">phi_southFront</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="c">! Linear interpolation on the cube back side (z = 1 )</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="n">phi_northBack</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="c">!(1._rk - targetCoord(1))* srcVal(7) ! + targetCoord(1)*srcVal(8)</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="n">phi_southBack</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">    </span><span class="c">! Linear interpolation on the cube front side (z = 0 )</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="n">phi_front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_southFront</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_northFront</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="c">! Linear interpolation on the cube back side (z = 1 )</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="n">phi_back</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_southBack</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_northBack</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="n">phi</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_front</span><span class="w">                            </span><span class="p">&amp;</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_back</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">  </span><span class="k">end function </span><span class="n">tem_intp_trilinearReduced_scal</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a>
+<a id="ln-104" name="ln-104" href="#ln-104"></a>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">  </span><span class="c">!&gt; This function returns the tri-linearly interpolated values from the seven</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">  </span><span class="c">!! source points to the target position located at targetCoord.</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">  </span><span class="c">!! The source points are arranged in a square from (0,0,0)x(1,1,1)</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">  </span><span class="c">!! The order of the source points are according to the morton curve</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">  </span><span class="c">!! \[</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">  </span><span class="c">!! \begin{matrix}</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">  </span><span class="c">!!  1 &amp; 2 &amp; 3 &amp; 4 \\</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">  </span><span class="c">!! (0,0,0); &amp; (1,0,0); &amp; (0,1,0); &amp; (1,1,0) \\</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">  </span><span class="c">!!  5 &amp; 6 &amp; 7 \\</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">  </span><span class="c">!! (0,0,1); &amp; (1,0,1); &amp; (0,1,1) \\</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">  </span><span class="c">!! \end{matrix}</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">  </span><span class="c">!! \]</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">  </span><span class="k">function </span><span class="n">tem_intp_trilinearReduced_vect</span><span class="p">(</span><span class="w"> </span><span class="n">srcVal</span><span class="p">,</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">,</span><span class="w"> </span><span class="n">nSize</span><span class="w"> </span><span class="p">)</span><span class="w">        </span><span class="p">&amp;</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                                                             </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">phi</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="c">!&gt; vector size</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nSize</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="c">!&gt; source values of the square corners</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">nSize</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">    </span><span class="c">!&gt; interpolation location within the square</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="c">!&gt; interpolated value</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="w"> </span><span class="n">nSize</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_northFront</span><span class="p">,</span><span class="w"> </span><span class="n">phi_southFront</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_northBack</span><span class="p">,</span><span class="w"> </span><span class="n">phi_southBack</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">phi_front</span><span class="p">,</span><span class="w"> </span><span class="n">phi_back</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iSize</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">    </span><span class="k">do </span><span class="n">iSize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nSize</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a><span class="w">      </span><span class="c">! Linear interpolation on the cube front side (z = 0 )</span>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">      </span><span class="n">phi_northFront</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="w">      </span><span class="n">phi_southFront</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">      </span><span class="c">! Linear interpolation on the cube back side (z = 1 )</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">      </span><span class="n">phi_northBack</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="c">!(1._rk - targetCoord(1))* srcVal(7) ! + targetCoord(1)*srcVal(8)</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">      </span><span class="n">phi_southBack</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">srcVal</span><span class="p">(</span><span class="n">iSize</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">      </span><span class="c">! Linear interpolation on the cube front side (z = 0 )</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">      </span><span class="n">phi_front</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_southFront</span><span class="w">                     </span><span class="p">&amp;</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_northFront</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">      </span><span class="c">! Linear interpolation on the cube back side (z = 1 )</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="w">      </span><span class="n">phi_back</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_southBack</span><span class="w">                      </span><span class="p">&amp;</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_northBack</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">      </span><span class="n">phi</span><span class="p">(</span><span class="w"> </span><span class="n">iSize</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">1._rk</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">*</span><span class="w"> </span><span class="n">phi_front</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="n">targetCoord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">phi_back</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">    </span><span class="k">enddo</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="k">  end function </span><span class="n">tem_intp_trilinearReduced_vect</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a>
+<a id="ln-160" name="ln-160" href="#ln-160"></a>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">  </span><span class="c">!&gt; This function calculate the cross product of two 3D vector</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="w">  </span><span class="k">pure function </span><span class="n">cross_product3D</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">cross</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a><span class="w">    </span><span class="c">!&gt; resulting cross produkt</span>
+<a id="ln-167" name="ln-167" href="#ln-167"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cross</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-168" name="ln-168" href="#ln-168"></a><span class="w">    </span><span class="c">!&gt; input vector a</span>
+<a id="ln-169" name="ln-169" href="#ln-169"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">    </span><span class="c">!&gt; input vector b</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">    </span><span class="n">cross</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">    </span><span class="n">cross</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a><span class="w">    </span><span class="n">cross</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="ln-177" name="ln-177" href="#ln-177"></a>
+<a id="ln-178" name="ln-178" href="#ln-178"></a><span class="w">  </span><span class="k">end function </span><span class="n">cross_product3D</span>
+<a id="ln-179" name="ln-179" href="#ln-179"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a>
+<a id="ln-181" name="ln-181" href="#ln-181"></a>
+<a id="ln-182" name="ln-182" href="#ln-182"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a><span class="w">  </span><span class="c">!&gt; This function calculates the delta function used in the paper of Ota et al.</span>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="w">  </span><span class="c">!! [7] (bibliography of treelm) for a single value.</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a><span class="w">  </span><span class="c">!! \[</span>
+<a id="ln-186" name="ln-186" href="#ln-186"></a><span class="w">  </span><span class="c">!!     w(r) = \left\{ \begin{array}{ll} \frac{1}{8}\left ( 3-2|r|+\sqrt{1+4|r|</span>
+<a id="ln-187" name="ln-187" href="#ln-187"></a><span class="w">  </span><span class="c">!!                                           -4r^{2}} \right )&amp; , |r| \le 1 \\</span>
+<a id="ln-188" name="ln-188" href="#ln-188"></a><span class="w">  </span><span class="c">!!                    \frac{1}{8}\left ( 5-2|r|+\sqrt{-7+12|r|-4r^{2}} \right</span>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="w">  </span><span class="c">!!                                                     )&amp; , 1 \le |r| \le 2 \\</span>
+<a id="ln-190" name="ln-190" href="#ln-190"></a><span class="w">  </span><span class="c">!!                    0&amp; , else \end{array} \right.</span>
+<a id="ln-191" name="ln-191" href="#ln-191"></a><span class="w">  </span><span class="c">!! \]</span>
+<a id="ln-192" name="ln-192" href="#ln-192"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-193" name="ln-193" href="#ln-193"></a><span class="w">  </span><span class="k">function </span><span class="n">inamuroDelta1D</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-194" name="ln-194" href="#ln-194"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-195" name="ln-195" href="#ln-195"></a><span class="w">    </span><span class="c">!&gt; input point coordinate</span>
+<a id="ln-196" name="ln-196" href="#ln-196"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span>
+<a id="ln-197" name="ln-197" href="#ln-197"></a><span class="w">    </span><span class="c">!&gt; resulting value of the 1D delta function</span>
+<a id="ln-198" name="ln-198" href="#ln-198"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span>
+<a id="ln-199" name="ln-199" href="#ln-199"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-200" name="ln-200" href="#ln-200"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r_abs</span>
+<a id="ln-201" name="ln-201" href="#ln-201"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-202" name="ln-202" href="#ln-202"></a><span class="w">    </span><span class="n">r_abs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<a id="ln-203" name="ln-203" href="#ln-203"></a><span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">floor</span><span class="p">(</span><span class="n">r_abs</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-204" name="ln-204" href="#ln-204"></a><span class="k">      </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">3._rk</span><span class="o">-</span><span class="mf">2._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">+</span><span class="nb">sqrt</span><span class="p">(</span><span class="mf">1._rk</span><span class="o">+</span><span class="mf">4._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">-</span><span class="mf">4._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mf">8._rk</span>
+<a id="ln-205" name="ln-205" href="#ln-205"></a><span class="w">    </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">floor</span><span class="p">(</span><span class="n">r_abs</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="n">eq</span><span class="p">.</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-206" name="ln-206" href="#ln-206"></a><span class="k">      </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">5._rk</span><span class="o">-</span><span class="mf">2._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">-</span><span class="nb">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">7._rk</span><span class="o">+</span><span class="mi">1</span><span class="mf">2._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">-</span><span class="mf">4._rk</span><span class="o">*</span><span class="n">r_abs</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mf">8._rk</span>
+<a id="ln-207" name="ln-207" href="#ln-207"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-208" name="ln-208" href="#ln-208"></a><span class="k">      </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0._rk</span>
+<a id="ln-209" name="ln-209" href="#ln-209"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-210" name="ln-210" href="#ln-210"></a>
+<a id="ln-211" name="ln-211" href="#ln-211"></a><span class="k">  end function </span><span class="n">inamuroDelta1D</span>
+<a id="ln-212" name="ln-212" href="#ln-212"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-213" name="ln-213" href="#ln-213"></a>
+<a id="ln-214" name="ln-214" href="#ln-214"></a>
+<a id="ln-215" name="ln-215" href="#ln-215"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-216" name="ln-216" href="#ln-216"></a><span class="w">  </span><span class="c">!&gt; This function calculates the delta function used in the paper of Ota et al.</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="w">  </span><span class="c">!! [7] (bibliography of treelm)</span>
+<a id="ln-218" name="ln-218" href="#ln-218"></a><span class="w">  </span><span class="c">!! for a vector by multiplying the results of the 1D version.</span>
+<a id="ln-219" name="ln-219" href="#ln-219"></a><span class="w">  </span><span class="c">!! \[</span>
+<a id="ln-220" name="ln-220" href="#ln-220"></a><span class="w">  </span><span class="c">!!     W(r) = w\left(\frac{r_1}{\Delta x}\right) \cdot</span>
+<a id="ln-221" name="ln-221" href="#ln-221"></a><span class="w">  </span><span class="c">!!            w\left(\frac{r_2}{\Delta x}\right) \cdot</span>
+<a id="ln-222" name="ln-222" href="#ln-222"></a><span class="w">  </span><span class="c">!!            w\left(\frac{r_3}{\Delta x}\right) \cdot</span>
+<a id="ln-223" name="ln-223" href="#ln-223"></a><span class="w">  </span><span class="c">!!            \frac{1}{\Delta x^3}</span>
+<a id="ln-224" name="ln-224" href="#ln-224"></a><span class="w">  </span><span class="c">!! \]</span>
+<a id="ln-225" name="ln-225" href="#ln-225"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-226" name="ln-226" href="#ln-226"></a><span class="w">  </span><span class="k">function </span><span class="n">inamuroDelta3D</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">dx</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-227" name="ln-227" href="#ln-227"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-228" name="ln-228" href="#ln-228"></a><span class="w">    </span><span class="c">!&gt; input point coordinates</span>
+<a id="ln-229" name="ln-229" href="#ln-229"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-230" name="ln-230" href="#ln-230"></a><span class="w">    </span><span class="c">!&gt; spatial discretization</span>
+<a id="ln-231" name="ln-231" href="#ln-231"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">dx</span>
+<a id="ln-232" name="ln-232" href="#ln-232"></a><span class="w">    </span><span class="c">!&gt; resulting value of the 3D delta function</span>
+<a id="ln-233" name="ln-233" href="#ln-233"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span>
+<a id="ln-234" name="ln-234" href="#ln-234"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-235" name="ln-235" href="#ln-235"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmpVal_X</span>
+<a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmpVal_Y</span>
+<a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tmpVal_Z</span>
+<a id="ln-238" name="ln-238" href="#ln-238"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="w">    </span><span class="n">tmpVal_X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inamuroDelta1D</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">    </span><span class="n">tmpVal_Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inamuroDelta1D</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a><span class="w">    </span><span class="n">tmpVal_Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inamuroDelta1D</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="n">dx</span><span class="p">)</span>
+<a id="ln-242" name="ln-242" href="#ln-242"></a>
+<a id="ln-243" name="ln-243" href="#ln-243"></a><span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tmpVal_X</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tmpVal_Y</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">tmpVal_Z</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dx</span><span class="o">**</span><span class="mi">3</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a>
+<a id="ln-245" name="ln-245" href="#ln-245"></a><span class="w">  </span><span class="k">end function </span><span class="n">inamuroDelta3D</span>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a>
+<a id="ln-248" name="ln-248" href="#ln-248"></a>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="k">end module </span><span class="n">tem_math_module</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a><span class="c">! ****************************************************************************** !</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

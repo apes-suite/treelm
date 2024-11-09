@@ -1,0 +1,473 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Canonical Shapes &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Canonical Shapes</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>TreElm Overview</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Feature Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Canonical Shapes</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="../bibliography.html">Bibliography</a>
+              <a class="nav-link" href="../codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="../face_details.html">Face Details</a>
+              <a class="nav-link" href="index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link active disabled" href="canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="../implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="../motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="../octree.html">Distributed Octree</a>
+              <a class="nav-link" href="../requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>The shape is defined as a canonical object. The different shapes are
+basically derivatives of a simple cube.
+A cube with no length in any direction is a point, a cube with length along
+only one axis is a line whereas a cube with length along two axes is simply
+treated as plane by the underlying code.</p>
+<p>The detailed examples for defining all shapes are discussed below.</p>
+<h2 id="point">Point</h2>
+<p>A point is defined as the origin of the cube with no length vector. An
+example is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>An illustrative diagram is shown in the image below:
+<img alt="point" src="../../media/point.png"></p>
+<h2 id="line">Line</h2>
+<p>A line can be defined in two possible ways,
+by origin and vector or by definition the center and a vector.</p>
+<h3 id="1-line-definition-by-direction-vector">1. Line Definition by direction vector</h3>
+<p>We specify the origin coordinates (starting point) and direction vector of
+the tracking line in the following way:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">},</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The length of the line is calculated by taking distance of direction vector
+from origin. A schematic diagram is shown below to provide intuition</p>
+<div class="codehilite"><pre><span></span><code><span class="n">origin</span><span class="o">---------&gt;</span><span class="w"> </span><span class="n">dir</span>
+</code></pre></div>
+
+<p>There is also a possibility of defining the number of segments the
+contiguous line is segmented into. This is of importance in the tracking
+module. Spatial distribution of these segments on the line can also be
+defined which currently can be only equal. If the distribution is not defined
+then the default (equal) distribution is taken. The diagram below shows a
+line divided into five segments.</p>
+<div class="codehilite"><pre><span></span><code>|----|----|----|----|----|
+</code></pre></div>
+
+<p>Typically, a line will be defined as:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">-- the origin of the line</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+    <span class="c1">-- the length and direction vector of the line</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+    <span class="c1">-- with how many points does the contiguous line have to be</span>
+    <span class="c1">-- segmented (default = 10)</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">},</span>
+    <span class="c1">-- how are the discrete points distributed</span>
+    <span class="c1">-- (default is equal if not defined)</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The figure below shows a graphical representation of the above definition of
+a line:</p>
+<p><img alt="line1" src="../../media/line1.png"></p>
+<h3 id="2-line-definition-by-center-and-direction-vector">2. Line Definition by center and direction vector</h3>
+<p>In this form of definition we can define the center coordinate of line and
+direction vector. The origin is thus calculated by reflecting the direction
+vector along center.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">calculated</span><span class="w"> </span><span class="n">origin</span><span class="o">&lt;=========</span><span class="w"> </span><span class="n">center</span><span class="w"> </span><span class="o">---------&gt;</span><span class="n">direction</span>
+</code></pre></div>
+
+<p>Referring to the diagram above, lets assume that center was defined as
+<code>center = {0.,0.,0.}</code> and <code>direction = {1.,0.,0.}</code>, then the origin will be
+calculated as <code>origin = {-1.,0.,0.}</code>.
+Thus, general definition of a line by center in lua format will be:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">},</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In the diagram below, this definition of a line is illustrated:</p>
+<p><img alt="line2" src="../../media/line2.png"></p>
+<p>Further, there can be a requirement to define a single or multiple lines.
+This can simply be done by placing origin and vector of other line within
+the object list. A generic form is shown below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
+      <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="s1">&#39;, y&#39;</span><span class="p">,</span> <span class="n">z</span><span class="s1">&#39;},</span>
+<span class="s1">      segments = {n1}</span>
+<span class="s1">    },</span>
+<span class="s1">    {</span>
+<span class="s1">      origin = {x2, y2, z2},</span>
+<span class="s1">      vec = {x&#39;&#39;, y&#39;&#39;, z&#39;&#39;},</span>
+<span class="s1">      segments = {n2}</span>
+<span class="s1">    }</span>
+<span class="s1">  }</span>
+<span class="s1">}</span>
+</code></pre></div>
+
+<h2 id="plane">Plane</h2>
+<p>The various possible ways to define a plane are discussed below:</p>
+<h3 id="plane-definition-1">Plane Definition 1</h3>
+<p>The plane is defined by two vectors and position in x,y,z coordinate with
+reference to origin.
+- origin - position to trasform plane from its origin
+- vecA - vector A from its origin ( defines plane length )
+- vecB - vector B from its origin ( defines plane width )</p>
+<div class="codehilite"><pre><span></span><code><span class="n">origin</span><span class="o">-----------&gt;</span><span class="w"> </span><span class="n">vecA</span>
+<span class="o">|</span><span class="w"> </span><span class="o">-</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w">   </span><span class="o">-</span><span class="n">A</span><span class="o">+</span><span class="n">B</span><span class="w">   </span><span class="o">|</span>
+<span class="o">|</span><span class="w">     </span><span class="o">-</span><span class="w">    </span><span class="o">|</span>
+<span class="o">|</span><span class="w">       </span><span class="o">-</span><span class="w">  </span><span class="o">|</span>
+<span class="n">vecB</span><span class="w"> </span><span class="n">v</span><span class="o">----------</span><span class="n">x</span>
+</code></pre></div>
+
+<p>For example plane at xy-plane normal to z-axis, offset from z-plane
+at <code>1.0</code>, starting at <code>x = -1.0</code> and <code>y = -1.0</code> with length and width as <code>2.0</code>
+will be defined as</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">vec</span><span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+    <span class="p">},</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
+    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><em>In this example and the ones below, it should be noted that bclabel
+and refinement level are important to be defined for seeder whereas for the
+solver, they are not required to be defined.</em></p>
+<p>Like a line, there is a possibility of defining the number of segments in
+2 directions for a plane. The diagram below shows a plane divided into 5
+segments in direction A and 4 segments in direction B thus resulting in 4
+blocks inside.</p>
+<div class="codehilite"><pre><span></span><code><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span>
+<span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span>
+<span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span>
+<span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span><span class="nb">----</span><span class="c">|</span>
+</code></pre></div>
+
+<p>Similarly, there is a possibility of defining distribution of these segments
+which at the current moment is only equal. A typical Lua configurations
+script to define a plane will look like below:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
+    <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The graphical image below shows a plane defined using the above form of
+definition. The plane is shown inside the bounding box with labels.</p>
+<p><img alt="plane_bb1" src="../../media/plane_bb1.png"></p>
+<h3 id="plane-definition-2">Plane Definition 2</h3>
+<p>Plane is defined by a combination of 2 triangles.
+...origin - common point for two triangles in a plane.
+...pointA - which defines vecA or 2nd point of 1st triangle.
+...pointB - which defined vecB or 2nd point of 2nd triangle.</p>
+<div class="codehilite"><pre><span></span><code>origin---- pointA
+| \        |
+|   -A+B   |
+|     \    |
+|       \  |
+pointB ----x
+</code></pre></div>
+
+<p>The same example above for the definition 1 is now defined using points
+instead of vectors:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">plane</span><span class="o">=</span><span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">pointA</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">pointB</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Taking a close look at this example reveals that whereas in first definition
+coordinates are calculated according to the length desired by vectors, in
+this case coordinates are provided and direction is automatically calculated
+by just joining these points.</p>
+<h3 id="plane-definition-3">Plane Definition 3</h3>
+<p>In this definition, the center of plane is defined as Cartesian
+coordinates and vectors A and B are defined for 2 combining triangles.
+...center - center of the plane.
+...vecA/pointA - which defines vecA or 2nd point of 1st triangle.
+...vecB/pointB - which defined vecB or 2nd point of 2nd triangle.</p>
+<div class="codehilite"><pre><span></span><code>_______vecB___
+|       |      |
+|       |      |
+|       |______|vecA
+|     center   |
+|              |
+|______________|_
+</code></pre></div>
+
+<p>The Lua format for defining such a plane is:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
+    <span class="p">}</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
+    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>In the image below, the above form of plane definition is graphically
+explained:</p>
+<p><img alt="plane_bb2" src="../../media/plane_bb2.png"></p>
+<h2 id="box-definition">Box Definition</h2>
+<p>The various possible ways to define a box are discussed below:</p>
+<h3 id="box-definition-1">Box Definition 1</h3>
+<p>The box is defined by three vectors and position in x,y,z coordinate with
+reference to origin.
+...- origin - position to transform box from its origin
+...- vecA - vector A from its origin ( defines box length )
+...- vecB - vector B from its origin ( defines box width )
+...- vecC - vector C from its origin ( defines box height )</p>
+<p>As an example a box starting at <code>x = -1.0</code>, <code>y = -1.0</code> and <code>z = -2.0</code>
+with length, width and height as <code>2.0</code> will be defined as</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
+    <span class="n">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Like a plane, there is a possibility of defining the number of segments in
+3 directions for a box. Similarly, there is a possibility of defining
+distribution of these segments which at the current moment is only equal.</p>
+<h3 id="box-definition-2">Box Definition 2</h3>
+<p>Box can also be defined by specifying the center and origin is then
+calculated according to the length of half vectors</p>
+<p>The Lua format for defining such a box is:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
+    <span class="n">halfvec</span><span class="o">=</span> <span class="p">{</span>
+      <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
+      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
+    <span class="n">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The above definition defines a box same as definition 1 but instead of full
+vectors, length of half vectors is given which is used in calculating the
+origin.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

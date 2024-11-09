@@ -1,0 +1,727 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_varSys_append_stateVar &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_varSys_append_stateVar
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">49 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_varSys_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_varsys_module.f90.html'>tem_varSys_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_varsys_module.html'>tem_varSys_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_varSys_append_stateVar</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_varsys_append_statevar.html#src">tem_varSys_append_stateVar</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_varSys_append_stateVar(me, varname, nComponents, method_data, get_point, get_element, set_params, get_params, setup_indices, get_valOfIndex, pos, wasAdded)  
+</h2>
+    
+
+    <p>Append a new state variable to the variable system.</p>
+<p>Note that the actual data on how to access the state has to be encoded
+in the method_data pointer.
+The callers therefore have to ensure the consistency of those access
+definitions.
+nComponents has to be at least 1.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~491"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>Variable system to append the state variable to.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varname~4"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varname</strong></td>
+            <td>
+                <p>Variable to append to the state.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ncomponents~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nComponents</strong></td>
+            <td>
+                <p>Number of components in this variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-method_data~2"></span>
+              type(c_ptr),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>method_data</strong></td>
+            <td>
+                <p>Data that is required by the methods to obtain the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_point~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_point.html'>tem_varSys_proc_point</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_point</strong></td>
+            <td>
+                <p>Procedure which allows the retrieval of the variable at given points.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_element~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_element.html'>tem_varSys_proc_element</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_element</strong></td>
+            <td>
+                <p>Procedure which allows the retrieval of the variable in an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-set_params~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_setparams.html'>tem_varSys_proc_setParams</a>),
+            </td>
+<td></td>
+              <td>optional,</td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>set_params</strong></td>
+            <td>
+                <p>Procedure which allows to set parameter in method_data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_params~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_getparams.html'>tem_varSys_proc_getParams</a>),
+            </td>
+<td></td>
+              <td>optional,</td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_params</strong></td>
+            <td>
+                <p>Procedure which allows to get parameter in method_data</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-setup_indices~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_setupindices.html'>tem_varSys_proc_setupIndices</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>setup_indices</strong></td>
+            <td>
+                <p>Procedure to setup growing array of points, variable value
+in method_data and return index of points set</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-get_valofindex~3"></span>
+              procedure(<a href='../interface/tem_varsys_proc_getvalofindex.html'>tem_varSys_proc_getValOfIndex</a>),
+            </td>
+<td></td>
+              <td></td>            <td>
+              pointer
+            </td>
+            <td>::</td>
+            <td><strong>get_valOfIndex</strong></td>
+            <td>
+                <p>Procedure which allows to retrieval of the variable at point or val
+array index</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pos~84"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos</strong></td>
+            <td>
+                <p>Position of the variable in the system.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wasadded~16"></span>
+              logical,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>wasAdded</strong></td>
+            <td>
+                <p>Indicator, if the variable was actually added to the system.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_varsys_append_statevar~~CallsGraph Pages: 1 -->
+<svg id="proctem_varsys_append_statevarCallsGraph" width="641pt" height="68pt"
+ viewBox="0.00 0.00 641.00 68.05" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph" class="graph" transform="scale(0.92 0.92) rotate(0) translate(4 70)">
+<title>proc~~tem_varsys_append_statevar~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 693,-70 693,4 -4,4"/>
+<!-- proc~tem_varsys_append_statevar -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node1" class="node">
+<title>proc~tem_varsys_append_statevar</title>
+<polygon fill="none" stroke="black" points="169,-45 0,-45 0,-21 169,-21 169,-45"/>
+<text text-anchor="middle" x="84.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_varSys_append_stateVar</text>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node2" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node2"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="259,-45 205,-45 205,-21 259,-21 259,-45"/>
+<text text-anchor="middle" x="232" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_statevar&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge1" class="edge">
+<title>proc~tem_varsys_append_statevar&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M169.29,-33C178.15,-33 186.79,-33 194.66,-33"/>
+<polygon fill="#000000" stroke="#000000" points="194.87,-36.5 204.87,-33 194.87,-29.5 194.87,-36.5"/>
+</g>
+<!-- proc~append_da_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node3" class="node">
+<title>proc~append_da_label</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node3"><a xlink:href="../proc/append_da_label.html" xlink:title="append_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="407.5,-24 304.5,-24 304.5,0 407.5,0 407.5,-24"/>
+<text text-anchor="middle" x="356" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge2" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M259.17,-28.49C269.56,-26.71 281.97,-24.57 294.36,-22.44"/>
+<polygon fill="#000000" stroke="#000000" points="295,-25.88 304.26,-20.73 293.81,-18.98 295,-25.88"/>
+</g>
+<!-- proc~append_da_veclabel -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node4" class="node">
+<title>proc~append_da_veclabel</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node4"><a xlink:href="../proc/append_da_veclabel.html" xlink:title="append_da_veclabel">
+<polygon fill="#d9534f" stroke="#d9534f" points="417,-66 295,-66 295,-42 417,-42 417,-66"/>
+<text text-anchor="middle" x="356" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_veclabel</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_veclabel -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge3" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_veclabel</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M259.17,-37.51C266.88,-38.83 275.71,-40.35 284.82,-41.92"/>
+<polygon fill="#000000" stroke="#000000" points="284.33,-45.39 294.78,-43.63 285.52,-38.49 284.33,-45.39"/>
+</g>
+<!-- interface~expand~19 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node5" class="node">
+<title>interface~expand~19</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node5"><a xlink:href="../interface/expand~19.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="525.5,-66 471.5,-66 471.5,-42 525.5,-42 525.5,-66"/>
+<text text-anchor="middle" x="498.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge4" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M397.26,-24.04C417.56,-30.1 441.98,-37.4 461.63,-43.28"/>
+<polygon fill="#000000" stroke="#000000" points="460.84,-46.69 471.42,-46.21 462.85,-39.99 460.84,-46.69"/>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node6" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node6"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="544,-24 453,-24 453,0 544,0 544,-24"/>
+<text text-anchor="middle" x="498.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge5" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M407.72,-12C419.04,-12 431.09,-12 442.56,-12"/>
+<polygon fill="#000000" stroke="#000000" points="442.9,-15.5 452.9,-12 442.9,-8.5 442.9,-15.5"/>
+</g>
+<!-- proc~append_da_veclabel&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge6" class="edge">
+<title>proc~append_da_veclabel&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M417.4,-54C432.31,-54 447.82,-54 461.17,-54"/>
+<polygon fill="#000000" stroke="#000000" points="461.37,-57.5 471.37,-54 461.37,-50.5 461.37,-57.5"/>
+</g>
+<!-- proc~expand_da_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node7" class="node">
+<title>proc~expand_da_label</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node7"><a xlink:href="../proc/expand_da_label.html" xlink:title="expand_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="685.5,-66 583.5,-66 583.5,-42 685.5,-42 685.5,-66"/>
+<text text-anchor="middle" x="634.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~expand~19&#45;&gt;proc~expand_da_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge7" class="edge">
+<title>interface~expand~19&#45;&gt;proc~expand_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M525.65,-54C539.22,-54 556.39,-54 573.02,-54"/>
+<polygon fill="#000000" stroke="#000000" points="573.26,-57.5 583.26,-54 573.26,-50.5 573.26,-57.5"/>
+</g>
+<!-- proc~sortposofval_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_node8" class="node">
+<title>proc~sortposofval_label</title>
+<g id="a_proc~~tem_varsys_append_statevar~~CallsGraph_node8"><a xlink:href="../proc/sortposofval_label.html" xlink:title="sortposofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="689,-24 580,-24 580,0 689,0 689,-24"/>
+<text text-anchor="middle" x="634.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortposofval_label</text>
+</a>
+</g>
+</g>
+<!-- interface~sortedposofval~4&#45;&gt;proc~sortposofval_label -->
+<g id="proc~~tem_varsys_append_statevar~~CallsGraph_edge8" class="edge">
+<title>interface~sortedposofval~4&#45;&gt;proc~sortposofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M544.12,-12C552.33,-12 561.04,-12 569.69,-12"/>
+<polygon fill="#000000" stroke="#000000" points="569.77,-15.5 579.77,-12 569.77,-8.5 569.77,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_varsys_append_statevarCallsGraph = svgPanZoom('#proctem_varsys_append_statevarCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_varSys_append_stateVar</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="n">nComponents</span><span class="p">,</span><span class="w"> </span><span class="n">method_data</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">get_point</span><span class="p">,</span><span class="w"> </span><span class="n">get_element</span><span class="p">,</span><span class="w"> </span><span class="n">set_params</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">get_params</span><span class="p">,</span><span class="w"> </span><span class="n">setup_indices</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">get_valOfIndex</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">wasAdded</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="c">!&gt; Variable system to append the state variable to.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w">             </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Variable to append to the state.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w">                  </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">varname</span>
+
+<span class="w">    </span><span class="c">!&gt; Number of components in this variable.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nComponents</span>
+
+<span class="w">    </span><span class="c">!&gt; Data that is required by the methods to obtain the variable.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="kt">c_ptr</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">method_data</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows the retrieval of the variable at given points.</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_point</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_point</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows the retrieval of the variable in an element.</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_element</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_element</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to set parameter in method_data</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_setParams</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">set_params</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to get parameter in method_data</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_getParams</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_params</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure to setup growing array of points, variable value</span>
+<span class="w">    </span><span class="c">!! in method_data and return index of points set</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_setupIndices</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">setup_indices</span>
+
+<span class="w">    </span><span class="c">!&gt; Procedure which allows to retrieval of the variable at point or val</span>
+<span class="w">    </span><span class="c">!! array index</span>
+<span class="w">    </span><span class="k">procedure</span><span class="p">(</span><span class="n">tem_varSys_proc_getValOfIndex</span><span class="p">),</span><span class="w"> </span><span class="k">pointer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">get_valOfIndex</span>
+
+<span class="w">    </span><span class="c">!&gt; Position of the variable in the system.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w">                 </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+
+<span class="w">    </span><span class="c">!&gt; Indicator, if the variable was actually added to the system.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w">                 </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">   </span><span class="kd">::</span><span class="w"> </span><span class="n">wasAdded</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">newVar</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_op_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">state_access</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iComp</span><span class="p">,</span><span class="w"> </span><span class="n">varPos</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">varname</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varname</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newVar</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">mypos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">operType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;state&#39;</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">nInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">nComponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nComponents</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="n">state_access</span><span class="p">%</span><span class="n">state_varPos</span><span class="p">(</span><span class="n">nComponents</span><span class="p">))</span>
+<span class="w">      </span><span class="k">do </span><span class="n">iComp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nComponents</span>
+<span class="w">        </span><span class="n">state_access</span><span class="p">%</span><span class="n">state_varPos</span><span class="p">(</span><span class="n">iComp</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">iComp</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">      allocate</span><span class="p">(</span><span class="n">state_access</span><span class="p">%</span><span class="n">input_varPos</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">method_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">method_data</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">get_point</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_point</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">get_element</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_element</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">set_params</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">state_access</span><span class="p">%</span><span class="n">set_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">set_params</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">state_access</span><span class="p">%</span><span class="n">set_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tem_varSys_setParams_dummy</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">get_params</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">state_access</span><span class="p">%</span><span class="n">get_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_params</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">state_access</span><span class="p">%</span><span class="n">get_params</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">tem_varSys_getParams_dummy</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">setup_indices</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">setup_indices</span>
+<span class="w">      </span><span class="n">state_access</span><span class="p">%</span><span class="n">get_valOfIndex</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">get_valOfIndex</span>
+<span class="w">      </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">method</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">state_access</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">nStateVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nStateVars</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nScalars</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nComponents</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varPos</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">wasAdded</span><span class="p">))</span><span class="w"> </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newVar</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_varSys_append_stateVar</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1020 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_spatial_lua_for_treeIds &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_spatial_lua_for_treeIds
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">31 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_spatial_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_spatial_module.f90.html'>tem_spatial_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_spatial_module.html'>tem_spatial_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_spatial_lua_for_treeIds</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_spatial_lua_for_treeids.html#src">tem_spatial_lua_for_treeIds</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  function tem_spatial_lua_for_treeIds(fun_ref, conf, treeIds, tree, n) result(res)  
+</h2>
+    
+
+    <p>This function invokes the Lua function,
+in which the barycentric coordinates are computed from treeIds of an
+element.</p>
+<p>Lua function defined in the script is
+connected to the conf handle and return the result of the function.
+The Lua function takes barycentric coordinate as input argument
+i.e fun_name(x,y,z)</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun_ref~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun_ref</strong></td>
+            <td>
+                <p>Lua reference to the function to evaluate.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~75"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>lua state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-treeids~31"></span>
+              integer(kind=long_k),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>treeIds</strong>(n)</td>
+            <td>
+                <p>treeIds of elements in given level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~73"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>global treelm mesh</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~73"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+                <p>number of return values</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-res~78"></span>
+          real(kind=rk), (n)
+        </small>
+      </h3>
+      <p>return value</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_spatial_lua_for_treeids~~CallsGraph Pages: 1 -->
+<svg id="proctem_spatial_lua_for_treeidsCallsGraph" width="564pt" height="326pt"
+ viewBox="0.00 0.00 564.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<title>proc~~tem_spatial_lua_for_treeids~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 560,-322 560,4 -4,4"/>
+<!-- proc~tem_spatial_lua_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node1" class="node">
+<title>proc~tem_spatial_lua_for_treeids</title>
+<polygon fill="none" stroke="black" points="157,-192 0,-192 0,-168 157,-168 157,-192"/>
+<text text-anchor="middle" x="78.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_spatial_lua_for_treeIds</text>
+</g>
+<!-- aot_fun_close -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node2" class="node">
+<title>aot_fun_close</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_fun_close.html" xlink:title="aot_fun_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="283.5,-318 198.5,-318 198.5,-294 283.5,-294 283.5,-318"/>
+<text text-anchor="middle" x="241" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_close -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge1" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_close</title>
+<path fill="none" stroke="#000000" d="M90.05,-192.07C108.97,-213.14 150.66,-257.05 193,-285 195.15,-286.42 197.42,-287.79 199.75,-289.1"/>
+<polygon fill="#000000" stroke="#000000" points="198.41,-292.35 208.9,-293.84 201.63,-286.13 198.41,-292.35"/>
+</g>
+<!-- aot_fun_do -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node3" class="node">
+<title>aot_fun_do</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_fun_do.html" xlink:title="aot_fun_do">
+<polygon fill="#d9534f" stroke="#d9534f" points="276.5,-276 205.5,-276 205.5,-252 276.5,-252 276.5,-276"/>
+<text text-anchor="middle" x="241" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_do</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_do -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge2" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_do</title>
+<path fill="none" stroke="#000000" d="M100.13,-192.16C122.66,-205.27 159.94,-226.48 193,-243 196.13,-244.57 199.41,-246.14 202.71,-247.69"/>
+<polygon fill="#000000" stroke="#000000" points="201.43,-250.96 211.98,-251.96 204.36,-244.6 201.43,-250.96"/>
+</g>
+<!-- aot_fun_open -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node4" class="node">
+<title>aot_fun_open</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_fun_open.html" xlink:title="aot_fun_open">
+<polygon fill="#a7506f" stroke="#a7506f" points="283.5,-234 198.5,-234 198.5,-210 283.5,-210 283.5,-234"/>
+<text text-anchor="middle" x="241" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_open -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge3" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_open</title>
+<path fill="none" stroke="#000000" d="M125.49,-192.04C145.23,-197.2 168.38,-203.26 188.68,-208.57"/>
+<polygon fill="#000000" stroke="#000000" points="187.83,-211.96 198.39,-211.11 189.6,-205.19 187.83,-211.96"/>
+</g>
+<!-- aot_fun_put -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node5" class="node">
+<title>aot_fun_put</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_fun_put~3.html" xlink:title="aot_fun_put">
+<polygon fill="#a7506f" stroke="#a7506f" points="278.5,-192 203.5,-192 203.5,-168 278.5,-168 278.5,-192"/>
+<text text-anchor="middle" x="241" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_put</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_put -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge4" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;aot_fun_put</title>
+<path fill="none" stroke="#000000" d="M157.4,-180C169.5,-180 181.68,-180 192.83,-180"/>
+<polygon fill="#000000" stroke="#000000" points="193.16,-183.5 203.16,-180 193.16,-176.5 193.16,-183.5"/>
+</g>
+<!-- aot_top_get_val -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node6" class="node">
+<title>aot_top_get_val</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node6"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_top_get_val.html" xlink:title="aot_top_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="289,-150 193,-150 193,-126 289,-126 289,-150"/>
+<text text-anchor="middle" x="241" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_top_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;aot_top_get_val -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge5" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;aot_top_get_val</title>
+<path fill="none" stroke="#000000" d="M125.49,-167.96C143.79,-163.18 165.02,-157.62 184.19,-152.6"/>
+<polygon fill="#000000" stroke="#000000" points="185.21,-155.95 194,-150.04 183.44,-149.18 185.21,-155.95"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node7" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node7"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="274.5,-108 207.5,-108 207.5,-84 274.5,-84 274.5,-108"/>
+<text text-anchor="middle" x="241" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge6" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M100.13,-167.84C122.66,-154.73 159.94,-133.52 193,-117 196.13,-115.43 199.41,-113.86 202.71,-112.31"/>
+<polygon fill="#000000" stroke="#000000" points="204.36,-115.4 211.98,-108.04 201.43,-109.04 204.36,-115.4"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node8" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node8"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="283.5,-66 198.5,-66 198.5,-42 283.5,-42 283.5,-66"/>
+<text text-anchor="middle" x="241" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_lua_for_treeids&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge7" class="edge">
+<title>proc~tem_spatial_lua_for_treeids&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M90.05,-167.93C108.97,-146.86 150.66,-102.95 193,-75 195.15,-73.58 197.42,-72.21 199.75,-70.9"/>
+<polygon fill="#000000" stroke="#000000" points="201.63,-73.87 208.9,-66.16 198.41,-67.65 201.63,-73.87"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node9" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="416.5,-108 349.5,-108 349.5,-84 416.5,-84 416.5,-108"/>
+<text text-anchor="middle" x="383" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge8" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M274.82,-96C294.04,-96 318.53,-96 339.25,-96"/>
+<polygon fill="#000000" stroke="#000000" points="339.38,-99.5 349.38,-96 339.38,-92.5 339.38,-99.5"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node10" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node10"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="429.5,-66 336.5,-66 336.5,-42 429.5,-42 429.5,-66"/>
+<text text-anchor="middle" x="383" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge9" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M283.63,-54C296.99,-54 312.01,-54 326.21,-54"/>
+<polygon fill="#000000" stroke="#000000" points="326.38,-57.5 336.38,-54 326.38,-50.5 326.38,-57.5"/>
+</g>
+<!-- proc~tem_elemsizelevel -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node11" class="node">
+<title>proc~tem_elemsizelevel</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node11"><a xlink:href="../proc/tem_elemsizelevel.html" xlink:title="tem_ElemSizeLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="441,-24 325,-24 325,0 441,0 441,-24"/>
+<text text-anchor="middle" x="383" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSizeLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge10" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M282.12,-41.96C297.64,-37.31 315.58,-31.93 331.93,-27.02"/>
+<polygon fill="#000000" stroke="#000000" points="333.3,-30.26 341.88,-24.04 331.29,-23.56 333.3,-30.26"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_node12" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CallsGraph_node12"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="556,-66 477,-66 477,-42 556,-42 556,-66"/>
+<text text-anchor="middle" x="516.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CallsGraph_edge11" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M429.62,-54C441.68,-54 454.73,-54 466.93,-54"/>
+<polygon fill="#000000" stroke="#000000" points="466.95,-57.5 476.95,-54 466.95,-50.5 466.95,-57.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_spatial_lua_for_treeids~~CalledByGraph Pages: 1 -->
+<svg id="proctem_spatial_lua_for_treeidsCalledByGraph" width="641pt" height="191pt"
+ viewBox="0.00 0.00 641.00 190.66" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph" class="graph" transform="scale(0.58 0.58) rotate(0) translate(4 322)">
+<title>proc~~tem_spatial_lua_for_treeids~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 1092,-322 1092,4 -4,4"/>
+<!-- proc~tem_spatial_lua_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node1" class="node">
+<title>proc~tem_spatial_lua_for_treeids</title>
+<polygon fill="none" stroke="black" points="1088,-169 931,-169 931,-145 1088,-145 1088,-169"/>
+<text text-anchor="middle" x="1009.5" y="-154.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_spatial_lua_for_treeIds</text>
+</g>
+<!-- interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node2" class="node">
+<title>interface~tem_spatial_lua_for</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node2"><a xlink:href="../interface/tem_spatial_lua_for.html" xlink:title="tem_spatial_lua_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="895,-169 779,-169 779,-145 895,-145 895,-169"/>
+<text text-anchor="middle" x="837" y="-154.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_lua_for</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_lua_for&#45;&gt;proc~tem_spatial_lua_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge1" class="edge">
+<title>interface~tem_spatial_lua_for&#45;&gt;proc~tem_spatial_lua_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M895.25,-157C903.45,-157 912.05,-157 920.68,-157"/>
+<polygon fill="#000000" stroke="#000000" points="920.8,-160.5 930.8,-157 920.8,-153.5 920.8,-160.5"/>
+</g>
+<!-- proc~tem_spatial_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node3" class="node">
+<title>proc~tem_spatial_for_coord</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node3"><a xlink:href="../proc/tem_spatial_for_coord.html" xlink:title="tem_spatial_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="723.5,-270 593.5,-270 593.5,-246 723.5,-246 723.5,-270"/>
+<text text-anchor="middle" x="658.5" y="-255.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_for_coord&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_spatial_for_coord&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M708.88,-246C720.42,-242.29 732.42,-237.65 743,-232 771.09,-217.01 798.93,-193.03 816.72,-176.23"/>
+<polygon fill="#000000" stroke="#000000" points="819.37,-178.54 824.15,-169.08 814.52,-173.49 819.37,-178.54"/>
+</g>
+<!-- proc~tem_spatial_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node4" class="node">
+<title>proc~tem_spatial_for_treeids</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node4"><a xlink:href="../proc/tem_spatial_for_treeids.html" xlink:title="tem_spatial_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="727,-190 590,-190 590,-166 727,-166 727,-190"/>
+<text text-anchor="middle" x="658.5" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_for_treeids&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_spatial_for_treeids&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M727.23,-169.94C740.79,-168.33 755.03,-166.63 768.58,-165.02"/>
+<polygon fill="#000000" stroke="#000000" points="769.26,-168.47 778.78,-163.81 768.44,-161.51 769.26,-168.47"/>
+</g>
+<!-- proc~tem_spatial_scalar_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node5" class="node">
+<title>proc~tem_spatial_scalar_for_index</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node5"><a xlink:href="../proc/tem_spatial_scalar_for_index.html" xlink:title="tem_spatial_scalar_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="533,-230 367,-230 367,-206 533,-206 533,-230"/>
+<text text-anchor="middle" x="450" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_scalar_for_index</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_scalar_for_index&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_spatial_scalar_for_index&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M533.08,-220.44C592.27,-220.33 673.62,-216.31 743,-199 764.9,-193.53 788.04,-183.11 805.75,-174.01"/>
+<polygon fill="#000000" stroke="#000000" points="807.79,-176.89 815,-169.13 804.52,-170.7 807.79,-176.89"/>
+</g>
+<!-- proc~tem_spatial_scalar_for_index&#45;&gt;proc~tem_spatial_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge8" class="edge">
+<title>proc~tem_spatial_scalar_for_index&#45;&gt;proc~tem_spatial_for_coord</title>
+<path fill="none" stroke="#000000" d="M512.96,-230C535.72,-234.41 561.69,-239.44 585.28,-244.01"/>
+<polygon fill="#000000" stroke="#000000" points="584.75,-247.47 595.23,-245.94 586.08,-240.6 584.75,-247.47"/>
+</g>
+<!-- proc~tem_spatial_vector_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node6" class="node">
+<title>proc~tem_spatial_vector_for_coord</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node6"><a xlink:href="../proc/tem_spatial_vector_for_coord.html" xlink:title="tem_spatial_vector_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="743,-148 574,-148 574,-124 743,-124 743,-148"/>
+<text text-anchor="middle" x="658.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_vector_for_coord&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_spatial_vector_for_coord&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M743.1,-145.95C751.71,-146.97 760.39,-148 768.79,-149"/>
+<polygon fill="#000000" stroke="#000000" points="768.54,-152.5 778.89,-150.2 769.37,-145.55 768.54,-152.5"/>
+</g>
+<!-- proc~tem_spatial_vector_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node7" class="node">
+<title>proc~tem_spatial_vector_for_index</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node7"><a xlink:href="../proc/tem_spatial_vector_for_index.html" xlink:title="tem_spatial_vector_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="533.5,-112 366.5,-112 366.5,-88 533.5,-88 533.5,-112"/>
+<text text-anchor="middle" x="450" y="-97.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_index</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_vector_for_index&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_spatial_vector_for_index&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M533.67,-96.14C592.79,-95.33 673.81,-98.23 743,-115 765.08,-120.35 788.38,-130.88 806.13,-140.06"/>
+<polygon fill="#000000" stroke="#000000" points="804.91,-143.37 815.38,-144.98 808.2,-137.19 804.91,-143.37"/>
+</g>
+<!-- proc~tem_spatial_vector_for_index&#45;&gt;proc~tem_spatial_vector_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge12" class="edge">
+<title>proc~tem_spatial_vector_for_index&#45;&gt;proc~tem_spatial_vector_for_coord</title>
+<path fill="none" stroke="#000000" d="M520.05,-112.04C538.82,-115.31 559.29,-118.88 578.56,-122.24"/>
+<polygon fill="#000000" stroke="#000000" points="578.06,-125.7 588.52,-123.97 579.27,-118.81 578.06,-125.7"/>
+</g>
+<!-- proc~tem_spatial_vector_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node8" class="node">
+<title>proc~tem_spatial_vector_for_treeids</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node8"><a xlink:href="../proc/tem_spatial_vector_for_treeids.html" xlink:title="tem_spatial_vector_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="538,-70 362,-70 362,-46 538,-46 538,-70"/>
+<text text-anchor="middle" x="450" y="-55.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_vector_for_treeids&#45;&gt;interface~tem_spatial_lua_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_spatial_vector_for_treeids&#45;&gt;interface~tem_spatial_lua_for</title>
+<path fill="none" stroke="#000000" d="M538.28,-57.08C597.74,-59.1 677.28,-67.04 743,-92 770.38,-102.4 797.32,-122.64 815.1,-137.79"/>
+<polygon fill="#000000" stroke="#000000" points="813.23,-140.8 823.06,-144.75 817.84,-135.53 813.23,-140.8"/>
+</g>
+<!-- interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node9" class="node">
+<title>interface~tem_spatial_for</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node9"><a xlink:href="../interface/tem_spatial_for.html" xlink:title="tem_spatial_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="326,-171 232,-171 232,-147 326,-147 326,-171"/>
+<text text-anchor="middle" x="279" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge9" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M288.09,-171.2C301.13,-189.68 328.75,-224.2 362,-239 432.3,-270.28 521.4,-271.48 583.29,-267.08"/>
+<polygon fill="#000000" stroke="#000000" points="583.67,-270.56 593.37,-266.29 583.13,-263.58 583.67,-270.56"/>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge10" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M326.29,-161.33C389.41,-164.51 503.35,-170.24 579.71,-174.08"/>
+<polygon fill="#000000" stroke="#000000" points="579.6,-177.58 589.77,-174.59 579.95,-170.59 579.6,-177.58"/>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_scalar_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge11" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_scalar_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.22,-171.1C323.92,-177.65 343.89,-185.67 362,-192 372.93,-195.82 384.76,-199.6 396.06,-203.03"/>
+<polygon fill="#000000" stroke="#000000" points="395.24,-206.44 405.82,-205.95 397.25,-199.73 395.24,-206.44"/>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge13" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M326.29,-156.18C385.17,-152.59 488.27,-146.31 563.85,-141.71"/>
+<polygon fill="#000000" stroke="#000000" points="564.08,-145.2 573.85,-141.1 563.66,-138.21 564.08,-145.2"/>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge14" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M308.22,-146.9C323.92,-140.35 343.89,-132.33 362,-126 372.93,-122.18 384.76,-118.4 396.06,-114.97"/>
+<polygon fill="#000000" stroke="#000000" points="397.25,-118.27 405.82,-112.05 395.24,-111.56 397.25,-118.27"/>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge15" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M288.88,-146.91C302.55,-129.2 330.49,-96.41 362,-79 365.5,-77.07 369.17,-75.31 372.94,-73.72"/>
+<polygon fill="#000000" stroke="#000000" points="374.4,-76.91 382.5,-70.07 371.91,-70.36 374.4,-76.91"/>
+</g>
+<!-- proc~tem_spacetime_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node10" class="node">
+<title>proc~tem_spacetime_for_coord</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node10"><a xlink:href="../proc/tem_spacetime_for_coord.html" xlink:title="tem_spacetime_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="173.5,-318 22.5,-318 22.5,-294 173.5,-294 173.5,-318"/>
+<text text-anchor="middle" x="98" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge16" class="edge">
+<title>proc~tem_spacetime_for_coord&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M173.56,-296.23C181.52,-293.37 189.19,-289.69 196,-285 233.7,-259.01 258.24,-209.46 269.95,-180.85"/>
+<polygon fill="#000000" stroke="#000000" points="273.29,-181.93 273.69,-171.34 266.77,-179.37 273.29,-181.93"/>
+</g>
+<!-- proc~tem_spacetime_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node11" class="node">
+<title>proc~tem_spacetime_for_treeids</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node11"><a xlink:href="../proc/tem_spacetime_for_treeids.html" xlink:title="tem_spacetime_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="176.5,-276 19.5,-276 19.5,-252 176.5,-252 176.5,-276"/>
+<text text-anchor="middle" x="98" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge17" class="edge">
+<title>proc~tem_spacetime_for_treeids&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M175.5,-251.94C182.64,-249.49 189.59,-246.54 196,-243 224.3,-227.34 249.02,-198.82 263.73,-179.4"/>
+<polygon fill="#000000" stroke="#000000" points="266.66,-181.32 269.76,-171.19 261.02,-177.18 266.66,-181.32"/>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node12" class="node">
+<title>proc~tem_spacetime_scalar_for_index</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node12"><a xlink:href="../proc/tem_spacetime_scalar_for_index.html" xlink:title="tem_spacetime_scalar_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="191,-234 5,-234 5,-210 191,-210 191,-234"/>
+<text text-anchor="middle" x="98" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_scalar_for_index</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge18" class="edge">
+<title>proc~tem_spacetime_scalar_for_index&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M165.65,-209.98C175.94,-207.43 186.35,-204.45 196,-201 214.34,-194.45 233.77,-184.63 249.12,-176.13"/>
+<polygon fill="#000000" stroke="#000000" points="251.12,-179.02 258.1,-171.05 247.68,-172.93 251.12,-179.02"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node13" class="node">
+<title>proc~tem_spacetime_vector_for_coord</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node13"><a xlink:href="../proc/tem_spacetime_vector_for_coord.html" xlink:title="tem_spacetime_vector_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="193,-192 3,-192 3,-168 193,-168 193,-192"/>
+<text text-anchor="middle" x="98" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_coord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge19" class="edge">
+<title>proc~tem_spacetime_vector_for_coord&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M193.22,-168.95C203.01,-167.8 212.72,-166.66 221.89,-165.58"/>
+<polygon fill="#000000" stroke="#000000" points="222.47,-169.04 231.99,-164.4 221.65,-162.09 222.47,-169.04"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_index -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node14" class="node">
+<title>proc~tem_spacetime_vector_for_index</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node14"><a xlink:href="../proc/tem_spacetime_vector_for_index.html" xlink:title="tem_spacetime_vector_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="191.5,-150 4.5,-150 4.5,-126 191.5,-126 191.5,-150"/>
+<text text-anchor="middle" x="98" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_index</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge20" class="edge">
+<title>proc~tem_spacetime_vector_for_index&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M191.65,-148.87C201.92,-150.07 212.14,-151.27 221.76,-152.4"/>
+<polygon fill="#000000" stroke="#000000" points="221.6,-155.91 231.94,-153.6 222.42,-148.95 221.6,-155.91"/>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node15" class="node">
+<title>proc~tem_spacetime_vector_for_treeids</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node15"><a xlink:href="../proc/tem_spacetime_vector_for_treeids.html" xlink:title="tem_spacetime_vector_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="196,-108 0,-108 0,-84 196,-84 196,-108"/>
+<text text-anchor="middle" x="98" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_vector_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge21" class="edge">
+<title>proc~tem_spacetime_vector_for_treeids&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M165.65,-108.02C175.94,-110.57 186.35,-113.55 196,-117 214.34,-123.55 233.77,-133.37 249.12,-141.87"/>
+<polygon fill="#000000" stroke="#000000" points="247.68,-145.07 258.1,-146.95 251.12,-138.98 247.68,-145.07"/>
+</g>
+<!-- proc~tem_spatial_scalar_storeval -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node16" class="node">
+<title>proc~tem_spatial_scalar_storeval</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node16"><a xlink:href="../proc/tem_spatial_scalar_storeval.html" xlink:title="tem_spatial_scalar_storeVal">
+<polygon fill="#d9534f" stroke="#d9534f" points="177.5,-66 18.5,-66 18.5,-42 177.5,-42 177.5,-66"/>
+<text text-anchor="middle" x="98" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_scalar_storeVal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_scalar_storeval&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge22" class="edge">
+<title>proc~tem_spatial_scalar_storeval&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M175.5,-66.06C182.64,-68.51 189.59,-71.46 196,-75 224.3,-90.66 249.02,-119.18 263.73,-138.6"/>
+<polygon fill="#000000" stroke="#000000" points="261.02,-140.82 269.76,-146.81 266.66,-136.68 261.02,-140.82"/>
+</g>
+<!-- proc~tem_spatial_vector_storeval -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node17" class="node">
+<title>proc~tem_spatial_vector_storeval</title>
+<g id="a_proc~~tem_spatial_lua_for_treeids~~CalledByGraph_node17"><a xlink:href="../proc/tem_spatial_vector_storeval.html" xlink:title="tem_spatial_vector_storeVal">
+<polygon fill="#d9534f" stroke="#d9534f" points="178,-24 18,-24 18,0 178,0 178,-24"/>
+<text text-anchor="middle" x="98" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_storeVal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_vector_storeval&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_lua_for_treeids~~CalledByGraph_edge23" class="edge">
+<title>proc~tem_spatial_vector_storeval&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M178.01,-23.47C184.37,-26.05 190.47,-29.19 196,-33 233.7,-58.99 258.24,-108.54 269.95,-137.15"/>
+<polygon fill="#000000" stroke="#000000" points="266.77,-138.63 273.69,-146.66 273.29,-136.07 266.77,-138.63"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_spatial_lua_for_treeidsCalledByGraph = svgPanZoom('#proctem_spatial_lua_for_treeidsCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">tem_spatial_lua_for_treeIds</span><span class="p">(</span><span class="w"> </span><span class="n">fun_ref</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">treeIds</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                 </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Lua reference to the function to evaluate.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fun_ref</span>
+<span class="w">    </span><span class="c">!&gt; global treelm mesh</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">treelmesh_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; number of return values</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="c">!&gt; treeIds of elements in given level</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">treeIds</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; lua state</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; return value</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">aot_fun_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fun</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iDir</span><span class="p">,</span><span class="w"> </span><span class="n">jDir</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_fun_open</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">ref</span><span class="o">=</span><span class="n">fun_ref</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iDir</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span>
+<span class="w">      </span><span class="n">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_BaryOfId</span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">treeIds</span><span class="p">(</span><span class="n">iDir</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">do </span><span class="n">jDir</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span>
+<span class="w">        </span><span class="k">call </span><span class="n">aot_fun_put</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">arg</span><span class="o">=</span><span class="n">coord</span><span class="p">(</span><span class="n">jDir</span><span class="p">))</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">      call </span><span class="n">aot_fun_do</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">fun</span><span class="p">,</span><span class="w"> </span><span class="n">nresults</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_top_get_val</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">=</span><span class="n">res</span><span class="p">(</span><span class="n">iDir</span><span class="p">),</span><span class="w"> </span><span class="n">ErrCode</span><span class="o">=</span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="n">aoterr_Fatal</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;ERROR Obtaining a spatial function&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Probably wrong number of components returned&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;or a scalar was return as a lua table&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Expected nComp: 1&#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ErrorCodes: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Check return values of your Lua functions!&quot;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+
+<span class="k">    call </span><span class="n">aot_fun_close</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="n">fun</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end function </span><span class="n">tem_spatial_lua_for_treeIds</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

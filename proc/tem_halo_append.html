@@ -1,0 +1,711 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_halo_append &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_halo_append
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">15 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_halo_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_halo_module.f90.html'>tem_halo_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_halo_module.html'>tem_halo_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_halo_append</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_halo_append.html#src">tem_halo_append</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_halo_append(me, proc, elemPos, wasAdded)  
+</h2>
+    
+
+    <p>Append an element to the list of halo elements.</p>
+<p>Each entry needs to be identified by the process (proc), the halo has to be
+exchanged with, and the position of the halo element in the local array
+of elements (elemPos).</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~538"></span>
+              type(<a href='../type/tem_halolist_type.html'>tem_haloList_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>List of halo elements, this entry has to be appended to.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~25"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+                <p>Process this element is exchanged with.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elemPos</strong></td>
+            <td>
+                <p>Local position of the halo element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-wasadded~23"></span>
+              logical,
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>wasAdded</strong></td>
+            <td>
+                <p>Flag, wether this halo element was newly added, or already there.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_halo_append~~CallsGraph Pages: 1 -->
+<svg id="proctem_halo_appendCallsGraph" width="630pt" height="74pt"
+ viewBox="0.00 0.00 630.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_halo_append~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<title>proc~~tem_halo_append~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 626,-70 626,4 -4,4"/>
+<!-- proc~tem_halo_append -->
+<g id="proc~~tem_halo_append~~CallsGraph_node1" class="node">
+<title>proc~tem_halo_append</title>
+<polygon fill="none" stroke="black" points="108,-45 0,-45 0,-21 108,-21 108,-45"/>
+<text text-anchor="middle" x="54" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_halo_append</text>
+</g>
+<!-- interface~append~26 -->
+<g id="proc~~tem_halo_append~~CallsGraph_node2" class="node">
+<title>interface~append~26</title>
+<g id="a_proc~~tem_halo_append~~CallsGraph_node2"><a xlink:href="../interface/append~26.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="198,-45 144,-45 144,-21 198,-21 198,-45"/>
+<text text-anchor="middle" x="171" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_halo_append&#45;&gt;interface~append~26 -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge1" class="edge">
+<title>proc~tem_halo_append&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M108.12,-33C116.72,-33 125.44,-33 133.52,-33"/>
+<polygon fill="#000000" stroke="#000000" points="133.71,-36.5 143.71,-33 133.71,-29.5 133.71,-36.5"/>
+</g>
+<!-- proc~append_ga_dynlong -->
+<g id="proc~~tem_halo_append~~CallsGraph_node3" class="node">
+<title>proc~append_ga_dynlong</title>
+<g id="a_proc~~tem_halo_append~~CallsGraph_node3"><a xlink:href="../proc/append_ga_dynlong.html" xlink:title="append_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="366,-66 246,-66 246,-42 366,-42 366,-66"/>
+<text text-anchor="middle" x="306" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge2" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M198.28,-37.15C209.14,-38.86 222.29,-40.94 235.59,-43.04"/>
+<polygon fill="#000000" stroke="#000000" points="235.34,-46.54 245.76,-44.65 236.43,-39.63 235.34,-46.54"/>
+</g>
+<!-- proc~append_ga_dynlong_vec -->
+<g id="proc~~tem_halo_append~~CallsGraph_node4" class="node">
+<title>proc~append_ga_dynlong_vec</title>
+<g id="a_proc~~tem_halo_append~~CallsGraph_node4"><a xlink:href="../proc/append_ga_dynlong_vec.html" xlink:title="append_ga_dynlong_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-24 234,-24 234,0 378,0 378,-24"/>
+<text text-anchor="middle" x="306" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong_vec</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong_vec -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge3" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M198.28,-28.85C205.89,-27.65 214.64,-26.27 223.77,-24.83"/>
+<polygon fill="#000000" stroke="#000000" points="224.47,-28.26 233.8,-23.24 223.38,-21.34 224.47,-28.26"/>
+</g>
+<!-- interface~expand~25 -->
+<g id="proc~~tem_halo_append~~CallsGraph_node5" class="node">
+<title>interface~expand~25</title>
+<g id="a_proc~~tem_halo_append~~CallsGraph_node5"><a xlink:href="../interface/expand~25.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="468,-45 414,-45 414,-21 468,-21 468,-45"/>
+<text text-anchor="middle" x="441" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_ga_dynlong&#45;&gt;interface~expand~25 -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge4" class="edge">
+<title>proc~append_ga_dynlong&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M366.11,-44.67C378.86,-42.65 391.97,-40.58 403.55,-38.76"/>
+<polygon fill="#000000" stroke="#000000" points="404.36,-42.17 413.69,-37.15 403.27,-35.26 404.36,-42.17"/>
+</g>
+<!-- proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25 -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge5" class="edge">
+<title>proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M378.17,-23.24C387.02,-24.63 395.75,-26.01 403.75,-27.28"/>
+<polygon fill="#000000" stroke="#000000" points="403.35,-30.76 413.78,-28.86 404.45,-23.84 403.35,-30.76"/>
+</g>
+<!-- proc~expand_ga_dynlong -->
+<g id="proc~~tem_halo_append~~CallsGraph_node6" class="node">
+<title>proc~expand_ga_dynlong</title>
+<g id="a_proc~~tem_halo_append~~CallsGraph_node6"><a xlink:href="../proc/expand_ga_dynlong.html" xlink:title="expand_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="622,-45 504,-45 504,-21 622,-21 622,-45"/>
+<text text-anchor="middle" x="563" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga_dynlong</text>
+</a>
+</g>
+</g>
+<!-- interface~expand~25&#45;&gt;proc~expand_ga_dynlong -->
+<g id="proc~~tem_halo_append~~CallsGraph_edge6" class="edge">
+<title>interface~expand~25&#45;&gt;proc~expand_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M468.04,-33C475.83,-33 484.77,-33 493.96,-33"/>
+<polygon fill="#000000" stroke="#000000" points="494,-36.5 504,-33 494,-29.5 494,-36.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_halo_append~~CalledByGraph Pages: 1 -->
+<svg id="proctem_halo_appendCalledByGraph" width="641pt" height="36pt"
+ viewBox="0.00 0.00 641.00 35.54" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_halo_append~~CalledByGraph" class="graph" transform="scale(0.68 0.68) rotate(0) translate(4 48)">
+<title>proc~~tem_halo_append~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-48 934,-48 934,4 -4,4"/>
+<!-- proc~tem_halo_append -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node1" class="node">
+<title>proc~tem_halo_append</title>
+<polygon fill="none" stroke="black" points="930,-44 822,-44 822,-20 930,-20 930,-44"/>
+<text text-anchor="middle" x="876" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_halo_append</text>
+</g>
+<!-- proc~identify_lists -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node2" class="node">
+<title>proc~identify_lists</title>
+<g id="a_proc~~tem_halo_append~~CalledByGraph_node2"><a xlink:href="../proc/identify_lists.html" xlink:title="identify_lists">
+<polygon fill="#d9534f" stroke="#d9534f" points="786,-44 708,-44 708,-20 786,-20 786,-44"/>
+<text text-anchor="middle" x="747" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_lists</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_lists&#45;&gt;proc~tem_halo_append -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge1" class="edge">
+<title>proc~identify_lists&#45;&gt;proc~tem_halo_append</title>
+<path fill="none" stroke="#000000" d="M786.1,-32C794.19,-32 802.94,-32 811.68,-32"/>
+<polygon fill="#000000" stroke="#000000" points="811.9,-35.5 821.9,-32 811.9,-28.5 811.9,-35.5"/>
+</g>
+<!-- proc~communicate_elements -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node3" class="node">
+<title>proc~communicate_elements</title>
+<g id="a_proc~~tem_halo_append~~CalledByGraph_node3"><a xlink:href="../proc/communicate_elements.html" xlink:title="communicate_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="672,-24 531,-24 531,0 672,0 672,-24"/>
+<text text-anchor="middle" x="601.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">communicate_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~communicate_elements&#45;&gt;proc~identify_lists -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge2" class="edge">
+<title>proc~communicate_elements&#45;&gt;proc~identify_lists</title>
+<path fill="none" stroke="#000000" d="M672.15,-21.71C680.78,-22.91 689.46,-24.12 697.68,-25.27"/>
+<polygon fill="#000000" stroke="#000000" points="697.41,-28.76 707.8,-26.68 698.38,-21.83 697.41,-28.76"/>
+</g>
+<!-- proc~tem_find_allelements -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node4" class="node">
+<title>proc~tem_find_allelements</title>
+<g id="a_proc~~tem_halo_append~~CalledByGraph_node4"><a xlink:href="../proc/tem_find_allelements.html" xlink:title="tem_find_allElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="495,-44 368,-44 368,-20 495,-20 495,-44"/>
+<text text-anchor="middle" x="431.5" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_allElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~identify_lists -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~identify_lists</title>
+<path fill="none" stroke="#000000" d="M495.03,-32.73C506.97,-32.84 519.37,-32.94 531,-33 593.67,-33.32 609.33,-33.42 672,-33 680.31,-32.94 689.15,-32.85 697.71,-32.75"/>
+<polygon fill="#000000" stroke="#000000" points="698.02,-36.24 707.97,-32.61 697.93,-29.24 698.02,-36.24"/>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~communicate_elements -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~communicate_elements</title>
+<path fill="none" stroke="#000000" d="M495.06,-24.55C503.44,-23.55 512.13,-22.52 520.75,-21.49"/>
+<polygon fill="#000000" stroke="#000000" points="521.31,-24.95 530.83,-20.29 520.49,-18 521.31,-24.95"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node5" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_halo_append~~CalledByGraph_node5"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="332,-44 202,-44 202,-20 332,-20 332,-44"/>
+<text text-anchor="middle" x="267" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements</title>
+<path fill="none" stroke="#000000" d="M332.22,-32C340.55,-32 349.12,-32 357.58,-32"/>
+<polygon fill="#000000" stroke="#000000" points="357.8,-35.5 367.8,-32 357.8,-28.5 357.8,-35.5"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_halo_append~~CalledByGraph_node6" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_halo_append~~CalledByGraph_node6"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="166,-44 0,-44 0,-20 166,-20 166,-44"/>
+<text text-anchor="middle" x="83" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_halo_append~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M166.21,-32C174.72,-32 183.33,-32 191.74,-32"/>
+<polygon fill="#000000" stroke="#000000" points="191.88,-35.5 201.88,-32 191.88,-28.5 191.88,-35.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_halo_appendCalledByGraph = svgPanZoom('#proctem_halo_appendCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_halo_append</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w"> </span><span class="n">wasAdded</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; List of halo elements, this entry has to be appended to.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_haloList_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Process this element is exchanged with.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+
+<span class="w">    </span><span class="c">!&gt; Local position of the halo element.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elemPos</span>
+
+<span class="w">    </span><span class="c">!&gt; Flag, wether this halo element was newly added, or already there.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wasAdded</span>
+
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">newHalos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">partnerPos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">haloPos</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">newProc</span>
+
+<span class="w">    </span><span class="c">! First attempt to append the process, this element is to be exchanged with.</span>
+<span class="w">    </span><span class="c">! The call will return, where the process is to be found, and wether it was</span>
+<span class="w">    </span><span class="c">! a new process or not.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">partnerProc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">partnerPos</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newProc</span><span class="w">         </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">newProc</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! If the process was newly added, we need to create a new list for halo</span>
+<span class="w">      </span><span class="c">! elements. We do this by setting up a temporary dynamic array of integers</span>
+<span class="w">      </span><span class="c">! and append this then to the halos component (which is a growing array</span>
+<span class="w">      </span><span class="c">! of dynamic arrays).</span>
+<span class="w">      </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">halos</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">newHalos</span><span class="w">  </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="w">    </span><span class="c">! Now, the necessary arrays for this process should be available, and we</span>
+<span class="w">    </span><span class="c">! can add the actual halo element to it.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">halos</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">partnerPos</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">haloPos</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wasAdded</span><span class="w">                  </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_halo_append</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

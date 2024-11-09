@@ -1,0 +1,255 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Distributed Octree &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Distributed Octree</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>TreElm Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Distributed Octree</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="bibliography.html">Bibliography</a>
+              <a class="nav-link" href="codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="face_details.html">Face Details</a>
+              <a class="nav-link" href="features/index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="features/dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="features/spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="features/tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="features/tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="features/variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="features/variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="features/variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="features/variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link active disabled" href="octree.html">Distributed Octree</a>
+              <a class="nav-link" href="requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>An <a href="http://en.wikipedia.org/wiki/Octree">octree</a> 
+is obtained by recursive bisection in each dimension of a
+three-dimensional cube.
+As such it is the generalization of a binary tree into three dimensions, the
+two dimensional case is usually referred to as quadtree.
+We use quadtrees and two dimensional meshes for illustrations.
+A three-dimensional picture of the actual octree meshes, obtained by this
+method is provided in the Figure.
+<img alt="Clumps" src="../media/clumps_sm.png"></p>
+<p>This illustration shows the subdivision of coarser elements into eight
+smaller elements and the recursive repetition of this refinement where
+necessary.
+The outermost cube is also addressed as the universe, as it contains the
+complete representable space of the octree and all elements have to live
+inside of it.
+The basic idea in TreElM for a scalable parallel deployment of the octree
+discretization is a simple serialized tree representation and sketched in
+the following figure.
+<img alt="tree_structure" src="../media/tree_structure_sm.png"></p>
+<p>The serialization turns the hierarchical structure of the tree, where each
+node has several links to other nodes into a serial ordered list of one node
+after the other.
+This is achieved by a <a href="http://en.wikipedia.org/wiki/Space-filling_curve">space-filling curve</a>.
+Space filling curves are designed to fill the three dimensional space
+completely with a one-dimensional one.
+They thus map a one-dimensional unit interval onto a higher dimensional unit
+interval.
+This feature can be exploited to define a serialization of the three
+dimensional space.
+They are also defined recursively and complete coverage of the continuous
+space is achieved after infinite iterations.</p>
+<p>Finite iterations of the space filling curve definition can be interpreted as
+discrete curves and can be used to describe the ordering for finite intervals
+in the higher dimensional space.
+This recursive definition of the space filling curve ordering nicely fits the
+recursive definition of the spatial subdivisions by the octree.
+We can thus interpret the space filling curve as a rule how the children of a
+node in the octree should be numbered.
+Consecutively numbering all nodes on each refinement level according to the
+space filling curve results in a breadth first numbering of the complete
+tree.
+As these numbers identify the elements in the full tree, we refer to them as
+<a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a>s.
+Their properties are described in the following and the relation
+between mesh and tree is illustrated with the help of a quadtree in the Figure
+above.</p>
+<h2 id="partitioning-of-the-tree">Partitioning of the Tree</h2>
+<p>With this numbering scheme for all nodes in the full tree it is possible to
+deduce the geometrical position of each node purely by its assigned number.
+Just the <a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a>s of the leaf 
+nodes, that are actually part of the
+computational domain are stored with the described ordering to represent the
+mesh.
+Thus, we obtain a sparse octree, that contains only the relevant leaf nodes
+for the computational nodes.
+In the Figure of the 3D mesh, these are highlighted as green cubes.
+None of the other tree nodes, including the parents of the elements in the
+computational domain, are actually stored.
+Due to the ordering, the serialized list of elements is efficiently
+searchable.
+The one dimensional list of elements can be easily partitioned by splitting
+it into individual chunks.
+This design is sketched in the Figure above for a two
+dimensional mesh as shown on the left side of the figure.
+There is an obstacle in the middle of the mesh, covering the four central
+fine elements.
+The mesh is refined towards this obstacle.
+A line is used to indicate the connection between consecutive elements
+according to the ordering with the space filling curve.
+On the right side the according quadtree is shown and the partitioning into
+6 parts is indicated by regions with different colors.
+Thus, we obtain a simple ordered linear representation of the sparse octree.
+Each actually existing element in the mesh is numbered by position in
+addition to its <a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a> and the resulting serialized tree representation is
+given at the bottom of the Figure in the form of a simple <a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a> list.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="fileformat.html">Treelm File Format</a></li>
+<li>Load Balancing <a href="../module/tem_balance_module.html">tem_balance_module</a></li>
+</ul>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

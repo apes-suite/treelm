@@ -1,0 +1,738 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>sortposofval_label &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>sortposofval_label
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">44 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_dyn_array.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_dyn_array.f90.html'>tem_dyn_array.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">sortposofval_label</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/sortposofval_label.html#src">sortposofval_label</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  function sortposofval_label(me, val, nextifnotfound, lower, upper) result(pos)  
+</h2>
+    
+
+    <p>return the sorted position of a value in the given dynamic array</p>
+<p>if the value was not found,
+ - return 0 if nextifnotfound = .false.
+ - return position at the end if nextifnotfound = .true.</p>
+<p>binary search on sorted list</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~235"></span>
+              type(<a href='../type/dyn_labelarray_type.html'>dyn_labelarray_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-val~109"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>val</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nextifnotfound~7"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nextifnotfound</strong></td>
+            <td>
+                <p>flag to indicate, if the next entry in the list should be returned,
+if the searched one is not found.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-lower~7"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>lower</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-upper~7"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>upper</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-pos~53"></span>
+          integer
+        </small>
+      </h3>
+      
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~sortposofval_label~~CalledByGraph Pages: 1 -->
+<svg id="procsortposofval_labelCalledByGraph" width="500pt" height="326pt"
+ viewBox="0.00 0.00 500.00 326.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~sortposofval_label~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 322)">
+<title>proc~~sortposofval_label~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-322 496,-322 496,4 -4,4"/>
+<!-- proc~sortposofval_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node1" class="node">
+<title>proc~sortposofval_label</title>
+<polygon fill="none" stroke="black" points="492,-171 383,-171 383,-147 492,-147 492,-171"/>
+<text text-anchor="middle" x="437.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">sortposofval_label</text>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node2" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node2"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="347,-171 256,-171 256,-147 347,-147 347,-171"/>
+<text text-anchor="middle" x="301.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- interface~sortedposofval~4&#45;&gt;proc~sortposofval_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge1" class="edge">
+<title>interface~sortedposofval~4&#45;&gt;proc~sortposofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M347.12,-159C355.33,-159 364.04,-159 372.69,-159"/>
+<polygon fill="#000000" stroke="#000000" points="372.77,-162.5 382.77,-159 372.77,-155.5 372.77,-162.5"/>
+</g>
+<!-- proc~append_da_int -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node3" class="node">
+<title>proc~append_da_int</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node3"><a xlink:href="../proc/append_da_int.html" xlink:title="append_da_int">
+<polygon fill="#d9534f" stroke="#d9534f" points="214,-318 123,-318 123,-294 214,-294 214,-318"/>
+<text text-anchor="middle" x="168.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_int</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_int&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge2" class="edge">
+<title>proc~append_da_int&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M206.09,-293.97C211.05,-291.45 215.85,-288.48 220,-285 254.56,-256 279.3,-208.3 291.62,-180.66"/>
+<polygon fill="#000000" stroke="#000000" points="294.98,-181.7 295.73,-171.13 288.56,-178.93 294.98,-181.7"/>
+</g>
+<!-- proc~append_da_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node4" class="node">
+<title>proc~append_da_label</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node4"><a xlink:href="../proc/append_da_label.html" xlink:title="append_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-276 117,-276 117,-252 220,-252 220,-276"/>
+<text text-anchor="middle" x="168.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_label</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge3" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M203.91,-251.95C209.5,-249.37 215.06,-246.38 220,-243 246.04,-225.17 270.28,-197.81 285.22,-179.2"/>
+<polygon fill="#000000" stroke="#000000" points="288.17,-181.11 291.59,-171.09 282.66,-176.79 288.17,-181.11"/>
+</g>
+<!-- proc~append_da_long -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node5" class="node">
+<title>proc~append_da_long</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node5"><a xlink:href="../proc/append_da_long.html" xlink:title="append_da_long">
+<polygon fill="#d9534f" stroke="#d9534f" points="218.5,-234 118.5,-234 118.5,-210 218.5,-210 218.5,-234"/>
+<text text-anchor="middle" x="168.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_long</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_long&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge4" class="edge">
+<title>proc~append_da_long&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M199.6,-209.99C206.36,-207.15 213.46,-204.06 220,-201 236.52,-193.28 254.54,-183.96 269.34,-176.06"/>
+<polygon fill="#000000" stroke="#000000" points="271.4,-178.93 278.55,-171.11 268.08,-172.76 271.4,-178.93"/>
+</g>
+<!-- proc~append_da_real -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node6" class="node">
+<title>proc~append_da_real</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node6"><a xlink:href="../proc/append_da_real.html" xlink:title="append_da_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="217,-192 120,-192 120,-168 217,-168 217,-192"/>
+<text text-anchor="middle" x="168.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_real</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_real&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge5" class="edge">
+<title>proc~append_da_real&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M217.16,-172.36C226.41,-170.88 236.16,-169.31 245.61,-167.8"/>
+<polygon fill="#000000" stroke="#000000" points="246.39,-171.22 255.71,-166.18 245.28,-164.31 246.39,-171.22"/>
+</g>
+<!-- proc~posofval_int -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node7" class="node">
+<title>proc~posofval_int</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node7"><a xlink:href="../proc/posofval_int.html" xlink:title="posofval_int">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="206.5,-150 130.5,-150 130.5,-126 206.5,-126 206.5,-150"/>
+<text text-anchor="middle" x="168.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_int</text>
+</a>
+</g>
+</g>
+<!-- proc~posofval_int&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge6" class="edge">
+<title>proc~posofval_int&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M206.69,-143.96C218.87,-145.91 232.66,-148.12 245.85,-150.24"/>
+<polygon fill="#000000" stroke="#000000" points="245.35,-153.7 255.78,-151.83 246.46,-146.79 245.35,-153.7"/>
+</g>
+<!-- proc~posofval_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node8" class="node">
+<title>proc~posofval_label</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node8"><a xlink:href="../proc/posofval_label.html" xlink:title="posofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="213,-108 124,-108 124,-84 213,-84 213,-108"/>
+<text text-anchor="middle" x="168.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_label</text>
+</a>
+</g>
+</g>
+<!-- proc~posofval_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge7" class="edge">
+<title>proc~posofval_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M199.6,-108.01C206.36,-110.85 213.46,-113.94 220,-117 236.52,-124.72 254.54,-134.04 269.34,-141.94"/>
+<polygon fill="#000000" stroke="#000000" points="268.08,-145.24 278.55,-146.89 271.4,-139.07 268.08,-145.24"/>
+</g>
+<!-- proc~posofval_long -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node9" class="node">
+<title>proc~posofval_long</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node9"><a xlink:href="../proc/posofval_long.html" xlink:title="posofval_long">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="211.5,-66 125.5,-66 125.5,-42 211.5,-42 211.5,-66"/>
+<text text-anchor="middle" x="168.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_long</text>
+</a>
+</g>
+</g>
+<!-- proc~posofval_long&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge8" class="edge">
+<title>proc~posofval_long&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M203.91,-66.05C209.5,-68.63 215.06,-71.62 220,-75 246.04,-92.83 270.28,-120.19 285.22,-138.8"/>
+<polygon fill="#000000" stroke="#000000" points="282.66,-141.21 291.59,-146.91 288.17,-136.89 282.66,-141.21"/>
+</g>
+<!-- proc~posofval_real -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node10" class="node">
+<title>proc~posofval_real</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node10"><a xlink:href="../proc/posofval_real.html" xlink:title="posofval_real">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="210,-24 127,-24 127,0 210,0 210,-24"/>
+<text text-anchor="middle" x="168.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">posofval_real</text>
+</a>
+</g>
+</g>
+<!-- proc~posofval_real&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge9" class="edge">
+<title>proc~posofval_real&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M206.09,-24.03C211.05,-26.55 215.85,-29.52 220,-33 254.56,-62 279.3,-109.7 291.62,-137.34"/>
+<polygon fill="#000000" stroke="#000000" points="288.56,-139.07 295.73,-146.87 294.98,-136.3 288.56,-139.07"/>
+</g>
+<!-- interface~append~16 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node11" class="node">
+<title>interface~append~16</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node11"><a xlink:href="../interface/append~16.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="67.5,-234 13.5,-234 13.5,-210 67.5,-210 67.5,-234"/>
+<text text-anchor="middle" x="40.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- interface~append~16&#45;&gt;proc~append_da_long -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge12" class="edge">
+<title>interface~append~16&#45;&gt;proc~append_da_long</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M67.61,-222C79.38,-222 93.81,-222 108,-222"/>
+<polygon fill="#000000" stroke="#000000" points="108.25,-225.5 118.25,-222 108.25,-218.5 108.25,-225.5"/>
+</g>
+<!-- interface~append~17 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node12" class="node">
+<title>interface~append~17</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node12"><a xlink:href="../interface/append~17.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="67.5,-318 13.5,-318 13.5,-294 67.5,-294 67.5,-318"/>
+<text text-anchor="middle" x="40.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- interface~append~17&#45;&gt;proc~append_da_int -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge10" class="edge">
+<title>interface~append~17&#45;&gt;proc~append_da_int</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M67.61,-306C80.68,-306 97.01,-306 112.67,-306"/>
+<polygon fill="#000000" stroke="#000000" points="112.81,-309.5 122.81,-306 112.81,-302.5 112.81,-309.5"/>
+</g>
+<!-- interface~append~18 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node13" class="node">
+<title>interface~append~18</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node13"><a xlink:href="../interface/append~18.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="67.5,-192 13.5,-192 13.5,-168 67.5,-168 67.5,-192"/>
+<text text-anchor="middle" x="40.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- interface~append~18&#45;&gt;proc~append_da_real -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge13" class="edge">
+<title>interface~append~18&#45;&gt;proc~append_da_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M67.61,-180C79.85,-180 94.96,-180 109.69,-180"/>
+<polygon fill="#000000" stroke="#000000" points="109.78,-183.5 119.78,-180 109.78,-176.5 109.78,-183.5"/>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node14" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node14"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="67.5,-276 13.5,-276 13.5,-252 67.5,-252 67.5,-276"/>
+<text text-anchor="middle" x="40.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge11" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M67.61,-264C79.09,-264 93.1,-264 106.95,-264"/>
+<polygon fill="#000000" stroke="#000000" points="106.97,-267.5 116.97,-264 106.97,-260.5 106.97,-267.5"/>
+</g>
+<!-- interface~positionofval -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node15" class="node">
+<title>interface~positionofval</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node15"><a xlink:href="../interface/positionofval.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="81,-66 0,-66 0,-42 81,-42 81,-66"/>
+<text text-anchor="middle" x="40.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval&#45;&gt;proc~posofval_long -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge16" class="edge">
+<title>interface~positionofval&#45;&gt;proc~posofval_long</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M81.02,-54C91.74,-54 103.52,-54 114.84,-54"/>
+<polygon fill="#000000" stroke="#000000" points="115.06,-57.5 125.06,-54 115.06,-50.5 115.06,-57.5"/>
+</g>
+<!-- interface~positionofval~2 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node16" class="node">
+<title>interface~positionofval~2</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node16"><a xlink:href="../interface/positionofval~2.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="81,-150 0,-150 0,-126 81,-126 81,-150"/>
+<text text-anchor="middle" x="40.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval~2&#45;&gt;proc~posofval_int -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge14" class="edge">
+<title>interface~positionofval~2&#45;&gt;proc~posofval_int</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M81.02,-138C93.44,-138 107.27,-138 120.17,-138"/>
+<polygon fill="#000000" stroke="#000000" points="120.27,-141.5 130.27,-138 120.27,-134.5 120.27,-141.5"/>
+</g>
+<!-- interface~positionofval~3 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node17" class="node">
+<title>interface~positionofval~3</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node17"><a xlink:href="../interface/positionofval~3.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="81,-24 0,-24 0,0 81,0 81,-24"/>
+<text text-anchor="middle" x="40.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval~3&#45;&gt;proc~posofval_real -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge17" class="edge">
+<title>interface~positionofval~3&#45;&gt;proc~posofval_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M81.02,-12C92.3,-12 104.74,-12 116.6,-12"/>
+<polygon fill="#000000" stroke="#000000" points="116.82,-15.5 126.82,-12 116.82,-8.5 116.82,-15.5"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~sortposofval_label~~CalledByGraph_node18" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~sortposofval_label~~CalledByGraph_node18"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="81,-108 0,-108 0,-84 81,-84 81,-108"/>
+<text text-anchor="middle" x="40.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- interface~positionofval~4&#45;&gt;proc~posofval_label -->
+<g id="proc~~sortposofval_label~~CalledByGraph_edge15" class="edge">
+<title>interface~positionofval~4&#45;&gt;proc~posofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M81.02,-96C91.3,-96 102.56,-96 113.45,-96"/>
+<polygon fill="#000000" stroke="#000000" points="113.74,-99.5 123.74,-96 113.74,-92.5 113.74,-99.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">sortposofval_label</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">,</span><span class="w"> </span><span class="n">nextifnotfound</span><span class="p">,</span><span class="w"> </span><span class="n">lower</span><span class="p">,</span><span class="w"> </span><span class="n">upper</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_labelarray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="c">!&lt; dynamic array</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">val</span><span class="w"> </span><span class="c">!&lt; value to look for</span>
+<span class="w">    </span><span class="c">!&gt; flag to indicate, if the next entry in the list should be returned,</span>
+<span class="w">    </span><span class="c">!! if the searched one is not found.</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nextifnotfound</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="c">!&lt; lower search limit</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="c">!&lt; upper search limit</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="c">!&lt; position of val in the sorted list, 0 if not found</span>
+<span class="w">    </span><span class="c">!------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">retnext</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lb</span><span class="p">,</span><span class="w"> </span><span class="n">ub</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mid</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labellen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lb_val</span><span class="p">,</span><span class="w"> </span><span class="n">ub_val</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labellen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mid_val</span>
+<span class="w">    </span><span class="c">!------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="n">retnext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">nextifnotfound</span><span class="p">))</span><span class="w"> </span><span class="n">retnext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextifnotfound</span>
+
+<span class="w">    </span><span class="n">lb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">nvals</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">lb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">upper</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper</span>
+
+<span class="w">    </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retnext</span><span class="p">)</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lb</span>
+
+<span class="w">    </span><span class="c">!&gt; binary search on sorted list</span>
+<span class="w">    </span><span class="k">do while</span><span class="p">(</span><span class="n">ub</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">lb</span><span class="p">)</span>
+<span class="w">      </span><span class="n">lb_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">sorted</span><span class="p">(</span><span class="n">lb</span><span class="p">))</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">lb_val</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">retnext</span><span class="p">)</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lb</span>
+<span class="w">        </span><span class="k">exit</span>
+<span class="k">      end if</span>
+
+<span class="k">      </span><span class="n">ub_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">sorted</span><span class="p">(</span><span class="n">ub</span><span class="p">))</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ub_val</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">retnext</span><span class="p">)</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ub</span><span class="o">+</span><span class="mi">1</span>
+<span class="w">        </span><span class="k">exit</span>
+<span class="k">      end if</span>
+
+<span class="w">      </span><span class="c">! safe guard against integer limit overflow</span>
+<span class="w">      </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lb</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">ub</span><span class="o">-</span><span class="n">lb</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">      </span><span class="n">mid_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">sorted</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">mid_val</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span>
+<span class="w">        </span><span class="k">exit</span>
+<span class="k">      end if</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">mid_val</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">lb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+<span class="k">  end function </span><span class="n">sortposofval_label</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

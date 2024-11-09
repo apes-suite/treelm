@@ -1,0 +1,1084 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_load_restart &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_load_restart
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">85 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_restart_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_restart_module.f90.html'>tem_restart_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_restart_module.html'>tem_restart_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_load_restart</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_load_restart.html#src">tem_load_restart</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_load_restart(me, conf, tree, timing, globProc, parent_table, key)  
+</h2>
+    
+
+    <p>Read all necessary information for the restart from the lua config file.</p>
+<p>Include this routine into your general configuration load routine.
+ The configuration looks as follows</p>
+<div class="codehilite"><pre><span></span><code> <span class="n">restart</span> <span class="o">=</span> <span class="p">{</span> <span class="n">read</span> <span class="o">=</span> <span class="s1">&#39;restart/lastHeader.lua&#39;</span><span class="p">,</span> <span class="c1">-- Which file to restart from,</span>
+                                              <span class="c1">-- if any</span>
+             <span class="n">write</span> <span class="o">=</span> <span class="s1">&#39;restart/&#39;</span><span class="p">,</span> <span class="c1">-- Where to write the restart files to,</span>
+                                 <span class="c1">-- if any</span>
+             <span class="n">time</span> <span class="o">=</span> <span class="p">{</span> <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">interval</span> <span class="o">=</span> <span class="mi">10</span><span class="p">}</span> <span class="c1">-- when to output</span>
+             <span class="p">}</span>
+</code></pre></div>
+
+<p>Here, the restart is loaded from <code>restart/lastHeader.lua</code> and reads in the
+ related data and configuration.
+ Restart files are written out in <code>restart/</code> folder</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~70"></span>
+              type(<a href='../type/tem_restart_type.html'>tem_restart_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>restart type to be filled</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~38"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>lua configuration file</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~2"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>mesh, provided in treelm format</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-timing"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>timing</strong></td>
+            <td>
+                <p>the timing for re-setting the times</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-globproc"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>globProc</strong></td>
+            <td>
+                <p>Global process communicator env</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-parent_table"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>parent_table</strong></td>
+            <td>
+                <p>optional parent handle</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~11"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+                <p>optional key for table</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_restart~~CallsGraph Pages: 1 -->
+<svg id="proctem_load_restartCallsGraph" width="498pt" height="788pt"
+ viewBox="0.00 0.00 498.00 788.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_restart~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 784)">
+<title>proc~~tem_load_restart~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-784 494,-784 494,4 -4,4"/>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_load_restart~~CallsGraph_node1" class="node">
+<title>proc~tem_load_restart</title>
+<polygon fill="none" stroke="black" points="102,-329 0,-329 0,-305 102,-305 102,-329"/>
+<text text-anchor="middle" x="51" y="-314.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_restart</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_load_restart~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="455.5,-402 382.5,-402 382.5,-378 455.5,-378 455.5,-402"/>
+<text text-anchor="middle" x="419" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge1" class="edge">
+<title>proc~tem_load_restart&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M71.71,-329.07C88.65,-338.83 114.06,-352.06 138,-359 218.09,-382.23 315.71,-388.27 371.98,-389.71"/>
+<polygon fill="#000000" stroke="#000000" points="372.25,-393.22 382.32,-389.93 372.4,-386.22 372.25,-393.22"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_load_restart~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="466.5,-444 371.5,-444 371.5,-420 466.5,-420 466.5,-444"/>
+<text text-anchor="middle" x="419" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge2" class="edge">
+<title>proc~tem_load_restart&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M63.19,-329.25C78.45,-345.12 107.41,-372.36 138,-386 210.58,-418.37 302.87,-428.21 361.21,-431.06"/>
+<polygon fill="#000000" stroke="#000000" points="361.2,-434.56 371.34,-431.5 361.5,-427.57 361.2,-434.56"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_load_restart~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="466,-654 372,-654 372,-630 466,-630 466,-654"/>
+<text text-anchor="middle" x="419" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge3" class="edge">
+<title>proc~tem_load_restart&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M54.26,-329.37C61.05,-363.3 84.21,-459.12 138,-516 199.07,-580.57 299.35,-614.48 361.87,-630.27"/>
+<polygon fill="#000000" stroke="#000000" points="361.4,-633.76 371.95,-632.75 363.07,-626.96 361.4,-633.76"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~tem_load_restart~~CallsGraph_node5" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="258.5,-266 191.5,-266 191.5,-242 258.5,-242 258.5,-266"/>
+<text text-anchor="middle" x="225" y="-251.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;mpi_bcast -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge4" class="edge">
+<title>proc~tem_load_restart&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M73.35,-304.97C90.42,-295.75 115.19,-283.25 138,-275 151.84,-270 167.36,-265.8 181.37,-262.5"/>
+<polygon fill="#000000" stroke="#000000" points="182.27,-265.89 191.25,-260.26 180.72,-259.06 182.27,-265.89"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_load_restart~~CallsGraph_node6" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node6"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="258.5,-224 191.5,-224 191.5,-200 258.5,-200 258.5,-224"/>
+<text text-anchor="middle" x="225" y="-209.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge5" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M60.84,-304.92C75.01,-286.49 104.6,-251.53 138,-233 151.19,-225.68 166.92,-220.89 181.29,-217.76"/>
+<polygon fill="#000000" stroke="#000000" points="182.32,-221.12 191.46,-215.76 180.97,-214.25 182.32,-221.12"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~tem_load_restart~~CallsGraph_node7" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node7"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="290,-182 160,-182 160,-158 290,-158 290,-182"/>
+<text text-anchor="middle" x="225" y="-167.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge6" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M56.76,-304.74C67.3,-279.31 95.11,-220.7 138,-191 141.8,-188.37 145.89,-186.07 150.16,-184.05"/>
+<polygon fill="#000000" stroke="#000000" points="151.82,-187.15 159.72,-180.08 149.14,-180.68 151.82,-187.15"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_load_restart~~CallsGraph_node8" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node8"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="296,-350 154,-350 154,-326 296,-326 296,-350"/>
+<text text-anchor="middle" x="225" y="-335.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge7" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.21,-323.13C115.22,-324.72 129.55,-326.47 143.68,-328.19"/>
+<polygon fill="#000000" stroke="#000000" points="143.56,-331.7 153.91,-329.44 144.41,-324.76 143.56,-331.7"/>
+</g>
+<!-- proc~tem_time_reset -->
+<g id="proc~~tem_load_restart~~CallsGraph_node9" class="node">
+<title>proc~tem_time_reset</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node9"><a xlink:href="../proc/tem_time_reset.html" xlink:title="tem_time_reset">
+<polygon fill="#d9534f" stroke="#d9534f" points="272,-119 178,-119 178,-95 272,-95 272,-119"/>
+<text text-anchor="middle" x="225" y="-104.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_reset</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_time_reset -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge8" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_time_reset</title>
+<path fill="none" stroke="#000000" d="M55.3,-304.82C64.01,-274.7 90.29,-195.82 138,-149 149.08,-138.13 163.53,-129.59 177.41,-123.14"/>
+<polygon fill="#000000" stroke="#000000" points="179.12,-126.22 186.88,-119.01 176.32,-119.8 179.12,-126.22"/>
+</g>
+<!-- proc~tem_time_set_clock -->
+<g id="proc~~tem_load_restart~~CallsGraph_node10" class="node">
+<title>proc~tem_time_set_clock</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node10"><a xlink:href="../proc/tem_time_set_clock.html" xlink:title="tem_time_set_clock">
+<polygon fill="#d9534f" stroke="#d9534f" points="283.5,-35 166.5,-35 166.5,-11 283.5,-11 283.5,-35"/>
+<text text-anchor="middle" x="225" y="-20.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_set_clock</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_time_set_clock -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge9" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_time_set_clock</title>
+<path fill="none" stroke="#000000" d="M53.99,-304.77C60.43,-268.25 83.54,-158.02 138,-86 152.26,-67.14 173.7,-51.42 191.61,-40.4"/>
+<polygon fill="#000000" stroke="#000000" points="193.77,-43.18 200.59,-35.07 190.2,-37.16 193.77,-43.18"/>
+</g>
+<!-- proc~tem_timecontrol_align_trigger -->
+<g id="proc~~tem_load_restart~~CallsGraph_node11" class="node">
+<title>proc~tem_timecontrol_align_trigger</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node11"><a xlink:href="../proc/tem_timecontrol_align_trigger.html" xlink:title="tem_timeControl_align_trigger">
+<polygon fill="#d9534f" stroke="#d9534f" points="312,-696 138,-696 138,-672 312,-672 312,-696"/>
+<text text-anchor="middle" x="225" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_align_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_align_trigger -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge10" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_align_trigger</title>
+<path fill="none" stroke="#000000" d="M53.36,-329.07C58.47,-370.26 79.24,-507.96 138,-603 153.6,-628.23 179.01,-650.8 198.18,-665.67"/>
+<polygon fill="#000000" stroke="#000000" points="196.14,-668.51 206.22,-671.74 200.35,-662.92 196.14,-668.51"/>
+</g>
+<!-- proc~tem_timecontrol_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_node12" class="node">
+<title>proc~tem_timecontrol_dump</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node12"><a xlink:href="../proc/tem_timecontrol_dump.html" xlink:title="tem_timeControl_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="293.5,-308 156.5,-308 156.5,-284 293.5,-284 293.5,-308"/>
+<text text-anchor="middle" x="225" y="-293.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge11" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_dump</title>
+<path fill="none" stroke="#000000" d="M102.21,-310.87C115.99,-309.19 131.26,-307.32 146.19,-305.5"/>
+<polygon fill="#000000" stroke="#000000" points="146.95,-308.93 156.46,-304.25 146.11,-301.98 146.95,-308.93"/>
+</g>
+<!-- proc~tem_timecontrol_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_node13" class="node">
+<title>proc~tem_timecontrol_load</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node13"><a xlink:href="../proc/tem_timecontrol_load.html" xlink:title="tem_timeControl_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="290,-507 160,-507 160,-483 290,-483 290,-507"/>
+<text text-anchor="middle" x="225" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge12" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M57.88,-329.13C70.09,-353.35 100.2,-408.4 138,-444 152.58,-457.73 171.48,-469.44 187.85,-478.17"/>
+<polygon fill="#000000" stroke="#000000" points="186.65,-481.48 197.14,-482.95 189.86,-475.26 186.65,-481.48"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_load_restart~~CallsGraph_node17" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="452.5,-66 385.5,-66 385.5,-42 452.5,-42 452.5,-66"/>
+<text text-anchor="middle" x="419" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge13" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M258.67,-211.56C276.5,-209.64 297.78,-204.37 312,-191 351.32,-154.02 309.65,-112.99 348,-75 355.44,-67.63 365.35,-62.83 375.37,-59.71"/>
+<polygon fill="#000000" stroke="#000000" points="376.55,-63.02 385.34,-57.12 374.78,-56.25 376.55,-63.02"/>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge14" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M270.53,-350.06C301.09,-358.34 341.52,-369.29 372.32,-377.63"/>
+<polygon fill="#000000" stroke="#000000" points="371.8,-381.11 382.36,-380.35 373.63,-374.36 371.8,-381.11"/>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge15" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M243.04,-350.07C265.98,-365.86 308.48,-393.57 348,-411 352.6,-413.03 357.45,-414.93 362.37,-416.7"/>
+<polygon fill="#000000" stroke="#000000" points="361.25,-420.02 371.85,-419.93 363.51,-413.39 361.25,-420.02"/>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge16" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M235.78,-350.35C253.53,-373.36 291.12,-424.9 312,-474 338.32,-535.9 301.67,-572.23 348,-621 352.14,-625.36 357.15,-628.83 362.56,-631.58"/>
+<polygon fill="#000000" stroke="#000000" points="361.4,-634.89 371.97,-635.57 364.13,-628.44 361.4,-634.89"/>
+</g>
+<!-- close_config -->
+<g id="proc~~tem_load_restart~~CallsGraph_node14" class="node">
+<title>close_config</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node14"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/close_config.html" xlink:title="close_config">
+<polygon fill="#d9534f" stroke="#d9534f" points="458.5,-192 379.5,-192 379.5,-168 458.5,-168 458.5,-192"/>
+<text text-anchor="middle" x="419" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">close_config</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;close_config -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge17" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;close_config</title>
+<path fill="none" stroke="#000000" d="M296.38,-327.58C302.08,-324.79 307.41,-321.32 312,-317 351.32,-280.02 309.65,-238.99 348,-201 353.96,-195.1 361.51,-190.84 369.43,-187.78"/>
+<polygon fill="#000000" stroke="#000000" points="370.77,-191.02 379.2,-184.6 368.61,-184.37 370.77,-191.02"/>
+</g>
+<!-- interface~tem_varsys_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_node15" class="node">
+<title>interface~tem_varsys_dump</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node15"><a xlink:href="../interface/tem_varsys_dump.html" xlink:title="tem_varSys_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="474,-150 364,-150 364,-126 474,-126 474,-150"/>
+<text text-anchor="middle" x="419" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge18" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_dump</title>
+<path fill="none" stroke="#000000" d="M296.32,-328.15C302.11,-325.26 307.47,-321.6 312,-317 362.53,-265.68 298.82,-211.62 348,-159 350.07,-156.78 352.37,-154.8 354.82,-153.02"/>
+<polygon fill="#000000" stroke="#000000" points="356.91,-155.85 363.73,-147.74 353.34,-149.83 356.91,-155.85"/>
+</g>
+<!-- interface~tem_varsys_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_node16" class="node">
+<title>interface~tem_varsys_load</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node16"><a xlink:href="../interface/tem_varsys_load.html" xlink:title="tem_varSys_load">
+<polygon fill="#a7506f" stroke="#a7506f" points="470.5,-360 367.5,-360 367.5,-336 470.5,-336 470.5,-360"/>
+<text text-anchor="middle" x="419" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge19" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;interface~tem_varsys_load</title>
+<path fill="none" stroke="#000000" d="M296.13,-341.65C316.11,-342.69 337.7,-343.82 357.08,-344.83"/>
+<polygon fill="#000000" stroke="#000000" points="357.12,-348.33 367.29,-345.36 357.49,-341.34 357.12,-348.33"/>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~tem_load_restart~~CallsGraph_node20" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node20"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="450,-318 388,-318 388,-294 450,-294 450,-318"/>
+<text text-anchor="middle" x="419" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge20" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M296.13,-326.31C323.66,-321.72 354.25,-316.62 377.9,-312.68"/>
+<polygon fill="#000000" stroke="#000000" points="378.62,-316.11 387.91,-311.01 377.47,-309.21 378.62,-316.11"/>
+</g>
+<!-- proc~tem_open_distconf -->
+<g id="proc~~tem_load_restart~~CallsGraph_node21" class="node">
+<title>proc~tem_open_distconf</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node21"><a xlink:href="../proc/tem_open_distconf.html" xlink:title="tem_open_distconf">
+<polygon fill="#d9534f" stroke="#d9534f" points="475.5,-276 362.5,-276 362.5,-252 475.5,-252 475.5,-276"/>
+<text text-anchor="middle" x="419" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open_distconf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge21" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf</title>
+<path fill="none" stroke="#000000" d="M290.67,-325.88C298.06,-323.43 305.33,-320.5 312,-317 330.96,-307.06 329.31,-295.43 348,-285 351.3,-283.16 354.77,-281.46 358.34,-279.9"/>
+<polygon fill="#000000" stroke="#000000" points="359.95,-283.03 367.94,-276.08 357.36,-276.53 359.95,-283.03"/>
+</g>
+<!-- proc~tem_time_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_node23" class="node">
+<title>proc~tem_time_dump</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node23"><a xlink:href="../proc/tem_time_dump.html" xlink:title="tem_time_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="468.5,-108 369.5,-108 369.5,-84 468.5,-84 468.5,-108"/>
+<text text-anchor="middle" x="419" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge22" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_dump</title>
+<path fill="none" stroke="#000000" d="M296.13,-328.58C302.04,-325.6 307.47,-321.81 312,-317 373.87,-251.21 287.86,-184.38 348,-117 351.5,-113.08 355.7,-109.87 360.29,-107.26"/>
+<polygon fill="#000000" stroke="#000000" points="361.93,-110.36 369.49,-102.93 358.95,-104.02 361.93,-110.36"/>
+</g>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_node26" class="node">
+<title>proc~tem_time_load</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node26"><a xlink:href="../proc/tem_time_load.html" xlink:title="tem_time_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="464.5,-486 373.5,-486 373.5,-462 464.5,-462 464.5,-486"/>
+<text text-anchor="middle" x="419" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge23" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M235.69,-350.36C254.71,-373.81 299.35,-424.91 348,-453 353,-455.89 358.43,-458.41 363.98,-460.61"/>
+<polygon fill="#000000" stroke="#000000" points="362.79,-463.9 373.39,-464.01 365.17,-457.32 362.79,-463.9"/>
+</g>
+<!-- proc~tem_time_sim_stamp -->
+<g id="proc~~tem_load_restart~~CallsGraph_node29" class="node">
+<title>proc~tem_time_sim_stamp</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node29"><a xlink:href="../proc/tem_time_sim_stamp.html" xlink:title="tem_time_sim_stamp">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="481.5,-234 356.5,-234 356.5,-210 481.5,-210 481.5,-234"/>
+<text text-anchor="middle" x="419" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_sim_stamp</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_time_sim_stamp -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge24" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_time_sim_stamp</title>
+<path fill="none" stroke="#000000" d="M296.14,-326.62C301.83,-324.03 307.21,-320.86 312,-317 340.47,-294.04 320.14,-266.69 348,-243 349.56,-241.67 351.2,-240.43 352.9,-239.27"/>
+<polygon fill="#000000" stroke="#000000" points="354.98,-242.11 361.89,-234.08 351.48,-236.05 354.98,-242.11"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~tem_load_restart~~CallsGraph_node18" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="454,-24 384,-24 384,0 454,0 454,-24"/>
+<text text-anchor="middle" x="419" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_time_reset&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge25" class="edge">
+<title>proc~tem_time_reset&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M243.01,-94.75C265.92,-78.72 308.39,-50.61 348,-33 356.26,-29.33 365.33,-26.08 374.14,-23.29"/>
+<polygon fill="#000000" stroke="#000000" points="375.34,-26.59 383.9,-20.35 373.32,-19.88 375.34,-26.59"/>
+</g>
+<!-- proc~tem_time_set_clock&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge26" class="edge">
+<title>proc~tem_time_set_clock&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M283.61,-19.7C312.47,-18.05 346.88,-16.07 373.65,-14.54"/>
+<polygon fill="#000000" stroke="#000000" points="374.1,-18.02 383.88,-13.95 373.7,-11.03 374.1,-18.02"/>
+</g>
+<!-- proc~tem_timecontrol_align_trigger&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge27" class="edge">
+<title>proc~tem_timecontrol_align_trigger&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M281.02,-671.96C306.36,-666.42 336.38,-659.85 361.86,-654.28"/>
+<polygon fill="#000000" stroke="#000000" points="362.72,-657.68 371.74,-652.12 361.22,-650.84 362.72,-657.68"/>
+</g>
+<!-- proc~load_alignmask -->
+<g id="proc~~tem_load_restart~~CallsGraph_node19" class="node">
+<title>proc~load_alignmask</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node19"><a xlink:href="../proc/load_alignmask.html" xlink:title="load_alignmask">
+<polygon fill="#d9534f" stroke="#d9534f" points="467,-738 371,-738 371,-714 467,-714 467,-738"/>
+<text text-anchor="middle" x="419" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_alignmask</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_align_trigger&#45;&gt;proc~load_alignmask -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge28" class="edge">
+<title>proc~tem_timecontrol_align_trigger&#45;&gt;proc~load_alignmask</title>
+<path fill="none" stroke="#000000" d="M281.02,-696.04C306.06,-701.51 335.69,-707.99 360.97,-713.52"/>
+<polygon fill="#000000" stroke="#000000" points="360.27,-716.95 370.79,-715.67 361.76,-710.12 360.27,-716.95"/>
+</g>
+<!-- proc~tem_time_ge_trigger -->
+<g id="proc~~tem_load_restart~~CallsGraph_node24" class="node">
+<title>proc~tem_time_ge_trigger</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node24"><a xlink:href="../proc/tem_time_ge_trigger.html" xlink:title="tem_time_ge_trigger">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="480.5,-696 357.5,-696 357.5,-672 480.5,-672 480.5,-696"/>
+<text text-anchor="middle" x="419" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_ge_trigger</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_align_trigger&#45;&gt;proc~tem_time_ge_trigger -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge29" class="edge">
+<title>proc~tem_timecontrol_align_trigger&#45;&gt;proc~tem_time_ge_trigger</title>
+<path fill="none" stroke="#000000" d="M312.17,-684C323.85,-684 335.72,-684 347.09,-684"/>
+<polygon fill="#000000" stroke="#000000" points="347.37,-687.5 357.37,-684 347.37,-680.5 347.37,-687.5"/>
+</g>
+<!-- proc~tem_time_last_interval -->
+<g id="proc~~tem_load_restart~~CallsGraph_node25" class="node">
+<title>proc~tem_time_last_interval</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node25"><a xlink:href="../proc/tem_time_last_interval.html" xlink:title="tem_time_last_interval">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="485.5,-780 352.5,-780 352.5,-756 485.5,-756 485.5,-780"/>
+<text text-anchor="middle" x="419" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_last_interval</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_align_trigger&#45;&gt;proc~tem_time_last_interval -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge30" class="edge">
+<title>proc~tem_timecontrol_align_trigger&#45;&gt;proc~tem_time_last_interval</title>
+<path fill="none" stroke="#000000" d="M246.6,-696.14C270.42,-709.82 311.09,-732.08 348,-747 353,-749.02 358.27,-750.95 363.58,-752.76"/>
+<polygon fill="#000000" stroke="#000000" points="362.54,-756.1 373.14,-755.89 364.72,-749.45 362.54,-756.1"/>
+</g>
+<!-- proc~tem_timecontrol_dump&#45;&gt;proc~tem_time_dump -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge31" class="edge">
+<title>proc~tem_timecontrol_dump&#45;&gt;proc~tem_time_dump</title>
+<path fill="none" stroke="#000000" d="M293.81,-287.35C300.57,-284.28 306.82,-280.26 312,-275 362.53,-223.68 298.82,-169.62 348,-117 351.54,-113.22 355.73,-110.1 360.27,-107.55"/>
+<polygon fill="#000000" stroke="#000000" points="361.8,-110.7 369.37,-103.28 358.83,-104.36 361.8,-110.7"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge32" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M240.47,-482.78C262.42,-464.79 306.03,-431.13 348,-411 355.73,-407.29 364.25,-404.08 372.62,-401.36"/>
+<polygon fill="#000000" stroke="#000000" points="373.77,-404.67 382.3,-398.39 371.71,-397.97 373.77,-404.67"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge33" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M259.8,-482.96C284.22,-474.36 318.04,-462.65 348,-453 354.1,-451.03 360.52,-449.03 366.9,-447.07"/>
+<polygon fill="#000000" stroke="#000000" points="368.28,-450.31 376.83,-444.05 366.24,-443.61 368.28,-450.31"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge34" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M240.35,-507.11C257.97,-522.25 288.42,-549.32 312,-575 329.56,-594.12 326.56,-606.36 348,-621 352.34,-623.96 357.11,-626.52 362.06,-628.72"/>
+<polygon fill="#000000" stroke="#000000" points="361.13,-632.12 371.72,-632.53 363.7,-625.61 361.13,-632.12"/>
+</g>
+<!-- proc~tem_time_default_zero -->
+<g id="proc~~tem_load_restart~~CallsGraph_node22" class="node">
+<title>proc~tem_time_default_zero</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node22"><a xlink:href="../proc/tem_time_default_zero.html" xlink:title="tem_time_default_zero">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="485.5,-570 352.5,-570 352.5,-546 485.5,-546 485.5,-570"/>
+<text text-anchor="middle" x="419" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_default_zero</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge35" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero</title>
+<path fill="none" stroke="#000000" d="M259.8,-507.04C284.22,-515.64 318.04,-527.35 348,-537 354.1,-538.97 360.52,-540.97 366.9,-542.93"/>
+<polygon fill="#000000" stroke="#000000" points="366.24,-546.39 376.83,-545.95 368.28,-539.69 366.24,-546.39"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge36" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M290.2,-487.98C313.83,-485.39 340.37,-482.49 363.11,-480"/>
+<polygon fill="#000000" stroke="#000000" points="363.7,-483.46 373.26,-478.89 362.94,-476.5 363.7,-483.46"/>
+</g>
+<!-- proc~tem_time_needs_reduce -->
+<g id="proc~~tem_load_restart~~CallsGraph_node27" class="node">
+<title>proc~tem_time_needs_reduce</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node27"><a xlink:href="../proc/tem_time_needs_reduce.html" xlink:title="tem_time_needs_reduce">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="490,-528 348,-528 348,-504 490,-504 490,-528"/>
+<text text-anchor="middle" x="419" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_needs_reduce</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge37" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce</title>
+<path fill="none" stroke="#000000" d="M290.2,-502.02C305.4,-503.68 321.8,-505.48 337.62,-507.21"/>
+<polygon fill="#000000" stroke="#000000" points="337.6,-510.73 347.92,-508.33 338.36,-503.77 337.6,-510.73"/>
+</g>
+<!-- proc~tem_time_never -->
+<g id="proc~~tem_load_restart~~CallsGraph_node28" class="node">
+<title>proc~tem_time_never</title>
+<g id="a_proc~~tem_load_restart~~CallsGraph_node28"><a xlink:href="../proc/tem_time_never.html" xlink:title="tem_time_never">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="468.5,-612 369.5,-612 369.5,-588 468.5,-588 468.5,-612"/>
+<text text-anchor="middle" x="419" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_never</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_load_restart~~CallsGraph_edge38" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M240.47,-507.22C262.42,-525.21 306.03,-558.87 348,-579 352.1,-580.97 356.43,-582.79 360.83,-584.48"/>
+<polygon fill="#000000" stroke="#000000" points="359.95,-587.89 370.55,-587.96 362.31,-581.3 359.95,-587.89"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_restart</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w"> </span><span class="n">parent_table</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">key</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; restart type to be filled</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_restart_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; lua configuration file</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">)</span><span class="w">                        </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; mesh, provided in treelm format</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">    </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; the timing for re-setting the times</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">     </span><span class="kd">::</span><span class="w"> </span><span class="n">timing</span>
+<span class="w">    </span><span class="c">!&gt; Global process communicator env</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_comm_env_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">globProc</span>
+<span class="w">    </span><span class="c">!&gt; optional parent handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">parent_table</span>
+<span class="w">    </span><span class="c">!&gt; optional key for table</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">localKey</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">readexists</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">restart_table</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! The table to look for is not named restart, look for this different</span>
+<span class="w">      </span><span class="c">! key.</span>
+<span class="w">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">      </span><span class="c">! Use the default name restart for the table.</span>
+<span class="w">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;restart&#39;</span>
+<span class="w">      </span><span class="c">! Set current folder as default prefix for writing</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writePrefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="o">//</span><span class="n">pathSep</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readRestart</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writeRestart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="c">! Attempt to open the restart table (within another table, if a parent is</span>
+<span class="w">    </span><span class="c">! given).</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent_table</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localKey</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Initialize the last written time to 0.</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_time_reset</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">lastWritten</span><span class="p">)</span>
+<span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">lastWritten</span><span class="p">%</span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+
+<span class="w">    </span><span class="c">! If the restart table is present, the parameters are loaded.</span>
+<span class="w">    </span><span class="c">! In case of dynamic load balancing, parameters are loaded</span>
+<span class="w">    </span><span class="c">! in a different manner i.e. timings etc. are read from balance table</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">restart_table</span><span class="w"> </span><span class="p">.</span><span class="n">ne</span><span class="p">.</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Loading restart ...&#39;</span>
+<span class="w">      </span><span class="c">! Successfully opened the table.</span>
+
+<span class="w">      </span><span class="c">! First we get all the informations of the read table.</span>
+<span class="w">      </span><span class="c">! Reading the filename to read the restart data from.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;read&#39;</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readFileName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w">                      </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iError</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                          </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;init_on_missing&#39;</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">init_on_missing</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.,</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w">                         </span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! Successfully obtained a filename to restart from, now go on and read</span>
+<span class="w">        </span><span class="c">! the data from its header if it exists.</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;*****************************&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Restart read parameters: &quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;  filename : &quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readFileName</span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">globProc</span><span class="p">%</span><span class="n">rank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          inquire</span><span class="p">(</span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readFileName</span><span class="p">),</span><span class="w"> </span><span class="n">exist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readexists</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="n">readexists</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_LOGICAL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">globProc</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! Set the restart flag if the restart file exists</span>
+<span class="w">        </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readRestart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">readexists</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">readexists</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_restart_readHeader</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">timing</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">globProc</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">globProc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">tree</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">header</span><span class="p">%</span><span class="n">nElems</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Number of elements in restart header different &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;from mesh&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Stopping...&#39;</span>
+<span class="w">            </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">          </span><span class="k">end if</span>
+
+<span class="k">          call </span><span class="n">tem_time_set_clock</span><span class="p">(</span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">)</span>
+<span class="w">          </span><span class="n">me</span><span class="p">%</span><span class="n">lastWritten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span>
+
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;!File to restart from does NOT exist!&#39;</span>
+<span class="w">          </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">init_on_missing</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;NOTE: performing initialization without&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;      reading data from restart as requested&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;      via the init_on_missing flag.&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">          </span><span class="k">else</span>
+<span class="k">            write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  Do not know how proceed, aborting now...&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  If you want to perform the initialization&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  when the restart file is missing, set&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  the init_on_missing option in the restart&#39;</span>
+<span class="w">            </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  table to true.&#39;</span>
+<span class="w">            </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        end if</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;*****************************&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">! If reading restart</span>
+
+<span class="w">      </span><span class="c">! Now we get all the information about writing restart data.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;write&#39;</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writePrefix</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w">                     </span><span class="p">)</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writeRestart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">iError</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writeRestart</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! Read the time intervals for restart output from the Lua config.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_timeControl_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">conf</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="w">              </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">readRestart</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_timeControl_align_trigger</span><span class="p">(</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">    </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">    </span><span class="n">conf</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">    </span><span class="n">now</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">timing</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">    </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">restart_table</span><span class="w">              </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;*****************************&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Restart write parameters: &quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;  prefix   : &quot;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">writePrefix</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_timeControl_dump</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">controller</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;*****************************&quot;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="k">end if</span><span class="w"> </span><span class="c">! If restart table present</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">restart_table</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_load_restart</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1192 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_shape2subTree &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_shape2subTree
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">37 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_shape_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_shape_module.f90.html'>tem_shape_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_shape_module.html'>tem_shape_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_shape2subTree</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_shape2subtree.html#src">tem_shape2subTree</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_shape2subTree(me, iShape, inTree, storePnts, map2global, grwPnts, countElems, countPnts, bcIDs, bc_prop, stencil)  
+</h2>
+    
+
+    <p>Identify elements matching a given shape to build a subTree.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~69"></span>
+              type(<a href='../type/tem_shape_type.html'>tem_shape_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>The shape to identify elements for</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ishape~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iShape</strong></td>
+            <td>
+                <p>Numbering of the shape (only for logging)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-intree~5"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inTree</strong></td>
+            <td>
+                <p>The tree to look in for elements that match the shape definition</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-storepnts~3"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>storePnts</strong></td>
+            <td>
+                <p>Whether to store point values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-map2global~5"></span>
+              type(<a href='../type/dyn_intarray_type.html'>dyn_intarray_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>map2global</strong></td>
+            <td>
+                <p>Mapping to global elements in the tree</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-grwpnts~3"></span>
+              type(<a href='../type/tem_grwpoints_type.html'>tem_grwPoints_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>grwPnts</strong></td>
+            <td>
+                <p>Growing list of Points to be observed</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-countelems~4"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>countElems</strong>(globalMaxLevels)</td>
+            <td>
+                <p>Number of elements on each level matching the shape</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-countpnts"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>countPnts</strong></td>
+            <td>
+                <p>Number of points to be observed</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bcids~2"></span>
+              integer,
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>bcIDs</strong>(:)</td>
+            <td>
+                <p>Field of boundary ids that are to be tracked</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-bc_prop~2"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>bc_prop</strong></td>
+            <td>
+                <p>Boundary condition property to identify boundary elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencil~2"></span>
+              type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencil</strong></td>
+            <td>
+                <p>Stencil associated with the boundary to find respective neighbors</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_shape2subtree~~CallsGraph Pages: 1 -->
+<svg id="proctem_shape2subtreeCallsGraph" width="641pt" height="827pt"
+ viewBox="0.00 0.00 641.00 826.85" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_shape2subtree~~CallsGraph" class="graph" transform="scale(0.95 0.95) rotate(0) translate(4 868)">
+<title>proc~~tem_shape2subtree~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-868 672,-868 672,4 -4,4"/>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node1" class="node">
+<title>proc~tem_shape2subtree</title>
+<polygon fill="none" stroke="black" points="118,-591 0,-591 0,-567 118,-567 118,-591"/>
+<text text-anchor="middle" x="59" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_shape2subTree</text>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node2" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node2"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="513.5,-528 446.5,-528 446.5,-504 513.5,-504 513.5,-528"/>
+<text text-anchor="middle" x="480" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge1" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M110.08,-566.92C124.23,-563.75 139.67,-560.52 154,-558 254.37,-540.34 373.41,-526.83 435.84,-520.31"/>
+<polygon fill="#000000" stroke="#000000" points="436.51,-523.76 446.1,-519.25 435.79,-516.8 436.51,-523.76"/>
+</g>
+<!-- proc~tem_shape_findelembybclabels -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node3" class="node">
+<title>proc~tem_shape_findelembybclabels</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node3"><a xlink:href="../proc/tem_shape_findelembybclabels.html" xlink:title="tem_shape_findElemByBCLabels">
+<polygon fill="#d9534f" stroke="#d9534f" points="349.5,-759 163.5,-759 163.5,-735 349.5,-735 349.5,-759"/>
+<text text-anchor="middle" x="256.5" y="-744.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_findElemByBCLabels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_findelembybclabels -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge2" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_findelembybclabels</title>
+<path fill="none" stroke="#000000" d="M73.25,-591.12C91.32,-607.6 124.8,-637.88 154,-663 180.67,-685.94 211.93,-711.64 232.64,-728.5"/>
+<polygon fill="#000000" stroke="#000000" points="230.59,-731.34 240.56,-734.93 235.01,-725.91 230.59,-731.34"/>
+</g>
+<!-- proc~tem_shape_initbylevels -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node4" class="node">
+<title>proc~tem_shape_initbylevels</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node4"><a xlink:href="../proc/tem_shape_initbylevels.html" xlink:title="tem_shape_initByLevels">
+<polygon fill="#d9534f" stroke="#d9534f" points="326.5,-654 186.5,-654 186.5,-630 326.5,-630 326.5,-654"/>
+<text text-anchor="middle" x="256.5" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initByLevels</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge3" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initbylevels</title>
+<path fill="none" stroke="#000000" d="M97.69,-591.15C129.3,-601.33 174.59,-615.93 208.55,-626.87"/>
+<polygon fill="#000000" stroke="#000000" points="207.66,-630.26 218.25,-630 209.81,-623.6 207.66,-630.26"/>
+</g>
+<!-- proc~tem_shape_initpropelements -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node5" class="node">
+<title>proc~tem_shape_initpropelements</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node5"><a xlink:href="../proc/tem_shape_initpropelements.html" xlink:title="tem_shape_initPropElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="339.5,-591 173.5,-591 173.5,-567 339.5,-567 339.5,-591"/>
+<text text-anchor="middle" x="256.5" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_initPropElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initpropelements -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge4" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_initpropelements</title>
+<path fill="none" stroke="#000000" d="M118.13,-579C132.35,-579 147.91,-579 163.29,-579"/>
+<polygon fill="#000000" stroke="#000000" points="163.36,-582.5 173.36,-579 163.36,-575.5 163.36,-582.5"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node6" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node6"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="359,-339 154,-339 154,-315 359,-315 359,-339"/>
+<text text-anchor="middle" x="256.5" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge5" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters</title>
+<path fill="none" stroke="#000000" d="M69.43,-566.85C100.66,-526.59 200.92,-397.35 239.85,-347.18"/>
+<polygon fill="#000000" stroke="#000000" points="242.8,-349.08 246.17,-339.03 237.27,-344.79 242.8,-349.08"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node11" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="668,-528 601,-528 601,-504 668,-504 668,-528"/>
+<text text-anchor="middle" x="634.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge6" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M513.72,-516C536.23,-516 566.36,-516 590.77,-516"/>
+<polygon fill="#000000" stroke="#000000" points="590.84,-519.5 600.84,-516 590.84,-512.5 590.84,-519.5"/>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node7" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node7"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="507,-612 453,-612 453,-588 507,-588 507,-612"/>
+<text text-anchor="middle" x="480" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_findelembybclabels&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge7" class="edge">
+<title>proc~tem_shape_findelembybclabels&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M273.69,-734.98C294.35,-719.35 330.78,-690.74 359,-663 376.53,-645.77 374.09,-633.93 395,-621 409.23,-612.2 426.97,-607.09 442.47,-604.11"/>
+<polygon fill="#000000" stroke="#000000" points="443.5,-607.49 452.78,-602.38 442.34,-600.59 443.5,-607.49"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node14" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node14"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="522.5,-822 437.5,-822 437.5,-798 522.5,-798 522.5,-822"/>
+<text text-anchor="middle" x="480" y="-807.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_findelembybclabels&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge8" class="edge">
+<title>proc~tem_shape_findelembybclabels&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M294.99,-759.02C322.55,-767.72 360.97,-779.55 395,-789 405.54,-791.92 416.86,-794.88 427.69,-797.62"/>
+<polygon fill="#000000" stroke="#000000" points="426.89,-801.03 437.45,-800.06 428.59,-794.24 426.89,-801.03"/>
+</g>
+<!-- proc~tem_elemsize -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node20" class="node">
+<title>proc~tem_elemsize</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node20"><a xlink:href="../proc/tem_elemsize.html" xlink:title="tem_ElemSize">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="524,-864 436,-864 436,-840 524,-840 524,-864"/>
+<text text-anchor="middle" x="480" y="-849.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSize</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_findelembybclabels&#45;&gt;proc~tem_elemsize -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge9" class="edge">
+<title>proc~tem_shape_findelembybclabels&#45;&gt;proc~tem_elemsize</title>
+<path fill="none" stroke="#000000" d="M273.55,-759.07C298.36,-777.17 348.04,-811.33 395,-831 404.77,-835.09 415.53,-838.52 425.99,-841.35"/>
+<polygon fill="#000000" stroke="#000000" points="425.33,-844.79 435.89,-843.87 427.06,-838.01 425.33,-844.79"/>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge10" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M320.97,-629.96C360.42,-622.48 409.73,-613.14 442.67,-606.89"/>
+<polygon fill="#000000" stroke="#000000" points="443.59,-610.28 452.76,-604.97 442.29,-603.4 443.59,-610.28"/>
+</g>
+<!-- interface~tem_log -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node9" class="node">
+<title>interface~tem_log</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node9"><a xlink:href="../interface/tem_log.html" xlink:title="tem_log">
+<polygon fill="#a7506f" stroke="#a7506f" points="507.5,-780 452.5,-780 452.5,-756 507.5,-756 507.5,-780"/>
+<text text-anchor="middle" x="480" y="-765.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_log</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;interface~tem_log -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge11" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;interface~tem_log</title>
+<path fill="none" stroke="#000000" d="M271.8,-654.12C301.29,-678.91 368.34,-734.17 395,-747 409.75,-754.1 427.14,-758.96 442.27,-762.2"/>
+<polygon fill="#000000" stroke="#000000" points="441.83,-765.68 452.32,-764.19 443.19,-758.81 441.83,-765.68"/>
+</g>
+<!-- interface~tem_tostr -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node10" class="node">
+<title>interface~tem_tostr</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node10"><a xlink:href="../interface/tem_tostr.html" xlink:title="tem_toStr">
+<polygon fill="#a7506f" stroke="#a7506f" points="512,-738 448,-738 448,-714 512,-714 512,-738"/>
+<text text-anchor="middle" x="480" y="-723.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_toStr</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;interface~tem_tostr -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge12" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;interface~tem_tostr</title>
+<path fill="none" stroke="#000000" d="M280.32,-654.04C307.16,-667.83 353.37,-690.4 395,-705 408.81,-709.84 424.27,-714.04 438.12,-717.38"/>
+<polygon fill="#000000" stroke="#000000" points="437.34,-720.8 447.88,-719.66 438.94,-713.98 437.34,-720.8"/>
+</g>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node22" class="node">
+<title>proc~tem_firstidatlevel</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node22"><a xlink:href="../proc/tem_firstidatlevel.html" xlink:title="tem_FirstIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="534.5,-696 425.5,-696 425.5,-672 534.5,-672 534.5,-696"/>
+<text text-anchor="middle" x="480" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_FirstIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge13" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M320.97,-654.04C350.48,-659.63 385.49,-666.27 415.05,-671.87"/>
+<polygon fill="#000000" stroke="#000000" points="414.79,-675.39 425.26,-673.81 416.09,-668.51 414.79,-675.39"/>
+</g>
+<!-- proc~tem_lastidatlevel -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node23" class="node">
+<title>proc~tem_lastidatlevel</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node23"><a xlink:href="../proc/tem_lastidatlevel.html" xlink:title="tem_LastIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="534.5,-654 425.5,-654 425.5,-630 534.5,-630 534.5,-654"/>
+<text text-anchor="middle" x="480" y="-639.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LastIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;proc~tem_lastidatlevel -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge14" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;proc~tem_lastidatlevel</title>
+<path fill="none" stroke="#000000" d="M326.67,-642C354.92,-642 387.4,-642 415.09,-642"/>
+<polygon fill="#000000" stroke="#000000" points="415.44,-645.5 425.44,-642 415.44,-638.5 415.44,-645.5"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node24" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node24"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="519.5,-570 440.5,-570 440.5,-546 519.5,-546 519.5,-570"/>
+<text text-anchor="middle" x="480" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_initbylevels&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge15" class="edge">
+<title>proc~tem_shape_initbylevels&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M290,-629.85C310.16,-622 336.45,-611.18 359,-600 375.6,-591.77 377.84,-585.98 395,-579 406.2,-574.44 418.66,-570.67 430.48,-567.65"/>
+<polygon fill="#000000" stroke="#000000" points="431.33,-571.04 440.22,-565.28 429.68,-564.24 431.33,-571.04"/>
+</g>
+<!-- proc~tem_shape_initpropelements&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge16" class="edge">
+<title>proc~tem_shape_initpropelements&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M339.66,-586.79C375.14,-590.15 414.83,-593.92 442.74,-596.56"/>
+<polygon fill="#000000" stroke="#000000" points="442.54,-600.06 452.83,-597.52 443.2,-593.09 442.54,-600.06"/>
+</g>
+<!-- proc~tem_shape_initpropelements&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge17" class="edge">
+<title>proc~tem_shape_initpropelements&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M339.66,-571.21C370.1,-568.32 403.62,-565.15 430.16,-562.63"/>
+<polygon fill="#000000" stroke="#000000" points="430.71,-566.09 440.33,-561.67 430.05,-559.13 430.71,-566.09"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge22" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M263.93,-339.42C280.83,-370.79 329.74,-453.64 395,-495 407.36,-502.84 422.47,-507.75 436.45,-510.83"/>
+<polygon fill="#000000" stroke="#000000" points="435.89,-514.29 446.37,-512.76 437.23,-507.41 435.89,-514.29"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge18" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M260.43,-339.28C270.86,-380.26 310.23,-513.46 395,-579 408.56,-589.48 426.71,-594.79 442.66,-597.46"/>
+<polygon fill="#000000" stroke="#000000" points="442.37,-600.95 452.76,-598.86 443.33,-594.02 442.37,-600.95"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node8" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node8"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="507,-360 453,-360 453,-336 507,-336 507,-360"/>
+<text text-anchor="middle" x="480" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge19" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M359.17,-336.64C389.02,-339.47 419.75,-342.38 442.62,-344.55"/>
+<polygon fill="#000000" stroke="#000000" points="442.57,-348.06 452.86,-345.52 443.23,-341.09 442.57,-348.06"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node12" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="524,-318 436,-318 436,-294 524,-294 524,-318"/>
+<text text-anchor="middle" x="480" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge20" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M359.17,-317.36C382.13,-315.18 405.6,-312.96 425.62,-311.06"/>
+<polygon fill="#000000" stroke="#000000" points="426.13,-314.53 435.76,-310.1 425.47,-307.56 426.13,-314.53"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node13" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="515,-276 445,-276 445,-252 515,-252 515,-276"/>
+<text text-anchor="middle" x="480" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge21" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M294.99,-314.98C322.55,-306.28 360.97,-294.45 395,-285 407.92,-281.42 422.02,-277.78 434.93,-274.57"/>
+<polygon fill="#000000" stroke="#000000" points="436.1,-277.88 444.97,-272.09 434.43,-271.08 436.1,-277.88"/>
+</g>
+<!-- proc~tem_cano_checkneigh -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node15" class="node">
+<title>proc~tem_cano_checkneigh</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node15"><a xlink:href="../proc/tem_cano_checkneigh.html" xlink:title="tem_cano_checkNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="546.5,-234 413.5,-234 413.5,-210 546.5,-210 546.5,-234"/>
+<text text-anchor="middle" x="480" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_checkNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge23" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh</title>
+<path fill="none" stroke="#000000" d="M273.55,-314.93C298.36,-296.83 348.04,-262.67 395,-243 400.11,-240.86 405.5,-238.9 410.96,-237.11"/>
+<polygon fill="#000000" stroke="#000000" points="412.32,-240.35 420.86,-234.08 410.27,-233.66 412.32,-240.35"/>
+</g>
+<!-- proc~tem_cano_initsubtree -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node16" class="node">
+<title>proc~tem_cano_initsubtree</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node16"><a xlink:href="../proc/tem_cano_initsubtree.html" xlink:title="tem_cano_initSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="544.5,-192 415.5,-192 415.5,-168 544.5,-168 544.5,-192"/>
+<text text-anchor="middle" x="480" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_initSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge24" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_initsubtree</title>
+<path fill="none" stroke="#000000" d="M267.09,-314.82C287.68,-289.54 338.82,-231.21 395,-201 398.55,-199.09 402.27,-197.35 406.1,-195.77"/>
+<polygon fill="#000000" stroke="#000000" points="407.64,-198.93 415.78,-192.14 405.19,-192.37 407.64,-198.93"/>
+</g>
+<!-- proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node17" class="node">
+<title>proc~tem_cano_storepntsinsubtree</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node17"><a xlink:href="../proc/tem_cano_storepntsinsubtree.html" xlink:title="tem_cano_storePntsInSubTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="565,-150 395,-150 395,-126 565,-126 565,-150"/>
+<text text-anchor="middle" x="480" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cano_storePntsInSubTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge25" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_storepntsinsubtree</title>
+<path fill="none" stroke="#000000" d="M263.93,-314.58C280.83,-283.21 329.74,-200.36 395,-159 397.79,-157.23 400.73,-155.61 403.76,-154.12"/>
+<polygon fill="#000000" stroke="#000000" points="405.31,-157.26 413.08,-150.07 402.52,-150.85 405.31,-157.26"/>
+</g>
+<!-- proc~tem_converttreeidtocube -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node18" class="node">
+<title>proc~tem_converttreeidtocube</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node18"><a xlink:href="../proc/tem_converttreeidtocube.html" xlink:title="tem_convertTreeIDtoCube">
+<polygon fill="#d9534f" stroke="#d9534f" points="555.5,-108 404.5,-108 404.5,-84 555.5,-84 555.5,-108"/>
+<text text-anchor="middle" x="480" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convertTreeIDtoCube</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_converttreeidtocube -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge26" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_converttreeidtocube</title>
+<path fill="none" stroke="#000000" d="M261.81,-314.75C275.24,-278.39 320.06,-170.28 395,-117 397.35,-115.33 399.83,-113.79 402.39,-112.37"/>
+<polygon fill="#000000" stroke="#000000" points="403.93,-115.51 411.4,-108 400.88,-109.21 403.93,-115.51"/>
+</g>
+<!-- proc~tem_cylindercubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node19" class="node">
+<title>proc~tem_cylindercubeoverlap</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node19"><a xlink:href="../proc/tem_cylindercubeoverlap.html" xlink:title="tem_cylinderCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="555.5,-66 404.5,-66 404.5,-42 555.5,-42 555.5,-66"/>
+<text text-anchor="middle" x="480" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cylinderCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cylindercubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge27" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cylindercubeoverlap</title>
+<path fill="none" stroke="#000000" d="M260.43,-314.72C270.86,-273.74 310.23,-140.54 395,-75 396.84,-73.58 398.76,-72.26 400.74,-71.02"/>
+<polygon fill="#000000" stroke="#000000" points="402.67,-73.96 409.83,-66.15 399.37,-67.79 402.67,-73.96"/>
+</g>
+<!-- proc~tem_ellipsoidcubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node21" class="node">
+<title>proc~tem_ellipsoidcubeoverlap</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node21"><a xlink:href="../proc/tem_ellipsoidcubeoverlap.html" xlink:title="tem_ellipsoidCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="556.5,-24 403.5,-24 403.5,0 556.5,0 556.5,-24"/>
+<text text-anchor="middle" x="480" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ellipsoidCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_ellipsoidcubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge28" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_ellipsoidcubeoverlap</title>
+<path fill="none" stroke="#000000" d="M259.37,-314.96C266.99,-270.11 299.98,-111.29 395,-33 396.74,-31.56 398.57,-30.22 400.47,-28.97"/>
+<polygon fill="#000000" stroke="#000000" points="402.2,-32.02 409.18,-24.05 398.75,-25.92 402.2,-32.02"/>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge29" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M261.81,-339.25C275.24,-375.61 320.06,-483.72 395,-537 405.24,-544.28 417.75,-549.05 429.96,-552.16"/>
+<polygon fill="#000000" stroke="#000000" points="429.56,-555.66 440.08,-554.41 431.08,-548.83 429.56,-555.66"/>
+</g>
+<!-- proc~tem_spherecubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node25" class="node">
+<title>proc~tem_spherecubeoverlap</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node25"><a xlink:href="../proc/tem_spherecubeoverlap.html" xlink:title="tem_sphereCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="552.5,-486 407.5,-486 407.5,-462 552.5,-462 552.5,-486"/>
+<text text-anchor="middle" x="480" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_sphereCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_spherecubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge30" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_spherecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M267.09,-339.18C287.68,-364.46 338.82,-422.79 395,-453 398.55,-454.91 402.27,-456.65 406.1,-458.23"/>
+<polygon fill="#000000" stroke="#000000" points="405.19,-461.63 415.78,-461.86 407.64,-455.07 405.19,-461.63"/>
+</g>
+<!-- proc~tem_stlcubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node26" class="node">
+<title>proc~tem_stlcubeoverlap</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node26"><a xlink:href="../proc/tem_stlcubeoverlap.html" xlink:title="tem_stlCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="540.5,-444 419.5,-444 419.5,-420 540.5,-420 540.5,-444"/>
+<text text-anchor="middle" x="480" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stlCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_stlcubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge31" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_stlcubeoverlap</title>
+<path fill="none" stroke="#000000" d="M273.55,-339.07C298.36,-357.17 348.04,-391.33 395,-411 400.11,-413.14 405.5,-415.1 410.96,-416.89"/>
+<polygon fill="#000000" stroke="#000000" points="410.27,-420.34 420.86,-419.92 412.32,-413.65 410.27,-420.34"/>
+</g>
+<!-- proc~tem_trianglecubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_node27" class="node">
+<title>proc~tem_trianglecubeoverlap</title>
+<g id="a_proc~~tem_shape2subtree~~CallsGraph_node27"><a xlink:href="../proc/tem_trianglecubeoverlap.html" xlink:title="tem_triangleCubeOverlap">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="555,-402 405,-402 405,-378 555,-378 555,-402"/>
+<text text-anchor="middle" x="480" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_triangleCubeOverlap</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_trianglecubeoverlap -->
+<g id="proc~~tem_shape2subtree~~CallsGraph_edge32" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_trianglecubeoverlap</title>
+<path fill="none" stroke="#000000" d="M294.99,-339.02C322.55,-347.72 360.97,-359.55 395,-369 402.83,-371.17 411.09,-373.36 419.26,-375.47"/>
+<polygon fill="#000000" stroke="#000000" points="418.59,-378.91 429.14,-377.98 420.32,-372.12 418.59,-378.91"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_shape2subtreeCallsGraph = svgPanZoom('#proctem_shape2subtreeCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_shape2subtree~~CalledByGraph Pages: 1 -->
+<svg id="proctem_shape2subtreeCalledByGraph" width="521pt" height="158pt"
+ viewBox="0.00 0.00 521.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_shape2subtree~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
+<title>proc~~tem_shape2subtree~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 517,-154 517,4 -4,4"/>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node1" class="node">
+<title>proc~tem_shape2subtree</title>
+<polygon fill="none" stroke="black" points="513,-87 395,-87 395,-63 513,-63 513,-87"/>
+<text text-anchor="middle" x="454" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_shape2subTree</text>
+</g>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node2" class="node">
+<title>proc~tem_create_subtree_of</title>
+<g id="a_proc~~tem_shape2subtree~~CalledByGraph_node2"><a xlink:href="../proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="359,-87 225,-87 225,-63 359,-63 359,-87"/>
+<text text-anchor="middle" x="292" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M359,-75C367.45,-75 376.11,-75 384.59,-75"/>
+<polygon fill="#000000" stroke="#000000" points="384.82,-78.5 394.82,-75 384.82,-71.5 384.82,-78.5"/>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node3" class="node">
+<title>proc~tem_create_subtree_of_st_funlist</title>
+<g id="a_proc~~tem_shape2subtree~~CalledByGraph_node3"><a xlink:href="../proc/tem_create_subtree_of_st_funlist.html" xlink:title="tem_create_subTree_of_st_funList">
+<polygon fill="#d9534f" stroke="#d9534f" points="189,-150 0,-150 0,-126 189,-126 189,-150"/>
+<text text-anchor="middle" x="94.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of_st_funList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-125.93C167.24,-123.3 178.53,-120.31 189,-117 211.65,-109.85 236.3,-99.77 255.69,-91.27"/>
+<polygon fill="#000000" stroke="#000000" points="257.32,-94.38 265.04,-87.13 254.48,-87.98 257.32,-94.38"/>
+</g>
+<!-- proc~tem_init_convergence -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node4" class="node">
+<title>proc~tem_init_convergence</title>
+<g id="a_proc~~tem_shape2subtree~~CalledByGraph_node4"><a xlink:href="../proc/tem_init_convergence.html" xlink:title="tem_init_convergence">
+<polygon fill="#d9534f" stroke="#d9534f" points="159.5,-108 29.5,-108 29.5,-84 159.5,-84 159.5,-108"/>
+<text text-anchor="middle" x="94.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_convergence</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M159.51,-89.12C177.18,-87.23 196.52,-85.15 214.8,-83.19"/>
+<polygon fill="#000000" stroke="#000000" points="215.26,-86.66 224.83,-82.11 214.51,-79.7 215.26,-86.66"/>
+</g>
+<!-- proc~tem_init_tracker_subtree -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node5" class="node">
+<title>proc~tem_init_tracker_subtree</title>
+<g id="a_proc~~tem_shape2subtree~~CalledByGraph_node5"><a xlink:href="../proc/tem_init_tracker_subtree.html" xlink:title="tem_init_tracker_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="167,-66 22,-66 22,-42 167,-42 167,-66"/>
+<text text-anchor="middle" x="94.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_tracker_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M167.19,-61.7C182.65,-63.36 199.06,-65.12 214.69,-66.8"/>
+<polygon fill="#000000" stroke="#000000" points="214.52,-70.3 224.84,-67.89 215.27,-63.34 214.52,-70.3"/>
+</g>
+<!-- proc~tem_write_debugmesh -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_node6" class="node">
+<title>proc~tem_write_debugmesh</title>
+<g id="a_proc~~tem_shape2subtree~~CalledByGraph_node6"><a xlink:href="../proc/tem_write_debugmesh.html" xlink:title="tem_write_debugMesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="160.5,-24 28.5,-24 28.5,0 160.5,0 160.5,-24"/>
+<text text-anchor="middle" x="94.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_write_debugMesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_shape2subtree~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-24.07C167.24,-26.7 178.53,-29.69 189,-33 211.65,-40.15 236.3,-50.23 255.69,-58.73"/>
+<polygon fill="#000000" stroke="#000000" points="254.48,-62.02 265.04,-62.87 257.32,-55.62 254.48,-62.02"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_shape2subTree</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">storePnts</span><span class="p">,</span><span class="w"> </span><span class="n">map2global</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">grwPnts</span><span class="p">,</span><span class="w"> </span><span class="n">countElems</span><span class="p">,</span><span class="w"> </span><span class="n">countPnts</span><span class="p">,</span><span class="w"> </span><span class="n">bcIDs</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">bc_prop</span><span class="p">,</span><span class="w"> </span><span class="n">stencil</span><span class="w">                           </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; The shape to identify elements for</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_shape_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+
+<span class="w">    </span><span class="c">!&gt; Numbering of the shape (only for logging)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iShape</span>
+
+<span class="w">    </span><span class="c">!&gt; The tree to look in for elements that match the shape definition</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">inTree</span>
+
+<span class="w">    </span><span class="c">!&gt; Whether to store point values</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">storePnts</span>
+
+<span class="w">    </span><span class="c">!&gt; Mapping to global elements in the tree</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_intArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">map2global</span>
+
+<span class="w">    </span><span class="c">!&gt; Growing list of Points to be observed</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_grwPoints_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">grwPnts</span>
+
+<span class="w">    </span><span class="c">!&gt; Number of elements on each level matching the shape</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">countElems</span><span class="p">(</span><span class="n">globalMaxLevels</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">!&gt; Number of points to be observed</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">countPnts</span>
+
+<span class="w">    </span><span class="c">!&gt; Field of boundary ids that are to be tracked</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bcIDs</span><span class="p">(:)</span>
+
+<span class="w">    </span><span class="c">!&gt; Boundary condition property to identify boundary elements</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_prop_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bc_prop</span>
+
+<span class="w">    </span><span class="c">!&gt; Stencil associated with the boundary to find respective neighbors</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilHeader_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">foundAny</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nShapeElems</span><span class="p">(</span><span class="n">globalMaxLevels</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">foundAny</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">    </span><span class="n">nShapeElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="k">select case</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">shapeID</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="w"> </span><span class="n">tem_geometrical_shape</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="c">! Use elements intersecting a geometrical object</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;iShape &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; is a geometrical shape.&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_shape_subTreeFromGeomInters</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">inTree</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">countElems</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">nShapeElems</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">countPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countPnts</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">grwPnts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">grwPnts</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">storePnts</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">storePnts</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                   </span><span class="n">map2global</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">map2global</span><span class="w">   </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="w"> </span><span class="n">tem_property_shape</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="c">! Only use elements with a certain property</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;iShape &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; is a property shape.&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_shape_initPropElements</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">propBits</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                              </span><span class="n">nShapeElems</span><span class="p">,</span><span class="w"> </span><span class="n">map2global</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="w"> </span><span class="n">tem_boundary_shape</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="c">! Only use elements belong to certain boundaries</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;iShape &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; is a boundary shape.&#39;</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">bc_prop</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">stencil</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">tem_shape_findElemByBCLabels</span><span class="p">(</span><span class="w"> </span><span class="n">bcLabels</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">bcLabels</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">cutOffQVal</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">cutOffQVal</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">bc_prop</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">bc_prop</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">foundAny</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">foundAny</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">map2global</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">map2Global</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">inTree</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">countPoints</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countPnts</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">grwPnts</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">grwPnts</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">storePnts</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">storePnts</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">bcIDs</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">bcIDs</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                </span><span class="n">stencil</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="w">        </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">foundAny</span><span class="p">)</span><span class="w"> </span><span class="n">nShapeElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">tem_abort</span><span class="p">(</span><span class="s1">&#39;In tem_shape2subTree: Stencil or bc_prop not passed!&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    case</span><span class="p">(</span><span class="w"> </span><span class="n">tem_level_shape</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;iShape &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iShape</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; is a level shape.&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_shape_initByLevels</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">minLevel</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">me</span><span class="p">%</span><span class="n">maxLevel</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nShapeElems</span><span class="p">,</span><span class="w"> </span><span class="n">map2global</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end select</span><span class="w"> </span><span class="c">! shapeID</span>
+
+<span class="w">    </span><span class="n">countElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countElems</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nShapeElems</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_shape2subTree</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,707 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>Coding Guidelines &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Coding Guidelines</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='index.html'>TreElm Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Coding Guidelines</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="bibliography.html">Bibliography</a>
+              <a class="nav-link active disabled" href="codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="face_details.html">Face Details</a>
+              <a class="nav-link" href="features/index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="features/dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="features/spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="features/tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="features/tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="features/variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="features/variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="features/variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="features/variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="features/variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="octree.html">Distributed Octree</a>
+              <a class="nav-link" href="requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <h2 id="fortran">Fortran</h2>
+<p>Writing code is a complex task. But it is not only complex in the case of the
+problem it tries to solve, but also in the case of the code itself.
+Writing good code is more than just writing functional code.
+Code quality is related to the correctness of the results as well as to the
+maintainability of the code.
+Keep in mind, that you are not the only one working with the code.
+And even if you are currently the only one working with your code this does not
+imply that this will continue.
+So try to be a nice guy and help others to understand your work.
+The rule <em>It was hard to write, so it has to be hard to read</em> is not the best
+principle when it comes to code design.
+Also remember, that you might need to read the code yourself after some time,
+and then it usually is helpful to have a code as readable as possible.</p>
+<h3 id="files">Files</h3>
+<p>Each source file should contain only one top level program unit, and should be
+named after the program unit it contains.
+Mostly this means one module per file.
+As we are using the free source form, the file extension is <em>f90</em>.
+When a preprecessor like <a href="http://www.daniellnagle.com/coco.html">CoCo</a> is used,
+<em>fpp</em> has to be used as file extension.
+This is a technical necessity, as waf will process the files based on these
+suffixes.</p>
+<h3 id="coco-usage">Coco usage</h3>
+<p>If you need to reimplement functionality without coco, you may use it
+(except for in Aotus). Otherwise please avoid its usage. Specifically, do not
+use it to short-cut coding only because you have similar looking code parts
+that need to be replicated multiple times. Thus, growing and dynamic arrays
+for example are ok, as you would need to implement the same stuff for
+different datatypes. Similarly, array access via a macro are OK,
+as you would need to implement basically all code parts using the array
+with the different access patterns. NOT OK is replacing interfaces of
+routines, which you anyway have to implement a new. Those interfaces are
+just partial code fractions and replacing them with coco templates is simply
+shortcutting the code.</p>
+<h3 id="comments">Comments</h3>
+<p>Comments should describe the purpose of the code and what a specific section
+is meant to achieve.
+Comments describing what a code does are usually of little use, as this already
+presented by the code itself.</p>
+<p>We use <a href="https://github.com/cmacmackin/ford">FORD</a> to automatically generate code
+documentation from the comments in the code.
+Please use the markers from FORD to properly fill this automatic
+documentation.
+Generally a FORD comment is started by the <code>!!</code>.
+If you want to put a comment in front of the entity to add the documentation to,
+you have to use <code>!&gt;</code> to start the FORD comment.</p>
+<p>Even though FORD documentation usually starts with '!!‘, there are several other
+characters which have a specific meaning in the second place (like ‚!*‘),
+you can even define them yourself in the FORD configuration.
+So for those formatting comments it is better to always leave a space
+in the second place. Also, please indent the comments along with the code.</p>
+<p>For inline code you need to start the a block with three ticks, which need to be
+immediately attached to the exclamation marks at the beginning of the line.
+You may also specify a language for the syntax highlighting like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">!!```lua</span>
+<span class="c">!!  somelua = {}</span>
+<span class="c">!!```</span>
+</code></pre></div>
+
+<p>It is also possible to include other files within code blocks by means of the
+<a href="https://github.com/cmacmackin/markdown-include">markdown include plugin</a>.</p>
+<p>In our code, we use <code>! ************* !</code> to separate subroutines and
+functions and <code>! ———— !</code> to separate input variables and local variables. These
+separators are also indented along with the code it is separating. See also the
+<a href="#structure">structure examples</a>.</p>
+<h3 id="control-structures">Control structures</h3>
+<p>If you have deeply nested control structures (Do-loops, ifs, cases), use block
+names to differentiate them.
+This also allows you to directly address outer loops from inner loops, and
+thus enables you to exit a complete nested loop block early.
+These names allow the compiler to check the constructs on consistency and at the
+same times allows the reader an easier identification of the individual part
+associations.</p>
+<h3 id="module-structure">Module structure</h3>
+<p>At the very beginning of each file containing a module, there has to be a
+comment describing the module, its purpose, as well as its usage and perhaps its
+pitfalls.</p>
+<p>Other modules are imported using the <code>use</code> keyword.
+To have the chance to identify the source of a foreign subroutine, function, or
+variable, modules should not be used as a whole, but only the parts that are
+really needed in the current module.
+This is achieved by using the <code>only</code> keyword, followed by the needed
+identifiers.</p>
+<p>Each module has to contain an <code>implicit none</code> statement to ensure that there is
+no implicit type definition.
+Any code that is not covered by an <code>implicit none</code> might be considered as
+erroneous as implicit typing might lead to unexpected results.</p>
+<p>Additionally, each module should be made private by default using a <code>private</code>
+statement to  control which parts of the code are accessible by other modules.
+Especially this restricts the accessible entities of the module, such that
+those entities used from other modules are not available to using modules.
+To export symbols, explicitly state them to be public.</p>
+<p>In summary, the module dependency is kept as explicit as possible, and,
+therefore, the code should be least surprising to the reader.
+This also helps the compiler to optimize the code.</p>
+<p>This leads to the following basic structure for a module:</p>
+<div class="codehilite"><pre><span></span><code><span class="c">!&gt; Here is the module&#39;s short description.</span>
+<span class="c">!!</span>
+<span class="c">!! And here comes the module&#39;s longer description, which can also span over</span>
+<span class="c">!! multiple lines.</span>
+<span class="c">!! If it gets too long it might be better to separate the details into a</span>
+<span class="c">!! separate page and link that page here.</span>
+<span class="k">module </span><span class="n">example_module</span>
+
+<span class="w">  </span><span class="k">use </span><span class="n">anotherModule</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">some</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">thing</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">somethingOther</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">things</span>
+
+<span class="w">  </span><span class="k">implicit none</span>
+
+<span class="k">  private</span>
+
+<span class="k">  </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">anythingToBePublic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+
+<span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">anythingToBePublic</span><span class="p">,</span><span class="w"> </span><span class="n">action</span>
+
+
+<span class="k">contains</span>
+
+
+<span class="k">  function </span><span class="n">action</span><span class="p">()</span>
+<span class="w">    </span><span class="k">call </span><span class="n">somethingOther</span><span class="p">()</span>
+<span class="w">  </span><span class="k">end function </span><span class="n">action</span>
+
+<span class="k">end module </span><span class="n">example_module</span>
+</code></pre></div>
+
+<h3 id="subroutines-and-functions">Subroutines and functions</h3>
+<p>Always declare an argument with an <code>intent</code> attribute.
+The only exception is when the argument is a pointer or a procedure.
+A function should have only <code>intent(in)</code> arguments.
+Use a subroutine if more than one argument needs to have an <code>intent(out)</code> or any
+argument needs to have an <code>intent(inout)</code> attribute.
+Also, beware of functions with respect to OpenMP parallelism, as there might
+arise problems here, if arrays are to be assigned with the result of the
+function.</p>
+<p>For better readability, always use named arguments to call a function or
+subroutine, unless there is only one mandatory argument. This rule maintains a
+clearer image on the arguments that are common across all calls. In cases where
+the meaning of the single argument provided by a function or subroutine
+call is not immediately obvious, also use the named argument calling convention.</p>
+<p>Instead of <code>call tem_time_load(me%min, conf, 'min', thandle)</code>, the call should
+look as follows:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">call </span><span class="n">tem_time_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="nb">min</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">conf</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">key</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;min&#39;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+
+<p>When you are passing an array argument to a procedure, the dummy argument
+usually should be an assumed shape array. Only if this is not possible, other
+dummy array argument specifications may be used.
+Memory management of assumed shape arrays is automatically handled by the
+procedure.
+By using the assumed shape definition, you allow the compiler to make use of
+array descriptors, which avoid copy operations, even if the calling side passes
+in a fragmented array.
+You also inherit a matching array description within the routine, which enables
+bounds checks by the compiler.</p>
+<h4 id="structure"><a name="structure"></a>Structure</h4>
+<p>Every subroutine and every function has a preceeding and a trailing comment line
+consisting of stars from the routine's indentation up to column 80 minus the
+indentation with a closing exclamation mark:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<span class="w">  </span><span class="k">subroutine </span><span class="n">do_something</span><span class="p">(</span><span class="n">some</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">some</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">nDiagonals</span><span class="p">,</span><span class="w"> </span><span class="n">diag_off</span>
+
+<span class="w">    </span><span class="n">some</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code_here</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">do_something</span>
+<span class="w">  </span><span class="c">! ************************************************************************ !</span>
+</code></pre></div>
+
+<p>Separate the procedures by two empty lines.</p>
+<h4 id="argument-and-local-variable-list">Argument and local variable list</h4>
+<p>The arguments, as well as the local variables, are packed into lines of dashes,
+also starting (and ending) at the current indentation:</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<span class="w">  </span><span class="k">subroutine </span><span class="n">do_something</span><span class="p">(</span><span class="n">some</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">some</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">nDiagonals</span><span class="p">,</span><span class="w"> </span><span class="n">diag_off</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">some</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code_here</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">do_something</span>
+<span class="w">  </span><span class="c">! ************************************************************************ !</span>
+</code></pre></div>
+
+<p>For each argument there is a describing (FORD) comment.
+Variable definitions should also be accompanied by some describing comment, if
+the name itself is not explaining itself already.
+FORD will not make use of local variable definition comments, so do not use
+the FORD syntax for these.
+Variables with their comments should be separated by blank lines from each
+other to have a better indication where the definition of a certain variable is.</p>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<span class="w">  </span><span class="k">subroutine </span><span class="n">do_something</span><span class="p">(</span><span class="n">some</span><span class="p">,</span><span class="w"> </span><span class="n">arguments</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; Comments for arguments are mandatory. In most cases arguments have some</span>
+<span class="w">    </span><span class="c">!! constraints, or they are changes during method execution or... So be a</span>
+<span class="w">    </span><span class="c">!! nice guy and provide the user of your code with the information he needs</span>
+<span class="w">    </span><span class="c">!! to get his and your code running without making mistakes.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">some</span>
+
+<span class="w">    </span><span class="c">!&gt; Making mistakes is a good keyword. Provide information about pitfalls</span>
+<span class="w">    </span><span class="c">!! one has to take in mind when using your method or passing an argument.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">arguments</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="c">! (obvious loop index, not need for commenting)</span>
+
+<span class="w">    </span><span class="c">! The number of diagonals. This is a borderline case as the variable name</span>
+<span class="w">    </span><span class="c">! is quite explaining. One can argue that n is not to be read as number of</span>
+<span class="w">    </span><span class="c">! by all means, though we typically use it in this way.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nDiagonals</span>
+
+<span class="w">    </span><span class="c">! Here again we have a partly self describing variable name. But in this</span>
+<span class="w">    </span><span class="c">! case it is just more obvious. One who knows the code does also know that</span>
+<span class="w">    </span><span class="c">! off stands for offset. But comments are not only for those who already</span>
+<span class="w">    </span><span class="c">! know what the code does.</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">diag_off</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">some</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code_here</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">do_something</span>
+<span class="w">  </span><span class="c">! ************************************************************************ !</span>
+</code></pre></div>
+
+<h3 id="formatting">Formatting</h3>
+<p>Use the Fortran 90 free form syntax.
+Use spaces and blank lines where appropriate to format your code to improve
+readability.</p>
+<h4 id="lines">Lines</h4>
+<p>The line width has to be confined to 80 characters.
+Short and simple lines are easier to parse and understand than longer ones.
+The only valid exception here might be overly long CoCo expressions, which need
+to be on a single line.
+Use two empty lines before and after contains statements.</p>
+<h5 id="continuation">Continuation</h5>
+<p>If a line exceeds the maximum line length, it has to be continued using the
+Fortran line continuation syntax.
+Thus, each continued line ends with the ampersand character.
+We also begin the proceeding line an indented ampersand.
+The leading, as well as the trailing ampersands, have to be aligned.
+The leading ampersands are also indented using the common indentation width of
+two spaces.
+Closing brackets have to be aligned with the trailing ampersands.
+Thereby, the code becomes an easily recognizable visible block.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">call </span><span class="n">a_method</span><span class="p">(</span><span class="w"> </span><span class="n">with</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">            </span><span class="n">very</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">long</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">            </span><span class="n">argument</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">list</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">            </span><span class="n">that</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">exceeds</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">            </span><span class="n">the</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">maximum</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">            </span><span class="n">line</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="w">   </span><span class="p">)</span>
+</code></pre></div>
+
+<p>For line continuation, use operators: <code>//</code>, <code>%</code>, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>
+etc at the beginning of the continued line.
+If you need to break a long formula, start the continued lines with operators
+to make this continuation more obvious on the next line.</p>
+<p>Also, if you need to break an array segment specification, start the continued
+line with the <code>:</code> to make this immediately visible.</p>
+<p>When you need to break a deep derived data-type addressing put the <code>%</code> below 
+the last % of the preceeding line. If it still doesn't fit, split the preceeding
+line again. In case the preceeding line doesn't contain a <code>%</code>anymore, indent it
+by two starting from the variable name.
+Although, you should in addition think about, why this deep access is needed
+at all, as the details of derived data types usually should not be of a
+concern to the outer procedures.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">call </span><span class="n">atl_preprocess_modg_kernel</span><span class="p">(</span><span class="w">                          </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">equation</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">statedata</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">statedata_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">mesh</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">),</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">boundary</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">boundary_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">scheme</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">),</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">material</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">material_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">poly_proj_material</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">poly_proj_list</span><span class="p">(</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">material_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                             </span><span class="p">%</span><span class="n">poly_proj_pos</span><span class="p">)</span><span class="w">           </span><span class="p">)</span>
+
+<span class="k">call </span><span class="n">atl_modg_modalVolToModalFace</span><span class="p">(</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">nElems_fluid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                     </span><span class="p">%</span><span class="n">descriptor</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                     </span><span class="p">%</span><span class="n">elem</span><span class="w">                              </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                     </span><span class="p">%</span><span class="n">nElems</span><span class="p">(</span><span class="n">eT_fluid</span><span class="p">),</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">length</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">mesh_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)%</span><span class="n">length</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">volState</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">statedata_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)%</span><span class="n">state</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">faceRep</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">facedata_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)%</span><span class="n">faceRep</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">nScalars</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">varSys</span><span class="p">%</span><span class="n">someMoreLevel</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                                  </span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">orlikethis</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">orlikethis</span><span class="p">%</span><span class="n">varSys</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                             </span><span class="p">%</span><span class="n">someMoreLevel</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">                             </span><span class="p">%</span><span class="n">nScalars</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">nDerivatives</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">equation</span><span class="p">%</span><span class="n">nDerivatives</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">  </span><span class="p">&amp;</span><span class="w">    </span><span class="n">modg</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">scheme_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)%</span><span class="n">modg</span><span class="w">       </span><span class="p">)</span>
+</code></pre></div>
+
+<p>Similarly, to break a string put the <code>//</code> at the begining of the continued line.
+Do not split lexical tokens across line continuations!
+Do not split a character string across line continuations, as this does not
+fit to our indentation rules.</p>
+<p>Also, please put line continuation into alignment.
+For one continued line the &amp; should be placed into the same column.</p>
+<p>Please note, that there is a limit to the continued lines in the Fortran
+standard (Fortran 90: up to 39 continuation lines).
+Even so Fortran 2003 allows more continuation lines, we should try to stick to
+the limit of 39, beyond that it also gets hard to read the code.</p>
+<h4 id="indentation">Indentation</h4>
+<p>Indent blocks by two spaces.
+Tabs are not allowed for indentation, and actually not at all in the complete
+source file.
+Be aware, that this is technically enforced by mercurial, and you will not be
+allowed to push Fortran source files, that contain any tabs.
+Comments should be indented with the code.</p>
+<p>To improve readability and support visual block structures, indentation can be
+aligned with the preceeding construct. For example, if you linebreak a nested
+array access, indent the <code>%</code> two spaces deeper than the preceeding variable
+name (see the example above with <code>nElems_fluid</code>).</p>
+<p>Those visual blocks can also be created with the named argument lists when the
+call is split onto several lines. In the above example, <code>nElems_fluid</code> is two
+spaces <em>deeper</em> than the subroutine name.</p>
+<h4 id="spaces"><a name="spaces"></a>Spaces</h4>
+<ul>
+<li>Keywords and operators are wrapped into spaces.
+  The statement <code>if((a+b)&gt;=(c+d))then</code>, therefore, should be written as
+  <code>if ((a + b) &gt;= (c + d)) then</code>.</li>
+<li>For nested brackets it also might be useful to add spaces, to more clearly
+  indicate the grouping.
+  Always use wider spacing for the brackets on outer levels.
+  The example above would become <code>if ( (a + b) &gt;= (c + d) ) then</code>, though in
+  this case the expression is that simple, that the additional spacing is not
+  really necessary.</li>
+<li>End statements are separated from the block type specifier by one space,
+  e.g. <code>end if</code> instead of <code>endif</code>.
+  The latter notation is a backward compability and not available for newer
+  constructs like select or where. The notation with a separating space is
+  therefore more consistent.</li>
+<li>Arguments in an argument list are at least separated by comma and space:
+  <code>call do_something(a, b, even_c)</code>, not <code>call do_something(a,b,even_c)</code>.
+  Usually you should use keywords and put each argument on a separate line.</li>
+<li>For select case, do not indent each case but leave a space after each case
+  keyword. Example:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="nb">dim</span><span class="p">)</span>
+<span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! do something if dim = 1</span>
+<span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">  </span><span class="c">! do something if dim = 2</span>
+<span class="k">case </span><span class="n">default</span>
+<span class="w">  </span><span class="c">! do something if dim is not 1 or 2</span>
+<span class="k">end select</span>
+
+<span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="n">scheme_list</span><span class="p">(</span><span class="n">currentLevel</span><span class="p">)%</span><span class="n">scheme</span><span class="p">)</span>
+<span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">atl_modg_scheme_prp</span><span class="p">)</span><span class="w"> </span><span class="c">! MODG kernel</span>
+<span class="w">  </span><span class="k">select case</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">equation</span><span class="p">%</span><span class="n">eq_kind</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;maxwell&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;maxwelldivcorrection&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;euler&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;navier_stokes&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">    </span><span class="s1">&#39;filtered_navier_stokes&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;acoustic&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;heat&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;lineareuler&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">    </span><span class="s1">&#39;loclineuler&#39;</span><span class="w">                                                </span><span class="p">)</span>
+<span class="w">  </span><span class="k">end select</span>
+<span class="k">end select</span>
+</code></pre></div>
+
+<h3 id="naming">Naming</h3>
+<p>Give all entities you create a meaningful name.
+The best case is that someone does not need to read an explanatory comment to
+understand what a routine does, a function returns or a variable contains
+because the name already provides this information.</p>
+<p>Do not define variables with single character, not even for loop counters.
+Use either <code>ii</code>, <code>jj</code>, <code>kk</code> or, for better readability, might be some indication
+what the counter is actually iterating over.
+For example <code>iX</code>, <code>iY</code> and <code>iZ</code> could provide more explanation to the reader.
+This is especially true with many nested or different loops.
+For other variables there is usually a descriptive name that can be used.
+For example <code>blockSize</code> is just more expressive than <code>s</code>.
+Use <code>i</code> and <code>n</code> as prefixes, where <code>i*</code> indicates a counter,
+while <code>n</code> indicates a count, like the size of an array.</p>
+<p>Public entities in APES modules have to obey some more naming rules, which allow
+us to avoid name clashes and easy identification of the entities.
+We use a three letter prefix for each project, e.g. <code>tem</code> for treelm.
+The next part of the name is the module or feature name, e.g. <code>tracking</code>.
+Finally, the actual description of the entity is appended.
+Thus, a valid and meaningful name for a routine is, e.g.,
+<code>tem_tracking_dumpAsciiTransient</code>.
+Please notice the <a href="https://en.wikipedia.org/wiki/CamelCase">camel casing</a> we
+used for the description part of the name which increases readability of
+identifiers.
+Additionally, for subroutines you should use some verb, as above dumping
+describes, what the routine does.
+Functions on the other hand should describe the result they provide, for
+example <code>tem_parentof</code> or <code>tem_coordOfID</code>.</p>
+<h4 id="magic-numbers">Magic numbers</h4>
+<p>Avoid magic numbers! Use constants instead.
+<code>allocate( meshInfoList( 6 ))</code> is not only less expressive than</p>
+<div class="codehilite"><pre><span></span><code><span class="c">!&gt; number of mesh variables</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nMeshVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span>
+
+<span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">meshInfoList</span><span class="p">(</span><span class="w"> </span><span class="n">nMeshVars</span><span class="w"> </span><span class="p">))</span>
+</code></pre></div>
+
+<p>but also easier to change, if you ever happen to need to modify <code>nMeshVars</code>.
+With literal constants, you need to replace all matching occurences, which might
+be difficult if you need the same number with different meanings in different
+parts of the code.
+While with the named constant, there is just a single place, where you need to
+change the code.
+Use Magic numbers only if it is local or self-explaining.</p>
+<h3 id="types">Types</h3>
+<p>Do not declare variables of type real without specifying a kind:
+<code>real(kind=rk) :: realValue</code>.
+The common real kind is available from the env_module and has to be imported
+using <code>use env_module, only: rk</code>.
+For special cases, there are more kinds available in env_module, so there should
+not be a need to define a real kind on your own.
+Please note, that not all kinds might be provided by the compiler you use.</p>
+<h3 id="error-handling">Error handling</h3>
+<p>Use Errcode from aotus' aot_get_val routines to handle loading errors.
+If you don’t pass in ErrCode to the aot_get_val, the library will abort
+and each process will write an error
+message, which is probably not what you want.
+If you pass ErrCode, you are responsible for treating errors yourself,
+so please take care of it. You can get
+the Lua error message in ErrString.</p>
+<h3 id="operators">Operators</h3>
+<p>Use the new syntax for operators:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>New</th>
+<th></th>
+<th>Old</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>==</td>
+<td></td>
+<td>.EQ.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>/=</td>
+<td></td>
+<td>.NE.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&gt;</td>
+<td></td>
+<td>.GT.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;</td>
+<td></td>
+<td>.LT.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&gt;=</td>
+<td></td>
+<td>.GE.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>&lt;=</td>
+<td></td>
+<td>.LE.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="python">Python</h2>
+<p>See <a href="http://legacy.python.org/dev/peps/pep-0008/">PEP 8 -- Style Guide for Python Code</a>.</p>
+<p>For docstrings, use the <a href="https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt">numpy format</a></p>
+<h2 id="lua">Lua</h2>
+<p>Lua has at's <a href="http://lua-users.org/wiki/LuaStyleGuide">own guidelines</a>, which
+are very similar to Python's.</p>
+<h3 id="indentation_1">Indentation</h3>
+<p>Indent table contents by two spaces. Put the opening bracket on the line with
+the table name and the closing bracket at the same indentation level as the
+table name. When the content inside the brackets is rather short, e.g. a vector
+or one named component, the content as well as the opening and closing brackets
+can stay on one line. If there is more than one named component, split it into
+several lines.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">table</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">comp</span> <span class="o">=</span> <span class="p">{</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span> <span class="p">},</span>
+  <span class="n">another_table</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">with</span> <span class="o">=</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+    <span class="n">some</span> <span class="o">=</span> <span class="mi">4711</span><span class="p">,</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="mf">42.23</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="spacing">Spacing</h3>
+<p>Must:</p>
+<ul>
+<li>Space after comma.</li>
+</ul>
+<p>Should:</p>
+<ul>
+<li>Add a space after the opening and in front of the closing brackets.</li>
+<li><a href="#spaces">Like in fortran</a>, operators should be separated by spaces, as long
+  as they don't disturb readability of formulas (e.g. group multiplications,
+  split additions).</li>
+</ul>
+<h3 id="casing">Casing</h3>
+<p>Lua is, in contrast to Fortran, case sensitive. In the context of APES, Lua is
+used to configure the different components of the APES software suite written
+in Fortran, which leads to possible breaking points due to different casing
+paradigms. To prevent misunderstandings between Lua and Fortran, Fortran code
+has to normalize all
+<a href="https://en.wikipedia.org/wiki/Value_%28computer_science%29">values</a> (usually
+obtained via <a href="../https:/geb.inf.tu-dresden.de/doxy/aotus/interface/aot_table_get_val~8.html">aot_table_get_val</a>) and
+<a href="https://en.wikipedia.org/wiki/Identifier#In_computer_science">identifiers</a>
+(the name of variables, tables etc.) from the "Lua domain". To avoid
+confusion between Lua statements and normalized Fortran statements, it is
+recommended to use <code>lower_case</code> notation throughout all code files.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

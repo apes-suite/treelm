@@ -1,0 +1,229 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Space-Time functions &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Space-Time functions</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>TreElm Overview</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Feature Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Space-Time functions</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="../bibliography.html">Bibliography</a>
+              <a class="nav-link" href="../codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="../face_details.html">Face Details</a>
+              <a class="nav-link" href="index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="dynamic.html">Dynamic data structures</a>
+              <a class="nav-link active disabled" href="spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="../implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="../motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="../octree.html">Distributed Octree</a>
+              <a class="nav-link" href="../requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <h1 id="space-time-functions">Space-time functions</h1>
+<p>Space-time functions allow the definition of arbitrary space-time dependent
+functions, and the multiplication of a spatial function with a temporal function
+as an often required special case.</p>
+<p>Space-time functions might be predefined as Fortran functions, simple constants
+or Lua functions.
+They might return scalars or one-dimensional arrays.
+If only a single value is expected from a Lua function, the Lua function is
+supposed to return a scalar value. Irregardless if the function is invoked by an
+array valued routine or a plain scalar one. Otherwise, the Lua function has to
+return a table with the correct number of entries identified by position.</p>
+<p>Note, that this makes the interface in the Lua script the same:</p>
+<ul>
+<li>whenever a single return value is expected, a plain scalar should be returned.</li>
+<li>otherwise a table should be returned</li>
+</ul>
+<h2 id="formal-definition-of-space-time-functions">Formal definition of space-time functions</h2>
+<p>Space-time functions can be written following some rules. Those rules are
+noted using the <a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form">extended Backus-Naur form</a>,
+however, we skipped diving too deep into the definition tree.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">stfun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;stfun = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stfundef</span><span class="w"> </span><span class="p">;</span>
+<span class="n">stfundef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;{&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">singlestfundef</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;}&quot;</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;{ &quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;{&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">singlestfundef</span><span class="w"> </span><span class="s2">&quot;}&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;{&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">singlestfundef</span><span class="s1">&#39; &quot;}&quot;], &quot;}&quot; | directdef ;</span>
+<span class="n">singlestfundef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">detaileddef</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="n">shapedef</span><span class="p">}</span>
+<span class="n">directdef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numerical_literal</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">luafunction</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">simplevectordef</span><span class="w"> </span><span class="p">;</span>
+<span class="n">simplevectordef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;{&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numerical_literal</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">numerical_literal</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;}&quot;</span><span class="w"> </span><span class="p">;</span>
+<span class="n">shapedef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;shape = { ... }&quot;</span><span class="w"> </span><span class="p">;</span>
+<span class="n">detaileddef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scalardef</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">vectordef</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">luafunctiondef</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">predefineddef</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">stfunlistdef</span><span class="w"> </span><span class="p">;</span>
+<span class="n">scalardef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;const = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">numerical_literal</span><span class="w"> </span><span class="p">;</span>
+<span class="n">vectordef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;const = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">simplevectordef</span><span class="w"> </span><span class="p">;</span>
+<span class="n">luafunctiondef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;fun = &quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">luafunction</span><span class="w"> </span><span class="p">;</span>
+<span class="n">predefineddef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;predefined = { &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">string_literal</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="s2">&quot;}&quot;</span><span class="w"> </span><span class="p">;</span>
+<span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="s2">&quot;predefined = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">string_literal</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;,&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">arguments</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">;</span>
+<span class="n">stfunlistdef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;multiples = {&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">stfundef</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">stfundef</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;link = &quot;</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="n">first</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">add</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;}&quot;</span><span class="w"> </span><span class="p">;</span>
+</code></pre></div>
+
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>Move the linked pages one level up, as they are not related to variables.</p>
+</div>
+<ul>
+<li>combination of temporal and spatial function. Each can be a<ul>
+<li><a href="variables/mus_predefined.html">predefined Fortran function</a></li>
+<li><a href="variables/const.html">constant</a></li>
+<li><a href="variables/fun.html">Lua function</a></li>
+</ul>
+</li>
+<li><a href="variables/const.html">constant</a></li>
+<li><a href="variables/fun.html">Lua function</a></li>
+<li><a href="variables/operation.html">operation</a></li>
+</ul>
+<h2 id="shape">Shape</h2>
+<p>A space time function can be defined for certain shapes of the simulated
+domain. Default is global shape. See <a href="../canonicalShapes.html">Canonical Shapes</a> for more information.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

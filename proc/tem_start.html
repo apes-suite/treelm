@@ -1,0 +1,773 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_start &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_start
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">20 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_general_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_general_module.f90.html'>tem_general_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_general_module.html'>tem_general_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_start</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_start.html#src">tem_start</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_start(codeName, version, general, comm, simControl)  
+</h2>
+    
+
+    <p>Initialize the environment. Should be the very first call in the program.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-codename"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>codeName</strong></td>
+            <td>
+                <p>name of code</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-version"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>version</strong></td>
+            <td>
+                <p>version of the code</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-general"></span>
+              type(<a href='../type/tem_general_type.html'>tem_general_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>general</strong></td>
+            <td>
+                <p>encapsulates global parameters which are common for all solvers</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~21"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>mpi communicator if it is predefined as in apesmate</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-simcontrol~2"></span>
+              type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>simControl</strong></td>
+            <td>
+                <p>simulation control to initialize</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_start~~CallsGraph Pages: 1 -->
+<svg id="proctem_startCallsGraph" width="641pt" height="318pt"
+ viewBox="0.00 0.00 641.00 317.61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_start~~CallsGraph" class="graph" transform="scale(0.82 0.82) rotate(0) translate(4 381)">
+<title>proc~~tem_start~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-381 773,-381 773,4 -4,4"/>
+<!-- proc~tem_start -->
+<g id="proc~~tem_start~~CallsGraph_node1" class="node">
+<title>proc~tem_start</title>
+<polygon fill="none" stroke="black" points="63,-148 0,-148 0,-124 63,-124 63,-148"/>
+<text text-anchor="middle" x="31.5" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_start</text>
+</g>
+<!-- proc~init_env -->
+<g id="proc~~tem_start~~CallsGraph_node2" class="node">
+<title>proc~init_env</title>
+<g id="a_proc~~tem_start~~CallsGraph_node2"><a xlink:href="../proc/init_env.html" xlink:title="init_env">
+<polygon fill="#d9534f" stroke="#d9534f" points="188.5,-251 134.5,-251 134.5,-227 188.5,-227 188.5,-251"/>
+<text text-anchor="middle" x="161.5" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_env</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~init_env -->
+<g id="proc~~tem_start~~CallsGraph_edge1" class="edge">
+<title>proc~tem_start&#45;&gt;proc~init_env</title>
+<path fill="none" stroke="#000000" d="M47.43,-148.02C69.57,-165.83 111.28,-199.39 137.38,-220.4"/>
+<polygon fill="#000000" stroke="#000000" points="135.28,-223.2 145.26,-226.74 139.67,-217.74 135.28,-223.2"/>
+</g>
+<!-- proc~tem_addtimer -->
+<g id="proc~~tem_start~~CallsGraph_node3" class="node">
+<title>proc~tem_addtimer</title>
+<g id="a_proc~~tem_start~~CallsGraph_node3"><a xlink:href="../proc/tem_addtimer.html" xlink:title="tem_addTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="206.5,-169 116.5,-169 116.5,-145 206.5,-145 206.5,-169"/>
+<text text-anchor="middle" x="161.5" y="-154.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_addTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~tem_addtimer -->
+<g id="proc~~tem_start~~CallsGraph_edge2" class="edge">
+<title>proc~tem_start&#45;&gt;proc~tem_addtimer</title>
+<path fill="none" stroke="#000000" d="M63.16,-141.03C76.02,-143.14 91.37,-145.66 106.04,-148.06"/>
+<polygon fill="#000000" stroke="#000000" points="105.61,-151.54 116.04,-149.71 106.74,-144.63 105.61,-151.54"/>
+</g>
+<!-- proc~tem_comm_env_init -->
+<g id="proc~~tem_start~~CallsGraph_node4" class="node">
+<title>proc~tem_comm_env_init</title>
+<g id="a_proc~~tem_start~~CallsGraph_node4"><a xlink:href="../proc/tem_comm_env_init.html" xlink:title="tem_comm_env_init">
+<polygon fill="#d9534f" stroke="#d9534f" points="221,-335 102,-335 102,-311 221,-311 221,-335"/>
+<text text-anchor="middle" x="161.5" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~tem_comm_env_init -->
+<g id="proc~~tem_start~~CallsGraph_edge3" class="edge">
+<title>proc~tem_start&#45;&gt;proc~tem_comm_env_init</title>
+<path fill="none" stroke="#000000" d="M37.69,-148.28C47.72,-171.34 71.26,-222.18 99,-260 110.83,-276.13 126.63,-292.23 139.26,-304.11"/>
+<polygon fill="#000000" stroke="#000000" points="136.92,-306.72 146.64,-310.93 141.67,-301.58 136.92,-306.72"/>
+</g>
+<!-- proc~tem_init_solvehead -->
+<g id="proc~~tem_start~~CallsGraph_node5" class="node">
+<title>proc~tem_init_solvehead</title>
+<g id="a_proc~~tem_start~~CallsGraph_node5"><a xlink:href="../proc/tem_init_solvehead.html" xlink:title="tem_init_solveHead">
+<polygon fill="#d9534f" stroke="#d9534f" points="220,-127 103,-127 103,-103 220,-103 220,-127"/>
+<text text-anchor="middle" x="161.5" y="-112.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_solveHead</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~tem_init_solvehead -->
+<g id="proc~~tem_start~~CallsGraph_edge4" class="edge">
+<title>proc~tem_start&#45;&gt;proc~tem_init_solvehead</title>
+<path fill="none" stroke="#000000" d="M63.16,-130.97C72.18,-129.49 82.43,-127.81 92.81,-126.1"/>
+<polygon fill="#000000" stroke="#000000" points="93.47,-129.54 102.77,-124.47 92.34,-122.64 93.47,-129.54"/>
+</g>
+<!-- proc~tem_simcontrol_start -->
+<g id="proc~~tem_start~~CallsGraph_node6" class="node">
+<title>proc~tem_simcontrol_start</title>
+<g id="a_proc~~tem_start~~CallsGraph_node6"><a xlink:href="../proc/tem_simcontrol_start.html" xlink:title="tem_simControl_start">
+<polygon fill="#d9534f" stroke="#d9534f" points="224,-85 99,-85 99,-61 224,-61 224,-85"/>
+<text text-anchor="middle" x="161.5" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_start</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~tem_simcontrol_start -->
+<g id="proc~~tem_start~~CallsGraph_edge5" class="edge">
+<title>proc~tem_start&#45;&gt;proc~tem_simcontrol_start</title>
+<path fill="none" stroke="#000000" d="M49.09,-123.98C62.18,-114.88 81.14,-102.54 99,-94 102.84,-92.17 106.88,-90.42 110.97,-88.77"/>
+<polygon fill="#000000" stroke="#000000" points="112.49,-91.94 120.58,-85.1 109.99,-85.39 112.49,-91.94"/>
+</g>
+<!-- proc~tem_starttimer -->
+<g id="proc~~tem_start~~CallsGraph_node7" class="node">
+<title>proc~tem_starttimer</title>
+<g id="a_proc~~tem_start~~CallsGraph_node7"><a xlink:href="../proc/tem_starttimer.html" xlink:title="tem_startTimer">
+<polygon fill="#d9534f" stroke="#d9534f" points="208.5,-24 114.5,-24 114.5,0 208.5,0 208.5,-24"/>
+<text text-anchor="middle" x="161.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_startTimer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_start&#45;&gt;proc~tem_starttimer -->
+<g id="proc~~tem_start~~CallsGraph_edge6" class="edge">
+<title>proc~tem_start&#45;&gt;proc~tem_starttimer</title>
+<path fill="none" stroke="#000000" d="M40.25,-123.86C51.68,-106.56 74.39,-74.42 99,-52 108.18,-43.64 119.28,-35.85 129.51,-29.4"/>
+<polygon fill="#000000" stroke="#000000" points="131.49,-32.3 138.21,-24.11 127.85,-26.32 131.49,-32.3"/>
+</g>
+<!-- mpi_comm_rank -->
+<g id="proc~~tem_start~~CallsGraph_node9" class="node">
+<title>mpi_comm_rank</title>
+<polygon fill="#777777" stroke="#777777" points="369.5,-335 268.5,-335 268.5,-311 369.5,-311 369.5,-335"/>
+<text text-anchor="middle" x="319" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_rank</text>
+</g>
+<!-- proc~init_env&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_start~~CallsGraph_edge7" class="edge">
+<title>proc~init_env&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M178.73,-251.13C197.55,-264.79 229.85,-287.04 260,-302 263.57,-303.77 267.32,-305.47 271.14,-307.08"/>
+<polygon fill="#000000" stroke="#000000" points="270.07,-310.42 280.66,-310.89 272.68,-303.93 270.07,-310.42"/>
+</g>
+<!-- mpi_init -->
+<g id="proc~~tem_start~~CallsGraph_node11" class="node">
+<title>mpi_init</title>
+<polygon fill="#777777" stroke="#777777" points="346.5,-293 291.5,-293 291.5,-269 346.5,-269 346.5,-293"/>
+<text text-anchor="middle" x="319" y="-278.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_init</text>
+</g>
+<!-- proc~init_env&#45;&gt;mpi_init -->
+<g id="proc~~tem_start~~CallsGraph_edge8" class="edge">
+<title>proc~init_env&#45;&gt;mpi_init</title>
+<path fill="none" stroke="#000000" d="M188.53,-246.03C213.94,-252.89 252.84,-263.4 281.37,-271.11"/>
+<polygon fill="#000000" stroke="#000000" points="280.8,-274.58 291.37,-273.81 282.63,-267.82 280.8,-274.58"/>
+</g>
+<!-- proc~init_random_seed -->
+<g id="proc~~tem_start~~CallsGraph_node13" class="node">
+<title>proc~init_random_seed</title>
+<g id="a_proc~~tem_start~~CallsGraph_node13"><a xlink:href="../proc/init_random_seed.html" xlink:title="init_random_seed">
+<polygon fill="#d9534f" stroke="#d9534f" points="372.5,-251 265.5,-251 265.5,-227 372.5,-227 372.5,-251"/>
+<text text-anchor="middle" x="319" y="-236.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_random_seed</text>
+</a>
+</g>
+</g>
+<!-- proc~init_env&#45;&gt;proc~init_random_seed -->
+<g id="proc~~tem_start~~CallsGraph_edge9" class="edge">
+<title>proc~init_env&#45;&gt;proc~init_random_seed</title>
+<path fill="none" stroke="#000000" d="M188.53,-239C206.75,-239 231.92,-239 255.22,-239"/>
+<polygon fill="#000000" stroke="#000000" points="255.41,-242.5 265.41,-239 255.41,-235.5 255.41,-242.5"/>
+</g>
+<!-- proc~sys_is_little_endian -->
+<g id="proc~~tem_start~~CallsGraph_node14" class="node">
+<title>proc~sys_is_little_endian</title>
+<g id="a_proc~~tem_start~~CallsGraph_node14"><a xlink:href="../proc/sys_is_little_endian.html" xlink:title="Sys_is_Little_Endian">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="378,-209 260,-209 260,-185 378,-185 378,-209"/>
+<text text-anchor="middle" x="319" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Sys_is_Little_Endian</text>
+</a>
+</g>
+</g>
+<!-- proc~init_env&#45;&gt;proc~sys_is_little_endian -->
+<g id="proc~~tem_start~~CallsGraph_edge10" class="edge">
+<title>proc~init_env&#45;&gt;proc~sys_is_little_endian</title>
+<path fill="none" stroke="#000000" d="M188.53,-231.97C208.91,-226.47 237.96,-218.62 263.39,-211.75"/>
+<polygon fill="#000000" stroke="#000000" points="264.55,-215.06 273.29,-209.08 262.72,-208.3 264.55,-215.06"/>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_start~~CallsGraph_node8" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_start~~CallsGraph_node8"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="476,-149 422,-149 422,-125 476,-125 476,-149"/>
+<text text-anchor="middle" x="449" y="-134.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_addtimer&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_start~~CallsGraph_edge11" class="edge">
+<title>proc~tem_addtimer&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M206.8,-153.9C263.21,-149.95 359.62,-143.19 411.84,-139.53"/>
+<polygon fill="#000000" stroke="#000000" points="412.24,-143.01 421.97,-138.82 411.75,-136.03 412.24,-143.01"/>
+</g>
+<!-- proc~tem_appendtimers -->
+<g id="proc~~tem_start~~CallsGraph_node15" class="node">
+<title>proc~tem_appendtimers</title>
+<g id="a_proc~~tem_start~~CallsGraph_node15"><a xlink:href="../proc/tem_appendtimers.html" xlink:title="tem_appendTimers">
+<polygon fill="#d9534f" stroke="#d9534f" points="376.5,-129 261.5,-129 261.5,-105 376.5,-105 376.5,-129"/>
+<text text-anchor="middle" x="319" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_appendTimers</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_addtimer&#45;&gt;proc~tem_appendtimers -->
+<g id="proc~~tem_start~~CallsGraph_edge12" class="edge">
+<title>proc~tem_addtimer&#45;&gt;proc~tem_appendtimers</title>
+<path fill="none" stroke="#000000" d="M206.64,-145.64C223.69,-141.26 243.41,-136.19 261.47,-131.54"/>
+<polygon fill="#000000" stroke="#000000" points="262.49,-134.89 271.3,-129.01 260.75,-128.11 262.49,-134.89"/>
+</g>
+<!-- proc~tem_comm_env_init&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_start~~CallsGraph_edge13" class="edge">
+<title>proc~tem_comm_env_init&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M221.29,-323C233.38,-323 246.13,-323 258.26,-323"/>
+<polygon fill="#000000" stroke="#000000" points="258.27,-326.5 268.27,-323 258.27,-319.5 258.27,-326.5"/>
+</g>
+<!-- mpi_comm_size -->
+<g id="proc~~tem_start~~CallsGraph_node10" class="node">
+<title>mpi_comm_size</title>
+<polygon fill="#777777" stroke="#777777" points="367.5,-377 270.5,-377 270.5,-353 367.5,-353 367.5,-377"/>
+<text text-anchor="middle" x="319" y="-362.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_size</text>
+</g>
+<!-- proc~tem_comm_env_init&#45;&gt;mpi_comm_size -->
+<g id="proc~~tem_start~~CallsGraph_edge14" class="edge">
+<title>proc~tem_comm_env_init&#45;&gt;mpi_comm_size</title>
+<path fill="none" stroke="#000000" d="M207.06,-335.04C224.71,-339.8 245.17,-345.33 263.67,-350.33"/>
+<polygon fill="#000000" stroke="#000000" points="262.87,-353.73 273.43,-352.96 264.69,-346.98 262.87,-353.73"/>
+</g>
+<!-- proc~tem_status_clear -->
+<g id="proc~~tem_start~~CallsGraph_node16" class="node">
+<title>proc~tem_status_clear</title>
+<g id="a_proc~~tem_start~~CallsGraph_node16"><a xlink:href="../proc/tem_status_clear.html" xlink:title="tem_status_clear">
+<polygon fill="#d9534f" stroke="#d9534f" points="370.5,-87 267.5,-87 267.5,-63 370.5,-63 370.5,-87"/>
+<text text-anchor="middle" x="319" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_status_clear</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_simcontrol_start&#45;&gt;proc~tem_status_clear -->
+<g id="proc~~tem_start~~CallsGraph_edge15" class="edge">
+<title>proc~tem_simcontrol_start&#45;&gt;proc~tem_status_clear</title>
+<path fill="none" stroke="#000000" d="M224.4,-73.8C235.19,-73.93 246.39,-74.08 257.15,-74.22"/>
+<polygon fill="#000000" stroke="#000000" points="257.25,-77.72 267.29,-74.35 257.34,-70.72 257.25,-77.72"/>
+</g>
+<!-- proc~tem_time_reset -->
+<g id="proc~~tem_start~~CallsGraph_node17" class="node">
+<title>proc~tem_time_reset</title>
+<g id="a_proc~~tem_start~~CallsGraph_node17"><a xlink:href="../proc/tem_time_reset.html" xlink:title="tem_time_reset">
+<polygon fill="#d9534f" stroke="#d9534f" points="366,-45 272,-45 272,-21 366,-21 366,-45"/>
+<text text-anchor="middle" x="319" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_reset</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_simcontrol_start&#45;&gt;proc~tem_time_reset -->
+<g id="proc~~tem_start~~CallsGraph_edge16" class="edge">
+<title>proc~tem_simcontrol_start&#45;&gt;proc~tem_time_reset</title>
+<path fill="none" stroke="#000000" d="M209.16,-61C225.76,-56.73 244.62,-51.88 261.93,-47.42"/>
+<polygon fill="#000000" stroke="#000000" points="263.1,-50.74 271.91,-44.86 261.36,-43.96 263.1,-50.74"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~tem_start~~CallsGraph_node12" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="484,-25 414,-25 414,-1 484,-1 484,-25"/>
+<text text-anchor="middle" x="449" y="-10.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_starttimer&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_start~~CallsGraph_edge17" class="edge">
+<title>proc~tem_starttimer&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M208.74,-11.81C252.38,-11.67 319.64,-11.58 378,-12 386.29,-12.06 395.14,-12.16 403.66,-12.27"/>
+<polygon fill="#000000" stroke="#000000" points="403.77,-15.77 413.82,-12.41 403.87,-8.77 403.77,-15.77"/>
+</g>
+<!-- proc~append_da_label -->
+<g id="proc~~tem_start~~CallsGraph_node18" class="node">
+<title>proc~append_da_label</title>
+<g id="a_proc~~tem_start~~CallsGraph_node18"><a xlink:href="../proc/append_da_label.html" xlink:title="append_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="632.5,-128 529.5,-128 529.5,-104 632.5,-104 632.5,-128"/>
+<text text-anchor="middle" x="581" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_label -->
+<g id="proc~~tem_start~~CallsGraph_edge18" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.31,-132.75C488.78,-130.73 504.25,-128.24 519.4,-125.79"/>
+<polygon fill="#000000" stroke="#000000" points="519.96,-129.24 529.27,-124.19 518.84,-122.33 519.96,-129.24"/>
+</g>
+<!-- proc~append_da_veclabel -->
+<g id="proc~~tem_start~~CallsGraph_node19" class="node">
+<title>proc~append_da_veclabel</title>
+<g id="a_proc~~tem_start~~CallsGraph_node19"><a xlink:href="../proc/append_da_veclabel.html" xlink:title="append_da_veclabel">
+<polygon fill="#d9534f" stroke="#d9534f" points="642,-170 520,-170 520,-146 642,-146 642,-170"/>
+<text text-anchor="middle" x="581" y="-155.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_veclabel</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_veclabel -->
+<g id="proc~~tem_start~~CallsGraph_edge19" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_veclabel</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M476.31,-141.25C486.16,-142.84 497.88,-144.73 509.83,-146.67"/>
+<polygon fill="#000000" stroke="#000000" points="509.46,-150.15 519.89,-148.29 510.58,-143.24 509.46,-150.15"/>
+</g>
+<!-- proc~tem_appendtimers&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_start~~CallsGraph_edge20" class="edge">
+<title>proc~tem_appendtimers&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M376.52,-125.83C388.49,-127.7 400.82,-129.63 411.8,-131.34"/>
+<polygon fill="#000000" stroke="#000000" points="411.44,-134.83 421.86,-132.92 412.52,-127.91 411.44,-134.83"/>
+</g>
+<!-- proc~tem_time_reset&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_start~~CallsGraph_edge21" class="edge">
+<title>proc~tem_time_reset&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M366.21,-25.78C378.52,-23.86 391.78,-21.78 403.97,-19.88"/>
+<polygon fill="#000000" stroke="#000000" points="404.57,-23.33 413.91,-18.33 403.49,-16.41 404.57,-23.33"/>
+</g>
+<!-- interface~expand~19 -->
+<g id="proc~~tem_start~~CallsGraph_node20" class="node">
+<title>interface~expand~19</title>
+<g id="a_proc~~tem_start~~CallsGraph_node20"><a xlink:href="../interface/expand~19.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="750.5,-170 696.5,-170 696.5,-146 750.5,-146 750.5,-170"/>
+<text text-anchor="middle" x="723.5" y="-155.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_start~~CallsGraph_edge22" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M622.26,-128.04C642.56,-134.1 666.98,-141.4 686.63,-147.28"/>
+<polygon fill="#000000" stroke="#000000" points="685.84,-150.69 696.42,-150.21 687.85,-143.99 685.84,-150.69"/>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~tem_start~~CallsGraph_node21" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~tem_start~~CallsGraph_node21"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="769,-128 678,-128 678,-104 769,-104 769,-128"/>
+<text text-anchor="middle" x="723.5" y="-113.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_start~~CallsGraph_edge23" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M632.72,-116C644.04,-116 656.09,-116 667.56,-116"/>
+<polygon fill="#000000" stroke="#000000" points="667.9,-119.5 677.9,-116 667.9,-112.5 667.9,-119.5"/>
+</g>
+<!-- proc~append_da_veclabel&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_start~~CallsGraph_edge24" class="edge">
+<title>proc~append_da_veclabel&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M642.4,-158C657.31,-158 672.82,-158 686.17,-158"/>
+<polygon fill="#000000" stroke="#000000" points="686.37,-161.5 696.37,-158 686.37,-154.5 686.37,-161.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_startCallsGraph = svgPanZoom('#proctem_startCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_start</span><span class="p">(</span><span class="n">codeName</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">general</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">simControl</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; name of code</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">codeName</span>
+<span class="w">    </span><span class="c">!&gt; version of the code</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">version</span>
+<span class="w">    </span><span class="c">!&gt; encapsulates global parameters which are common for all solvers</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_general_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">general</span>
+<span class="w">    </span><span class="c">!&gt; mpi communicator if it is predefined as in apesmate</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">!&gt; simulation control to initialize</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_simControl_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">simControl</span>
+<span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nProcs</span><span class="p">,</span><span class="w"> </span><span class="n">nThreads</span>
+<span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="c">! Initialize all logunits to point to the stdout unit.</span>
+<span class="w">    </span><span class="n">logunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stdoutunit</span>
+
+<span class="w">    </span><span class="c">! if comm is present initialize environment already called</span>
+<span class="w">    </span><span class="c">! so should not be called again</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">comm</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">init_env</span><span class="p">()</span>
+
+<span class="w">    </span><span class="c">! initialize mpi environment</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_comm_env_init</span><span class="p">(</span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">)</span>
+<span class="w">    </span><span class="n">nProcs</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm_size</span>
+<span class="w">    </span><span class="n">nThreads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">nThreads</span>
+
+<span class="w">    </span><span class="c">! initialize solverHead</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_init_solveHead</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">solName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codeName</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">         </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">simControl</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">tem_simControl_start</span><span class="p">(</span><span class="n">simControl</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Starting up &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">codeName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot; with nprocs: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nProcs</span>
+<span class="w">      </span><span class="c">!$ write(logUnit(1),*)&quot;               and nThreads pp: &quot;, nThreads</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">tem_addTimer</span><span class="p">(</span><span class="w"> </span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="n">timerName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">codeName</span><span class="p">)</span><span class="w">              </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_startTimer</span><span class="p">(</span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_start</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

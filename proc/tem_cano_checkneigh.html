@@ -1,0 +1,1005 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_cano_checkNeigh &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_cano_checkNeigh
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">63 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_canonical_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_canonical_module.f90.html'>tem_canonical_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_canonicalnd_module.html'>tem_canonicalND_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_cano_checkNeigh</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_cano_checkneigh.html#src">tem_cano_checkNeigh</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_cano_checkNeigh(me, inTree, countElems, map2global)  
+</h2>
+    
+
+    <p>Check for neighboring elements to a given point.</p>
+<p>This routine can be used to find close by elements for points that just
+lie outside the domain and for which values can be extrapolated, though
+they do not strictly reside in the computational domain described by
+inTree.
+The closest neighboring element is identified globally and added to the
+map2global if any is found.
+This only works for points, and none of the points in the given list
+should have been found inside the domain.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~363"></span>
+              type(<a href='../type/tem_canonicalnd_type.html'>tem_canonicalND_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong>(:)</td>
+            <td>
+                <p>canonicalND objects to check, only points will be considered</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-intree~9"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>inTree</strong></td>
+            <td>
+                <p>Global tree</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-countelems~5"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>countElems</strong>(globalMaxLevels)</td>
+            <td>
+                <p>How many elements there will be for each level in the track</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-map2global~8"></span>
+              type(<a href='../type/dyn_intarray_type.html'>dyn_intarray_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>map2global</strong></td>
+            <td>
+                <p>growing array for the map2global</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_cano_checkneigh~~CallsGraph Pages: 1 -->
+<svg id="proctem_cano_checkneighCallsGraph" width="641pt" height="366pt"
+ viewBox="0.00 0.00 641.00 366.29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_cano_checkneigh~~CallsGraph" class="graph" transform="scale(0.89 0.89) rotate(0) translate(4 408)">
+<title>proc~~tem_cano_checkneigh~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-408 717,-408 717,4 -4,4"/>
+<!-- proc~tem_cano_checkneigh -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node1" class="node">
+<title>proc~tem_cano_checkneigh</title>
+<polygon fill="none" stroke="black" points="133,-230 0,-230 0,-206 133,-206 133,-230"/>
+<text text-anchor="middle" x="66.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_cano_checkNeigh</text>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node2" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node2"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="250.5,-394 196.5,-394 196.5,-370 250.5,-370 250.5,-394"/>
+<text text-anchor="middle" x="223.5" y="-379.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge1" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M73.06,-230.15C86.07,-257.31 121.04,-323.49 169,-361 174.26,-365.12 180.43,-368.51 186.67,-371.29"/>
+<polygon fill="#000000" stroke="#000000" points="185.83,-374.72 196.41,-375.15 188.41,-368.21 185.83,-374.72"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node3" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="267.5,-352 179.5,-352 179.5,-328 267.5,-328 267.5,-352"/>
+<text text-anchor="middle" x="223.5" y="-337.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge2" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M78.07,-230.17C95.52,-249.71 132.09,-288.48 169,-314 173.84,-317.35 179.18,-320.5 184.56,-323.36"/>
+<polygon fill="#000000" stroke="#000000" points="183.05,-326.52 193.55,-327.92 186.21,-320.28 183.05,-326.52"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node4" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node4"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="266,-272 181,-272 181,-248 266,-248 266,-272"/>
+<text text-anchor="middle" x="223.5" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge3" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M111.92,-230.04C130.35,-235.03 151.86,-240.86 170.98,-246.04"/>
+<polygon fill="#000000" stroke="#000000" points="170.17,-249.45 180.74,-248.68 172,-242.69 170.17,-249.45"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node5" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node5"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="424,-301 331,-301 331,-277 424,-277 424,-301"/>
+<text text-anchor="middle" x="377.5" y="-286.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge4" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M81.77,-230.26C100.4,-245.42 134.69,-270.5 169,-281 218.68,-296.21 278.19,-296.83 320.71,-294.46"/>
+<polygon fill="#000000" stroke="#000000" points="321.11,-297.95 330.87,-293.83 320.67,-290.96 321.11,-297.95"/>
+</g>
+<!-- proc~tem_coordofreal -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node6" class="node">
+<title>proc~tem_coordofreal</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node6"><a xlink:href="../proc/tem_coordofreal.html" xlink:title="tem_CoordOfReal">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="276.5,-230 170.5,-230 170.5,-206 276.5,-206 276.5,-230"/>
+<text text-anchor="middle" x="223.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfReal</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_coordofreal -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge5" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_coordofreal</title>
+<path fill="none" stroke="#000000" d="M133.23,-218C142.13,-218 151.24,-218 160.07,-218"/>
+<polygon fill="#000000" stroke="#000000" points="160.29,-221.5 170.29,-218 160.29,-214.5 160.29,-221.5"/>
+</g>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node7" class="node">
+<title>proc~tem_firstidatlevel</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node7"><a xlink:href="../proc/tem_firstidatlevel.html" xlink:title="tem_FirstIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="278,-188 169,-188 169,-164 278,-164 278,-188"/>
+<text text-anchor="middle" x="223.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_FirstIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge6" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M111.92,-205.96C129.51,-201.2 149.9,-195.67 168.35,-190.67"/>
+<polygon fill="#000000" stroke="#000000" points="169.34,-194.03 178.08,-188.04 167.51,-187.27 169.34,-194.03"/>
+</g>
+<!-- proc~tem_idofcoord -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node8" class="node">
+<title>proc~tem_idofcoord</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node8"><a xlink:href="../proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="270,-146 177,-146 177,-122 270,-122 270,-146"/>
+<text text-anchor="middle" x="223.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge7" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M84.9,-205.84C104.68,-192.34 138.22,-170.43 169,-155 172.36,-153.31 175.9,-151.67 179.48,-150.09"/>
+<polygon fill="#000000" stroke="#000000" points="181.13,-153.19 188.98,-146.08 178.41,-146.74 181.13,-153.19"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node9" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node9"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="562,-204 483,-204 483,-180 562,-180 562,-204"/>
+<text text-anchor="middle" x="522.5" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge8" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M74.51,-205.89C88.78,-182.6 123.72,-132.21 169,-113 283.78,-64.31 432.86,-138.88 493.76,-174.64"/>
+<polygon fill="#000000" stroke="#000000" points="492.04,-177.69 502.42,-179.81 495.63,-171.68 492.04,-177.69"/>
+</g>
+<!-- proc~tem_posofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node10" class="node">
+<title>proc~tem_posofid</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node10"><a xlink:href="../proc/tem_posofid.html" xlink:title="tem_PosOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="263,-66 184,-66 184,-42 263,-42 263,-66"/>
+<text text-anchor="middle" x="223.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PosOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_cano_checkneigh&#45;&gt;proc~tem_posofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge9" class="edge">
+<title>proc~tem_cano_checkneigh&#45;&gt;proc~tem_posofid</title>
+<path fill="none" stroke="#000000" d="M73.8,-205.76C87.78,-179.63 123.75,-117.69 169,-80 173.01,-76.66 177.53,-73.62 182.19,-70.9"/>
+<polygon fill="#000000" stroke="#000000" points="184.08,-73.86 191.25,-66.06 180.78,-67.69 184.08,-73.86"/>
+</g>
+<!-- proc~append_da_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node11" class="node">
+<title>proc~append_da_label</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node11"><a xlink:href="../proc/append_da_label.html" xlink:title="append_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="429,-362 326,-362 326,-338 429,-338 429,-362"/>
+<text text-anchor="middle" x="377.5" y="-347.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge10" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M250.63,-376.5C268.6,-372.72 293.22,-367.53 315.93,-362.75"/>
+<polygon fill="#000000" stroke="#000000" points="316.79,-366.15 325.86,-360.66 315.35,-359.3 316.79,-366.15"/>
+</g>
+<!-- proc~append_da_veclabel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node12" class="node">
+<title>proc~append_da_veclabel</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node12"><a xlink:href="../proc/append_da_veclabel.html" xlink:title="append_da_veclabel">
+<polygon fill="#d9534f" stroke="#d9534f" points="438.5,-404 316.5,-404 316.5,-380 438.5,-380 438.5,-404"/>
+<text text-anchor="middle" x="377.5" y="-389.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_veclabel</text>
+</a>
+</g>
+</g>
+<!-- interface~append~19&#45;&gt;proc~append_da_veclabel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge11" class="edge">
+<title>interface~append~19&#45;&gt;proc~append_da_veclabel</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M250.63,-383.72C266.1,-384.74 286.5,-386.08 306.36,-387.39"/>
+<polygon fill="#000000" stroke="#000000" points="306.15,-390.88 316.35,-388.04 306.61,-383.89 306.15,-390.88"/>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge12" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M266.03,-267.92C282.94,-271.15 302.74,-274.93 320.87,-278.39"/>
+<polygon fill="#000000" stroke="#000000" points="320.26,-281.83 330.74,-280.27 321.57,-274.96 320.26,-281.83"/>
+</g>
+<!-- proc~tem_elemsizelevel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node13" class="node">
+<title>proc~tem_elemsizelevel</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node13"><a xlink:href="../proc/tem_elemsizelevel.html" xlink:title="tem_ElemSizeLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="435.5,-259 319.5,-259 319.5,-235 435.5,-235 435.5,-259"/>
+<text text-anchor="middle" x="377.5" y="-244.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSizeLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge13" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M266.03,-256.45C279.39,-255.31 294.55,-254.01 309.26,-252.75"/>
+<polygon fill="#000000" stroke="#000000" points="309.68,-256.23 319.35,-251.89 309.08,-249.25 309.68,-256.23"/>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge14" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M422.61,-276.88C428.99,-274.36 435.31,-271.42 441,-268 466.07,-252.96 489.77,-228.96 504.87,-211.96"/>
+<polygon fill="#000000" stroke="#000000" points="507.66,-214.09 511.57,-204.25 502.37,-209.5 507.66,-214.09"/>
+</g>
+<!-- proc~tem_pathcomparison -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node14" class="node">
+<title>proc~tem_pathcomparison</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node14"><a xlink:href="../proc/tem_pathcomparison.html" xlink:title="tem_PathComparison">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="441,-66 314,-66 314,-42 441,-42 441,-66"/>
+<text text-anchor="middle" x="377.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PathComparison</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_posofid&#45;&gt;proc~tem_pathcomparison -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge15" class="edge">
+<title>proc~tem_posofid&#45;&gt;proc~tem_pathcomparison</title>
+<path fill="none" stroke="#000000" d="M263.25,-54C275.64,-54 289.78,-54 303.77,-54"/>
+<polygon fill="#000000" stroke="#000000" points="303.9,-57.5 313.9,-54 303.9,-50.5 303.9,-57.5"/>
+</g>
+<!-- proc~tem_pathof -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node15" class="node">
+<title>proc~tem_pathof</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node15"><a xlink:href="../proc/tem_pathof.html" xlink:title="tem_PathOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="414.5,-24 340.5,-24 340.5,0 414.5,0 414.5,-24"/>
+<text text-anchor="middle" x="377.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PathOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_posofid&#45;&gt;proc~tem_pathof -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge16" class="edge">
+<title>proc~tem_posofid&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M263.25,-43.29C283.75,-37.63 309.06,-30.64 330.54,-24.7"/>
+<polygon fill="#000000" stroke="#000000" points="331.72,-28 340.43,-21.97 329.86,-21.26 331.72,-28"/>
+</g>
+<!-- interface~expand~19 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node16" class="node">
+<title>interface~expand~19</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node16"><a xlink:href="../interface/expand~19.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="549.5,-404 495.5,-404 495.5,-380 549.5,-380 549.5,-404"/>
+<text text-anchor="middle" x="522.5" y="-389.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge17" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M419.48,-362.04C440.38,-368.17 465.56,-375.57 485.67,-381.48"/>
+<polygon fill="#000000" stroke="#000000" points="484.81,-384.87 495.39,-384.33 486.78,-378.16 484.81,-384.87"/>
+</g>
+<!-- interface~sortedposofval~4 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node17" class="node">
+<title>interface~sortedposofval~4</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node17"><a xlink:href="../interface/sortedposofval~4.html" xlink:title="sortedposofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="568,-362 477,-362 477,-338 568,-338 568,-362"/>
+<text text-anchor="middle" x="522.5" y="-347.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+</a>
+</g>
+</g>
+<!-- proc~append_da_label&#45;&gt;interface~sortedposofval~4 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge18" class="edge">
+<title>proc~append_da_label&#45;&gt;interface~sortedposofval~4</title>
+<path fill="none" stroke="#000000" d="M429.32,-350C441.36,-350 454.26,-350 466.48,-350"/>
+<polygon fill="#000000" stroke="#000000" points="466.55,-353.5 476.55,-350 466.55,-346.5 466.55,-353.5"/>
+</g>
+<!-- proc~append_da_veclabel&#45;&gt;interface~expand~19 -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge19" class="edge">
+<title>proc~append_da_veclabel&#45;&gt;interface~expand~19</title>
+<path fill="none" stroke="#000000" d="M438.73,-392C454.42,-392 470.86,-392 484.91,-392"/>
+<polygon fill="#000000" stroke="#000000" points="485.14,-395.5 495.14,-392 485.14,-388.5 485.14,-395.5"/>
+</g>
+<!-- proc~expand_da_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node18" class="node">
+<title>proc~expand_da_label</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node18"><a xlink:href="../proc/expand_da_label.html" xlink:title="expand_da_label">
+<polygon fill="#d9534f" stroke="#d9534f" points="709.5,-404 607.5,-404 607.5,-380 709.5,-380 709.5,-404"/>
+<text text-anchor="middle" x="658.5" y="-389.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_da_label</text>
+</a>
+</g>
+</g>
+<!-- interface~expand~19&#45;&gt;proc~expand_da_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge20" class="edge">
+<title>interface~expand~19&#45;&gt;proc~expand_da_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.65,-392C563.22,-392 580.39,-392 597.02,-392"/>
+<polygon fill="#000000" stroke="#000000" points="597.26,-395.5 607.26,-392 597.26,-388.5 597.26,-395.5"/>
+</g>
+<!-- proc~sortposofval_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_node19" class="node">
+<title>proc~sortposofval_label</title>
+<g id="a_proc~~tem_cano_checkneigh~~CallsGraph_node19"><a xlink:href="../proc/sortposofval_label.html" xlink:title="sortposofval_label">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="713,-362 604,-362 604,-338 713,-338 713,-362"/>
+<text text-anchor="middle" x="658.5" y="-347.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortposofval_label</text>
+</a>
+</g>
+</g>
+<!-- interface~sortedposofval~4&#45;&gt;proc~sortposofval_label -->
+<g id="proc~~tem_cano_checkneigh~~CallsGraph_edge21" class="edge">
+<title>interface~sortedposofval~4&#45;&gt;proc~sortposofval_label</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.12,-350C576.33,-350 585.04,-350 593.69,-350"/>
+<polygon fill="#000000" stroke="#000000" points="593.77,-353.5 603.77,-350 593.77,-346.5 593.77,-353.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_cano_checkneighCallsGraph = svgPanZoom('#proctem_cano_checkneighCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_cano_checkneigh~~CalledByGraph Pages: 1 -->
+<svg id="proctem_cano_checkneighCalledByGraph" width="641pt" height="109pt"
+ viewBox="0.00 0.00 641.00 108.78" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph" class="graph" transform="scale(0.69 0.69) rotate(0) translate(4 154)">
+<title>proc~~tem_cano_checkneigh~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 927,-154 927,4 -4,4"/>
+<!-- proc~tem_cano_checkneigh -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node1" class="node">
+<title>proc~tem_cano_checkneigh</title>
+<polygon fill="none" stroke="black" points="923,-87 790,-87 790,-63 923,-63 923,-87"/>
+<text text-anchor="middle" x="856.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_cano_checkNeigh</text>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node2" class="node">
+<title>proc~tem_shape_subtreefromgeominters</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node2"><a xlink:href="../proc/tem_shape_subtreefromgeominters.html" xlink:title="tem_shape_subTreeFromGeomInters">
+<polygon fill="#d9534f" stroke="#d9534f" points="754,-87 549,-87 549,-63 754,-63 754,-87"/>
+<text text-anchor="middle" x="651.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_subTreeFromGeomInters</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_shape_subtreefromgeominters&#45;&gt;proc~tem_cano_checkneigh</title>
+<path fill="none" stroke="#000000" d="M754,-75C762.67,-75 771.34,-75 779.75,-75"/>
+<polygon fill="#000000" stroke="#000000" points="779.87,-78.5 789.87,-75 779.87,-71.5 779.87,-78.5"/>
+</g>
+<!-- proc~tem_shape2subtree -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node3" class="node">
+<title>proc~tem_shape2subtree</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node3"><a xlink:href="../proc/tem_shape2subtree.html" xlink:title="tem_shape2subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="513,-87 395,-87 395,-63 513,-63 513,-87"/>
+<text text-anchor="middle" x="454" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape2subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_shape2subtree&#45;&gt;proc~tem_shape_subtreefromgeominters</title>
+<path fill="none" stroke="#000000" d="M513.13,-75C521.22,-75 529.74,-75 538.42,-75"/>
+<polygon fill="#000000" stroke="#000000" points="538.67,-78.5 548.67,-75 538.67,-71.5 538.67,-78.5"/>
+</g>
+<!-- proc~tem_create_subtree_of -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node4" class="node">
+<title>proc~tem_create_subtree_of</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node4"><a xlink:href="../proc/tem_create_subtree_of.html" xlink:title="tem_create_subTree_of">
+<polygon fill="#d9534f" stroke="#d9534f" points="359,-87 225,-87 225,-63 359,-63 359,-87"/>
+<text text-anchor="middle" x="292" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_create_subtree_of&#45;&gt;proc~tem_shape2subtree</title>
+<path fill="none" stroke="#000000" d="M359,-75C367.45,-75 376.11,-75 384.59,-75"/>
+<polygon fill="#000000" stroke="#000000" points="384.82,-78.5 394.82,-75 384.82,-71.5 384.82,-78.5"/>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node5" class="node">
+<title>proc~tem_create_subtree_of_st_funlist</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node5"><a xlink:href="../proc/tem_create_subtree_of_st_funlist.html" xlink:title="tem_create_subTree_of_st_funList">
+<polygon fill="#d9534f" stroke="#d9534f" points="189,-150 0,-150 0,-126 189,-126 189,-150"/>
+<text text-anchor="middle" x="94.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_subTree_of_st_funList</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge4" class="edge">
+<title>proc~tem_create_subtree_of_st_funlist&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-125.93C167.24,-123.3 178.53,-120.31 189,-117 211.65,-109.85 236.3,-99.77 255.69,-91.27"/>
+<polygon fill="#000000" stroke="#000000" points="257.32,-94.38 265.04,-87.13 254.48,-87.98 257.32,-94.38"/>
+</g>
+<!-- proc~tem_init_convergence -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node6" class="node">
+<title>proc~tem_init_convergence</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node6"><a xlink:href="../proc/tem_init_convergence.html" xlink:title="tem_init_convergence">
+<polygon fill="#d9534f" stroke="#d9534f" points="159.5,-108 29.5,-108 29.5,-84 159.5,-84 159.5,-108"/>
+<text text-anchor="middle" x="94.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_convergence</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge5" class="edge">
+<title>proc~tem_init_convergence&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M159.51,-89.12C177.18,-87.23 196.52,-85.15 214.8,-83.19"/>
+<polygon fill="#000000" stroke="#000000" points="215.26,-86.66 224.83,-82.11 214.51,-79.7 215.26,-86.66"/>
+</g>
+<!-- proc~tem_init_tracker_subtree -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node7" class="node">
+<title>proc~tem_init_tracker_subtree</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node7"><a xlink:href="../proc/tem_init_tracker_subtree.html" xlink:title="tem_init_tracker_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="167,-66 22,-66 22,-42 167,-42 167,-66"/>
+<text text-anchor="middle" x="94.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_init_tracker_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge6" class="edge">
+<title>proc~tem_init_tracker_subtree&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M167.19,-61.7C182.65,-63.36 199.06,-65.12 214.69,-66.8"/>
+<polygon fill="#000000" stroke="#000000" points="214.52,-70.3 224.84,-67.89 215.27,-63.34 214.52,-70.3"/>
+</g>
+<!-- proc~tem_write_debugmesh -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_node8" class="node">
+<title>proc~tem_write_debugmesh</title>
+<g id="a_proc~~tem_cano_checkneigh~~CalledByGraph_node8"><a xlink:href="../proc/tem_write_debugmesh.html" xlink:title="tem_write_debugMesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="160.5,-24 28.5,-24 28.5,0 160.5,0 160.5,-24"/>
+<text text-anchor="middle" x="94.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_write_debugMesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of -->
+<g id="proc~~tem_cano_checkneigh~~CalledByGraph_edge7" class="edge">
+<title>proc~tem_write_debugmesh&#45;&gt;proc~tem_create_subtree_of</title>
+<path fill="none" stroke="#000000" d="M156.26,-24.07C167.24,-26.7 178.53,-29.69 189,-33 211.65,-40.15 236.3,-50.23 255.69,-58.73"/>
+<polygon fill="#000000" stroke="#000000" points="254.48,-62.02 265.04,-62.87 257.32,-55.62 254.48,-62.02"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_cano_checkneighCalledByGraph = svgPanZoom('#proctem_cano_checkneighCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_cano_checkNeigh</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">countElems</span><span class="p">,</span><span class="w"> </span><span class="n">map2global</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; canonicalND objects to check, only points will be considered</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_canonicalND_type</span><span class="w"> </span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; Global tree</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">inTree</span>
+<span class="w">    </span><span class="c">!&gt; How many elements there will be for each level in the track</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="w"> </span><span class="n">inout</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">countElems</span><span class="p">(</span><span class="w"> </span><span class="n">globalMaxLevels</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; growing array for the map2global</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">dyn_intArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">map2global</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iCano</span><span class="p">,</span><span class="w"> </span><span class="n">tLevel</span><span class="p">,</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w"> </span><span class="n">dPos</span><span class="p">,</span><span class="w"> </span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="n">iQQN</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wasAdded</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nCanoNDs</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">treeID</span><span class="p">,</span><span class="w"> </span><span class="n">tOffset</span><span class="p">,</span><span class="w"> </span><span class="n">neighID</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">minproc</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mindist</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">)),</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">minglobdist</span><span class="p">(</span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">))</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">elemcenter</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="n">maxLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<span class="w">    </span><span class="n">mindist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+<span class="w">    </span><span class="n">closest_neigh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">nCanoNDs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">me</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Create subTree by intersecting canoND objects with the inTree</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iCano</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nCanoNDs</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="nb">kind</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;point&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">treeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_IdOfCoord</span><span class="p">(</span><span class="w"> </span><span class="n">tem_CoordOfReal</span><span class="p">(</span><span class="n">inTree</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="n">point</span><span class="p">%</span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                     </span><span class="n">maxLevel</span><span class="p">)</span><span class="w">                   </span><span class="p">)</span>
+<span class="w">        </span><span class="c">! add a neighbor element of this point if any of the neighbor exist to</span>
+<span class="w">        </span><span class="c">! interpolate to a point</span>
+<span class="w">        </span><span class="n">coordOfId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_CoordOfId</span><span class="p">(</span><span class="w"> </span><span class="n">treeID</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="n">tOffset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_FirstIdAtLevel</span><span class="p">(</span><span class="w"> </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="n">directionLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">iQQN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">qQQQ</span>
+<span class="w">          </span><span class="n">neighID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_IdOfCoord</span><span class="p">(</span><span class="w">                          </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">         </span><span class="p">[</span><span class="w"> </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qOffset</span><span class="p">(</span><span class="w"> </span><span class="n">iQQN</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">           </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qOffset</span><span class="p">(</span><span class="w"> </span><span class="n">iQQN</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">           </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qOffset</span><span class="p">(</span><span class="w"> </span><span class="n">iQQN</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">           </span><span class="n">coordOfId</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="n">tOffset</span><span class="p">)</span>
+<span class="w">          </span><span class="n">elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_PosOfId</span><span class="p">(</span><span class="n">neighID</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">treeID</span><span class="p">)</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">elemPos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">elemcenter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_BaryOfId</span><span class="p">(</span><span class="n">inTree</span><span class="p">,</span><span class="w"> </span><span class="n">neighID</span><span class="p">)</span>
+<span class="w">            </span><span class="n">dist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sqrt</span><span class="p">(</span><span class="w">  </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="n">point</span><span class="p">%</span><span class="n">coord</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">elemcenter</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">         </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="n">point</span><span class="p">%</span><span class="n">coord</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">elemcenter</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">         </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="n">point</span><span class="p">%</span><span class="n">coord</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">elemcenter</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">mindist</span><span class="p">(</span><span class="n">iCano</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">              </span><span class="n">mindist</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span>
+<span class="w">              </span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span>
+<span class="w">            </span><span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="n">dist</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">mindist</span><span class="p">(</span><span class="n">iCano</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">              </span><span class="c">! Make sure to pick the first element in the SFC ordering</span>
+<span class="w">              </span><span class="c">! as the nearest neighbor, if there are multiple with the</span>
+<span class="w">              </span><span class="c">! same distance (&lt;= comparison to avoid == comparison for</span>
+<span class="w">              </span><span class="c">! reals)</span>
+<span class="w">              </span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">elemPos</span><span class="p">,</span><span class="w"> </span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">iCano</span><span class="p">))</span>
+<span class="w">            </span><span class="k">end if</span>
+<span class="k">          end if</span>
+<span class="k">        end do </span><span class="n">directionLoop</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+
+<span class="k">    call </span><span class="n">MPI_Allreduce</span><span class="p">(</span><span class="w"> </span><span class="n">mindist</span><span class="p">,</span><span class="w"> </span><span class="n">minglobdist</span><span class="p">,</span><span class="w"> </span><span class="n">nCanoNDs</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">rk_mpi</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_MIN</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">minproc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iCano</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nCanoNDs</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">minglobdist</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nb">huge</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">mindist</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">minglobdist</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          </span><span class="n">minproc</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+<span class="k">    end do</span>
+
+<span class="k">    call </span><span class="n">MPI_Allreduce</span><span class="p">(</span><span class="w"> </span><span class="n">MPI_IN_PLACE</span><span class="p">,</span><span class="w"> </span><span class="n">minproc</span><span class="p">,</span><span class="w"> </span><span class="n">nCanoNDs</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_MIN</span><span class="p">,</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">do </span><span class="n">iCano</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nCanoNDs</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">(</span><span class="n">iCano</span><span class="p">)%</span><span class="nb">kind</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;point&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">found_elem</span><span class="p">:</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">minproc</span><span class="p">(</span><span class="n">iCano</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! append the position in inTree to the map (note that already existing</span>
+<span class="w">          </span><span class="c">! ones are omitted)</span>
+<span class="w">          </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">map2global</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">dpos</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">iCano</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wasAdded</span><span class="w">              </span><span class="p">)</span>
+
+<span class="w">          </span><span class="c">! Count up if it was added</span>
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wasAdded</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">tLevel</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">tem_levelOf</span><span class="p">(</span><span class="w"> </span><span class="n">inTree</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="n">closest_neigh</span><span class="p">(</span><span class="n">iCano</span><span class="p">))</span><span class="w"> </span><span class="p">)</span>
+<span class="w">            </span><span class="n">countElems</span><span class="p">(</span><span class="w"> </span><span class="n">tLevel</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">countElems</span><span class="p">(</span><span class="w"> </span><span class="n">tLevel</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">          </span><span class="k">end if</span><span class="w"> </span><span class="c">! wasAdded</span>
+<span class="w">        </span><span class="k">end if </span><span class="n">found_elem</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_cano_checkNeigh</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

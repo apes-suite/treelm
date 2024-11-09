@@ -1,0 +1,960 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_open_distconf &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_open_distconf
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">60 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_aux_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_aux_module.f90.html'>tem_aux_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_aux_module.html'>tem_aux_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_open_distconf</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_open_distconf.html#src">tem_open_distconf</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_open_distconf(L, fileName, proc)  
+</h2>
+    
+
+    <p>Read a Lua file on the first process and distribute it to all.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>HK: Maybe deprecate and remove this routine in favor of
+TEM_open_distconf_array to avoid code duplication? Or keep it around and
+put a generic interface in place?</p>
+</div>
+<p>This is a drop in replacement for open_config_file from Aotus and allows
+the scalable processing of Lua files, as they are read by a single process
+and then streamed to all in proc.
+There should be no restrictions on the Lua scripts themselves in this
+method, as it uses an overloading of the require mechanism in Lua itself to
+replace the file searches by lookups of buffered Lua code snippets.
+The execution of the Lua script itself is not changed.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-l~2"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>L</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-filename"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fileName</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~2"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+                <p>Process description to use.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_open_distconf~~CallsGraph Pages: 1 -->
+<svg id="proctem_open_distconfCallsGraph" width="446pt" height="494pt"
+ viewBox="0.00 0.00 446.00 494.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_open_distconf~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 490)">
+<title>proc~~tem_open_distconf~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-490 442,-490 442,4 -4,4"/>
+<!-- proc~tem_open_distconf -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node1" class="node">
+<title>proc~tem_open_distconf</title>
+<polygon fill="none" stroke="black" points="113,-318 0,-318 0,-294 113,-294 113,-318"/>
+<text text-anchor="middle" x="56.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_open_distconf</text>
+</g>
+<!-- flu_free_cbuf -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node2" class="node">
+<title>flu_free_cbuf</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flu_free_cbuf.html" xlink:title="flu_free_cbuf">
+<polygon fill="#d9534f" stroke="#d9534f" points="258.5,-486 177.5,-486 177.5,-462 258.5,-462 258.5,-486"/>
+<text text-anchor="middle" x="218" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_free_cbuf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;flu_free_cbuf -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge1" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;flu_free_cbuf</title>
+<path fill="none" stroke="#000000" d="M61.73,-318.33C72.03,-346.53 101.15,-416.11 149,-453 154.52,-457.26 160.92,-460.66 167.53,-463.37"/>
+<polygon fill="#000000" stroke="#000000" points="166.7,-466.79 177.29,-466.88 169.06,-460.21 166.7,-466.79"/>
+</g>
+<!-- mpi_bcast -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node3" class="node">
+<title>mpi_bcast</title>
+<polygon fill="#777777" stroke="#777777" points="251.5,-444 184.5,-444 184.5,-420 251.5,-420 251.5,-444"/>
+<text text-anchor="middle" x="218" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_bcast</text>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;mpi_bcast -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge2" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;mpi_bcast</title>
+<path fill="none" stroke="#000000" d="M64.93,-318.34C78.74,-340.24 110.49,-385.95 149,-411 156.68,-415.99 165.61,-419.86 174.42,-422.82"/>
+<polygon fill="#000000" stroke="#000000" points="173.67,-426.25 184.25,-425.81 175.7,-419.55 173.67,-426.25"/>
+</g>
+<!-- open_config_buffer -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node4" class="node">
+<title>open_config_buffer</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/open_config_buffer.html" xlink:title="open_config_buffer">
+<polygon fill="#d9534f" stroke="#d9534f" points="275.5,-402 160.5,-402 160.5,-378 275.5,-378 275.5,-402"/>
+<text text-anchor="middle" x="218" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">open_config_buffer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;open_config_buffer -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge3" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;open_config_buffer</title>
+<path fill="none" stroke="#000000" d="M72.17,-318.21C89.55,-332.15 119.84,-354.87 149,-369 153.05,-370.96 157.32,-372.79 161.68,-374.49"/>
+<polygon fill="#000000" stroke="#000000" points="160.68,-377.85 171.27,-377.98 163.07,-371.27 160.68,-377.85"/>
+</g>
+<!-- open_config_file -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node5" class="node">
+<title>open_config_file</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/open_config_file.html" xlink:title="open_config_file">
+<polygon fill="#d9534f" stroke="#d9534f" points="268,-360 168,-360 168,-336 268,-336 268,-360"/>
+<text text-anchor="middle" x="218" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">open_config_file</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;open_config_file -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge4" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;open_config_file</title>
+<path fill="none" stroke="#000000" d="M103.21,-318.04C121.39,-322.82 142.49,-328.38 161.54,-333.4"/>
+<polygon fill="#000000" stroke="#000000" points="160.73,-336.8 171.29,-335.96 162.51,-330.03 160.73,-336.8"/>
+</g>
+<!-- proc~tem_get_required_lua -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node6" class="node">
+<title>proc~tem_get_required_lua</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node6"><a xlink:href="../proc/tem_get_required_lua.html" xlink:title="tem_get_required_Lua">
+<polygon fill="#d9534f" stroke="#d9534f" points="283,-318 153,-318 153,-294 283,-294 283,-318"/>
+<text text-anchor="middle" x="218" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_get_required_Lua</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_get_required_lua -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge5" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_get_required_lua</title>
+<path fill="none" stroke="#000000" d="M113.29,-306C122.75,-306 132.72,-306 142.57,-306"/>
+<polygon fill="#000000" stroke="#000000" points="142.78,-309.5 152.78,-306 142.78,-302.5 142.78,-309.5"/>
+</g>
+<!-- proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node7" class="node">
+<title>proc~tem_pop_from_track_rq</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node7"><a xlink:href="../proc/tem_pop_from_track_rq.html" xlink:title="tem_pop_from_track_rq">
+<polygon fill="#d9534f" stroke="#d9534f" points="287,-218 149,-218 149,-194 287,-194 287,-218"/>
+<text text-anchor="middle" x="218" y="-203.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_pop_from_track_rq</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_pop_from_track_rq -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge6" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_pop_from_track_rq</title>
+<path fill="none" stroke="#000000" d="M74.01,-293.85C92.07,-280.75 122.05,-259.55 149,-243 160.27,-236.08 172.93,-229.01 184.24,-222.93"/>
+<polygon fill="#000000" stroke="#000000" points="186.18,-225.86 193.37,-218.08 182.89,-219.68 186.18,-225.86"/>
+</g>
+<!-- proc~tem_push_to_rq_store -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node8" class="node">
+<title>proc~tem_push_to_rq_store</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node8"><a xlink:href="../proc/tem_push_to_rq_store.html" xlink:title="tem_push_to_rq_store">
+<polygon fill="#d9534f" stroke="#d9534f" points="282,-276 154,-276 154,-252 282,-252 282,-276"/>
+<text text-anchor="middle" x="218" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_push_to_rq_store</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_push_to_rq_store -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge7" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_push_to_rq_store</title>
+<path fill="none" stroke="#000000" d="M103.21,-293.96C121.39,-289.18 142.49,-283.62 161.54,-278.6"/>
+<polygon fill="#000000" stroke="#000000" points="162.51,-281.97 171.29,-276.04 160.73,-275.2 162.51,-281.97"/>
+</g>
+<!-- proc~tem_require_rq_store -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node9" class="node">
+<title>proc~tem_require_rq_store</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node9"><a xlink:href="../proc/tem_require_rq_store.html" xlink:title="tem_require_rq_store">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-40 156,-40 156,-16 280,-16 280,-40"/>
+<text text-anchor="middle" x="218" y="-25.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_require_rq_store</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_require_rq_store -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge8" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_require_rq_store</title>
+<path fill="none" stroke="#000000" d="M62.11,-293.67C74.15,-262.16 108.41,-176.65 149,-112 163.7,-88.59 184,-64.31 198.59,-47.91"/>
+<polygon fill="#000000" stroke="#000000" points="201.53,-49.86 205.63,-40.09 196.34,-45.17 201.53,-49.86"/>
+</g>
+<!-- proc~tem_require_track_rq -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node10" class="node">
+<title>proc~tem_require_track_rq</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node10"><a xlink:href="../proc/tem_require_track_rq.html" xlink:title="tem_require_track_rq">
+<polygon fill="#d9534f" stroke="#d9534f" points="280.5,-145 155.5,-145 155.5,-121 280.5,-121 280.5,-145"/>
+<text text-anchor="middle" x="218" y="-130.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_require_track_rq</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open_distconf&#45;&gt;proc~tem_require_track_rq -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge9" class="edge">
+<title>proc~tem_open_distconf&#45;&gt;proc~tem_require_track_rq</title>
+<path fill="none" stroke="#000000" d="M65.11,-293.82C79.7,-270.99 113.34,-220.85 149,-185 161.55,-172.38 177.24,-160.19 190.39,-150.78"/>
+<polygon fill="#000000" stroke="#000000" points="192.42,-153.63 198.6,-145.03 188.4,-147.9 192.42,-153.63"/>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node11" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node11"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~7.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="417,-444 344,-444 344,-420 417,-420 417,-444"/>
+<text text-anchor="middle" x="380.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_get_required_lua&#45;&gt;aot_get_val -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge10" class="edge">
+<title>proc~tem_get_required_lua&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M273.69,-318.04C278.51,-320.49 283.05,-323.45 287,-327 317.19,-354.17 293.58,-382.99 323,-411 326.37,-414.21 330.28,-416.94 334.44,-419.26"/>
+<polygon fill="#000000" stroke="#000000" points="333.28,-422.59 343.82,-423.71 336.28,-416.26 333.28,-422.59"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node12" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node12"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="428,-276 333,-276 333,-252 428,-252 428,-276"/>
+<text text-anchor="middle" x="380.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_get_required_lua&#45;&gt;aot_table_close -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge11" class="edge">
+<title>proc~tem_get_required_lua&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M264.99,-293.96C283.29,-289.18 304.52,-283.62 323.69,-278.6"/>
+<polygon fill="#000000" stroke="#000000" points="324.71,-281.95 333.5,-276.04 322.94,-275.18 324.71,-281.95"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node13" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node13"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="427.5,-402 333.5,-402 333.5,-378 427.5,-378 427.5,-402"/>
+<text text-anchor="middle" x="380.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_get_required_lua&#45;&gt;aot_table_open -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge12" class="edge">
+<title>proc~tem_get_required_lua&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M269.49,-318.04C275.63,-320.51 281.63,-323.47 287,-327 307.55,-340.49 302.83,-354.94 323,-369 325.26,-370.57 327.64,-372.04 330.11,-373.42"/>
+<polygon fill="#000000" stroke="#000000" points="328.81,-376.68 339.32,-377.98 331.91,-370.4 328.81,-376.68"/>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_close -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge13" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M252.26,-218.02C276.79,-226.88 310.37,-239.02 336.87,-248.6"/>
+<polygon fill="#000000" stroke="#000000" points="335.69,-251.89 346.29,-252 338.07,-245.31 335.69,-251.89"/>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_open -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge14" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M253.21,-218.1C265.4,-223.94 278.26,-232.09 287,-243 323.41,-288.45 283.45,-326.25 323,-369 324.02,-370.1 325.11,-371.15 326.24,-372.14"/>
+<polygon fill="#000000" stroke="#000000" points="324.23,-375.01 334.42,-377.92 328.27,-369.29 324.23,-375.01"/>
+</g>
+<!-- aot_table_push -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node14" class="node">
+<title>aot_table_push</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node14"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_push.html" xlink:title="aot_table_push">
+<polygon fill="#d9534f" stroke="#d9534f" points="427,-150 334,-150 334,-126 427,-126 427,-150"/>
+<text text-anchor="middle" x="380.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_push</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_push -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge15" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_push</title>
+<path fill="none" stroke="#000000" d="M244.43,-193.92C265.36,-184.12 295.88,-170.15 323,-159 327.37,-157.2 331.95,-155.39 336.54,-153.62"/>
+<polygon fill="#000000" stroke="#000000" points="337.79,-156.89 345.89,-150.06 335.3,-150.34 337.79,-156.89"/>
+</g>
+<!-- aot_table_set_top -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node15" class="node">
+<title>aot_table_set_top</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node15"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_set_top.html" xlink:title="aot_table_set_top">
+<polygon fill="#d9534f" stroke="#d9534f" points="433.5,-234 327.5,-234 327.5,-210 433.5,-210 433.5,-234"/>
+<text text-anchor="middle" x="380.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_set_top</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;aot_table_set_top -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge16" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;aot_table_set_top</title>
+<path fill="none" stroke="#000000" d="M287.07,-212.79C297.09,-213.78 307.36,-214.81 317.26,-215.8"/>
+<polygon fill="#000000" stroke="#000000" points="317.1,-219.3 327.4,-216.81 317.8,-212.33 317.1,-219.3"/>
+</g>
+<!-- flu_dump -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node18" class="node">
+<title>flu_dump</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node18"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/flu_dump.html" xlink:title="flu_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="411.5,-108 349.5,-108 349.5,-84 411.5,-84 411.5,-108"/>
+<text text-anchor="middle" x="380.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_dump -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge17" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_dump</title>
+<path fill="none" stroke="#000000" d="M236.31,-193.84C250.39,-183.7 270.55,-168.6 287,-154 304.16,-138.77 303.78,-129.53 323,-117 328.11,-113.67 333.82,-110.77 339.6,-108.27"/>
+<polygon fill="#000000" stroke="#000000" points="341.27,-111.37 349.29,-104.45 338.7,-104.86 341.27,-111.37"/>
+</g>
+<!-- flu_pop -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node19" class="node">
+<title>flu_pop</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node19"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flu_pop.html" xlink:title="flu_pop">
+<polygon fill="#d9534f" stroke="#d9534f" points="407.5,-66 353.5,-66 353.5,-42 407.5,-42 407.5,-66"/>
+<text text-anchor="middle" x="380.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_pop</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_pop -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge18" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_pop</title>
+<path fill="none" stroke="#000000" d="M239.93,-193.87C254.64,-184.5 273.94,-170.39 287,-154 311.04,-123.82 294.76,-101.29 323,-75 328.87,-69.54 336.29,-65.46 343.81,-62.43"/>
+<polygon fill="#000000" stroke="#000000" points="344.98,-65.73 353.27,-59.13 342.67,-59.12 344.98,-65.73"/>
+</g>
+<!-- flu_pushnil -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node20" class="node">
+<title>flu_pushnil</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node20"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flu_pushnil.html" xlink:title="flu_pushnil">
+<polygon fill="#d9534f" stroke="#d9534f" points="415.5,-192 345.5,-192 345.5,-168 415.5,-168 415.5,-192"/>
+<text text-anchor="middle" x="380.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">flu_pushnil</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_pop_from_track_rq&#45;&gt;flu_pushnil -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge19" class="edge">
+<title>proc~tem_pop_from_track_rq&#45;&gt;flu_pushnil</title>
+<path fill="none" stroke="#000000" d="M287.07,-194.97C303.45,-192.32 320.53,-189.55 335.48,-187.13"/>
+<polygon fill="#000000" stroke="#000000" points="336.14,-190.57 345.46,-185.51 335.02,-183.66 336.14,-190.57"/>
+</g>
+<!-- proc~tem_push_to_rq_store&#45;&gt;aot_table_close -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge20" class="edge">
+<title>proc~tem_push_to_rq_store&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M282.43,-264C295.71,-264 309.63,-264 322.64,-264"/>
+<polygon fill="#000000" stroke="#000000" points="322.86,-267.5 332.86,-264 322.86,-260.5 322.86,-267.5"/>
+</g>
+<!-- proc~tem_push_to_rq_store&#45;&gt;aot_table_open -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge21" class="edge">
+<title>proc~tem_push_to_rq_store&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M273.69,-276.04C278.51,-278.49 283.05,-281.45 287,-285 317.19,-312.17 293.58,-340.99 323,-369 324.28,-370.22 325.63,-371.36 327.04,-372.44"/>
+<polygon fill="#000000" stroke="#000000" points="325.39,-375.54 335.7,-377.95 329.14,-369.63 325.39,-375.54"/>
+</g>
+<!-- proc~tem_push_to_rq_store&#45;&gt;aot_table_set_top -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge22" class="edge">
+<title>proc~tem_push_to_rq_store&#45;&gt;aot_table_set_top</title>
+<path fill="none" stroke="#000000" d="M264.99,-251.96C283.29,-247.18 304.52,-241.62 323.69,-236.6"/>
+<polygon fill="#000000" stroke="#000000" points="324.71,-239.95 333.5,-234.04 322.94,-233.18 324.71,-239.95"/>
+</g>
+<!-- aot_table_set_val -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node16" class="node">
+<title>aot_table_set_val</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node16"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_table_set_val~2.html" xlink:title="aot_table_set_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="432.5,-360 328.5,-360 328.5,-336 432.5,-336 432.5,-360"/>
+<text text-anchor="middle" x="380.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_set_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_push_to_rq_store&#45;&gt;aot_table_set_val -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge23" class="edge">
+<title>proc~tem_push_to_rq_store&#45;&gt;aot_table_set_val</title>
+<path fill="none" stroke="#000000" d="M269.49,-276.04C275.63,-278.51 281.63,-281.47 287,-285 307.55,-298.49 302.83,-312.94 323,-327 325.26,-328.57 327.64,-330.04 330.11,-331.42"/>
+<polygon fill="#000000" stroke="#000000" points="328.81,-334.68 339.32,-335.98 331.91,-328.4 328.81,-334.68"/>
+</g>
+<!-- fluL_loadbuffer -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node17" class="node">
+<title>fluL_loadbuffer</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node17"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/flul_loadbuffer.html" xlink:title="fluL_loadbuffer">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="427,-318 334,-318 334,-294 427,-294 427,-318"/>
+<text text-anchor="middle" x="380.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fluL_loadbuffer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_push_to_rq_store&#45;&gt;fluL_loadbuffer -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge24" class="edge">
+<title>proc~tem_push_to_rq_store&#45;&gt;fluL_loadbuffer</title>
+<path fill="none" stroke="#000000" d="M264.99,-276.04C283.37,-280.85 304.7,-286.43 323.94,-291.46"/>
+<polygon fill="#000000" stroke="#000000" points="323.22,-294.89 333.78,-294.04 324.99,-288.12 323.22,-294.89"/>
+</g>
+<!-- open_config_chunk -->
+<g id="proc~~tem_open_distconf~~CallsGraph_node21" class="node">
+<title>open_config_chunk</title>
+<g id="a_proc~~tem_open_distconf~~CallsGraph_node21"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/open_config_chunk.html" xlink:title="open_config_chunk">
+<polygon fill="#d9534f" stroke="#d9534f" points="438,-24 323,-24 323,0 438,0 438,-24"/>
+<text text-anchor="middle" x="380.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">open_config_chunk</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_require_rq_store&#45;&gt;open_config_chunk -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge25" class="edge">
+<title>proc~tem_require_rq_store&#45;&gt;open_config_chunk</title>
+<path fill="none" stroke="#000000" d="M280.14,-21.91C290.74,-20.85 301.82,-19.74 312.57,-18.67"/>
+<polygon fill="#000000" stroke="#000000" points="313.15,-22.13 322.76,-17.66 312.46,-15.17 313.15,-22.13"/>
+</g>
+<!-- proc~tem_require_track_rq&#45;&gt;open_config_chunk -->
+<g id="proc~~tem_open_distconf~~CallsGraph_edge26" class="edge">
+<title>proc~tem_require_track_rq&#45;&gt;open_config_chunk</title>
+<path fill="none" stroke="#000000" d="M228.67,-120.88C245.73,-100.24 283.12,-58.05 323,-33 325.62,-31.36 328.38,-29.81 331.23,-28.36"/>
+<polygon fill="#000000" stroke="#000000" points="332.89,-31.45 340.5,-24.08 329.96,-25.1 332.89,-31.45"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_open_distconf~~CalledByGraph Pages: 1 -->
+<svg id="proctem_open_distconfCalledByGraph" width="437pt" height="32pt"
+ viewBox="0.00 0.00 437.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_open_distconf~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_open_distconf~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 433,-28 433,4 -4,4"/>
+<!-- proc~tem_open_distconf -->
+<g id="proc~~tem_open_distconf~~CalledByGraph_node1" class="node">
+<title>proc~tem_open_distconf</title>
+<polygon fill="none" stroke="black" points="429,-24 316,-24 316,0 429,0 429,-24"/>
+<text text-anchor="middle" x="372.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_open_distconf</text>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_open_distconf~~CalledByGraph_node2" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_open_distconf~~CalledByGraph_node2"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf -->
+<g id="proc~~tem_open_distconf~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~tem_open_distconf</title>
+<path fill="none" stroke="#000000" d="M280.37,-12C288.83,-12 297.44,-12 305.83,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.93,-15.5 315.93,-12 305.93,-8.5 305.93,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_open_distconf~~CalledByGraph_node3" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_open_distconf~~CalledByGraph_node3"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_open_distconf~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_open_distconf</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">fileName</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="c">!&lt; Opened Lua state with the loaded script.</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fileName</span><span class="w"> </span><span class="c">!&lt; Name of the file to open.</span>
+<span class="w">    </span><span class="c">!&gt; Process description to use.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">cbuf_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">scriptbuf</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">cbuf_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">modbuf</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nProcs</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nFiles</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">bufsize</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iFile</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">req_label</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">req_file</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="n">comm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">comm</span>
+<span class="w">    </span><span class="n">nProcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">comm_size</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">nProcs</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! Only rank 0 reads and executes the config file, while doing so, it</span>
+<span class="w">        </span><span class="c">! keeps track of all the required files.</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_require_track_rq</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">open_config_file</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">filename</span><span class="p">),</span><span class="w"> </span><span class="n">buffer</span><span class="o">=</span><span class="n">scriptbuf</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_get_required_Lua</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">fileList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req_file</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">labelList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">req_label</span><span class="w">   </span><span class="p">)</span>
+<span class="w">        </span><span class="n">nFiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">req_Label</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="c">! Open the configuration on all other processes with the rq_store</span>
+<span class="w">        </span><span class="c">! loaded:</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_require_rq_store</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! this is necessary to suppress valgrind debug output</span>
+<span class="w">        </span><span class="n">nFiles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="w">      </span><span class="c">! Broadcast the number of required files</span>
+<span class="w">      </span><span class="c">! MPI_BCAST(BUFFER, COUNT, DATATYPE, ROOT, COMM, IERROR)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="n">nFiles</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">allocate</span><span class="p">(</span><span class="n">req_label</span><span class="p">(</span><span class="n">nFiles</span><span class="p">))</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">allocate</span><span class="p">(</span><span class="n">req_file</span><span class="p">(</span><span class="n">nFiles</span><span class="p">))</span>
+
+<span class="w">      </span><span class="c">! Broadcast the module names</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="w"> </span><span class="n">req_label</span><span class="p">,</span><span class="w"> </span><span class="n">nFiles</span><span class="o">*</span><span class="n">labelLen</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                                          </span><span class="p">)</span>
+<span class="w">      </span><span class="c">! Broadcast the file names</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="w"> </span><span class="n">req_file</span><span class="p">,</span><span class="w"> </span><span class="n">nFiles</span><span class="o">*</span><span class="n">pathLen</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                                        </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! Now go on opening all required files</span>
+<span class="w">      </span><span class="k">do </span><span class="n">iFile</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nFiles</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_pop_from_track_rq</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">req_label</span><span class="p">(</span><span class="n">iFile</span><span class="p">)),</span><span class="w"> </span><span class="n">modbuf</span><span class="p">)</span>
+<span class="w">          </span><span class="n">bufsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">modbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="w">        </span><span class="c">! Broadcast the loaded script to all processes.</span>
+<span class="w">        </span><span class="c">! MPI_BCAST(BUFFER, COUNT, DATATYPE, ROOT, COMM, IERROR)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="n">bufsize</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">allocate</span><span class="p">(</span><span class="n">modbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">(</span><span class="n">bufsize</span><span class="p">))</span>
+<span class="w">        </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="w"> </span><span class="n">modbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bufsize</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">             </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                                      </span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">tem_push_to_rq_store</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w">                                 </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">modname</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">req_label</span><span class="p">(</span><span class="n">iFile</span><span class="p">)),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">req_file</span><span class="p">(</span><span class="n">iFile</span><span class="p">)),</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">buffer</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">modbuf</span><span class="p">%</span><span class="n">buffer</span><span class="w">           </span><span class="p">)</span>
+<span class="w">          </span><span class="k">deallocate</span><span class="p">(</span><span class="n">modbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">          call </span><span class="n">flu_free_cbuf</span><span class="p">(</span><span class="n">modbuf</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end do</span>
+
+<span class="w">      </span><span class="c">! Broadcast the loaded script to all processes.</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="n">bufsize</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">scriptbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! MPI_BCAST(BUFFER, COUNT, DATATYPE, ROOT, COMM, IERROR)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="n">bufsize</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">allocate</span><span class="p">(</span><span class="n">scriptbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">(</span><span class="n">bufsize</span><span class="p">))</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Bcast</span><span class="p">(</span><span class="w"> </span><span class="n">scriptbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bufsize</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_CHARACTER</span><span class="p">,</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                                         </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">open_config_buffer</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scriptbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">        </span><span class="k">deallocate</span><span class="p">(</span><span class="n">scriptbuf</span><span class="p">%</span><span class="n">buffer</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">flu_free_cbuf</span><span class="p">(</span><span class="n">scriptbuf</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    else</span>
+
+<span class="w">      </span><span class="c">! Only a single process, no need for broadcasting.</span>
+<span class="w">      </span><span class="k">call </span><span class="n">open_config_file</span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="n">filename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">fileName</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_open_distconf</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

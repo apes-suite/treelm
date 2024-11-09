@@ -1,0 +1,657 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_trackmem &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_trackmem
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">48 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_trackmem_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_trackmem_module.f90.html'>tem_trackmem_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_trackmem_module.html'>tem_trackmem_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_trackmem</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_trackmem.html#src">tem_trackmem</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_trackmem(memfile, iteration)  
+</h2>
+    
+
+    <p>Write the current memory status into the memfile.</p>
+<p>The file will be opened and closed, so this might be slow.
+Only the root process writes to this file, but the data is gathered from
+all processes.
+The output will be prepended by the current date.
+We will track the VmHWM: from /proc/self/status,
+MemFree:, Buffers: and Cached: from /proc/meminfo
+and pgmajfault from /proc/vmstat
+The min, max and average across all processes will be recorded.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-memfile"></span>
+              character(len=*),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>memfile</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iteration"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iteration</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_trackmem~~CallsGraph Pages: 1 -->
+<svg id="proctem_trackmemCallsGraph" width="633pt" height="322pt"
+ viewBox="0.00 0.00 633.00 322.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_trackmem~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 318)">
+<title>proc~~tem_trackmem~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-318 629,-318 629,4 -4,4"/>
+<!-- proc~tem_trackmem -->
+<g id="proc~~tem_trackmem~~CallsGraph_node1" class="node">
+<title>proc~tem_trackmem</title>
+<polygon fill="none" stroke="black" points="94,-209 0,-209 0,-185 94,-185 94,-209"/>
+<text text-anchor="middle" x="47" y="-194.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_trackmem</text>
+</g>
+<!-- mpi_comm_rank -->
+<g id="proc~~tem_trackmem~~CallsGraph_node2" class="node">
+<title>mpi_comm_rank</title>
+<polygon fill="#777777" stroke="#777777" points="235,-314 134,-314 134,-290 235,-290 235,-314"/>
+<text text-anchor="middle" x="184.5" y="-299.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_rank</text>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;mpi_comm_rank -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge1" class="edge">
+<title>proc~tem_trackmem&#45;&gt;mpi_comm_rank</title>
+<path fill="none" stroke="#000000" d="M57.08,-209.15C71,-227.06 99.26,-260.61 130,-281 132.42,-282.6 134.97,-284.11 137.61,-285.53"/>
+<polygon fill="#000000" stroke="#000000" points="136.25,-288.76 146.78,-289.99 139.32,-282.47 136.25,-288.76"/>
+</g>
+<!-- mpi_comm_size -->
+<g id="proc~~tem_trackmem~~CallsGraph_node3" class="node">
+<title>mpi_comm_size</title>
+<polygon fill="#777777" stroke="#777777" points="233,-272 136,-272 136,-248 233,-248 233,-272"/>
+<text text-anchor="middle" x="184.5" y="-257.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_comm_size</text>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;mpi_comm_size -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge2" class="edge">
+<title>proc~tem_trackmem&#45;&gt;mpi_comm_size</title>
+<path fill="none" stroke="#000000" d="M69.98,-209.01C86.33,-217.76 109.3,-229.66 130,-239 133.84,-240.73 137.86,-242.46 141.91,-244.14"/>
+<polygon fill="#000000" stroke="#000000" points="140.73,-247.44 151.32,-247.97 143.37,-240.96 140.73,-247.44"/>
+</g>
+<!-- mpi_reduce -->
+<g id="proc~~tem_trackmem~~CallsGraph_node4" class="node">
+<title>mpi_reduce</title>
+<polygon fill="#777777" stroke="#777777" points="222,-230 147,-230 147,-206 222,-206 222,-230"/>
+<text text-anchor="middle" x="184.5" y="-215.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_reduce</text>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;mpi_reduce -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge3" class="edge">
+<title>proc~tem_trackmem&#45;&gt;mpi_reduce</title>
+<path fill="none" stroke="#000000" d="M94.25,-204.17C107.94,-206.29 122.93,-208.61 136.65,-210.74"/>
+<polygon fill="#000000" stroke="#000000" points="136.44,-214.25 146.85,-212.32 137.51,-207.33 136.44,-214.25"/>
+</g>
+<!-- proc~my_status_int -->
+<g id="proc~~tem_trackmem~~CallsGraph_node5" class="node">
+<title>proc~my_status_int</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node5"><a xlink:href="../proc/my_status_int.html" xlink:title="my_status_int">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="227,-188 142,-188 142,-164 227,-164 227,-188"/>
+<text text-anchor="middle" x="184.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">my_status_int</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;proc~my_status_int -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge4" class="edge">
+<title>proc~tem_trackmem&#45;&gt;proc~my_status_int</title>
+<path fill="none" stroke="#000000" d="M94.25,-189.83C106.35,-187.96 119.47,-185.92 131.83,-184.01"/>
+<polygon fill="#000000" stroke="#000000" points="132.65,-187.42 142,-182.43 131.58,-180.5 132.65,-187.42"/>
+</g>
+<!-- proc~my_status_int_vec -->
+<g id="proc~~tem_trackmem~~CallsGraph_node6" class="node">
+<title>proc~my_status_int_vec</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node6"><a xlink:href="../proc/my_status_int_vec.html" xlink:title="my_status_int_vec">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="239,-146 130,-146 130,-122 239,-122 239,-146"/>
+<text text-anchor="middle" x="184.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">my_status_int_vec</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;proc~my_status_int_vec -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge5" class="edge">
+<title>proc~tem_trackmem&#45;&gt;proc~my_status_int_vec</title>
+<path fill="none" stroke="#000000" d="M69.98,-184.99C86.33,-176.24 109.3,-164.34 130,-155 133.84,-153.27 137.86,-151.54 141.91,-149.86"/>
+<polygon fill="#000000" stroke="#000000" points="143.37,-153.04 151.32,-146.03 140.73,-146.56 143.37,-153.04"/>
+</g>
+<!-- proc~tem_open -->
+<g id="proc~~tem_trackmem~~CallsGraph_node7" class="node">
+<title>proc~tem_open</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node7"><a xlink:href="../proc/tem_open.html" xlink:title="tem_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="217.5,-85 151.5,-85 151.5,-61 217.5,-61 217.5,-85"/>
+<text text-anchor="middle" x="184.5" y="-70.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_trackmem&#45;&gt;proc~tem_open -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge6" class="edge">
+<title>proc~tem_trackmem&#45;&gt;proc~tem_open</title>
+<path fill="none" stroke="#000000" d="M58.86,-184.73C74.06,-167.83 102.87,-136.78 130,-113 138.59,-105.47 148.49,-97.81 157.42,-91.24"/>
+<polygon fill="#000000" stroke="#000000" points="159.57,-94.01 165.62,-85.31 155.46,-88.34 159.57,-94.01"/>
+</g>
+<!-- proc~my_status_string -->
+<g id="proc~~tem_trackmem~~CallsGraph_node8" class="node">
+<title>proc~my_status_string</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node8"><a xlink:href="../proc/my_status_string.html" xlink:title="my_status_string">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="388,-188 287,-188 287,-164 388,-164 388,-188"/>
+<text text-anchor="middle" x="337.5" y="-173.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">my_status_string</text>
+</a>
+</g>
+</g>
+<!-- proc~my_status_int&#45;&gt;proc~my_status_string -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge7" class="edge">
+<title>proc~my_status_int&#45;&gt;proc~my_status_string</title>
+<path fill="none" stroke="#000000" d="M227.16,-176C242.49,-176 260.16,-176 276.76,-176"/>
+<polygon fill="#000000" stroke="#000000" points="276.94,-179.5 286.94,-176 276.94,-172.5 276.94,-179.5"/>
+</g>
+<!-- proc~my_status_string_vec -->
+<g id="proc~~tem_trackmem~~CallsGraph_node9" class="node">
+<title>proc~my_status_string_vec</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node9"><a xlink:href="../proc/my_status_string_vec.html" xlink:title="my_status_string_vec">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="400,-146 275,-146 275,-122 400,-122 400,-146"/>
+<text text-anchor="middle" x="337.5" y="-131.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">my_status_string_vec</text>
+</a>
+</g>
+</g>
+<!-- proc~my_status_int_vec&#45;&gt;proc~my_status_string_vec -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge8" class="edge">
+<title>proc~my_status_int_vec&#45;&gt;proc~my_status_string_vec</title>
+<path fill="none" stroke="#000000" d="M239.16,-134C247.45,-134 256.12,-134 264.72,-134"/>
+<polygon fill="#000000" stroke="#000000" points="264.77,-137.5 274.77,-134 264.77,-130.5 264.77,-137.5"/>
+</g>
+<!-- proc~newunit -->
+<g id="proc~~tem_trackmem~~CallsGraph_node10" class="node">
+<title>proc~newunit</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node10"><a xlink:href="../proc/newunit.html" xlink:title="newunit">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="625,-164 570,-164 570,-140 625,-140 625,-164"/>
+<text text-anchor="middle" x="597.5" y="-149.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">newunit</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~newunit -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge9" class="edge">
+<title>proc~tem_open&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M217.84,-78.05C279.58,-87.87 418.36,-110.78 534,-136 542.49,-137.85 551.58,-140.05 560.13,-142.22"/>
+<polygon fill="#000000" stroke="#000000" points="559.28,-145.62 569.84,-144.72 561.03,-138.84 559.28,-145.62"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_trackmem~~CallsGraph_node11" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node11"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="371,-66 304,-66 304,-42 371,-42 371,-66"/>
+<text text-anchor="middle" x="337.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge10" class="edge">
+<title>proc~tem_open&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M217.52,-68.97C239.72,-66.18 269.52,-62.43 293.74,-59.38"/>
+<polygon fill="#000000" stroke="#000000" points="294.26,-62.84 303.74,-58.12 293.38,-55.9 294.26,-62.84"/>
+</g>
+<!-- proc~upper_to_lower -->
+<g id="proc~~tem_trackmem~~CallsGraph_node12" class="node">
+<title>proc~upper_to_lower</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node12"><a xlink:href="../proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="384.5,-24 290.5,-24 290.5,0 384.5,0 384.5,-24"/>
+<text text-anchor="middle" x="337.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_open&#45;&gt;proc~upper_to_lower -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge11" class="edge">
+<title>proc~tem_open&#45;&gt;proc~upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M210.7,-61C228.49,-52.71 252.98,-41.66 275,-33 279.8,-31.11 284.84,-29.23 289.9,-27.41"/>
+<polygon fill="#000000" stroke="#000000" points="291.29,-30.63 299.55,-24 288.96,-24.03 291.29,-30.63"/>
+</g>
+<!-- proc~my_status_string&#45;&gt;proc~newunit -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge12" class="edge">
+<title>proc~my_status_string&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M378.7,-188.06C418.86,-198.13 481.93,-208.55 534,-193 549.06,-188.5 563.86,-179.08 575.28,-170.4"/>
+<polygon fill="#000000" stroke="#000000" points="577.66,-172.98 583.29,-164.01 573.29,-167.51 577.66,-172.98"/>
+</g>
+<!-- proc~print_self_status -->
+<g id="proc~~tem_trackmem~~CallsGraph_node14" class="node">
+<title>proc~print_self_status</title>
+<g id="a_proc~~tem_trackmem~~CallsGraph_node14"><a xlink:href="../proc/print_self_status.html" xlink:title="print_self_status">
+<polygon fill="#d9534f" stroke="#d9534f" points="534,-184 436,-184 436,-160 534,-160 534,-184"/>
+<text text-anchor="middle" x="485" y="-169.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">print_self_status</text>
+</a>
+</g>
+</g>
+<!-- proc~my_status_string&#45;&gt;proc~print_self_status -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge13" class="edge">
+<title>proc~my_status_string&#45;&gt;proc~print_self_status</title>
+<path fill="none" stroke="#000000" d="M388.17,-174.63C400.13,-174.31 413.02,-173.95 425.35,-173.61"/>
+<polygon fill="#000000" stroke="#000000" points="425.64,-177.11 435.54,-173.33 425.45,-170.11 425.64,-177.11"/>
+</g>
+<!-- proc~my_status_string_vec&#45;&gt;proc~newunit -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge14" class="edge">
+<title>proc~my_status_string_vec&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M400.3,-138.31C449.94,-141.77 518.01,-146.52 559.53,-149.42"/>
+<polygon fill="#000000" stroke="#000000" points="559.52,-152.93 569.74,-150.13 560.01,-145.95 559.52,-152.93"/>
+</g>
+<!-- proc~my_status_string_vec&#45;&gt;proc~print_self_status -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge15" class="edge">
+<title>proc~my_status_string_vec&#45;&gt;proc~print_self_status</title>
+<path fill="none" stroke="#000000" d="M384.54,-146.02C398.34,-149.63 413.63,-153.62 427.99,-157.37"/>
+<polygon fill="#000000" stroke="#000000" points="427.2,-160.78 437.76,-159.92 428.97,-154.01 427.2,-160.78"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_trackmem~~CallsGraph_node13" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="518.5,-66 451.5,-66 451.5,-42 518.5,-42 518.5,-66"/>
+<text text-anchor="middle" x="485" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge16" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M371.15,-54C391.84,-54 418.82,-54 441.21,-54"/>
+<polygon fill="#000000" stroke="#000000" points="441.46,-57.5 451.46,-54 441.46,-50.5 441.46,-57.5"/>
+</g>
+<!-- proc~print_self_status&#45;&gt;proc~newunit -->
+<g id="proc~~tem_trackmem~~CallsGraph_edge17" class="edge">
+<title>proc~print_self_status&#45;&gt;proc~newunit</title>
+<path fill="none" stroke="#000000" d="M534.15,-163.29C542.73,-161.73 551.55,-160.14 559.76,-158.65"/>
+<polygon fill="#000000" stroke="#000000" points="560.54,-162.07 569.76,-156.84 559.29,-155.18 560.54,-162.07"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_trackmem</span><span class="p">(</span><span class="n">memfile</span><span class="p">,</span><span class="w"> </span><span class="n">iteration</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">memfile</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">iteration</span>
+
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myMem</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">minMem</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nProcs</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">funit</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myRank</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">fexists</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">fstat</span>
+<span class="nb">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">today</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">now</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myScale</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sumMem</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">memfile</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      call </span><span class="n">MPI_Comm_Size</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">nProcs</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">myMem</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_status_int</span><span class="p">(</span><span class="s1">&#39;VmHWM:&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="n">myMem</span><span class="p">(</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_status_int_vec</span><span class="p">(</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;MemFree:&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Buffers:&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                                    </span><span class="s1">&#39;Cached: &#39;</span><span class="p">],</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                             </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/proc/meminfo&#39;</span><span class="w">         </span><span class="p">)</span>
+<span class="w">      </span><span class="n">myMem</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">my_status_int</span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;pgmajfault&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;/proc/vmstat&#39;</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Reduce</span><span class="p">(</span><span class="n">myMem</span><span class="p">,</span><span class="w"> </span><span class="n">minMem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_MIN</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">             </span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Reduce</span><span class="p">(</span><span class="w"> </span><span class="n">myMem</span><span class="p">,</span><span class="w"> </span><span class="n">maxMem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_INTEGER</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_MAX</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">myScale</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">myMem</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">))</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span>
+<span class="w">      </span><span class="n">myScale</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">myMem</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="w">      </span><span class="k">call </span><span class="n">MPI_Reduce</span><span class="p">(</span><span class="w"> </span><span class="n">myScale</span><span class="p">,</span><span class="w"> </span><span class="n">sumMem</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_REAL</span><span class="p">,</span><span class="w"> </span><span class="n">MPI_SUM</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="w">                    </span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">avgMem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sumMem</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">nProcs</span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">inquire</span><span class="p">(</span><span class="k">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">memfile</span><span class="p">),</span><span class="w"> </span><span class="n">exist</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fexists</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fexists</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="nb">fstat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;old&#39;</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="nb">fstat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;new&#39;</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      call </span><span class="n">MPI_Comm_rank</span><span class="p">(</span><span class="n">MPI_COMM_WORLD</span><span class="p">,</span><span class="w"> </span><span class="n">myRank</span><span class="p">,</span><span class="w"> </span><span class="n">iError</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myRank</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        call </span><span class="n">tem_open</span><span class="p">(</span><span class="w"> </span><span class="k">file</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">memfile</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">newunit</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">funit</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">status</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="nb">fstat</span><span class="p">),</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">action</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;write&#39;</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;append&#39;</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">            </span><span class="n">form</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;formatted&#39;</span><span class="w">    </span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">today</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="n">today</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39;: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">now</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;(a,I5)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;  iteration &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iteration</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a,3(1x,f11.3))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   VmHWM   (min/max/avg):&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minMem</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a,3(1x,f11.3))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   MemFree (min/max/avg):&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minMem</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a,3(1x,f11.3))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   Buffers (min/max/avg):&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minMem</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a,3(1x,f11.3))&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   Cached  (min/max/avg):&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minMem</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">/</span><span class="mi">102</span><span class="mf">4.0</span><span class="p">,</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a,i0,1x,i0,1x,f11.3)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   pgmajflt(min/max/avg):&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                                  </span><span class="n">minMem</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">maxMem</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">avgMem</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">funit</span><span class="p">,</span><span class="s1">&#39;(a)&#39;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<span class="w">        </span><span class="k">close</span><span class="p">(</span><span class="n">funit</span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">    end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_trackmem</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

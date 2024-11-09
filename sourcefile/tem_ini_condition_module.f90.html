@@ -1,0 +1,873 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_ini_condition_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_ini_condition_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for source files.">50 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_ini_condition_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_ini_condition_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_ini_condition_module.html">tem_ini_condition_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_ini_condition_module.f90.html#src">tem_ini_condition_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_ini_condition_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_ini_condition_modulef90EfferentGraph" width="641pt" height="689pt"
+ viewBox="0.00 0.00 641.00 689.02" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph" class="graph" transform="scale(0.68 0.68) rotate(0) translate(4 1015.02)">
+<title>sourcefile~~tem_ini_condition_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1015.02 944,-1015.02 944,4 -4,4"/>
+<!-- sourcefile~tem_ini_condition_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_ini_condition_module.f90</title>
+<polygon fill="none" stroke="black" points="940,-734.35 768,-734.35 768,-710.35 940,-710.35 940,-734.35"/>
+<text text-anchor="middle" x="854" y="-719.95" font-family="Helvetica,sans-Serif" font-size="10.50">tem_ini_condition_module.f90</text>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-860.35 0,-860.35 0,-836.35 98,-836.35 98,-860.35"/>
+<text text-anchor="middle" x="49" y="-845.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M444,-1002.35C344.37,-1007.86 318,-1018.24 219.5,-1002.35"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="507,-734.35 383,-734.35 383,-710.35 507,-710.35 507,-734.35"/>
+<text text-anchor="middle" x="445" y="-719.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M767.68,-722.35C693.36,-722.35 586.87,-722.35 517.09,-722.35"/>
+<polygon fill="#000000" stroke="#000000" points="517.07,-718.85 507.07,-722.35 517.07,-725.85 517.07,-718.85"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_depend_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_depend_module.f90.html" xlink:title="tem_depend_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="732,-832.35 587,-832.35 587,-808.35 732,-808.35 732,-832.35"/>
+<text text-anchor="middle" x="659.5" y="-817.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_depend_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_depend_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_depend_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M829.4,-734.37C795.34,-751.7 732.26,-783.82 693.57,-803.51"/>
+<polygon fill="#000000" stroke="#000000" points="691.62,-800.58 684.3,-808.23 694.8,-806.82 691.62,-800.58"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291,-694.35 146,-694.35 146,-670.35 291,-670.35 291,-694.35"/>
+<text text-anchor="middle" x="218.5" y="-679.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M852.32,-710.15C847.21,-631.85 807.59,-198.14 551,-41.35 470.6,7.78 411.47,18.86 339,-41.35 241.02,-122.75 222.96,-556.46 220.02,-660.09"/>
+<polygon fill="#000000" stroke="#000000" points="216.52,-660.23 219.75,-670.32 223.51,-660.42 216.52,-660.23"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~tem_spatial_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/tem_spatial_module.f90.html" xlink:title="tem_spatial_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="729.5,-427.35 589.5,-427.35 589.5,-403.35 729.5,-403.35 729.5,-427.35"/>
+<text text-anchor="middle" x="659.5" y="-412.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M845.45,-710.31C816.29,-663.8 710.73,-495.45 673.56,-436.18"/>
+<polygon fill="#000000" stroke="#000000" points="676.48,-434.25 668.2,-427.63 670.55,-437.97 676.48,-434.25"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="283.5,-900.35 153.5,-900.35 153.5,-876.35 283.5,-876.35 283.5,-900.35"/>
+<text text-anchor="middle" x="218.5" y="-885.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M844.97,-734.72C806.78,-791.8 637.51,-1026.08 446,-1002.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M444,-1002.35C360.82,-1006.95 277.06,-941.51 239.69,-907.78"/>
+<polygon fill="#000000" stroke="#000000" points="241.75,-904.91 232.03,-900.71 237,-910.06 241.75,-904.91"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.96,-727.79C367.29,-731.63 351.38,-737.97 339,-748.35 308.81,-773.66 335.21,-806.66 303,-829.35 246.22,-869.35 163.4,-867.28 108.16,-859.79"/>
+<polygon fill="#000000" stroke="#000000" points="108.58,-856.32 98.18,-858.34 107.57,-863.25 108.58,-856.32"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.95,-711.47C356.47,-706.75 325.15,-701.17 297.05,-696.17"/>
+<polygon fill="#000000" stroke="#000000" points="297.31,-692.66 286.85,-694.35 296.09,-699.55 297.31,-692.66"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.99,-726.7C367.04,-730.51 350.98,-737.1 339,-748.35 300.26,-784.71 340.65,-824.85 303,-862.35 299.49,-865.85 295.51,-868.88 291.25,-871.5"/>
+<polygon fill="#000000" stroke="#000000" points="289.34,-868.55 282.15,-876.33 292.62,-874.73 289.34,-868.55"/>
+</g>
+<!-- sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~soi_revision_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/soi_revision_module.f90.html" xlink:title="soi_revision_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-736.35 148.5,-736.35 148.5,-712.35 288.5,-712.35 288.5,-736.35"/>
+<text text-anchor="middle" x="218.5" y="-721.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.95,-722.89C357.05,-723.12 326.51,-723.4 298.89,-723.64"/>
+<polygon fill="#000000" stroke="#000000" points="298.83,-720.14 288.86,-723.73 298.89,-727.14 298.83,-720.14"/>
+</g>
+<!-- sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_comm_env_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_comm_env_module.f90.html" xlink:title="tem_comm_env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="300,-820.35 137,-820.35 137,-796.35 300,-796.35 300,-820.35"/>
+<text text-anchor="middle" x="218.5" y="-805.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.79,-731.19C367.79,-735.03 352.25,-740.51 339,-748.35 318.7,-760.36 323.28,-775.3 303,-787.35 299.95,-789.16 296.75,-790.81 293.45,-792.33"/>
+<polygon fill="#000000" stroke="#000000" points="291.87,-789.19 283.95,-796.23 294.53,-795.67 291.87,-789.19"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~tem_lua_requires_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/tem_lua_requires_module.f90.html" xlink:title="tem_lua_requires_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-778.35 134,-778.35 134,-754.35 303,-754.35 303,-778.35"/>
+<text text-anchor="middle" x="218.5" y="-763.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_lua_requires_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.95,-734.31C354.49,-739.89 320.43,-746.57 290.79,-752.38"/>
+<polygon fill="#000000" stroke="#000000" points="290.07,-748.95 280.93,-754.31 291.41,-755.82 290.07,-748.95"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M622.89,-808.33C559.64,-789.36 426.16,-760.34 339,-819.35 303.33,-843.5 325.74,-872.76 303,-909.35 273.68,-956.53 274.35,-1011.15 219.5,-1002.35"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-1002.35C142.36,-990.23 85.45,-909.12 61.88,-869.73"/>
+<polygon fill="#000000" stroke="#000000" points="64.68,-867.57 56.62,-860.69 58.62,-871.09 64.68,-867.57"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M632.44,-808.33C594.53,-790.85 524.03,-758.34 481.43,-738.69"/>
+<polygon fill="#000000" stroke="#000000" points="482.82,-735.47 472.27,-734.46 479.88,-741.83 482.82,-735.47"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M651.88,-808.08C637.46,-782.74 600.47,-725.04 551,-701.35 472.46,-663.73 371.17,-663.89 301.34,-670.35"/>
+<polygon fill="#000000" stroke="#000000" points="300.88,-666.88 291.27,-671.34 301.56,-673.84 300.88,-666.88"/>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652.58,-832.65C639.01,-859.24 602.77,-921.59 551,-945.35 465.37,-984.65 430.9,-966.14 339,-945.35 305.35,-937.74 270.09,-919.46 246.66,-905.64"/>
+<polygon fill="#000000" stroke="#000000" points="248.36,-902.58 237.99,-900.4 244.75,-908.57 248.36,-902.58"/>
+</g>
+<!-- sourcefile~tem_condition_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_condition_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_condition_module.f90.html" xlink:title="tem_condition_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="522,-936.35 368,-936.35 368,-912.35 522,-912.35 522,-936.35"/>
+<text text-anchor="middle" x="445" y="-921.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_condition_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_condition_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_condition_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.84,-832.38C628.33,-850.73 590.27,-885.46 551,-903.35 544.92,-906.12 538.48,-908.53 531.89,-910.61"/>
+<polygon fill="#000000" stroke="#000000" points="530.79,-907.29 522.17,-913.46 532.75,-914.01 530.79,-907.29"/>
+</g>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/tem_varmap_module.f90.html" xlink:title="tem_varMap_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="517.5,-894.35 372.5,-894.35 372.5,-870.35 517.5,-870.35 517.5,-894.35"/>
+<text text-anchor="middle" x="445" y="-879.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varMap_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M630.64,-832.45C609.2,-841.4 578.64,-853.38 551,-861.35 542.56,-863.78 533.67,-866.03 524.77,-868.08"/>
+<polygon fill="#000000" stroke="#000000" points="523.74,-864.73 514.74,-870.32 525.26,-871.56 523.74,-864.73"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~tem_varsys_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/tem_varsys_module.f90.html" xlink:title="tem_varSys_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="515,-852.35 375,-852.35 375,-828.35 515,-828.35 515,-852.35"/>
+<text text-anchor="middle" x="445" y="-837.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_depend_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M586.85,-827.09C567.06,-828.95 545.47,-830.99 525.28,-832.89"/>
+<polygon fill="#000000" stroke="#000000" points="524.8,-829.42 515.18,-833.84 525.46,-836.39 524.8,-829.42"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M149.26,-694.47C143.83,-696.91 138.65,-699.84 134,-703.35 92.05,-734.98 67.49,-794.14 56.65,-826.25"/>
+<polygon fill="#000000" stroke="#000000" points="53.24,-825.43 53.5,-836.02 59.9,-827.58 53.24,-825.43"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.45,-427.53C649.49,-464.68 623.06,-576.9 551,-625.35 396.62,-729.14 285.68,-553.66 134,-661.35 78.44,-700.79 59,-785.82 52.73,-826.2"/>
+<polygon fill="#000000" stroke="#000000" points="49.27,-825.71 51.32,-836.11 56.2,-826.7 49.27,-825.71"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M655.9,-427.36C647.18,-465.31 615.79,-584.47 551,-658.35 532.89,-678.99 506.48,-695.05 484.67,-705.92"/>
+<polygon fill="#000000" stroke="#000000" points="483.14,-702.77 475.64,-710.25 486.17,-709.08 483.14,-702.77"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.67,-403.15C650.3,-365.48 625.25,-250.75 551,-205.35 510.81,-180.77 376.14,-176.37 339,-205.35 265.01,-263.09 229.97,-573.49 221.55,-659.97"/>
+<polygon fill="#000000" stroke="#000000" points="218.06,-659.72 220.59,-670.01 225.02,-660.39 218.06,-659.72"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M658.57,-427.45C658.13,-475.65 649.72,-655.52 551,-743.35 479.17,-807.25 415.01,-727.47 339,-786.35 310.09,-808.75 330.48,-836.21 303,-860.35 297.75,-864.96 291.72,-868.82 285.34,-872.04"/>
+<polygon fill="#000000" stroke="#000000" points="283.5,-869.03 275.82,-876.33 286.37,-875.42 283.5,-869.03"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_canonical_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_canonical_module.f90.html" xlink:title="tem_canonical_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="523.5,-490.35 366.5,-490.35 366.5,-466.35 523.5,-466.35 523.5,-490.35"/>
+<text text-anchor="middle" x="445" y="-475.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_canonical_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M631.56,-427.39C610.09,-436.62 579.07,-449.13 551,-457.35 542.64,-459.8 533.82,-462.05 524.99,-464.11"/>
+<polygon fill="#000000" stroke="#000000" points="524.04,-460.73 515.05,-466.33 525.57,-467.56 524.04,-460.73"/>
+</g>
+<!-- sourcefile~tem_cylindricalwave_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_cylindricalwave_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_cylindricalwave_module.f90.html" xlink:title="tem_cylindricalWave_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="539.5,-448.35 350.5,-448.35 350.5,-424.35 539.5,-424.35 539.5,-448.35"/>
+<text text-anchor="middle" x="445" y="-433.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cylindricalWave_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_cylindricalwave_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_cylindricalwave_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M589.21,-422.2C576.57,-423.45 563.13,-424.77 549.74,-426.1"/>
+<polygon fill="#000000" stroke="#000000" points="549.13,-422.64 539.53,-427.11 549.82,-429.61 549.13,-422.64"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_geometry_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_geometry_module.f90.html" xlink:title="tem_geometry_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="523.5,-406.35 366.5,-406.35 366.5,-382.35 523.5,-382.35 523.5,-406.35"/>
+<text text-anchor="middle" x="445" y="-391.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_geometry_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M589.21,-408.5C571.53,-406.75 552.3,-404.85 533.82,-403.03"/>
+<polygon fill="#000000" stroke="#000000" points="533.95,-399.52 523.65,-402.02 533.26,-406.49 533.95,-399.52"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_grow_array.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_grow_array.f90.html" xlink:title="tem_grow_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="503.5,-364.35 386.5,-364.35 386.5,-340.35 503.5,-340.35 503.5,-364.35"/>
+<text text-anchor="middle" x="445" y="-349.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_grow_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M631.56,-403.3C610.09,-394.08 579.07,-381.57 551,-373.35 539.03,-369.84 526.13,-366.73 513.6,-364.05"/>
+<polygon fill="#000000" stroke="#000000" points="514.16,-360.59 503.66,-362 512.74,-367.45 514.16,-360.59"/>
+</g>
+<!-- sourcefile~tem_heaviside_gibbs_fun_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~tem_heaviside_gibbs_fun_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/tem_heaviside_gibbs_fun_module.f90.html" xlink:title="tem_heaviside_gibbs_fun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="551,-322.35 339,-322.35 339,-298.35 551,-298.35 551,-322.35"/>
+<text text-anchor="middle" x="445" y="-307.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_heaviside_gibbs_fun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_heaviside_gibbs_fun_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_heaviside_gibbs_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.87,-403.16C628.4,-384.59 590.39,-349.43 551,-331.35 546.26,-329.17 541.31,-327.23 536.23,-325.48"/>
+<polygon fill="#000000" stroke="#000000" points="536.95,-322.03 526.36,-322.36 534.84,-328.71 536.95,-322.03"/>
+</g>
+<!-- sourcefile~tem_ic_predefs_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~tem_ic_predefs_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/tem_ic_predefs_module.f90.html" xlink:title="tem_ic_predefs_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="524.5,-280.35 365.5,-280.35 365.5,-256.35 524.5,-256.35 524.5,-280.35"/>
+<text text-anchor="middle" x="445" y="-265.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ic_predefs_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_ic_predefs_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_ic_predefs_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652.01,-403.32C637.55,-377.79 600.1,-318.18 551,-289.35 545.81,-286.3 540.26,-283.69 534.52,-281.45"/>
+<polygon fill="#000000" stroke="#000000" points="535.3,-278.02 524.7,-278.03 532.99,-284.63 535.3,-278.02"/>
+</g>
+<!-- sourcefile~tem_miescatter_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~tem_miescatter_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/tem_miescatter_module.f90.html" xlink:title="tem_miescatter_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="526,-238.35 364,-238.35 364,-214.35 526,-214.35 526,-238.35"/>
+<text text-anchor="middle" x="445" y="-223.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_miescatter_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_miescatter_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_miescatter_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M654.54,-403.23C643.61,-371.85 609.89,-287.59 551,-247.35 546.18,-244.06 540.97,-241.26 535.52,-238.88"/>
+<polygon fill="#000000" stroke="#000000" points="536.77,-235.6 526.18,-235.25 534.24,-242.13 536.77,-235.6"/>
+</g>
+<!-- sourcefile~tem_pmllayer_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~tem_pmllayer_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/tem_pmllayer_module.f90.html" xlink:title="tem_pmllayer_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="521,-158.35 369,-158.35 369,-134.35 521,-134.35 521,-158.35"/>
+<text text-anchor="middle" x="445" y="-143.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_pmllayer_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_pmllayer_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_pmllayer_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M656.91,-403.28C651.04,-363.58 626.78,-235.98 551,-172.35 544.93,-167.25 538.01,-163.13 530.69,-159.8"/>
+<polygon fill="#000000" stroke="#000000" points="531.81,-156.48 521.23,-155.99 529.19,-162.97 531.81,-156.48"/>
+</g>
+<!-- sourcefile~tem_pointdata_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~tem_pointdata_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/tem_pointdata_module.f90.html" xlink:title="tem_pointData_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="523.5,-116.35 366.5,-116.35 366.5,-92.35 523.5,-92.35 523.5,-116.35"/>
+<text text-anchor="middle" x="445" y="-101.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_pointData_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_pointdata_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M657.98,-403.1C655.39,-358.21 640.03,-201.35 551,-125.35 545.68,-120.81 539.66,-117.15 533.25,-114.21"/>
+<polygon fill="#000000" stroke="#000000" points="534.21,-110.83 523.63,-110.4 531.64,-117.33 534.21,-110.83"/>
+</g>
+<!-- sourcefile~tem_polygon_material_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~tem_polygon_material_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/tem_polygon_material_module.f90.html" xlink:title="tem_polygon_material_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="544,-74.35 346,-74.35 346,-50.35 544,-50.35 544,-74.35"/>
+<text text-anchor="middle" x="445" y="-59.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_polygon_material_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_polygon_material_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_polygon_material_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M658.63,-403.09C658.42,-354.29 650.77,-172.19 551,-83.35 549.66,-82.16 548.28,-81.03 546.85,-79.96"/>
+<polygon fill="#000000" stroke="#000000" points="548.56,-76.89 538.26,-74.41 544.76,-82.77 548.56,-76.89"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~tem_shape_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/tem_shape_module.f90.html" xlink:title="tem_shape_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="513.5,-616.35 376.5,-616.35 376.5,-592.35 513.5,-592.35 513.5,-616.35"/>
+<text text-anchor="middle" x="445" y="-601.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M654.54,-427.47C643.61,-458.84 609.89,-543.1 551,-583.35 542.71,-589.01 533.25,-593.22 523.47,-596.34"/>
+<polygon fill="#000000" stroke="#000000" points="522.31,-593.03 513.63,-599.1 524.2,-599.77 522.31,-593.03"/>
+</g>
+<!-- sourcefile~tem_spongelayer_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~tem_spongelayer_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/tem_spongelayer_module.f90.html" xlink:title="tem_spongelayer_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="530.5,-574.35 359.5,-574.35 359.5,-550.35 530.5,-550.35 530.5,-574.35"/>
+<text text-anchor="middle" x="445" y="-559.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spongelayer_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_spongelayer_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_spongelayer_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M652.01,-427.38C637.55,-452.91 600.1,-512.52 551,-541.35 547.54,-543.38 543.91,-545.22 540.17,-546.89"/>
+<polygon fill="#000000" stroke="#000000" points="538.68,-543.72 530.69,-550.67 541.27,-550.22 538.68,-543.72"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~treelmesh_module.f90</title>
+<g id="a_sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/treelmesh_module.f90.html" xlink:title="treelmesh_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="511,-532.35 379,-532.35 379,-508.35 511,-508.35 511,-532.35"/>
+<text text-anchor="middle" x="445" y="-517.95" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M646.87,-427.53C628.4,-446.11 590.39,-481.27 551,-499.35 541.59,-503.67 531.3,-507.1 520.97,-509.83"/>
+<polygon fill="#000000" stroke="#000000" points="519.96,-506.47 511.07,-512.24 521.62,-513.28 519.96,-506.47"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_ini_condition_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.24,-876.35C148.62,-871.9 127.34,-866.82 108.08,-862.22"/>
+<polygon fill="#000000" stroke="#000000" points="108.75,-858.78 98.21,-859.86 107.12,-865.59 108.75,-858.78"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_ini_condition_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_ini_condition_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2012-2014, 2016 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2012, 2016 Jiaxing Qi &lt;jiaxing.qi@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2012-2013 Simon Zimny &lt;s.zimny@grs-sim.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2012-2013, 2016 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2012-2013 Manuel Hasert &lt;m.hasert@grs-sim.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2012-2013 Kartik Jain &lt;kartik.jain@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2014, 2016 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2016 Tobias Schneider &lt;tobias1.schneider@student.uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">!</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">!</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">!</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">!</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="c">!&gt; This module provides the functionality to fill the initial values in the</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="c">!! computational domain.</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="k">module </span><span class="n">tem_ini_condition_module</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">  </span><span class="c">! include treelm modules</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">            </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span><span class="p">,</span><span class="w"> </span><span class="n">labelLen</span><span class="p">,</span><span class="w"> </span><span class="n">pathLen</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_tools_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_horizontalSpacer</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_spatial_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_load_spatial</span><span class="p">,</span><span class="w"> </span><span class="n">tem_spatial_type</span>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_depend_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_depend_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_load_depend</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">  </span><span class="c">! include aotus modules</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">  </span><span class="k">use </span><span class="n">aot_table_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">aot_table_open</span><span class="p">,</span><span class="w"> </span><span class="n">aot_table_close</span><span class="p">,</span><span class="w"> </span><span class="n">aot_get_val</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_State</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="k">  private</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_ini_condition_type</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_load_ic</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">  </span><span class="c">!&gt; Definition of the initial condition.</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">  </span><span class="c">!! The ini_state must exist for each variable</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">  </span><span class="k">type </span><span class="n">tem_ini_condition_type</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="c">!&gt; spatial variable names expected from config file</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">StateName</span><span class="p">(:)</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">    </span><span class="c">!&gt; initial state of each variable. size is nVars</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_spatial_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ini_state</span><span class="p">(:)</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">  </span><span class="k">end type </span><span class="n">tem_ini_condition_type</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="k">contains</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="c">!&gt; Load initial condition</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">  </span><span class="c">!! Check if restart file is defined. Then use restart file to initialize</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">  </span><span class="c">!! variables. If not then load state variables either as constant or function</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">  </span><span class="c">!! \author Kannan Masilamani</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_ic</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">StateName</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">errCode</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">!&gt; Initial condition type</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_ini_condition_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">!&gt; lua state type</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_State</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="c">!&gt; array of defined initial state variables</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">StateName</span><span class="p">(:)</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="c">!&gt; errCode of variables</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="c">!! Solver should take appropriate action according to errCode</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">errCode</span><span class="p">(:)</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="c">!&gt;</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="c">!&gt; key for the initial cond.</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iState</span><span class="p">,</span><span class="w"> </span><span class="n">nStates</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ic_table</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lockey</span><span class="w"> </span><span class="c">! key for the initial cond.</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="n">nStates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">StateName</span><span class="p">)</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">StateName</span><span class="p">(</span><span class="n">nStates</span><span class="p">))</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">ini_state</span><span class="p">(</span><span class="n">nStates</span><span class="p">))</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">StateName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">StateName</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="k">      </span><span class="n">lockey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="k">      </span><span class="n">lockey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;initial_condition&#39;</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="k">    call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="o">=</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">ic_table</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="n">lockey</span><span class="p">)</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="o">=</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Loading initial conditions&#39;</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ic_table</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">      </span><span class="c">! Interpret the initial_condition entry as name for the restart file,</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">      </span><span class="c">! if it is not a table.</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">(</span><span class="s1">&#39;Initial condition table is not found!&#39;</span><span class="p">)</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">      </span><span class="c">! We are not doing a restart, need to find initial conditions for all</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">      </span><span class="c">! requested states.</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">      </span><span class="k">do </span><span class="n">iState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nStates</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="w">        </span><span class="k">call </span><span class="n">tem_load_spatial</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">ini_state</span><span class="p">(</span><span class="n">iState</span><span class="p">),</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">conf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                       </span><span class="p">&amp;</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">parent</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">ic_table</span><span class="p">,</span><span class="w">                   </span><span class="p">&amp;</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">key</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">stateName</span><span class="p">(</span><span class="n">iState</span><span class="p">)),</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">errCode</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">errCode</span><span class="p">(</span><span class="w"> </span><span class="n">iState</span><span class="w"> </span><span class="p">),</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0._rk</span><span class="w">                       </span><span class="p">)</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">        </span><span class="c">! check if the initial condition has kind = none</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">        </span><span class="c">! if ( me%ini_state(iState)%kind == &#39;none&#39; ) then</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">        </span><span class="c">!   write(*,*) &#39;Initial condition variable&#39;, trim(me%stateName(iState)), &amp;</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">        </span><span class="c">!    &amp; &#39;has kind none, stopping ...&#39;</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">        </span><span class="c">!   call tem_abort()</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">        </span><span class="c">! end if</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">      </span><span class="k">end do</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="k">    end if</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="k">    call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">ic_table</span><span class="p">)</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_load_ic</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a>
+<a id="ln-134" name="ln-134" href="#ln-134"></a>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="k">end module </span><span class="n">tem_ini_condition_module</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="c">! ****************************************************************************** !</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

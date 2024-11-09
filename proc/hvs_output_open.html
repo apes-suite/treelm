@@ -1,0 +1,942 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>hvs_output_open &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>hvs_output_open
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">34 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/hvs_output_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/hvs_output_module.f90.html'>hvs_output_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/hvs_output_module.html'>hvs_output_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">hvs_output_open</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/hvs_output_open.html#src">hvs_output_open</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine hvs_output_open(out_file, use_iter, mesh, varsys, time, subtree)  
+</h2>
+    
+
+    <p>Open the output for a given mesh.</p>
+<p>This writes the mesh data to the output files.
+Subsequently it can then be enriched by restart information.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-out_file~2"></span>
+              type(<a href='../type/hvs_output_file_type.html'>hvs_output_file_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>out_file</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-use_iter"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>use_iter</strong></td>
+            <td>
+                <p>The output configuration settings to use.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mesh~4"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>mesh</strong></td>
+            <td>
+                <p>Mesh of the data to visualize.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~9"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varsys</strong></td>
+            <td>
+                <p>Description of the available variable system to get the given varnames
+from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~81"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+                <p>Time information.</p>
+<p>If this is present, the filename will be built with a time stamp and
+the time point information is written into the vtu file.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-subtree~5"></span>
+              type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
+            </td>
+<td>intent(inout),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>subtree</strong></td>
+            <td>
+                <p>Optional restriction of the elements to output.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~hvs_output_open~~CallsGraph Pages: 1 -->
+<svg id="prochvs_output_openCallsGraph" width="470pt" height="578pt"
+ viewBox="0.00 0.00 470.00 578.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~hvs_output_open~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 574)">
+<title>proc~~hvs_output_open~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-574 466,-574 466,4 -4,4"/>
+<!-- proc~hvs_output_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_node1" class="node">
+<title>proc~hvs_output_open</title>
+<polygon fill="none" stroke="black" points="103,-150 0,-150 0,-126 103,-126 103,-150"/>
+<text text-anchor="middle" x="51.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50">hvs_output_open</text>
+</g>
+<!-- proc~hvs_asciispatial_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_node2" class="node">
+<title>proc~hvs_asciispatial_open</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node2"><a xlink:href="../proc/hvs_asciispatial_open.html" xlink:title="hvs_asciiSpatial_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="274.5,-507 145.5,-507 145.5,-483 274.5,-483 274.5,-507"/>
+<text text-anchor="middle" x="210" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_asciiSpatial_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~hvs_asciispatial_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge1" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~hvs_asciispatial_open</title>
+<path fill="none" stroke="#000000" d="M57.89,-150.29C80.79,-202.53 170.24,-406.59 199.61,-473.57"/>
+<polygon fill="#000000" stroke="#000000" points="196.42,-475.01 203.64,-482.76 202.83,-472.2 196.42,-475.01"/>
+</g>
+<!-- proc~hvs_vtk_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_node3" class="node">
+<title>proc~hvs_vtk_open</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node3"><a xlink:href="../proc/hvs_vtk_open.html" xlink:title="hvs_vtk_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="252,-192 168,-192 168,-168 252,-168 252,-192"/>
+<text text-anchor="middle" x="210" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_vtk_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~hvs_vtk_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge2" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~hvs_vtk_open</title>
+<path fill="none" stroke="#000000" d="M97.35,-150.04C116.35,-155.14 138.6,-161.11 158.21,-166.37"/>
+<polygon fill="#000000" stroke="#000000" points="157.33,-169.76 167.9,-168.97 159.14,-163 157.33,-169.76"/>
+</g>
+<!-- proc~hvs_vtk_write_meshdata -->
+<g id="proc~~hvs_output_open~~CallsGraph_node4" class="node">
+<title>proc~hvs_vtk_write_meshdata</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node4"><a xlink:href="../proc/hvs_vtk_write_meshdata.html" xlink:title="hvs_vtk_write_meshdata">
+<polygon fill="#d9534f" stroke="#d9534f" points="281,-150 139,-150 139,-126 281,-126 281,-150"/>
+<text text-anchor="middle" x="210" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_vtk_write_meshdata</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~hvs_vtk_write_meshdata -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge3" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~hvs_vtk_write_meshdata</title>
+<path fill="none" stroke="#000000" d="M103.31,-138C111.46,-138 120.06,-138 128.69,-138"/>
+<polygon fill="#000000" stroke="#000000" points="128.82,-141.5 138.82,-138 128.82,-134.5 128.82,-141.5"/>
+</g>
+<!-- proc~hvs_vtk_write_varsys -->
+<g id="proc~~hvs_output_open~~CallsGraph_node5" class="node">
+<title>proc~hvs_vtk_write_varsys</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node5"><a xlink:href="../proc/hvs_vtk_write_varsys.html" xlink:title="hvs_vtk_write_varSys">
+<polygon fill="#d9534f" stroke="#d9534f" points="272,-108 148,-108 148,-84 272,-84 272,-108"/>
+<text text-anchor="middle" x="210" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_vtk_write_varSys</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~hvs_vtk_write_varsys -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge4" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~hvs_vtk_write_varsys</title>
+<path fill="none" stroke="#000000" d="M97.35,-125.96C115.11,-121.2 135.7,-115.67 154.32,-110.67"/>
+<polygon fill="#000000" stroke="#000000" points="155.4,-114.01 164.15,-108.04 153.58,-107.25 155.4,-114.01"/>
+</g>
+<!-- proc~tem_restart_openwrite -->
+<g id="proc~~hvs_output_open~~CallsGraph_node6" class="node">
+<title>proc~tem_restart_openwrite</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node6"><a xlink:href="../proc/tem_restart_openwrite.html" xlink:title="tem_restart_openWrite">
+<polygon fill="#d9534f" stroke="#d9534f" points="276.5,-297 143.5,-297 143.5,-273 276.5,-273 276.5,-297"/>
+<text text-anchor="middle" x="210" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_openWrite</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~tem_restart_openwrite -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge5" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~tem_restart_openwrite</title>
+<path fill="none" stroke="#000000" d="M65.31,-150.03C92.36,-175.44 155.53,-234.78 188.36,-265.62"/>
+<polygon fill="#000000" stroke="#000000" points="186.33,-268.51 196.02,-272.8 191.12,-263.41 186.33,-268.51"/>
+</g>
+<!-- proc~tem_time_reset -->
+<g id="proc~~hvs_output_open~~CallsGraph_node7" class="node">
+<title>proc~tem_time_reset</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node7"><a xlink:href="../proc/tem_time_reset.html" xlink:title="tem_time_reset">
+<polygon fill="#d9534f" stroke="#d9534f" points="257,-66 163,-66 163,-42 257,-42 257,-66"/>
+<text text-anchor="middle" x="210" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_reset</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~tem_time_reset -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge6" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~tem_time_reset</title>
+<path fill="none" stroke="#000000" d="M65.93,-125.95C82.19,-111.94 110.87,-88.95 139,-75 143.57,-72.73 148.43,-70.66 153.38,-68.77"/>
+<polygon fill="#000000" stroke="#000000" points="154.7,-72.02 162.96,-65.38 152.36,-65.42 154.7,-72.02"/>
+</g>
+<!-- proc~tem_updatepropertybits -->
+<g id="proc~~hvs_output_open~~CallsGraph_node8" class="node">
+<title>proc~tem_updatepropertybits</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node8"><a xlink:href="../proc/tem_updatepropertybits.html" xlink:title="tem_updatePropertyBits">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 140,-24 140,0 280,0 280,-24"/>
+<text text-anchor="middle" x="210" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_updatePropertyBits</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_open&#45;&gt;proc~tem_updatepropertybits -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge7" class="edge">
+<title>proc~hvs_output_open&#45;&gt;proc~tem_updatepropertybits</title>
+<path fill="none" stroke="#000000" d="M59.13,-125.96C71.77,-104.13 101.43,-57.97 139,-33 141.56,-31.3 144.26,-29.73 147.05,-28.29"/>
+<polygon fill="#000000" stroke="#000000" points="148.6,-31.43 156.23,-24.09 145.68,-25.07 148.6,-31.43"/>
+</g>
+<!-- proc~getheader -->
+<g id="proc~~hvs_output_open~~CallsGraph_node15" class="node">
+<title>proc~getheader</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node15"><a xlink:href="../proc/getheader.html" xlink:title="getHeader">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="424.5,-570 354.5,-570 354.5,-546 424.5,-546 424.5,-570"/>
+<text text-anchor="middle" x="389.5" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">getHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_asciispatial_open&#45;&gt;proc~getheader -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge8" class="edge">
+<title>proc~hvs_asciispatial_open&#45;&gt;proc~getheader</title>
+<path fill="none" stroke="#000000" d="M239.53,-507.13C260.71,-515.93 290.42,-527.85 317,-537 325.89,-540.06 335.5,-543.08 344.7,-545.83"/>
+<polygon fill="#000000" stroke="#000000" points="343.89,-549.24 354.47,-548.7 345.86,-542.52 343.89,-549.24"/>
+</g>
+<!-- proc~tem_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_node19" class="node">
+<title>proc~tem_open</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node19"><a xlink:href="../proc/tem_open.html" xlink:title="tem_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="422.5,-528 356.5,-528 356.5,-504 422.5,-504 422.5,-528"/>
+<text text-anchor="middle" x="389.5" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_asciispatial_open&#45;&gt;proc~tem_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge9" class="edge">
+<title>proc~hvs_asciispatial_open&#45;&gt;proc~tem_open</title>
+<path fill="none" stroke="#000000" d="M274.58,-502.52C298.35,-505.33 324.74,-508.46 346.13,-510.99"/>
+<polygon fill="#000000" stroke="#000000" points="345.85,-514.48 356.19,-512.18 346.67,-507.53 345.85,-514.48"/>
+</g>
+<!-- proc~tem_time_sim_stamp -->
+<g id="proc~~hvs_output_open~~CallsGraph_node21" class="node">
+<title>proc~tem_time_sim_stamp</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node21"><a xlink:href="../proc/tem_time_sim_stamp.html" xlink:title="tem_time_sim_stamp">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="452,-486 327,-486 327,-462 452,-462 452,-486"/>
+<text text-anchor="middle" x="389.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_sim_stamp</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_asciispatial_open&#45;&gt;proc~tem_time_sim_stamp -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge10" class="edge">
+<title>proc~hvs_asciispatial_open&#45;&gt;proc~tem_time_sim_stamp</title>
+<path fill="none" stroke="#000000" d="M274.58,-487.48C288.27,-485.86 302.83,-484.14 316.8,-482.48"/>
+<polygon fill="#000000" stroke="#000000" points="317.33,-485.94 326.85,-481.29 316.51,-478.99 317.33,-485.94"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~hvs_output_open~~CallsGraph_node16" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node16"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="423,-108 356,-108 356,-84 423,-84 423,-108"/>
+<text text-anchor="middle" x="389.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_vtk_open&#45;&gt;proc~tem_abort -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge11" class="edge">
+<title>proc~hvs_vtk_open&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M252.33,-171.83C262.21,-168.77 272.39,-164.6 281,-159 301.61,-145.59 296.35,-130.35 317,-117 325.72,-111.36 336,-107.2 346,-104.13"/>
+<polygon fill="#000000" stroke="#000000" points="347.13,-107.45 355.85,-101.42 345.28,-100.7 347.13,-107.45"/>
+</g>
+<!-- proc~hvs_vtk_write_meshdata&#45;&gt;proc~tem_abort -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge12" class="edge">
+<title>proc~hvs_vtk_write_meshdata&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M261.86,-125.96C288.43,-119.68 320.56,-112.08 345.81,-106.1"/>
+<polygon fill="#000000" stroke="#000000" points="346.9,-109.44 355.83,-103.73 345.29,-102.63 346.9,-109.44"/>
+</g>
+<!-- proc~hvs_vtk_write_varsys&#45;&gt;proc~tem_abort -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge13" class="edge">
+<title>proc~hvs_vtk_write_varsys&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M272.09,-96C296.33,-96 323.62,-96 345.69,-96"/>
+<polygon fill="#000000" stroke="#000000" points="345.75,-99.5 355.75,-96 345.75,-92.5 345.75,-99.5"/>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~hvs_output_open~~CallsGraph_node9" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="433.5,-444 345.5,-444 345.5,-420 433.5,-420 433.5,-444"/>
+<text text-anchor="middle" x="389.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_allreduce -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge14" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M217.78,-297.09C232.5,-322.19 269.85,-380.21 317,-411 322.75,-414.75 329.19,-417.86 335.78,-420.41"/>
+<polygon fill="#000000" stroke="#000000" points="334.9,-423.81 345.5,-423.78 337.2,-417.2 334.9,-423.81"/>
+</g>
+<!-- mpi_file_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_node10" class="node">
+<title>mpi_file_open</title>
+<polygon fill="#777777" stroke="#777777" points="433,-402 346,-402 346,-378 433,-378 433,-402"/>
+<text text-anchor="middle" x="389.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_open</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_file_open -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge15" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_file_open</title>
+<path fill="none" stroke="#000000" d="M222.94,-297.07C241.49,-315.18 279.05,-349.35 317,-369 323.02,-372.12 329.57,-374.84 336.19,-377.2"/>
+<polygon fill="#000000" stroke="#000000" points="335.27,-380.58 345.86,-380.39 337.47,-373.93 335.27,-380.58"/>
+</g>
+<!-- mpi_file_set_view -->
+<g id="proc~~hvs_output_open~~CallsGraph_node11" class="node">
+<title>mpi_file_set_view</title>
+<polygon fill="#777777" stroke="#777777" points="442,-360 337,-360 337,-336 442,-336 442,-360"/>
+<text text-anchor="middle" x="389.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_file_set_view</text>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;mpi_file_set_view -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge16" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;mpi_file_set_view</title>
+<path fill="none" stroke="#000000" d="M239.53,-297.13C260.71,-305.93 290.42,-317.85 317,-327 322.94,-329.04 329.2,-331.07 335.44,-333.01"/>
+<polygon fill="#000000" stroke="#000000" points="334.61,-336.41 345.2,-335.97 336.65,-329.72 334.61,-336.41"/>
+</g>
+<!-- proc~check_mpi_error -->
+<g id="proc~~hvs_output_open~~CallsGraph_node13" class="node">
+<title>proc~check_mpi_error</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node13"><a xlink:href="../proc/check_mpi_error.html" xlink:title="check_mpi_error">
+<polygon fill="#d9534f" stroke="#d9534f" points="440,-318 339,-318 339,-294 440,-294 440,-318"/>
+<text text-anchor="middle" x="389.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">check_mpi_error</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~check_mpi_error -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge17" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~check_mpi_error</title>
+<path fill="none" stroke="#000000" d="M276.59,-292.76C293.68,-294.78 312.01,-296.95 328.78,-298.93"/>
+<polygon fill="#000000" stroke="#000000" points="328.65,-302.44 338.99,-300.14 329.48,-295.49 328.65,-302.44"/>
+</g>
+<!-- proc~dump_treelmesh -->
+<g id="proc~~hvs_output_open~~CallsGraph_node14" class="node">
+<title>proc~dump_treelmesh</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node14"><a xlink:href="../proc/dump_treelmesh.html" xlink:title="dump_treelmesh">
+<polygon fill="#d9534f" stroke="#d9534f" points="440.5,-276 338.5,-276 338.5,-252 440.5,-252 440.5,-276"/>
+<text text-anchor="middle" x="389.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">dump_treelmesh</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~dump_treelmesh -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge18" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~dump_treelmesh</title>
+<path fill="none" stroke="#000000" d="M276.59,-277.24C293.52,-275.24 311.66,-273.09 328.3,-271.12"/>
+<polygon fill="#000000" stroke="#000000" points="328.92,-274.57 338.44,-269.92 328.1,-267.62 328.92,-274.57"/>
+</g>
+<!-- proc~tem_create_endiansuffix -->
+<g id="proc~~hvs_output_open~~CallsGraph_node17" class="node">
+<title>proc~tem_create_endiansuffix</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node17"><a xlink:href="../proc/tem_create_endiansuffix.html" xlink:title="tem_create_EndianSuffix">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="462,-234 317,-234 317,-210 462,-210 462,-234"/>
+<text text-anchor="middle" x="389.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_EndianSuffix</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_create_endiansuffix -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge19" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_create_endiansuffix</title>
+<path fill="none" stroke="#000000" d="M239.53,-272.87C260.71,-264.07 290.42,-252.15 317,-243 322.94,-240.96 329.2,-238.93 335.44,-236.99"/>
+<polygon fill="#000000" stroke="#000000" points="336.65,-240.28 345.2,-234.03 334.61,-233.59 336.65,-240.28"/>
+</g>
+<!-- proc~tem_dump_subtree -->
+<g id="proc~~hvs_output_open~~CallsGraph_node18" class="node">
+<title>proc~tem_dump_subtree</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node18"><a xlink:href="../proc/tem_dump_subtree.html" xlink:title="tem_dump_subTree">
+<polygon fill="#d9534f" stroke="#d9534f" points="447,-192 332,-192 332,-168 447,-168 447,-192"/>
+<text text-anchor="middle" x="389.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dump_subTree</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_dump_subtree -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge20" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_dump_subtree</title>
+<path fill="none" stroke="#000000" d="M222.94,-272.93C241.49,-254.82 279.05,-220.65 317,-201 320.75,-199.06 324.7,-197.27 328.75,-195.63"/>
+<polygon fill="#000000" stroke="#000000" points="330.16,-198.84 338.31,-192.06 327.71,-192.28 330.16,-198.84"/>
+</g>
+<!-- proc~tem_restart_writeheader -->
+<g id="proc~~hvs_output_open~~CallsGraph_node20" class="node">
+<title>proc~tem_restart_writeheader</title>
+<g id="a_proc~~hvs_output_open~~CallsGraph_node20"><a xlink:href="../proc/tem_restart_writeheader.html" xlink:title="tem_restart_writeHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="462,-150 317,-150 317,-126 462,-126 462,-150"/>
+<text text-anchor="middle" x="389.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_writeHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_restart_writeheader -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge21" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_restart_writeheader</title>
+<path fill="none" stroke="#000000" d="M221.37,-272.57C247.76,-240.98 315.46,-160.01 317,-159 319.62,-157.29 322.39,-155.71 325.25,-154.26"/>
+<polygon fill="#000000" stroke="#000000" points="326.95,-157.33 334.64,-150.04 324.08,-150.95 326.95,-157.33"/>
+</g>
+<!-- proc~tem_restart_openwrite&#45;&gt;proc~tem_time_sim_stamp -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge22" class="edge">
+<title>proc~tem_restart_openwrite&#45;&gt;proc~tem_time_sim_stamp</title>
+<path fill="none" stroke="#000000" d="M215.23,-297.27C226.55,-328.29 260.58,-410.39 317,-453 319.03,-454.53 321.18,-455.96 323.4,-457.28"/>
+<polygon fill="#000000" stroke="#000000" points="321.83,-460.4 332.32,-461.87 325.03,-454.18 321.83,-460.4"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~hvs_output_open~~CallsGraph_node12" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="424.5,-66 354.5,-66 354.5,-42 424.5,-42 424.5,-66"/>
+<text text-anchor="middle" x="389.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_time_reset&#45;&gt;mpi_wtime -->
+<g id="proc~~hvs_output_open~~CallsGraph_edge23" class="edge">
+<title>proc~tem_time_reset&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M257.17,-54C284.01,-54 317.67,-54 344.18,-54"/>
+<polygon fill="#000000" stroke="#000000" points="344.34,-57.5 354.34,-54 344.34,-50.5 344.34,-57.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~hvs_output_open~~CalledByGraph Pages: 1 -->
+<svg id="prochvs_output_openCalledByGraph" width="224pt" height="32pt"
+ viewBox="0.00 0.00 224.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~hvs_output_open~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~hvs_output_open~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 220,-28 220,4 -4,4"/>
+<!-- proc~hvs_output_open -->
+<g id="proc~~hvs_output_open~~CalledByGraph_node1" class="node">
+<title>proc~hvs_output_open</title>
+<polygon fill="none" stroke="black" points="216,-24 113,-24 113,0 216,0 216,-24"/>
+<text text-anchor="middle" x="164.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">hvs_output_open</text>
+</g>
+<!-- proc~tem_tracker -->
+<g id="proc~~hvs_output_open~~CalledByGraph_node2" class="node">
+<title>proc~tem_tracker</title>
+<g id="a_proc~~hvs_output_open~~CalledByGraph_node2"><a xlink:href="../proc/tem_tracker.html" xlink:title="tem_tracker">
+<polygon fill="#d9534f" stroke="#d9534f" points="77,-24 0,-24 0,0 77,0 77,-24"/>
+<text text-anchor="middle" x="38.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracker</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tracker&#45;&gt;proc~hvs_output_open -->
+<g id="proc~~hvs_output_open~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_tracker&#45;&gt;proc~hvs_output_open</title>
+<path fill="none" stroke="#000000" d="M77.04,-12C85.14,-12 93.89,-12 102.62,-12"/>
+<polygon fill="#000000" stroke="#000000" points="102.81,-15.5 112.81,-12 102.81,-8.5 102.81,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">hvs_output_open</span><span class="p">(</span><span class="n">out_file</span><span class="p">,</span><span class="w"> </span><span class="n">use_iter</span><span class="p">,</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w"> </span><span class="n">varsys</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">subtree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">hvs_output_file_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">out_file</span>
+
+<span class="w">    </span><span class="c">!&gt; The output configuration settings to use.</span>
+<span class="w">    </span><span class="c">! type(hvs_output_config_type), intent(in) :: out_config</span>
+<span class="w">    </span><span class="c">! Use iteration in filename?</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">use_iter</span>
+
+<span class="w">    </span><span class="c">!&gt; Mesh of the data to visualize.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">mesh</span>
+
+<span class="w">    </span><span class="c">!&gt; Description of the available variable system to get the given varnames</span>
+<span class="w">    </span><span class="c">!! from.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varsys</span>
+
+<span class="w">    </span><span class="c">!&gt; Optional restriction of the elements to output.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_subtree_type</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">subtree</span>
+
+<span class="w">    </span><span class="c">!&gt; Time information.</span>
+<span class="w">    </span><span class="c">!!</span>
+<span class="w">    </span><span class="c">!! If this is present, the filename will be built with a time stamp and</span>
+<span class="w">    </span><span class="c">!! the time point information is written into the vtu file.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_time_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">time</span>
+<span class="w">    </span><span class="c">! ----------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nElems</span>
+<span class="w">    </span><span class="c">! ----------------------------------------------------------------------!</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">subtree</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subtree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">nElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="nb">time</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">time</span>
+<span class="nb">    </span><span class="k">else</span>
+<span class="k">      call </span><span class="n">tem_time_reset</span><span class="p">(</span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    select case</span><span class="p">(</span><span class="n">out_file</span><span class="p">%</span><span class="n">vis_kind</span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">hvs_AsciiSpatial</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">hvs_asciiSpatial_open</span><span class="p">(</span><span class="w"> </span><span class="n">asciiSpatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">asciiSpatial</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">outProc</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">proc</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="nb">time</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">varsys</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">varsys</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">varpos</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">varpos</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">nDofs</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">nDofs</span><span class="w">         </span><span class="p">)</span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">hvs_Internal</span><span class="p">)</span>
+<span class="w">      </span><span class="c">! prepare the header differently for using global tree and tracking</span>
+<span class="w">      </span><span class="c">! subTree. For harvester format, prepare the header.</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">subTree</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! For harvester format, prepare the header</span>
+<span class="w">        </span><span class="c">! Here we pass the tracking subTree and the global tree to the header</span>
+<span class="w">        </span><span class="c">! In tem_restart_openWrite the subTree will be written to disk</span>
+
+<span class="w">        </span><span class="c">! update the property bits according to the global mesh if this has</span>
+<span class="w">        </span><span class="c">! changed</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_updatePropertyBits</span><span class="p">(</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w"> </span><span class="n">subTree</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">call </span><span class="n">tem_restart_openWrite</span><span class="p">(</span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">restart</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">tree</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">timing</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="p">,</span><span class="w">                </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varSys</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">subTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">subTree</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">label</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">out_file</span><span class="p">%</span><span class="n">basename</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39;_&#39;</span><span class="w">  </span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        call </span><span class="n">tem_restart_openWrite</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">restart</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">tree</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">mesh</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">timing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                         </span><span class="n">varSys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="w">          </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">! present subTree</span>
+<span class="w">    </span><span class="k">case</span><span class="p">(</span><span class="n">hvs_VTK</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">hvs_vtk_open</span><span class="p">(</span><span class="w"> </span><span class="n">vtk_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">vtk</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="n">use_iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">use_iter</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="n">proc</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">proc</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="nb">time</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="nb">time</span><span class="w">   </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">hvs_vtk_write_meshdata</span><span class="p">(</span><span class="w"> </span><span class="n">vtk_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">vtk</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">vrtx</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">vrtx</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">nElems</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">nElems</span><span class="w">         </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">hvs_vtk_write_varSys</span><span class="p">(</span><span class="w"> </span><span class="n">vtk_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">vtk</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varsys</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">varsys</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">varpos</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">out_file</span><span class="p">%</span><span class="n">varpos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end select</span>
+
+<span class="k">  end subroutine </span><span class="n">hvs_output_open</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,1597 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_cube_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_cube_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for source files.">81 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_cube_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_cube_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_cube_module.html">tem_cube_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_cube_module.f90.html#src">tem_cube_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_cube_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_cube_modulef90EfferentGraph" width="641pt" height="287pt"
+ viewBox="0.00 0.00 641.00 287.29" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph" class="graph" transform="scale(0.45 0.45) rotate(0) translate(4 639.6)">
+<title>sourcefile~~tem_cube_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-639.6 1432,-639.6 1432,4 -4,4"/>
+<!-- sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_cube_module.f90</title>
+<polygon fill="none" stroke="black" points="1428,-550.26 1297,-550.26 1297,-526.26 1428,-526.26 1428,-550.26"/>
+<text text-anchor="middle" x="1362.5" y="-535.86" font-family="Helvetica,sans-Serif" font-size="10.50">tem_cube_module.f90</text>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-391.26 0,-391.26 0,-367.26 98,-367.26 98,-391.26"/>
+<text text-anchor="middle" x="49" y="-376.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.5,-614.26C522.35,-608.8 501.28,-611.31 418,-614.26"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="479,-525.26 355,-525.26 355,-501.26 479,-501.26 479,-525.26"/>
+<text text-anchor="middle" x="417" y="-510.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-614.26C664.15,-601.54 525.08,-554.01 458.17,-528.95"/>
+<polygon fill="#000000" stroke="#000000" points="459.04,-525.54 448.45,-525.28 456.56,-532.09 459.04,-525.54"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_geometry_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_geometry_module.f90.html" xlink:title="tem_geometry_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1261,-530.26 1104,-530.26 1104,-506.26 1261,-506.26 1261,-530.26"/>
+<text text-anchor="middle" x="1182.5" y="-515.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_geometry_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_geometry_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1296.99,-531.01C1288.62,-530.07 1279.94,-529.1 1271.28,-528.13"/>
+<polygon fill="#000000" stroke="#000000" points="1271.46,-524.62 1261.13,-526.99 1270.68,-531.58 1271.46,-524.62"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291,-371.26 146,-371.26 146,-347.26 291,-347.26 291,-371.26"/>
+<text text-anchor="middle" x="218.5" y="-356.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1181.5,-567.26C1137.62,-565.23 832.86,-616.61 789,-614.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-614.26C707.22,-614.72 687.18,-618.25 607.5,-614.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.5,-614.26C543.74,-611.17 383.69,-577 339,-534.26 303.95,-500.75 330.29,-471.35 303,-431.26 288.19,-409.51 265.2,-390.35 247.09,-377.28"/>
+<polygon fill="#000000" stroke="#000000" points="248.85,-374.24 238.65,-371.36 244.83,-379.97 248.85,-374.24"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~treelmesh_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/treelmesh_module.f90.html" xlink:title="treelmesh_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="854,-316.26 722,-316.26 722,-292.26 854,-292.26 854,-316.26"/>
+<text text-anchor="middle" x="788" y="-301.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_cube_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1313.49,-550.27C1277.86,-558.15 1227.96,-567.05 1183.5,-567.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1181.5,-567.26C1144.88,-567.44 1132.2,-562.64 1104,-539.26 1079.76,-519.17 1089.99,-500.79 1068,-478.26 995.26,-403.72 884.49,-347.05 826.85,-320.64"/>
+<polygon fill="#000000" stroke="#000000" points="827.95,-317.3 817.39,-316.36 825.06,-323.67 827.95,-317.3"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M354.77,-509.49C283.59,-504.26 171.12,-493.12 134,-473.26 102.25,-456.28 76.62,-422.31 62.36,-400.2"/>
+<polygon fill="#000000" stroke="#000000" points="65.21,-398.16 56.95,-391.53 59.27,-401.87 65.21,-398.16"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.25,-501.18C355.28,-497.63 346.45,-493.08 339,-487.26 315.67,-469.06 322.4,-453.6 303,-431.26 285.31,-410.9 261.79,-391.13 244.22,-377.48"/>
+<polygon fill="#000000" stroke="#000000" points="246.19,-374.59 236.12,-371.29 241.94,-380.15 246.19,-374.59"/>
+</g>
+<!-- sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~soi_revision_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/soi_revision_module.f90.html" xlink:title="soi_revision_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-544.26 148.5,-544.26 148.5,-520.26 288.5,-520.26 288.5,-544.26"/>
+<text text-anchor="middle" x="218.5" y="-529.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M354.9,-519.17C337.14,-520.89 317.48,-522.79 298.77,-524.6"/>
+<polygon fill="#000000" stroke="#000000" points="298.41,-521.12 288.79,-525.56 299.08,-528.08 298.41,-521.12"/>
+</g>
+<!-- sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~tem_comm_env_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/tem_comm_env_module.f90.html" xlink:title="tem_comm_env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="300,-586.26 137,-586.26 137,-562.26 300,-562.26 300,-586.26"/>
+<text text-anchor="middle" x="218.5" y="-571.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M384.6,-525.27C362.07,-533.67 330.89,-544.84 303,-553.26 295.66,-555.48 287.9,-557.65 280.19,-559.71"/>
+<polygon fill="#000000" stroke="#000000" points="279.28,-556.33 270.49,-562.25 281.05,-563.1 279.28,-556.33"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_lua_requires_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_lua_requires_module.f90.html" xlink:title="tem_lua_requires_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-464.26 134,-464.26 134,-440.26 303,-440.26 303,-464.26"/>
+<text text-anchor="middle" x="218.5" y="-449.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_lua_requires_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M377.18,-501.21C345.82,-491.48 301.54,-477.73 267.88,-467.28"/>
+<polygon fill="#000000" stroke="#000000" points="268.83,-463.91 258.24,-464.29 266.75,-470.6 268.83,-463.91"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="283.5,-215.26 153.5,-215.26 153.5,-191.26 283.5,-191.26 283.5,-215.26"/>
+<text text-anchor="middle" x="218.5" y="-200.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M394.66,-501.11C377,-489.92 352.66,-471.68 339,-449.26 300.39,-385.91 338.76,-351.27 303,-286.26 288.58,-260.05 263.36,-236.69 244.4,-221.48"/>
+<polygon fill="#000000" stroke="#000000" points="246.49,-218.67 236.45,-215.28 242.18,-224.19 246.49,-218.67"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-576.26C672.8,-571.99 644.61,-587.9 531,-600.26 480.69,-605.74 468.54,-611.74 418,-614.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-614.26C290.45,-618.4 235.24,-669.63 134,-595.26 70.48,-548.6 54.99,-446.87 51.21,-401.67"/>
+<polygon fill="#000000" stroke="#000000" points="54.69,-401.19 50.48,-391.47 47.7,-401.69 54.69,-401.19"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1143.47,-530.28C1073.54,-550.96 919.69,-589.8 789,-576.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-576.26C753.33,-573.83 527.5,-501.42 495,-492.26 425.77,-472.77 403.53,-481.01 339,-449.26 300.6,-430.37 262.13,-398.52 239.58,-378.21"/>
+<polygon fill="#000000" stroke="#000000" points="241.77,-375.46 232.03,-371.3 237.04,-380.63 241.77,-375.46"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M980,-184.26C914.11,-141.43 834.16,-239.49 802.67,-283.87"/>
+<polygon fill="#000000" stroke="#000000" points="799.71,-282 796.88,-292.21 805.46,-286 799.71,-282"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_debug_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_debug_module.f90.html" xlink:title="tem_debug_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="486.5,-175.26 347.5,-175.26 347.5,-151.26 486.5,-151.26 486.5,-175.26"/>
+<text text-anchor="middle" x="417" y="-160.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_debug_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M980,-184.26C908.83,-137.99 873.76,-179.61 789,-184.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-184.26C686.95,-189.76 571.66,-180.74 496.95,-172.86"/>
+<polygon fill="#000000" stroke="#000000" points="497,-169.35 486.68,-171.76 496.25,-176.31 497,-169.35"/>
+</g>
+<!-- sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_float_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_float_module.f90.html" xlink:title="tem_float_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="481.5,-57.26 352.5,-57.26 352.5,-33.26 481.5,-33.26 481.5,-57.26"/>
+<text text-anchor="middle" x="417" y="-42.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_float_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_float_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-108.26C710.19,-86.72 687.12,-113.28 607.5,-108.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.5,-108.26C604.57,-108.2 518.7,-79.26 463.5,-60.63"/>
+<polygon fill="#000000" stroke="#000000" points="464.51,-57.28 453.92,-57.4 462.27,-63.91 464.51,-57.28"/>
+</g>
+<!-- sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_param_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_param_module.f90.html" xlink:title="tem_param_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="858,-55.26 718,-55.26 718,-31.26 858,-31.26 858,-55.26"/>
+<text text-anchor="middle" x="788" y="-40.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_param_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_param_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_param_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1178.44,-506.14C1165.16,-456.28 1107.43,-265.81 982,-184.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M980,-184.26C977.86,-182.87 864.72,-99.25 813.61,-61.46"/>
+<polygon fill="#000000" stroke="#000000" points="815.51,-58.51 805.39,-55.38 811.35,-64.14 815.51,-58.51"/>
+</g>
+<!-- sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_property_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_property_module.f90.html" xlink:title="tem_property_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="681.5,-236.26 531.5,-236.26 531.5,-212.26 681.5,-212.26 681.5,-236.26"/>
+<text text-anchor="middle" x="606.5" y="-221.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_property_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-184.26C741.25,-186.78 690.39,-199.04 654.52,-209.34"/>
+<polygon fill="#000000" stroke="#000000" points="653.43,-206.01 644.82,-212.18 655.4,-212.73 653.43,-206.01"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~tem_subtree_type_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/tem_subtree_type_module.f90.html" xlink:title="tem_subTree_type_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1068,-511.26 894,-511.26 894,-487.26 1068,-487.26 1068,-511.26"/>
+<text text-anchor="middle" x="981" y="-496.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_type_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1103.8,-510.86C1095.38,-510.06 1086.75,-509.24 1078.15,-508.42"/>
+<polygon fill="#000000" stroke="#000000" points="1078.37,-504.93 1068.09,-507.46 1077.71,-511.89 1078.37,-504.93"/>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.5,-108.26C486.33,-100.75 453.09,-107.04 339,-142.26 305.6,-152.57 270.29,-171.76 246.79,-185.87"/>
+<polygon fill="#000000" stroke="#000000" points="244.79,-182.99 238.09,-191.19 248.45,-188.96 244.79,-182.99"/>
+</g>
+<!-- sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~tem_topology_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/tem_topology_module.f90.html" xlink:title="tem_topology_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="682,-57.26 531,-57.26 531,-33.26 682,-33.26 682,-57.26"/>
+<text text-anchor="middle" x="606.5" y="-42.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_topology_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_geometry_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M980,-184.26C903.4,-134.46 876.97,-132.94 789,-108.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-108.26C738.31,-94.61 683.66,-74.75 647.59,-61"/>
+<polygon fill="#000000" stroke="#000000" points="648.52,-57.6 637.93,-57.29 646.01,-64.14 648.52,-57.6"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M145.98,-367.8C133.34,-369.31 120.31,-370.87 108.1,-372.33"/>
+<polygon fill="#000000" stroke="#000000" points="107.56,-368.86 98.05,-373.53 108.39,-375.82 107.56,-368.86"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M742.14,-316.33C672.99,-333.72 535.97,-363.31 418,-359.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-359.26C324.85,-356.85 308.44,-280.16 219.5,-300.26"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M781.36,-316.5C768.12,-343.77 732.37,-409.77 682,-443.26 653.54,-462.18 639.75,-450.97 607.5,-462.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M605.5,-462.26C564.32,-476.68 516.89,-489.55 480.03,-498.75"/>
+<polygon fill="#000000" stroke="#000000" points="478.8,-495.45 469.93,-501.25 480.48,-502.24 478.8,-495.45"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-359.26C378.45,-357.98 336.84,-357.8 301.62,-358.01"/>
+<polygon fill="#000000" stroke="#000000" points="301.36,-354.51 291.38,-358.08 301.41,-361.51 301.36,-354.51"/>
+</g>
+<!-- sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_global_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_global_module.f90.html" xlink:title="tem_global_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="675.5,-434.26 537.5,-434.26 537.5,-410.26 675.5,-410.26 675.5,-434.26"/>
+<text text-anchor="middle" x="606.5" y="-419.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_global_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_global_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M768.47,-316.45C736.67,-337.35 671.61,-380.12 634.68,-404.4"/>
+<polygon fill="#000000" stroke="#000000" points="632.37,-401.73 625.93,-410.15 636.21,-407.58 632.37,-401.73"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M765.7,-292.2C744.78,-280.61 711.76,-263.04 682,-250.26 673.4,-246.57 664.09,-243 655.06,-239.75"/>
+<polygon fill="#000000" stroke="#000000" points="656,-236.37 645.41,-236.35 653.68,-242.97 656,-236.37"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~tem_sparta_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/tem_sparta_module.f90.html" xlink:title="tem_sparta_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="676,-316.26 537,-316.26 537,-292.26 676,-292.26 676,-316.26"/>
+<text text-anchor="middle" x="606.5" y="-301.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_sparta_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_sparta_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_sparta_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M721.94,-304.26C710.46,-304.26 698.39,-304.26 686.57,-304.26"/>
+<polygon fill="#000000" stroke="#000000" points="686.27,-300.76 676.27,-304.26 686.27,-307.76 686.27,-300.76"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M727.04,-292.25C712.31,-289.3 696.59,-286.16 682,-283.26 598.91,-266.73 578.43,-261.02 495,-246.26 427.01,-234.24 349.27,-222.26 293.74,-214.02"/>
+<polygon fill="#000000" stroke="#000000" points="294.04,-210.52 283.64,-212.52 293.02,-217.45 294.04,-210.52"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_topology_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~treelmesh_module.f90&#45;&gt;sourcefile~tem_topology_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M777.68,-292.13C763.33,-273.01 735.66,-234.36 718,-198.26 696.5,-154.33 712.03,-132.87 682,-94.26 671.79,-81.13 657.02,-70.39 643.32,-62.35"/>
+<polygon fill="#000000" stroke="#000000" points="644.97,-59.26 634.53,-57.45 641.57,-65.38 644.97,-59.26"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M403.82,-150.97C371.91,-120.32 283.95,-45.72 219.5,-85.26"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M405.69,-175.56C390.6,-193.73 361.78,-228.98 339,-260.26 322.02,-283.58 324.33,-294.84 303,-314.26 290.31,-325.81 274.12,-335.41 259.38,-342.74"/>
+<polygon fill="#000000" stroke="#000000" points="257.49,-339.77 249.96,-347.22 260.49,-346.09 257.49,-339.77"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_debug_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.04,-175.26C335.57,-179.63 311.11,-184.61 288.82,-189.15"/>
+<polygon fill="#000000" stroke="#000000" points="287.86,-185.78 278.75,-191.2 289.25,-192.64 287.86,-185.78"/>
+</g>
+<!-- sourcefile~tem_float_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_float_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M352.2,-47.19C311.63,-50.98 259.41,-60.77 219.5,-85.26"/>
+</g>
+<!-- sourcefile~tem_global_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_global_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-435.26C306.6,-425.62 180.21,-403.9 108.23,-390.53"/>
+<polygon fill="#000000" stroke="#000000" points="108.49,-387.01 98.02,-388.62 107.2,-393.89 108.49,-387.01"/>
+</g>
+<!-- sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M566.68,-434.28C555.03,-438.29 542.34,-443.08 531,-448.26 500.61,-462.16 467.68,-481.65 445.26,-495.66"/>
+<polygon fill="#000000" stroke="#000000" points="443.21,-492.81 436.62,-501.11 446.95,-498.73 443.21,-492.81"/>
+</g>
+<!-- sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M537.32,-432.14C501.73,-435.99 457.49,-438.75 418,-435.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-435.26C383.7,-432.42 301.9,-397.06 254.65,-375.59"/>
+<polygon fill="#000000" stroke="#000000" points="255.95,-372.34 245.4,-371.37 253.04,-378.71 255.95,-372.34"/>
+</g>
+<!-- sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~tem_prophead_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/tem_prophead_module.f90.html" xlink:title="tem_prophead_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="495,-293.26 339,-293.26 339,-269.26 495,-269.26 495,-293.26"/>
+<text text-anchor="middle" x="417" y="-278.86" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_prophead_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_global_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M589.51,-410.24C556.66,-385.54 481.38,-328.93 442.4,-299.61"/>
+<polygon fill="#000000" stroke="#000000" points="444.31,-296.67 434.21,-293.45 440.1,-302.26 444.31,-296.67"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_lua_requires_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M172.68,-440.18C159.98,-436.26 146.27,-431.54 134,-426.26 114.49,-417.88 93.66,-406.24 77.62,-396.64"/>
+<polygon fill="#000000" stroke="#000000" points="79.14,-393.47 68.77,-391.26 75.5,-399.45 79.14,-393.47"/>
+</g>
+<!-- sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_param_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M740.27,-31.23C670.1,-14.8 533.44,10.89 418,-5.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-5.26C322.53,-17.72 299.87,-35.95 219.5,-85.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-85.26C114.25,-148.61 68.66,-300.66 54.83,-357.41"/>
+<polygon fill="#000000" stroke="#000000" points="51.42,-356.61 52.54,-367.15 58.23,-358.21 51.42,-356.61"/>
+</g>
+<!-- sourcefile~tem_property_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_property_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M590.65,-212.21C549.98,-179.35 438.5,-90.34 418,-85.26"/>
+</g>
+<!-- sourcefile~tem_property_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge42" class="edge">
+<title>sourcefile~tem_property_module.f90&#45;&gt;sourcefile~tem_prophead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M565.74,-236.35C537.02,-245.08 498.06,-256.92 467.36,-266.26"/>
+<polygon fill="#000000" stroke="#000000" points="466.26,-262.93 457.71,-269.19 468.29,-269.63 466.26,-262.93"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.01,-292.23C556.06,-288.11 542.86,-283.27 531,-278.26 514.52,-271.3 512.41,-264.37 495,-260.26 427.52,-244.33 407.43,-249.11 339,-260.26 283.72,-269.27 273.98,-287.28 219.5,-300.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-300.26C164.98,-312.13 109.49,-342.28 77.4,-361.71"/>
+<polygon fill="#000000" stroke="#000000" points="75.28,-358.9 68.6,-367.13 78.95,-364.86 75.28,-358.9"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.05,-316.48C581.86,-334.84 554.24,-370.65 531,-401.26 514.88,-422.5 513.38,-429.94 495,-449.26 479.03,-466.05 458.81,-482.71 443.1,-494.82"/>
+<polygon fill="#000000" stroke="#000000" points="440.74,-492.22 434.89,-501.06 444.97,-497.8 440.74,-492.22"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge46" class="edge">
+<title>sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M536.94,-314.03C470.96,-323.43 371.17,-337.65 301.13,-347.63"/>
+<polygon fill="#000000" stroke="#000000" points="300.43,-344.2 291.02,-349.07 301.42,-351.13 300.43,-344.2"/>
+</g>
+<!-- sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_float_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_sparta_module.f90&#45;&gt;sourcefile~tem_float_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.71,-292.09C565.79,-281.85 543.56,-265.63 531,-245.26 489.55,-178.04 547.34,-130.39 495,-71.26 492.11,-67.99 488.79,-65.14 485.19,-62.64"/>
+<polygon fill="#000000" stroke="#000000" points="486.74,-59.49 476.35,-57.43 483.19,-65.52 486.74,-59.49"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge47" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M979.65,-487.25C977.53,-438.62 962.62,-254.99 858,-170.26 743.85,-77.82 673.99,-155.91 531,-122.26 479.56,-110.16 469.3,-97.97 418,-85.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416,-85.26C373.41,-75.62 256.72,-62.43 219.5,-85.26"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge48" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-462.26C708.86,-446.17 682.8,-435.91 607.5,-462.26"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge50" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M915.82,-487.22C878.72,-480.16 831.18,-470.95 789,-462.26"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-462.26C734.14,-451.37 733.5,-417.41 682,-401.26 536.06,-355.5 491.2,-388.39 339,-373.26 326.78,-372.05 313.87,-370.65 301.24,-369.23"/>
+<polygon fill="#000000" stroke="#000000" points="301.51,-365.73 291.18,-368.08 300.71,-372.69 301.51,-365.73"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge52" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M919.91,-487.24C910.68,-483.71 901.67,-479.15 894,-473.26 842.86,-434.04 810.49,-362.22 796.69,-326.15"/>
+<polygon fill="#000000" stroke="#000000" points="799.9,-324.74 793.15,-316.58 793.34,-327.17 799.9,-324.74"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge49" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_global_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787,-462.26C747.87,-454.2 704.1,-444.46 669.58,-436.61"/>
+<polygon fill="#000000" stroke="#000000" points="670.17,-433.16 659.64,-434.35 668.61,-439.98 670.17,-433.16"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_property_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge51" class="edge">
+<title>sourcefile~tem_subtree_type_module.f90&#45;&gt;sourcefile~tem_property_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M976.9,-487.17C966.77,-450.24 931.02,-338.08 858,-283.26 810.27,-247.43 744.13,-232.93 691.8,-227.25"/>
+<polygon fill="#000000" stroke="#000000" points="691.83,-223.74 681.53,-226.23 691.14,-230.7 691.83,-223.74"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge53" class="edge">
+<title>sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M204.84,-215.43C188.3,-231.43 158.54,-260.52 134,-286.26 110.46,-310.95 84.24,-340.29 67.46,-359.31"/>
+<polygon fill="#000000" stroke="#000000" points="64.65,-357.21 60.67,-367.03 69.9,-361.84 64.65,-357.21"/>
+</g>
+<!-- sourcefile~tem_topology_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge54" class="edge">
+<title>sourcefile~tem_topology_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M564.9,-33.19C518.65,-20.05 445.85,-1.37 418,-5.26"/>
+</g>
+<!-- sourcefile~tem_prophead_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~EfferentGraph_edge55" class="edge">
+<title>sourcefile~tem_prophead_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M338.67,-283.82C302.15,-286.28 258.17,-291.04 219.5,-300.26"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_cube_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_cube_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Files dependent on this one</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_cube_module.f90~~AfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_cube_modulef90AfferentGraph" width="641pt" height="158pt"
+ viewBox="0.00 0.00 641.00 157.65" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph" class="graph" transform="scale(0.38 0.38) rotate(0) translate(4 406)">
+<title>sourcefile~~tem_cube_module.f90~~AfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-406 1663,-406 1663,4 -4,4"/>
+<!-- sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node1" class="node">
+<title>sourcefile~tem_cube_module.f90</title>
+<polygon fill="none" stroke="black" points="131,-255 0,-255 0,-231 131,-231 131,-255"/>
+<text text-anchor="middle" x="65.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_cube_module.f90</text>
+</g>
+<!-- sourcefile~tem_box_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node2" class="node">
+<title>sourcefile~tem_box_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node2"><a xlink:href="../sourcefile/tem_box_module.f90.html" xlink:title="tem_box_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="662,-335 538,-335 538,-311 662,-311 662,-335"/>
+<text text-anchor="middle" x="600" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_box_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M561.9,-335.09C526.14,-345.83 470.28,-360.25 420.5,-363"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.5,-363C339.73,-367.35 317.52,-382.19 241,-363"/>
+</g>
+<!-- sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node7" class="node">
+<title>sourcefile~tem_plane_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node7"><a xlink:href="../sourcefile/tem_plane_module.f90.html" xlink:title="tem_plane_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="487,-335 352,-335 352,-311 487,-311 487,-335"/>
+<text text-anchor="middle" x="419.5" y="-320.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_plane_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_box_module.f90&#45;&gt;sourcefile~tem_plane_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M537.57,-323C524.63,-323 510.83,-323 497.4,-323"/>
+<polygon fill="#000000" stroke="#000000" points="497.23,-319.5 487.23,-323 497.23,-326.5 497.23,-319.5"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node3" class="node">
+<title>sourcefile~tem_canonical_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node3"><a xlink:href="../sourcefile/tem_canonical_module.f90.html" xlink:title="tem_canonical_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="867,-295 710,-295 710,-271 867,-271 867,-295"/>
+<text text-anchor="middle" x="788.5" y="-280.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_canonical_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M770.42,-295.16C749.03,-309.67 710.72,-333.28 674,-344 565.54,-375.66 533.31,-356.77 420.5,-363"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_box_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_box_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M731.54,-295C711.26,-299.35 688.16,-304.31 667.08,-308.83"/>
+<polygon fill="#000000" stroke="#000000" points="666.28,-305.42 657.24,-310.94 667.75,-312.26 666.28,-305.42"/>
+</g>
+<!-- sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node6" class="node">
+<title>sourcefile~tem_line_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node6"><a xlink:href="../sourcefile/tem_line_module.f90.html" xlink:title="tem_line_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="481.5,-255 357.5,-255 357.5,-231 481.5,-231 481.5,-255"/>
+<text text-anchor="middle" x="419.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_line_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_line_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M709.92,-283C676.42,-283 636.78,-283 601,-283"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M599,-283C551.68,-283 498.98,-269.45 463.19,-258.12"/>
+<polygon fill="#000000" stroke="#000000" points="464.15,-254.76 453.56,-255 461.99,-261.42 464.15,-254.76"/>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_plane_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_plane_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M599,-283C551.68,-283 498.98,-296.55 463.19,-307.88"/>
+<polygon fill="#000000" stroke="#000000" points="461.99,-304.58 453.56,-311 464.15,-311.24 461.99,-304.58"/>
+</g>
+<!-- sourcefile~tem_point_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node8" class="node">
+<title>sourcefile~tem_point_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node8"><a xlink:href="../sourcefile/tem_point_module.f90.html" xlink:title="tem_point_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="306,-295 174,-295 174,-271 306,-271 306,-295"/>
+<text text-anchor="middle" x="240" y="-280.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_point_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_point_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_canonical_module.f90&#45;&gt;sourcefile~tem_point_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M599,-283C501.55,-283 389.18,-283 316.72,-283"/>
+<polygon fill="#000000" stroke="#000000" points="316.33,-279.5 306.33,-283 316.33,-286.5 316.33,-279.5"/>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node4" class="node">
+<title>sourcefile~tem_cylinder_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node4"><a xlink:href="../sourcefile/tem_cylinder_module.f90.html" xlink:title="tem_cylinder_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="674,-95 526,-95 526,-71 674,-71 674,-95"/>
+<text text-anchor="middle" x="600" y="-80.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_cylinder_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M560.74,-70.93C516.71,-57.65 447.08,-38.74 420.5,-43"/>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_line_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_line_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M554.58,-95.04C544.64,-98.89 534.53,-103.81 526,-110 503.75,-126.13 457.94,-189.32 434.7,-222.46"/>
+<polygon fill="#000000" stroke="#000000" points="431.63,-220.75 428.78,-230.95 437.37,-224.75 431.63,-220.75"/>
+</g>
+<!-- sourcefile~tem_sphere_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node10" class="node">
+<title>sourcefile~tem_sphere_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node10"><a xlink:href="../sourcefile/tem_sphere_module.f90.html" xlink:title="tem_sphere_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="490,-95 349,-95 349,-71 490,-71 490,-95"/>
+<text text-anchor="middle" x="419.5" y="-80.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_sphere_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_sphere_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_cylinder_module.f90&#45;&gt;sourcefile~tem_sphere_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M525.88,-83C517.37,-83 508.66,-83 500.06,-83"/>
+<polygon fill="#000000" stroke="#000000" points="500.05,-79.5 490.05,-83 500.05,-86.5 500.05,-79.5"/>
+</g>
+<!-- sourcefile~tem_ellipsoid_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node5" class="node">
+<title>sourcefile~tem_ellipsoid_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node5"><a xlink:href="../sourcefile/tem_ellipsoid_module.f90.html" xlink:title="tem_ellipsoid_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="863,-175 714,-175 714,-151 863,-151 863,-175"/>
+<text text-anchor="middle" x="788.5" y="-160.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ellipsoid_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ellipsoid_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_ellipsoid_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M713.92,-163.58C626.59,-163.48 476.71,-160.8 349,-146 300.43,-140.37 286.84,-107.98 241,-125"/>
+</g>
+<!-- sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M357.19,-243C297.17,-243 205.64,-243 141.35,-243"/>
+<polygon fill="#000000" stroke="#000000" points="141.28,-239.5 131.28,-243 141.28,-246.5 141.28,-239.5"/>
+</g>
+<!-- sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_point_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_point_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M365.24,-255C346.11,-259.31 324.35,-264.22 304.44,-268.7"/>
+<polygon fill="#000000" stroke="#000000" points="303.51,-265.33 294.52,-270.94 305.05,-272.15 303.51,-265.33"/>
+</g>
+<!-- sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node12" class="node">
+<title>sourcefile~tem_triangle_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node12"><a xlink:href="../sourcefile/tem_triangle_module.f90.html" xlink:title="tem_triangle_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="313,-215 167,-215 167,-191 313,-191 313,-215"/>
+<text text-anchor="middle" x="240" y="-200.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_triangle_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_line_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M365.24,-231C346.11,-226.69 324.35,-221.78 304.44,-217.3"/>
+<polygon fill="#000000" stroke="#000000" points="305.05,-213.85 294.52,-215.06 303.51,-220.67 305.05,-213.85"/>
+</g>
+<!-- sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.6,-335.11C338.83,-349.16 267.43,-369.63 241,-363"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239,-363C174.03,-346.71 113.53,-292.06 84.5,-262.46"/>
+<polygon fill="#000000" stroke="#000000" points="86.95,-259.95 77.49,-255.17 81.9,-264.8 86.95,-259.95"/>
+</g>
+<!-- sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_plane_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M400.5,-310.83C369.06,-289.58 303.99,-245.59 267.42,-220.86"/>
+<polygon fill="#000000" stroke="#000000" points="269.02,-217.72 258.78,-215.02 265.1,-223.52 269.02,-217.72"/>
+</g>
+<!-- sourcefile~tem_point_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_point_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187.24,-271C168.74,-266.71 147.69,-261.83 128.41,-257.36"/>
+<polygon fill="#000000" stroke="#000000" points="129.05,-253.91 118.52,-255.06 127.47,-260.73 129.05,-253.91"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node9" class="node">
+<title>sourcefile~tem_shape_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node9"><a xlink:href="../sourcefile/tem_shape_module.f90.html" xlink:title="tem_shape_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1040,-195 903,-195 903,-171 1040,-171 1040,-195"/>
+<text text-anchor="middle" x="971.5" y="-180.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_shape_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M949.3,-170.96C916.3,-152.84 850.12,-119 789.5,-103"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787.5,-103C735.64,-89.31 726.45,-73.22 674,-62 563.52,-38.37 532.06,-25.1 420.5,-43"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M418.5,-43C386.84,-47.81 378.53,-49.6 349,-62 297.76,-83.51 292.92,-105.19 241,-125"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239,-125C178,-148.27 117.54,-197.12 86.99,-224.1"/>
+<polygon fill="#000000" stroke="#000000" points="84.65,-221.49 79.54,-230.77 89.32,-226.71 84.65,-221.49"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M948.67,-195.06C916.73,-212.71 857.12,-245.64 820.61,-265.81"/>
+<polygon fill="#000000" stroke="#000000" points="818.47,-263 811.41,-270.89 821.86,-269.12 818.47,-263"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cylinder_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_cylinder_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787.5,-103C754.4,-94.26 717.04,-89.33 684.49,-86.55"/>
+<polygon fill="#000000" stroke="#000000" points="684.35,-83.03 674.11,-85.72 683.8,-90.01 684.35,-83.03"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_ellipsoid_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_ellipsoid_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M902.84,-175.52C893.23,-174.46 883.25,-173.36 873.37,-172.27"/>
+<polygon fill="#000000" stroke="#000000" points="873.46,-168.76 863.14,-171.14 872.7,-175.71 873.46,-168.76"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_sphere_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_sphere_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M787.5,-103C706.85,-81.71 684.41,-123.98 601,-124"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M599,-124C574.81,-124.01 516.32,-109.52 472.85,-97.77"/>
+<polygon fill="#000000" stroke="#000000" points="473.56,-94.34 462.99,-95.08 471.72,-101.09 473.56,-94.34"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node11" class="node">
+<title>sourcefile~tem_stl_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node11"><a xlink:href="../sourcefile/tem_stl_module.f90.html" xlink:title="tem_stl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="478,-137 361,-137 361,-113 478,-113 478,-137"/>
+<text text-anchor="middle" x="419.5" y="-122.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_stl_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_stl_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M599,-124C562.49,-124.01 521.78,-124.22 488.47,-124.45"/>
+<polygon fill="#000000" stroke="#000000" points="488.36,-120.95 478.38,-124.52 488.4,-127.95 488.36,-120.95"/>
+</g>
+<!-- sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_shape_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M902.85,-184.85C768.59,-188.54 468.87,-196.75 323.38,-200.74"/>
+<polygon fill="#000000" stroke="#000000" points="323.08,-197.25 313.18,-201.02 323.27,-204.25 323.08,-197.25"/>
+</g>
+<!-- sourcefile~tem_sphere_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_sphere_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M350.33,-95.03C316.82,-101.97 276.18,-111.94 241,-125"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M360.75,-115.03C325.13,-111.28 279.13,-110.84 241,-125"/>
+</g>
+<!-- sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_stl_module.f90&#45;&gt;sourcefile~tem_triangle_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M391.15,-137.02C360.8,-150.36 311.63,-171.96 277.89,-186.79"/>
+<polygon fill="#000000" stroke="#000000" points="276.12,-183.74 268.38,-190.97 278.94,-190.15 276.12,-183.74"/>
+</g>
+<!-- sourcefile~tem_triangle_module.f90&#45;&gt;sourcefile~tem_cube_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_triangle_module.f90&#45;&gt;sourcefile~tem_cube_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M187.24,-215C168.74,-219.29 147.69,-224.17 128.41,-228.64"/>
+<polygon fill="#000000" stroke="#000000" points="127.47,-225.27 118.52,-230.94 129.05,-232.09 127.47,-225.27"/>
+</g>
+<!-- sourcefile~hvs_ascii_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node13" class="node">
+<title>sourcefile~hvs_ascii_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node13"><a xlink:href="../sourcefile/hvs_ascii_module.f90.html" xlink:title="hvs_ascii_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1211.5,-133 1085.5,-133 1085.5,-109 1211.5,-109 1211.5,-133"/>
+<text text-anchor="middle" x="1148.5" y="-118.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_ascii_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_ascii_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge23" class="edge">
+<title>sourcefile~hvs_ascii_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1113.34,-133.1C1085.64,-142.92 1046.4,-156.82 1016.37,-167.46"/>
+<polygon fill="#000000" stroke="#000000" points="1014.83,-164.29 1006.57,-170.93 1017.17,-170.89 1014.83,-164.29"/>
+</g>
+<!-- sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node14" class="node">
+<title>sourcefile~hvs_output_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node14"><a xlink:href="../sourcefile/hvs_output_module.f90.html" xlink:title="hvs_output_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1416.5,-113 1280.5,-113 1280.5,-89 1416.5,-89 1416.5,-113"/>
+<text text-anchor="middle" x="1348.5" y="-98.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge24" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1283.78,-88.99C1227.45,-81.1 1143.93,-76.13 1076,-100 1040.32,-112.54 1007.83,-143.14 989.12,-163.47"/>
+<polygon fill="#000000" stroke="#000000" points="986.48,-161.18 982.42,-170.96 991.69,-165.84 986.48,-161.18"/>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~hvs_ascii_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge37" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~hvs_ascii_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1280.47,-107.77C1261.64,-109.67 1241.08,-111.75 1221.95,-113.68"/>
+<polygon fill="#000000" stroke="#000000" points="1221.39,-110.22 1211.79,-114.71 1222.09,-117.19 1221.39,-110.22"/>
+</g>
+<!-- sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node18" class="node">
+<title>sourcefile~tem_subtree_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node18"><a xlink:href="../sourcefile/tem_subtree_module.f90.html" xlink:title="tem_subTree_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1221,-213 1076,-213 1076,-189 1221,-189 1221,-213"/>
+<text text-anchor="middle" x="1148.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge51" class="edge">
+<title>sourcefile~hvs_output_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1323.62,-113.06C1288.38,-130.86 1222.36,-164.2 1182.52,-184.32"/>
+<polygon fill="#000000" stroke="#000000" points="1180.82,-181.26 1173.47,-188.89 1183.97,-187.51 1180.82,-181.26"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node15" class="node">
+<title>sourcefile~tem_convergence_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node15"><a xlink:href="../sourcefile/tem_convergence_module.f90.html" xlink:title="tem_convergence_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1436,-255 1261,-255 1261,-231 1436,-231 1436,-255"/>
+<text text-anchor="middle" x="1348.5" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1260.53,-246.53C1225.88,-246.9 1185.71,-246.04 1149.5,-242"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge52" class="edge">
+<title>sourcefile~tem_convergence_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1290.76,-230.96C1267.46,-226.02 1240.31,-220.26 1216.08,-215.12"/>
+<polygon fill="#000000" stroke="#000000" points="1216.76,-211.69 1206.25,-213.04 1215.3,-218.54 1216.76,-211.69"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node16" class="node">
+<title>sourcefile~tem_spacetime_fun_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node16"><a xlink:href="../sourcefile/tem_spacetime_fun_module.f90.html" xlink:title="tem_spacetime_fun_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1440,-213 1257,-213 1257,-189 1440,-189 1440,-213"/>
+<text text-anchor="middle" x="1348.5" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_fun_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1293.47,-213.05C1237.36,-225.43 1156.72,-242.8 1149.5,-242"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1147.5,-242C1096.53,-236.32 1040.93,-214.7 1006.39,-199.28"/>
+<polygon fill="#000000" stroke="#000000" points="1007.78,-196.07 997.22,-195.11 1004.88,-202.44 1007.78,-196.07"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node17" class="node">
+<title>sourcefile~tem_spatial_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node17"><a xlink:href="../sourcefile/tem_spatial_module.f90.html" xlink:title="tem_spatial_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1218.5,-295 1078.5,-295 1078.5,-271 1218.5,-271 1218.5,-295"/>
+<text text-anchor="middle" x="1148.5" y="-280.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge49" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1277.91,-213.13C1270.65,-215.57 1263.54,-218.49 1257,-222 1237.61,-232.4 1239.66,-244.33 1221,-256 1214.28,-260.21 1206.8,-263.92 1199.28,-267.14"/>
+<polygon fill="#000000" stroke="#000000" points="1197.76,-263.98 1189.79,-270.96 1200.37,-270.47 1197.76,-263.98"/>
+</g>
+<!-- sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge53" class="edge">
+<title>sourcefile~tem_spacetime_fun_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1256.9,-201C1248.36,-201 1239.73,-201 1231.28,-201"/>
+<polygon fill="#000000" stroke="#000000" points="1231.07,-197.5 1221.07,-201 1231.07,-204.5 1231.07,-197.5"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_canonical_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1078.47,-283C1021.12,-283 939.17,-283 877.18,-283"/>
+<polygon fill="#000000" stroke="#000000" points="877.02,-279.5 867.02,-283 877.02,-286.5 877.02,-279.5"/>
+</g>
+<!-- sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_spatial_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1110.34,-271C1099.05,-266.82 1086.78,-261.72 1076,-256 1046.43,-240.31 1015.42,-217.47 995.15,-201.52"/>
+<polygon fill="#000000" stroke="#000000" points="997.15,-198.65 987.15,-195.15 992.79,-204.12 997.15,-198.65"/>
+</g>
+<!-- sourcefile~tem_subtree_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_subtree_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1075.82,-193.63C1067.34,-192.75 1058.65,-191.86 1050.09,-190.98"/>
+<polygon fill="#000000" stroke="#000000" points="1050.43,-187.5 1040.13,-189.96 1049.71,-194.46 1050.43,-187.5"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node19" class="node">
+<title>sourcefile~tem_tracking_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node19"><a xlink:href="../sourcefile/tem_tracking_module.f90.html" xlink:title="tem_tracking_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1641.5,-24 1493.5,-24 1493.5,0 1641.5,0 1641.5,-24"/>
+<text text-anchor="middle" x="1567.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_shape_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_shape_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1493.3,-22.26C1487.05,-25.08 1481.15,-28.6 1476,-33 1443.56,-60.72 1469.83,-91.49 1440,-122 1409.38,-153.32 1390.66,-146.04 1349.5,-161"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1347.5,-161C1320.43,-170.84 1152.1,-177.58 1050.39,-180.81"/>
+<polygon fill="#000000" stroke="#000000" points="1050.04,-177.32 1040.16,-181.13 1050.26,-184.31 1050.04,-177.32"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~hvs_output_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1504.51,-24.07C1494.84,-26.62 1485.06,-29.59 1476,-33 1440.05,-46.56 1401.55,-68.43 1376.59,-83.69"/>
+<polygon fill="#000000" stroke="#000000" points="1374.7,-80.75 1368.04,-88.99 1378.39,-86.7 1374.7,-80.75"/>
+</g>
+<!-- sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge54" class="edge">
+<title>sourcefile~tem_tracking_module.f90&#45;&gt;sourcefile~tem_subtree_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1347.5,-161C1341.36,-163.23 1275.31,-176.41 1221.16,-187.04"/>
+<polygon fill="#000000" stroke="#000000" points="1220.35,-183.64 1211.21,-188.99 1221.69,-190.5 1220.35,-183.64"/>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node20" class="node">
+<title>sourcefile~tem_abortcriteria_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node20"><a xlink:href="../sourcefile/tem_abortcriteria_module.f90.html" xlink:title="tem_abortCriteria_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1654,-318 1481,-318 1481,-294 1654,-294 1654,-318"/>
+<text text-anchor="middle" x="1567.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1503.43,-293.94C1494.09,-291.42 1484.69,-288.45 1476,-285 1458.78,-278.16 1457.22,-270.84 1440,-264 1434.29,-261.73 1428.28,-259.68 1422.19,-257.82"/>
+<polygon fill="#000000" stroke="#000000" points="1423.14,-254.45 1412.57,-255.06 1421.21,-261.18 1423.14,-254.45"/>
+</g>
+<!-- sourcefile~tem_bc_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node21" class="node">
+<title>sourcefile~tem_bc_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node21"><a xlink:href="../sourcefile/tem_bc_module.f90.html" xlink:title="tem_bc_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1626.5,-276 1508.5,-276 1508.5,-252 1626.5,-252 1626.5,-276"/>
+<text text-anchor="middle" x="1567.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_bc_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_bc_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1508.26,-253.21C1497.36,-250.43 1486.19,-247.05 1476,-243 1458.78,-236.16 1457.22,-228.84 1440,-222 1434.29,-219.73 1428.28,-217.68 1422.19,-215.82"/>
+<polygon fill="#000000" stroke="#000000" points="1423.14,-212.45 1412.57,-213.06 1421.21,-219.18 1423.14,-212.45"/>
+</g>
+<!-- sourcefile~tem_derived_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node22" class="node">
+<title>sourcefile~tem_derived_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node22"><a xlink:href="../sourcefile/tem_derived_module.f90.html" xlink:title="tem_derived_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1640,-234 1495,-234 1495,-210 1640,-210 1640,-234"/>
+<text text-anchor="middle" x="1567.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_derived_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge42" class="edge">
+<title>sourcefile~tem_derived_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1494.84,-215.07C1480.6,-213.69 1465.4,-212.22 1450.39,-210.76"/>
+<polygon fill="#000000" stroke="#000000" points="1450.33,-207.24 1440.04,-209.76 1449.66,-214.21 1450.33,-207.24"/>
+</g>
+<!-- sourcefile~tem_face_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node23" class="node">
+<title>sourcefile~tem_face_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node23"><a xlink:href="../sourcefile/tem_face_module.f90.html" xlink:title="tem_face_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1631.5,-192 1503.5,-192 1503.5,-168 1631.5,-168 1631.5,-192"/>
+<text text-anchor="middle" x="1567.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_face_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_face_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1503.44,-186.1C1486.76,-187.72 1468.33,-189.5 1450.19,-191.26"/>
+<polygon fill="#000000" stroke="#000000" points="1449.77,-187.78 1440.16,-192.23 1450.45,-194.75 1449.77,-187.78"/>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node24" class="node">
+<title>sourcefile~tem_ini_condition_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node24"><a xlink:href="../sourcefile/tem_ini_condition_module.f90.html" xlink:title="tem_ini_condition_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1434.5,-297 1262.5,-297 1262.5,-273 1434.5,-273 1434.5,-297"/>
+<text text-anchor="middle" x="1348.5" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ini_condition_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge48" class="edge">
+<title>sourcefile~tem_ini_condition_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1262.38,-284.14C1251.23,-284.03 1239.83,-283.91 1228.78,-283.8"/>
+<polygon fill="#000000" stroke="#000000" points="1228.78,-280.3 1218.74,-283.7 1228.71,-287.3 1228.78,-280.3"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node25" class="node">
+<title>sourcefile~tem_simcontrol_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node25"><a xlink:href="../sourcefile/tem_simcontrol_module.f90.html" xlink:title="tem_simControl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1648.5,-402 1486.5,-402 1486.5,-378 1648.5,-378 1648.5,-402"/>
+<text text-anchor="middle" x="1567.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1488.69,-377.85C1484.12,-375.38 1479.83,-372.46 1476,-369 1439.38,-335.95 1476.62,-297.05 1440,-264 1438.68,-262.81 1437.31,-261.69 1435.89,-260.62"/>
+<polygon fill="#000000" stroke="#000000" points="1437.63,-257.57 1427.31,-255.15 1433.87,-263.48 1437.63,-257.57"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node26" class="node">
+<title>sourcefile~tem_spacetime_var_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node26"><a xlink:href="../sourcefile/tem_spacetime_var_module.f90.html" xlink:title="tem_spacetime_var_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1659,-360 1476,-360 1476,-336 1659,-336 1659,-360"/>
+<text text-anchor="middle" x="1567.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_var_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1488.69,-335.85C1484.12,-333.38 1479.83,-330.46 1476,-327 1439.38,-293.95 1476.62,-255.05 1440,-222 1438.68,-220.81 1437.31,-219.69 1435.89,-218.62"/>
+<polygon fill="#000000" stroke="#000000" points="1437.63,-215.57 1427.31,-213.15 1433.87,-221.48 1437.63,-215.57"/>
+</g>
+<!-- sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge50" class="edge">
+<title>sourcefile~tem_spacetime_var_module.f90&#45;&gt;sourcefile~tem_spatial_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1475.82,-337.53C1413.98,-329.95 1330.32,-318.8 1257,-306 1242.34,-303.44 1226.63,-300.3 1211.87,-297.18"/>
+<polygon fill="#000000" stroke="#000000" points="1212.35,-293.7 1201.83,-295.03 1210.88,-300.55 1212.35,-293.7"/>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node27" class="node">
+<title>sourcefile~tem_surfacedata_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node27"><a xlink:href="../sourcefile/tem_surfacedata_module.f90.html" xlink:title="tem_surfaceData_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1652.5,-150 1482.5,-150 1482.5,-126 1652.5,-126 1652.5,-150"/>
+<text text-anchor="middle" x="1567.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_surfaceData_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_surfacedata_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1507.14,-150.07C1496.67,-152.68 1485.94,-155.67 1476,-159 1459.4,-164.56 1456.45,-169.01 1440,-175 1429.07,-178.98 1417.22,-182.75 1405.81,-186.13"/>
+<polygon fill="#000000" stroke="#000000" points="1404.57,-182.85 1395.94,-188.99 1406.51,-189.57 1404.57,-182.85"/>
+</g>
+<!-- sourcefile~tem_variable_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node28" class="node">
+<title>sourcefile~tem_variable_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node28"><a xlink:href="../sourcefile/tem_variable_module.f90.html" xlink:title="tem_variable_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1641.5,-108 1493.5,-108 1493.5,-84 1641.5,-84 1641.5,-108"/>
+<text text-anchor="middle" x="1567.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_variable_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge46" class="edge">
+<title>sourcefile~tem_variable_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1493.14,-107.6C1487.06,-110.15 1481.24,-113.24 1476,-117 1451.34,-134.67 1464.2,-156.7 1440,-175 1434.95,-178.82 1429.36,-182.08 1423.51,-184.86"/>
+<polygon fill="#000000" stroke="#000000" points="1421.96,-181.71 1414.13,-188.84 1424.7,-188.15 1421.96,-181.71"/>
+</g>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_node29" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<g id="a_sourcefile~~tem_cube_module.f90~~AfferentGraph_node29"><a xlink:href="../sourcefile/tem_varmap_module.f90.html" xlink:title="tem_varMap_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="1640,-66 1495,-66 1495,-42 1640,-42 1640,-66"/>
+<text text-anchor="middle" x="1567.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varMap_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90 -->
+<g id="sourcefile~~tem_cube_module.f90~~AfferentGraph_edge47" class="edge">
+<title>sourcefile~tem_varmap_module.f90&#45;&gt;sourcefile~tem_spacetime_fun_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1494.91,-63.26C1488.02,-66.24 1481.55,-70.07 1476,-75 1440.69,-106.38 1474.48,-142.72 1440,-175 1436.22,-178.54 1431.99,-181.6 1427.47,-184.25"/>
+<polygon fill="#000000" stroke="#000000" points="1425.8,-181.18 1418.49,-188.85 1428.99,-187.41 1425.8,-181.18"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_cube_modulef90AfferentGraph = svgPanZoom('#sourcefiletem_cube_modulef90AfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#AfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="AfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2019 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2019-2020 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">!</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">!</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">!</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">!</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! ******************************************************************************</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">!&gt; summary: This module contains cube definitions and routine to load</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">!! cube table from config file</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">! ******************************************************************************</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="k">module </span><span class="n">tem_cube_module</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">          </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span><span class="p">,</span><span class="w"> </span><span class="n">long_k</span><span class="p">,</span><span class="w"> </span><span class="n">labelLen</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logunit</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_geometry_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_originOfId</span><span class="p">,</span><span class="w"> </span><span class="n">tem_endOfId</span><span class="p">,</span><span class="w"> </span><span class="n">tem_ElemSize</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="w">  </span><span class="k">use </span><span class="n">treelmesh_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">treelmesh_type</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_State</span><span class="p">,</span><span class="w"> </span><span class="n">aot_get_val</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">aoterr_Fatal</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">aoterr_WrongType</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a><span class="w">  </span><span class="k">use </span><span class="n">aot_table_module</span><span class="p">,</span><span class="w">   </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">aot_table_open</span><span class="p">,</span><span class="w"> </span><span class="n">aot_table_close</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                           </span><span class="n">aot_table_length</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="k">  private</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_cube_type</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_load_cube</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_convertTreeIDtoCube</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">  </span><span class="c">!&gt; An auxilary data type to describe a cube.</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">  </span><span class="c">!! Here: The origin is the corner from which on the cube is spanned</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">  </span><span class="c">!! with the given length in each direction.</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">  </span><span class="k">type </span><span class="n">tem_cube_type</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">origin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c">!&lt; origin of the cube</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">center</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c">!&lt; center of the cube</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">extent</span><span class="w"> </span><span class="c">!&lt; length of the cube</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">halfwidth</span><span class="w"> </span><span class="c">!&lt; half length of the cube</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">endPnt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="c">!&lt; End point of the cube</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">  </span><span class="k">end type </span><span class="n">tem_cube_type</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="k">contains</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a>
+<a id="ln-63" name="ln-63" href="#ln-63"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-64" name="ln-64" href="#ln-64"></a><span class="w">  </span><span class="c">!&gt; This routine loads the boundCube table from config file</span>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_cube</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">)</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_cube_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="c">!&lt; seeder cube type</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="c">!&lt; lua state</span>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="w">    </span><span class="c">!&gt; open cube table by given key</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="w">    </span><span class="c">!&gt; open cube table by position</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pos</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">    </span><span class="c">!&gt; if cube is to be load from pos, parent handle is required</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="c">!&lt; cube handle</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">vError</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">errFatal</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">deflen</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="n">errFatal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aoterr_fatal</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a>
+<a id="ln-83" name="ln-83" href="#ln-83"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="n">deflen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0_rk</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">key</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a><span class="w">      </span><span class="c">! open cube table from given key</span>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">=</span><span class="nb">trim</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thandle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="k">        write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error: cube definition not found with key:&#39;</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a><span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="k">    else if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">pos</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a><span class="w">      </span><span class="c">! else open cube from given table pos</span>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">      </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">)</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">thandle</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="k">        write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">          </span><span class="p">&amp;</span><span class="w">  </span><span class="s1">&#39;FATAL Error: cube definition not found with pos:&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a><span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="k">    else</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="k">      write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;ERROR: Neither key nor pos is provided to load &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="s1">&#39; cube table&#39;</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a>
+<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="k">    call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="o">=</span><span class="n">me</span><span class="p">%</span><span class="n">origin</span><span class="p">,</span><span class="w"> </span><span class="n">ErrCode</span><span class="o">=</span><span class="n">vError</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;origin&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0_rk</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">vError</span><span class="p">,</span><span class="w"> </span><span class="n">errFatal</span><span class="p">)))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="k">      write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error occured, while retrieving cube origin.&#39;</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="k">    call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">              </span><span class="n">val</span><span class="o">=</span><span class="n">me</span><span class="p">%</span><span class="n">extent</span><span class="p">,</span><span class="w"> </span><span class="n">ErrCode</span><span class="o">=</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">              </span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;length&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">pos</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">default</span><span class="o">=</span><span class="n">deflen</span><span class="p">)</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_Fatal</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="k">      write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error occured, while retrieving cube length:&#39;</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">))</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable not existent!&#39;</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_WrongType</span><span class="p">))</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">  </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable has wrong type!&#39;</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_NonExistent</span><span class="p">))</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a><span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Variable length not set in configuration, &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                     </span><span class="o">//</span><span class="s1">&#39;using default value!&#39;</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="k">    </span><span class="n">me</span><span class="p">%</span><span class="n">halfwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5_rk</span><span class="o">*</span><span class="n">me</span><span class="p">%</span><span class="n">extent</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">origin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">halfwidth</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Cube origin: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">origin</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39; Cube length: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">extent</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">    </span><span class="k">call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">)</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_load_cube</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="w">  </span><span class="c">! ****************************************************************************</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">  </span><span class="c">! ************************************************************************** !</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a><span class="w">  </span><span class="c">!&gt; This routine converts treeID in given tree to cube</span>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_convertTreeIDtoCube</span><span class="p">(</span><span class="n">cube</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">treeID</span><span class="p">)</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a><span class="w">    </span><span class="c">!&gt; mesh information</span>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="w">    </span><span class="c">!&gt; input Element ID</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a><span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">TreeID</span>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_cube_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">cube</span><span class="w"> </span><span class="c">!&lt; cube type</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="w">    </span><span class="c">! --------------------------------------------------------------------------!</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">    </span><span class="n">cube</span><span class="p">%</span><span class="n">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_originOfId</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">treeID</span><span class="p">)</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">    </span><span class="n">cube</span><span class="p">%</span><span class="n">endPnt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_endOfId</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">treeID</span><span class="p">)</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="w">    </span><span class="n">cube</span><span class="p">%</span><span class="n">extent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_ElemSize</span><span class="p">(</span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">treeID</span><span class="p">)</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">    </span><span class="n">cube</span><span class="p">%</span><span class="n">halfwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5_rk</span><span class="o">*</span><span class="n">cube</span><span class="p">%</span><span class="n">extent</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a><span class="w">    </span><span class="n">cube</span><span class="p">%</span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cube</span><span class="p">%</span><span class="n">origin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cube</span><span class="p">%</span><span class="n">halfwidth</span>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_convertTreeIDtoCube</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="w">  </span><span class="c">! ************************************************************************** !</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a>
+<a id="ln-160" name="ln-160" href="#ln-160"></a><span class="k">end module </span><span class="n">tem_cube_module</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

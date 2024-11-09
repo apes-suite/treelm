@@ -1,0 +1,1382 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>identify_stencilNeigh &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>identify_stencilNeigh
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">29 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_construction_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_construction_module.f90.html'>tem_construction_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_construction_module.html'>tem_construction_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">identify_stencilNeigh</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/identify_stencilneigh.html#src">identify_stencilNeigh</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public recursive subroutine identify_stencilNeigh(iElem, iLevel, iStencil, tree, pathFirst, pathLast, levelDesc, proc, stencil, nesting)  
+</h2>
+    
+
+    <p>Invoke the identify_elements for each neighbor of the stencil
+and store the positions of the encountered elements</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ielem~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iElem</strong></td>
+            <td>
+                <p>element position in levelDesc to identify</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ilevel~6"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iLevel</strong></td>
+            <td>
+                <p>element level</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-istencil~3"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iStencil</strong></td>
+            <td>
+                <p>stencil within the element to act on</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~15"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>tree information</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pathfirst~5"></span>
+              type(<a href='../type/tem_path_type.html'>tem_path_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pathFirst</strong>(:)</td>
+            <td>
+                <p>first treeID path in every process</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pathlast~5"></span>
+              type(<a href='../type/tem_path_type.html'>tem_path_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pathLast</strong>(:)</td>
+            <td>
+                <p>last treeID path in every process</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-leveldesc~9"></span>
+              type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>levelDesc</strong>(tree%global%minLevel:)</td>
+            <td>
+                <p>the level descriptor to be filled</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-proc~8"></span>
+              type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>proc</strong></td>
+            <td>
+                <p>process</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencil~7"></span>
+              type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencil</strong></td>
+            <td>
+                <p>current stencil definition</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nesting~2"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nesting</strong></td>
+            <td>
+                <p>nesting level</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~identify_stencilneigh~~CallsGraph Pages: 1 -->
+<svg id="procidentify_stencilneighCallsGraph" width="641pt" height="321pt"
+ viewBox="0.00 0.00 641.00 321.24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~identify_stencilneigh~~CallsGraph" class="graph" transform="scale(0.5 0.5) rotate(0) translate(4 643)">
+<title>proc~~identify_stencilneigh~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-643 1287,-643 1287,4 -4,4"/>
+<!-- proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node1" class="node">
+<title>proc~identify_stencilneigh</title>
+<polygon fill="none" stroke="black" points="123,-351 0,-351 0,-327 123,-327 123,-351"/>
+<text text-anchor="middle" x="61.5" y="-336.6" font-family="Helvetica,sans-Serif" font-size="10.50">identify_stencilNeigh</text>
+</g>
+<!-- proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node2" class="node">
+<title>proc~identify_elements</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node2"><a xlink:href="../proc/identify_elements.html" xlink:title="identify_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="266,-351 159,-351 159,-327 266,-327 266,-351"/>
+<text text-anchor="middle" x="212.5" y="-336.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_stencilneigh&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge1" class="edge">
+<title>proc~identify_stencilneigh&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M123.1,-332.36C131.47,-332.23 140.07,-332.22 148.48,-332.32"/>
+<polygon fill="#000000" stroke="#000000" points="148.54,-335.82 158.6,-332.51 148.67,-328.82 148.54,-335.82"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge6" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M158.6,-345.49C150.34,-345.69 141.69,-345.78 133.12,-345.74"/>
+<polygon fill="#000000" stroke="#000000" points="133.14,-342.24 123.1,-345.64 133.07,-349.24 133.14,-342.24"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge5" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M187.7,-351.01C179.04,-359.97 187.3,-369 212.5,-369 227.85,-369 236.92,-365.65 239.7,-361"/>
+<polygon fill="#000000" stroke="#000000" points="243.04,-359.92 237.3,-351.01 236.24,-361.55 243.04,-359.92"/>
+</g>
+<!-- interface~append~26 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node3" class="node">
+<title>interface~append~26</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node3"><a xlink:href="../interface/append~26.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="794,-513 740,-513 740,-489 794,-489 794,-513"/>
+<text text-anchor="middle" x="767" y="-498.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;interface~append~26 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge2" class="edge">
+<title>proc~identify_elements&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M263.53,-351.1C276.08,-354.07 289.52,-357.2 302,-360 321.95,-364.47 644.54,-425.38 662,-436 683.59,-449.13 677.04,-465.89 698,-480 707.58,-486.44 719.22,-490.98 730.14,-494.14"/>
+<polygon fill="#000000" stroke="#000000" points="729.33,-497.55 739.89,-496.68 731.09,-490.78 729.33,-497.55"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node4" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node4"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="603,-469 549,-469 549,-445 603,-445 603,-469"/>
+<text text-anchor="middle" x="576" y="-454.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;interface~init~14 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge3" class="edge">
+<title>proc~identify_elements&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M220.97,-351.19C234.34,-371.76 264.48,-412.88 302,-431 379.77,-468.56 484.41,-465.94 538.78,-461.23"/>
+<polygon fill="#000000" stroke="#000000" points="539.34,-464.69 548.96,-460.27 538.68,-457.72 539.34,-464.69"/>
+</g>
+<!-- proc~create_allparentneighbors -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node5" class="node">
+<title>proc~create_allparentneighbors</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node5"><a xlink:href="../proc/create_allparentneighbors.html" xlink:title="create_allParentNeighbors">
+<polygon fill="#d9534f" stroke="#d9534f" points="454,-507 302,-507 302,-483 454,-483 454,-507"/>
+<text text-anchor="middle" x="378" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">create_allParentNeighbors</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~create_allparentneighbors -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge4" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~create_allparentneighbors</title>
+<path fill="none" stroke="#000000" d="M223.43,-351.12C241.81,-378.91 281.19,-444.07 302,-460 313.89,-469.1 329.19,-475.16 342.87,-479.81"/>
+<polygon fill="#000000" stroke="#000000" points="341.88,-483.17 352.47,-482.96 344.07,-476.52 341.88,-483.17"/>
+</g>
+<!-- proc~single_process_element -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node6" class="node">
+<title>proc~single_process_element</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node6"><a xlink:href="../proc/single_process_element.html" xlink:title="single_process_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="447.5,-351 308.5,-351 308.5,-327 447.5,-327 447.5,-351"/>
+<text text-anchor="middle" x="378" y="-336.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">single_process_element</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~single_process_element -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge7" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~single_process_element</title>
+<path fill="none" stroke="#000000" d="M266.13,-339C276.32,-339 287.2,-339 298.02,-339"/>
+<polygon fill="#000000" stroke="#000000" points="298.34,-342.5 308.34,-339 298.34,-335.5 298.34,-342.5"/>
+</g>
+<!-- proc~tem_directchildren -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node7" class="node">
+<title>proc~tem_directchildren</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node7"><a xlink:href="../proc/tem_directchildren.html" xlink:title="tem_directChildren">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="434.5,-182 321.5,-182 321.5,-158 434.5,-158 434.5,-182"/>
+<text text-anchor="middle" x="378" y="-167.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_directChildren</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_directchildren -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge8" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_directchildren</title>
+<path fill="none" stroke="#000000" d="M217.81,-326.7C228.04,-299.25 256.42,-232.5 302,-196 306.62,-192.3 311.79,-189.11 317.21,-186.37"/>
+<polygon fill="#000000" stroke="#000000" points="318.85,-189.47 326.51,-182.15 315.96,-183.1 318.85,-189.47"/>
+</g>
+<!-- proc~tem_find_depproc -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node8" class="node">
+<title>proc~tem_find_depproc</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node8"><a xlink:href="../proc/tem_find_depproc.html" xlink:title="tem_find_depProc">
+<polygon fill="#d9534f" stroke="#d9534f" points="431.5,-44 324.5,-44 324.5,-20 431.5,-20 431.5,-44"/>
+<text text-anchor="middle" x="378" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_depProc</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_find_depproc -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge9" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_find_depproc</title>
+<path fill="none" stroke="#000000" d="M213.65,-326.96C214.84,-284.16 224.65,-137.59 302,-58 305.9,-53.99 310.45,-50.59 315.35,-47.72"/>
+<polygon fill="#000000" stroke="#000000" points="317.14,-50.74 324.48,-43.09 313.97,-44.49 317.14,-50.74"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node9" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node9"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1283,-204 1204,-204 1204,-180 1283,-180 1283,-204"/>
+<text text-anchor="middle" x="1243.5" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge10" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M213.6,-326.93C214.67,-286.08 224.2,-152.28 302,-93 398.79,-19.25 453.31,-72 575,-72 575,-72 575,-72 945,-72 1045,-72 1080.55,-53.48 1168,-102 1196.76,-117.96 1218.98,-149.81 1231.4,-171.02"/>
+<polygon fill="#000000" stroke="#000000" points="1228.46,-172.92 1236.41,-179.92 1234.56,-169.49 1228.46,-172.92"/>
+</g>
+<!-- proc~tem_pathof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node10" class="node">
+<title>proc~tem_pathof</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node10"><a xlink:href="../proc/tem_pathof.html" xlink:title="tem_PathOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="804,-143 730,-143 730,-119 804,-119 804,-143"/>
+<text text-anchor="middle" x="767" y="-128.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PathOf</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_pathof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge11" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M214.88,-326.9C219.58,-292.06 238.37,-191.31 302,-149 432.08,-62.5 631.1,-96.64 720.15,-118.34"/>
+<polygon fill="#000000" stroke="#000000" points="719.4,-121.76 729.95,-120.79 721.09,-114.97 719.4,-121.76"/>
+</g>
+<!-- proc~tem_tidinfo -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node11" class="node">
+<title>proc~tem_tidinfo</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node11"><a xlink:href="../proc/tem_tidinfo.html" xlink:title="tem_tIDinfo">
+<polygon fill="#d9534f" stroke="#d9534f" points="804,-185 730,-185 730,-161 804,-161 804,-185"/>
+<text text-anchor="middle" x="767" y="-170.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tIDinfo</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~tem_tidinfo -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge12" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~tem_tidinfo</title>
+<path fill="none" stroke="#000000" d="M235.32,-326.88C281.06,-302.03 390.97,-245.18 490,-216 568.66,-192.82 663.83,-181.5 719.38,-176.49"/>
+<polygon fill="#000000" stroke="#000000" points="719.95,-179.95 729.61,-175.6 719.34,-172.98 719.95,-179.95"/>
+</g>
+<!-- proc~append_ga_dynlong -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node13" class="node">
+<title>proc~append_ga_dynlong</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node13"><a xlink:href="../proc/append_ga_dynlong.html" xlink:title="append_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="1004,-523 884,-523 884,-499 1004,-499 1004,-523"/>
+<text text-anchor="middle" x="944" y="-508.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge13" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M794.2,-502.5C815.26,-503.7 845.84,-505.45 873.81,-507.05"/>
+<polygon fill="#000000" stroke="#000000" points="873.79,-510.55 883.97,-507.63 874.19,-503.56 873.79,-510.55"/>
+</g>
+<!-- proc~append_ga_dynlong_vec -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node14" class="node">
+<title>proc~append_ga_dynlong_vec</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node14"><a xlink:href="../proc/append_ga_dynlong_vec.html" xlink:title="append_ga_dynlong_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="1016,-481 872,-481 872,-457 1016,-457 1016,-481"/>
+<text text-anchor="middle" x="944" y="-466.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong_vec</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong_vec -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge14" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M794.2,-496.21C813.65,-492.65 841.21,-487.61 867.34,-482.84"/>
+<polygon fill="#000000" stroke="#000000" points="868.06,-486.26 877.26,-481.02 866.8,-479.38 868.06,-486.26"/>
+</g>
+<!-- proc~init_ga2d_real -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node16" class="node">
+<title>proc~init_ga2d_real</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node16"><a xlink:href="../proc/init_ga2d_real.html" xlink:title="init_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="810.5,-555 723.5,-555 723.5,-531 810.5,-531 810.5,-555"/>
+<text text-anchor="middle" x="767" y="-540.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~init~14&#45;&gt;proc~init_ga2d_real -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge15" class="edge">
+<title>interface~init~14&#45;&gt;proc~init_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M596.54,-469.03C620,-483.1 660.82,-506.45 698,-522 703.06,-524.12 708.41,-526.13 713.79,-528.01"/>
+<polygon fill="#000000" stroke="#000000" points="712.88,-531.4 723.47,-531.25 715.1,-524.76 712.88,-531.4"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge19" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M349.43,-482.86C335.2,-476.5 317.59,-468.5 302,-461 227.02,-424.93 140.29,-379.92 94.56,-355.92"/>
+<polygon fill="#000000" stroke="#000000" points="95.93,-352.68 85.45,-351.13 92.67,-358.88 95.93,-352.68"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge18" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M309.24,-482.94C306.72,-481.4 304.3,-479.76 302,-478 280.9,-461.84 240.7,-395.07 222.66,-360.06"/>
+<polygon fill="#000000" stroke="#000000" points="225.79,-358.48 218.2,-351.09 219.52,-361.6 225.79,-358.48"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;interface~append~26 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge16" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M454.08,-496.16C536.98,-497.45 667.02,-499.47 729.75,-500.44"/>
+<polygon fill="#000000" stroke="#000000" points="729.89,-503.94 739.94,-500.6 730,-496.94 729.89,-503.94"/>
+</g>
+<!-- interface~tem_parentof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node12" class="node">
+<title>interface~tem_parentof</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node12"><a xlink:href="../interface/tem_parentof.html" xlink:title="tem_ParentOf">
+<polygon fill="#a7506f" stroke="#a7506f" points="618.5,-597 533.5,-597 533.5,-573 618.5,-573 618.5,-597"/>
+<text text-anchor="middle" x="576" y="-582.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ParentOf</text>
+</a>
+</g>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;interface~tem_parentof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge17" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;interface~tem_parentof</title>
+<path fill="none" stroke="#000000" d="M405.43,-507.14C440.02,-523.02 500.74,-550.9 539.36,-568.63"/>
+<polygon fill="#000000" stroke="#000000" points="538.12,-571.92 548.67,-572.91 541.05,-565.56 538.12,-571.92"/>
+</g>
+<!-- proc~single_process_element&#45;&gt;interface~append~26 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge20" class="edge">
+<title>proc~single_process_element&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M438.36,-351.04C518.73,-367.54 653.23,-395.94 662,-403 691.42,-426.69 669.51,-455.19 698,-480 706.92,-487.77 718.67,-492.66 729.89,-495.74"/>
+<polygon fill="#000000" stroke="#000000" points="729.42,-499.23 739.95,-498.1 731.01,-492.41 729.42,-499.23"/>
+</g>
+<!-- proc~single_process_element&#45;&gt;interface~init~14 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge21" class="edge">
+<title>proc~single_process_element&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M399.24,-351.18C434.17,-372.22 505.9,-415.4 546.09,-439.59"/>
+<polygon fill="#000000" stroke="#000000" points="544.5,-442.72 554.87,-444.88 548.11,-436.73 544.5,-442.72"/>
+</g>
+<!-- proc~single_process_element&#45;&gt;proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge24" class="edge">
+<title>proc~single_process_element&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M396.24,-326.97C417.39,-312.75 454.78,-289.35 490,-276 772.98,-168.73 869.12,-260.49 1168,-213 1177.26,-211.53 1187,-209.3 1196.28,-206.84"/>
+<polygon fill="#000000" stroke="#000000" points="1197.43,-210.15 1206.12,-204.09 1195.55,-203.41 1197.43,-210.15"/>
+</g>
+<!-- proc~identify_local_element -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node15" class="node">
+<title>proc~identify_local_element</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node15"><a xlink:href="../proc/identify_local_element.html" xlink:title="identify_local_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="642.5,-309 509.5,-309 509.5,-285 642.5,-285 642.5,-309"/>
+<text text-anchor="middle" x="576" y="-294.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_local_element</text>
+</a>
+</g>
+</g>
+<!-- proc~single_process_element&#45;&gt;proc~identify_local_element -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge22" class="edge">
+<title>proc~single_process_element&#45;&gt;proc~identify_local_element</title>
+<path fill="none" stroke="#000000" d="M435.17,-326.96C458.13,-322.04 484.87,-316.31 508.77,-311.19"/>
+<polygon fill="#000000" stroke="#000000" points="509.78,-314.55 518.83,-309.04 508.31,-307.71 509.78,-314.55"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node17" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node17"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="609.5,-351 542.5,-351 542.5,-327 609.5,-327 609.5,-351"/>
+<text text-anchor="middle" x="576" y="-336.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~single_process_element&#45;&gt;proc~tem_abort -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge23" class="edge">
+<title>proc~single_process_element&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M447.55,-339C475.76,-339 507.55,-339 532.33,-339"/>
+<polygon fill="#000000" stroke="#000000" points="532.48,-342.5 542.48,-339 532.48,-335.5 532.48,-342.5"/>
+</g>
+<!-- proc~tem_find_depproc_globsearch -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node21" class="node">
+<title>proc~tem_find_depproc_globsearch</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node21"><a xlink:href="../proc/tem_find_depproc_globsearch.html" xlink:title="tem_find_depProc_globSearch">
+<polygon fill="#d9534f" stroke="#d9534f" points="662,-44 490,-44 490,-20 662,-20 662,-44"/>
+<text text-anchor="middle" x="576" y="-29.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_depProc_globSearch</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_depproc&#45;&gt;proc~tem_find_depproc_globsearch -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge25" class="edge">
+<title>proc~tem_find_depproc&#45;&gt;proc~tem_find_depproc_globsearch</title>
+<path fill="none" stroke="#000000" d="M431.52,-32C446.36,-32 462.98,-32 479.51,-32"/>
+<polygon fill="#000000" stroke="#000000" points="479.78,-35.5 489.78,-32 479.78,-28.5 479.78,-35.5"/>
+</g>
+<!-- proc~tem_pathcomparison -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node22" class="node">
+<title>proc~tem_pathcomparison</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node22"><a xlink:href="../proc/tem_pathcomparison.html" xlink:title="tem_PathComparison">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="830.5,-24 703.5,-24 703.5,0 830.5,0 830.5,-24"/>
+<text text-anchor="middle" x="767" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PathComparison</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_depproc&#45;&gt;proc~tem_pathcomparison -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge26" class="edge">
+<title>proc~tem_find_depproc&#45;&gt;proc~tem_pathcomparison</title>
+<path fill="none" stroke="#000000" d="M431.51,-19.98C449.9,-16.33 470.77,-12.8 490,-11 558.72,-4.56 637.48,-5.68 693.23,-7.9"/>
+<polygon fill="#000000" stroke="#000000" points="693.23,-11.4 703.36,-8.32 693.52,-4.41 693.23,-11.4"/>
+</g>
+<!-- proc~tem_baryofid -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node18" class="node">
+<title>proc~tem_baryofid</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node18"><a xlink:href="../proc/tem_baryofid.html" xlink:title="tem_BaryOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="986.5,-166 901.5,-166 901.5,-142 986.5,-142 986.5,-166"/>
+<text text-anchor="middle" x="944" y="-151.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_BaryOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tidinfo&#45;&gt;proc~tem_baryofid -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge27" class="edge">
+<title>proc~tem_tidinfo&#45;&gt;proc~tem_baryofid</title>
+<path fill="none" stroke="#000000" d="M804.26,-169.06C829.4,-166.33 863.27,-162.66 891.24,-159.62"/>
+<polygon fill="#000000" stroke="#000000" points="891.69,-163.09 901.25,-158.53 890.93,-156.13 891.69,-163.09"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node19" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node19"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1156.5,-204 1063.5,-204 1063.5,-180 1156.5,-180 1156.5,-204"/>
+<text text-anchor="middle" x="1110" y="-189.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tidinfo&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge28" class="edge">
+<title>proc~tem_tidinfo&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M804.17,-175.02C863.72,-178.33 982.81,-184.97 1053.21,-188.89"/>
+<polygon fill="#000000" stroke="#000000" points="1053.06,-192.39 1063.24,-189.45 1053.45,-185.4 1053.06,-192.39"/>
+</g>
+<!-- proc~tem_elemsize -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node20" class="node">
+<title>proc~tem_elemsize</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node20"><a xlink:href="../proc/tem_elemsize.html" xlink:title="tem_ElemSize">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="988,-124 900,-124 900,-100 988,-100 988,-124"/>
+<text text-anchor="middle" x="944" y="-109.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSize</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_tidinfo&#45;&gt;proc~tem_elemsize -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge29" class="edge">
+<title>proc~tem_tidinfo&#45;&gt;proc~tem_elemsize</title>
+<path fill="none" stroke="#000000" d="M804.09,-163.22C814.53,-160.03 825.84,-156.21 836,-152 852.72,-145.08 855.24,-139.82 872,-133 877.78,-130.65 883.92,-128.43 890.08,-126.38"/>
+<polygon fill="#000000" stroke="#000000" points="891.26,-129.68 899.73,-123.31 889.14,-123.01 891.26,-129.68"/>
+</g>
+<!-- proc~tem_directparent -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node28" class="node">
+<title>proc~tem_directparent</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node28"><a xlink:href="../proc/tem_directparent.html" xlink:title="tem_directParent">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="818.5,-597 715.5,-597 715.5,-573 818.5,-573 818.5,-597"/>
+<text text-anchor="middle" x="767" y="-582.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_directParent</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_parentof&#45;&gt;proc~tem_directparent -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge30" class="edge">
+<title>interface~tem_parentof&#45;&gt;proc~tem_directparent</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M618.95,-585C644.32,-585 677.11,-585 705.29,-585"/>
+<polygon fill="#000000" stroke="#000000" points="705.44,-588.5 715.44,-585 705.44,-581.5 705.44,-588.5"/>
+</g>
+<!-- proc~tem_parentatlevel -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node30" class="node">
+<title>proc~tem_parentatlevel</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node30"><a xlink:href="../proc/tem_parentatlevel.html" xlink:title="tem_ParentAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="823,-639 711,-639 711,-615 823,-615 823,-639"/>
+<text text-anchor="middle" x="767" y="-624.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ParentAtLevel</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_parentof&#45;&gt;proc~tem_parentatlevel -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge31" class="edge">
+<title>interface~tem_parentof&#45;&gt;proc~tem_parentatlevel</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M618.95,-594.32C643.35,-599.75 674.62,-606.69 702.04,-612.79"/>
+<polygon fill="#000000" stroke="#000000" points="701.43,-616.24 711.95,-614.99 702.95,-609.4 701.43,-616.24"/>
+</g>
+<!-- interface~expand~25 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node23" class="node">
+<title>interface~expand~25</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node23"><a xlink:href="../interface/expand~25.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="1137,-492 1083,-492 1083,-468 1137,-468 1137,-492"/>
+<text text-anchor="middle" x="1110" y="-477.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_ga_dynlong&#45;&gt;interface~expand~25 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge32" class="edge">
+<title>proc~append_ga_dynlong&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M1004.21,-499.81C1027.18,-495.47 1052.74,-490.63 1072.87,-486.83"/>
+<polygon fill="#000000" stroke="#000000" points="1073.68,-490.24 1082.86,-484.94 1072.38,-483.36 1073.68,-490.24"/>
+</g>
+<!-- proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge33" class="edge">
+<title>proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M1016.46,-473.79C1035.86,-475.09 1056.06,-476.45 1072.62,-477.56"/>
+<polygon fill="#000000" stroke="#000000" points="1072.72,-481.07 1082.93,-478.25 1073.19,-474.09 1072.72,-481.07"/>
+</g>
+<!-- proc~identify_local_element&#45;&gt;interface~append~26 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge34" class="edge">
+<title>proc~identify_local_element&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M642.8,-305.16C649.95,-308.28 656.58,-312.45 662,-318 713.54,-370.76 648,-425.78 698,-480 706.23,-488.92 718.15,-494.09 729.73,-497.07"/>
+<polygon fill="#000000" stroke="#000000" points="729.2,-500.53 739.71,-499.16 730.64,-493.68 729.2,-500.53"/>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge38" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M642.67,-306.58C649.67,-309.47 656.3,-313.2 662,-318 692.45,-343.63 664.68,-378.24 698,-400 749.35,-433.54 776.11,-413.21 836,-400 994.84,-364.95 1027.72,-328.33 1168,-246 1186.03,-235.42 1205.09,-221.55 1219.42,-210.51"/>
+<polygon fill="#000000" stroke="#000000" points="1221.95,-212.98 1227.68,-204.06 1217.64,-207.46 1221.95,-212.98"/>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~tem_pathof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge39" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~tem_pathof</title>
+<path fill="none" stroke="#000000" d="M583.76,-284.86C599.84,-257.08 643.15,-188.53 698,-152 704.65,-147.57 712.29,-144.04 719.98,-141.23"/>
+<polygon fill="#000000" stroke="#000000" points="721.27,-144.49 729.68,-138.06 719.09,-137.84 721.27,-144.49"/>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~tem_tidinfo -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge41" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~tem_tidinfo</title>
+<path fill="none" stroke="#000000" d="M595.47,-284.88C628.92,-262.94 699.68,-216.51 738.72,-190.9"/>
+<polygon fill="#000000" stroke="#000000" points="741.02,-193.58 747.46,-185.16 737.18,-187.72 741.02,-193.58"/>
+</g>
+<!-- interface~positionofval~4 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node24" class="node">
+<title>interface~positionofval~4</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node24"><a xlink:href="../interface/positionofval~4.html" xlink:title="positionofval">
+<polygon fill="#a7506f" stroke="#a7506f" points="807.5,-265 726.5,-265 726.5,-241 807.5,-241 807.5,-265"/>
+<text text-anchor="middle" x="767" y="-250.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">positionofval</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_local_element&#45;&gt;interface~positionofval~4 -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge35" class="edge">
+<title>proc~identify_local_element&#45;&gt;interface~positionofval~4</title>
+<path fill="none" stroke="#000000" d="M628.65,-284.98C655.97,-278.61 689.37,-270.84 716.39,-264.55"/>
+<polygon fill="#000000" stroke="#000000" points="717.46,-267.89 726.41,-262.22 715.88,-261.08 717.46,-267.89"/>
+</g>
+<!-- proc~add_all_virtual_children -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node26" class="node">
+<title>proc~add_all_virtual_children</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node26"><a xlink:href="../proc/add_all_virtual_children.html" xlink:title="add_all_virtual_children">
+<polygon fill="#d9534f" stroke="#d9534f" points="836,-391 698,-391 698,-367 836,-367 836,-391"/>
+<text text-anchor="middle" x="767" y="-376.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_all_virtual_children</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~add_all_virtual_children -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge36" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~add_all_virtual_children</title>
+<path fill="none" stroke="#000000" d="M642.65,-308.95C649.42,-311.42 656,-314.4 662,-318 682.51,-330.3 677.85,-345.12 698,-358 700.76,-359.76 703.68,-361.39 706.69,-362.88"/>
+<polygon fill="#000000" stroke="#000000" points="705.38,-366.13 715.95,-366.98 708.22,-359.73 705.38,-366.13"/>
+</g>
+<!-- proc~add_ghostfromfiner -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node27" class="node">
+<title>proc~add_ghostfromfiner</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node27"><a xlink:href="../proc/add_ghostfromfiner.html" xlink:title="add_ghostFromFiner">
+<polygon fill="#d9534f" stroke="#d9534f" points="827,-349 707,-349 707,-325 827,-325 827,-349"/>
+<text text-anchor="middle" x="767" y="-334.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">add_ghostFromFiner</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~add_ghostfromfiner -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge37" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~add_ghostfromfiner</title>
+<path fill="none" stroke="#000000" d="M633.71,-309C654.26,-313.35 677.68,-318.31 699.03,-322.83"/>
+<polygon fill="#000000" stroke="#000000" points="698.5,-326.29 709.01,-324.94 699.95,-319.44 698.5,-326.29"/>
+</g>
+<!-- proc~tem_posofpath -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node31" class="node">
+<title>proc~tem_posofpath</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node31"><a xlink:href="../proc/tem_posofpath.html" xlink:title="tem_PosOfPath">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="813,-307 721,-307 721,-283 813,-283 813,-307"/>
+<text text-anchor="middle" x="767" y="-292.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_PosOfPath</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_local_element&#45;&gt;proc~tem_posofpath -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge40" class="edge">
+<title>proc~identify_local_element&#45;&gt;proc~tem_posofpath</title>
+<path fill="none" stroke="#000000" d="M642.57,-296.31C664.75,-296.07 689.27,-295.81 710.58,-295.59"/>
+<polygon fill="#000000" stroke="#000000" points="710.79,-299.08 720.75,-295.48 710.72,-292.08 710.79,-299.08"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node25" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="800.5,-471 733.5,-471 733.5,-447 800.5,-447 800.5,-471"/>
+<text text-anchor="middle" x="767" y="-456.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge42" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M609.72,-342.89C626.84,-346.33 647.25,-352.81 662,-365 688.37,-386.78 672.39,-410.33 698,-433 705.38,-439.53 714.56,-444.49 723.77,-448.24"/>
+<polygon fill="#000000" stroke="#000000" points="722.71,-451.58 733.31,-451.71 725.11,-445 722.71,-451.58"/>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge43" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M986.81,-163.69C1007.05,-168.38 1031.64,-174.08 1053.44,-179.13"/>
+<polygon fill="#000000" stroke="#000000" points="1052.7,-182.55 1063.23,-181.39 1054.28,-175.73 1052.7,-182.55"/>
+</g>
+<!-- proc~tem_elemsizelevel -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_node29" class="node">
+<title>proc~tem_elemsizelevel</title>
+<g id="a_proc~~identify_stencilneigh~~CallsGraph_node29"><a xlink:href="../proc/tem_elemsizelevel.html" xlink:title="tem_ElemSizeLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1168,-162 1052,-162 1052,-138 1168,-138 1168,-162"/>
+<text text-anchor="middle" x="1110" y="-147.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_ElemSizeLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge44" class="edge">
+<title>proc~tem_baryofid&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M986.81,-152.98C1003.46,-152.57 1023.06,-152.1 1041.62,-151.64"/>
+<polygon fill="#000000" stroke="#000000" points="1041.89,-155.14 1051.8,-151.4 1041.72,-148.14 1041.89,-155.14"/>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge45" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M1156.62,-192C1168.68,-192 1181.73,-192 1193.93,-192"/>
+<polygon fill="#000000" stroke="#000000" points="1193.95,-195.5 1203.95,-192 1193.95,-188.5 1193.95,-195.5"/>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_levelof -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge47" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M988.3,-107.62C1034.59,-104.67 1109.26,-104.92 1168,-129 1190.88,-138.38 1211.89,-157.54 1225.72,-172.29"/>
+<polygon fill="#000000" stroke="#000000" points="1223.33,-174.86 1232.63,-179.93 1228.52,-170.17 1223.33,-174.86"/>
+</g>
+<!-- proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge46" class="edge">
+<title>proc~tem_elemsize&#45;&gt;proc~tem_elemsizelevel</title>
+<path fill="none" stroke="#000000" d="M988.09,-121.98C1006.19,-126.18 1027.59,-131.14 1047.32,-135.71"/>
+<polygon fill="#000000" stroke="#000000" points="1046.62,-139.14 1057.15,-137.99 1048.2,-132.32 1046.62,-139.14"/>
+</g>
+<!-- proc~tem_find_depproc_globsearch&#45;&gt;proc~tem_pathcomparison -->
+<g id="proc~~identify_stencilneigh~~CallsGraph_edge48" class="edge">
+<title>proc~tem_find_depproc_globsearch&#45;&gt;proc~tem_pathcomparison</title>
+<path fill="none" stroke="#000000" d="M662.1,-22.99C672.54,-21.89 683.12,-20.77 693.35,-19.69"/>
+<polygon fill="#000000" stroke="#000000" points="693.86,-23.15 703.44,-18.62 693.13,-16.19 693.86,-23.15"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocidentify_stencilneighCallsGraph = svgPanZoom('#procidentify_stencilneighCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~identify_stencilneigh~~CalledByGraph Pages: 1 -->
+<svg id="procidentify_stencilneighCalledByGraph" width="641pt" height="68pt"
+ viewBox="0.00 0.00 641.00 68.13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~identify_stencilneigh~~CalledByGraph" class="graph" transform="scale(0.56 0.56) rotate(0) translate(4 117.81)">
+<title>proc~~identify_stencilneigh~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-117.81 1142,-117.81 1142,4 -4,4"/>
+<!-- proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node1" class="node">
+<title>proc~identify_stencilneigh</title>
+<polygon fill="none" stroke="black" points="807,-35.81 684,-35.81 684,-11.81 807,-11.81 807,-35.81"/>
+<text text-anchor="middle" x="745.5" y="-21.41" font-family="Helvetica,sans-Serif" font-size="10.50">identify_stencilNeigh</text>
+</g>
+<!-- proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node3" class="node">
+<title>proc~identify_elements</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node3"><a xlink:href="../proc/identify_elements.html" xlink:title="identify_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="950,-74.81 843,-74.81 843,-50.81 950,-50.81 950,-74.81"/>
+<text text-anchor="middle" x="896.5" y="-60.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~identify_stencilneigh&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge10" class="edge">
+<title>proc~identify_stencilneigh&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M807.1,-33.03C824.95,-37.42 843.9,-42.64 859.65,-47.56"/>
+<polygon fill="#000000" stroke="#000000" points="858.91,-51 869.5,-50.73 861.06,-44.34 858.91,-51"/>
+</g>
+<!-- proc~create_allparentneighbors -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node2" class="node">
+<title>proc~create_allparentneighbors</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node2"><a xlink:href="../proc/create_allparentneighbors.html" xlink:title="create_allParentNeighbors">
+<polygon fill="#d9534f" stroke="#d9534f" points="1138,-54.81 986,-54.81 986,-30.81 1138,-30.81 1138,-54.81"/>
+<text text-anchor="middle" x="1062" y="-40.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">create_allParentNeighbors</text>
+</a>
+</g>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge1" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M985.83,-38.27C934.69,-35.18 867.44,-31.12 817.26,-28.08"/>
+<polygon fill="#000000" stroke="#000000" points="817.33,-24.58 807.14,-27.47 816.91,-31.57 817.33,-24.58"/>
+</g>
+<!-- proc~create_allparentneighbors&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge7" class="edge">
+<title>proc~create_allparentneighbors&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M1013.44,-54.82C996.86,-57.42 977.98,-59.86 960.35,-61.71"/>
+<polygon fill="#000000" stroke="#000000" points="959.74,-58.25 950.13,-62.72 960.43,-65.22 959.74,-58.25"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge2" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M842.71,-55.48C822.6,-50.71 800.18,-44.63 782.05,-38.96"/>
+<polygon fill="#000000" stroke="#000000" points="783.05,-35.61 772.45,-35.87 780.9,-42.27 783.05,-35.61"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~create_allparentneighbors -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge4" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~create_allparentneighbors</title>
+<path fill="none" stroke="#000000" d="M945.23,-50.77C954.87,-49.26 965.28,-47.81 975.77,-46.49"/>
+<polygon fill="#000000" stroke="#000000" points="976.32,-49.95 985.83,-45.27 975.48,-43 976.32,-49.95"/>
+</g>
+<!-- proc~identify_elements&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge9" class="edge">
+<title>proc~identify_elements&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M871.7,-74.82C863.04,-83.78 871.3,-92.81 896.5,-92.81 911.85,-92.81 920.92,-89.46 923.7,-84.81"/>
+<polygon fill="#000000" stroke="#000000" points="927.04,-83.73 921.3,-74.82 920.24,-85.36 927.04,-83.73"/>
+</g>
+<!-- proc~request_remotehalos -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node4" class="node">
+<title>proc~request_remotehalos</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node4"><a xlink:href="../proc/request_remotehalos.html" xlink:title="request_remoteHalos">
+<polygon fill="#d9534f" stroke="#d9534f" points="640,-32.81 514,-32.81 514,-8.81 640,-8.81 640,-32.81"/>
+<text text-anchor="middle" x="577" y="-18.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">request_remoteHalos</text>
+</a>
+</g>
+</g>
+<!-- proc~request_remotehalos&#45;&gt;proc~identify_stencilneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge3" class="edge">
+<title>proc~request_remotehalos&#45;&gt;proc~identify_stencilneigh</title>
+<path fill="none" stroke="#000000" d="M640.47,-21.93C651.35,-22.13 662.74,-22.34 673.82,-22.54"/>
+<polygon fill="#000000" stroke="#000000" points="673.83,-26.04 683.89,-22.72 673.95,-19.04 673.83,-26.04"/>
+</g>
+<!-- proc~request_remotehalos&#45;&gt;proc~create_allparentneighbors -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge5" class="edge">
+<title>proc~request_remotehalos&#45;&gt;proc~create_allparentneighbors</title>
+<path fill="none" stroke="#000000" d="M638.04,-8.81C652.99,-6.32 669.03,-4.07 684,-2.81 794.56,6.51 922.98,-13.79 997.81,-28.74"/>
+<polygon fill="#000000" stroke="#000000" points="997.5,-32.25 1008,-30.81 998.9,-25.39 997.5,-32.25"/>
+</g>
+<!-- proc~build_levelelements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node5" class="node">
+<title>proc~build_levelelements</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node5"><a xlink:href="../proc/build_levelelements.html" xlink:title="build_levelElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="459,-113.81 340,-113.81 340,-89.81 459,-89.81 459,-113.81"/>
+<text text-anchor="middle" x="399.5" y="-99.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">build_levelElements</text>
+</a>
+</g>
+</g>
+<!-- proc~build_levelelements&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge6" class="edge">
+<title>proc~build_levelelements&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M459.22,-99.96C538.38,-97.06 683.65,-90.33 807,-76.81 815.34,-75.9 824.08,-74.75 832.7,-73.5"/>
+<polygon fill="#000000" stroke="#000000" points="833.36,-76.94 842.73,-72 832.32,-70.02 833.36,-76.94"/>
+</g>
+<!-- proc~identify_additionalneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node7" class="node">
+<title>proc~identify_additionalneigh</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node7"><a xlink:href="../proc/identify_additionalneigh.html" xlink:title="identify_additionalNeigh">
+<polygon fill="#d9534f" stroke="#d9534f" points="648,-74.81 506,-74.81 506,-50.81 648,-50.81 648,-74.81"/>
+<text text-anchor="middle" x="577" y="-60.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">identify_additionalNeigh</text>
+</a>
+</g>
+</g>
+<!-- proc~build_levelelements&#45;&gt;proc~identify_additionalneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge14" class="edge">
+<title>proc~build_levelelements&#45;&gt;proc~identify_additionalneigh</title>
+<path fill="none" stroke="#000000" d="M454.59,-89.79C472.69,-85.77 493.04,-81.25 511.83,-77.07"/>
+<polygon fill="#000000" stroke="#000000" points="512.79,-80.44 521.79,-74.86 511.27,-73.61 512.79,-80.44"/>
+</g>
+<!-- proc~communicate_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node6" class="node">
+<title>proc~communicate_elements</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node6"><a xlink:href="../proc/communicate_elements.html" xlink:title="communicate_elements">
+<polygon fill="#d9534f" stroke="#d9534f" points="470,-33.81 329,-33.81 329,-9.81 470,-9.81 470,-33.81"/>
+<text text-anchor="middle" x="399.5" y="-19.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">communicate_elements</text>
+</a>
+</g>
+</g>
+<!-- proc~communicate_elements&#45;&gt;proc~request_remotehalos -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge11" class="edge">
+<title>proc~communicate_elements&#45;&gt;proc~request_remotehalos</title>
+<path fill="none" stroke="#000000" d="M470.11,-21.41C481.18,-21.35 492.64,-21.28 503.77,-21.22"/>
+<polygon fill="#000000" stroke="#000000" points="503.88,-24.72 513.86,-21.16 503.84,-17.72 503.88,-24.72"/>
+</g>
+<!-- proc~identify_additionalneigh&#45;&gt;proc~identify_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge8" class="edge">
+<title>proc~identify_additionalneigh&#45;&gt;proc~identify_elements</title>
+<path fill="none" stroke="#000000" d="M648.07,-62.81C703.2,-62.81 779.33,-62.81 832.54,-62.81"/>
+<polygon fill="#000000" stroke="#000000" points="832.86,-66.31 842.86,-62.81 832.86,-59.31 832.86,-66.31"/>
+</g>
+<!-- proc~tem_find_allelements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node8" class="node">
+<title>proc~tem_find_allelements</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node8"><a xlink:href="../proc/tem_find_allelements.html" xlink:title="tem_find_allElements">
+<polygon fill="#d9534f" stroke="#d9534f" points="293,-73.81 166,-73.81 166,-49.81 293,-49.81 293,-73.81"/>
+<text text-anchor="middle" x="229.5" y="-59.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_find_allElements</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~build_levelelements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge12" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~build_levelelements</title>
+<path fill="none" stroke="#000000" d="M280.91,-73.81C298.85,-78.08 319.24,-82.94 337.94,-87.39"/>
+<polygon fill="#000000" stroke="#000000" points="337.3,-90.84 347.84,-89.75 338.92,-84.03 337.3,-90.84"/>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~communicate_elements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge13" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~communicate_elements</title>
+<path fill="none" stroke="#000000" d="M280.91,-49.81C298.85,-45.54 319.24,-40.68 337.94,-36.23"/>
+<polygon fill="#000000" stroke="#000000" points="338.92,-39.59 347.84,-33.87 337.3,-32.78 338.92,-39.59"/>
+</g>
+<!-- proc~tem_find_allelements&#45;&gt;proc~identify_additionalneigh -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge15" class="edge">
+<title>proc~tem_find_allelements&#45;&gt;proc~identify_additionalneigh</title>
+<path fill="none" stroke="#000000" d="M293.07,-61.99C349.89,-62.15 434.02,-62.4 495.78,-62.58"/>
+<polygon fill="#000000" stroke="#000000" points="495.86,-66.08 505.87,-62.61 495.88,-59.08 495.86,-66.08"/>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_node9" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~identify_stencilneigh~~CalledByGraph_node9"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="130,-73.81 0,-73.81 0,-49.81 130,-49.81 130,-73.81"/>
+<text text-anchor="middle" x="65" y="-59.41" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements -->
+<g id="proc~~identify_stencilneigh~~CalledByGraph_edge16" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_find_allelements</title>
+<path fill="none" stroke="#000000" d="M130.22,-61.81C138.55,-61.81 147.12,-61.81 155.58,-61.81"/>
+<polygon fill="#000000" stroke="#000000" points="155.8,-65.31 165.8,-61.81 155.8,-58.31 155.8,-65.31"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panprocidentify_stencilneighCalledByGraph = svgPanZoom('#procidentify_stencilneighCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">recursive subroutine </span><span class="n">identify_stencilNeigh</span><span class="p">(</span><span class="w"> </span><span class="n">iElem</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w"> </span><span class="n">iStencil</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">pathFirst</span><span class="p">,</span><span class="w"> </span><span class="n">pathLast</span><span class="p">,</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">stencil</span><span class="p">,</span><span class="w"> </span><span class="n">nesting</span><span class="w">          </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; element position in levelDesc to identify</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">iElem</span>
+<span class="w">    </span><span class="c">!&gt; element level</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span>
+<span class="w">    </span><span class="c">!&gt; stencil within the element to act on</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">iStencil</span>
+<span class="w">    </span><span class="c">!&gt; tree information</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">         </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; first treeID path in every process</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">pathFirst</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; last treeID path in every process</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_path_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">          </span><span class="kd">::</span><span class="w"> </span><span class="n">pathLast</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; the level descriptor to be filled</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span><span class="p">:)</span>
+<span class="w">    </span><span class="c">!&gt; process</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">      </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+<span class="w">    </span><span class="c">!&gt; current stencil definition</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilHeader_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">stencil</span>
+<span class="w">    </span><span class="c">!&gt; nesting level</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                      </span><span class="kd">::</span><span class="w"> </span><span class="n">nesting</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iStencilElem</span><span class="p">,</span><span class="w"> </span><span class="n">elemPos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">neighIDpos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">neighID</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">! identify all the compute neighbors of the current element</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iStencilElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">stencil</span><span class="p">%</span><span class="n">QQN</span>
+<span class="w">      </span><span class="n">neighIDpos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                           </span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iStencil</span><span class="p">)%</span><span class="n">tIDpos</span><span class="p">(</span><span class="n">iStencilElem</span><span class="p">)</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">neighIDpos</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">neighID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">(</span><span class="w"> </span><span class="n">iLevel</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">neighID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iElem</span><span class="p">)%</span><span class="n">val</span><span class="p">(</span><span class="n">neighIDpos</span><span class="p">)</span>
+<span class="w">        </span><span class="c">! This call might add new halo elements</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">neighID</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0_long_k</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          call </span><span class="n">identify_elements</span><span class="p">(</span><span class="w"> </span><span class="n">TreeID</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">neighID</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">tree</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">pathFirst</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">pathFirst</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">pathLast</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">pathLast</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">levelDesc</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">levelDesc</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">elemPos</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">proc</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">proc</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">stencil</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">stencil</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">nesting</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">nesting</span><span class="w">    </span><span class="p">)</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="c">! neighID &lt; 0</span>
+<span class="w">          </span><span class="n">elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      else</span><span class="w"> </span><span class="c">! neighIDpos &lt; 0</span>
+<span class="w">        </span><span class="n">elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">      </span><span class="k">end if</span><span class="w"> </span><span class="c">! neighIDpos &gt; 0</span>
+
+<span class="w">      </span><span class="c">! And add the encountered neighbor elements to the current element&#39;s</span>
+<span class="w">      </span><span class="c">! stencil neighbors</span>
+<span class="w">      </span><span class="n">levelDesc</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">              </span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iStencil</span><span class="p">)%</span><span class="n">totalPos</span><span class="p">(</span><span class="n">iStencilElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span>
+<span class="w">    </span><span class="k">end do</span>
+
+<span class="k">  end subroutine </span><span class="n">identify_stencilNeigh</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

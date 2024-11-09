@@ -1,0 +1,568 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>logicalToRealArray &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>logicalToRealArray
+      <small>Function</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">7 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_logical_operation_var_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_logical_operation_var_module.f90.html'>tem_logical_operation_var_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_logical_operation_var_module.html'>tem_logical_operation_var_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">logicalToRealArray</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/logicaltorealarray.html#src">logicalToRealArray</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  function logicalToRealArray(value, n) result(res)  
+</h2>
+    
+
+    <p>Converts an array of logicals into an array of reals.</p>
+<p>0 equals to false, everything else equals to true.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-value~2"></span>
+              logical,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>value</strong>(n)</td>
+            <td>
+                <p>The value to interpret as boolean</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-n~81"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>n</strong></td>
+            <td>
+                <p>The number of values in the input array</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <h3>Return Value
+        <small>
+          <span class="anchor" id="variable-res~91"></span>
+          real(kind=rk), (n)
+        </small>
+      </h3>
+      <p>The values interpreted as booleans</p>
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~logicaltorealarray~~CalledByGraph Pages: 1 -->
+<svg id="proclogicaltorealarrayCalledByGraph" width="371pt" height="494pt"
+ viewBox="0.00 0.00 371.00 494.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~logicaltorealarray~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 490)">
+<title>proc~~logicaltorealarray~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-490 367,-490 367,4 -4,4"/>
+<!-- proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node1" class="node">
+<title>proc~logicaltorealarray</title>
+<polygon fill="none" stroke="black" points="363,-255 251,-255 251,-231 363,-231 363,-255"/>
+<text text-anchor="middle" x="307" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50">logicalToRealArray</text>
+</g>
+<!-- proc~evallogicaland_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node2" class="node">
+<title>proc~evallogicaland_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node2"><a xlink:href="../proc/evallogicaland_forpoint.html" xlink:title="evalLogicalAnd_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="178,-486 37,-486 37,-462 178,-462 178,-486"/>
+<text text-anchor="middle" x="107.5" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalAnd_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicaland_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge1" class="edge">
+<title>proc~evallogicaland_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M178.09,-470.24C191.39,-466.9 204.43,-461.51 215,-453 275.2,-404.49 296.46,-308.42 303.19,-265.1"/>
+<polygon fill="#000000" stroke="#000000" points="306.68,-265.45 304.64,-255.05 299.75,-264.45 306.68,-265.45"/>
+</g>
+<!-- proc~evallogicaland_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node3" class="node">
+<title>proc~evallogicaland_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node3"><a xlink:href="../proc/evallogicaland_fromindex.html" xlink:title="evalLogicalAnd_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="184,-444 31,-444 31,-420 184,-420 184,-444"/>
+<text text-anchor="middle" x="107.5" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalAnd_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicaland_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge2" class="edge">
+<title>proc~evallogicaland_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M184.18,-425.71C195.21,-422.42 205.89,-417.7 215,-411 264.87,-374.29 290.4,-301.78 300.57,-265.2"/>
+<polygon fill="#000000" stroke="#000000" points="304.07,-265.65 303.24,-255.09 297.3,-263.86 304.07,-265.65"/>
+</g>
+<!-- proc~evallogicalgreater_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node4" class="node">
+<title>proc~evallogicalgreater_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node4"><a xlink:href="../proc/evallogicalgreater_forpoint.html" xlink:title="evalLogicalGreater_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="187.5,-402 27.5,-402 27.5,-378 187.5,-378 187.5,-402"/>
+<text text-anchor="middle" x="107.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalGreater_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalgreater_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge3" class="edge">
+<title>proc~evallogicalgreater_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M187.61,-381.41C197.28,-378.37 206.67,-374.34 215,-369 255.24,-343.21 283.36,-292.79 296.87,-264.17"/>
+<polygon fill="#000000" stroke="#000000" points="300.07,-265.58 301.03,-255.03 293.7,-262.68 300.07,-265.58"/>
+</g>
+<!-- proc~evallogicalgreater_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node5" class="node">
+<title>proc~evallogicalgreater_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node5"><a xlink:href="../proc/evallogicalgreater_fromindex.html" xlink:title="evalLogicalGreater_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="193.5,-360 21.5,-360 21.5,-336 193.5,-336 193.5,-360"/>
+<text text-anchor="middle" x="107.5" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalGreater_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalgreater_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge4" class="edge">
+<title>proc~evallogicalgreater_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M192.83,-335.94C200.52,-333.49 208.03,-330.54 215,-327 245.69,-311.41 273.59,-282.46 290.18,-262.96"/>
+<polygon fill="#000000" stroke="#000000" points="292.89,-265.18 296.58,-255.25 287.5,-260.71 292.89,-265.18"/>
+</g>
+<!-- proc~evallogicalgreaterorequal_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node6" class="node">
+<title>proc~evallogicalgreaterorequal_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node6"><a xlink:href="../proc/evallogicalgreaterorequal_forpoint.html" xlink:title="evalLogicalGreaterOrEqual_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="209,-318 6,-318 6,-294 209,-294 209,-318"/>
+<text text-anchor="middle" x="107.5" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalGreaterOrEqual_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalgreaterorequal_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge5" class="edge">
+<title>proc~evallogicalgreaterorequal_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M181.56,-293.99C192.87,-291.44 204.33,-288.46 215,-285 235.53,-278.34 257.53,-268.28 274.75,-259.67"/>
+<polygon fill="#000000" stroke="#000000" points="276.47,-262.72 283.79,-255.07 273.29,-256.49 276.47,-262.72"/>
+</g>
+<!-- proc~evallogicalgreaterorequal_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node7" class="node">
+<title>proc~evallogicalgreaterorequal_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node7"><a xlink:href="../proc/evallogicalgreaterorequal_fromindex.html" xlink:title="evalLogicalGreaterOrEqual_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="215,-276 0,-276 0,-252 215,-252 215,-276"/>
+<text text-anchor="middle" x="107.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalGreaterOrEqual_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalgreaterorequal_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge6" class="edge">
+<title>proc~evallogicalgreaterorequal_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M215.05,-252.67C223.86,-251.73 232.59,-250.81 240.94,-249.92"/>
+<polygon fill="#000000" stroke="#000000" points="241.37,-253.39 250.94,-248.85 240.63,-246.43 241.37,-253.39"/>
+</g>
+<!-- proc~evallogicalless_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node8" class="node">
+<title>proc~evallogicalless_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node8"><a xlink:href="../proc/evallogicalless_forpoint.html" xlink:title="evalLogicalLess_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="179,-234 36,-234 36,-210 179,-210 179,-234"/>
+<text text-anchor="middle" x="107.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalLess_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalless_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge7" class="edge">
+<title>proc~evallogicalless_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M179.24,-229.52C199.32,-231.66 221.08,-233.97 240.81,-236.07"/>
+<polygon fill="#000000" stroke="#000000" points="240.61,-239.57 250.92,-237.14 241.35,-232.61 240.61,-239.57"/>
+</g>
+<!-- proc~evallogicalless_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node9" class="node">
+<title>proc~evallogicalless_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node9"><a xlink:href="../proc/evallogicalless_fromindex.html" xlink:title="evalLogicalLess_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="185,-192 30,-192 30,-168 185,-168 185,-192"/>
+<text text-anchor="middle" x="107.5" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalLess_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalless_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge8" class="edge">
+<title>proc~evallogicalless_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M181.56,-192.01C192.87,-194.56 204.33,-197.54 215,-201 235.53,-207.66 257.53,-217.72 274.75,-226.33"/>
+<polygon fill="#000000" stroke="#000000" points="273.29,-229.51 283.79,-230.93 276.47,-223.28 273.29,-229.51"/>
+</g>
+<!-- proc~evallogicallessorequal_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node10" class="node">
+<title>proc~evallogicallessorequal_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node10"><a xlink:href="../proc/evallogicallessorequal_forpoint.html" xlink:title="evalLogicalLessOrEqual_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="200.5,-150 14.5,-150 14.5,-126 200.5,-126 200.5,-150"/>
+<text text-anchor="middle" x="107.5" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalLessOrEqual_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicallessorequal_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge9" class="edge">
+<title>proc~evallogicallessorequal_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M192.83,-150.06C200.52,-152.51 208.03,-155.46 215,-159 245.69,-174.59 273.59,-203.54 290.18,-223.04"/>
+<polygon fill="#000000" stroke="#000000" points="287.5,-225.29 296.58,-230.75 292.89,-220.82 287.5,-225.29"/>
+</g>
+<!-- proc~evallogicallessorequal_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node11" class="node">
+<title>proc~evallogicallessorequal_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node11"><a xlink:href="../proc/evallogicallessorequal_fromindex.html" xlink:title="evalLogicalLessOrEqual_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="206.5,-108 8.5,-108 8.5,-84 206.5,-84 206.5,-108"/>
+<text text-anchor="middle" x="107.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalLessOrEqual_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicallessorequal_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge10" class="edge">
+<title>proc~evallogicallessorequal_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M197.43,-108.08C203.59,-110.55 209.53,-113.49 215,-117 255.24,-142.79 283.36,-193.21 296.87,-221.83"/>
+<polygon fill="#000000" stroke="#000000" points="293.7,-223.32 301.03,-230.97 300.07,-220.42 293.7,-223.32"/>
+</g>
+<!-- proc~evallogicalor_forpoint -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node12" class="node">
+<title>proc~evallogicalor_forpoint</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node12"><a xlink:href="../proc/evallogicalor_forpoint.html" xlink:title="evalLogicalOr_forPoint">
+<polygon fill="#d9534f" stroke="#d9534f" points="174,-66 41,-66 41,-42 174,-42 174,-66"/>
+<text text-anchor="middle" x="107.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalOr_forPoint</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalor_forpoint&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge11" class="edge">
+<title>proc~evallogicalor_forpoint&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M174.19,-57.7C188.65,-60.93 203.16,-66.29 215,-75 264.87,-111.71 290.4,-184.22 300.57,-220.8"/>
+<polygon fill="#000000" stroke="#000000" points="297.3,-222.14 303.24,-230.91 304.07,-220.35 297.3,-222.14"/>
+</g>
+<!-- proc~evallogicalor_fromindex -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_node13" class="node">
+<title>proc~evallogicalor_fromindex</title>
+<g id="a_proc~~logicaltorealarray~~CalledByGraph_node13"><a xlink:href="../proc/evallogicalor_fromindex.html" xlink:title="evalLogicalOr_fromIndex">
+<polygon fill="#d9534f" stroke="#d9534f" points="180,-24 35,-24 35,0 180,0 180,-24"/>
+<text text-anchor="middle" x="107.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">evalLogicalOr_fromIndex</text>
+</a>
+</g>
+</g>
+<!-- proc~evallogicalor_fromindex&#45;&gt;proc~logicaltorealarray -->
+<g id="proc~~logicaltorealarray~~CalledByGraph_edge12" class="edge">
+<title>proc~evallogicalor_fromindex&#45;&gt;proc~logicaltorealarray</title>
+<path fill="none" stroke="#000000" d="M180.03,-16.26C192.65,-19.63 204.95,-24.9 215,-33 275.2,-81.51 296.46,-177.58 303.19,-220.9"/>
+<polygon fill="#000000" stroke="#000000" points="299.75,-221.55 304.64,-230.95 306.68,-220.55 299.75,-221.55"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">logicalToRealArray</span><span class="p">(</span><span class="k">value</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ------------------------------------------------------------------------ !</span>
+<span class="w">    </span><span class="c">!&gt; The number of values in the input array</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span>
+<span class="w">    </span><span class="c">!&gt; The value to interpret as boolean</span>
+<span class="w">    </span><span class="kt">logical</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="k">value</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; The values interpreted as booleans</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">res</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ------------------------------------------------------------------------ !</span>
+
+<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numFalse</span>
+<span class="w">    </span><span class="k">where</span><span class="p">(</span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">numTrue</span>
+
+<span class="w">  </span><span class="k">end function </span><span class="n">logicalToRealArray</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

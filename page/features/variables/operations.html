@@ -1,0 +1,549 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../../favicon.png">
+
+    <title>Operations inside the variable system &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../../css/pygments.css" rel="stylesheet">
+    <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../css/local.css" rel="stylesheet">
+      <link  href="../../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Operations inside the variable system</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../../index.html'>TreElm Overview</a></li>
+                <li class="breadcrumb-item"><a href='../index.html'>Feature Overview</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Variable System</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Operations inside the variable system</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../../index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../../DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="../../bibliography.html">Bibliography</a>
+              <a class="nav-link" href="../../codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="../../face_details.html">Face Details</a>
+              <a class="nav-link" href="../index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="../canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link" href="../dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="../spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="../tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="../tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link active disabled" href="operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../../fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="../../implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="../../motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="../../octree.html">Distributed Octree</a>
+              <a class="nav-link" href="../../requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <h1 id="perform-certain-operations">Perform certain operations</h1>
+<p>It is possible to do operations with variables and store them in the
+variable table in the prescribed way. It is defined in <a href="../../../module/tem_variable_module.html">tem_variable_module</a>.</p>
+<h1 id="what-is-available">What is available?</h1>
+<p>Here is a list of the currently available operations for the variable system.</p>
+<ul>
+<li>'difference'</li>
+</ul>
+<p>Evaluate the function pointers of the dependent variables,
+  and then calculate the difference between these two. ( scalar or vector )
+  In lua file, first define new variable with varType operation <code>kind</code> as
+  <code>difference</code> and provide two dependent variable via <code>input_varname</code>.
+  If input_varname variable is not part of predefined solver variables then
+  add also that variable via variable table for example spacetime function
+  variable.
+  For example: Define a variable called <code>dens_difference</code>, which depends on density
+  and spacetime. One can get an error between simulation
+  results and analytical solution.
+  @note Note
+       The number of input variables must be = 2.
+             res(:) = a(:) - b(:)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_reference&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_difference&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;difference&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="s1">&#39;dens_reference&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dens_difference&#39;</span><span class="p">},</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+  <span class="n">time</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'rel_difference'</li>
+</ul>
+<p>@note Note
+       Number of input variables = 2. res = ( a(:) - b(:) ) / b(:)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_ref&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_relDiff&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;rel_difference&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="s1">&#39;dens_ref&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;dens_relDiff&#39;</span><span class="p">},</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+  <span class="n">time</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'addition'</li>
+</ul>
+<p>@note Note
+       var3(:) = var1(:) + var2(:)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;var1&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun</span>
+  <span class="p">},</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;var2&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">luaFun</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;var3&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;addition&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'multiplication'</li>
+</ul>
+<p>Routine to multiply variables if all variables have same number of
+  components.
+  @note Note
+       res(:) = a(:) * b(:)
+             res(1) = a(1) * b(1)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;coeff&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="mf">0.25</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;newVel&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;multiplication&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;coeff&#39;</span><span class="p">,</span> <span class="s1">&#39;vel_mag&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'division', 'div'</li>
+</ul>
+<p>Routine to divide variables if all variables have same number of
+  components.
+  @note Note
+       res(:) = a(:) / b(:)</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;coeff&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="mf">0.25</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;newVel&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;division&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;coeff&#39;</span><span class="p">}</span> <span class="c1">-- numerator, denominator</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'divide_vector_by_scalar'</li>
+</ul>
+<p>Routine to divide a vector by a scalar. So the second input variable must
+  have one component.
+  @note Note
+       res(:) = a(:) / b</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;coeff&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;st_fun&quot;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="mf">0.25</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;newVel&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;divide_vector_by_scalar&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;velocity&#39;</span><span class="p">,</span> <span class="s1">&#39;coeff&#39;</span><span class="p">}</span> <span class="c1">-- numerator, denominator</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'gradient', 'grad'</li>
+</ul>
+<p>Calculates the gradient of the input variable. Only one input variable
+  allowed. Number of components of the input variable can be 1,2 or 3.
+  The resulting number of components must be ncomponents + 1.
+  Only available in Ateles so far.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_grad&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="c1">-- density: ncomponents=1</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;gradient&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="s1">&#39;density&#39;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'magnitude'</li>
+</ul>
+<p>Evaluate magnitude of any vectorial variable. Number of components and
+  number of input variables both have to be 1.
+  In lua file, first define new variable with varType operation kind as
+  "magnitude" and provide name of the variable from which magnitude
+  to be derived in input_varname.
+  If input_varname variable is not part of predefined solver variables then
+  add also that variable via variable table.
+  @note Note
+       res = sqrt(sum( a(:) ))</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;velMag&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;magnitude&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;velocity&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+<span class="n">tracking</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;velMag&#39;</span><span class="p">},</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;tracking/&#39;</span><span class="p">,</span>
+  <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+    <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="n">format</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span><span class="p">,</span>
+  <span class="n">time</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">max</span> <span class="o">=</span> <span class="n">tmax</span><span class="p">,</span>
+    <span class="n">interval</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'extract'</li>
+</ul>
+<p>Extract component index of any vectorial variable.
+  In lua file, first define new variable with varType operation kind as
+  "extract" and provide name of the variable from which to extract
+  component index via input_varname and
+  index to extract via input_varIndex.
+  If input_varname variable is not part of predefined solver variables then
+  add also that variable via variable table.
+  @note Note
+       Both, ncomponents and number of input variables must be 1.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;vel_y&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;extract&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="s1">&#39;velocity&#39;</span><span class="p">,</span>
+      <span class="n">input_varindex</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>'combine'</li>
+</ul>
+<p>Combine multiple variables into single variable with nComponent of
+  output variable as sum of all input variables nComponents.
+  In lua file, first define new variable with varType operation kind as
+  "combine" and provide name of the variable from which to extract
+  component index via input_varname (it must be single variable) and
+  index to combine via input_varIndex.
+  If input_varname variable is not part of predefined solver variables then
+  add also that variable via variable table.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;dens_and_vel&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;combine&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="s1">&#39;velocity&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>Boolean operationas and comparisons</li>
+<li>'greater_than', 'gt', '&gt;'</li>
+<li>'greater_than_or_equal', 'ge', '&gt;='</li>
+<li>'less_than', 'lt', '&lt;'</li>
+<li>'less_than_or_equal', 'le', '&lt;='</li>
+<li>'equal', 'eq', '='</li>
+<li>'not_equal', 'ne', '/='</li>
+<li>'and'</li>
+<li>'or'</li>
+</ul>
+<p>Using a boolean operation one will get either 1.0 (true) or 0.0 (false)
+  as a resulting variable value. One must provide two input variables that
+  must have the same number of components. Here is an example:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;var3&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+    <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span><span class="p">,</span>
+      <span class="n">input_varname</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;var1&#39;</span><span class="p">,</span> <span class="s1">&#39;var2&#39;</span><span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+<span class="p">}</span>
+
+<span class="c1">-- if var1 == var2 then:</span>
+<span class="c1">-- var3 = {1.0, 1.0, 1.0}</span>
+</code></pre></div>
+
+<ul>
+<li>Temporal reduction <a href="../../../module/tem_reduction_transient_module.html">tem_reduction_transient_module</a></li>
+</ul>
+<p>The temporal reduction operation allows the reduction of values over given
+  iteration invervals. Thus it allows temporal averaging, as shown here:</p>
+<div class="codehilite"><pre><span></span><code>  <span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span>
+       <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;press_timeavg&#39;</span><span class="p">,</span>
+       <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+       <span class="n">vartype</span> <span class="o">=</span> <span class="s2">&quot;operation&quot;</span><span class="p">,</span>
+       <span class="n">operation</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;reduction_transient&#39;</span><span class="p">,</span>
+         <span class="n">input_varname</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;pressure&#39;</span><span class="p">},</span>
+         <span class="n">reduction_transient</span> <span class="o">=</span> <span class="p">{</span>
+           <span class="n">kind</span>    <span class="o">=</span> <span class="s1">&#39;average&#39;</span><span class="p">,</span>
+           <span class="n">nrecord</span> <span class="o">=</span> <span class="mi">1000</span>
+         <span class="p">}</span>
+       <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div>
+
+<p>Other implemented reductions are sum, min and max.</p>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

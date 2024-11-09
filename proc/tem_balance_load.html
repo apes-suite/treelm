@@ -1,0 +1,736 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_balance_load &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_balance_load
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">21 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_balance_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_balance_module.f90.html'>tem_balance_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_balance_module.html'>tem_balance_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_balance_load</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_balance_load.html#src">tem_balance_load</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_balance_load(me, conf)  
+</h2>
+    
+
+    <p>Read all the configuration options for load balancing from the
+configuration.</p>
+<p>To activate the load balancing, use</p>
+<div class="codehilite"><pre><span></span><code><span class="n">balance</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="n">dynamic</span> <span class="o">=</span> <span class="kc">true</span><span class="p">,</span>          <span class="c1">-- perform dynamic load balancing</span>
+  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;IBM&#39;</span><span class="p">,</span>            <span class="c1">-- kind = &#39;levelwise&#39;,&#39;boundary&#39;,&#39;IBM&#39;</span>
+  <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>         <span class="c1">-- time control for slots when to perform load</span>
+       <span class="n">min</span>      <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>    <span class="c1">--   balancing</span>
+       <span class="n">interval</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+       <span class="n">max</span>      <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;balance/&#39;</span><span class="p">,</span> <span class="c1">-- directory where to store tmp data</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~741"></span>
+              type(<a href='../type/tem_balance_type.html'>tem_balance_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>The load balancing type</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~161"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>lua configuration handle</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_balance_load~~CallsGraph Pages: 1 -->
+<svg id="proctem_balance_loadCallsGraph" width="593pt" height="297pt"
+ viewBox="0.00 0.00 593.00 296.99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_balance_load~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 292.99)">
+<title>proc~~tem_balance_load~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-292.99 589,-292.99 589,4 -4,4"/>
+<!-- proc~tem_balance_load -->
+<g id="proc~~tem_balance_load~~CallsGraph_node1" class="node">
+<title>proc~tem_balance_load</title>
+<polygon fill="none" stroke="black" points="110,-166.99 0,-166.99 0,-142.99 110,-142.99 110,-166.99"/>
+<text text-anchor="middle" x="55" y="-152.59" font-family="Helvetica,sans-Serif" font-size="10.50">tem_balance_load</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_balance_load~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~8.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="574,-288.99 501,-288.99 501,-264.99 574,-264.99 574,-288.99"/>
+<text text-anchor="middle" x="537.5" y="-274.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge1" class="edge">
+<title>proc~tem_balance_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M66.91,-167.04C82.65,-183.6 113.45,-213.06 146,-227.99 261.51,-280.99 415.31,-282.84 490.79,-279.89"/>
+<polygon fill="#000000" stroke="#000000" points="491.07,-283.38 500.91,-279.45 490.76,-276.39 491.07,-283.38"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_balance_load~~CallsGraph_node3" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="585,-246.99 490,-246.99 490,-222.99 585,-222.99 585,-246.99"/>
+<text text-anchor="middle" x="537.5" y="-232.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge2" class="edge">
+<title>proc~tem_balance_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M82.16,-167.1C127.68,-187.43 224.93,-227.6 312,-241.99 374.27,-252.28 390.95,-244.66 454,-241.99 462.36,-241.64 471.19,-241.08 479.83,-240.44"/>
+<polygon fill="#000000" stroke="#000000" points="480.17,-243.92 489.86,-239.64 479.61,-236.94 480.17,-243.92"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_balance_load~~CallsGraph_node4" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node4"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="584.5,-84.99 490.5,-84.99 490.5,-60.99 584.5,-60.99 584.5,-84.99"/>
+<text text-anchor="middle" x="537.5" y="-70.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge3" class="edge">
+<title>proc~tem_balance_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M66.14,-142.76C81.64,-124.76 112.94,-91.09 146,-70.99 212.91,-30.32 234.84,-25.3 312,-11.99 374.19,-1.27 394.06,7.76 454,-11.99 478.92,-20.21 502.48,-39.17 517.99,-53.79"/>
+<polygon fill="#000000" stroke="#000000" points="515.74,-56.47 525.34,-60.96 520.63,-51.47 515.74,-56.47"/>
+</g>
+<!-- proc~tem_time_never -->
+<g id="proc~~tem_balance_load~~CallsGraph_node5" class="node">
+<title>proc~tem_time_never</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node5"><a xlink:href="../proc/tem_time_never.html" xlink:title="tem_time_never">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="432.5,-44.99 333.5,-44.99 333.5,-20.99 432.5,-20.99 432.5,-44.99"/>
+<text text-anchor="middle" x="383" y="-30.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_never</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge4" class="edge">
+<title>proc~tem_balance_load&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M88.15,-142.96C147.43,-120.78 273.93,-73.44 339.94,-48.73"/>
+<polygon fill="#000000" stroke="#000000" points="341.47,-51.9 349.61,-45.12 339.02,-45.34 341.47,-51.9"/>
+</g>
+<!-- proc~tem_timecontrol_load -->
+<g id="proc~~tem_balance_load~~CallsGraph_node6" class="node">
+<title>proc~tem_timecontrol_load</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node6"><a xlink:href="../proc/tem_timecontrol_load.html" xlink:title="tem_timeControl_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="276,-166.99 146,-166.99 146,-142.99 276,-142.99 276,-166.99"/>
+<text text-anchor="middle" x="211" y="-152.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_load&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge5" class="edge">
+<title>proc~tem_balance_load&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M110.29,-154.99C118.57,-154.99 127.24,-154.99 135.85,-154.99"/>
+<polygon fill="#000000" stroke="#000000" points="135.92,-158.49 145.92,-154.99 135.92,-151.49 135.92,-158.49"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge6" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M221.9,-167.21C238.37,-186.6 273.4,-224.04 312,-241.99 369.69,-268.83 443.81,-275.74 490.75,-277.18"/>
+<polygon fill="#000000" stroke="#000000" points="490.84,-280.69 500.92,-277.42 491,-273.69 490.84,-280.69"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge7" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M226.09,-167.06C244.47,-182.01 278.29,-206.86 312,-217.99 366.87,-236.11 433.22,-238.97 479.51,-238.16"/>
+<polygon fill="#000000" stroke="#000000" points="479.74,-241.65 489.65,-237.91 479.57,-234.65 479.74,-241.65"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge8" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M226.1,-142.98C244.51,-128.08 278.34,-103.27 312,-91.99 367,-73.57 433.6,-70.11 479.92,-70.47"/>
+<polygon fill="#000000" stroke="#000000" points="480.02,-73.97 490.07,-70.61 480.12,-66.97 480.02,-73.97"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge12" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M223.61,-142.66C245.48,-119.63 292.33,-71.34 312,-58.99 318.12,-55.16 324.88,-51.76 331.73,-48.79"/>
+<polygon fill="#000000" stroke="#000000" points="333.11,-52.01 341.06,-45.01 330.48,-45.52 333.11,-52.01"/>
+</g>
+<!-- proc~tem_time_default_zero -->
+<g id="proc~~tem_balance_load~~CallsGraph_node7" class="node">
+<title>proc~tem_time_default_zero</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node7"><a xlink:href="../proc/tem_time_default_zero.html" xlink:title="tem_time_default_zero">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="449.5,-208.99 316.5,-208.99 316.5,-184.99 449.5,-184.99 449.5,-208.99"/>
+<text text-anchor="middle" x="383" y="-194.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_default_zero</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge9" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero</title>
+<path fill="none" stroke="#000000" d="M260.72,-167.03C280.28,-171.86 302.99,-177.47 323.44,-182.53"/>
+<polygon fill="#000000" stroke="#000000" points="322.73,-185.96 333.28,-184.96 324.41,-179.16 322.73,-185.96"/>
+</g>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_balance_load~~CallsGraph_node8" class="node">
+<title>proc~tem_time_load</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node8"><a xlink:href="../proc/tem_time_load.html" xlink:title="tem_time_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="428.5,-166.99 337.5,-166.99 337.5,-142.99 428.5,-142.99 428.5,-166.99"/>
+<text text-anchor="middle" x="383" y="-152.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge10" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M276.27,-154.99C293.01,-154.99 310.89,-154.99 327.09,-154.99"/>
+<polygon fill="#000000" stroke="#000000" points="327.47,-158.49 337.47,-154.99 327.47,-151.49 327.47,-158.49"/>
+</g>
+<!-- proc~tem_time_needs_reduce -->
+<g id="proc~~tem_balance_load~~CallsGraph_node9" class="node">
+<title>proc~tem_time_needs_reduce</title>
+<g id="a_proc~~tem_balance_load~~CallsGraph_node9"><a xlink:href="../proc/tem_time_needs_reduce.html" xlink:title="tem_time_needs_reduce">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="454,-124.99 312,-124.99 312,-100.99 454,-100.99 454,-124.99"/>
+<text text-anchor="middle" x="383" y="-110.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_needs_reduce</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge11" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce</title>
+<path fill="none" stroke="#000000" d="M260.72,-142.96C280.28,-138.12 302.99,-132.51 323.44,-127.46"/>
+<polygon fill="#000000" stroke="#000000" points="324.41,-130.83 333.28,-125.03 322.73,-124.03 324.41,-130.83"/>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge13" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M428.76,-162.24C437.87,-165.32 446.84,-169.72 454,-175.99 483.32,-201.69 462.45,-228.4 490,-255.99 491.06,-257.05 492.18,-258.06 493.34,-259.02"/>
+<polygon fill="#000000" stroke="#000000" points="491.42,-261.95 501.65,-264.72 495.38,-256.18 491.42,-261.95"/>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge14" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M428.53,-165.95C437.18,-168.74 446.03,-172.08 454,-175.99 476.01,-186.79 498.48,-203.29 514.4,-216.1"/>
+<polygon fill="#000000" stroke="#000000" points="512.58,-219.14 522.53,-222.78 517.02,-213.73 512.58,-219.14"/>
+</g>
+<!-- proc~tem_time_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge15" class="edge">
+<title>proc~tem_time_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M428.58,-144.14C437.23,-141.34 446.06,-137.97 454,-133.99 476.65,-122.65 499.6,-105.09 515.52,-91.71"/>
+<polygon fill="#000000" stroke="#000000" points="517.85,-94.32 523.16,-85.16 513.3,-89.01 517.85,-94.32"/>
+</g>
+<!-- mpi_wtime -->
+<g id="proc~~tem_balance_load~~CallsGraph_node10" class="node">
+<title>mpi_wtime</title>
+<polygon fill="#777777" stroke="#777777" points="572.5,-166.99 502.5,-166.99 502.5,-142.99 572.5,-142.99 572.5,-166.99"/>
+<text text-anchor="middle" x="537.5" y="-152.59" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_wtime</text>
+</g>
+<!-- proc~tem_time_load&#45;&gt;mpi_wtime -->
+<g id="proc~~tem_balance_load~~CallsGraph_edge16" class="edge">
+<title>proc~tem_time_load&#45;&gt;mpi_wtime</title>
+<path fill="none" stroke="#000000" d="M428.52,-154.99C448.58,-154.99 472.21,-154.99 492.25,-154.99"/>
+<polygon fill="#000000" stroke="#000000" points="492.36,-158.49 502.36,-154.99 492.36,-151.49 492.36,-158.49"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_balance_load~~CalledByGraph Pages: 1 -->
+<svg id="proctem_balance_loadCalledByGraph" width="263pt" height="32pt"
+ viewBox="0.00 0.00 263.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_balance_load~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_balance_load~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 259,-28 259,4 -4,4"/>
+<!-- proc~tem_balance_load -->
+<g id="proc~~tem_balance_load~~CalledByGraph_node1" class="node">
+<title>proc~tem_balance_load</title>
+<polygon fill="none" stroke="black" points="255,-24 145,-24 145,0 255,0 255,-24"/>
+<text text-anchor="middle" x="200" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_balance_load</text>
+</g>
+<!-- proc~tem_load_general -->
+<g id="proc~~tem_balance_load~~CalledByGraph_node2" class="node">
+<title>proc~tem_load_general</title>
+<g id="a_proc~~tem_balance_load~~CalledByGraph_node2"><a xlink:href="../proc/tem_load_general.html" xlink:title="tem_load_general">
+<polygon fill="#d9534f" stroke="#d9534f" points="109,-24 0,-24 0,0 109,0 109,-24"/>
+<text text-anchor="middle" x="54.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_general</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_general&#45;&gt;proc~tem_balance_load -->
+<g id="proc~~tem_balance_load~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_load_general&#45;&gt;proc~tem_balance_load</title>
+<path fill="none" stroke="#000000" d="M109.34,-12C117.6,-12 126.19,-12 134.64,-12"/>
+<polygon fill="#000000" stroke="#000000" points="134.86,-15.5 144.86,-12 134.86,-8.5 134.86,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_balance_load</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; The load balancing type</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_balance_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; lua configuration handle</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">)</span><span class="w">                       </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">local_defaultString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simple&#39;</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="c">! Open Balance table</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                 </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;balance&quot;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! table is open !</span>
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;dynamic&#39;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">dynamic</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;kind&#39;</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">local_defaultString</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;weight&#39;</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">weight</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! read the directory for dumping restart files of load balancing</span>
+<span class="w">      </span><span class="c">! call aot_get_val( L       = conf,                                        &amp;</span>
+<span class="w">      </span><span class="c">!   &amp;               thandle = thandle,                                     &amp;</span>
+<span class="w">      </span><span class="c">!   &amp;               key     = &#39;folder&#39;,                                    &amp;</span>
+<span class="w">      </span><span class="c">!   &amp;               val     = me%restart%controller%writePrefix,           &amp;</span>
+<span class="w">      </span><span class="c">!   &amp;               ErrCode = iError )</span>
+
+<span class="w">      </span><span class="c">! Load the time controls for dynamic load balancing</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_timeControl_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">conf</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                                </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="c">! NO balance table given</span>
+
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;none&#39;</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">dynamic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">weight</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">timeControl</span><span class="p">%</span><span class="n">Interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_never</span><span class="p">()</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">timeControl</span><span class="p">%</span><span class="nb">Min</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_never</span><span class="p">()</span>
+<span class="w">      </span><span class="n">me</span><span class="p">%</span><span class="n">timeControl</span><span class="p">%</span><span class="nb">Max</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">tem_time_never</span><span class="p">()</span>
+
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="o">=</span><span class="n">thandle</span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_balance_load</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

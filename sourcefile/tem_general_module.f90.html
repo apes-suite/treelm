@@ -1,0 +1,1229 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_general_module.f90 &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_general_module.f90
+      <small>Source File</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for source files.">118 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_general_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+            <li class="breadcrumb-item active" aria-current="page">tem_general_module.f90</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+        <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+      <div class="card mb-4">
+      <a data-bs-toggle="collapse" href="#mods-0"
+         aria-expanded="false" aria-controls="mods-0">
+         <h4 class="card-header bg-primary text-white">Modules</h4>
+      </a>
+      <div id="mods-0" class="collapse">
+        <div class="list-group list-group-flush">
+            <a class="list-group-item" href="../module/tem_general_module.html">tem_general_module</a>
+        </div>
+      </div>
+    </div>
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../sourcefile/tem_general_module.f90.html#src">tem_general_module.f90</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    <div class="col-md-9" id='text'>
+      
+      <br>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">This file depends on</h3>
+          </div>
+          <div class="card-body">
+            <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: sourcefile~~tem_general_module.f90~~EfferentGraph Pages: 1 -->
+<svg id="sourcefiletem_general_modulef90EfferentGraph" width="641pt" height="573pt"
+ viewBox="0.00 0.00 641.00 573.13" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph" class="graph" transform="scale(0.58 0.58) rotate(0) translate(4 989.37)">
+<title>sourcefile~~tem_general_module.f90~~EfferentGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-989.37 1107,-989.37 1107,4 -4,4"/>
+<!-- sourcefile~tem_general_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node1" class="node">
+<title>sourcefile~tem_general_module.f90</title>
+<polygon fill="none" stroke="black" points="1103,-279.73 957,-279.73 957,-255.73 1103,-255.73 1103,-279.73"/>
+<text text-anchor="middle" x="1030" y="-265.33" font-family="Helvetica,sans-Serif" font-size="10.50">tem_general_module.f90</text>
+</g>
+<!-- sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node2" class="node">
+<title>sourcefile~env_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node2"><a xlink:href="../sourcefile/env_module.f90.html" xlink:title="env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="98,-624.73 0,-624.73 0,-600.73 98,-600.73 98,-624.73"/>
+<text text-anchor="middle" x="49" y="-610.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge1" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-968.73C333.95,-969.91 303.48,-1005.19 219.5,-968.73"/>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node3" class="node">
+<title>sourcefile~tem_abortcriteria_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node3"><a xlink:href="../sourcefile/tem_abortcriteria_module.f90.html" xlink:title="tem_abortCriteria_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="723,-94.73 550,-94.73 550,-70.73 723,-70.73 723,-94.73"/>
+<text text-anchor="middle" x="636.5" y="-80.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge2" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-40.73C832.15,-38.81 755.9,-55.52 699.22,-68.43"/>
+<polygon fill="#000000" stroke="#000000" points="698.2,-65.07 689.23,-70.71 699.76,-71.9 698.2,-65.07"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node4" class="node">
+<title>sourcefile~tem_aux_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node4"><a xlink:href="../sourcefile/tem_aux_module.f90.html" xlink:title="tem_aux_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="488.5,-742.73 364.5,-742.73 364.5,-718.73 488.5,-718.73 488.5,-742.73"/>
+<text text-anchor="middle" x="426.5" y="-728.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_aux_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge3" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-730.73C590.05,-728.47 538.93,-728.43 498.75,-728.98"/>
+<polygon fill="#000000" stroke="#000000" points="498.46,-725.49 488.52,-729.14 498.57,-732.48 498.46,-725.49"/>
+</g>
+<!-- sourcefile~tem_balance_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node5" class="node">
+<title>sourcefile~tem_balance_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node5"><a xlink:href="../sourcefile/tem_balance_module.f90.html" xlink:title="tem_balance_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="710.5,-664.73 562.5,-664.73 562.5,-640.73 710.5,-640.73 710.5,-664.73"/>
+<text text-anchor="middle" x="636.5" y="-650.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_balance_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_balance_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge4" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_balance_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C809.74,-750.85 713.57,-698.56 665.45,-669.96"/>
+<polygon fill="#000000" stroke="#000000" points="667.15,-666.89 656.77,-664.75 663.54,-672.89 667.15,-666.89"/>
+</g>
+<!-- sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node6" class="node">
+<title>sourcefile~tem_comm_env_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node6"><a xlink:href="../sourcefile/tem_comm_env_module.f90.html" xlink:title="tem_comm_env_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="300,-95.73 137,-95.73 137,-71.73 300,-71.73 300,-95.73"/>
+<text text-anchor="middle" x="218.5" y="-81.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge5" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1024.68,-255.63C1008.65,-212.99 947.9,-70.79 841,-40.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-40.73C625.07,19.41 555.82,6.96 339,-41.73 311.03,-48.02 280.55,-58.79 257.38,-67.86"/>
+<polygon fill="#000000" stroke="#000000" points="255.92,-64.67 247.92,-71.62 258.51,-71.18 255.92,-64.67"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node7" class="node">
+<title>sourcefile~tem_comm_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node7"><a xlink:href="../sourcefile/tem_comm_module.f90.html" xlink:title="tem_comm_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="706,-824.73 567,-824.73 567,-800.73 706,-800.73 706,-824.73"/>
+<text text-anchor="middle" x="636.5" y="-810.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_comm_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge6" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_comm_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C791,-763.73 777.46,-771.08 723,-791.73 717.19,-793.94 711.06,-795.97 704.87,-797.84"/>
+<polygon fill="#000000" stroke="#000000" points="703.77,-794.51 695.12,-800.62 705.7,-801.24 703.77,-794.51"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node8" class="node">
+<title>sourcefile~tem_logging_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node8"><a xlink:href="../sourcefile/tem_logging_module.f90.html" xlink:title="tem_logging_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="291,-820.73 146,-820.73 146,-796.73 291,-796.73 291,-820.73"/>
+<text text-anchor="middle" x="218.5" y="-806.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge7" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C782.39,-770.09 779.62,-794.4 723,-833.73 636.62,-893.74 611.7,-905.78 514,-944.73 476.94,-959.51 467.3,-965.99 427.5,-968.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-968.73C385.61,-969.24 372.8,-965.94 339,-944.73 291.19,-914.74 251.66,-859.91 232.31,-829.84"/>
+<polygon fill="#000000" stroke="#000000" points="235.04,-827.61 226.75,-821.02 229.12,-831.34 235.04,-827.61"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node9" class="node">
+<title>sourcefile~tem_restart_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node9"><a xlink:href="../sourcefile/tem_restart_module.f90.html" xlink:title="tem_restart_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="706,-342.73 567,-342.73 567,-318.73 706,-318.73 706,-342.73"/>
+<text text-anchor="middle" x="636.5" y="-328.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_restart_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge8" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_restart_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-40.73C775.57,-22.9 676.62,-239.43 646.5,-309.36"/>
+<polygon fill="#000000" stroke="#000000" points="643.27,-308 642.57,-318.57 649.71,-310.75 643.27,-308"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node10" class="node">
+<title>sourcefile~tem_simcontrol_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node10"><a xlink:href="../sourcefile/tem_simcontrol_module.f90.html" xlink:title="tem_simControl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="921,-279.73 759,-279.73 759,-255.73 921,-255.73 921,-279.73"/>
+<text text-anchor="middle" x="840" y="-265.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_simControl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge9" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_simcontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M956.85,-267.73C948.44,-267.73 939.78,-267.73 931.17,-267.73"/>
+<polygon fill="#000000" stroke="#000000" points="931.1,-264.23 921.1,-267.73 931.1,-271.23 931.1,-264.23"/>
+</g>
+<!-- sourcefile~tem_solvehead_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node11" class="node">
+<title>sourcefile~tem_solvehead_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node11"><a xlink:href="../sourcefile/tem_solvehead_module.f90.html" xlink:title="tem_solveHead_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="507,-700.73 346,-700.73 346,-676.73 507,-676.73 507,-700.73"/>
+<text text-anchor="middle" x="426.5" y="-686.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_solveHead_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_solvehead_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge10" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_solvehead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C765.2,-781.46 726.94,-735.2 637.5,-730.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-730.73C607.39,-729.33 538.72,-714.64 487.94,-703.02"/>
+<polygon fill="#000000" stroke="#000000" points="488.56,-699.57 478.03,-700.74 487,-706.4 488.56,-699.57"/>
+</g>
+<!-- sourcefile~tem_status_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node12" class="node">
+<title>sourcefile~tem_status_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node12"><a xlink:href="../sourcefile/tem_status_module.f90.html" xlink:title="tem_status_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="704.5,-52.73 568.5,-52.73 568.5,-28.73 704.5,-28.73 704.5,-52.73"/>
+<text text-anchor="middle" x="636.5" y="-38.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_status_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_status_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge11" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_status_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-40.73C798.97,-29.48 752.66,-28.68 714.54,-31.05"/>
+<polygon fill="#000000" stroke="#000000" points="714.26,-27.56 704.53,-31.75 714.75,-34.54 714.26,-27.56"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node13" class="node">
+<title>sourcefile~tem_timer_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node13"><a xlink:href="../sourcefile/tem_timer_module.f90.html" xlink:title="tem_timer_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="703,-782.73 570,-782.73 570,-758.73 703,-758.73 703,-782.73"/>
+<text text-anchor="middle" x="636.5" y="-768.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timer_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_timer_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge12" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_timer_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C802.42,-755.88 753.78,-766.03 713.46,-769.82"/>
+<polygon fill="#000000" stroke="#000000" points="713.08,-766.34 703.4,-770.65 713.65,-773.31 713.08,-766.34"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node14" class="node">
+<title>sourcefile~tem_tools_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node14"><a xlink:href="../sourcefile/tem_tools_module.f90.html" xlink:title="tem_tools_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="283.5,-584.73 153.5,-584.73 153.5,-560.73 283.5,-560.73 283.5,-584.73"/>
+<text text-anchor="middle" x="218.5" y="-570.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tools_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge13" class="edge">
+<title>sourcefile~tem_general_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1028.56,-279.92C1025.59,-341.42 1003.3,-619.19 841,-730.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839,-730.73C783.14,-769.13 784.43,-660.37 723,-631.73 582.06,-566.03 395.83,-562.92 293.96,-567.3"/>
+<polygon fill="#000000" stroke="#000000" points="293.6,-563.81 283.77,-567.77 293.92,-570.8 293.6,-563.81"/>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge14" class="edge">
+<title>sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M575.97,-70.67C457.61,-48.2 198.56,-7.01 134,-62.73 52.67,-132.93 49.26,-496.44 49.76,-590.5"/>
+<polygon fill="#000000" stroke="#000000" points="46.26,-590.62 49.84,-600.59 53.26,-590.57 46.26,-590.62"/>
+</g>
+<!-- sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node16" class="node">
+<title>sourcefile~tem_convergence_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node16"><a xlink:href="../sourcefile/tem_convergence_module.f90.html" xlink:title="tem_convergence_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="514,-94.73 339,-94.73 339,-70.73 514,-70.73 514,-94.73"/>
+<text text-anchor="middle" x="426.5" y="-80.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge15" class="edge">
+<title>sourcefile~tem_abortcriteria_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M550,-82.73C541.46,-82.73 532.75,-82.73 524.11,-82.73"/>
+<polygon fill="#000000" stroke="#000000" points="524.02,-79.23 514.02,-82.73 524.02,-86.23 524.02,-79.23"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge16" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.22,-738.73C302.68,-743.91 206.79,-744.05 134,-707.73 101.42,-691.48 75.88,-656.58 61.88,-633.91"/>
+<polygon fill="#000000" stroke="#000000" points="64.72,-631.84 56.6,-625.03 58.7,-635.42 64.72,-631.84"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge18" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.46,-725.26C354.91,-721.95 345.92,-717.01 339,-709.73 328.19,-698.38 242.8,-216.17 223.41,-105.99"/>
+<polygon fill="#000000" stroke="#000000" points="226.83,-105.23 221.65,-95.99 219.94,-106.45 226.83,-105.23"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge19" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M372.39,-742.87C361.01,-746.51 349.31,-751.08 339,-756.73 320.48,-766.88 321.74,-778.01 303,-787.73 299.19,-789.71 295.19,-791.51 291.09,-793.14"/>
+<polygon fill="#000000" stroke="#000000" points="289.57,-789.96 281.36,-796.66 291.96,-796.55 289.57,-789.96"/>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge21" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.31,-724.21C355,-720.99 346.14,-716.35 339,-709.73 300.97,-674.47 339.89,-635.19 303,-598.73 299.47,-595.25 295.49,-592.23 291.22,-589.61"/>
+<polygon fill="#000000" stroke="#000000" points="292.58,-586.38 282.11,-584.79 289.31,-592.57 292.58,-586.38"/>
+</g>
+<!-- sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node15" class="node">
+<title>sourcefile~soi_revision_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node15"><a xlink:href="../sourcefile/soi_revision_module.f90.html" xlink:title="soi_revision_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="288.5,-698.73 148.5,-698.73 148.5,-674.73 288.5,-674.73 288.5,-698.73"/>
+<text text-anchor="middle" x="218.5" y="-684.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">soi_revision_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge17" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M369.21,-718.71C343.44,-713.21 312.71,-706.64 285.82,-700.9"/>
+<polygon fill="#000000" stroke="#000000" points="286.23,-697.41 275.72,-698.74 284.77,-704.25 286.23,-697.41"/>
+</g>
+<!-- sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node21" class="node">
+<title>sourcefile~tem_lua_requires_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node21"><a xlink:href="../sourcefile/tem_lua_requires_module.f90.html" xlink:title="tem_lua_requires_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="303,-778.73 134,-778.73 134,-754.73 303,-754.73 303,-778.73"/>
+<text text-anchor="middle" x="218.5" y="-764.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_lua_requires_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge20" class="edge">
+<title>sourcefile~tem_aux_module.f90&#45;&gt;sourcefile~tem_lua_requires_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M364.25,-741.44C343.58,-745.05 320.2,-749.14 298.37,-752.95"/>
+<polygon fill="#000000" stroke="#000000" points="297.7,-749.51 288.45,-754.68 298.91,-756.41 297.7,-749.51"/>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge22" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-610.73C334.86,-597.79 310.71,-620.78 219.5,-612.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-612.73C181.3,-609.54 140.52,-609.46 108.27,-610.22"/>
+<polygon fill="#000000" stroke="#000000" points="108.01,-606.73 98.11,-610.5 108.2,-613.73 108.01,-606.73"/>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge23" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M583.45,-664.79C572.06,-668.45 560.33,-673.05 550,-678.73 531.5,-688.91 532.78,-700.09 514,-709.73 509.1,-712.25 503.89,-714.47 498.55,-716.43"/>
+<polygon fill="#000000" stroke="#000000" points="497.21,-713.19 488.84,-719.69 499.44,-719.83 497.21,-713.19"/>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge24" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.49,-664.88C565,-668.39 556.86,-672.91 550,-678.73 522.42,-702.15 542.48,-729.43 514,-751.73 483.01,-776 462.31,-752.37 427.5,-770.73"/>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge27" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M584.5,-640.73C542.56,-631.28 481.48,-618.44 427.5,-610.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-610.73C379.37,-604.15 327.8,-594.63 287.81,-586.77"/>
+<polygon fill="#000000" stroke="#000000" points="288.39,-583.32 277.9,-584.81 287.03,-590.19 288.39,-583.32"/>
+</g>
+<!-- sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node23" class="node">
+<title>sourcefile~tem_time_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node23"><a xlink:href="../sourcefile/tem_time_module.f90.html" xlink:title="tem_time_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="491,-502.73 362,-502.73 362,-478.73 491,-478.73 491,-502.73"/>
+<text text-anchor="middle" x="426.5" y="-488.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge25" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M628.76,-640.7C612.71,-613.22 569.41,-545.62 514,-511.73 509.85,-509.2 505.42,-506.97 500.83,-505.01"/>
+<polygon fill="#000000" stroke="#000000" points="501.82,-501.64 491.23,-501.35 499.33,-508.18 501.82,-501.64"/>
+</g>
+<!-- sourcefile~tem_timecontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node24" class="node">
+<title>sourcefile~tem_timecontrol_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node24"><a xlink:href="../sourcefile/tem_timecontrol_module.f90.html" xlink:title="tem_timeControl_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="510,-544.73 343,-544.73 343,-520.73 510,-520.73 510,-544.73"/>
+<text text-anchor="middle" x="426.5" y="-530.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge26" class="edge">
+<title>sourcefile~tem_balance_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M614.41,-640.57C577.17,-619.08 499.69,-574.39 457.11,-549.82"/>
+<polygon fill="#000000" stroke="#000000" points="458.75,-546.72 448.34,-544.75 455.25,-552.78 458.75,-546.72"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge28" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-930.73C379.52,-937.98 262.2,-987.27 219.5,-968.73"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge29" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M570.6,-800.72C563.43,-798.25 556.42,-795.29 550,-791.73 530.48,-780.92 533.24,-768.05 514,-756.73 507.08,-752.67 499.47,-749.18 491.72,-746.22"/>
+<polygon fill="#000000" stroke="#000000" points="492.83,-742.9 482.24,-742.85 490.49,-749.5 492.83,-742.9"/>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge32" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.49,-824.88C565,-828.39 556.86,-832.91 550,-838.73 522.42,-862.15 542.48,-889.43 514,-911.73 483.01,-936 466.38,-924.61 427.5,-930.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-930.73C345.72,-943.31 268.37,-866.51 235.73,-828.77"/>
+<polygon fill="#000000" stroke="#000000" points="238.23,-826.31 229.1,-820.93 232.88,-830.83 238.23,-826.31"/>
+</g>
+<!-- sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node18" class="node">
+<title>sourcefile~tem_dyn_array.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node18"><a xlink:href="../sourcefile/tem_dyn_array.f90.html" xlink:title="tem_dyn_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="482,-860.73 371,-860.73 371,-836.73 482,-836.73 482,-860.73"/>
+<text text-anchor="middle" x="426.5" y="-846.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dyn_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge30" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M566.82,-824.62C542.8,-828.78 515.92,-833.43 492.23,-837.53"/>
+<polygon fill="#000000" stroke="#000000" points="491.55,-834.1 482.29,-839.25 492.74,-840.99 491.55,-834.1"/>
+</g>
+<!-- sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node20" class="node">
+<title>sourcefile~tem_grow_array.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node20"><a xlink:href="../sourcefile/tem_grow_array.f90.html" xlink:title="tem_grow_array.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="485,-902.73 368,-902.73 368,-878.73 485,-878.73 485,-902.73"/>
+<text text-anchor="middle" x="426.5" y="-888.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_grow_array.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge31" class="edge">
+<title>sourcefile~tem_comm_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M583.45,-824.79C572.06,-828.45 560.33,-833.05 550,-838.73 531.5,-848.91 532.78,-860.09 514,-869.73 508,-872.82 501.52,-875.46 494.92,-877.72"/>
+<polygon fill="#000000" stroke="#000000" points="493.68,-874.44 485.18,-880.77 495.77,-881.12 493.68,-874.44"/>
+</g>
+<!-- sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge33" class="edge">
+<title>sourcefile~tem_logging_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M148.13,-796.6C143.07,-794.16 138.28,-791.23 134,-787.73 85.06,-747.77 62.75,-672.47 54.31,-635.04"/>
+<polygon fill="#000000" stroke="#000000" points="57.71,-634.18 52.21,-625.13 50.86,-635.64 57.71,-634.18"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge34" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M616.02,-342.88C592.61,-356.99 551.76,-380.07 514,-393.73 476.99,-407.13 466.68,-408.95 427.5,-412.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-412.73C386.74,-416.48 375.53,-413.23 339,-426.73 238.9,-463.73 222.8,-492.56 134,-551.73 113.31,-565.52 90.53,-582.16 73.91,-594.58"/>
+<polygon fill="#000000" stroke="#000000" points="71.73,-591.85 65.83,-600.65 75.93,-597.44 71.73,-591.85"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge35" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M611.56,-342.81C591.52,-354.29 564,-373.53 550,-398.73 482.43,-520.37 606.16,-605.49 514,-709.73 509.46,-714.87 503.9,-718.85 497.81,-721.93"/>
+<polygon fill="#000000" stroke="#000000" points="496.41,-718.72 488.55,-725.83 499.13,-725.18 496.41,-718.72"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge36" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M631.48,-318.67C619.56,-284.8 580.92,-188.29 514,-141.73 481.69,-119.26 464.83,-135.21 427.5,-122.73"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge39" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M611.48,-342.76C591.38,-354.21 563.83,-373.44 550,-398.73 512.18,-467.92 566.47,-692.88 514,-751.73 487.81,-781.11 462.31,-752.37 427.5,-770.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-770.73C404.03,-782.06 348.93,-791.91 301.11,-798.74"/>
+<polygon fill="#000000" stroke="#000000" points="300.45,-795.3 291.03,-800.15 301.42,-802.23 300.45,-795.3"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_solvehead_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge40" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_solvehead_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M611.83,-342.96C591.95,-354.53 564.53,-373.84 550,-398.73 498.72,-486.57 566.81,-537.81 514,-624.73 501.75,-644.9 480.52,-660.75 462.17,-671.63"/>
+<polygon fill="#000000" stroke="#000000" points="460.42,-668.6 453.44,-676.57 463.86,-674.69 460.42,-668.6"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge44" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M620.34,-342.78C588.09,-368.4 515.5,-426 514,-426.73 442.05,-461.92 410.18,-433.02 339,-469.73 297.63,-491.07 258.52,-529.48 236.9,-552.88"/>
+<polygon fill="#000000" stroke="#000000" points="234.13,-550.72 230.01,-560.48 239.32,-555.43 234.13,-550.72"/>
+</g>
+<!-- sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node17" class="node">
+<title>sourcefile~tem_debug_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node17"><a xlink:href="../sourcefile/tem_debug_module.f90.html" xlink:title="tem_debug_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="496,-342.73 357,-342.73 357,-318.73 496,-318.73 496,-342.73"/>
+<text text-anchor="middle" x="426.5" y="-328.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_debug_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_debug_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge37" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_debug_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M566.82,-330.73C547.47,-330.73 526.27,-330.73 506.38,-330.73"/>
+<polygon fill="#000000" stroke="#000000" points="506.11,-327.23 496.11,-330.73 506.11,-334.23 506.11,-327.23"/>
+</g>
+<!-- sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node19" class="node">
+<title>sourcefile~tem_global_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node19"><a xlink:href="../sourcefile/tem_global_module.f90.html" xlink:title="tem_global_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="495.5,-300.73 357.5,-300.73 357.5,-276.73 495.5,-276.73 495.5,-300.73"/>
+<text text-anchor="middle" x="426.5" y="-286.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_global_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_global_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge38" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_global_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M575.9,-318.7C551.31,-313.73 522.65,-307.95 497.1,-302.79"/>
+<polygon fill="#000000" stroke="#000000" points="497.61,-299.32 487.11,-300.77 496.22,-306.18 497.61,-299.32"/>
+</g>
+<!-- sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node22" class="node">
+<title>sourcefile~tem_subtree_type_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node22"><a xlink:href="../sourcefile/tem_subtree_type_module.f90.html" xlink:title="tem_subTree_type_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="513.5,-258.73 339.5,-258.73 339.5,-234.73 513.5,-234.73 513.5,-258.73"/>
+<text text-anchor="middle" x="426.5" y="-244.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_subTree_type_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge41" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_subtree_type_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M615.97,-318.73C592.51,-304.76 551.61,-281.81 514,-267.73 508.11,-265.53 501.91,-263.5 495.64,-261.63"/>
+<polygon fill="#000000" stroke="#000000" points="496.35,-258.2 485.78,-258.85 494.45,-264.93 496.35,-258.2"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge42" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M615.98,-342.92C597.33,-355.27 569.28,-375.8 550,-398.73 528.5,-424.31 539.95,-443.68 514,-464.73 509.4,-468.47 504.27,-471.67 498.87,-474.41"/>
+<polygon fill="#000000" stroke="#000000" points="497.25,-471.3 489.57,-478.6 500.13,-477.68 497.25,-471.3"/>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge43" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M613.87,-342.83C594.51,-354.71 566.69,-374.53 550,-398.73 520.08,-442.13 552.56,-475.8 514,-511.73 512.72,-512.93 511.38,-514.06 509.99,-515.13"/>
+<polygon fill="#000000" stroke="#000000" points="508.04,-512.22 501.57,-520.61 511.86,-518.09 508.04,-512.22"/>
+</g>
+<!-- sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node25" class="node">
+<title>sourcefile~tem_varmap_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node25"><a xlink:href="../sourcefile/tem_varmap_module.f90.html" xlink:title="tem_varMap_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="499,-384.73 354,-384.73 354,-360.73 499,-360.73 499,-384.73"/>
+<text text-anchor="middle" x="426.5" y="-370.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varMap_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge45" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varmap_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M575.9,-342.77C551.31,-347.73 522.65,-353.52 497.1,-358.68"/>
+<polygon fill="#000000" stroke="#000000" points="496.22,-355.29 487.11,-360.7 497.61,-362.15 496.22,-355.29"/>
+</g>
+<!-- sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node26" class="node">
+<title>sourcefile~tem_varsys_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node26"><a xlink:href="../sourcefile/tem_varsys_module.f90.html" xlink:title="tem_varSys_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="496.5,-216.73 356.5,-216.73 356.5,-192.73 496.5,-192.73 496.5,-216.73"/>
+<text text-anchor="middle" x="426.5" y="-202.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge46" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~tem_varsys_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M625.14,-318.58C605.68,-296.56 561.34,-250.11 514,-225.73 510.03,-223.69 505.85,-221.84 501.56,-220.16"/>
+<polygon fill="#000000" stroke="#000000" points="502.64,-216.83 492.04,-216.77 500.29,-223.43 502.64,-216.83"/>
+</g>
+<!-- sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_node27" class="node">
+<title>sourcefile~treelmesh_module.f90</title>
+<g id="a_sourcefile~~tem_general_module.f90~~EfferentGraph_node27"><a xlink:href="../sourcefile/treelmesh_module.f90.html" xlink:title="treelmesh_module.f90">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="492.5,-174.73 360.5,-174.73 360.5,-150.73 492.5,-150.73 492.5,-174.73"/>
+<text text-anchor="middle" x="426.5" y="-160.33" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">treelmesh_module.f90</text>
+</a>
+</g>
+</g>
+<!-- sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~treelmesh_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge47" class="edge">
+<title>sourcefile~tem_restart_module.f90&#45;&gt;sourcefile~treelmesh_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M629.13,-318.61C613.57,-290.23 570.7,-219.21 514,-183.73 510.21,-181.36 506.18,-179.26 502,-177.4"/>
+<polygon fill="#000000" stroke="#000000" points="503.25,-174.13 492.67,-173.68 500.66,-180.63 503.25,-174.13"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge48" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M825.37,-280C794.25,-307.43 714.67,-374.33 637.5,-412.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-412.73C552.74,-453.92 516.13,-386.45 427.5,-412.73"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge49" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_abortcriteria_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M833.62,-255.72C819.74,-226.11 779.82,-149.11 723,-108.73 717.48,-104.81 711.35,-101.47 704.99,-98.62"/>
+<polygon fill="#000000" stroke="#000000" points="706.12,-95.3 695.54,-94.8 703.49,-101.79 706.12,-95.3"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge50" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-122.73C548.88,-90.43 515.18,-152.04 427.5,-122.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-122.73C413.22,-118.63 350.92,-107.03 298.01,-97.55"/>
+<polygon fill="#000000" stroke="#000000" points="298.38,-94.06 287.92,-95.74 297.14,-100.95 298.38,-94.06"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge52" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M839.55,-279.83C841.34,-334.37 841.11,-559.65 723,-673.73 666.01,-728.78 619.24,-678.23 550,-716.73 530.5,-727.58 533.65,-741.16 514,-751.73 479.34,-770.39 462.31,-752.37 427.5,-770.73"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_status_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge53" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_status_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M835.9,-255.73C826.05,-220.09 791.98,-114.1 723,-61.73 720.18,-59.59 717.16,-57.66 714.01,-55.93"/>
+<polygon fill="#000000" stroke="#000000" points="715.37,-52.7 704.84,-51.54 712.35,-59.01 715.37,-52.7"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_timer_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge56" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_timer_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M837.64,-280.17C829.96,-348.08 790.02,-673.81 723,-744.73 719.8,-748.12 716.17,-751.08 712.25,-753.65"/>
+<polygon fill="#000000" stroke="#000000" points="710.29,-750.73 703.29,-758.69 713.73,-756.84 710.29,-750.73"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge51" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_convergence_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M827.21,-255.59C798.15,-226.57 719.47,-153.31 637.5,-122.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-122.73C623.17,-118.14 559.64,-106.18 506,-96.53"/>
+<polygon fill="#000000" stroke="#000000" points="506.57,-93.08 496.11,-94.76 505.34,-99.97 506.57,-93.08"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_time_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge54" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_time_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-412.73C582.91,-438.91 569.21,-444.69 514,-464.73 503.28,-468.62 491.68,-472.4 480.55,-475.82"/>
+<polygon fill="#000000" stroke="#000000" points="479.49,-472.48 470.93,-478.72 481.52,-479.18 479.49,-472.48"/>
+</g>
+<!-- sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge55" class="edge">
+<title>sourcefile~tem_simcontrol_module.f90&#45;&gt;sourcefile~tem_timecontrol_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M635.5,-412.73C573.14,-443.77 576.39,-480.75 514,-511.73 509.92,-513.76 505.63,-515.6 501.24,-517.27"/>
+<polygon fill="#000000" stroke="#000000" points="499.79,-514.06 491.49,-520.65 502.08,-520.68 499.79,-514.06"/>
+</g>
+<!-- sourcefile~tem_solvehead_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge57" class="edge">
+<title>sourcefile~tem_solvehead_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M382.09,-676.65C368.22,-672.53 352.88,-667.71 339,-662.73 284.8,-643.31 276.85,-617.8 219.5,-612.73"/>
+</g>
+<!-- sourcefile~tem_solvehead_module.f90&#45;&gt;sourcefile~soi_revision_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge58" class="edge">
+<title>sourcefile~tem_solvehead_module.f90&#45;&gt;sourcefile~soi_revision_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M345.86,-687.96C330.34,-687.81 314.09,-687.65 298.6,-687.5"/>
+<polygon fill="#000000" stroke="#000000" points="298.58,-684 288.54,-687.4 298.51,-691 298.58,-684"/>
+</g>
+<!-- sourcefile~tem_status_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge59" class="edge">
+<title>sourcefile~tem_status_module.f90&#45;&gt;sourcefile~tem_comm_env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M568.46,-43.35C508.23,-46.21 417.45,-51.77 339,-61.73 322.36,-63.85 304.53,-66.77 287.86,-69.8"/>
+<polygon fill="#000000" stroke="#000000" points="286.84,-66.42 277.65,-71.69 288.12,-73.31 286.84,-66.42"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge60" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-808.73C387.6,-819.35 372.72,-807.43 339,-827.73 268.63,-870.11 294.85,-1001.45 219.5,-968.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.5,-968.73C84.26,-910.89 56.8,-703.48 51.32,-634.92"/>
+<polygon fill="#000000" stroke="#000000" points="54.8,-634.53 50.59,-624.8 47.82,-635.03 54.8,-634.53"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_aux_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge61" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_aux_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.09,-758.73C549.64,-754.22 522.81,-749.06 498.62,-744.41"/>
+<polygon fill="#000000" stroke="#000000" points="499.27,-740.97 488.79,-742.52 497.95,-747.85 499.27,-740.97"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_logging_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge64" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_logging_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M569.68,-779.57C528.41,-785.9 474.34,-795.62 427.5,-808.73"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M425.5,-808.73C385.67,-819.89 339.78,-820.97 301.43,-818.79"/>
+<polygon fill="#000000" stroke="#000000" points="301.55,-815.29 291.34,-818.14 301.1,-822.28 301.55,-815.29"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_tools_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge65" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_tools_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.38,-758.71C564.91,-755.19 556.8,-750.63 550,-744.73 521.46,-719.99 543.2,-691.7 514,-667.73 452.09,-616.93 411.69,-658.36 339,-624.73 321.09,-616.45 320.65,-607.56 303,-598.73 294.92,-594.7 286.09,-591.13 277.29,-588.03"/>
+<polygon fill="#000000" stroke="#000000" points="278.38,-584.71 267.79,-584.86 276.17,-591.35 278.38,-584.71"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge62" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_dyn_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.71,-782.84C564.19,-785.3 556.79,-788.23 550,-791.73 531.23,-801.41 532.52,-812.58 514,-822.73 506.59,-826.8 498.46,-830.3 490.25,-833.3"/>
+<polygon fill="#000000" stroke="#000000" points="488.94,-830.05 480.61,-836.6 491.21,-836.68 488.94,-830.05"/>
+</g>
+<!-- sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_grow_array.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge63" class="edge">
+<title>sourcefile~tem_timer_module.f90&#45;&gt;sourcefile~tem_grow_array.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M569.96,-780.2C562.75,-783.11 555.9,-786.87 550,-791.73 520.54,-816.03 543.49,-845.48 514,-869.73 508.34,-874.39 501.8,-878.04 494.92,-880.9"/>
+<polygon fill="#000000" stroke="#000000" points="493.58,-877.66 485.35,-884.33 495.95,-884.25 493.58,-877.66"/>
+</g>
+<!-- sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90 -->
+<g id="sourcefile~~tem_general_module.f90~~EfferentGraph_edge66" class="edge">
+<title>sourcefile~tem_tools_module.f90&#45;&gt;sourcefile~env_module.f90</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M167.24,-584.74C148.62,-589.18 127.34,-594.26 108.08,-598.87"/>
+<polygon fill="#000000" stroke="#000000" points="107.12,-595.5 98.21,-601.22 108.75,-602.3 107.12,-595.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var pansourcefiletem_general_modulef90EfferentGraph = svgPanZoom('#sourcefiletem_general_modulef90EfferentGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#EfferentGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="EfferentGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="202pt" height="32pt"
+ viewBox="0.00 0.00 201.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 197.5,-28 197.5,4 -4,4"/>
+<!-- Source File -->
+<g id="node1" class="node">
+<title>Source File</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Source File</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="193.5,-24 88.5,-24 88.5,0 193.5,0 193.5,-24"/>
+<text text-anchor="middle" x="141" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a file to a file which it depends on. A file
+is dependent upon another if the latter must be compiled before the former
+can be.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+<br>
+      <section>
+        <h2><span class="anchor" id="src"></span>Source Code</h2>
+        <div class="hl codehilite"><pre><span></span><a id="ln-1" name="ln-1" href="#ln-1"></a><span class="c">! Copyright (c) 2013-2017, 2019, 2021 Harald Klimach &lt;harald.klimach@uni-siegen.de&gt;</span>
+<a id="ln-2" name="ln-2" href="#ln-2"></a><span class="c">! Copyright (c) 2013-2014 Simon Zimny &lt;s.zimny@grs-sim.de&gt;</span>
+<a id="ln-3" name="ln-3" href="#ln-3"></a><span class="c">! Copyright (c) 2013, 2016 Verena Krupp &lt;verena.krupp@uni-siegen.de&gt;</span>
+<a id="ln-4" name="ln-4" href="#ln-4"></a><span class="c">! Copyright (c) 2013-2015, 2018 Kannan Masilamani &lt;kannan.masilamani@uni-siegen.de&gt;</span>
+<a id="ln-5" name="ln-5" href="#ln-5"></a><span class="c">! Copyright (c) 2014 Kartik Jain &lt;kartik.jain@uni-siegen.de&gt;</span>
+<a id="ln-6" name="ln-6" href="#ln-6"></a><span class="c">! Copyright (c) 2014-2016 Jiaxing Qi &lt;jiaxing.qi@uni-siegen.de&gt;</span>
+<a id="ln-7" name="ln-7" href="#ln-7"></a><span class="c">! Copyright (c) 2016 Tobias Schneider &lt;tobias1.schneider@student.uni-siegen.de&gt;</span>
+<a id="ln-8" name="ln-8" href="#ln-8"></a><span class="c">! Copyright (c) 2016, 2020 Peter Vitt &lt;peter.vitt2@uni-siegen.de&gt;</span>
+<a id="ln-9" name="ln-9" href="#ln-9"></a><span class="c">!</span>
+<a id="ln-10" name="ln-10" href="#ln-10"></a><span class="c">! Redistribution and use in source and binary forms, with or without</span>
+<a id="ln-11" name="ln-11" href="#ln-11"></a><span class="c">! modification, are permitted provided that the following conditions are met:</span>
+<a id="ln-12" name="ln-12" href="#ln-12"></a><span class="c">!</span>
+<a id="ln-13" name="ln-13" href="#ln-13"></a><span class="c">! 1. Redistributions of source code must retain the above copyright notice, this</span>
+<a id="ln-14" name="ln-14" href="#ln-14"></a><span class="c">! list of conditions and the following disclaimer.</span>
+<a id="ln-15" name="ln-15" href="#ln-15"></a><span class="c">!</span>
+<a id="ln-16" name="ln-16" href="#ln-16"></a><span class="c">! 2. Redistributions in binary form must reproduce the above copyright notice,</span>
+<a id="ln-17" name="ln-17" href="#ln-17"></a><span class="c">! this list of conditions and the following disclaimer in the documentation</span>
+<a id="ln-18" name="ln-18" href="#ln-18"></a><span class="c">! and/or other materials provided with the distribution.</span>
+<a id="ln-19" name="ln-19" href="#ln-19"></a><span class="c">!</span>
+<a id="ln-20" name="ln-20" href="#ln-20"></a><span class="c">! THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;</span>
+<a id="ln-21" name="ln-21" href="#ln-21"></a><span class="c">! AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE</span>
+<a id="ln-22" name="ln-22" href="#ln-22"></a><span class="c">! IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+<a id="ln-23" name="ln-23" href="#ln-23"></a><span class="c">! DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE</span>
+<a id="ln-24" name="ln-24" href="#ln-24"></a><span class="c">! FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL</span>
+<a id="ln-25" name="ln-25" href="#ln-25"></a><span class="c">! DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR</span>
+<a id="ln-26" name="ln-26" href="#ln-26"></a><span class="c">! SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER</span>
+<a id="ln-27" name="ln-27" href="#ln-27"></a><span class="c">! CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+<a id="ln-28" name="ln-28" href="#ln-28"></a><span class="c">! OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE</span>
+<a id="ln-29" name="ln-29" href="#ln-29"></a><span class="c">! OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span>
+<a id="ln-30" name="ln-30" href="#ln-30"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-31" name="ln-31" href="#ln-31"></a><span class="c">!&gt; author: Harald Klimach</span>
+<a id="ln-32" name="ln-32" href="#ln-32"></a><span class="c">!! Initialize general infrastructure settings of treelm.</span>
+<a id="ln-33" name="ln-33" href="#ln-33"></a><span class="c">!!</span>
+<a id="ln-34" name="ln-34" href="#ln-34"></a><span class="c">!! This module provides a central point to initialize the</span>
+<a id="ln-35" name="ln-35" href="#ln-35"></a><span class="c">!! various general settings in treelm.</span>
+<a id="ln-36" name="ln-36" href="#ln-36"></a><span class="k">module </span><span class="n">tem_general_module</span>
+<a id="ln-37" name="ln-37" href="#ln-37"></a>
+<a id="ln-38" name="ln-38" href="#ln-38"></a><span class="w">  </span><span class="c">! include aotus modules</span>
+<a id="ln-39" name="ln-39" href="#ln-39"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_State</span><span class="p">,</span><span class="w"> </span><span class="n">aot_get_val</span>
+<a id="ln-40" name="ln-40" href="#ln-40"></a>
+<a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">  </span><span class="c">! include treelm modules</span>
+<a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">rk</span><span class="p">,</span><span class="w"> </span><span class="n">tem_load_env_params</span><span class="p">,</span><span class="w"> </span><span class="n">io_buffer_size</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">printRuntimeInfo</span><span class="p">,</span><span class="w"> </span><span class="n">init_env</span><span class="p">,</span><span class="w"> </span><span class="n">fin_env</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-44" name="ln-44" href="#ln-44"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">print_self_status</span><span class="p">,</span><span class="w"> </span><span class="n">null_device</span><span class="p">,</span><span class="w"> </span><span class="n">pathLen</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">stdOutUnit</span><span class="p">,</span><span class="w"> </span><span class="n">labelLen</span>
+<a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_aux_module</span><span class="p">,</span><span class="w">         </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_abort</span>
+<a id="ln-47" name="ln-47" href="#ln-47"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_abortCriteria_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_solverAborts_type</span>
+<a id="ln-48" name="ln-48" href="#ln-48"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_comm_module</span><span class="p">,</span><span class="w">        </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_commpattern_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_load_commpattern</span>
+<a id="ln-49" name="ln-49" href="#ln-49"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_logging_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">logUnit</span>
+<a id="ln-50" name="ln-50" href="#ln-50"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_solveHead_module</span><span class="p">,</span><span class="w">   </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_solveHead_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_init_solveHead</span>
+<a id="ln-51" name="ln-51" href="#ln-51"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_restart_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_restart_type</span>
+<a id="ln-52" name="ln-52" href="#ln-52"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_timer_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_addTimer</span><span class="p">,</span><span class="w"> </span><span class="n">tem_startTimer</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-53" name="ln-53" href="#ln-53"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tem_stopTimer</span><span class="p">,</span><span class="w"> </span><span class="n">tem_getTimerVal</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-54" name="ln-54" href="#ln-54"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tem_getTimerName</span><span class="p">,</span><span class="w"> </span><span class="n">tem_timer_dump_glob</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-55" name="ln-55" href="#ln-55"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tem_timer_loadconfig_glob</span>
+<a id="ln-56" name="ln-56" href="#ln-56"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_balance_module</span><span class="p">,</span><span class="w">     </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_balance_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_balance_load</span>
+<a id="ln-57" name="ln-57" href="#ln-57"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_status_module</span><span class="p">,</span><span class="w">      </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_status_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_status_run_terminate</span>
+<a id="ln-58" name="ln-58" href="#ln-58"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_comm_env_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_comm_env_init</span><span class="p">,</span><span class="w"> </span><span class="n">tem_comm_env_fin</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-59" name="ln-59" href="#ln-59"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tem_comm_env_type</span>
+<a id="ln-60" name="ln-60" href="#ln-60"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_tools_module</span><span class="p">,</span><span class="w">       </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_horizontalSpacer</span>
+<a id="ln-61" name="ln-61" href="#ln-61"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_simControl_module</span><span class="p">,</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_simControl_type</span><span class="p">,</span><span class="w"> </span><span class="n">tem_simControl_load</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-62" name="ln-62" href="#ln-62"></a><span class="w">    </span><span class="p">&amp;</span><span class="w">                               </span><span class="n">tem_simControl_dump</span><span class="p">,</span><span class="w"> </span><span class="n">tem_simControl_start</span>
+<a id="ln-63" name="ln-63" href="#ln-63"></a>
+<a id="ln-64" name="ln-64" href="#ln-64"></a>
+<a id="ln-65" name="ln-65" href="#ln-65"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_precice_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">precice_available</span><span class="p">,</span><span class="w"> </span><span class="n">tem_precice_load</span>
+<a id="ln-66" name="ln-66" href="#ln-66"></a><span class="w">  </span><span class="k">use </span><span class="n">tem_sparse_comm_module</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">tem_sparse_comm_load</span>
+<a id="ln-67" name="ln-67" href="#ln-67"></a>
+<a id="ln-68" name="ln-68" href="#ln-68"></a><span class="w">  </span><span class="k">implicit none</span>
+<a id="ln-69" name="ln-69" href="#ln-69"></a>
+<a id="ln-70" name="ln-70" href="#ln-70"></a><span class="k">  private</span>
+<a id="ln-71" name="ln-71" href="#ln-71"></a>
+<a id="ln-72" name="ln-72" href="#ln-72"></a><span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_start</span>
+<a id="ln-73" name="ln-73" href="#ln-73"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_finalize</span>
+<a id="ln-74" name="ln-74" href="#ln-74"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_load_general</span>
+<a id="ln-75" name="ln-75" href="#ln-75"></a><span class="w">  </span><span class="k">public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tem_general_type</span>
+<a id="ln-76" name="ln-76" href="#ln-76"></a>
+<a id="ln-77" name="ln-77" href="#ln-77"></a><span class="w">  </span><span class="c">!&gt; Global parameter type contains all general information</span>
+<a id="ln-78" name="ln-78" href="#ln-78"></a><span class="w">  </span><span class="c">!! needed for all solvers</span>
+<a id="ln-79" name="ln-79" href="#ln-79"></a><span class="w">  </span><span class="k">type </span><span class="n">tem_general_type</span>
+<a id="ln-80" name="ln-80" href="#ln-80"></a>
+<a id="ln-81" name="ln-81" href="#ln-81"></a><span class="w">    </span><span class="c">!&gt; General description of the deployed solver.</span>
+<a id="ln-82" name="ln-82" href="#ln-82"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_solveHead_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">solver</span>
+<a id="ln-83" name="ln-83" href="#ln-83"></a>
+<a id="ln-84" name="ln-84" href="#ln-84"></a><span class="w">    </span><span class="c">!&gt; contains current simulation time, timeControl, abortCriteria and</span>
+<a id="ln-85" name="ln-85" href="#ln-85"></a><span class="w">    </span><span class="c">!! simulation status</span>
+<a id="ln-86" name="ln-86" href="#ln-86"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_simControl_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">simControl</span>
+<a id="ln-87" name="ln-87" href="#ln-87"></a>
+<a id="ln-88" name="ln-88" href="#ln-88"></a><span class="w">    </span><span class="c">!&gt; MPI communication enviroment including MPI communicator.</span>
+<a id="ln-89" name="ln-89" href="#ln-89"></a><span class="w">    </span><span class="c">!!</span>
+<a id="ln-90" name="ln-90" href="#ln-90"></a><span class="w">    </span><span class="c">!!@todo HK: not sure, if this should be here!</span>
+<a id="ln-91" name="ln-91" href="#ln-91"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_comm_env_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">proc</span>
+<a id="ln-92" name="ln-92" href="#ln-92"></a>
+<a id="ln-93" name="ln-93" href="#ln-93"></a><span class="w">    </span><span class="c">!&gt; MPI communication pattern type.</span>
+<a id="ln-94" name="ln-94" href="#ln-94"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_commPattern_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">commPattern</span>
+<a id="ln-95" name="ln-95" href="#ln-95"></a>
+<a id="ln-96" name="ln-96" href="#ln-96"></a><span class="w">    </span><span class="c">!&gt; Global restart type</span>
+<a id="ln-97" name="ln-97" href="#ln-97"></a><span class="w">    </span><span class="c">!!</span>
+<a id="ln-98" name="ln-98" href="#ln-98"></a><span class="w">    </span><span class="c">!!@todo HK: not sure, if this should be here!</span>
+<a id="ln-99" name="ln-99" href="#ln-99"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_restart_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">restart</span>
+<a id="ln-100" name="ln-100" href="#ln-100"></a>
+<a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">    </span><span class="c">!&gt; Load balancing information.</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">    </span><span class="c">!!</span>
+<a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="c">!!@todo HK: not sure, if this should be here!</span>
+<a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_balance_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">balance</span>
+<a id="ln-105" name="ln-105" href="#ln-105"></a>
+<a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="c">!&gt; Filename for solver timing output</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timingFile</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">  </span><span class="k">end type </span><span class="n">tem_general_type</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a>
+<a id="ln-111" name="ln-111" href="#ln-111"></a>
+<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="k">contains</span>
+<a id="ln-113" name="ln-113" href="#ln-113"></a>
+<a id="ln-114" name="ln-114" href="#ln-114"></a>
+<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">  </span><span class="c">! ************************************************************************** !</span>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="w">  </span><span class="c">!&gt; Load general treelm settings from the Lua script in conf.</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_general</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">timingFile</span><span class="p">,</span><span class="w"> </span><span class="n">solverAborts</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-120" name="ln-120" href="#ln-120"></a><span class="w">    </span><span class="c">!&gt; global general parameter</span>
+<a id="ln-121" name="ln-121" href="#ln-121"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_general_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<a id="ln-122" name="ln-122" href="#ln-122"></a><span class="w">    </span><span class="c">!&gt; Handle to the Lua script containing the configuration.</span>
+<a id="ln-123" name="ln-123" href="#ln-123"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<a id="ln-124" name="ln-124" href="#ln-124"></a><span class="w">    </span><span class="c">!&gt; Default timing filename provided by the caller, overwritten by config</span>
+<a id="ln-125" name="ln-125" href="#ln-125"></a><span class="w">    </span><span class="c">!! file.</span>
+<a id="ln-126" name="ln-126" href="#ln-126"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timingFile</span>
+<a id="ln-127" name="ln-127" href="#ln-127"></a>
+<a id="ln-128" name="ln-128" href="#ln-128"></a><span class="w">    </span><span class="c">!&gt; Solver specific abort criteria to load.</span>
+<a id="ln-129" name="ln-129" href="#ln-129"></a><span class="w">    </span><span class="c">!!</span>
+<a id="ln-130" name="ln-130" href="#ln-130"></a><span class="w">    </span><span class="c">!! See [[tem_abortCriteria_module]] for details on this additional</span>
+<a id="ln-131" name="ln-131" href="#ln-131"></a><span class="w">    </span><span class="c">!! abortCriteria parameters, that the solver may define to be loaded</span>
+<a id="ln-132" name="ln-132" href="#ln-132"></a><span class="w">    </span><span class="c">!! from the configuration.</span>
+<a id="ln-133" name="ln-133" href="#ln-133"></a><span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">tem_solverAborts_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">solverAborts</span>
+<a id="ln-134" name="ln-134" href="#ln-134"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-135" name="ln-135" href="#ln-135"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span>
+<a id="ln-136" name="ln-136" href="#ln-136"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">pathLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">def_timingFile</span>
+<a id="ln-137" name="ln-137" href="#ln-137"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-138" name="ln-138" href="#ln-138"></a>
+<a id="ln-139" name="ln-139" href="#ln-139"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-140" name="ln-140" href="#ln-140"></a><span class="k">      call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-141" name="ln-141" href="#ln-141"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Loading general parameters:&#39;</span>
+<a id="ln-142" name="ln-142" href="#ln-142"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-143" name="ln-143" href="#ln-143"></a>
+<a id="ln-144" name="ln-144" href="#ln-144"></a><span class="w">    </span><span class="c">! load global enviromental parameters from config file</span>
+<a id="ln-145" name="ln-145" href="#ln-145"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_load_env_params</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+<a id="ln-146" name="ln-146" href="#ln-146"></a>
+<a id="ln-147" name="ln-147" href="#ln-147"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-148" name="ln-148" href="#ln-148"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Using &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">null_device</span><span class="p">)</span><span class="o">//</span><span class="s1">&#39; as null device.&#39;</span>
+<a id="ln-149" name="ln-149" href="#ln-149"></a>
+<a id="ln-150" name="ln-150" href="#ln-150"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">printRuntimeInfo</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-151" name="ln-151" href="#ln-151"></a><span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Will print run time info in the end&#39;</span>
+<a id="ln-152" name="ln-152" href="#ln-152"></a><span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;(/proc/self/status).&#39;</span>
+<a id="ln-153" name="ln-153" href="#ln-153"></a><span class="w">      </span><span class="k">else</span>
+<a id="ln-154" name="ln-154" href="#ln-154"></a><span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Will NOT print run time info.&#39;</span>
+<a id="ln-155" name="ln-155" href="#ln-155"></a><span class="w">      </span><span class="k">end if</span>
+<a id="ln-156" name="ln-156" href="#ln-156"></a>
+<a id="ln-157" name="ln-157" href="#ln-157"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Size of the IO Buffer (MB): &#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-158" name="ln-158" href="#ln-158"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                          </span><span class="p">(</span><span class="n">io_buffer_size</span><span class="o">*</span><span class="mi">8</span><span class="o">/</span><span class="mi">1024</span><span class="o">/</span><span class="mi">1024</span><span class="p">)</span>
+<a id="ln-159" name="ln-159" href="#ln-159"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-160" name="ln-160" href="#ln-160"></a>
+<a id="ln-161" name="ln-161" href="#ln-161"></a><span class="w">    </span><span class="c">! load simulation name</span>
+<a id="ln-162" name="ln-162" href="#ln-162"></a><span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<a id="ln-163" name="ln-163" href="#ln-163"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simulation_name&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-164" name="ln-164" href="#ln-164"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">simName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-165" name="ln-165" href="#ln-165"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<a id="ln-166" name="ln-166" href="#ln-166"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;simulation&#39;</span><span class="w">       </span><span class="p">)</span>
+<a id="ln-167" name="ln-167" href="#ln-167"></a>
+<a id="ln-168" name="ln-168" href="#ln-168"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-169" name="ln-169" href="#ln-169"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Simulation Name: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">simName</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-170" name="ln-170" href="#ln-170"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-171" name="ln-171" href="#ln-171"></a>
+<a id="ln-172" name="ln-172" href="#ln-172"></a><span class="w">    </span><span class="c">! load simulation time control</span>
+<a id="ln-173" name="ln-173" href="#ln-173"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_simControl_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">simControl</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-174" name="ln-174" href="#ln-174"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">conf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<a id="ln-175" name="ln-175" href="#ln-175"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">solverAborts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">solverAborts</span><span class="w">   </span><span class="p">)</span>
+<a id="ln-176" name="ln-176" href="#ln-176"></a>
+<a id="ln-177" name="ln-177" href="#ln-177"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-178" name="ln-178" href="#ln-178"></a><span class="k">      call </span><span class="n">tem_simControl_dump</span><span class="p">(</span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">simControl</span><span class="p">,</span><span class="w"> </span><span class="n">outUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-179" name="ln-179" href="#ln-179"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-180" name="ln-180" href="#ln-180"></a>
+<a id="ln-181" name="ln-181" href="#ln-181"></a><span class="w">    </span><span class="c">! Get the setting, whether to use sparse communication patterns or not.</span>
+<a id="ln-182" name="ln-182" href="#ln-182"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_sparse_comm_load</span><span class="p">(</span><span class="n">conf</span><span class="p">)</span>
+<a id="ln-183" name="ln-183" href="#ln-183"></a>
+<a id="ln-184" name="ln-184" href="#ln-184"></a><span class="w">    </span><span class="c">! load communication pattern and initialize commuication</span>
+<a id="ln-185" name="ln-185" href="#ln-185"></a><span class="w">    </span><span class="c">! infrastructure</span>
+<a id="ln-186" name="ln-186" href="#ln-186"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_load_commpattern</span><span class="p">(</span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">commpattern</span><span class="p">)</span>
+<a id="ln-187" name="ln-187" href="#ln-187"></a>
+<a id="ln-188" name="ln-188" href="#ln-188"></a><span class="w">    </span><span class="c">! load timing filename</span>
+<a id="ln-189" name="ln-189" href="#ln-189"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">timingFile</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-190" name="ln-190" href="#ln-190"></a><span class="k">      </span><span class="n">def_timingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">timingFile</span>
+<a id="ln-191" name="ln-191" href="#ln-191"></a><span class="w">    </span><span class="k">else</span>
+<a id="ln-192" name="ln-192" href="#ln-192"></a><span class="k">      </span><span class="n">def_timingFile</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;timing.res&#39;</span>
+<a id="ln-193" name="ln-193" href="#ln-193"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-194" name="ln-194" href="#ln-194"></a>
+<a id="ln-195" name="ln-195" href="#ln-195"></a><span class="k">    call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<a id="ln-196" name="ln-196" href="#ln-196"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;timing_file&#39;</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-197" name="ln-197" href="#ln-197"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">timingFile</span><span class="p">,</span><span class="w">  </span><span class="p">&amp;</span>
+<a id="ln-198" name="ln-198" href="#ln-198"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">def_timingFile</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-199" name="ln-199" href="#ln-199"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="w">          </span><span class="p">)</span>
+<a id="ln-200" name="ln-200" href="#ln-200"></a><span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Write timings to: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">timingFile</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-201" name="ln-201" href="#ln-201"></a>
+<a id="ln-202" name="ln-202" href="#ln-202"></a><span class="w">    </span><span class="c">! Get load balancing config</span>
+<a id="ln-203" name="ln-203" href="#ln-203"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_balance_load</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<a id="ln-204" name="ln-204" href="#ln-204"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">me</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">balance</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-205" name="ln-205" href="#ln-205"></a>
+<a id="ln-206" name="ln-206" href="#ln-206"></a><span class="w">    </span><span class="c">! Load configuration of timer output from timer table.</span>
+<a id="ln-207" name="ln-207" href="#ln-207"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_timer_loadconfig_glob</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-208" name="ln-208" href="#ln-208"></a>
+<a id="ln-209" name="ln-209" href="#ln-209"></a><span class="w">    </span><span class="c">! load precice if available</span>
+<a id="ln-210" name="ln-210" href="#ln-210"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">precice_available</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-211" name="ln-211" href="#ln-211"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Loading precice data&#39;</span>
+<a id="ln-212" name="ln-212" href="#ln-212"></a><span class="w">      </span><span class="k">call </span><span class="n">tem_precice_load</span><span class="p">(</span><span class="n">conf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">)</span>
+<a id="ln-213" name="ln-213" href="#ln-213"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-214" name="ln-214" href="#ln-214"></a><span class="k">    call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<a id="ln-215" name="ln-215" href="#ln-215"></a>
+<a id="ln-216" name="ln-216" href="#ln-216"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_load_general</span>
+<a id="ln-217" name="ln-217" href="#ln-217"></a><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<a id="ln-218" name="ln-218" href="#ln-218"></a>
+<a id="ln-219" name="ln-219" href="#ln-219"></a>
+<a id="ln-220" name="ln-220" href="#ln-220"></a><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<a id="ln-221" name="ln-221" href="#ln-221"></a><span class="w">  </span><span class="c">!&gt; Initialize the environment. Should be the very first call in the program.</span>
+<a id="ln-222" name="ln-222" href="#ln-222"></a><span class="w">  </span><span class="c">!!</span>
+<a id="ln-223" name="ln-223" href="#ln-223"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_start</span><span class="p">(</span><span class="n">codeName</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="p">,</span><span class="w"> </span><span class="n">general</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">simControl</span><span class="p">)</span>
+<a id="ln-224" name="ln-224" href="#ln-224"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-225" name="ln-225" href="#ln-225"></a><span class="w">    </span><span class="c">!&gt; name of code</span>
+<a id="ln-226" name="ln-226" href="#ln-226"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">codeName</span>
+<a id="ln-227" name="ln-227" href="#ln-227"></a><span class="w">    </span><span class="c">!&gt; version of the code</span>
+<a id="ln-228" name="ln-228" href="#ln-228"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">version</span>
+<a id="ln-229" name="ln-229" href="#ln-229"></a><span class="w">    </span><span class="c">!&gt; encapsulates global parameters which are common for all solvers</span>
+<a id="ln-230" name="ln-230" href="#ln-230"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_general_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">general</span>
+<a id="ln-231" name="ln-231" href="#ln-231"></a><span class="w">    </span><span class="c">!&gt; mpi communicator if it is predefined as in apesmate</span>
+<a id="ln-232" name="ln-232" href="#ln-232"></a><span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<a id="ln-233" name="ln-233" href="#ln-233"></a><span class="w">    </span><span class="c">!&gt; simulation control to initialize</span>
+<a id="ln-234" name="ln-234" href="#ln-234"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_simControl_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">simControl</span>
+<a id="ln-235" name="ln-235" href="#ln-235"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-236" name="ln-236" href="#ln-236"></a><span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nProcs</span><span class="p">,</span><span class="w"> </span><span class="n">nThreads</span>
+<a id="ln-237" name="ln-237" href="#ln-237"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-238" name="ln-238" href="#ln-238"></a>
+<a id="ln-239" name="ln-239" href="#ln-239"></a><span class="w">    </span><span class="c">! Initialize all logunits to point to the stdout unit.</span>
+<a id="ln-240" name="ln-240" href="#ln-240"></a><span class="w">    </span><span class="n">logunit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stdoutunit</span>
+<a id="ln-241" name="ln-241" href="#ln-241"></a>
+<a id="ln-242" name="ln-242" href="#ln-242"></a><span class="w">    </span><span class="c">! if comm is present initialize environment already called</span>
+<a id="ln-243" name="ln-243" href="#ln-243"></a><span class="w">    </span><span class="c">! so should not be called again</span>
+<a id="ln-244" name="ln-244" href="#ln-244"></a><span class="w">    </span><span class="k">if</span><span class="p">(.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="n">comm</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">init_env</span><span class="p">()</span>
+<a id="ln-245" name="ln-245" href="#ln-245"></a>
+<a id="ln-246" name="ln-246" href="#ln-246"></a><span class="w">    </span><span class="c">! initialize mpi environment</span>
+<a id="ln-247" name="ln-247" href="#ln-247"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_comm_env_init</span><span class="p">(</span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">)</span>
+<a id="ln-248" name="ln-248" href="#ln-248"></a><span class="w">    </span><span class="n">nProcs</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm_size</span>
+<a id="ln-249" name="ln-249" href="#ln-249"></a><span class="w">    </span><span class="n">nThreads</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">nThreads</span>
+<a id="ln-250" name="ln-250" href="#ln-250"></a>
+<a id="ln-251" name="ln-251" href="#ln-251"></a><span class="w">    </span><span class="c">! initialize solverHead</span>
+<a id="ln-252" name="ln-252" href="#ln-252"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_init_solveHead</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-253" name="ln-253" href="#ln-253"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">solName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">codeName</span><span class="p">,</span><span class="w">       </span><span class="p">&amp;</span>
+<a id="ln-254" name="ln-254" href="#ln-254"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">version</span><span class="w">         </span><span class="p">)</span>
+<a id="ln-255" name="ln-255" href="#ln-255"></a>
+<a id="ln-256" name="ln-256" href="#ln-256"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">present</span><span class="p">(</span><span class="n">simControl</span><span class="p">))</span><span class="w"> </span><span class="k">call </span><span class="n">tem_simControl_start</span><span class="p">(</span><span class="n">simControl</span><span class="p">)</span>
+<a id="ln-257" name="ln-257" href="#ln-257"></a>
+<a id="ln-258" name="ln-258" href="#ln-258"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-259" name="ln-259" href="#ln-259"></a><span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Starting up &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">codeName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-260" name="ln-260" href="#ln-260"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot; with nprocs: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nProcs</span>
+<a id="ln-261" name="ln-261" href="#ln-261"></a><span class="w">      </span><span class="c">!$ write(logUnit(1),*)&quot;               and nThreads pp: &quot;, nThreads</span>
+<a id="ln-262" name="ln-262" href="#ln-262"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-263" name="ln-263" href="#ln-263"></a>
+<a id="ln-264" name="ln-264" href="#ln-264"></a><span class="k">    call </span><span class="n">tem_addTimer</span><span class="p">(</span><span class="w"> </span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-265" name="ln-265" href="#ln-265"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                </span><span class="n">timerName</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">codeName</span><span class="p">)</span><span class="w">              </span><span class="p">)</span>
+<a id="ln-266" name="ln-266" href="#ln-266"></a><span class="w">    </span><span class="k">call </span><span class="n">tem_startTimer</span><span class="p">(</span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-267" name="ln-267" href="#ln-267"></a>
+<a id="ln-268" name="ln-268" href="#ln-268"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_start</span>
+<a id="ln-269" name="ln-269" href="#ln-269"></a><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<a id="ln-270" name="ln-270" href="#ln-270"></a>
+<a id="ln-271" name="ln-271" href="#ln-271"></a>
+<a id="ln-272" name="ln-272" href="#ln-272"></a><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<a id="ln-273" name="ln-273" href="#ln-273"></a><span class="w">  </span><span class="c">!&gt; Finalize the environment, should be the very last call in the program.</span>
+<a id="ln-274" name="ln-274" href="#ln-274"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_finalize</span><span class="p">(</span><span class="n">general</span><span class="p">)</span>
+<a id="ln-275" name="ln-275" href="#ln-275"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-276" name="ln-276" href="#ln-276"></a><span class="w">    </span><span class="c">!&gt; encapsulates global parameters which are common for all solvers</span>
+<a id="ln-277" name="ln-277" href="#ln-277"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_general_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">general</span>
+<a id="ln-278" name="ln-278" href="#ln-278"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-279" name="ln-279" href="#ln-279"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="n">labelLen</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timerName</span>
+<a id="ln-280" name="ln-280" href="#ln-280"></a><span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">timerValue</span>
+<a id="ln-281" name="ln-281" href="#ln-281"></a><span class="w">    </span><span class="c">! ----------------------------------------------------------------------</span>
+<a id="ln-282" name="ln-282" href="#ln-282"></a>
+<a id="ln-283" name="ln-283" href="#ln-283"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">tem_status_run_terminate</span><span class="p">(</span><span class="n">general</span><span class="p">%</span><span class="n">simControl</span><span class="p">%</span><span class="n">status</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-284" name="ln-284" href="#ln-284"></a><span class="k">      call </span><span class="n">tem_abort</span><span class="p">()</span>
+<a id="ln-285" name="ln-285" href="#ln-285"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-286" name="ln-286" href="#ln-286"></a>
+<a id="ln-287" name="ln-287" href="#ln-287"></a><span class="k">    call </span><span class="n">tem_timer_dump_glob</span><span class="p">(</span><span class="w"> </span><span class="n">comm</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-288" name="ln-288" href="#ln-288"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">myrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">rank</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<a id="ln-289" name="ln-289" href="#ln-289"></a><span class="w">      </span><span class="p">&amp;</span><span class="w">                       </span><span class="n">nProcs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">comm_size</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-290" name="ln-290" href="#ln-290"></a>
+<a id="ln-291" name="ln-291" href="#ln-291"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">proc</span><span class="p">%</span><span class="n">isRoot</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<a id="ln-292" name="ln-292" href="#ln-292"></a><span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">printRuntimeInfo</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">call </span><span class="n">print_self_status</span><span class="p">()</span>
+<a id="ln-293" name="ln-293" href="#ln-293"></a>
+<a id="ln-294" name="ln-294" href="#ln-294"></a><span class="w">      </span><span class="n">timerName</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">tem_getTimerName</span><span class="p">(</span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-295" name="ln-295" href="#ln-295"></a><span class="w">      </span><span class="n">timerValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_getTimerVal</span><span class="p">(</span><span class="w"> </span><span class="n">timerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">general</span><span class="p">%</span><span class="n">solver</span><span class="p">%</span><span class="n">timerHandle</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-296" name="ln-296" href="#ln-296"></a>
+<a id="ln-297" name="ln-297" href="#ln-297"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span>
+<a id="ln-298" name="ln-298" href="#ln-298"></a><span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A,F10.2,A)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot; Done with &quot;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">timerName</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="ln-299" name="ln-299" href="#ln-299"></a><span class="w">        </span><span class="p">&amp;</span><span class="w">                             </span><span class="o">//</span><span class="w"> </span><span class="s2">&quot; in &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timerValue</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; s&#39;</span>
+<a id="ln-300" name="ln-300" href="#ln-300"></a><span class="w">    </span><span class="k">end if</span>
+<a id="ln-301" name="ln-301" href="#ln-301"></a>
+<a id="ln-302" name="ln-302" href="#ln-302"></a><span class="w">    </span><span class="c">! finialize mpi</span>
+<a id="ln-303" name="ln-303" href="#ln-303"></a><span class="w">    </span><span class="k">call </span><span class="n">fin_env</span><span class="p">()</span>
+<a id="ln-304" name="ln-304" href="#ln-304"></a>
+<a id="ln-305" name="ln-305" href="#ln-305"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_finalize</span>
+<a id="ln-306" name="ln-306" href="#ln-306"></a><span class="w">  </span><span class="c">! ************************************************************************ !</span>
+<a id="ln-307" name="ln-307" href="#ln-307"></a>
+<a id="ln-308" name="ln-308" href="#ln-308"></a><span class="k">end module </span><span class="n">tem_general_module</span>
+<a id="ln-309" name="ln-309" href="#ln-309"></a><span class="c">! **************************************************************************** !</span>
+</pre></div>
+
+      </section>
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

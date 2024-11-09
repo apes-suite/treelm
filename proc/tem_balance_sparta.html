@@ -1,0 +1,760 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_balance_sparta &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_balance_sparta
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.2% of total for procedures.">73 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_sparta_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_sparta_module.f90.html'>tem_sparta_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_sparta_module.html'>tem_Sparta_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_balance_sparta</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_balance_sparta.html#src">tem_balance_sparta</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_balance_sparta(weight, myPart, nParts, comm, myElems, offset, sparta)  
+</h2>
+    
+
+    <p>Return splitting positions based on the weights provided
+by each rank.</p>
+<p>This is the SPARTA algorithm which uses simple splitting based on
+given weights for all elements in the mesh.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-weight~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>weight</strong>(:)</td>
+            <td>
+                <p>Sorted list of weights corresponding to treeID order</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-mypart~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myPart</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nparts"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nParts</strong></td>
+            <td>
+                <p>Number of procs the distribution should span</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-comm~25"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>comm</strong></td>
+            <td>
+                <p>MPI Communicator</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-myelems~2"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>myElems</strong></td>
+            <td>
+                <p>number of elements</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-offset~25"></span>
+              integer(kind=long_k),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>offset</strong></td>
+            <td>
+                <p>Array of offsets with the size nParts. Offset index starts at 0.
+This Array needs to be allocate and deallocated outside</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sparta"></span>
+              type(<a href='../type/tem_sparta_type.html'>tem_sparta_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sparta</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_balance_sparta~~CallsGraph Pages: 1 -->
+<svg id="proctem_balance_spartaCallsGraph" width="369pt" height="116pt"
+ viewBox="0.00 0.00 369.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_balance_sparta~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>proc~~tem_balance_sparta~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 365,-112 365,4 -4,4"/>
+<!-- proc~tem_balance_sparta -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_node1" class="node">
+<title>proc~tem_balance_sparta</title>
+<polygon fill="none" stroke="black" points="121,-66 0,-66 0,-42 121,-42 121,-66"/>
+<text text-anchor="middle" x="60.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_balance_sparta</text>
+</g>
+<!-- mpi_allreduce -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_node2" class="node">
+<title>mpi_allreduce</title>
+<polygon fill="#777777" stroke="#777777" points="248,-108 160,-108 160,-84 248,-84 248,-108"/>
+<text text-anchor="middle" x="204" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_allreduce</text>
+</g>
+<!-- proc~tem_balance_sparta&#45;&gt;mpi_allreduce -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_edge1" class="edge">
+<title>proc~tem_balance_sparta&#45;&gt;mpi_allreduce</title>
+<path fill="none" stroke="#000000" d="M102.05,-66.04C117.74,-70.69 135.87,-76.07 152.4,-80.98"/>
+<polygon fill="#000000" stroke="#000000" points="151.86,-84.47 162.45,-83.96 153.86,-77.76 151.86,-84.47"/>
+</g>
+<!-- mpi_exscan -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_node3" class="node">
+<title>mpi_exscan</title>
+<polygon fill="#777777" stroke="#777777" points="241.5,-66 166.5,-66 166.5,-42 241.5,-42 241.5,-66"/>
+<text text-anchor="middle" x="204" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_exscan</text>
+</g>
+<!-- proc~tem_balance_sparta&#45;&gt;mpi_exscan -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_edge2" class="edge">
+<title>proc~tem_balance_sparta&#45;&gt;mpi_exscan</title>
+<path fill="none" stroke="#000000" d="M121.1,-54C132.9,-54 145.12,-54 156.41,-54"/>
+<polygon fill="#000000" stroke="#000000" points="156.47,-57.5 166.47,-54 156.47,-50.5 156.47,-57.5"/>
+</g>
+<!-- proc~tem_set_sparta -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_node4" class="node">
+<title>proc~tem_set_sparta</title>
+<g id="a_proc~~tem_balance_sparta~~CallsGraph_node4"><a xlink:href="../proc/tem_set_sparta.html" xlink:title="tem_set_sparta">
+<polygon fill="#d9534f" stroke="#d9534f" points="251,-24 157,-24 157,0 251,0 251,-24"/>
+<text text-anchor="middle" x="204" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_set_sparta</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_balance_sparta&#45;&gt;proc~tem_set_sparta -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_edge3" class="edge">
+<title>proc~tem_balance_sparta&#45;&gt;proc~tem_set_sparta</title>
+<path fill="none" stroke="#000000" d="M102.05,-41.96C117.74,-37.31 135.87,-31.93 152.4,-27.02"/>
+<polygon fill="#000000" stroke="#000000" points="153.86,-30.24 162.45,-24.04 151.86,-23.53 153.86,-30.24"/>
+</g>
+<!-- mpi_alltoall -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_node5" class="node">
+<title>mpi_alltoall</title>
+<polygon fill="#777777" stroke="#777777" points="361,-24 287,-24 287,0 361,0 361,-24"/>
+<text text-anchor="middle" x="324" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_alltoall</text>
+</g>
+<!-- proc~tem_set_sparta&#45;&gt;mpi_alltoall -->
+<g id="proc~~tem_balance_sparta~~CallsGraph_edge4" class="edge">
+<title>proc~tem_set_sparta&#45;&gt;mpi_alltoall</title>
+<path fill="none" stroke="#000000" d="M251.3,-12C259.56,-12 268.17,-12 276.44,-12"/>
+<polygon fill="#000000" stroke="#000000" points="276.68,-15.5 286.68,-12 276.68,-8.5 276.68,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_balance_sparta~~CalledByGraph Pages: 1 -->
+<svg id="proctem_balance_spartaCalledByGraph" width="543pt" height="32pt"
+ viewBox="0.00 0.00 543.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_balance_sparta~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_balance_sparta~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 539,-28 539,4 -4,4"/>
+<!-- proc~tem_balance_sparta -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_node1" class="node">
+<title>proc~tem_balance_sparta</title>
+<polygon fill="none" stroke="black" points="535,-24 414,-24 414,0 535,0 535,-24"/>
+<text text-anchor="middle" x="474.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_balance_sparta</text>
+</g>
+<!-- proc~load_tem -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_node2" class="node">
+<title>proc~load_tem</title>
+<g id="a_proc~~tem_balance_sparta~~CalledByGraph_node2"><a xlink:href="../proc/load_tem.html" xlink:title="load_tem">
+<polygon fill="#d9534f" stroke="#d9534f" points="378,-24 316,-24 316,0 378,0 378,-24"/>
+<text text-anchor="middle" x="347" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_tem</text>
+</a>
+</g>
+</g>
+<!-- proc~load_tem&#45;&gt;proc~tem_balance_sparta -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_edge1" class="edge">
+<title>proc~load_tem&#45;&gt;proc~tem_balance_sparta</title>
+<path fill="none" stroke="#000000" d="M378.06,-12C385.91,-12 394.71,-12 403.7,-12"/>
+<polygon fill="#000000" stroke="#000000" points="403.9,-15.5 413.9,-12 403.9,-8.5 403.9,-15.5"/>
+</g>
+<!-- proc~tem_restart_readheader -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_node3" class="node">
+<title>proc~tem_restart_readheader</title>
+<g id="a_proc~~tem_balance_sparta~~CalledByGraph_node3"><a xlink:href="../proc/tem_restart_readheader.html" xlink:title="tem_restart_readHeader">
+<polygon fill="#d9534f" stroke="#d9534f" points="280,-24 138,-24 138,0 280,0 280,-24"/>
+<text text-anchor="middle" x="209" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_restart_readHeader</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_restart_readheader&#45;&gt;proc~load_tem -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_restart_readheader&#45;&gt;proc~load_tem</title>
+<path fill="none" stroke="#000000" d="M280.39,-12C289.04,-12 297.64,-12 305.63,-12"/>
+<polygon fill="#000000" stroke="#000000" points="305.73,-15.5 315.73,-12 305.73,-8.5 305.73,-15.5"/>
+</g>
+<!-- proc~tem_load_restart -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_node4" class="node">
+<title>proc~tem_load_restart</title>
+<g id="a_proc~~tem_balance_sparta~~CalledByGraph_node4"><a xlink:href="../proc/tem_load_restart.html" xlink:title="tem_load_restart">
+<polygon fill="#d9534f" stroke="#d9534f" points="102,-24 0,-24 0,0 102,0 102,-24"/>
+<text text-anchor="middle" x="51" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_restart</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader -->
+<g id="proc~~tem_balance_sparta~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_load_restart&#45;&gt;proc~tem_restart_readheader</title>
+<path fill="none" stroke="#000000" d="M102.22,-12C110.41,-12 119.08,-12 127.78,-12"/>
+<polygon fill="#000000" stroke="#000000" points="127.99,-15.5 137.99,-12 127.99,-8.5 127.99,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_balance_sparta</span><span class="p">(</span><span class="n">weight</span><span class="p">,</span><span class="w"> </span><span class="n">myPart</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">myElems</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                          </span><span class="n">sparta</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Sorted list of weights corresponding to treeID order</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">weight</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myPart</span><span class="w"> </span><span class="c">!&lt; Rank of the calling process</span>
+<span class="w">    </span><span class="c">!&gt; Number of procs the distribution should span</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nParts</span>
+<span class="w">    </span><span class="c">!&gt; MPI Communicator</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">comm</span>
+<span class="w">    </span><span class="c">!&gt; number of elements</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myElems</span>
+<span class="w">    </span><span class="c">!&gt; Array of offsets with the size nParts. Offset index starts at 0.</span>
+<span class="w">    </span><span class="c">!! This Array needs to be allocate and deallocated outside</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">offset</span>
+<span class="w">    </span><span class="c">! Count variables that state which rank gets how many elements</span>
+<span class="w">    </span><span class="c">! *_count(rank0, ...)</span>
+<span class="w">    </span><span class="c">! Right now the size is nParts but that will be changed in</span>
+<span class="w">    </span><span class="c">! the near future to avoid O(p) allocations</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_sparta_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sparta</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iErr</span><span class="w">  </span><span class="c">! MPI error variable</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iElem</span><span class="p">,</span><span class="w"> </span><span class="n">iProc</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">myElems_long</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">w_sum</span><span class="p">,</span><span class="w"> </span><span class="n">w_opt</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">send</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="w"> </span><span class="c">! Send and receive buffers for MPI calls</span>
+<span class="w">    </span><span class="c">! boundary values of the elements in which we search for splitters</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">lower_boundary</span><span class="p">,</span><span class="w"> </span><span class="n">upper_boundary</span>
+<span class="w">    </span><span class="c">! local prefix sum array of myElems</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">presum</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">rmin</span><span class="p">,</span><span class="w"> </span><span class="n">rmax</span><span class="p">,</span><span class="w"> </span><span class="n">lb</span><span class="p">,</span><span class="w"> </span><span class="n">ub</span><span class="p">,</span><span class="w"> </span><span class="n">left_off</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">opt_split</span><span class="p">,</span><span class="w"> </span><span class="n">wsplit</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">send_count</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="n">nParts</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s2">&quot;Balance by SpartA algorithm.&quot;</span>
+
+<span class="w">    </span><span class="n">send_count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+
+<span class="w">    </span><span class="c">! Allocate Array for Prefix sum</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">presum</span><span class="p">(</span><span class="n">myElems</span><span class="p">))</span>
+<span class="w">    </span><span class="c">! Prefix sum over local weights. later on we will look for the splitter in</span>
+<span class="w">    </span><span class="c">! this prefix sum</span>
+<span class="w">    </span><span class="n">presum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">weight</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="n">myElems</span>
+<span class="w">      </span><span class="n">presum</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">presum</span><span class="p">(</span><span class="n">iElem</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">weight</span><span class="p">(</span><span class="n">iElem</span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do</span>
+<span class="k">    </span><span class="n">send</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">presum</span><span class="p">(</span><span class="n">myElems</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! sum up global total weight</span>
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_ALLREDUCE</span><span class="p">(</span><span class="n">send</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">rk_mpi</span><span class="p">,</span><span class="w"> </span><span class="n">mpi_sum</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iErr</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">w_sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recv</span>
+<span class="w">    </span><span class="c">! Calculate global optimum</span>
+<span class="w">    </span><span class="n">w_opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">w_sum</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">dble</span><span class="p">(</span><span class="n">nParts</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Global prefix sum for weights</span>
+<span class="w">    </span><span class="k">call </span><span class="n">MPI_EXSCAN</span><span class="p">(</span><span class="n">send</span><span class="p">,</span><span class="w"> </span><span class="n">recv</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">rk_mpi</span><span class="p">,</span><span class="w"> </span><span class="n">mpi_sum</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">iErr</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! initialize splitter search</span>
+<span class="w">    </span><span class="n">lower_boundary</span><span class="o">=</span><span class="n">recv</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">lower_boundary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">upper_boundary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower_boundary</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">presum</span><span class="p">(</span><span class="n">myElems</span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">rmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">floor</span><span class="p">(</span><span class="n">lower_boundary</span><span class="o">/</span><span class="n">w_opt</span><span class="p">),</span><span class="mi">0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">rmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="nb">ceiling</span><span class="p">(</span><span class="n">upper_boundary</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">w_opt</span><span class="p">),</span><span class="n">nParts</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Do splitter search</span>
+<span class="w">    </span><span class="n">left_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">do </span><span class="n">iProc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rmin</span><span class="p">,</span><span class="n">rmax</span>
+<span class="w">      </span><span class="n">lb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">left_off</span>
+<span class="w">      </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myelems</span>
+<span class="w">      </span><span class="n">opt_split</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">iProc</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">w_opt</span>
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">iProc</span><span class="o">*</span><span class="n">w_opt</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">upper_boundary</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      do</span>
+<span class="k">        </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">lb</span><span class="o">+</span><span class="n">ub</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+<span class="w">        </span><span class="n">wsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">presum</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lower_boundary</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="p">.</span><span class="n">feq</span><span class="p">.</span><span class="w"> </span><span class="n">opt_split</span><span class="p">)</span><span class="w"> </span><span class="k">exit</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">opt_split</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">           </span><span class="n">lb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="k">           </span><span class="n">ub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="w">        </span><span class="c">! exit if a single element was found, need to do this</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">lb</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">ub</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">exit</span>
+<span class="w">        </span><span class="c">!                    here, to have mid and wsplit set.</span>
+<span class="w">      </span><span class="k">end do</span>
+<span class="k">      if</span><span class="w"> </span><span class="p">(</span><span class="nb">ABS</span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">opt_split</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nb">ABS</span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">opt_split</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">weight</span><span class="p">(</span><span class="n">mid</span><span class="p">)))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">! return 0 if the splitter is left of the lower boundary</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        if</span><span class="w"> </span><span class="p">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">myElems</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          if</span><span class="w"> </span><span class="p">(</span><span class="nb">ABS</span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">opt_split</span><span class="p">)</span><span class="w">                                          </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nb">ABS</span><span class="p">(</span><span class="n">wsplit</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">opt_split</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">weight</span><span class="p">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="c">! return myElems at most</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        else</span>
+<span class="k">          if</span><span class="w"> </span><span class="p">(</span><span class="n">opt_split</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">upper_boundary</span><span class="p">)</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">myElems</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end if</span>
+<span class="k">      </span><span class="n">send_count</span><span class="p">(</span><span class="n">iProc</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">left_off</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="n">left_off</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+<span class="w">    </span><span class="c">! finished splitter search. Communciate results.</span>
+<span class="w">    </span><span class="c">! Each process needs to know how many elements to receive from which process</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_set_sparta</span><span class="p">(</span><span class="w"> </span><span class="n">sparta</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">nParts</span><span class="p">,</span><span class="w"> </span><span class="n">send_count</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Calculate myElems and offset -----------------------------------</span>
+<span class="w">    </span><span class="c">! total number of my elements after exchanging elements</span>
+<span class="w">    </span><span class="n">myElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sparta</span><span class="p">%</span><span class="n">new_size</span>
+<span class="w">    </span><span class="n">myElems_long</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">myElems</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">mpi_exscan</span><span class="p">(</span><span class="n">myElems_long</span><span class="p">,</span><span class="w"> </span><span class="n">offset</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">long_k_mpi</span><span class="p">,</span><span class="w"> </span><span class="n">mpi_sum</span><span class="p">,</span><span class="w"> </span><span class="n">comm</span><span class="p">,</span><span class="w"> </span><span class="n">ierr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">myPart</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="n">offset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="c">! write(*,&quot;(3(A,I0))&quot;) &#39;myPart &#39;, myPart, &#39; nElems: &#39;, myElems, &#39; offset: &#39;, offset</span>
+<span class="w">    </span><span class="c">! Calculate myElems and offset -----------------------------------</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_balance_sparta</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

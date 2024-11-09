@@ -1,0 +1,949 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_load_trackingConfig &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_load_trackingConfig
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">34 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_tracking_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_tracking_module.f90.html'>tem_tracking_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_tracking_module.html'>tem_tracking_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_load_trackingConfig</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_load_trackingconfig.html#src">tem_load_trackingConfig</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine tem_load_trackingConfig(config, conf, sub_handle)  
+</h2>
+    
+
+    <p>Read the tracker variables from tracking subtables defined in
+configuration from the main lua file</p>
+<p>If tracking is just a single table with single tracking entry
+then load only one tracking log exists with
+one or more variables using tem_load_trackingHeader_single.
+Else if tracking is table of many log then allocate log and load each
+log type using tem_load_trackingHeader_single
+Setup the values for the tracking entities</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-config~2"></span>
+              type(<a href='../type/tem_tracking_config_type.html'>tem_tracking_config_type</a>),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>config</strong></td>
+            <td>
+                <p>list of the tracking entities to create</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~83"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>handle of the lua config file</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sub_handle~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sub_handle</strong></td>
+            <td>
+                <p>table sub-handle for the tracking table</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_trackingconfig~~CallsGraph Pages: 1 -->
+<svg id="proctem_load_trackingconfigCallsGraph" width="640pt" height="620pt"
+ viewBox="0.00 0.00 640.00 620.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_trackingconfig~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 616)">
+<title>proc~~tem_load_trackingconfig~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-616 636,-616 636,4 -4,4"/>
+<!-- proc~tem_load_trackingconfig -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node1" class="node">
+<title>proc~tem_load_trackingconfig</title>
+<polygon fill="none" stroke="black" points="145,-381 0,-381 0,-357 145,-357 145,-381"/>
+<text text-anchor="middle" x="72.5" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_trackingConfig</text>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node2" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~8.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="488.5,-486 415.5,-486 415.5,-462 488.5,-462 488.5,-486"/>
+<text text-anchor="middle" x="452" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge1" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M116.68,-381.06C175.21,-397.4 282.98,-427.47 375,-453 384.89,-455.74 395.51,-458.68 405.58,-461.47"/>
+<polygon fill="#000000" stroke="#000000" points="404.85,-464.9 415.42,-464.19 406.72,-458.15 404.85,-464.9"/>
+</g>
+<!-- interface~tem_load_shape -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node3" class="node">
+<title>interface~tem_load_shape</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node3"><a xlink:href="../interface/tem_load_shape.html" xlink:title="tem_load_shape">
+<polygon fill="#a7506f" stroke="#a7506f" points="310,-108 210,-108 210,-84 310,-84 310,-108"/>
+<text text-anchor="middle" x="260" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_shape</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;interface~tem_load_shape -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge2" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;interface~tem_load_shape</title>
+<path fill="none" stroke="#000000" d="M81.71,-356.92C110.68,-314.29 208.31,-170.59 244.95,-116.67"/>
+<polygon fill="#000000" stroke="#000000" points="247.95,-118.49 250.67,-108.25 242.16,-114.56 247.95,-118.49"/>
+</g>
+<!-- proc~hvs_output_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node4" class="node">
+<title>proc~hvs_output_load</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node4"><a xlink:href="../proc/hvs_output_load.html" xlink:title="hvs_output_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="309.5,-486 210.5,-486 210.5,-462 309.5,-462 309.5,-486"/>
+<text text-anchor="middle" x="260" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_output_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~hvs_output_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge3" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~hvs_output_load</title>
+<path fill="none" stroke="#000000" d="M91.79,-381.22C112.91,-395.13 148.86,-418.22 181,-436 194.47,-443.45 209.62,-451.01 222.95,-457.4"/>
+<polygon fill="#000000" stroke="#000000" points="221.76,-460.71 232.29,-461.83 224.76,-454.38 221.76,-460.71"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node5" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node5"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="485.5,-612 418.5,-612 418.5,-588 485.5,-588 485.5,-612"/>
+<text text-anchor="middle" x="452" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge4" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M81.22,-381.38C97.14,-406.01 135.91,-461.67 181,-495 251.82,-547.35 352.08,-577.21 408.37,-590.85"/>
+<polygon fill="#000000" stroke="#000000" points="407.81,-594.32 418.35,-593.21 409.43,-587.51 407.81,-594.32"/>
+</g>
+<!-- proc~tem_load_reduction_spatial -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node6" class="node">
+<title>proc~tem_load_reduction_spatial</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node6"><a xlink:href="../proc/tem_load_reduction_spatial.html" xlink:title="tem_load_reduction_spatial">
+<polygon fill="#d9534f" stroke="#d9534f" points="339,-381 181,-381 181,-357 339,-357 339,-381"/>
+<text text-anchor="middle" x="260" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_reduction_spatial</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~tem_load_reduction_spatial -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge5" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~tem_load_reduction_spatial</title>
+<path fill="none" stroke="#000000" d="M145.22,-369C153.48,-369 161.98,-369 170.43,-369"/>
+<polygon fill="#000000" stroke="#000000" points="170.7,-372.5 180.7,-369 170.7,-365.5 170.7,-372.5"/>
+</g>
+<!-- proc~tem_timecontrol_dump -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node7" class="node">
+<title>proc~tem_timecontrol_dump</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node7"><a xlink:href="../proc/tem_timecontrol_dump.html" xlink:title="tem_timeControl_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="328.5,-45 191.5,-45 191.5,-21 328.5,-21 328.5,-45"/>
+<text text-anchor="middle" x="260" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_dump -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge6" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_dump</title>
+<path fill="none" stroke="#000000" d="M74.85,-356.82C80.24,-313.41 103.8,-164.15 181,-75 190.23,-64.35 202.84,-55.94 215.24,-49.53"/>
+<polygon fill="#000000" stroke="#000000" points="217.12,-52.51 224.62,-45.02 214.09,-46.2 217.12,-52.51"/>
+</g>
+<!-- proc~tem_timecontrol_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node8" class="node">
+<title>proc~tem_timecontrol_load</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node8"><a xlink:href="../proc/tem_timecontrol_load.html" xlink:title="tem_timeControl_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="325,-318 195,-318 195,-294 325,-294 325,-318"/>
+<text text-anchor="middle" x="260" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge7" class="edge">
+<title>proc~tem_load_trackingconfig&#45;&gt;proc~tem_timecontrol_load</title>
+<path fill="none" stroke="#000000" d="M109.27,-356.85C139.13,-346.71 181.86,-332.2 214.04,-321.27"/>
+<polygon fill="#000000" stroke="#000000" points="215.32,-324.53 223.66,-318 213.06,-317.9 215.32,-324.53"/>
+</g>
+<!-- proc~tem_load_shape_single -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node15" class="node">
+<title>proc~tem_load_shape_single</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node15"><a xlink:href="../proc/tem_load_shape_single.html" xlink:title="tem_load_shape_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="520,-108 384,-108 384,-84 520,-84 520,-108"/>
+<text text-anchor="middle" x="452" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_shape_single</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_shape&#45;&gt;proc~tem_load_shape_single -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge8" class="edge">
+<title>interface~tem_load_shape&#45;&gt;proc~tem_load_shape_single</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.42,-96C329.79,-96 352.46,-96 373.88,-96"/>
+<polygon fill="#000000" stroke="#000000" points="373.94,-99.5 383.94,-96 373.94,-92.5 373.94,-99.5"/>
+</g>
+<!-- proc~tem_load_shapes -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node16" class="node">
+<title>proc~tem_load_shapes</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node16"><a xlink:href="../proc/tem_load_shapes.html" xlink:title="tem_load_shapes">
+<polygon fill="#d9534f" stroke="#d9534f" points="504.5,-66 399.5,-66 399.5,-42 504.5,-42 504.5,-66"/>
+<text text-anchor="middle" x="452" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_shapes</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_shape&#45;&gt;proc~tem_load_shapes -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge9" class="edge">
+<title>interface~tem_load_shape&#45;&gt;proc~tem_load_shapes</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M310.42,-85.07C334.5,-79.75 363.69,-73.3 389.22,-67.66"/>
+<polygon fill="#000000" stroke="#000000" points="390.16,-71.03 399.17,-65.46 388.65,-64.2 390.16,-71.03"/>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge10" class="edge">
+<title>proc~hvs_output_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M309.93,-474C339.31,-474 376.44,-474 405.24,-474"/>
+<polygon fill="#000000" stroke="#000000" points="405.44,-477.5 415.44,-474 405.44,-470.5 405.44,-477.5"/>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge14" class="edge">
+<title>proc~hvs_output_load&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M275.32,-486.21C291.15,-499.8 317.27,-522.56 339,-543 355.48,-558.5 355.45,-567.61 375,-579 385.25,-584.97 397.26,-589.3 408.67,-592.42"/>
+<polygon fill="#000000" stroke="#000000" points="407.94,-595.85 418.49,-594.87 409.63,-589.06 407.94,-595.85"/>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node9" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node9"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="499.5,-360 404.5,-360 404.5,-336 499.5,-336 499.5,-360"/>
+<text text-anchor="middle" x="452" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge11" class="edge">
+<title>proc~hvs_output_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M270.63,-461.96C288.73,-440.12 330.07,-393.95 375,-369 381.03,-365.65 387.63,-362.81 394.34,-360.4"/>
+<polygon fill="#000000" stroke="#000000" points="395.79,-363.61 404.21,-357.17 393.61,-356.95 395.79,-363.61"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node11" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node11"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="499,-444 405,-444 405,-420 499,-420 499,-444"/>
+<text text-anchor="middle" x="452" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge12" class="edge">
+<title>proc~hvs_output_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M309.93,-463.18C335.86,-457.45 367.84,-450.38 394.79,-444.43"/>
+<polygon fill="#000000" stroke="#000000" points="395.84,-447.78 404.85,-442.2 394.33,-440.94 395.84,-447.78"/>
+</g>
+<!-- proc~hvs_vtk_config_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node13" class="node">
+<title>proc~hvs_vtk_config_load</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node13"><a xlink:href="../proc/hvs_vtk_config_load.html" xlink:title="hvs_vtk_config_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="511,-570 393,-570 393,-546 511,-546 511,-570"/>
+<text text-anchor="middle" x="452" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">hvs_vtk_config_load</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;proc~hvs_vtk_config_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge13" class="edge">
+<title>proc~hvs_output_load&#45;&gt;proc~hvs_vtk_config_load</title>
+<path fill="none" stroke="#000000" d="M279.68,-486.13C301.72,-500.01 339.82,-522.65 375,-537 380.15,-539.1 385.58,-541.06 391.07,-542.88"/>
+<polygon fill="#000000" stroke="#000000" points="390.38,-546.33 400.97,-545.99 392.48,-539.65 390.38,-546.33"/>
+</g>
+<!-- proc~upper_to_lower -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node22" class="node">
+<title>proc~upper_to_lower</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node22"><a xlink:href="../proc/upper_to_lower.html" xlink:title="upper_to_lower">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="499,-528 405,-528 405,-504 499,-504 499,-528"/>
+<text text-anchor="middle" x="452" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">upper_to_lower</text>
+</a>
+</g>
+</g>
+<!-- proc~hvs_output_load&#45;&gt;proc~upper_to_lower -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge15" class="edge">
+<title>proc~hvs_output_load&#45;&gt;proc~upper_to_lower</title>
+<path fill="none" stroke="#000000" d="M309.93,-484.82C335.86,-490.55 367.84,-497.62 394.79,-503.57"/>
+<polygon fill="#000000" stroke="#000000" points="394.33,-507.06 404.85,-505.8 395.84,-500.22 394.33,-507.06"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node12" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="632,-612 565,-612 565,-588 632,-588 632,-612"/>
+<text text-anchor="middle" x="598.5" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge16" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M485.79,-600C506.2,-600 532.68,-600 554.74,-600"/>
+<polygon fill="#000000" stroke="#000000" points="554.84,-603.5 564.84,-600 554.84,-596.5 554.84,-603.5"/>
+</g>
+<!-- proc~tem_load_reduction_spatial&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge17" class="edge">
+<title>proc~tem_load_reduction_spatial&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M339.1,-360.37C357.67,-358.32 377.13,-356.17 394.51,-354.24"/>
+<polygon fill="#000000" stroke="#000000" points="394.93,-357.72 404.49,-353.14 394.16,-350.76 394.93,-357.72"/>
+</g>
+<!-- aot_table_length -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node10" class="node">
+<title>aot_table_length</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node10"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_length.html" xlink:title="aot_table_length">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="502.5,-402 401.5,-402 401.5,-378 502.5,-378 502.5,-402"/>
+<text text-anchor="middle" x="452" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_length</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_reduction_spatial&#45;&gt;aot_table_length -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge18" class="edge">
+<title>proc~tem_load_reduction_spatial&#45;&gt;aot_table_length</title>
+<path fill="none" stroke="#000000" d="M339.1,-377.63C356.56,-379.56 374.81,-381.58 391.38,-383.41"/>
+<polygon fill="#000000" stroke="#000000" points="391.14,-386.9 401.46,-384.52 391.91,-379.95 391.14,-386.9"/>
+</g>
+<!-- proc~tem_load_reduction_spatial&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge19" class="edge">
+<title>proc~tem_load_reduction_spatial&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M291.72,-381.11C314.53,-389.91 346.49,-401.83 375,-411 381.48,-413.08 388.31,-415.15 395.11,-417.13"/>
+<polygon fill="#000000" stroke="#000000" points="394.42,-420.57 405,-419.95 396.35,-413.84 394.42,-420.57"/>
+</g>
+<!-- proc~tem_load_reduction_single -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node14" class="node">
+<title>proc~tem_load_reduction_single</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node14"><a xlink:href="../proc/tem_load_reduction_single.html" xlink:title="tem_load_reduction_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="529,-318 375,-318 375,-294 529,-294 529,-318"/>
+<text text-anchor="middle" x="452" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_reduction_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_reduction_spatial&#45;&gt;proc~tem_load_reduction_single -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge20" class="edge">
+<title>proc~tem_load_reduction_spatial&#45;&gt;proc~tem_load_reduction_single</title>
+<path fill="none" stroke="#000000" d="M291.72,-356.89C314.53,-348.09 346.49,-336.17 375,-327 381.48,-324.92 388.31,-322.85 395.11,-320.87"/>
+<polygon fill="#000000" stroke="#000000" points="396.35,-324.16 405,-318.05 394.42,-317.43 396.35,-324.16"/>
+</g>
+<!-- proc~tem_time_dump -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node18" class="node">
+<title>proc~tem_time_dump</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node18"><a xlink:href="../proc/tem_time_dump.html" xlink:title="tem_time_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="501.5,-24 402.5,-24 402.5,0 501.5,0 501.5,-24"/>
+<text text-anchor="middle" x="452" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_dump&#45;&gt;proc~tem_time_dump -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge21" class="edge">
+<title>proc~tem_timecontrol_dump&#45;&gt;proc~tem_time_dump</title>
+<path fill="none" stroke="#000000" d="M328.52,-25.54C349.42,-23.23 372.25,-20.7 392.49,-18.47"/>
+<polygon fill="#000000" stroke="#000000" points="392.94,-21.94 402.5,-17.36 392.17,-14.98 392.94,-21.94"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_get_val -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge22" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M295.9,-318.09C310.95,-324.84 327.66,-334.63 339,-348 370.92,-385.62 339.07,-419.19 375,-453 383.32,-460.83 394.29,-465.79 405.3,-468.91"/>
+<polygon fill="#000000" stroke="#000000" points="404.81,-472.39 415.35,-471.29 406.43,-465.58 404.81,-472.39"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_close -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge23" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M315.45,-318.04C340.12,-323.49 369.29,-329.94 394.23,-335.45"/>
+<polygon fill="#000000" stroke="#000000" points="393.76,-338.93 404.28,-337.67 395.27,-332.1 393.76,-338.93"/>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;aot_table_open -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge24" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M292.46,-318.06C307.82,-325.08 325.79,-335.12 339,-348 362.09,-370.51 349.54,-391.21 375,-411 380.94,-415.62 387.84,-419.22 395.01,-422.04"/>
+<polygon fill="#000000" stroke="#000000" points="394.29,-425.49 404.89,-425.4 396.55,-418.86 394.29,-425.49"/>
+</g>
+<!-- proc~tem_time_default_zero -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node17" class="node">
+<title>proc~tem_time_default_zero</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node17"><a xlink:href="../proc/tem_time_default_zero.html" xlink:title="tem_time_default_zero">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="518.5,-276 385.5,-276 385.5,-252 518.5,-252 518.5,-276"/>
+<text text-anchor="middle" x="452" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_default_zero</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge25" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_default_zero</title>
+<path fill="none" stroke="#000000" d="M315.45,-293.96C337.61,-289.07 363.39,-283.37 386.49,-278.26"/>
+<polygon fill="#000000" stroke="#000000" points="387.54,-281.61 396.55,-276.04 386.03,-274.78 387.54,-281.61"/>
+</g>
+<!-- proc~tem_time_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node19" class="node">
+<title>proc~tem_time_load</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node19"><a xlink:href="../proc/tem_time_load.html" xlink:title="tem_time_load">
+<polygon fill="#d9534f" stroke="#d9534f" points="497.5,-234 406.5,-234 406.5,-210 497.5,-210 497.5,-234"/>
+<text text-anchor="middle" x="452" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_load</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge26" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_load</title>
+<path fill="none" stroke="#000000" d="M279.68,-293.87C301.72,-279.99 339.82,-257.35 375,-243 381.8,-240.23 389.08,-237.7 396.35,-235.42"/>
+<polygon fill="#000000" stroke="#000000" points="397.62,-238.7 406.21,-232.49 395.62,-231.99 397.62,-238.7"/>
+</g>
+<!-- proc~tem_time_needs_reduce -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node20" class="node">
+<title>proc~tem_time_needs_reduce</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node20"><a xlink:href="../proc/tem_time_needs_reduce.html" xlink:title="tem_time_needs_reduce">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="523,-192 381,-192 381,-168 523,-168 523,-192"/>
+<text text-anchor="middle" x="452" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_needs_reduce</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge27" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_needs_reduce</title>
+<path fill="none" stroke="#000000" d="M270.63,-293.96C288.73,-272.12 330.07,-225.95 375,-201 378.47,-199.07 382.13,-197.31 385.89,-195.71"/>
+<polygon fill="#000000" stroke="#000000" points="387.33,-198.9 395.39,-192.03 384.8,-192.38 387.33,-198.9"/>
+</g>
+<!-- proc~tem_time_never -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_node21" class="node">
+<title>proc~tem_time_never</title>
+<g id="a_proc~~tem_load_trackingconfig~~CallsGraph_node21"><a xlink:href="../proc/tem_time_never.html" xlink:title="tem_time_never">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="501.5,-150 402.5,-150 402.5,-126 501.5,-126 501.5,-150"/>
+<text text-anchor="middle" x="452" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_never</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never -->
+<g id="proc~~tem_load_trackingconfig~~CallsGraph_edge28" class="edge">
+<title>proc~tem_timecontrol_load&#45;&gt;proc~tem_time_never</title>
+<path fill="none" stroke="#000000" d="M266.84,-293.98C281.16,-265.85 320.81,-195.32 375,-159 380.37,-155.4 386.35,-152.41 392.53,-149.94"/>
+<polygon fill="#000000" stroke="#000000" points="394.09,-153.09 402.34,-146.45 391.75,-146.5 394.09,-153.09"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_load_trackingconfig~~CalledByGraph Pages: 1 -->
+<svg id="proctem_load_trackingconfigCalledByGraph" width="300pt" height="32pt"
+ viewBox="0.00 0.00 300.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_load_trackingconfig~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_load_trackingconfig~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 296,-28 296,4 -4,4"/>
+<!-- proc~tem_load_trackingconfig -->
+<g id="proc~~tem_load_trackingconfig~~CalledByGraph_node1" class="node">
+<title>proc~tem_load_trackingconfig</title>
+<polygon fill="none" stroke="black" points="292,-24 147,-24 147,0 292,0 292,-24"/>
+<text text-anchor="middle" x="219.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_load_trackingConfig</text>
+</g>
+<!-- proc~tem_load_tracking -->
+<g id="proc~~tem_load_trackingconfig~~CalledByGraph_node2" class="node">
+<title>proc~tem_load_tracking</title>
+<g id="a_proc~~tem_load_trackingconfig~~CalledByGraph_node2"><a xlink:href="../proc/tem_load_tracking.html" xlink:title="tem_load_tracking">
+<polygon fill="#d9534f" stroke="#d9534f" points="111,-24 0,-24 0,0 111,0 111,-24"/>
+<text text-anchor="middle" x="55.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_tracking</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_tracking&#45;&gt;proc~tem_load_trackingconfig -->
+<g id="proc~~tem_load_trackingconfig~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_load_tracking&#45;&gt;proc~tem_load_trackingconfig</title>
+<path fill="none" stroke="#000000" d="M111.35,-12C119.53,-12 128.11,-12 136.7,-12"/>
+<polygon fill="#000000" stroke="#000000" points="136.77,-15.5 146.77,-12 136.77,-8.5 136.77,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_load_trackingConfig</span><span class="p">(</span><span class="n">config</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; list of the tracking entities to create</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_tracking_config_type</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">config</span>
+<span class="w">    </span><span class="c">!&gt; handle of the lua config file</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">flu_state</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; table sub-handle for the tracking table</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">sub_handle</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iError</span><span class="w">            </span><span class="c">! error flag handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">vError</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; number of requested variables</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nRequestedVars</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">label</span><span class="p">,</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;label&#39;</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;unnamed_track&#39;</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Tracking label: &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">label</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">val</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">varName</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">vError</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">maxLength</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">L</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;variable&#39;</span><span class="w">      </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="nb">any</span><span class="p">(</span><span class="nb">btest</span><span class="p">(</span><span class="n">vError</span><span class="p">,</span><span class="w"> </span><span class="n">aoterr_Fatal</span><span class="p">))</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;FATAL Error occured, while retrieving&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;list of variables to track in &#39;</span><span class="o">//</span><span class="nb">trim</span><span class="p">(</span><span class="n">config</span><span class="p">%</span><span class="n">label</span><span class="p">)</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">nRequestedVars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">config</span><span class="p">%</span><span class="n">varName</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! load time control to output tracking</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_timeControl_load</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">timeControl</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_timeControl_dump</span><span class="p">(</span><span class="n">config</span><span class="p">%</span><span class="n">timeControl</span><span class="p">,</span><span class="w"> </span><span class="n">logUnit</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="w">    </span><span class="c">! Where to store the tracking file?</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_get_val</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">          </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">val</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">ErrCode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iError</span><span class="p">,</span><span class="w">        </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;folder&#39;</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">               </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">             </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! Load SPATIAL reductions</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_load_reduction_spatial</span><span class="p">(</span><span class="w">                                   </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">conf</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">parent</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">              </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">redSpatial_config</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">redSpatial_config</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">redSpatial_config</span><span class="p">%</span><span class="n">active</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! Check if the number of reductions correspond to the number of variables</span>
+<span class="w">      </span><span class="c">! in the system</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">redSpatial_config</span><span class="p">%</span><span class="n">reduceType</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">nRequestedVars</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;The number of defined reductions does not &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                 </span><span class="o">//</span><span class="s1">&#39;correspond to the &#39;</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;number of variables in the system. &#39;</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end if</span>
+
+<span class="w">    </span><span class="c">! Load output table for vis_kind</span>
+<span class="w">    </span><span class="k">call </span><span class="n">hvs_output_load</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">output_config</span><span class="p">,</span><span class="w">           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">conf</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">parent</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                   </span><span class="n">isReduce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">redSpatial_config</span><span class="p">%</span><span class="n">active</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! load tracking object shapes like point, line, plane</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_load_shape</span><span class="p">(</span><span class="w"> </span><span class="n">conf</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                            </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">sub_handle</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">me</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">geometry</span><span class="p">,</span><span class="w">                 </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">reqSegments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">output_config</span><span class="p">%</span><span class="n">useGetPoint</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="w"> </span><span class="n">config</span><span class="p">%</span><span class="n">geometry</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;The geometrical objects for the tracker are not &#39;</span><span class="o">//</span><span class="w">  </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="s1">&#39;defined correctly.&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_load_trackingConfig</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

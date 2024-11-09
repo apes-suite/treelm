@@ -1,0 +1,750 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_spatial_scalar_storeVal &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_spatial_scalar_storeVal
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.0% of total for procedures.">15 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_spatial_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_spatial_module.f90.html'>tem_spatial_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_spatial_module.html'>tem_spatial_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_spatial_scalar_storeVal</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_spatial_scalar_storeval.html#src">tem_spatial_scalar_storeVal</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>private  subroutine tem_spatial_scalar_storeVal(me, coord, nVals, iLevel)  
+</h2>
+    
+
+    <p>This routine evaluate scalar spatial function and store its value in
+growing array</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~396"></span>
+              type(<a href='../type/tem_spatial_type.html'>tem_spatial_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>me</strong></td>
+            <td>
+                <p>spatial type for given boundary state</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-coord~81"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>coord</strong>(nVals,3)</td>
+            <td>
+                <p>barycentric Ids of an elements.
+1st index goes over number of elements and
+2nd index goes over x,y,z coordinates</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nvals~7"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nVals</strong></td>
+            <td>
+                <p>number of return values</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ilevel~29"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iLevel</strong></td>
+            <td>
+                <p>Level to which the evaluated values to be stored</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_spatial_scalar_storeval~~CallsGraph Pages: 1 -->
+<svg id="proctem_spatial_scalar_storevalCallsGraph" width="509pt" height="368pt"
+ viewBox="0.00 0.00 509.00 368.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 364)">
+<title>proc~~tem_spatial_scalar_storeval~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-364 505,-364 505,4 -4,4"/>
+<!-- proc~tem_spatial_scalar_storeval -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node1" class="node">
+<title>proc~tem_spatial_scalar_storeval</title>
+<polygon fill="none" stroke="black" points="159,-171 0,-171 0,-147 159,-147 159,-171"/>
+<text text-anchor="middle" x="79.5" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_spatial_scalar_storeVal</text>
+</g>
+<!-- interface~append~14 -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node2" class="node">
+<title>interface~append~14</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node2"><a xlink:href="../interface/append~14.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="269,-318 215,-318 215,-294 269,-294 269,-318"/>
+<text text-anchor="middle" x="242" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_scalar_storeval&#45;&gt;interface~append~14 -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge1" class="edge">
+<title>proc~tem_spatial_scalar_storeval&#45;&gt;interface~append~14</title>
+<path fill="none" stroke="#000000" d="M93.63,-171.03C121.5,-196.55 186.72,-256.28 220.26,-287.01"/>
+<polygon fill="#000000" stroke="#000000" points="217.95,-289.63 227.68,-293.8 222.67,-284.47 217.95,-289.63"/>
+</g>
+<!-- interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node3" class="node">
+<title>interface~tem_spatial_for</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node3"><a xlink:href="../interface/tem_spatial_for.html" xlink:title="tem_spatial_for">
+<polygon fill="#a7506f" stroke="#a7506f" points="289,-171 195,-171 195,-147 289,-147 289,-171"/>
+<text text-anchor="middle" x="242" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_scalar_storeval&#45;&gt;interface~tem_spatial_for -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge2" class="edge">
+<title>proc~tem_spatial_scalar_storeval&#45;&gt;interface~tem_spatial_for</title>
+<path fill="none" stroke="#000000" d="M159.34,-159C167.92,-159 176.53,-159 184.76,-159"/>
+<polygon fill="#000000" stroke="#000000" points="184.97,-162.5 194.97,-159 184.97,-155.5 184.97,-162.5"/>
+</g>
+<!-- interface~truncate~9 -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node4" class="node">
+<title>interface~truncate~9</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node4"><a xlink:href="../interface/truncate~9.html" xlink:title="truncate">
+<polygon fill="#a7506f" stroke="#a7506f" points="271,-66 213,-66 213,-42 271,-42 271,-66"/>
+<text text-anchor="middle" x="242" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">truncate</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spatial_scalar_storeval&#45;&gt;interface~truncate~9 -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge3" class="edge">
+<title>proc~tem_spatial_scalar_storeval&#45;&gt;interface~truncate~9</title>
+<path fill="none" stroke="#000000" d="M98.91,-146.96C127.06,-128.54 180.96,-93.28 213.68,-71.87"/>
+<polygon fill="#000000" stroke="#000000" points="215.86,-74.63 222.31,-66.23 212.02,-68.77 215.86,-74.63"/>
+</g>
+<!-- proc~append_arrayga2d_real -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node5" class="node">
+<title>proc~append_arrayga2d_real</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node5"><a xlink:href="../proc/append_arrayga2d_real.html" xlink:title="append_arrayga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="482.5,-360 343.5,-360 343.5,-336 482.5,-336 482.5,-360"/>
+<text text-anchor="middle" x="413" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_arrayga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~append~14&#45;&gt;proc~append_arrayga2d_real -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge4" class="edge">
+<title>interface~append~14&#45;&gt;proc~append_arrayga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.2,-312.81C285.28,-316.96 306.32,-322.35 325,-327 333.55,-329.13 342.57,-331.34 351.44,-333.5"/>
+<polygon fill="#000000" stroke="#000000" points="350.82,-336.95 361.37,-335.9 352.47,-330.15 350.82,-336.95"/>
+</g>
+<!-- proc~append_singlega2d_real -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node6" class="node">
+<title>proc~append_singlega2d_real</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node6"><a xlink:href="../proc/append_singlega2d_real.html" xlink:title="append_singlega2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="484,-318 342,-318 342,-294 484,-294 484,-318"/>
+<text text-anchor="middle" x="413" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_singlega2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~append~14&#45;&gt;proc~append_singlega2d_real -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge5" class="edge">
+<title>interface~append~14&#45;&gt;proc~append_singlega2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.04,-306C285.97,-306 309.06,-306 331.73,-306"/>
+<polygon fill="#000000" stroke="#000000" points="331.75,-309.5 341.75,-306 331.75,-302.5 331.75,-309.5"/>
+</g>
+<!-- proc~tem_spatial_for_coord -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node7" class="node">
+<title>proc~tem_spatial_for_coord</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node7"><a xlink:href="../proc/tem_spatial_for_coord.html" xlink:title="tem_spatial_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="478,-276 348,-276 348,-252 478,-252 478,-276"/>
+<text text-anchor="middle" x="413" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for_coord</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_coord -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge6" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.29,-171.1C264.61,-189.56 292.58,-224.56 325,-243 329.17,-245.37 333.6,-247.48 338.17,-249.35"/>
+<polygon fill="#000000" stroke="#000000" points="337.1,-252.68 347.69,-252.86 339.52,-246.11 337.1,-252.68"/>
+</g>
+<!-- proc~tem_spatial_for_treeids -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node8" class="node">
+<title>proc~tem_spatial_for_treeids</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node8"><a xlink:href="../proc/tem_spatial_for_treeids.html" xlink:title="tem_spatial_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="481.5,-234 344.5,-234 344.5,-210 481.5,-210 481.5,-234"/>
+<text text-anchor="middle" x="413" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_treeids -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge7" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M263.28,-171.1C279.51,-180.36 303.1,-192.88 325,-201 331.02,-203.23 337.37,-205.29 343.78,-207.18"/>
+<polygon fill="#000000" stroke="#000000" points="343.29,-210.67 353.86,-209.99 345.17,-203.93 343.29,-210.67"/>
+</g>
+<!-- proc~tem_spatial_scalar_for_index -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node9" class="node">
+<title>proc~tem_spatial_scalar_for_index</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node9"><a xlink:href="../proc/tem_spatial_scalar_for_index.html" xlink:title="tem_spatial_scalar_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="496,-192 330,-192 330,-168 496,-168 496,-192"/>
+<text text-anchor="middle" x="413" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_scalar_for_index</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_scalar_for_index -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge8" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_scalar_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M289.18,-164.74C298.73,-165.93 309.12,-167.22 319.66,-168.53"/>
+<polygon fill="#000000" stroke="#000000" points="319.45,-172.03 329.81,-169.79 320.31,-165.08 319.45,-172.03"/>
+</g>
+<!-- proc~tem_spatial_vector_for_coord -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node10" class="node">
+<title>proc~tem_spatial_vector_for_coord</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node10"><a xlink:href="../proc/tem_spatial_vector_for_coord.html" xlink:title="tem_spatial_vector_for_coord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="497.5,-150 328.5,-150 328.5,-126 497.5,-126 497.5,-150"/>
+<text text-anchor="middle" x="413" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_coord</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_coord -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge9" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_coord</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M289.18,-153.26C298.27,-152.13 308.11,-150.91 318.13,-149.66"/>
+<polygon fill="#000000" stroke="#000000" points="318.69,-153.12 328.18,-148.42 317.83,-146.18 318.69,-153.12"/>
+</g>
+<!-- proc~tem_spatial_vector_for_index -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node11" class="node">
+<title>proc~tem_spatial_vector_for_index</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node11"><a xlink:href="../proc/tem_spatial_vector_for_index.html" xlink:title="tem_spatial_vector_for_index">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="496.5,-108 329.5,-108 329.5,-84 496.5,-84 496.5,-108"/>
+<text text-anchor="middle" x="413" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_index</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_index -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge10" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_index</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M263.28,-146.9C279.51,-137.64 303.1,-125.12 325,-117 331.02,-114.77 337.37,-112.71 343.78,-110.82"/>
+<polygon fill="#000000" stroke="#000000" points="345.17,-114.07 353.86,-108.01 343.29,-107.33 345.17,-114.07"/>
+</g>
+<!-- proc~tem_spatial_vector_for_treeids -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node12" class="node">
+<title>proc~tem_spatial_vector_for_treeids</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node12"><a xlink:href="../proc/tem_spatial_vector_for_treeids.html" xlink:title="tem_spatial_vector_for_treeIDs">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="501,-66 325,-66 325,-42 501,-42 501,-66"/>
+<text text-anchor="middle" x="413" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_vector_for_treeIDs</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_treeids -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge11" class="edge">
+<title>interface~tem_spatial_for&#45;&gt;proc~tem_spatial_vector_for_treeids</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.29,-146.9C264.61,-128.44 292.58,-93.44 325,-75 328.4,-73.07 331.97,-71.31 335.64,-69.72"/>
+<polygon fill="#000000" stroke="#000000" points="336.92,-72.98 344.96,-66.08 334.37,-66.46 336.92,-72.98"/>
+</g>
+<!-- proc~truncate_ga_char -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_node13" class="node">
+<title>proc~truncate_ga_char</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CallsGraph_node13"><a xlink:href="../proc/truncate_ga_char.html" xlink:title="truncate_ga_char">
+<polygon fill="#d9534f" stroke="#d9534f" points="466,-24 360,-24 360,0 466,0 466,-24"/>
+<text text-anchor="middle" x="413" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">truncate_ga_char</text>
+</a>
+</g>
+</g>
+<!-- interface~truncate~9&#45;&gt;proc~truncate_ga_char -->
+<g id="proc~~tem_spatial_scalar_storeval~~CallsGraph_edge12" class="edge">
+<title>interface~truncate~9&#45;&gt;proc~truncate_ga_char</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M271.06,-46.71C286.89,-42.63 307.03,-37.47 325,-33 333.55,-30.87 342.57,-28.66 351.44,-26.5"/>
+<polygon fill="#000000" stroke="#000000" points="352.47,-29.85 361.37,-24.1 350.82,-23.05 352.47,-29.85"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_spatial_scalar_storeval~~CalledByGraph Pages: 1 -->
+<svg id="proctem_spatial_scalar_storevalCalledByGraph" width="505pt" height="32pt"
+ viewBox="0.00 0.00 505.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_spatial_scalar_storeval~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 501,-28 501,4 -4,4"/>
+<!-- proc~tem_spatial_scalar_storeval -->
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph_node1" class="node">
+<title>proc~tem_spatial_scalar_storeval</title>
+<polygon fill="none" stroke="black" points="497,-24 338,-24 338,0 497,0 497,-24"/>
+<text text-anchor="middle" x="417.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_spatial_scalar_storeVal</text>
+</g>
+<!-- interface~tem_spatial_storeval -->
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph_node2" class="node">
+<title>interface~tem_spatial_storeval</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CalledByGraph_node2"><a xlink:href="../interface/tem_spatial_storeval.html" xlink:title="tem_spatial_storeVal">
+<polygon fill="#a7506f" stroke="#a7506f" points="302,-24 181,-24 181,0 302,0 302,-24"/>
+<text text-anchor="middle" x="241.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spatial_storeVal</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_spatial_storeval&#45;&gt;proc~tem_spatial_scalar_storeval -->
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph_edge1" class="edge">
+<title>interface~tem_spatial_storeval&#45;&gt;proc~tem_spatial_scalar_storeval</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M302.38,-12C310.58,-12 319.13,-12 327.71,-12"/>
+<polygon fill="#000000" stroke="#000000" points="327.76,-15.5 337.76,-12 327.76,-8.5 327.76,-15.5"/>
+</g>
+<!-- proc~setup_indices_spacetime -->
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph_node3" class="node">
+<title>proc~setup_indices_spacetime</title>
+<g id="a_proc~~tem_spatial_scalar_storeval~~CalledByGraph_node3"><a xlink:href="../proc/setup_indices_spacetime.html" xlink:title="setup_indices_spacetime">
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-24 0,-24 0,0 145,0 145,-24"/>
+<text text-anchor="middle" x="72.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">setup_indices_spacetime</text>
+</a>
+</g>
+</g>
+<!-- proc~setup_indices_spacetime&#45;&gt;interface~tem_spatial_storeval -->
+<g id="proc~~tem_spatial_scalar_storeval~~CalledByGraph_edge2" class="edge">
+<title>proc~setup_indices_spacetime&#45;&gt;interface~tem_spatial_storeval</title>
+<path fill="none" stroke="#000000" d="M145.29,-12C153.71,-12 162.3,-12 170.69,-12"/>
+<polygon fill="#000000" stroke="#000000" points="170.81,-15.5 180.81,-12 170.81,-8.5 170.81,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_spatial_scalar_storeVal</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">nVals</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; spatial type for given boundary state</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_spatial_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
+<span class="w">    </span><span class="c">!&gt; number of return values</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">nVals</span>
+<span class="w">    </span><span class="c">!&gt; barycentric Ids of an elements.</span>
+<span class="w">    </span><span class="c">!! 1st index goes over number of elements and</span>
+<span class="w">    </span><span class="c">!! 2nd index goes over x,y,z coordinates</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="n">nVals</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!&gt; Level to which the evaluated values to be stored</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iLevel</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">evalVal</span><span class="p">(</span><span class="n">nVals</span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="c">! Do not store value for const or none</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;const&#39;</span><span class="w"> </span><span class="p">.</span><span class="nb">or</span><span class="p">.</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="nb">kind</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="s1">&#39;none&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">isStored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.</span>
+
+<span class="w">      </span><span class="n">evalVal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_spatial_for</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">coord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                        </span><span class="n">n</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">nVals</span><span class="w">  </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">valOnLvl</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">evalVal</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">evalVal</span><span class="p">,</span><span class="w">                     </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">          </span><span class="n">length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nVals</span><span class="w">                        </span><span class="p">)</span>
+
+<span class="w">      </span><span class="k">call </span><span class="n">truncate</span><span class="p">(</span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">valOnLvl</span><span class="p">(</span><span class="n">iLevel</span><span class="p">)%</span><span class="n">evalVal</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">else</span>
+
+<span class="k">      </span><span class="n">me</span><span class="p">%</span><span class="n">isStored</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">false</span><span class="p">.</span>
+
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_spatial_scalar_storeVal</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

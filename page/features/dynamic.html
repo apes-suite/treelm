@@ -1,0 +1,409 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../../favicon.png">
+
+    <title>Dynamic data structures &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../../css/pygments.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/local.css" rel="stylesheet">
+      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>Dynamic data structures</h1>
+    <div class="container p-2 mb-4 bg-light border rounded-3">
+      <div class="row align-items-center justify-content-between">
+        <div class="col">
+          <ul class="list-inline" style="margin-bottom:0px; display:inline">
+          </ul>
+        </div>
+        <div class="col">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../index.html'>TreElm Overview</a></li>
+                <li class="breadcrumb-item"><a href='index.html'>Feature Overview</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Dynamic data structures</li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-3">
+        <div class="card card-body bg-light" id="sidebar-toc">
+          <ul class="nav flex-column align-items">
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">TreElm Overview</a>
+            </li>
+          </ul>
+          <hr>
+          <nav class="nav nav-pills flex-column">
+              <a class="nav-link" href="../DataConcept.html">Data Concept</a>
+              <a class="nav-link" href="../bibliography.html">Bibliography</a>
+              <a class="nav-link" href="../codingGuidelines.html">Coding Guidelines</a>
+              <a class="nav-link" href="../face_details.html">Face Details</a>
+              <a class="nav-link" href="index.html">Feature Overview</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="canonicalShapes.html">Canonical Shapes</a>
+              <a class="nav-link active disabled" href="dynamic.html">Dynamic data structures</a>
+              <a class="nav-link" href="spacetimefunctions.html">Space-Time functions</a>
+              <a class="nav-link" href="tem_construction_example_stencil.html">Example for the stencil construction</a>
+              <a class="nav-link" href="tracking.html">Tracking Module Description</a>
+              <a class="nav-link" href="variables/index.html">Variable System</a>
+                <nav class="nav nav-pills flex-column">
+                                <a class="nav-link" href="variables/const.html">Defining variables with constant values</a>
+              <a class="nav-link" href="variables/fun.html">Using Lua functions for space time functions</a>
+              <a class="nav-link" href="variables/mus_predefined.html">Predefined Fortran functions in MUSUBI</a>
+              <a class="nav-link" href="variables/operations.html">Operations inside the variable system</a>
+
+                </nav>
+
+                </nav>
+              <a class="nav-link" href="../fileformat.html">Treelm File Format</a>
+              <a class="nav-link" href="../implementation.html">Implementation in the APES Framework</a>
+              <a class="nav-link" href="../motivation.html">Motivation for the TreElm Library</a>
+              <a class="nav-link" href="../octree.html">Distributed Octree</a>
+              <a class="nav-link" href="../requirements.html">Requirements</a>
+          </nav>
+        </div>
+      </div>
+
+    <div class="col-9" id='text'>
+      <p>During the processing of the mesh to create the solver data structures,
+common tasks arise.
+These include among others
+- a unique collection of elements in lists, i.e. without duplicates,
+- a localization of a stored element,
+- sorting of a list of records.
+As Fortran does not intrinsically include dynamically growing data
+structures, they first have to be introduced manually.</p>
+<p>Therefore the modules <a href="../../module/tem_dyn_array_module.html">tem_dyn_array_module</a> and <a href="../../module/tem_grow_array_module.html">tem_grow_array_module</a>
+have been introduced. These modules are based on generic CoCo macros stored in
+arrayMacros.inc.</p>
+<p>The definition is depicted in listing lst:tem_dyn_array where macros
+are used for the label of a dynamic type <code>?tname?</code>and the used data type
+<code>?tstring?</code>.</p>
+<div class="alert alert-success">
+<p class="alert-title h4">Todo</p>
+<p>What shall be listed in lst:tem_dyn_array ??</p>
+</div>
+<p>The introduction of macros allow for a generic definition for all data types of
+the container, whereas the compiled source code contains the definitions for
+each required data type.</p>
+<h1 id="dynamic-array">Dynamic Array</h1>
+<p>The dynamic array is a data structure to store sets of unique elements in a
+sorted manner. Elements can be added dynamically, and the dynamic array takes
+care of allocating the space needed to store the elements as well as checking
+them for uniqueness. Also sorting is done without user interaction.</p>
+<h2 id="initialization">Initialization</h2>
+<p>The initialization is not needed in all cases. Usually, the dynamic array can be
+used out of the box. In case you know the total number of elements in advance,
+you can provide this information via the init routine. With this hint, the data
+structure is able to allocate enough space for the expected number of elements
+and thus saves some resizing steps.
+When <code>init</code> is called, it simply allocates the container with the given options
+and resets the number of records.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span><span class="p">(</span><span class="nx">dyn_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">dynIntArray</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">init</span><span class="p">(</span><span class="w"> </span><span class="nx">me</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">dynIntArray</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nTotalElements</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="appending-elements">Appending elements</h2>
+<p>To append an element, simply call <code>append</code>. As a dynamic array only contains
+unique elements, the routine checks for the existence of the entry in the
+list and, subsequently, the sufficiency of the size of the container to
+incorporate another entry. In case the size does not suffice, the array is
+expanded. Information about if (<code>wasAdded</code>) and where (<code>pos</code>) the entry was
+stored is returned to the caller.</p>
+<div class="codehilite"><pre><span></span><code>integer :: newPos
+logical :: wasAdded
+call append( me = dynIntArray, val = 1, length = 5, pos = newPos, wasAdded = wasAdded )
+</code></pre></div>
+
+<p>Also appending more than one value is possible using the vectorial append
+routine:</p>
+<div class="codehilite"><pre><span></span><code>integer :: newPos(:)
+logical :: wasAdded(:)
+call append( me = dynIntArray, val = ( 2, 3, 4), length = 5, pos = newPos, wasAdded = wasAdded )
+</code></pre></div>
+
+<h2 id="expanding-a-dynamic-array">Expanding a dynamic array</h2>
+<p>An uninitialized dynamic array starts with the size of 0, but also an
+initialized array can become to small over time. If elements should be added,
+but the dynamic array doesn't have any free spots left, <code>expand</code> is called to
+increase the array's size.</p>
+<p>If <code>expand</code> was called and a new length was provided via the <code>length</code> argument,
+this length is taken to increase the array. If no length was provided, the array
+is simply doubled, but at least increased by <a href="../../module/env_module.html#variable-minlength">minLength</a>.</p>
+<p>Another thing influencing the size is the amount of elements that are added. The
+array is always increased to afterwards contain all new elements.</p>
+<p>But the array is only increased up to the maximum value of the index,
+which means that an dynamic array can only contain up to <code>huge(me%nVals)</code>
+elements, thus <script type="math/tex">2^31</script> elements.</p>
+<h2 id="retrieving-the-position-of-an-element">Retrieving the position of an element</h2>
+<p>You might want to retrieve the position of an element within a list. In order to
+achieve this efficiently, the list with <script type="math/tex">n</script> entries must be ordered so we can
+rely on the binary search, which performs with <script type="math/tex">\mathcal{O}( \log n )</script>.</p>
+<p>Hence we introduce a derived data type which allows an efficient and simple
+element adding and retrieving process, as well as a sorted order of the
+entries.
+<a href="../../module/tem_dyn_array_module.html">tem_dyn_array_module</a> provides the type definitions and all the related
+procedures to act on this data type.
+The data type includes the size of the container within, the amount of its
+actual entries, a flag for uniqueness and the container array itself as well as
+a conforming array for the sorted retrieval of the entries in the value array.</p>
+<h2 id="truncating-a-dynamic-array">Truncating a dynamic array</h2>
+<p>See <a href="#Truncating_a_growing_array">Truncating a growing array</a>.</p>
+<h2 id="emptying-a-dynamic-array">Emptying a dynamic array</h2>
+<p>See <a href="#Emptying_a_growing_array">Emptying a growing array</a>.</p>
+<h2 id="destroying-a-dynamic-array">Destroying a Dynamic array</h2>
+<p>See <a href="#Destroying_a_growing_array">Destroying a growing array</a>.</p>
+<h1 id="growing-array">Growing Array</h1>
+<p>A growing array is a data structure to store arbitrary sets of elements. The
+growing array does not check for uniqueness nor does it sort it's elements. Thus
+it is similar to the common fortran array except that it can grow dynamically
+(at least that's how it looks like).</p>
+<h2 id="initialization_1">Initialization</h2>
+<p>The initialization of the growing array the same applies as it does for the
+dynamic array; an initialization is only needed, when th ethe total number
+of elements in known in advance.</p>
+<div class="codehilite"><pre><span></span><code><span class="k">type</span><span class="p">(</span><span class="nx">grw_intArray_type</span><span class="p">)</span><span class="w"> </span><span class="o">::</span><span class="w"> </span><span class="nx">grwIntArray</span>
+<span class="nx">call</span><span class="w"> </span><span class="nx">init</span><span class="p">(</span><span class="w"> </span><span class="nx">me</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">grwIntArray</span><span class="p">,</span><span class="w"> </span><span class="nx">length</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">nTotalElements</span><span class="w"> </span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="appending-elements_1">Appending elements</h2>
+<p>Elements can be appended in two different ways. The first one adds a single
+element to the grwoing array:</p>
+<div class="codehilite"><pre><span></span><code>call append( me = grwIntArray, val = 1 )
+</code></pre></div>
+
+<p>The second routine takes an array of values:</p>
+<div class="codehilite"><pre><span></span><code>call append( me = grwIntArray, val = ( 2, 3, 4 ) )
+</code></pre></div>
+
+<p>After these two calls, the grwoing array contains <code>( 1, 2, 3, 4 )</code>.</p>
+<h2 id="placing-elements-at-a-given-position">Placing elements at a given position</h2>
+<p>When elements should end up at a speciic position, <code>append</code> is not the routine
+of choice, as it appends the new elements to the end of the array. Use <code>placeAt</code>
+instead. <code>placeAt</code> needs to be called with the additional argument <code>pos</code>, which
+states the position the element should be placed at.</p>
+<p>Regarding the example from "Appending elements", the current array looks like
+<code>( 1, 2, 3, 4 )</code>. After</p>
+<div class="codehilite"><pre><span></span><code>call placeAt( me = grwIntArray, val = 5, pos = 3 )
+</code></pre></div>
+
+<p>the array wil look like <code>( 1, 2, 5, 4 )</code>. There is also a vectorial version
+available:</p>
+<div class="codehilite"><pre><span></span><code>call placeAt( me = grwIntArray, val = ( 5, 6, 7 ), pos = 3 )
+</code></pre></div>
+
+<p>which results in <code>( 1, 2, 5, 6, 7 )</code>.</p>
+<h2 id="expanding-the-growing-array">Expanding the growing array</h2>
+<p>The array starts with a size of 0. When a new element is appended, the array
+checks whether the new element fits into it. If not, the array is expanded.
+If the caller doesn't explicitly provide a length, the array will be doubled
+(whereas the minimum expansion length is <a href="../../module/env_module.html#variable-minlength">minLength</a>).
+Regarding the example from the paragraph "Appending elements", the array
+contains 4 elements and the array is also 4 elements long. When a fifth element
+is added, the array will be resized, so that <code>size(grwIntArray%Val)</code> will return
+8, even when <code>grwIntArray%nVals</code> is 5.</p>
+<p>In cases where the final size of the array is known or the size of the batch of
+elements that will be added, this size can be passed along with calls to append
+or placeAt using the length argument. However, passing the expand length doesn't
+necessarily mean that it is used. If it is smaller than the position requested
+by placeAt is even outside the expanded array or the expanded array would exceed
+it's maximum size, other expand lengths will be used.</p>
+<p>Liek the dynamic array, the maximum size for the growing array is also
+<code>huge(me%nVals)</code>, which denotes to <script type="math/tex">2^31</script> elements.</p>
+<h2 id="truncating-the-growing-array">Truncating the growing array</h2>
+<p>With the rather involved logic to expand a growing array, it can happen that
+the final array has much more element slots available that real elements (which
+means: <code>me%nVals</code> &lt;&lt; <code>me%ContainerSize</code>). To free the surplus, the <code>truncate</code>
+routine shrinks the array to the actually needed size.</p>
+<p>Regarding the array <code>( 1, 2, 5, 6, 7, x, x, x )</code> with x indicating the available
+slots. After</p>
+<div class="codehilite"><pre><span></span><code>call truncate( me = grwIntArray )
+</code></pre></div>
+
+<p>the array will be <code>( 1, 2, 5, 6, 7 )</code> and therefore
+<code>me%nVals</code> == <code>me%ContainerSize</code>.</p>
+<h2 id="emtying-a-growing-array">Emtying a growing array</h2>
+<p>If a growing array should be recycled, but it's elements are not needed anymore,
+the array can be emptied by calling</p>
+<div class="codehilite"><pre><span></span><code>call empty( me = grwIntArray )
+</code></pre></div>
+
+<p>This actually doesn't change the array's container. It will stay untouched,
+which means: If it was 8 slots long before calling <code>empty</code>, it is also 8 slots
+long after the call. The growing array just forgot that the container contains
+anything useful.</p>
+<h2 id="destroying-a-growing-array">Destroying a growing array</h2>
+<p>In case a growing array is not needed anymore, the memory consumed by the
+elements with the array and the growing array itself can be freed by calling</p>
+<div class="codehilite"><pre><span></span><code>call destroy( me = grwIntArray )
+</code></pre></div>
+
+<h1 id="two-dimensiona-growing-array">Two-dimensiona Growing Array</h1>
+<p>There is also a two-dimensional growing array, which actually is an array of
+growing arrays. The width of the two-dimensional growing array can only be set
+during initialization of the array, whereas the sizes of each array can be set
+individually and also after the initialization is already done (or not, as a
+growing array doesnot necessarily has to be initialized before use).</p>
+<p>The following paragraphs do only state the differences to the common,
+one-dimensional array.</p>
+<h2 id="initialization_2">Initialization</h2>
+<p>Initialization is similar to the common growing array, with the difference that
+the width for the first dimension is mandatory (length stays optional):</p>
+<div class="codehilite"><pre><span></span><code>call init( me = growing2dIntArray, width = 3, length = 3 )
+</code></pre></div>
+
+<h2 id="appending-elements_2">Appending elements</h2>
+<p>To append an element, the index of the first dimension has to be provided:</p>
+<div class="codehilite"><pre><span></span><code>call append( me = grw2dIntArray, val = 1, pos1 = 2 )
+</code></pre></div>
+
+<p>After initializing an array with 3x3 elements and calling the above example, the
+array looks like:</p>
+<div class="codehilite"><pre><span></span><code>( ( <span class="ge">_, _</span>, <span class="ge">_ ), ( 1, _</span>, <span class="ge">_ ), ( _</span>, <span class="ge">_, _</span> ) )
+</code></pre></div>
+
+<p>Providing length and retrieving the position where the element was added is also
+possible for the two-dimensional version:</p>
+<div class="codehilite"><pre><span></span><code>integer :: addedPos
+call append( me = grw2dIntArray, val = 1, pos1 = 2, length = 3, pos2 = addedPos )
+</code></pre></div>
+
+<p>Also vectorial access is possible. But in contrast to the one-dimensional
+version, not all elements are added to one growing array, but to the first free
+index for all growing arrays. Consider the array from the exmaple above:</p>
+<div class="codehilite"><pre><span></span><code>( ( <span class="ge">_, _</span>, <span class="ge">_ ), ( 1, _</span>, <span class="ge">_ ), ( _</span>, <span class="ge">_, _</span> ) )
+</code></pre></div>
+
+<p>Calling the vectorial append</p>
+<div class="codehilite"><pre><span></span><code>call append( me = grw2dIntArray, val = ( 4, 5, 6 ) )
+</code></pre></div>
+
+<p>will result in</p>
+<div class="codehilite"><pre><span></span><code>( ( <span class="ge">_, 4, _</span> ), ( 1, 5, <span class="ge">_ ), ( _</span>, 6, _ ) )
+</code></pre></div>
+
+<p>because the element <code>1</code> in the second array blocks the first index, thus the
+second index is the first one that is free for all arrays.</p>
+<h2 id="placing-elements-at-a-given-position_1">Placing elements at a given position</h2>
+<p>When placing elements at a requested position, the scalar approach behaves as
+expected. The vectorial access is, like for appending values, a little
+different. Taking the array from the example above:</p>
+<div class="codehilite"><pre><span></span><code>( ( <span class="ge">_, 4, _</span> ), ( 1, 5, <span class="ge">_ ), ( _</span>, 6, _ ) )
+</code></pre></div>
+
+<p>calling</p>
+<div class="codehilite"><pre><span></span><code>call placeAt( me = grw2dIntArray, val = ( 7, 8, 9 ), pos2 = 2 )
+</code></pre></div>
+
+<p>will result in</p>
+<div class="codehilite"><pre><span></span><code>( ( <span class="ge">_, 7, _</span> ), ( 1, 8, <span class="ge">_ ), ( _</span>, 9, _ ) )
+</code></pre></div>
+    </div>
+  </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

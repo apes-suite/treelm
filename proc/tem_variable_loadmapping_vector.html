@@ -1,0 +1,1161 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_variable_loadMapping_vector &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_variable_loadMapping_vector
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.1% of total for procedures.">30 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_varMap_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_varmap_module.f90.html'>tem_varMap_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_varmap_module.html'>tem_varMap_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_variable_loadMapping_vector</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_variable_loadmapping_vector.html#src">tem_variable_loadMapping_vector</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_variable_loadMapping_vector(possVars, conf, parent, key, varDict, varSys)  
+</h2>
+    
+
+    <p>Loads the variable mapping from a table defined by given key
+for the variable names defined in possVars list.
+A variable mapping is used to
+link a user defined variable to a variable expected from, e.g., an equation
+system. These mappings are stored in varDict, which basically is a
+dictionary, whereas the key contains the name of the expected variable and
+the value contains the name of the user defined variable in the variable
+table.</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-possvars"></span>
+              type(<a href='../type/tem_possible_variable_type.html'>tem_possible_variable_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>possVars</strong></td>
+            <td>
+                <p>Possible variable names expected by the solver</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-conf~60"></span>
+              type(<a href='https://geb.inf.tu-dresden.de/doxy/aotus/type/flu_state.html'>flu_State</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>conf</strong></td>
+            <td>
+                <p>lua config file</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-parent~14"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>parent</strong></td>
+            <td>
+                <p>optional parent handle</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-key~18"></span>
+              character(len=*),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>key</strong></td>
+            <td>
+                <p>optional key for the table</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-vardict"></span>
+              type(<a href='../type/grw_stringkeyvaluepairarray_type.html'>grw_stringkeyvaluepairarray_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varDict</strong></td>
+            <td>
+                <p>The dictionary that contains the mapping between expected variables
+and the actual variables defined by the user.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~6"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+                <p>Variable system to append anonymous variables to.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_variable_loadmapping_vector~~CallsGraph Pages: 1 -->
+<svg id="proctem_variable_loadmapping_vectorCallsGraph" width="641pt" height="321pt"
+ viewBox="0.00 0.00 641.00 321.02" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph" class="graph" transform="scale(0.52 0.52) rotate(0) translate(4 616)">
+<title>proc~~tem_variable_loadmapping_vector~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-616 1234,-616 1234,4 -4,4"/>
+<!-- proc~tem_variable_loadmapping_vector -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node1" class="node">
+<title>proc~tem_variable_loadmapping_vector</title>
+<polygon fill="none" stroke="black" points="196,-154 0,-154 0,-130 196,-130 196,-154"/>
+<text text-anchor="middle" x="98" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_variable_loadMapping_vector</text>
+</g>
+<!-- aot_table_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node2" class="node">
+<title>aot_table_close</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node2"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_close.html" xlink:title="aot_table_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="992.5,-154 897.5,-154 897.5,-130 992.5,-130 992.5,-154"/>
+<text text-anchor="middle" x="945" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_vector&#45;&gt;aot_table_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge1" class="edge">
+<title>proc~tem_variable_loadmapping_vector&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M196.34,-142C373.95,-142 745.33,-142 887.22,-142"/>
+<polygon fill="#000000" stroke="#000000" points="887.43,-145.5 897.43,-142 887.43,-138.5 887.43,-145.5"/>
+</g>
+<!-- aot_table_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node3" class="node">
+<title>aot_table_open</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node3"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_open.html" xlink:title="aot_table_open">
+<polygon fill="#d9534f" stroke="#d9534f" points="1197,-66 1103,-66 1103,-42 1197,-42 1197,-66"/>
+<text text-anchor="middle" x="1150" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_vector&#45;&gt;aot_table_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge2" class="edge">
+<title>proc~tem_variable_loadmapping_vector&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M133.84,-129.95C205.5,-106.28 374.97,-56 521.5,-56 521.5,-56 521.5,-56 721,-56 854.25,-56 1010.84,-55.02 1092.68,-54.43"/>
+<polygon fill="#000000" stroke="#000000" points="1092.79,-57.93 1102.77,-54.36 1092.74,-50.93 1092.79,-57.93"/>
+</g>
+<!-- proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node4" class="node">
+<title>proc~tem_variable_loadmapping_single</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node4"><a xlink:href="../proc/tem_variable_loadmapping_single.html" xlink:title="tem_variable_loadMapping_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="425,-402 232,-402 232,-378 425,-378 425,-402"/>
+<text text-anchor="middle" x="328.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping_single</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_vector&#45;&gt;proc~tem_variable_loadmapping_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge3" class="edge">
+<title>proc~tem_variable_loadmapping_vector&#45;&gt;proc~tem_variable_loadmapping_single</title>
+<path fill="none" stroke="#000000" d="M110.33,-154.3C147.27,-194.39 264.4,-321.51 309.53,-370.49"/>
+<polygon fill="#000000" stroke="#000000" points="307.02,-372.94 316.37,-377.92 312.17,-368.19 307.02,-372.94"/>
+</g>
+<!-- aot_exists -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node5" class="node">
+<title>aot_exists</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node5"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_exists.html" xlink:title="aot_exists">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1182,-444 1118,-444 1118,-420 1182,-420 1182,-444"/>
+<text text-anchor="middle" x="1150" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_exists</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;aot_exists -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge4" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;aot_exists</title>
+<path fill="none" stroke="#000000" d="M425.31,-400.94C437.32,-402.09 449.44,-403.15 461,-404 705.89,-422 1000.74,-429.14 1107.71,-431.26"/>
+<polygon fill="#000000" stroke="#000000" points="1107.69,-434.76 1117.76,-431.46 1107.83,-427.76 1107.69,-434.76"/>
+</g>
+<!-- aot_get_val -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node6" class="node">
+<title>aot_get_val</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node6"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_get_val~8.html" xlink:title="aot_get_val">
+<polygon fill="#a7506f" stroke="#a7506f" points="1186.5,-402 1113.5,-402 1113.5,-378 1186.5,-378 1186.5,-402"/>
+<text text-anchor="middle" x="1150" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_get_val</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;aot_get_val -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge5" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M425.11,-390C601.7,-390 972.83,-390 1102.83,-390"/>
+<polygon fill="#000000" stroke="#000000" points="1103.21,-393.5 1113.21,-390 1103.21,-386.5 1103.21,-393.5"/>
+</g>
+<!-- interface~append~31 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node7" class="node">
+<title>interface~append~31</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node7"><a xlink:href="../interface/append~31.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="549.5,-549 495.5,-549 495.5,-525 549.5,-525 549.5,-549"/>
+<text text-anchor="middle" x="522.5" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;interface~append~31 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge6" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;interface~append~31</title>
+<path fill="none" stroke="#000000" d="M340.93,-402.13C362.72,-424.78 412.37,-474.18 461,-507 468.85,-512.3 477.77,-517.24 486.3,-521.52"/>
+<polygon fill="#000000" stroke="#000000" points="484.82,-524.69 495.34,-525.9 487.86,-518.39 484.82,-524.69"/>
+</g>
+<!-- interface~tem_load_spacetime -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node8" class="node">
+<title>interface~tem_load_spacetime</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node8"><a xlink:href="../interface/tem_load_spacetime.html" xlink:title="tem_load_spacetime">
+<polygon fill="#a7506f" stroke="#a7506f" points="584,-276 461,-276 461,-252 584,-252 584,-276"/>
+<text text-anchor="middle" x="522.5" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_load_spacetime -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge7" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_load_spacetime</title>
+<path fill="none" stroke="#000000" d="M347.91,-377.92C382.03,-355.53 455.2,-307.51 494.78,-281.54"/>
+<polygon fill="#000000" stroke="#000000" points="496.71,-284.46 503.15,-276.04 492.87,-278.61 496.71,-284.46"/>
+</g>
+<!-- interface~tem_varsys_append_stfun -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node9" class="node">
+<title>interface~tem_varsys_append_stfun</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node9"><a xlink:href="../interface/tem_varsys_append_stfun.html" xlink:title="tem_varSys_append_stfun">
+<polygon fill="#a7506f" stroke="#a7506f" points="795.5,-507 644.5,-507 644.5,-483 795.5,-483 795.5,-507"/>
+<text text-anchor="middle" x="720" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stfun</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_varsys_append_stfun -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge8" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;interface~tem_varsys_append_stfun</title>
+<path fill="none" stroke="#000000" d="M354.67,-402.06C380.75,-414.14 422.95,-432.55 461,-444 517.87,-461.12 583.56,-474.01 634.42,-482.55"/>
+<polygon fill="#000000" stroke="#000000" points="633.95,-486.02 644.39,-484.2 635.09,-479.11 633.95,-486.02"/>
+</g>
+<!-- proc~tem_spacetime_hash_id -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node10" class="node">
+<title>proc~tem_spacetime_hash_id</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node10"><a xlink:href="../proc/tem_spacetime_hash_id.html" xlink:title="tem_spacetime_hash_id">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1015,-111 875,-111 875,-87 1015,-87 1015,-111"/>
+<text text-anchor="middle" x="945" y="-96.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_spacetime_hash_id</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_variable_loadmapping_single&#45;&gt;proc~tem_spacetime_hash_id -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge9" class="edge">
+<title>proc~tem_variable_loadmapping_single&#45;&gt;proc~tem_spacetime_hash_id</title>
+<path fill="none" stroke="#000000" d="M337.08,-377.71C355.04,-349.59 403.07,-280.16 461,-243 588.46,-161.25 764.32,-124.22 864.89,-108.81"/>
+<polygon fill="#000000" stroke="#000000" points="865.61,-112.24 874.98,-107.3 864.57,-105.32 865.61,-112.24"/>
+</g>
+<!-- proc~append_ga_stringkeyvaluepair -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node14" class="node">
+<title>proc~append_ga_stringkeyvaluepair</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node14"><a xlink:href="../proc/append_ga_stringkeyvaluepair.html" xlink:title="append_ga_stringkeyvaluepair">
+<polygon fill="#d9534f" stroke="#d9534f" points="808,-591 632,-591 632,-567 808,-567 808,-591"/>
+<text text-anchor="middle" x="720" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_stringkeyvaluepair</text>
+</a>
+</g>
+</g>
+<!-- interface~append~31&#45;&gt;proc~append_ga_stringkeyvaluepair -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge10" class="edge">
+<title>interface~append~31&#45;&gt;proc~append_ga_stringkeyvaluepair</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.7,-542.74C569.11,-546.98 596.2,-552.89 620,-558 630.28,-560.21 641.17,-562.53 651.82,-564.8"/>
+<polygon fill="#000000" stroke="#000000" points="651.42,-568.29 661.93,-566.95 652.87,-561.44 651.42,-568.29"/>
+</g>
+<!-- proc~append_ga_stringkeyvaluepair_vec -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node15" class="node">
+<title>proc~append_ga_stringkeyvaluepair_vec</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node15"><a xlink:href="../proc/append_ga_stringkeyvaluepair_vec.html" xlink:title="append_ga_stringkeyvaluepair_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="820,-549 620,-549 620,-525 820,-525 820,-549"/>
+<text text-anchor="middle" x="720" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_stringkeyvaluepair_vec</text>
+</a>
+</g>
+</g>
+<!-- interface~append~31&#45;&gt;proc~append_ga_stringkeyvaluepair_vec -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge11" class="edge">
+<title>interface~append~31&#45;&gt;proc~append_ga_stringkeyvaluepair_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M549.87,-537C565.77,-537 587.23,-537 609.51,-537"/>
+<polygon fill="#000000" stroke="#000000" points="609.78,-540.5 619.78,-537 609.78,-533.5 609.78,-540.5"/>
+</g>
+<!-- proc~tem_load_spacetime_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node16" class="node">
+<title>proc~tem_load_spacetime_single</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node16"><a xlink:href="../proc/tem_load_spacetime_single.html" xlink:title="tem_load_spacetime_single">
+<polygon fill="#d9534f" stroke="#d9534f" points="1025,-276 865,-276 865,-252 1025,-252 1025,-276"/>
+<text text-anchor="middle" x="945" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime_single</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge12" class="edge">
+<title>interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M584.2,-264C655.08,-264 772.99,-264 854.41,-264"/>
+<polygon fill="#000000" stroke="#000000" points="854.65,-267.5 864.65,-264 854.65,-260.5 854.65,-267.5"/>
+</g>
+<!-- proc~tem_load_spacetime_table -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node17" class="node">
+<title>proc~tem_load_spacetime_table</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node17"><a xlink:href="../proc/tem_load_spacetime_table.html" xlink:title="tem_load_spacetime_table">
+<polygon fill="#d9534f" stroke="#d9534f" points="797.5,-234 642.5,-234 642.5,-210 797.5,-210 797.5,-234"/>
+<text text-anchor="middle" x="720" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_spacetime_table</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_table -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge13" class="edge">
+<title>interface~tem_load_spacetime&#45;&gt;proc~tem_load_spacetime_table</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M579.52,-251.96C602.43,-247.04 629.1,-241.31 652.94,-236.19"/>
+<polygon fill="#000000" stroke="#000000" points="653.93,-239.56 662.97,-234.04 652.46,-232.72 653.93,-239.56"/>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node18" class="node">
+<title>proc~tem_varsys_append_stfun_raw</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node18"><a xlink:href="../proc/tem_varsys_append_stfun_raw.html" xlink:title="tem_varSys_append_stFun_raw">
+<polygon fill="#d9534f" stroke="#d9534f" points="1034,-507 856,-507 856,-483 1034,-483 1034,-507"/>
+<text text-anchor="middle" x="945" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stFun_raw</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfun_raw -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge14" class="edge">
+<title>interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfun_raw</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M795.57,-495C811.61,-495 828.8,-495 845.59,-495"/>
+<polygon fill="#000000" stroke="#000000" points="845.98,-498.5 855.98,-495 845.98,-491.5 845.98,-498.5"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node19" class="node">
+<title>proc~tem_varsys_append_stfunvar</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node19"><a xlink:href="../proc/tem_varsys_append_stfunvar.html" xlink:title="tem_varSys_append_stFunVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="1030,-549 860,-549 860,-525 1030,-525 1030,-549"/>
+<text text-anchor="middle" x="945" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_stFunVar</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfunvar -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge15" class="edge">
+<title>interface~tem_varsys_append_stfun&#45;&gt;proc~tem_varsys_append_stfunvar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M784.9,-507.04C811.5,-512.04 842.54,-517.89 870.1,-523.08"/>
+<polygon fill="#000000" stroke="#000000" points="869.61,-526.55 880.09,-524.96 870.91,-519.67 869.61,-526.55"/>
+</g>
+<!-- aot_fun_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node11" class="node">
+<title>aot_fun_close</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node11"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_fun_close.html" xlink:title="aot_fun_close">
+<polygon fill="#d9534f" stroke="#d9534f" points="1192.5,-150 1107.5,-150 1107.5,-126 1192.5,-126 1192.5,-150"/>
+<text text-anchor="middle" x="1150" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_close</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_hash_id&#45;&gt;aot_fun_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge16" class="edge">
+<title>proc~tem_spacetime_hash_id&#45;&gt;aot_fun_close</title>
+<path fill="none" stroke="#000000" d="M1008.56,-111.02C1037.07,-116.5 1070.42,-122.9 1097.46,-128.1"/>
+<polygon fill="#000000" stroke="#000000" points="1097.01,-131.58 1107.49,-130.02 1098.33,-124.7 1097.01,-131.58"/>
+</g>
+<!-- aot_fun_id -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node12" class="node">
+<title>aot_fun_id</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node12"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_fun_id.html" xlink:title="aot_fun_id">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1183.5,-24 1116.5,-24 1116.5,0 1183.5,0 1183.5,-24"/>
+<text text-anchor="middle" x="1150" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_id</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_hash_id&#45;&gt;aot_fun_id -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge17" class="edge">
+<title>proc~tem_spacetime_hash_id&#45;&gt;aot_fun_id</title>
+<path fill="none" stroke="#000000" d="M965.52,-86.79C989.39,-72.29 1031.41,-48.16 1070,-33 1081.56,-28.46 1094.44,-24.57 1106.4,-21.41"/>
+<polygon fill="#000000" stroke="#000000" points="1107.34,-24.79 1116.17,-18.94 1105.62,-18 1107.34,-24.79"/>
+</g>
+<!-- aot_fun_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node13" class="node">
+<title>aot_fun_open</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node13"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/interface/aot_fun_open.html" xlink:title="aot_fun_open">
+<polygon fill="#a7506f" stroke="#a7506f" points="1192.5,-108 1107.5,-108 1107.5,-84 1192.5,-84 1192.5,-108"/>
+<text text-anchor="middle" x="1150" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_fun_open</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_spacetime_hash_id&#45;&gt;aot_fun_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge18" class="edge">
+<title>proc~tem_spacetime_hash_id&#45;&gt;aot_fun_open</title>
+<path fill="none" stroke="#000000" d="M1015.01,-97.98C1041.98,-97.58 1072.38,-97.13 1097.39,-96.76"/>
+<polygon fill="#000000" stroke="#000000" points="1097.45,-100.26 1107.4,-96.61 1097.35,-93.26 1097.45,-100.26"/>
+</g>
+<!-- interface~expand~28 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node24" class="node">
+<title>interface~expand~28</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node24"><a xlink:href="../interface/expand~28.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="972,-591 918,-591 918,-567 972,-567 972,-591"/>
+<text text-anchor="middle" x="945" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_ga_stringkeyvaluepair&#45;&gt;interface~expand~28 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge19" class="edge">
+<title>proc~append_ga_stringkeyvaluepair&#45;&gt;interface~expand~28</title>
+<path fill="none" stroke="#000000" d="M808.18,-579C842.69,-579 880.46,-579 907.4,-579"/>
+<polygon fill="#000000" stroke="#000000" points="907.52,-582.5 917.52,-579 907.52,-575.5 907.52,-582.5"/>
+</g>
+<!-- proc~append_ga_stringkeyvaluepair_vec&#45;&gt;interface~expand~28 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge20" class="edge">
+<title>proc~append_ga_stringkeyvaluepair_vec&#45;&gt;interface~expand~28</title>
+<path fill="none" stroke="#000000" d="M784.9,-549.04C824.74,-556.54 874.55,-565.92 907.72,-572.17"/>
+<polygon fill="#000000" stroke="#000000" points="907.4,-575.67 917.87,-574.08 908.69,-568.79 907.4,-575.67"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_table_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge26" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M1022.56,-251.92C1026.73,-249.43 1030.6,-246.48 1034,-243 1087.37,-188.38 1017.34,-130.3 1070,-75 1076.26,-68.43 1084.32,-63.83 1092.89,-60.63"/>
+<polygon fill="#000000" stroke="#000000" points="1094.2,-63.89 1102.72,-57.58 1092.13,-57.2 1094.2,-63.89"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_exists -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge21" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_exists</title>
+<path fill="none" stroke="#000000" d="M952.62,-276.04C968.76,-304.24 1013.04,-374.89 1070,-411 1081.35,-418.19 1095.11,-422.94 1107.95,-426.06"/>
+<polygon fill="#000000" stroke="#000000" points="1107.47,-429.54 1117.98,-428.24 1108.95,-422.7 1107.47,-429.54"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_get_val -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge24" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_get_val</title>
+<path fill="none" stroke="#000000" d="M956.69,-276.05C976.72,-297.89 1022.24,-344.06 1070,-369 1080.31,-374.39 1092.12,-378.48 1103.41,-381.55"/>
+<polygon fill="#000000" stroke="#000000" points="1102.6,-384.95 1113.15,-383.99 1104.3,-378.16 1102.6,-384.95"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_fun_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge22" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_fun_close</title>
+<path fill="none" stroke="#000000" d="M1020.12,-251.99C1025.1,-249.51 1029.8,-246.54 1034,-243 1065.06,-216.83 1039.27,-185.56 1070,-159 1077.81,-152.25 1087.56,-147.64 1097.52,-144.5"/>
+<polygon fill="#000000" stroke="#000000" points="1098.73,-147.8 1107.48,-141.82 1096.92,-141.03 1098.73,-147.8"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_fun_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge23" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_fun_open</title>
+<path fill="none" stroke="#000000" d="M1021.88,-251.88C1026.27,-249.41 1030.37,-246.47 1034,-243 1076.08,-202.73 1028.44,-157.8 1070,-117 1077.52,-109.62 1087.33,-104.75 1097.46,-101.56"/>
+<polygon fill="#000000" stroke="#000000" points="1098.43,-104.92 1107.21,-98.99 1096.65,-98.16 1098.43,-104.92"/>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge32" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" d="M911.27,-276.01C899.49,-284.97 910.73,-294 945,-294 966.95,-294 979.45,-290.29 982.51,-285.28"/>
+<polygon fill="#000000" stroke="#000000" points="985.75,-283.95 978.73,-276.01 979.27,-286.6 985.75,-283.95"/>
+</g>
+<!-- aot_reference_for -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node20" class="node">
+<title>aot_reference_for</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node20"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_reference_for.html" xlink:title="aot_reference_for">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1203,-360 1097,-360 1097,-336 1203,-336 1203,-360"/>
+<text text-anchor="middle" x="1150" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_reference_for</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_reference_for -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge25" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_reference_for</title>
+<path fill="none" stroke="#000000" d="M966.45,-276.08C990.54,-289.91 1032.1,-312.52 1070,-327 1075.74,-329.19 1081.8,-331.25 1087.91,-333.14"/>
+<polygon fill="#000000" stroke="#000000" points="1086.92,-336.5 1097.5,-335.99 1088.91,-329.79 1086.92,-336.5"/>
+</g>
+<!-- aot_type_of -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node22" class="node">
+<title>aot_type_of</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node22"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_type_of.html" xlink:title="aot_type_of">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="1187,-318 1113,-318 1113,-294 1187,-294 1187,-318"/>
+<text text-anchor="middle" x="1150" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_type_of</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;aot_type_of -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge27" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;aot_type_of</title>
+<path fill="none" stroke="#000000" d="M1004.17,-276.04C1035.51,-282.52 1073.63,-290.41 1102.89,-296.46"/>
+<polygon fill="#000000" stroke="#000000" points="1102.35,-299.92 1112.85,-298.52 1103.76,-293.07 1102.35,-299.92"/>
+</g>
+<!-- interface~tem_load_shape -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node25" class="node">
+<title>interface~tem_load_shape</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node25"><a xlink:href="../interface/tem_load_shape.html" xlink:title="tem_load_shape">
+<polygon fill="#a7506f" stroke="#a7506f" points="1200,-276 1100,-276 1100,-252 1200,-252 1200,-276"/>
+<text text-anchor="middle" x="1150" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_shape</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;interface~tem_load_shape -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge28" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;interface~tem_load_shape</title>
+<path fill="none" stroke="#000000" d="M1025.07,-264C1046.49,-264 1069.32,-264 1089.47,-264"/>
+<polygon fill="#000000" stroke="#000000" points="1089.74,-267.5 1099.74,-264 1089.74,-260.5 1089.74,-267.5"/>
+</g>
+<!-- proc~load_spacetime_asconst -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node26" class="node">
+<title>proc~load_spacetime_asconst</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node26"><a xlink:href="../proc/load_spacetime_asconst.html" xlink:title="load_spacetime_asConst">
+<polygon fill="#d9534f" stroke="#d9534f" points="1222,-234 1078,-234 1078,-210 1222,-210 1222,-234"/>
+<text text-anchor="middle" x="1150" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_spacetime_asConst</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_asconst -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge29" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_asconst</title>
+<path fill="none" stroke="#000000" d="M1004.17,-251.96C1028.06,-247.02 1055.89,-241.26 1080.74,-236.12"/>
+<polygon fill="#000000" stroke="#000000" points="1081.74,-239.49 1090.82,-234.04 1080.32,-232.64 1081.74,-239.49"/>
+</g>
+<!-- proc~load_spacetime_predefined -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node27" class="node">
+<title>proc~load_spacetime_predefined</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node27"><a xlink:href="../proc/load_spacetime_predefined.html" xlink:title="load_spacetime_predefined">
+<polygon fill="#d9534f" stroke="#d9534f" points="1230,-192 1070,-192 1070,-168 1230,-168 1230,-192"/>
+<text text-anchor="middle" x="1150" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">load_spacetime_predefined</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_predefined -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge30" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~load_spacetime_predefined</title>
+<path fill="none" stroke="#000000" d="M1015.41,-251.89C1021.93,-249.45 1028.24,-246.52 1034,-243 1054.98,-230.19 1049.18,-214.08 1070,-201 1072.82,-199.23 1075.79,-197.6 1078.86,-196.11"/>
+<polygon fill="#000000" stroke="#000000" points="1080.51,-199.21 1088.3,-192.04 1077.74,-192.79 1080.51,-199.21"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node28" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node28"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="1183.5,-486 1116.5,-486 1116.5,-462 1183.5,-462 1183.5,-486"/>
+<text text-anchor="middle" x="1150" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_single&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge31" class="edge">
+<title>proc~tem_load_spacetime_single&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M950.46,-276.4C963.32,-310.32 1003.8,-405.24 1070,-453 1080.63,-460.67 1093.86,-465.53 1106.44,-468.62"/>
+<polygon fill="#000000" stroke="#000000" points="1105.82,-472.07 1116.33,-470.74 1107.28,-465.23 1105.82,-472.07"/>
+</g>
+<!-- proc~tem_load_spacetime_table&#45;&gt;aot_table_close -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge33" class="edge">
+<title>proc~tem_load_spacetime_table&#45;&gt;aot_table_close</title>
+<path fill="none" stroke="#000000" d="M779.4,-209.99C793.09,-206.12 807.36,-201.18 820,-195 837.97,-186.21 838.13,-176.98 856,-168 865.81,-163.07 876.71,-158.92 887.41,-155.47"/>
+<polygon fill="#000000" stroke="#000000" points="888.6,-158.77 897.14,-152.5 886.56,-152.07 888.6,-158.77"/>
+</g>
+<!-- proc~tem_load_spacetime_table&#45;&gt;aot_table_open -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge35" class="edge">
+<title>proc~tem_load_spacetime_table&#45;&gt;aot_table_open</title>
+<path fill="none" stroke="#000000" d="M794.29,-209.99C883.84,-195.06 1024.69,-170.59 1034,-163 1066.74,-136.28 1038.26,-102.9 1070,-75 1076.66,-69.15 1084.78,-64.9 1093.24,-61.82"/>
+<polygon fill="#000000" stroke="#000000" points="1094.37,-65.13 1102.88,-58.82 1092.29,-58.45 1094.37,-65.13"/>
+</g>
+<!-- proc~tem_load_spacetime_table&#45;&gt;proc~tem_load_spacetime_single -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge36" class="edge">
+<title>proc~tem_load_spacetime_table&#45;&gt;proc~tem_load_spacetime_single</title>
+<path fill="none" stroke="#000000" d="M784.9,-234.04C811.5,-239.04 842.54,-244.89 870.1,-250.08"/>
+<polygon fill="#000000" stroke="#000000" points="869.61,-253.55 880.09,-251.96 870.91,-246.67 869.61,-253.55"/>
+</g>
+<!-- aot_table_length -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node21" class="node">
+<title>aot_table_length</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node21"><a xlink:href="https://geb.inf.tu-dresden.de/doxy/aotus/proc/aot_table_length.html" xlink:title="aot_table_length">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="995.5,-234 894.5,-234 894.5,-210 995.5,-210 995.5,-234"/>
+<text text-anchor="middle" x="945" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_length</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_spacetime_table&#45;&gt;aot_table_length -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge34" class="edge">
+<title>proc~tem_load_spacetime_table&#45;&gt;aot_table_length</title>
+<path fill="none" stroke="#000000" d="M797.74,-222C825.99,-222 857.55,-222 884.1,-222"/>
+<polygon fill="#000000" stroke="#000000" points="884.39,-225.5 894.39,-222 884.39,-218.5 884.39,-225.5"/>
+</g>
+<!-- interface~append~19 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node23" class="node">
+<title>interface~append~19</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node23"><a xlink:href="../interface/append~19.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="1177,-570 1123,-570 1123,-546 1177,-546 1177,-570"/>
+<text text-anchor="middle" x="1150" y="-555.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge37" class="edge">
+<title>proc~tem_varsys_append_stfun_raw&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M1006.85,-507.04C1016.09,-509.58 1025.4,-512.55 1034,-516 1051.19,-522.89 1052.9,-529.89 1070,-537 1083.58,-542.64 1099.1,-547.16 1112.77,-550.53"/>
+<polygon fill="#000000" stroke="#000000" points="1112.27,-554.01 1122.81,-552.89 1113.87,-547.2 1112.27,-554.01"/>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge38" class="edge">
+<title>proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M1034.15,-485.88C1059.05,-483.31 1085.04,-480.62 1105.98,-478.45"/>
+<polygon fill="#000000" stroke="#000000" points="1106.55,-481.91 1116.14,-477.4 1105.83,-474.95 1106.55,-481.91"/>
+</g>
+<!-- proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node29" class="node">
+<title>proc~tem_varsys_append_dervar</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node29"><a xlink:href="../proc/tem_varsys_append_dervar.html" xlink:title="tem_varSys_append_derVar">
+<polygon fill="#d9534f" stroke="#d9534f" points="1230,-528 1070,-528 1070,-504 1230,-504 1230,-528"/>
+<text text-anchor="middle" x="1150" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_append_derVar</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge39" class="edge">
+<title>proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M1034.15,-504.12C1042.69,-505 1051.35,-505.9 1059.9,-506.78"/>
+<polygon fill="#000000" stroke="#000000" points="1059.56,-510.27 1069.86,-507.81 1060.28,-503.3 1059.56,-510.27"/>
+</g>
+<!-- proc~tem_varsys_assignevaltype -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_node30" class="node">
+<title>proc~tem_varsys_assignevaltype</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CallsGraph_node30"><a xlink:href="../proc/tem_varsys_assignevaltype.html" xlink:title="tem_varSys_assignEvalType">
+<polygon fill="#d9534f" stroke="#d9534f" points="1230,-612 1070,-612 1070,-588 1230,-588 1230,-612"/>
+<text text-anchor="middle" x="1150" y="-597.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_varSys_assignEvalType</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_assignevaltype -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge40" class="edge">
+<title>proc~tem_varsys_append_stfun_raw&#45;&gt;proc~tem_varsys_assignevaltype</title>
+<path fill="none" stroke="#000000" d="M1018.81,-507.16C1024.2,-509.6 1029.35,-512.52 1034,-516 1059.81,-535.34 1044.44,-559.34 1070,-579 1071.87,-580.44 1073.84,-581.78 1075.87,-583.03"/>
+<polygon fill="#000000" stroke="#000000" points="1074.71,-586.38 1085.19,-587.95 1077.98,-580.19 1074.71,-586.38"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar&#45;&gt;interface~append~19 -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge41" class="edge">
+<title>proc~tem_varsys_append_stfunvar&#45;&gt;interface~append~19</title>
+<path fill="none" stroke="#000000" d="M1030.03,-545.69C1058.98,-548.69 1089.88,-551.88 1112.93,-554.27"/>
+<polygon fill="#000000" stroke="#000000" points="1112.62,-557.76 1122.93,-555.3 1113.34,-550.79 1112.62,-557.76"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge42" class="edge">
+<title>proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M1006.85,-524.96C1016.09,-522.42 1025.4,-519.45 1034,-516 1051.19,-509.11 1052.9,-502.11 1070,-495 1081.57,-490.19 1094.55,-486.2 1106.6,-483.04"/>
+<polygon fill="#000000" stroke="#000000" points="1107.6,-486.4 1116.45,-480.58 1105.9,-479.61 1107.6,-486.4"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_append_dervar -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge43" class="edge">
+<title>proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_append_dervar</title>
+<path fill="none" stroke="#000000" d="M1030.03,-528.31C1039.83,-527.29 1049.85,-526.26 1059.71,-525.24"/>
+<polygon fill="#000000" stroke="#000000" points="1060.33,-528.69 1069.92,-524.18 1059.61,-521.73 1060.33,-528.69"/>
+</g>
+<!-- proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_assignevaltype -->
+<g id="proc~~tem_variable_loadmapping_vector~~CallsGraph_edge44" class="edge">
+<title>proc~tem_varsys_append_stfunvar&#45;&gt;proc~tem_varsys_assignevaltype</title>
+<path fill="none" stroke="#000000" d="M1006.85,-549.04C1016.09,-551.58 1025.4,-554.55 1034,-558 1051.19,-564.89 1052.9,-571.89 1070,-579 1075.08,-581.11 1080.43,-583.06 1085.85,-584.86"/>
+<polygon fill="#000000" stroke="#000000" points="1085.07,-588.28 1095.65,-587.92 1087.15,-581.6 1085.07,-588.28"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_variable_loadmapping_vectorCallsGraph = svgPanZoom('#proctem_variable_loadmapping_vectorCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_variable_loadmapping_vector~~CalledByGraph Pages: 1 -->
+<svg id="proctem_variable_loadmapping_vectorCalledByGraph" width="545pt" height="32pt"
+ viewBox="0.00 0.00 545.00 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>proc~~tem_variable_loadmapping_vector~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 541,-28 541,4 -4,4"/>
+<!-- proc~tem_variable_loadmapping_vector -->
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph_node1" class="node">
+<title>proc~tem_variable_loadmapping_vector</title>
+<polygon fill="none" stroke="black" points="537,-24 341,-24 341,0 537,0 537,-24"/>
+<text text-anchor="middle" x="439" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_variable_loadMapping_vector</text>
+</g>
+<!-- interface~tem_variable_loadmapping -->
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph_node2" class="node">
+<title>interface~tem_variable_loadmapping</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CalledByGraph_node2"><a xlink:href="../interface/tem_variable_loadmapping.html" xlink:title="tem_variable_loadMapping">
+<polygon fill="#a7506f" stroke="#a7506f" points="305,-24 148,-24 148,0 305,0 305,-24"/>
+<text text-anchor="middle" x="226.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_variable_loadMapping</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_variable_loadmapping&#45;&gt;proc~tem_variable_loadmapping_vector -->
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph_edge1" class="edge">
+<title>interface~tem_variable_loadmapping&#45;&gt;proc~tem_variable_loadmapping_vector</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.28,-12C313.62,-12 322.2,-12 330.8,-12"/>
+<polygon fill="#000000" stroke="#000000" points="330.88,-15.5 340.88,-12 330.88,-8.5 330.88,-15.5"/>
+</g>
+<!-- proc~tem_load_bc_state -->
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph_node3" class="node">
+<title>proc~tem_load_bc_state</title>
+<g id="a_proc~~tem_variable_loadmapping_vector~~CalledByGraph_node3"><a xlink:href="../proc/tem_load_bc_state.html" xlink:title="tem_load_bc_state">
+<polygon fill="#d9534f" stroke="#d9534f" points="112,-24 0,-24 0,0 112,0 112,-24"/>
+<text text-anchor="middle" x="56" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_load_bc_state</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_load_bc_state&#45;&gt;interface~tem_variable_loadmapping -->
+<g id="proc~~tem_variable_loadmapping_vector~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_load_bc_state&#45;&gt;interface~tem_variable_loadmapping</title>
+<path fill="none" stroke="#000000" d="M112.17,-12C120.38,-12 129.01,-12 137.69,-12"/>
+<polygon fill="#000000" stroke="#000000" points="137.88,-15.5 147.88,-12 137.88,-8.5 137.88,-15.5"/>
+</g>
+</g>
+</svg>
+</div>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_variable_loadMapping_vector</span><span class="p">(</span><span class="w"> </span><span class="n">possVars</span><span class="p">,</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">    </span><span class="p">&amp;</span><span class="w">                                         </span><span class="n">varDict</span><span class="p">,</span><span class="w"> </span><span class="n">varSys</span><span class="w">                  </span><span class="p">)</span>
+<span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="c">!&gt; Possible variable names expected by the solver</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_possible_variable_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">possVars</span>
+<span class="w">    </span><span class="c">!&gt; lua config file</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">flu_state</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">conf</span>
+<span class="w">    </span><span class="c">!&gt; optional parent handle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">parent</span>
+<span class="w">    </span><span class="c">!&gt; optional key for the table</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">optional</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="c">!&gt; The dictionary that contains the mapping between expected variables</span>
+<span class="w">    </span><span class="c">!! and the actual variables defined by the user.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">grw_stringKeyValuePairArray_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varDict</span>
+<span class="w">    </span><span class="c">!&gt; Variable system to append anonymous variables to.</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_varSys_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">varSys</span>
+
+<span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+<span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">localKey</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iVar</span><span class="p">,</span><span class="w"> </span><span class="n">srchandle</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">(</span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span><span class="p">)</span>
+<span class="w">    </span><span class="c">!---------------------------------------------------------------------------</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">present</span><span class="p">(</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">key</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      </span><span class="n">localKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;source&#39;</span>
+<span class="w">    </span><span class="k">endif</span>
+<span class="k">    write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Loading the mappings from table: &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localkey</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;WARNING: No possible variables are defined!&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; Definitions from &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localKey</span><span class="p">)</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; are not loaded.&#39;</span>
+<span class="w">      </span><span class="k">return</span>
+<span class="k">    end if</span>
+
+<span class="w">    </span><span class="c">! Try to open the mapping table</span>
+<span class="w">    </span><span class="k">call </span><span class="n">aot_table_open</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">parent</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">,</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">      </span><span class="p">&amp;</span><span class="w">                  </span><span class="n">key</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">localkey</span><span class="w">   </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! if mapping table is defined</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">srchandle</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">      </span><span class="c">! loop over all possible variables</span>
+<span class="w">      </span><span class="k">do </span><span class="n">iVar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">varname</span><span class="p">%</span><span class="n">nVals</span>
+<span class="w">        </span><span class="c">! check if expected variable is defined in lua file</span>
+<span class="w">        </span><span class="c">! and if variable exist then store in stringKeyValuePairArray</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_variable_loadMapping_single</span><span class="p">(</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">expectedName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">varName</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iVar</span><span class="p">),</span><span class="w">     </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">conf</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">thandle</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">,</span><span class="w">                      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">varDict</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">varDict</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">varSys</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">varSys</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">nComp</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">possVars</span><span class="p">%</span><span class="n">nComponents</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">iVar</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">     </span><span class="n">ErrCode</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">ErrorCode</span><span class="p">(</span><span class="n">iVar</span><span class="p">)</span><span class="w">                 </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end do</span>
+
+<span class="k">      call </span><span class="n">aot_table_close</span><span class="p">(</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf</span><span class="p">,</span><span class="w"> </span><span class="n">thandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">srchandle</span><span class="p">)</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Table &#39;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">localKey</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="s1">&#39; could not be opened for reading variable mappings!&#39;</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">  end subroutine </span><span class="n">tem_variable_loadMapping_vector</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

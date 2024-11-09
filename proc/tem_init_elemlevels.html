@@ -1,0 +1,1240 @@
+<!-- -*- mode: jinja2 -*- -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Tree based Elemental Mesh">
+    <meta name="author" content="University of Siegen" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>tem_init_elemLevels &ndash; Treelm</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <div class="container-fluid mb-sm-4 mb-xl-2">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html">Treelm </a>
+          <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar"
+                  aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon">
+          </button>
+
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../page/index.html">TreElm Overview</a></li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../lists/files.html">Source Files</a>
+                  </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/modules.html">Modules</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/procedures.html">Procedures</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/absint.html">Abstract Interfaces</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="../lists/types.html">Derived Types</a>
+                </li>
+            </ul>
+              <div class="d-flex align-items-end flex-grow-1">
+                <form action="../search.html" role="search" class="ms-auto">
+                  <input type="text" class="form-control" aria-label="Search" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+                </form>
+              </div>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+  <div class="row">
+    <h1>tem_init_elemLevels
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="container p-2 mb-4 bg-light border rounded-3">
+    <div class="row align-items-center justify-content-between" id="info-bar">
+      <div class="col">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+            <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
+              <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
+                 title=" 0.3% of total for procedures.">101 statements</a>
+            </li>
+
+            <li class="list-inline-item" id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/tem_construction_module.f90"> Source File</a>
+            </li>
+        </ul>
+      </div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb justify-content-end mb-0">
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_construction_module.f90.html'>tem_construction_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_construction_module.html'>tem_construction_module</a></li>
+            <li class="breadcrumb-item active" aria-current="page">tem_init_elemLevels</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-bs-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="card card-primary">
+      <div class="card-header text-left"><h3 class="card-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/tem_init_elemlevels.html#src">tem_init_elemLevels</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine tem_init_elemLevels(me, boundary, tree, stencils)  
+</h2>
+    
+
+    <p>subroutine to find neighbours of cells</p>
+<p>Typically every element requires information from its neighbors to perform
+an update of its state.
+All such required neighbors constitute a so called <a href="../module/tem_stencil_module.html">tem_stencil_module</a>.
+<a href="../proc/tem_build_horizontaldependencies.html">tem_build_horizontalDependencies</a>, or the
+connectivity of elements on the same refinement
+level in the tree, are therefore essential for the stencils in typical
+mesh-based numerical schemes.
+We now sketch the method to find the connectivity of elements in the mesh
+with the help of the described mesh layout.
+In a distributed mesh, the first distinction has to be made with respect to
+processor ownership.</p>
+<div class="alert alert-success">
+<dl>
+<dt>Todo</dt>
+<dd>
+<p>tem_find_depNeigh does not exist any more
+Is the element in question tem_find_depNeigh a local or remote
+element?</p>
+</dd>
+</dl>
+</div>
+<p>For all <a href="../proc/identify_local_element.html">identify_local_element</a>, their actual
+position in the sparse mesh has to be identified for a given
+<a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a>.</p>
+<p>A <a href="../type/tem_path_type.html">tem_path_type</a> comparison of two nodes to
+decide their relative position in the ordered list
+of elements has to take into account the hierarchy of the mesh.</p>
+<p>As in the actual simulation only leaves will be present, and no overlap of
+refinement levels is allowed, this is a sufficient determination.
+However, such overlapping regions might be created to enable the
+interpolation between different levels with virtual elements.
+These special elements are distinguished anyway, so this does not pose any
+problem in the search for neighborhood relations.</p>
+<p>An element can be either identified by its
+<a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a>
+or by a tuple with four integer entries for the spatial coordinates and the
+refinement level: <script type="math/tex">(x, y, z, L)</script>.
+This coordinate fully describes the spatial shape and position of an
+element and is important to determine spatial relations between elements.
+Conversion between treeIDs and coordinates can be achieved by the routines
+- <a href="../proc/tem_coordofid.html">tem_CoordOfId</a> Coordinate from TreeID
+- <a href="../proc/tem_idofcoord.html">tem_IdOfCoord</a> TreeID from Coordinate</p>
+<p>The spatial indices are limited by the refinement level:
+<script type="math/tex"> x, y, z \in \mathbf{Z}_{\ge 0}: x, y, z < 2^L </script>.
+To avoid undefined coordinates, movements through the mesh by additions to
+indices are done in a modulo(<script type="math/tex">2^L</script>) safeguard resulting in an periodic
+universe cube.
+This enables the movement in the mesh in horizontal direction by index
+alteration and translation into a
+<a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a> again.
+The described procedure is completely reversible, enabling the construction
+of the <a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a> for any
+given coordinate.
+Thus, the conversion between this coordinate and the serialized
+<a href="../type/treelmesh_type.html#variable-treeid~4">treeID</a>
+encoding is fully described by the topology of the octree and the chosen
+space-filling curve ordering of elements, as explained above.</p>
+<p>With this method we can describe the neighborhood of any given element
+independently of the actual solver by a simple list of relative offsets.
+In contrast to the generic horizontal relation, the vertical relation
+between child and parent nodes in the tree requires an interpolation
+operator between different refinement levels.
+This interpolation usually has to take into account solver specific
+requirements, but is otherwise quite isolated from the numerical operation
+on each refinement level.
+The <em>TreElM library</em> offers the solver a level-wise view, as
+suggested by the properties described above.
+To find all required neighbors in the distributed octree, the solver merely
+has to provide its horizontal dependencies.
+These are described with the help of an element specific
+<a href="../module/tem_stencil_module.html">tem_stencil_module</a>.
+A stencil is basically a set of element-offsets <script type="math/tex">(s_x, s_y, s_z)</script>,
+describing the relative positions of all required elements for a given
+element.</p>
+<p>In this routine, level descriptor is allocated,
+all elements in tree are added into <code>me%elem</code> as fluid type,
+including their <code>property, pntTID, stencil, neighID, sourceProc</code></p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-me~237"></span>
+              type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
+            </td>
+<td>intent(out),</td>
+              <td></td>            <td>
+              allocatable
+            </td>
+            <td>::</td>
+            <td><strong>me</strong>(:)</td>
+            <td>
+                <p>neighbor list containing all the neighbours for the
+cells given in treeidsubset. Result of this routine</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-boundary"></span>
+              type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>boundary</strong></td>
+            <td>
+                <p>boundaries for the elements with bnd property set</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~10"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+                <p>subset of tree ids for which the neighbours will be specified</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencils"></span>
+              type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencils</strong>(:)</td>
+            <td>
+                <p>the given stencil</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Calls</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_init_elemlevels~~CallsGraph Pages: 1 -->
+<svg id="proctem_init_elemlevelsCallsGraph" width="641pt" height="360pt"
+ viewBox="0.00 0.00 641.00 359.83" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_init_elemlevels~~CallsGraph" class="graph" transform="scale(0.73 0.73) rotate(0) translate(4 490)">
+<title>proc~~tem_init_elemlevels~~CallsGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-490 876,-490 876,4 -4,4"/>
+<!-- proc~tem_init_elemlevels -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node1" class="node">
+<title>proc~tem_init_elemlevels</title>
+<polygon fill="none" stroke="black" points="121,-234 0,-234 0,-210 121,-210 121,-234"/>
+<text text-anchor="middle" x="60.5" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_init_elemLevels</text>
+</g>
+<!-- interface~append~26 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node2" class="node">
+<title>interface~append~26</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node2"><a xlink:href="../interface/append~26.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="270,-444 216,-444 216,-420 270,-420 270,-444"/>
+<text text-anchor="middle" x="243" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;interface~append~26 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge1" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;interface~append~26</title>
+<path fill="none" stroke="#000000" d="M64.51,-234.1C73.15,-266.37 101.08,-355.23 157,-403 170.74,-414.74 189.47,-421.8 205.85,-426"/>
+<polygon fill="#000000" stroke="#000000" points="205.15,-429.43 215.68,-428.27 206.72,-422.61 205.15,-429.43"/>
+</g>
+<!-- interface~init~14 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node3" class="node">
+<title>interface~init~14</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node3"><a xlink:href="../interface/init~14.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="478,-402 424,-402 424,-378 478,-378 478,-402"/>
+<text text-anchor="middle" x="451" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge2" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M65.21,-234.35C74.81,-263.88 103.53,-338.46 157,-370 238.41,-418.02 355.55,-406.98 413.99,-397.24"/>
+<polygon fill="#000000" stroke="#000000" points="414.61,-400.68 423.86,-395.51 413.4,-393.79 414.61,-400.68"/>
+</g>
+<!-- interface~tem_logging_isactive -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node4" class="node">
+<title>interface~tem_logging_isactive</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node4"><a xlink:href="../interface/tem_logging_isactive.html" xlink:title="tem_logging_isActive">
+<polygon fill="#a7506f" stroke="#a7506f" points="305,-318 181,-318 181,-294 305,-294 305,-318"/>
+<text text-anchor="middle" x="243" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_isActive</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;interface~tem_logging_isactive -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge3" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;interface~tem_logging_isactive</title>
+<path fill="none" stroke="#000000" d="M76.44,-234.22C94.48,-248.39 126.25,-271.54 157,-285 161.96,-287.17 167.19,-289.15 172.51,-290.94"/>
+<polygon fill="#000000" stroke="#000000" points="171.56,-294.31 182.15,-293.96 173.66,-287.63 171.56,-294.31"/>
+</g>
+<!-- proc~tem_abort -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node5" class="node">
+<title>proc~tem_abort</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node5"><a xlink:href="../proc/tem_abort.html" xlink:title="tem_abort">
+<polygon fill="#d9534f" stroke="#d9534f" points="276.5,-276 209.5,-276 209.5,-252 276.5,-252 276.5,-276"/>
+<text text-anchor="middle" x="243" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abort</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_abort -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge4" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_abort</title>
+<path fill="none" stroke="#000000" d="M113.22,-234.04C140.54,-240.39 173.65,-248.1 199.45,-254.1"/>
+<polygon fill="#000000" stroke="#000000" points="198.78,-257.54 209.32,-256.39 200.37,-250.72 198.78,-257.54"/>
+</g>
+<!-- proc~tem_alloc_leveldesc -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node6" class="node">
+<title>proc~tem_alloc_leveldesc</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node6"><a xlink:href="../proc/tem_alloc_leveldesc.html" xlink:title="tem_alloc_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="303.5,-361 182.5,-361 182.5,-337 303.5,-337 303.5,-361"/>
+<text text-anchor="middle" x="243" y="-346.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_alloc_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_alloc_leveldesc -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge5" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_alloc_leveldesc</title>
+<path fill="none" stroke="#000000" d="M69.05,-234.17C83.38,-256.2 116.7,-302.68 157,-327 161.81,-329.9 167,-332.43 172.36,-334.62"/>
+<polygon fill="#000000" stroke="#000000" points="171.55,-338.05 182.14,-338.22 173.97,-331.48 171.55,-338.05"/>
+</g>
+<!-- proc~tem_calc_neighbors -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node7" class="node">
+<title>proc~tem_calc_neighbors</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node7"><a xlink:href="../proc/tem_calc_neighbors.html" xlink:title="tem_calc_neighbors">
+<polygon fill="#d9534f" stroke="#d9534f" points="302.5,-234 183.5,-234 183.5,-210 302.5,-210 302.5,-234"/>
+<text text-anchor="middle" x="243" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_calc_neighbors</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_calc_neighbors -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge6" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_calc_neighbors</title>
+<path fill="none" stroke="#000000" d="M121.1,-222C137.69,-222 155.83,-222 172.91,-222"/>
+<polygon fill="#000000" stroke="#000000" points="173.38,-225.5 183.38,-222 173.38,-218.5 173.38,-225.5"/>
+</g>
+<!-- proc~tem_coordofid -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node8" class="node">
+<title>proc~tem_coordofid</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node8"><a xlink:href="../proc/tem_coordofid.html" xlink:title="tem_CoordOfId">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="289.5,-192 196.5,-192 196.5,-168 289.5,-168 289.5,-192"/>
+<text text-anchor="middle" x="243" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_CoordOfId</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_coordofid -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge7" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_coordofid</title>
+<path fill="none" stroke="#000000" d="M113.22,-209.96C136.19,-204.62 163.26,-198.32 186.64,-192.88"/>
+<polygon fill="#000000" stroke="#000000" points="187.47,-196.28 196.41,-190.61 185.88,-189.47 187.47,-196.28"/>
+</g>
+<!-- proc~tem_elemlist_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node9" class="node">
+<title>proc~tem_elemlist_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node9"><a xlink:href="../proc/tem_elemlist_dump.html" xlink:title="tem_elemList_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="303,-150 183,-150 183,-126 303,-126 303,-150"/>
+<text text-anchor="middle" x="243" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_elemList_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_elemlist_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge8" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_elemlist_dump</title>
+<path fill="none" stroke="#000000" d="M76.44,-209.78C94.48,-195.61 126.25,-172.46 157,-159 162.05,-156.79 167.37,-154.78 172.79,-152.97"/>
+<polygon fill="#000000" stroke="#000000" points="174.1,-156.23 182.61,-149.91 172.02,-149.55 174.1,-156.23"/>
+</g>
+<!-- proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node10" class="node">
+<title>proc~tem_horizontalspacer</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node10"><a xlink:href="../proc/tem_horizontalspacer.html" xlink:title="tem_horizontalSpacer">
+<polygon fill="#d9534f" stroke="#d9534f" points="308,-108 178,-108 178,-84 308,-84 308,-108"/>
+<text text-anchor="middle" x="243" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_horizontalSpacer</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_horizontalspacer -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge9" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_horizontalspacer</title>
+<path fill="none" stroke="#000000" d="M69.02,-209.79C83.31,-187.69 116.57,-141.1 157,-117 160.6,-114.86 164.41,-112.93 168.34,-111.2"/>
+<polygon fill="#000000" stroke="#000000" points="169.68,-114.43 177.7,-107.51 167.11,-107.92 169.68,-114.43"/>
+</g>
+<!-- proc~tem_require_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node11" class="node">
+<title>proc~tem_require_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node11"><a xlink:href="../proc/tem_require_dump.html" xlink:title="tem_require_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="299,-66 187,-66 187,-42 299,-42 299,-66"/>
+<text text-anchor="middle" x="243" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_require_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_require_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge10" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_require_dump</title>
+<path fill="none" stroke="#000000" d="M65.77,-209.89C76.41,-181.56 106.91,-110.64 157,-75 163.05,-70.7 169.88,-67.27 176.97,-64.55"/>
+<polygon fill="#000000" stroke="#000000" points="178.41,-67.76 186.76,-61.25 176.17,-61.12 178.41,-67.76"/>
+</g>
+<!-- proc~tem_stencil_map_totreelmdef -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node12" class="node">
+<title>proc~tem_stencil_map_totreelmdef</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node12"><a xlink:href="../proc/tem_stencil_map_totreelmdef.html" xlink:title="tem_stencil_map_toTreelmDef">
+<polygon fill="#d9534f" stroke="#d9534f" points="329,-24 157,-24 157,0 329,0 329,-24"/>
+<text text-anchor="middle" x="243" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_map_toTreelmDef</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_init_elemlevels&#45;&gt;proc~tem_stencil_map_totreelmdef -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge11" class="edge">
+<title>proc~tem_init_elemlevels&#45;&gt;proc~tem_stencil_map_totreelmdef</title>
+<path fill="none" stroke="#000000" d="M64,-209.58C71.52,-175.63 97.18,-80.64 157,-33 158.79,-31.58 160.66,-30.25 162.6,-29.01"/>
+<polygon fill="#000000" stroke="#000000" points="164.4,-32.01 171.47,-24.12 161.02,-25.88 164.4,-32.01"/>
+</g>
+<!-- proc~append_ga_dynlong -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node14" class="node">
+<title>proc~append_ga_dynlong</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node14"><a xlink:href="../proc/append_ga_dynlong.html" xlink:title="append_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="511,-486 391,-486 391,-462 511,-462 511,-486"/>
+<text text-anchor="middle" x="451" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge12" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.09,-437.32C297.82,-442.97 342.82,-452.15 380.88,-459.91"/>
+<polygon fill="#000000" stroke="#000000" points="380.4,-463.38 390.9,-461.95 381.8,-456.52 380.4,-463.38"/>
+</g>
+<!-- proc~append_ga_dynlong_vec -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node15" class="node">
+<title>proc~append_ga_dynlong_vec</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node15"><a xlink:href="../proc/append_ga_dynlong_vec.html" xlink:title="append_ga_dynlong_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="523,-444 379,-444 379,-420 523,-420 523,-444"/>
+<text text-anchor="middle" x="451" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong_vec</text>
+</a>
+</g>
+</g>
+<!-- interface~append~26&#45;&gt;proc~append_ga_dynlong_vec -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge13" class="edge">
+<title>interface~append~26&#45;&gt;proc~append_ga_dynlong_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.09,-432C294.82,-432 333.3,-432 368.34,-432"/>
+<polygon fill="#000000" stroke="#000000" points="368.59,-435.5 378.59,-432 368.59,-428.5 368.59,-435.5"/>
+</g>
+<!-- proc~init_ga2d_real -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node16" class="node">
+<title>proc~init_ga2d_real</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node16"><a xlink:href="../proc/init_ga2d_real.html" xlink:title="init_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="671,-402 584,-402 584,-378 671,-378 671,-402"/>
+<text text-anchor="middle" x="627.5" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~init~14&#45;&gt;proc~init_ga2d_real -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge14" class="edge">
+<title>interface~init~14&#45;&gt;proc~init_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M478.12,-390C503.24,-390 541.93,-390 573.51,-390"/>
+<polygon fill="#000000" stroke="#000000" points="573.91,-393.5 583.91,-390 573.91,-386.5 573.91,-393.5"/>
+</g>
+<!-- proc~tem_logging_isactive_for -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node21" class="node">
+<title>proc~tem_logging_isactive_for</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node21"><a xlink:href="../proc/tem_logging_isactive_for.html" xlink:title="tem_logging_isActive_for">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="523.5,-360 378.5,-360 378.5,-336 523.5,-336 523.5,-360"/>
+<text text-anchor="middle" x="451" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_isActive_for</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_logging_isactive&#45;&gt;proc~tem_logging_isactive_for -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge15" class="edge">
+<title>interface~tem_logging_isactive&#45;&gt;proc~tem_logging_isactive_for</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M303.03,-318.04C327.38,-323 355.77,-328.79 381.07,-333.95"/>
+<polygon fill="#000000" stroke="#000000" points="380.46,-337.39 390.96,-335.96 381.86,-330.54 380.46,-337.39"/>
+</g>
+<!-- proc~tem_logging_isactive_primary -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node22" class="node">
+<title>proc~tem_logging_isactive_primary</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node22"><a xlink:href="../proc/tem_logging_isactive_primary.html" xlink:title="tem_logging_isActive_primary">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="537,-318 365,-318 365,-294 537,-294 537,-318"/>
+<text text-anchor="middle" x="451" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_isActive_primary</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_logging_isactive&#45;&gt;proc~tem_logging_isactive_primary -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge16" class="edge">
+<title>interface~tem_logging_isactive&#45;&gt;proc~tem_logging_isactive_primary</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M305.25,-306C320.77,-306 337.81,-306 354.58,-306"/>
+<polygon fill="#000000" stroke="#000000" points="354.97,-309.5 364.97,-306 354.97,-302.5 354.97,-309.5"/>
+</g>
+<!-- mpi_abort -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node13" class="node">
+<title>mpi_abort</title>
+<polygon fill="#777777" stroke="#777777" points="484.5,-276 417.5,-276 417.5,-252 484.5,-252 484.5,-276"/>
+<text text-anchor="middle" x="451" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi_abort</text>
+</g>
+<!-- proc~tem_abort&#45;&gt;mpi_abort -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge17" class="edge">
+<title>proc~tem_abort&#45;&gt;mpi_abort</title>
+<path fill="none" stroke="#000000" d="M276.64,-264C311.8,-264 367.9,-264 406.71,-264"/>
+<polygon fill="#000000" stroke="#000000" points="407.17,-267.5 417.17,-264 407.17,-260.5 407.17,-267.5"/>
+</g>
+<!-- proc~tem_alloc_leveldesc&#45;&gt;interface~init~14 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge18" class="edge">
+<title>proc~tem_alloc_leveldesc&#45;&gt;interface~init~14</title>
+<path fill="none" stroke="#000000" d="M303.58,-360.86C339.19,-367.95 383.28,-376.72 413.71,-382.78"/>
+<polygon fill="#000000" stroke="#000000" points="413.38,-386.28 423.88,-384.8 414.75,-379.42 413.38,-386.28"/>
+</g>
+<!-- proc~tem_firstidatlevel -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node18" class="node">
+<title>proc~tem_firstidatlevel</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node18"><a xlink:href="../proc/tem_firstidatlevel.html" xlink:title="tem_FirstIdAtLevel">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="505.5,-234 396.5,-234 396.5,-210 505.5,-210 505.5,-234"/>
+<text text-anchor="middle" x="451" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_FirstIdAtLevel</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_calc_neighbors&#45;&gt;proc~tem_firstidatlevel -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge19" class="edge">
+<title>proc~tem_calc_neighbors&#45;&gt;proc~tem_firstidatlevel</title>
+<path fill="none" stroke="#000000" d="M302.76,-222C328.91,-222 359.76,-222 386.45,-222"/>
+<polygon fill="#000000" stroke="#000000" points="386.45,-225.5 396.45,-222 386.45,-218.5 386.45,-225.5"/>
+</g>
+<!-- proc~tem_idofcoord -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node19" class="node">
+<title>proc~tem_idofcoord</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node19"><a xlink:href="../proc/tem_idofcoord.html" xlink:title="tem_IdOfCoord">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="497.5,-192 404.5,-192 404.5,-168 497.5,-168 497.5,-192"/>
+<text text-anchor="middle" x="451" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_IdOfCoord</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_calc_neighbors&#45;&gt;proc~tem_idofcoord -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge20" class="edge">
+<title>proc~tem_calc_neighbors&#45;&gt;proc~tem_idofcoord</title>
+<path fill="none" stroke="#000000" d="M302.76,-210.02C331.46,-204.17 365.82,-197.16 394.13,-191.39"/>
+<polygon fill="#000000" stroke="#000000" points="395.16,-194.75 404.26,-189.33 393.76,-187.89 395.16,-194.75"/>
+</g>
+<!-- proc~tem_levelof -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node20" class="node">
+<title>proc~tem_levelof</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node20"><a xlink:href="../proc/tem_levelof.html" xlink:title="tem_LevelOf">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="490.5,-150 411.5,-150 411.5,-126 490.5,-126 490.5,-150"/>
+<text text-anchor="middle" x="451" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_LevelOf</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_coordofid&#45;&gt;proc~tem_levelof -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge21" class="edge">
+<title>proc~tem_coordofid&#45;&gt;proc~tem_levelof</title>
+<path fill="none" stroke="#000000" d="M289.72,-170.68C322.8,-163.93 367.45,-154.83 401.22,-147.94"/>
+<polygon fill="#000000" stroke="#000000" points="402.23,-151.31 411.33,-145.88 400.83,-144.45 402.23,-151.31"/>
+</g>
+<!-- proc~tem_element_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node17" class="node">
+<title>proc~tem_element_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node17"><a xlink:href="../proc/tem_element_dump.html" xlink:title="tem_element_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="510.5,-108 391.5,-108 391.5,-84 510.5,-84 510.5,-108"/>
+<text text-anchor="middle" x="451" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_element_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_elemlist_dump&#45;&gt;proc~tem_element_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge22" class="edge">
+<title>proc~tem_elemlist_dump&#45;&gt;proc~tem_element_dump</title>
+<path fill="none" stroke="#000000" d="M303.03,-125.96C327.49,-120.98 356.01,-115.16 381.39,-109.99"/>
+<polygon fill="#000000" stroke="#000000" points="382.22,-113.39 391.32,-107.96 380.82,-106.53 382.22,-113.39"/>
+</g>
+<!-- interface~expand~25 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node23" class="node">
+<title>interface~expand~25</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node23"><a xlink:href="../interface/expand~25.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="654.5,-465 600.5,-465 600.5,-441 654.5,-441 654.5,-465"/>
+<text text-anchor="middle" x="627.5" y="-450.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_ga_dynlong&#45;&gt;interface~expand~25 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge23" class="edge">
+<title>proc~append_ga_dynlong&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M511.08,-466.89C537.32,-463.73 567.36,-460.12 590.22,-457.37"/>
+<polygon fill="#000000" stroke="#000000" points="590.66,-460.84 600.17,-456.17 589.83,-453.89 590.66,-460.84"/>
+</g>
+<!-- proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25 -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge24" class="edge">
+<title>proc~append_ga_dynlong_vec&#45;&gt;interface~expand~25</title>
+<path fill="none" stroke="#000000" d="M523.23,-440.57C546.13,-443.33 570.55,-446.27 589.9,-448.6"/>
+<polygon fill="#000000" stroke="#000000" points="589.73,-452.1 600.08,-449.82 590.57,-445.15 589.73,-452.1"/>
+</g>
+<!-- interface~tem_stencil_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node24" class="node">
+<title>interface~tem_stencil_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node24"><a xlink:href="../interface/tem_stencil_dump.html" xlink:title="tem_stencil_dump">
+<polygon fill="#a7506f" stroke="#a7506f" points="682,-108 573,-108 573,-84 682,-84 682,-108"/>
+<text text-anchor="middle" x="627.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencil_dump</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_element_dump&#45;&gt;interface~tem_stencil_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge25" class="edge">
+<title>proc~tem_element_dump&#45;&gt;interface~tem_stencil_dump</title>
+<path fill="none" stroke="#000000" d="M510.59,-96C527.24,-96 545.45,-96 562.4,-96"/>
+<polygon fill="#000000" stroke="#000000" points="562.77,-99.5 572.77,-96 562.77,-92.5 562.77,-99.5"/>
+</g>
+<!-- proc~expand_ga_dynlong -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node25" class="node">
+<title>proc~expand_ga_dynlong</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node25"><a xlink:href="../proc/expand_ga_dynlong.html" xlink:title="expand_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="854,-465 736,-465 736,-441 854,-441 854,-465"/>
+<text text-anchor="middle" x="795" y="-450.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga_dynlong</text>
+</a>
+</g>
+</g>
+<!-- interface~expand~25&#45;&gt;proc~expand_ga_dynlong -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge26" class="edge">
+<title>interface~expand~25&#45;&gt;proc~expand_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M654.72,-453C673.79,-453 700.52,-453 725.48,-453"/>
+<polygon fill="#000000" stroke="#000000" points="725.67,-456.5 735.67,-453 725.67,-449.5 725.67,-456.5"/>
+</g>
+<!-- proc~tem_stencilelement_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node26" class="node">
+<title>proc~tem_stencilelement_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node26"><a xlink:href="../proc/tem_stencilelement_dump.html" xlink:title="tem_stencilElement_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="872,-129 718,-129 718,-105 872,-105 872,-129"/>
+<text text-anchor="middle" x="795" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencilElement_dump</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_stencil_dump&#45;&gt;proc~tem_stencilelement_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge27" class="edge">
+<title>interface~tem_stencil_dump&#45;&gt;proc~tem_stencilelement_dump</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M682.23,-102.82C690.53,-103.87 699.27,-104.98 708.07,-106.1"/>
+<polygon fill="#000000" stroke="#000000" points="707.63,-109.57 717.99,-107.36 708.51,-102.62 707.63,-109.57"/>
+</g>
+<!-- proc~tem_stencilheader_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_node27" class="node">
+<title>proc~tem_stencilheader_dump</title>
+<g id="a_proc~~tem_init_elemlevels~~CallsGraph_node27"><a xlink:href="../proc/tem_stencilheader_dump.html" xlink:title="tem_stencilHeader_dump">
+<polygon fill="#d9534f" stroke="#d9534f" points="869.5,-87 720.5,-87 720.5,-63 869.5,-63 869.5,-87"/>
+<text text-anchor="middle" x="795" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_stencilHeader_dump</text>
+</a>
+</g>
+</g>
+<!-- interface~tem_stencil_dump&#45;&gt;proc~tem_stencilheader_dump -->
+<g id="proc~~tem_init_elemlevels~~CallsGraph_edge28" class="edge">
+<title>interface~tem_stencil_dump&#45;&gt;proc~tem_stencilheader_dump</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M682.23,-89.18C691.27,-88.04 700.83,-86.82 710.42,-85.61"/>
+<polygon fill="#000000" stroke="#000000" points="710.9,-89.07 720.38,-84.34 710.02,-82.13 710.9,-89.07"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_init_elemlevelsCallsGraph = svgPanZoom('#proctem_init_elemlevelsCallsGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CallsGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CallsGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+  <h3 class="card-title">Called by</h3>
+      </div>
+      <div class="card-body">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: proc~~tem_init_elemlevels~~CalledByGraph Pages: 1 -->
+<svg id="proctem_init_elemlevelsCalledByGraph" width="641pt" height="31pt"
+ viewBox="0.00 0.00 641.00 31.46" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="proc~~tem_init_elemlevels~~CalledByGraph" class="graph" transform="scale(0.98 0.98) rotate(0) translate(4 28)">
+<title>proc~~tem_init_elemlevels~~CalledByGraph</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 648,-28 648,4 -4,4"/>
+<!-- proc~tem_init_elemlevels -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_node1" class="node">
+<title>proc~tem_init_elemlevels</title>
+<polygon fill="none" stroke="black" points="644,-24 523,-24 523,0 644,0 644,-24"/>
+<text text-anchor="middle" x="583.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_init_elemLevels</text>
+</g>
+<!-- proc~tem_create_leveldesc -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_node2" class="node">
+<title>proc~tem_create_leveldesc</title>
+<g id="a_proc~~tem_init_elemlevels~~CalledByGraph_node2"><a xlink:href="../proc/tem_create_leveldesc.html" xlink:title="tem_create_levelDesc">
+<polygon fill="#d9534f" stroke="#d9534f" points="487,-24 357,-24 357,0 487,0 487,-24"/>
+<text text-anchor="middle" x="422" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_create_levelDesc</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_edge1" class="edge">
+<title>proc~tem_create_leveldesc&#45;&gt;proc~tem_init_elemlevels</title>
+<path fill="none" stroke="#000000" d="M487.42,-12C495.71,-12 504.24,-12 512.62,-12"/>
+<polygon fill="#000000" stroke="#000000" points="512.75,-15.5 522.75,-12 512.75,-8.5 512.75,-15.5"/>
+</g>
+<!-- proc~tem_dimbydim_construction -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_node3" class="node">
+<title>proc~tem_dimbydim_construction</title>
+<g id="a_proc~~tem_init_elemlevels~~CalledByGraph_node3"><a xlink:href="../proc/tem_dimbydim_construction.html" xlink:title="tem_dimByDim_construction">
+<polygon fill="#d9534f" stroke="#d9534f" points="321,-24 155,-24 155,0 321,0 321,-24"/>
+<text text-anchor="middle" x="238" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_dimByDim_construction</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_edge2" class="edge">
+<title>proc~tem_dimbydim_construction&#45;&gt;proc~tem_create_leveldesc</title>
+<path fill="none" stroke="#000000" d="M321.21,-12C329.72,-12 338.33,-12 346.74,-12"/>
+<polygon fill="#000000" stroke="#000000" points="346.88,-15.5 356.88,-12 346.88,-8.5 346.88,-15.5"/>
+</g>
+<!-- proc~tem_build_face_info -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_node4" class="node">
+<title>proc~tem_build_face_info</title>
+<g id="a_proc~~tem_init_elemlevels~~CalledByGraph_node4"><a xlink:href="../proc/tem_build_face_info.html" xlink:title="tem_build_face_info">
+<polygon fill="#d9534f" stroke="#d9534f" points="119,-24 0,-24 0,0 119,0 119,-24"/>
+<text text-anchor="middle" x="59.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_build_face_info</text>
+</a>
+</g>
+</g>
+<!-- proc~tem_build_face_info&#45;&gt;proc~tem_dimbydim_construction -->
+<g id="proc~~tem_init_elemlevels~~CalledByGraph_edge3" class="edge">
+<title>proc~tem_build_face_info&#45;&gt;proc~tem_dimbydim_construction</title>
+<path fill="none" stroke="#000000" d="M119.27,-12C127.49,-12 136.09,-12 144.74,-12"/>
+<polygon fill="#000000" stroke="#000000" points="144.91,-15.5 154.91,-12 144.91,-8.5 144.91,-15.5"/>
+</g>
+</g>
+</svg>
+</div>                <script>
+                  var panproctem_init_elemlevelsCalledByGraph = svgPanZoom('#proctem_init_elemlevelsCalledByGraph',
+                    {zoomEnabled: true, controlIconsEnabled: true, fit: true, center: true,}
+                  );
+                </script>          <div>
+            <a type="button" class="graph-help" data-bs-toggle="modal" href="#CalledByGraph-help-text">Help</a>
+          </div>
+          <div class="modal fade" id="CalledByGraph-help-text" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+<p>Nodes of different colours represent the following: </p>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="641pt" height="28pt"
+ viewBox="0.00 0.00 641.00 27.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.86 0.86) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 741.5,-28 741.5,4 -4,4"/>
+<!-- Subroutine -->
+<g id="node1" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="70,-24 0,-24 0,0 70,0 70,-24"/>
+<text text-anchor="middle" x="35" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node2" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="146,-24 88,-24 88,0 146,0 146,-24"/>
+<text text-anchor="middle" x="117" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
+</g>
+<!-- Interface -->
+<g id="node3" class="node">
+<title>Interface</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="225.5,-24 164.5,-24 164.5,0 225.5,0 225.5,-24"/>
+<text text-anchor="middle" x="195" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Interface</text>
+</g>
+<!-- Type Bound Procedure -->
+<g id="node4" class="node">
+<title>Type Bound Procedure</title>
+<polygon fill="#a7506f" stroke="#a7506f" points="374,-24 244,-24 244,0 374,0 374,-24"/>
+<text text-anchor="middle" x="309" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Type Bound Procedure</text>
+</g>
+<!-- Unknown Procedure Type -->
+<g id="node5" class="node">
+<title>Unknown Procedure Type</title>
+<polygon fill="#777777" stroke="#777777" points="537.5,-24 392.5,-24 392.5,0 537.5,0 537.5,-24"/>
+<text text-anchor="middle" x="465" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Unknown Procedure Type</text>
+</g>
+<!-- Program -->
+<g id="node6" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="614,-24 556,-24 556,0 614,0 614,-24"/>
+<text text-anchor="middle" x="585" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node7" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="black" points="737.5,-24 632.5,-24 632.5,0 737.5,0 737.5,-24"/>
+<text text-anchor="middle" x="685" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+<p>Solid arrows point from a procedure to one which it calls. Dashed 
+arrows point from an interface to procedures which implement that interface.
+This could include the module procedures in a generic interface or the
+implementation in a submodule of an interface in a parent module.
+</p>
+ </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+    
+    
+
+    
+    
+
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_init_elemLevels</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">boundary</span><span class="p">,</span><span class="w"> </span><span class="n">tree</span><span class="p">,</span><span class="w"> </span><span class="n">stencils</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="c">!&gt; neighbor list containing all the neighbours for the</span>
+<span class="w">    </span><span class="c">!! cells given in treeidsubset. Result of this routine</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_levelDesc_type</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w">  </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">!&gt; boundaries for the elements with bnd property set</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_bc_prop_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                  </span><span class="kd">::</span><span class="w"> </span><span class="n">boundary</span>
+<span class="w">    </span><span class="c">!&gt; subset of tree ids for which the neighbours will be specified</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">treelmesh_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">                    </span><span class="kd">::</span><span class="w"> </span><span class="n">tree</span>
+<span class="w">    </span><span class="c">!&gt; the given stencil</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilHeader_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w">            </span><span class="kd">::</span><span class="w"> </span><span class="n">stencils</span><span class="p">(:)</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+<span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_stencilElement_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tStencil</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">posInTree</span><span class="p">,</span><span class="w"> </span><span class="n">nElemsBnd</span><span class="p">,</span><span class="w"> </span><span class="n">iQQN</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span><span class="p">,</span><span class="w"> </span><span class="n">nProcs</span><span class="p">,</span><span class="w"> </span><span class="n">hashpos</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">nStencils</span><span class="p">,</span><span class="w"> </span><span class="n">iStencil</span><span class="p">,</span><span class="w"> </span><span class="n">elemPos</span><span class="p">,</span><span class="w"> </span><span class="n">nStencilElems</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">indElem</span><span class="p">,</span><span class="w"> </span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="n">QQN</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">initlen</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">treeID</span>
+<span class="w">    </span><span class="kt">integer</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">neighIDs</span><span class="p">(:)</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">addedPos</span>
+<span class="w">    </span><span class="kt">logical</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">wasAdded</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">posInBCID</span>
+<span class="w">    </span><span class="c">! -------------------------------------------------------------------- !</span>
+
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="w"> </span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">before</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Inside routine: tem_init_elemLevels &#39;</span>
+
+<span class="w">    </span><span class="c">! precondition for this routine: the first stencil must be compute stencil</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">.</span><span class="nb">not</span><span class="p">.</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="mi">1</span><span class="p">)%</span><span class="n">useAll</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;tem_init_elemLevels:&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;Error: The first stencil does not have the&#39;</span><span class="o">//</span><span class="w">    </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">                </span><span class="s1">&#39;useAll flag set&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;       The first one is considered the compute &#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">        </span><span class="p">&amp;</span><span class="w">            </span><span class="o">//</span><span class="s1">&#39;stencil and&#39;</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="s1">&#39;       needs to be set for all elements.&#39;</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_abort</span><span class="p">()</span>
+<span class="w">    </span><span class="k">end if</span>
+
+<span class="k">    </span><span class="n">nProcs</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">nParts</span>
+<span class="w">    </span><span class="n">minLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">minLevel</span>
+<span class="w">    </span><span class="n">maxLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">maxLevel</span>
+<span class="w">    </span><span class="n">nElemsBnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="n">nStencils</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="w"> </span><span class="n">stencils</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! -------------   Prepare a hash table   -----------------------------------</span>
+<span class="w">    </span><span class="c">! Find a suitable hash size.</span>
+<span class="w">    </span><span class="c">! The hash lookup is O(1), while the identification grows with</span>
+<span class="w">    </span><span class="c">! log(nElems) and log(nProcs), yet allocation, deallocation and</span>
+<span class="w">    </span><span class="c">! filling will cause some overhead of O(nHashes), this is an attempt to</span>
+<span class="w">    </span><span class="c">! find a compromise of these parameters.</span>
+<span class="w">    </span><span class="n">nHashes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">nElems</span><span class="p">,</span><span class="w"> </span><span class="n">nProcs</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">),</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">)</span>
+
+<span class="w">    </span><span class="c">! @todo Find the closest smaller prime for the hash size, to minimize the</span>
+<span class="w">    </span><span class="c">!       number of collisions?</span>
+<span class="w">    </span><span class="c">! Limit the size of the hash:</span>
+<span class="w">    </span><span class="n">nHashes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">min</span><span class="p">(</span><span class="n">nHashes</span><span class="p">,</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="n">io_buffer_size</span><span class="p">,</span><span class="w"> </span><span class="nb">kind</span><span class="o">=</span><span class="n">long_k</span><span class="p">))</span>
+
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">hash</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">nHashes</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="w">    </span><span class="k">allocate</span><span class="p">(</span><span class="n">hash_elemPos</span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="nb">int</span><span class="p">(</span><span class="n">nHashes</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<span class="w">    </span><span class="c">! Reset the hash</span>
+<span class="w">    </span><span class="n">hash</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1_long_k</span>
+<span class="w">    </span><span class="n">hash_elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">    </span><span class="c">! --------------------------------------------------------------------------</span>
+
+
+<span class="w">    </span><span class="n">initlen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ceiling</span><span class="p">(</span><span class="mf">1.1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="n">tree</span><span class="p">%</span><span class="n">nElems</span><span class="p">)</span><span class="o">/</span><span class="kt">real</span><span class="p">(</span><span class="n">maxlevel</span><span class="o">-</span><span class="n">minlevel</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_alloc_levelDesc</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">maxLevel</span><span class="p">,</span><span class="w"> </span><span class="n">initlen</span><span class="p">,</span><span class="w"> </span><span class="n">nStencils</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Searching the neighbors for each element ...&#39;</span>
+
+<span class="w">    </span><span class="c">! Loop over all given stencils</span>
+<span class="w">    </span><span class="n">stencilLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">iStencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nStencils</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="s2">&quot;(&#39;   on stencil: &#39;, I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="n">iStencil</span>
+<span class="w">      </span><span class="n">QQN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="n">iStencil</span><span class="p">)%</span><span class="n">QQN</span>
+<span class="w">      </span><span class="k">allocate</span><span class="p">(</span><span class="w"> </span><span class="n">neighIDs</span><span class="p">(</span><span class="w"> </span><span class="n">QQN</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">      </span><span class="c">! map user stencil to treelm definition</span>
+<span class="w">      </span><span class="k">call </span><span class="n">tem_stencil_map_toTreelmDef</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">))</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="n">iStencil</span><span class="p">)%</span><span class="n">useAll</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">        </span><span class="c">! This stencil belongs to all elements in the tree (fluid stencil)</span>
+<span class="w">        </span><span class="n">nStencilElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="w">        </span><span class="c">! This stencil belongs to only a subset of the tree</span>
+<span class="w">        </span><span class="c">! (boundary and IBM stencils)</span>
+<span class="w">        </span><span class="n">nStencilElems</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">)%</span><span class="n">nElems</span>
+<span class="w">      </span><span class="k">end if</span>
+
+<span class="k">      write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   nElems: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">nStencilElems</span>
+<span class="w">      </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;   QQN: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">QQN</span>
+
+<span class="w">      </span><span class="c">! Loop over all the elements connected to the current stencil</span>
+<span class="w">      </span><span class="c">! stencils( iStencil )</span>
+<span class="w">      </span><span class="n">elemLoop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">indElem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">nStencilElems</span>
+<span class="w">        </span><span class="c">! Reset the empty stencil</span>
+<span class="w">        </span><span class="c">! Create the temporary stencil for assigning the positions of the</span>
+<span class="w">        </span><span class="c">! neighbor treeIDs which are added in elem%neighID</span>
+<span class="w">        </span><span class="c">! also store the original stencil it depends on (depends = iStencil )</span>
+<span class="w">        </span><span class="k">call </span><span class="n">init</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">tStencil</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">        </span><span class="n">QQN</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">QQN</span><span class="p">,</span><span class="w">      </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">        </span><span class="n">headerPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">)%</span><span class="n">useAll</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! if the stencil is defined to be connected to all elements,</span>
+<span class="w">          </span><span class="c">! then simply loop over all the fluid elements</span>
+<span class="w">          </span><span class="n">posInTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">indElem</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">          </span><span class="c">! if the stencil is defined for a subset, loop over the</span>
+<span class="w">          </span><span class="c">! defined subset in %elem</span>
+<span class="w">          </span><span class="n">posInTree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">indElem</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="w">        </span><span class="c">! assign fluid element with info from the tree list and properties</span>
+<span class="w">        </span><span class="c">! from disk</span>
+<span class="w">        </span><span class="n">treeID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">treeID</span><span class="p">(</span><span class="w"> </span><span class="n">posInTree</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="c">! Get topological info about coordinates+level</span>
+<span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tem_CoordOfId</span><span class="p">(</span><span class="w"> </span><span class="n">treeID</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! Find position of this element in the elemList as it might be</span>
+<span class="w">        </span><span class="c">! there already from previous stencil iterations</span>
+<span class="w">        </span><span class="n">hashpos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="w"> </span><span class="n">treeID</span><span class="p">,</span><span class="w"> </span><span class="n">nHashes</span><span class="p">))</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hash</span><span class="p">(</span><span class="n">hashpos</span><span class="p">)</span><span class="w"> </span><span class="o">/=</span><span class="w"> </span><span class="n">treeID</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="c">! cache miss</span>
+<span class="w">          </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">tID</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">treeID</span><span class="p">,</span><span class="w">                           </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pntTID</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">posInTree</span><span class="p">,</span><span class="w">                        </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">eType</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">eT_fluid</span><span class="p">,</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">nNeighIDs</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">QQN</span><span class="p">,</span><span class="w">                              </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">sourceProc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">global</span><span class="p">%</span><span class="n">myPart</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">property</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">tree</span><span class="p">%</span><span class="n">ElemPropertyBits</span><span class="p">(</span><span class="n">posInTree</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span><span class="w">                           </span><span class="p">)</span>
+<span class="w">          </span><span class="c">! for differentiating between fluid and ghost nodes</span>
+<span class="w">          </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">property</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">elemPos</span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">ibset</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">%</span><span class="n">property</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="n">elemPos</span><span class="p">),</span><span class="w"> </span><span class="n">prp_fluid</span><span class="p">)</span>
+<span class="w">          </span><span class="c">!write(dbgunit(1),*) &quot;prp elems = &quot;, me( x(4) )%elem%property%val(elemPos)</span>
+<span class="w">          </span><span class="c">!flush(dbgUnit(1))</span>
+<span class="w">          </span><span class="c">!stop</span>
+<span class="w">          </span><span class="n">hash</span><span class="p">(</span><span class="n">hashpos</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treeID</span>
+<span class="w">          </span><span class="n">hash_elemPos</span><span class="p">(</span><span class="w"> </span><span class="n">hashpos</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">elemPos</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="c">! cache hit</span>
+<span class="w">          </span><span class="n">elemPos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash_elemPos</span><span class="p">(</span><span class="w"> </span><span class="n">hashpos</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+
+<span class="k">        </span><span class="n">posInBCID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span>
+<span class="w">        </span><span class="c">! Only perform the boundary check based on the treeID boundary</span>
+<span class="w">        </span><span class="c">! information for stencils which work on all elements (so we can</span>
+<span class="w">        </span><span class="c">! actually read out the boundary information from the tree )</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">iStencil</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="w">          </span><span class="c">! First check, if I have prp_hasBnd</span>
+<span class="w">          </span><span class="c">! If I don&#39;t take all the elements, then I can&#39;t analyze boundaries</span>
+<span class="w">          </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="nb">btest</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">))%</span><span class="n">elem</span><span class="p">%</span><span class="n">property</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="n">prp_hasBnd</span><span class="w"> </span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="w">            </span><span class="c">! If yes, there might be no neighbors</span>
+<span class="w">            </span><span class="n">nElemsBnd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nElemsBnd</span><span class="w"> </span><span class="o">+</span><span class="mi">1</span>
+<span class="w">            </span><span class="n">posInBCID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nElemsBnd</span>
+<span class="w">          </span><span class="k">end if</span>
+<span class="k">        end if</span><span class="w"> </span><span class="c">! useAll elements? (boundary information)</span>
+
+<span class="w">        </span><span class="c">! calculate possible neighbors or get BCID</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_calc_neighbors</span><span class="p">(</span><span class="w"> </span><span class="n">posInBCID</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">posInBCID</span><span class="p">,</span><span class="w">            </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">boundary_ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">boundary</span><span class="p">%</span><span class="n">boundary_ID</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">stencil</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="n">iStencil</span><span class="p">),</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">x</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w">                    </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                      </span><span class="n">neighIDs</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">neighIDs</span><span class="w">              </span><span class="p">)</span>
+
+<span class="w">        </span><span class="c">! append neighbors into elem%neighID or require list</span>
+<span class="w">        </span><span class="k">do </span><span class="n">iQQN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">QQN</span>
+
+<span class="w">          </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">))%</span><span class="n">elem</span><span class="p">%</span><span class="n">neighID</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">neighIDs</span><span class="p">(</span><span class="n">iQQN</span><span class="p">),</span><span class="w">                       </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">addedPos</span><span class="p">,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wasAdded</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="n">tStencil</span><span class="p">%</span><span class="n">tIDpos</span><span class="p">(</span><span class="n">iQQN</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addedPos</span>
+
+<span class="w">          </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">stencils</span><span class="p">(</span><span class="n">iStencil</span><span class="p">)%</span><span class="n">requireNeighNeigh</span><span class="w"> </span><span class="p">.</span><span class="nb">and</span><span class="p">.</span><span class="w"> </span><span class="n">neighIDs</span><span class="p">(</span><span class="n">iQQN</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">            call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">))%</span><span class="n">require</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">neighIDs</span><span class="p">(</span><span class="n">iQQN</span><span class="p">),</span><span class="w">   </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">          </span><span class="n">pos</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">addedPos</span><span class="p">,</span><span class="w">         </span><span class="p">&amp;</span>
+<span class="w">              </span><span class="p">&amp;</span><span class="w">          </span><span class="n">wasAdded</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wasAdded</span><span class="w"> </span><span class="p">)</span>
+<span class="w">          </span><span class="k">end if</span>
+
+<span class="k">        end do</span>
+
+<span class="w">        </span><span class="c">! Append the temporary stencil to the element</span>
+<span class="w">        </span><span class="k">call </span><span class="n">append</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">))%</span><span class="n">elem</span><span class="p">%</span><span class="n">stencil</span><span class="p">%</span><span class="n">val</span><span class="p">(</span><span class="w"> </span><span class="n">elemPos</span><span class="w"> </span><span class="p">),</span><span class="w">             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">          </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tStencil</span><span class="w"> </span><span class="p">)</span>
+<span class="w">      </span><span class="k">end do </span><span class="n">elemLoop</span><span class="w"> </span><span class="c">! indElem = 1, nStencilElems</span>
+
+<span class="w">      </span><span class="k">deallocate</span><span class="p">(</span><span class="w"> </span><span class="n">neighIDs</span><span class="w"> </span><span class="p">)</span>
+<span class="w">    </span><span class="k">end do </span><span class="n">stencilLoop</span><span class="w"> </span><span class="c">! iStencil = 1, nStencils</span>
+<span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="n">logUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Finished searching the neighbors ID for each fluid.&#39;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">tem_logging_isActive</span><span class="p">(</span><span class="n">main_debug</span><span class="p">%</span><span class="n">logger</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      do </span><span class="n">iLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minLevel</span><span class="p">,</span><span class="w"> </span><span class="n">maxLevel</span>
+<span class="w">        </span><span class="k">write</span><span class="p">(</span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Dump levelDesc%elem on level: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span>
+<span class="w">        </span><span class="k">call </span><span class="n">tem_elemList_dump</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iLevel</span><span class="w"> </span><span class="p">)%</span><span class="n">elem</span><span class="p">,</span><span class="w">                  </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">compact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">nUnit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">stencil</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">.</span><span class="n">true</span><span class="p">.,</span><span class="w">                             </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                     </span><span class="n">string</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;after initializing level elements&#39;</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">          </span><span class="p">&amp;</span><span class="w">                               </span><span class="o">//</span><span class="s1">&#39; i.e. only fluids&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iLevel</span><span class="w"> </span><span class="p">)%</span><span class="n">require</span><span class="p">%</span><span class="n">nVals</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">          write</span><span class="p">(</span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="s2">&quot;(A,I0)&quot;</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Dump levelDesc%require on level: &#39;</span><span class="p">,</span><span class="w"> </span><span class="n">iLevel</span>
+<span class="w">          </span><span class="k">call </span><span class="n">tem_require_dump</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">me</span><span class="p">(</span><span class="w"> </span><span class="n">iLevel</span><span class="w"> </span><span class="p">)%</span><span class="n">require</span><span class="p">,</span><span class="w">               </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">nUnit</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w">                         </span><span class="p">&amp;</span>
+<span class="w">            </span><span class="p">&amp;</span><span class="w">                    </span><span class="n">string</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;after initializing level elements&#39;</span><span class="w"> </span><span class="p">)</span>
+<span class="w">        </span><span class="k">end if</span>
+<span class="k">      end do</span>
+<span class="k">    end if</span>
+
+<span class="k">    write</span><span class="p">(</span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Leave  routine: tem_init_elemLevels&#39;</span>
+<span class="w">    </span><span class="k">call </span><span class="n">tem_horizontalSpacer</span><span class="p">(</span><span class="w"> </span><span class="n">fUnit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dbgUnit</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="p">)</span>
+
+<span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_init_elemLevels</span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col">
+            <p>
+              Treelm
+ was developed by University of Siegen<br>              &copy; 2024 
+<br /><small>1f5a31ff05d4</small></p>
+          </div>
+          <div class="col">
+            <p class="text-end">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2024-11-09T16:45:01.240943             </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
+
+    <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
