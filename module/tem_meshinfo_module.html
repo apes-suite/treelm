@@ -164,15 +164,15 @@ for tracking output.</p>
               <ul class="list-inline">
                   <li class="list-inline-item"><a href='http://fortranwiki.org/fortran/show/iso_c_binding'>iso_c_binding</a></li>
                   <li class="list-inline-item"><a href='tem_varsys_module.html'>tem_varSys_module</a></li>
+                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
+                  <li class="list-inline-item"><a href='tem_time_module.html'>tem_time_module</a></li>
                   <li class="list-inline-item"><a href='treelmesh_module.html'>treelmesh_module</a></li>
                   <li class="list-inline-item"><a href='tem_property_module.html'>tem_property_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
                   <li class="list-inline-item"><a href='tem_aux_module.html'>tem_aux_module</a></li>
-                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
-                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
                   <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
-                  <li class="list-inline-item"><a href='tem_time_module.html'>tem_time_module</a></li>
+                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -1232,7 +1232,7 @@ volume, element volume fraction, treeID, ... )</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~77"></span>
+              <span class="anchor" id="variable-varsys~73"></span>
               type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1272,7 +1272,600 @@ volume, element volume fraction, treeID, ... )</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~76"></span>
+              <span class="anchor" id="variable-fun~69"></span>
+              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~74"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~17"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>Position of the TreeID of the element to get the variable for in the
+global treeID list.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~94"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~73"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~51"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~25"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~104"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/gettreeid.html#variable-res~104" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-getelemweight"></span> <h3>private recursive subroutine <a href='../proc/getelemweight.html'>getElemWeight</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Get the computational weight of elements</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~70"></span>
+              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~75"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~18"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>Position of the TreeID of the element to get the variable for in the
+global treeID list.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~95"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~74"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~52"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~26"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~105"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/getelemweight.html#variable-res~105" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-getmpiproc"></span> <h3>private recursive subroutine <a href='../proc/getmpiproc.html'>getMPIproc</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Get the MPI rank to which the corresponding treeID belongs.
+This routine is used to visualize the rank affinity of the mesh elements</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~71"></span>
+              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~76"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~19"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>Position of the TreeID of the element to get the variable for in the
+global treeID list.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~96"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~75"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~53"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~27"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~106"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/getmpiproc.html#variable-res~106" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-derivelevel"></span> <h3>private recursive subroutine <a href='../proc/derivelevel.html'>deriveLevel</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Get the level of an element</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~72"></span>
+              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>fun</strong></td>
+            <td>
+<p>Description of the method to obtain the variables, here some preset
+values might be stored, like the space time function to use or the
+required variables.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-varsys~77"></span>
+              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>varSys</strong></td>
+            <td>
+<p>The variable system to obtain the variable from.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-elempos~20"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>elempos</strong>(:)</td>
+            <td>
+<p>Position of the TreeID of the element to get the variable for in the
+global treeID list.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-time~97"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>time</strong></td>
+            <td>
+<p>Point in time at which to evaluate the variable.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tree~76"></span>
+              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tree</strong></td>
+            <td>
+<p>global treelm mesh info</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nelems~54"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nElems</strong></td>
+            <td>
+<p>Number of values to obtain for this variable (vectorized access).</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-ndofs~28"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nDofs</strong></td>
+            <td>
+<p>Number of degrees of freedom within an element.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-res~107"></span>
+              real(kind=rk),
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>res</strong>(:)</td>
+            <td>
+<p>Resulting values for the requested variable.</p><a href="../proc/derivelevel.html#variable-res~107" class="pull-right"><emph>Read more&hellip;</emph></a>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-deriveelemvol"></span> <h3>private recursive subroutine <a href='../proc/deriveelemvol.html'>deriveElemVol</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Get the volume of an element</p>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-fun~73"></span>
               class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1304,7 +1897,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~17"></span>
+              <span class="anchor" id="variable-elempos~21"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1320,7 +1913,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~99"></span>
+              <span class="anchor" id="variable-time~98"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1335,7 +1928,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~130"></span>
+              <span class="anchor" id="variable-tree~77"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1350,155 +1943,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~66"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nElems</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ndofs~28"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDofs</strong></td>
-            <td>
-<p>Number of degrees of freedom within an element.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~199"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/gettreeid.html#variable-res~199" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-getelemweight"></span> <h3>private recursive subroutine <a href='../proc/getelemweight.html'>getElemWeight</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Get the computational weight of elements</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~77"></span>
-              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~79"></span>
-              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~18"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>Position of the TreeID of the element to get the variable for in the
-global treeID list.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~100"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~131"></span>
-              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nelems~67"></span>
+              <span class="anchor" id="variable-nelems~55"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1528,7 +1973,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~200"></span>
+              <span class="anchor" id="variable-res~108"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -1538,452 +1983,7 @@ global treeID list.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/getelemweight.html#variable-res~200" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-getmpiproc"></span> <h3>private recursive subroutine <a href='../proc/getmpiproc.html'>getMPIproc</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Get the MPI rank to which the corresponding treeID belongs.
-This routine is used to visualize the rank affinity of the mesh elements</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~78"></span>
-              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~80"></span>
-              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~19"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>Position of the TreeID of the element to get the variable for in the
-global treeID list.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~101"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~132"></span>
-              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nelems~68"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nElems</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ndofs~30"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDofs</strong></td>
-            <td>
-<p>Number of degrees of freedom within an element.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~201"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/getmpiproc.html#variable-res~201" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-derivelevel"></span> <h3>private recursive subroutine <a href='../proc/derivelevel.html'>deriveLevel</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Get the level of an element</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~79"></span>
-              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~81"></span>
-              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~20"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>Position of the TreeID of the element to get the variable for in the
-global treeID list.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~102"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~133"></span>
-              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nelems~69"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nElems</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ndofs~31"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDofs</strong></td>
-            <td>
-<p>Number of degrees of freedom within an element.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~202"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/derivelevel.html#variable-res~202" class="pull-right"><emph>Read more&hellip;</emph></a>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-deriveelemvol"></span> <h3>private recursive subroutine <a href='../proc/deriveelemvol.html'>deriveElemVol</a>(fun, varSys, elempos, time, tree, nElems, nDofs, res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Get the volume of an element</p>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-fun~80"></span>
-              class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>fun</strong></td>
-            <td>
-<p>Description of the method to obtain the variables, here some preset
-values might be stored, like the space time function to use or the
-required variables.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-varsys~82"></span>
-              type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>varSys</strong></td>
-            <td>
-<p>The variable system to obtain the variable from.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-elempos~21"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>elempos</strong>(:)</td>
-            <td>
-<p>Position of the TreeID of the element to get the variable for in the
-global treeID list.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-time~103"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>time</strong></td>
-            <td>
-<p>Point in time at which to evaluate the variable.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-tree~134"></span>
-              type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>tree</strong></td>
-            <td>
-<p>global treelm mesh info</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-nelems~70"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nElems</strong></td>
-            <td>
-<p>Number of values to obtain for this variable (vectorized access).</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-ndofs~32"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nDofs</strong></td>
-            <td>
-<p>Number of degrees of freedom within an element.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-res~203"></span>
-              real(kind=rk),
-            </td>
-<td>intent(out)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>res</strong>(:)</td>
-            <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/deriveelemvol.html#variable-res~203" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/deriveelemvol.html#variable-res~108" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -2016,7 +2016,7 @@ occupation inside the reference volume, i.e. the porosity</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~81"></span>
+              <span class="anchor" id="variable-fun~74"></span>
               class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2033,7 +2033,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~83"></span>
+              <span class="anchor" id="variable-varsys~79"></span>
               type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2064,7 +2064,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~104"></span>
+              <span class="anchor" id="variable-time~99"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2079,7 +2079,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~135"></span>
+              <span class="anchor" id="variable-tree~78"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2094,7 +2094,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~71"></span>
+              <span class="anchor" id="variable-nelems~56"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2109,7 +2109,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndofs~33"></span>
+              <span class="anchor" id="variable-ndofs~30"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2124,7 +2124,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~204"></span>
+              <span class="anchor" id="variable-res~109"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -2134,7 +2134,7 @@ global treeID list.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/derivevolfrac.html#variable-res~204" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/derivevolfrac.html#variable-res~109" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -2164,7 +2164,7 @@ global treeID list.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-fun~82"></span>
+              <span class="anchor" id="variable-fun~75"></span>
               class(<a href='../type/tem_varsys_op_type.html'>tem_varSys_op_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2181,7 +2181,7 @@ required variables.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-varsys~84"></span>
+              <span class="anchor" id="variable-varsys~80"></span>
               type(<a href='../type/tem_varsys_type.html'>tem_varSys_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2212,7 +2212,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~105"></span>
+              <span class="anchor" id="variable-time~100"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2227,7 +2227,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~136"></span>
+              <span class="anchor" id="variable-tree~79"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2242,7 +2242,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~72"></span>
+              <span class="anchor" id="variable-nelems~57"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2257,7 +2257,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ndofs~34"></span>
+              <span class="anchor" id="variable-ndofs~31"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2272,7 +2272,7 @@ global treeID list.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-res~205"></span>
+              <span class="anchor" id="variable-res~110"></span>
               real(kind=rk),
             </td>
 <td>intent(out)</td>
@@ -2282,7 +2282,7 @@ global treeID list.</p>
             <td>::</td>
             <td><strong>res</strong>(:)</td>
             <td>
-<p>Resulting values for the requested variable.</p><a href="../proc/deriveproperty.html#variable-res~205" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Resulting values for the requested variable.</p><a href="../proc/deriveproperty.html#variable-res~110" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -2315,7 +2315,7 @@ global treeID list.</p>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-10T21:14:23.066709             </p>
+ on 2024-11-10T21:33:16.647057             </p>
           </div>
         </div>
         <br>
