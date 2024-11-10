@@ -35,7 +35,7 @@ def configure(conf):
 
 
 def build(bld):
-    '''Build the soil project'''
+    '''Build the treelm project'''
     from revision_module import fill_revision_string
     bld.recurse('bin')
     if not (bld.cmd == 'docu' and bld.env.fordonline):
