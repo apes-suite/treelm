@@ -14,7 +14,7 @@ module soi_revision_module
   implicit none
   !> The HG revision of the application used for this executable.
   character(len=13), parameter :: soi_solver_revision &
-    &                            = '09872370327f'
+    &                            = 'f49cf9b176ae'
 
   !> Name of the compiler.
   character(len=32), parameter :: soi_FC_name &
@@ -30,13 +30,14 @@ module soi_revision_module
     &                            = '11.4.0'
 
   !> Number of lines needed to represent the compiler flags
-  integer, parameter :: soi_FC_nFlagLines = 1
+  integer, parameter :: soi_FC_nFlagLines = 2
 
   !> The Fortran compiler flags used to compile this executable.
   character(len=72), parameter :: soi_FC_flags(soi_FC_nFlagLines) &
-    & = [ '-O3 -march=native -Wall -Wno-maybe-uninitialized -Werror                ' ]
+    & = [ '-O3 -march=native -Wall -Wno-maybe-uninitialized -Werror -std=f2008 -ped', &
+    &     'antic-errors -O3 -march=native -Wall -Wno-maybe-uninitialized -Werror   ' ]
 
   !> The date when this executable was built.
   character(len=10), parameter :: soi_build_date &
-    &                            = '2024-11-09'
+    &                            = '2024-11-10'
 end module soi_revision_module
