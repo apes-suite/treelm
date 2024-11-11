@@ -39,5 +39,5 @@ module soi_revision_module
 
   !> The date when this executable was built.
   character(len=10), parameter :: soi_build_date &
-    &                            = '2024-11-10'
+    &                            = '2024-11-11'
 end module soi_revision_module
