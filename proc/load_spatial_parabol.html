@@ -12,14 +12,29 @@
 
     <title>load_spatial_parabol &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -153,12 +170,12 @@
 <ol>
 <li>2D parabola</li>
 </ol>
-<div class="codehilite"><pre><span></span><code> <span class="n">spatial</span> <span class="o">=</span> <span class="p">{</span><span class="n">predefined</span><span class="o">=</span><span class="s1">&#39;parabol&#39;</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> <span class="n">center</span><span class="o">/</span><span class="n">origin</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-                                            <span class="n">vec</span><span class="o">=</span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}},</span>
-                                            <span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">}</span>
- <span class="n">where</span><span class="p">,</span> <span class="n">center</span> <span class="o">-</span> <span class="n">line</span> <span class="n">center</span><span class="p">.</span>
-        <span class="n">origin</span> <span class="o">-</span> <span class="n">line</span> <span class="n">origin</span><span class="p">.</span> <span class="p">(</span><span class="n">define</span> <span class="n">either</span> <span class="n">center</span> <span class="ow">or</span> <span class="n">origin</span><span class="p">)</span>
-        <span class="n">vec</span>    <span class="o">-</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">line</span><span class="p">.</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="nv">spatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">predefined</span><span class="o">=</span><span class="s1">&#39;parabol&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nv">center</span><span class="o">/</span><span class="nv">origin</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">                                            </span><span class="nv">vec</span><span class="o">=</span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}},</span>
+<span class="w">                                            </span><span class="nv">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">}</span>
+<span class="w"> </span><span class="nv">where</span><span class="p">,</span><span class="w"> </span><span class="nv">center</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">center</span><span class="p">.</span>
+<span class="w">        </span><span class="py">origin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">line</span><span class="w"> </span><span class="nv">origin</span><span class="p">.</span><span class="w"> </span><span class="err">(</span><span class="py">define</span><span class="w"> </span><span class="nv">either</span><span class="w"> </span><span class="nv">center</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">origin</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">vec</span><span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="nv">length</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">line</span><span class="p">.</span>
 </code></pre></div>
 
 <p>Parabolic 2D profile at channel inlet.</p>
@@ -166,20 +183,20 @@
 <ol>
 <li>3D parabola</li>
 </ol>
-<div class="codehilite"><pre><span></span><code> <span class="n">spatial</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="n">predefined</span> <span class="o">=</span> <span class="s1">&#39;parabol&#39;</span><span class="p">,</span>
-   <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-     <span class="n">center</span><span class="o">/</span><span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-     <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
-       <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-       <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}</span>
-     <span class="p">},</span>
-     <span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.01</span>
-  <span class="p">}</span>
- <span class="n">where</span><span class="p">,</span> <span class="n">center</span> <span class="o">-</span> <span class="n">plane</span> <span class="n">center</span><span class="p">.</span>
-        <span class="n">origin</span> <span class="o">-</span> <span class="n">plane</span> <span class="n">origin</span><span class="p">.</span> <span class="p">(</span><span class="n">define</span> <span class="n">either</span> <span class="n">center</span> <span class="ow">or</span> <span class="n">origin</span><span class="p">)</span>
-        <span class="n">vec</span>    <span class="o">-</span> <span class="n">length</span> <span class="n">of</span> <span class="n">the</span> <span class="n">plane</span> <span class="kr">in</span> <span class="mi">2</span> <span class="n">direction</span><span class="p">.</span>
-        <span class="n">amplitude</span> <span class="o">-</span> <span class="n">maximum</span> <span class="n">value</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="nv">spatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="nv">predefined</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;parabol&#39;</span><span class="p">,</span>
+<span class="w">   </span><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nv">center</span><span class="o">/</span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">     </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">       </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nv">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w"> </span><span class="nv">where</span><span class="p">,</span><span class="w"> </span><span class="nv">center</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">plane</span><span class="w"> </span><span class="nv">center</span><span class="p">.</span>
+<span class="w">        </span><span class="py">origin</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">plane</span><span class="w"> </span><span class="nv">origin</span><span class="p">.</span><span class="w"> </span><span class="err">(</span><span class="py">define</span><span class="w"> </span><span class="nv">either</span><span class="w"> </span><span class="nv">center</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="nv">origin</span><span class="p">)</span>
+<span class="w">        </span><span class="nv">vec</span><span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="nv">length</span><span class="w"> </span><span class="nv">of</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">plane</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="nv">direction</span><span class="p">.</span>
+<span class="w">        </span><span class="py">amplitude</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nv">maximum</span><span class="w"> </span><span class="nv">value</span>
 </code></pre></div>
 
 <p>Parabolic 3D profile at channel inlet.
@@ -189,25 +206,25 @@
  velocity 0.08.
  Inlet plane is normal to x-dir and located at offset of {-5,0,0} from
  origin. The plane spans -1 to 1 in both y and z-dir.</p>
-<div class="codehilite"><pre><span></span><code> <span class="n">boundary_condition</span> <span class="o">=</span> <span class="p">{</span>
-   <span class="p">{</span>
-     <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;inlet&#39;</span><span class="p">,</span>
-     <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;inlet_ubb&#39;</span><span class="p">,</span>
-     <span class="n">velocityX</span> <span class="o">=</span> <span class="p">{</span>
-       <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;combined&#39;</span><span class="p">,</span>
-       <span class="n">spatial</span> <span class="o">=</span> <span class="p">{</span>
-         <span class="n">predefined</span><span class="o">=</span><span class="s1">&#39;parabol&#39;</span><span class="p">,</span>
-         <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-           <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-           <span class="n">vec</span><span class="o">=</span><span class="p">{</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">}</span> <span class="p">}</span>
-         <span class="p">},</span>
-         <span class="n">amplitude</span> <span class="o">=</span> <span class="mf">0.01</span>
-       <span class="p">}</span>
-     <span class="p">},</span>
-     <span class="n">velocityY</span> <span class="o">=</span> <span class="mf">0.0</span>
-     <span class="n">velocityZ</span> <span class="o">=</span> <span class="mf">0.0</span>
-   <span class="p">}</span>
- <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="nv">boundary_condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="p">{</span>
+<span class="w">     </span><span class="nv">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;inlet&#39;</span><span class="p">,</span>
+<span class="w">     </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;inlet_ubb&#39;</span><span class="p">,</span>
+<span class="w">     </span><span class="nv">velocityX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">       </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;combined&#39;</span><span class="p">,</span>
+<span class="w">       </span><span class="nv">spatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nv">predefined</span><span class="o">=</span><span class="s1">&#39;parabol&#39;</span><span class="p">,</span>
+<span class="w">         </span><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">           </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">           </span><span class="nv">vec</span><span class="o">=</span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">         </span><span class="p">},</span>
+<span class="w">         </span><span class="nv">amplitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="w">       </span><span class="p">}</span>
+<span class="w">     </span><span class="p">},</span>
+<span class="w">     </span><span class="nv">velocityY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">     </span><span class="nv">velocityZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <div class="codehilite"><pre><span></span><code>  _______vecB____
@@ -233,7 +250,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~716"></span>
+              <span class="anchor" id="variable-me~121"></span>
               type(<a href='../type/spatial_parabol_type.html'>spatial_parabol_type</a>),
             </td>
 <td>intent(out)</td>
@@ -248,7 +265,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~150"></span>
+              <span class="anchor" id="variable-conf~16"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
             </td>
 <td></td>
@@ -263,7 +280,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-thandle~72"></span>
+              <span class="anchor" id="variable-thandle~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -278,7 +295,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-ncomp~17"></span>
+              <span class="anchor" id="variable-ncomp~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1146,40 +1163,18 @@ implementation in a submodule of an interface in a parent module.
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

@@ -12,14 +12,29 @@
 
     <title>placeat &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -77,20 +92,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.0% of total for procedures.</p>Including implementation: 35 statements,  0.1% of total for procedures.">4 statements</a>
+                 title="<p> 0.0% of total for procedures.</p>Including implementation: 38 statements,  0.1% of total for procedures.">4 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/tem_ellipsoid_module.f90"> Source File</a>
+              <a href="../src/tem_grow_array.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/tem_ellipsoid_module.f90.html'>tem_ellipsoid_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/tem_ellipsoid_module.html'>tem_ellipsoid_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_grow_array.f90.html'>tem_grow_array.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_grow_array_module.html'>tem_grow_array_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">placeat</li>
           </ol>
         </nav>
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -134,8 +151,8 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/placeat~25.html#moduleprocedure-placeat_ga_ellipsoid">placeat_ga_ellipsoid</a>
-            <a class="list-group-item" href="../interface/placeat~25.html#moduleprocedure-placeat_ga_ellipsoid_vec">placeat_ga_ellipsoid_vec</a>
+            <a class="list-group-item" href="../interface/placeat~25.html#moduleprocedure-placeat_singlega2d_long">placeat_singlega2d_long</a>
+            <a class="list-group-item" href="../interface/placeat~25.html#moduleprocedure-placeat_arrayga2d_long">placeat_arrayga2d_long</a>
         </div>
       </div>
     </div>
@@ -149,7 +166,7 @@
 
     <div class="col-md-9" id='text'>
       <h2>public interface placeat</h2>
-      <p>insert an element at a given position</p>
+      
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Calls</h3>
@@ -161,82 +178,82 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: interface~~placeat~25~~CallsGraph Pages: 1 -->
-<svg id="interfaceplaceat25CallsGraph" width="489pt" height="74pt"
- viewBox="0.00 0.00 489.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="interfaceplaceat25CallsGraph" width="478pt" height="74pt"
+ viewBox="0.00 0.00 478.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="interface~~placeat~25~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
 <title>interface~~placeat~25~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 485,-70 485,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 474,-70 474,4 -4,4"/>
 <!-- interface~placeat~25 -->
 <g id="interface~~placeat~25~~CallsGraph_node1" class="node">
 <title>interface~placeat~25</title>
 <polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
 <text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">placeat</text>
 </g>
-<!-- proc~placeat_ga_ellipsoid -->
+<!-- proc~placeat_arrayga2d_long -->
 <g id="interface~~placeat~25~~CallsGraph_node2" class="node">
-<title>proc~placeat_ga_ellipsoid</title>
-<g id="a_interface~~placeat~25~~CallsGraph_node2"><a xlink:href="../proc/placeat_ga_ellipsoid.html" xlink:title="placeat_ga_ellipsoid">
-<polygon fill="#d9534f" stroke="#d9534f" points="223,-66 102,-66 102,-42 223,-42 223,-66"/>
-<text text-anchor="middle" x="162.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_ga_ellipsoid</text>
+<title>proc~placeat_arrayga2d_long</title>
+<g id="a_interface~~placeat~25~~CallsGraph_node2"><a xlink:href="../proc/placeat_arrayga2d_long.html" xlink:title="placeat_arrayga2d_long">
+<polygon fill="#d9534f" stroke="#d9534f" points="233.5,-66 91.5,-66 91.5,-42 233.5,-42 233.5,-66"/>
+<text text-anchor="middle" x="162.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_arrayga2d_long</text>
 </a>
 </g>
 </g>
-<!-- interface~placeat~25&#45;&gt;proc~placeat_ga_ellipsoid -->
+<!-- interface~placeat~25&#45;&gt;proc~placeat_arrayga2d_long -->
 <g id="interface~~placeat~25~~CallsGraph_edge1" class="edge">
-<title>interface~placeat~25&#45;&gt;proc~placeat_ga_ellipsoid</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.06,-37.1C64.94,-38.81 78.16,-40.89 91.55,-43"/>
-<polygon fill="#000000" stroke="#000000" points="91.37,-46.51 101.79,-44.61 92.45,-39.6 91.37,-46.51"/>
+<title>interface~placeat~25&#45;&gt;proc~placeat_arrayga2d_long</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.06,-37.1C62.2,-38.38 71.64,-39.86 81.48,-41.41"/>
+<polygon fill="#000000" stroke="#000000" points="81.01,-44.88 91.43,-42.98 82.09,-37.97 81.01,-44.88"/>
 </g>
-<!-- proc~placeat_ga_ellipsoid_vec -->
+<!-- proc~placeat_singlega2d_long -->
 <g id="interface~~placeat~25~~CallsGraph_node3" class="node">
-<title>proc~placeat_ga_ellipsoid_vec</title>
-<g id="a_interface~~placeat~25~~CallsGraph_node3"><a xlink:href="../proc/placeat_ga_ellipsoid_vec.html" xlink:title="placeat_ga_ellipsoid_vec">
+<title>proc~placeat_singlega2d_long</title>
+<g id="a_interface~~placeat~25~~CallsGraph_node3"><a xlink:href="../proc/placeat_singlega2d_long.html" xlink:title="placeat_singlega2d_long">
 <polygon fill="#d9534f" stroke="#d9534f" points="235,-24 90,-24 90,0 235,0 235,-24"/>
-<text text-anchor="middle" x="162.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_ga_ellipsoid_vec</text>
+<text text-anchor="middle" x="162.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_singlega2d_long</text>
 </a>
 </g>
 </g>
-<!-- interface~placeat~25&#45;&gt;proc~placeat_ga_ellipsoid_vec -->
+<!-- interface~placeat~25&#45;&gt;proc~placeat_singlega2d_long -->
 <g id="interface~~placeat~25~~CallsGraph_edge2" class="edge">
-<title>interface~placeat~25&#45;&gt;proc~placeat_ga_ellipsoid_vec</title>
+<title>interface~placeat~25&#45;&gt;proc~placeat_singlega2d_long</title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.06,-28.9C61.69,-27.7 70.47,-26.32 79.66,-24.87"/>
 <polygon fill="#000000" stroke="#000000" points="80.41,-28.3 89.75,-23.29 79.33,-21.38 80.41,-28.3"/>
 </g>
-<!-- interface~expand~30 -->
+<!-- interface~expand~32 -->
 <g id="interface~~placeat~25~~CallsGraph_node4" class="node">
-<title>interface~expand~30</title>
-<g id="a_interface~~placeat~25~~CallsGraph_node4"><a xlink:href="../interface/expand~30.html" xlink:title="expand">
+<title>interface~expand~32</title>
+<g id="a_interface~~placeat~25~~CallsGraph_node4"><a xlink:href="../interface/expand~32.html" xlink:title="expand">
 <polygon fill="#a7506f" stroke="#a7506f" points="325,-45 271,-45 271,-21 325,-21 325,-45"/>
 <text text-anchor="middle" x="298" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
 </a>
 </g>
 </g>
-<!-- proc~placeat_ga_ellipsoid&#45;&gt;interface~expand~30 -->
+<!-- proc~placeat_arrayga2d_long&#45;&gt;interface~expand~32 -->
 <g id="interface~~placeat~25~~CallsGraph_edge3" class="edge">
-<title>proc~placeat_ga_ellipsoid&#45;&gt;interface~expand~30</title>
-<path fill="none" stroke="#000000" d="M223.22,-44.61C235.98,-42.6 249.08,-40.54 260.64,-38.72"/>
-<polygon fill="#000000" stroke="#000000" points="261.43,-42.14 270.76,-37.13 260.34,-35.22 261.43,-42.14"/>
+<title>proc~placeat_arrayga2d_long&#45;&gt;interface~expand~32</title>
+<path fill="none" stroke="#000000" d="M233.77,-42.95C243.04,-41.49 252.23,-40.04 260.6,-38.73"/>
+<polygon fill="#000000" stroke="#000000" points="261.39,-42.14 270.72,-37.13 260.3,-35.23 261.39,-42.14"/>
 </g>
-<!-- proc~placeat_ga_ellipsoid_vec&#45;&gt;interface~expand~30 -->
+<!-- proc~placeat_singlega2d_long&#45;&gt;interface~expand~32 -->
 <g id="interface~~placeat~25~~CallsGraph_edge4" class="edge">
-<title>proc~placeat_ga_ellipsoid_vec&#45;&gt;interface~expand~30</title>
+<title>proc~placeat_singlega2d_long&#45;&gt;interface~expand~32</title>
 <path fill="none" stroke="#000000" d="M235.33,-23.3C244.17,-24.69 252.89,-26.06 260.87,-27.32"/>
 <polygon fill="#000000" stroke="#000000" points="260.45,-30.79 270.87,-28.89 261.54,-23.88 260.45,-30.79"/>
 </g>
-<!-- proc~expand_ga_ellipsoid -->
+<!-- proc~expand_ga2d_real -->
 <g id="interface~~placeat~25~~CallsGraph_node5" class="node">
-<title>proc~expand_ga_ellipsoid</title>
-<g id="a_interface~~placeat~25~~CallsGraph_node5"><a xlink:href="../proc/expand_ga_ellipsoid.html" xlink:title="expand_ga_ellipsoid">
-<polygon fill="#d9534f" stroke="#d9534f" points="481,-45 361,-45 361,-21 481,-21 481,-45"/>
-<text text-anchor="middle" x="421" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga_ellipsoid</text>
+<title>proc~expand_ga2d_real</title>
+<g id="a_interface~~placeat~25~~CallsGraph_node5"><a xlink:href="../proc/expand_ga2d_real.html" xlink:title="expand_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="470,-45 361,-45 361,-21 470,-21 470,-45"/>
+<text text-anchor="middle" x="415.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga2d_real</text>
 </a>
 </g>
 </g>
-<!-- interface~expand~30&#45;&gt;proc~expand_ga_ellipsoid -->
+<!-- interface~expand~32&#45;&gt;proc~expand_ga2d_real -->
 <g id="interface~~placeat~25~~CallsGraph_edge5" class="edge">
-<title>interface~expand~30&#45;&gt;proc~expand_ga_ellipsoid</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M325.26,-33C332.83,-33 341.47,-33 350.39,-33"/>
-<polygon fill="#000000" stroke="#000000" points="350.52,-36.5 360.52,-33 350.52,-29.5 350.52,-36.5"/>
+<title>interface~expand~32&#45;&gt;proc~expand_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M325.21,-33C332.85,-33 341.55,-33 350.46,-33"/>
+<polygon fill="#000000" stroke="#000000" points="350.55,-36.5 360.55,-33 350.55,-29.5 350.55,-36.5"/>
 </g>
 </g>
 </svg>
@@ -324,11 +341,11 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-placeat_ga_ellipsoid"></span> <h3>private  subroutine <a href='../proc/placeat_ga_ellipsoid.html'>placeat_ga_ellipsoid</a>(me, val, pos, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-placeat_singlega2d_long"></span> <h3>public  subroutine <a href='../proc/placeat_singlega2d_long.html'>placeat_singlega2d_long</a>(me, val, pos1, pos2, length)  
 </h3></div>
     <div class="card-body">
           
-  <p>adds the value to a given position inside the growing array.</p><a href="../proc/placeat_ga_ellipsoid.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>append a single value to the growing 2d array.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -343,8 +360,8 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~560"></span>
-              type(<a href='../type/grw_ellipsoidarray_type.html'>grw_ellipsoidarray_type</a>)
+              <span class="anchor" id="variable-me~759"></span>
+              type(<a href='../type/grw_long2darray_type.html'>grw_long2darray_type</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -353,13 +370,13 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>array to append the value to</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~168"></span>
-              type(<a href='../type/tem_ellipsoid_type.html'>tem_ellipsoid_type</a>),
+              <span class="anchor" id="variable-val~184"></span>
+              integer(kind=long_k),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -368,12 +385,12 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>val</strong></td>
             <td>
-
+<p>value to append</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~137"></span>
+              <span class="anchor" id="variable-pos1~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -381,14 +398,29 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>pos</strong></td>
+            <td><strong>pos1</strong></td>
             <td>
-
+<p>position in first dimension (cannot grow)</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~185"></span>
+              <span class="anchor" id="variable-pos2~8"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos2</strong></td>
+            <td>
+<p>position in second dimension (can grow)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~189"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -409,11 +441,11 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-placeat_ga_ellipsoid_vec"></span> <h3>private  subroutine <a href='../proc/placeat_ga_ellipsoid_vec.html'>placeat_ga_ellipsoid_vec</a>(me, val, pos, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-placeat_arrayga2d_long"></span> <h3>public  subroutine <a href='../proc/placeat_arrayga2d_long.html'>placeat_arrayga2d_long</a>(me, val, pos2, length)  
 </h3></div>
     <div class="card-body">
           
-  <p>adds the values starting from a given position inside the growing array.</p><a href="../proc/placeat_ga_ellipsoid_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>append an array of values to the growing 2d array.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -428,8 +460,8 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~561"></span>
-              type(<a href='../type/grw_ellipsoidarray_type.html'>grw_ellipsoidarray_type</a>)
+              <span class="anchor" id="variable-me~760"></span>
+              type(<a href='../type/grw_long2darray_type.html'>grw_long2darray_type</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -438,13 +470,13 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>array to append the value to</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~169"></span>
-              type(<a href='../type/tem_ellipsoid_type.html'>tem_ellipsoid_type</a>),
+              <span class="anchor" id="variable-val~185"></span>
+              integer(kind=long_k),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -453,12 +485,12 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>val</strong>(:)</td>
             <td>
-
+<p>array of values to append</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~138"></span>
+              <span class="anchor" id="variable-pos2~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -466,14 +498,14 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>pos</strong></td>
+            <td><strong>pos2</strong></td>
             <td>
-
+<p>position in second dimension (can grow)</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~186"></span>
+              <span class="anchor" id="variable-length~190"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -503,40 +535,18 @@ implementation in a submodule of an interface in a parent module.
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

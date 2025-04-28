@@ -12,14 +12,29 @@
 
     <title>placeat &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -77,20 +92,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.0% of total for procedures.</p>Including implementation: 35 statements,  0.1% of total for procedures.">4 statements</a>
+                 title="<p> 0.0% of total for procedures.</p>Including implementation: 38 statements,  0.1% of total for procedures.">4 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/tem_triangle_module.f90"> Source File</a>
+              <a href="../src/tem_grow_array.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/tem_triangle_module.f90.html'>tem_triangle_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/tem_triangle_module.html'>tem_triangle_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_grow_array.f90.html'>tem_grow_array.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_grow_array_module.html'>tem_grow_array_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">placeat</li>
           </ol>
         </nav>
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -134,8 +151,8 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/placeat~26.html#moduleprocedure-placeat_ga_triangle">placeat_ga_triangle</a>
-            <a class="list-group-item" href="../interface/placeat~26.html#moduleprocedure-placeat_ga_triangle_vec">placeat_ga_triangle_vec</a>
+            <a class="list-group-item" href="../interface/placeat~26.html#moduleprocedure-placeat_singlega2d_int">placeat_singlega2d_int</a>
+            <a class="list-group-item" href="../interface/placeat~26.html#moduleprocedure-placeat_arrayga2d_int">placeat_arrayga2d_int</a>
         </div>
       </div>
     </div>
@@ -149,7 +166,7 @@
 
     <div class="col-md-9" id='text'>
       <h2>public interface placeat</h2>
-      <p>insert an element at a given position</p>
+      
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Calls</h3>
@@ -161,82 +178,82 @@
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: interface~~placeat~26~~CallsGraph Pages: 1 -->
-<svg id="interfaceplaceat26CallsGraph" width="483pt" height="74pt"
- viewBox="0.00 0.00 483.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="interfaceplaceat26CallsGraph" width="468pt" height="74pt"
+ viewBox="0.00 0.00 468.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="interface~~placeat~26~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
 <title>interface~~placeat~26~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 479,-70 479,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 464,-70 464,4 -4,4"/>
 <!-- interface~placeat~26 -->
 <g id="interface~~placeat~26~~CallsGraph_node1" class="node">
 <title>interface~placeat~26</title>
 <polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
 <text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">placeat</text>
 </g>
-<!-- proc~placeat_ga_triangle -->
+<!-- proc~placeat_arrayga2d_int -->
 <g id="interface~~placeat~26~~CallsGraph_node2" class="node">
-<title>proc~placeat_ga_triangle</title>
-<g id="a_interface~~placeat~26~~CallsGraph_node2"><a xlink:href="../proc/placeat_ga_triangle.html" xlink:title="placeat_ga_triangle">
-<polygon fill="#d9534f" stroke="#d9534f" points="220,-66 102,-66 102,-42 220,-42 220,-66"/>
-<text text-anchor="middle" x="161" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_ga_triangle</text>
+<title>proc~placeat_arrayga2d_int</title>
+<g id="a_interface~~placeat~26~~CallsGraph_node2"><a xlink:href="../proc/placeat_arrayga2d_int.html" xlink:title="placeat_arrayga2d_int">
+<polygon fill="#d9534f" stroke="#d9534f" points="223.5,-66 91.5,-66 91.5,-42 223.5,-42 223.5,-66"/>
+<text text-anchor="middle" x="157.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_arrayga2d_int</text>
 </a>
 </g>
 </g>
-<!-- interface~placeat~26&#45;&gt;proc~placeat_ga_triangle -->
+<!-- interface~placeat~26&#45;&gt;proc~placeat_arrayga2d_int -->
 <g id="interface~~placeat~26~~CallsGraph_edge1" class="edge">
-<title>interface~placeat~26&#45;&gt;proc~placeat_ga_triangle</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.08,-37.15C64.98,-38.88 78.2,-40.99 91.55,-43.11"/>
-<polygon fill="#000000" stroke="#000000" points="91.33,-46.62 101.76,-44.73 92.43,-39.71 91.33,-46.62"/>
+<title>interface~placeat~26&#45;&gt;proc~placeat_arrayga2d_int</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54,-37.25C62.2,-38.59 71.7,-40.14 81.55,-41.75"/>
+<polygon fill="#000000" stroke="#000000" points="81.04,-45.21 91.47,-43.37 82.17,-38.31 81.04,-45.21"/>
 </g>
-<!-- proc~placeat_ga_triangle_vec -->
+<!-- proc~placeat_singlega2d_int -->
 <g id="interface~~placeat~26~~CallsGraph_node3" class="node">
-<title>proc~placeat_ga_triangle_vec</title>
-<g id="a_interface~~placeat~26~~CallsGraph_node3"><a xlink:href="../proc/placeat_ga_triangle_vec.html" xlink:title="placeat_ga_triangle_vec">
-<polygon fill="#d9534f" stroke="#d9534f" points="232,-24 90,-24 90,0 232,0 232,-24"/>
-<text text-anchor="middle" x="161" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_ga_triangle_vec</text>
+<title>proc~placeat_singlega2d_int</title>
+<g id="a_interface~~placeat~26~~CallsGraph_node3"><a xlink:href="../proc/placeat_singlega2d_int.html" xlink:title="placeat_singlega2d_int">
+<polygon fill="#d9534f" stroke="#d9534f" points="225,-24 90,-24 90,0 225,0 225,-24"/>
+<text text-anchor="middle" x="157.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">placeat_singlega2d_int</text>
 </a>
 </g>
 </g>
-<!-- interface~placeat~26&#45;&gt;proc~placeat_ga_triangle_vec -->
+<!-- interface~placeat~26&#45;&gt;proc~placeat_singlega2d_int -->
 <g id="interface~~placeat~26~~CallsGraph_edge2" class="edge">
-<title>interface~placeat~26&#45;&gt;proc~placeat_ga_triangle_vec</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.08,-28.85C61.75,-27.63 70.57,-26.23 79.78,-24.76"/>
-<polygon fill="#000000" stroke="#000000" points="80.56,-28.18 89.89,-23.15 79.46,-21.27 80.56,-28.18"/>
+<title>interface~placeat~26&#45;&gt;proc~placeat_singlega2d_int</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54,-28.75C61.71,-27.49 70.56,-26.04 79.77,-24.54"/>
+<polygon fill="#000000" stroke="#000000" points="80.56,-27.96 89.87,-22.89 79.43,-21.05 80.56,-27.96"/>
 </g>
-<!-- interface~expand~31 -->
+<!-- interface~expand~32 -->
 <g id="interface~~placeat~26~~CallsGraph_node4" class="node">
-<title>interface~expand~31</title>
-<g id="a_interface~~placeat~26~~CallsGraph_node4"><a xlink:href="../interface/expand~31.html" xlink:title="expand">
-<polygon fill="#a7506f" stroke="#a7506f" points="322,-45 268,-45 268,-21 322,-21 322,-45"/>
-<text text-anchor="middle" x="295" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+<title>interface~expand~32</title>
+<g id="a_interface~~placeat~26~~CallsGraph_node4"><a xlink:href="../interface/expand~32.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="315,-45 261,-45 261,-21 315,-21 315,-45"/>
+<text text-anchor="middle" x="288" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
 </a>
 </g>
 </g>
-<!-- proc~placeat_ga_triangle&#45;&gt;interface~expand~31 -->
+<!-- proc~placeat_arrayga2d_int&#45;&gt;interface~expand~32 -->
 <g id="interface~~placeat~26~~CallsGraph_edge3" class="edge">
-<title>proc~placeat_ga_triangle&#45;&gt;interface~expand~31</title>
-<path fill="none" stroke="#000000" d="M220.28,-44.73C232.97,-42.71 246.05,-40.63 257.6,-38.79"/>
-<polygon fill="#000000" stroke="#000000" points="258.4,-42.21 267.72,-37.18 257.3,-35.3 258.4,-42.21"/>
+<title>proc~placeat_arrayga2d_int&#45;&gt;interface~expand~32</title>
+<path fill="none" stroke="#000000" d="M223.5,-43.38C232.89,-41.84 242.25,-40.31 250.79,-38.92"/>
+<polygon fill="#000000" stroke="#000000" points="251.43,-42.36 260.74,-37.29 250.31,-35.45 251.43,-42.36"/>
 </g>
-<!-- proc~placeat_ga_triangle_vec&#45;&gt;interface~expand~31 -->
+<!-- proc~placeat_singlega2d_int&#45;&gt;interface~expand~32 -->
 <g id="interface~~placeat~26~~CallsGraph_edge4" class="edge">
-<title>proc~placeat_ga_triangle_vec&#45;&gt;interface~expand~31</title>
-<path fill="none" stroke="#000000" d="M232.25,-23.18C241.07,-24.58 249.79,-25.97 257.77,-27.24"/>
-<polygon fill="#000000" stroke="#000000" points="257.36,-30.71 267.79,-28.83 258.46,-23.8 257.36,-30.71"/>
+<title>proc~placeat_singlega2d_int&#45;&gt;interface~expand~32</title>
+<path fill="none" stroke="#000000" d="M225.01,-22.87C233.87,-24.32 242.66,-25.75 250.73,-27.07"/>
+<polygon fill="#000000" stroke="#000000" points="250.43,-30.57 260.86,-28.73 251.56,-23.66 250.43,-30.57"/>
 </g>
-<!-- proc~expand_ga_triangle -->
+<!-- proc~expand_ga2d_real -->
 <g id="interface~~placeat~26~~CallsGraph_node5" class="node">
-<title>proc~expand_ga_triangle</title>
-<g id="a_interface~~placeat~26~~CallsGraph_node5"><a xlink:href="../proc/expand_ga_triangle.html" xlink:title="expand_ga_triangle">
-<polygon fill="#d9534f" stroke="#d9534f" points="475,-45 358,-45 358,-21 475,-21 475,-45"/>
-<text text-anchor="middle" x="416.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga_triangle</text>
+<title>proc~expand_ga2d_real</title>
+<g id="a_interface~~placeat~26~~CallsGraph_node5"><a xlink:href="../proc/expand_ga2d_real.html" xlink:title="expand_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="460,-45 351,-45 351,-21 460,-21 460,-45"/>
+<text text-anchor="middle" x="405.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga2d_real</text>
 </a>
 </g>
 </g>
-<!-- interface~expand~31&#45;&gt;proc~expand_ga_triangle -->
+<!-- interface~expand~32&#45;&gt;proc~expand_ga2d_real -->
 <g id="interface~~placeat~26~~CallsGraph_edge5" class="edge">
-<title>interface~expand~31&#45;&gt;proc~expand_ga_triangle</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M322.22,-33C329.91,-33 338.69,-33 347.73,-33"/>
-<polygon fill="#000000" stroke="#000000" points="347.98,-36.5 357.98,-33 347.98,-29.5 347.98,-36.5"/>
+<title>interface~expand~32&#45;&gt;proc~expand_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M315.21,-33C322.85,-33 331.55,-33 340.46,-33"/>
+<polygon fill="#000000" stroke="#000000" points="340.55,-36.5 350.55,-33 340.55,-29.5 340.55,-36.5"/>
 </g>
 </g>
 </svg>
@@ -324,11 +341,11 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-placeat_ga_triangle"></span> <h3>private  subroutine <a href='../proc/placeat_ga_triangle.html'>placeat_ga_triangle</a>(me, val, pos, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-placeat_singlega2d_int"></span> <h3>public  subroutine <a href='../proc/placeat_singlega2d_int.html'>placeat_singlega2d_int</a>(me, val, pos1, pos2, length)  
 </h3></div>
     <div class="card-body">
           
-  <p>adds the value to a given position inside the growing array.</p><a href="../proc/placeat_ga_triangle.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>append a single value to the growing 2d array.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -343,8 +360,8 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~587"></span>
-              type(<a href='../type/grw_trianglearray_type.html'>grw_trianglearray_type</a>)
+              <span class="anchor" id="variable-me~766"></span>
+              type(<a href='../type/grw_int2darray_type.html'>grw_int2darray_type</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -353,13 +370,13 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>array to append the value to</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~173"></span>
-              type(<a href='../type/tem_triangle_type.html'>tem_triangle_type</a>),
+              <span class="anchor" id="variable-val~188"></span>
+              integer,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -368,12 +385,12 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>val</strong></td>
             <td>
-
+<p>value to append</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~140"></span>
+              <span class="anchor" id="variable-pos1~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -381,14 +398,29 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>pos</strong></td>
+            <td><strong>pos1</strong></td>
             <td>
-
+<p>position in first dimension (cannot grow)</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~191"></span>
+              <span class="anchor" id="variable-pos2~11"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pos2</strong></td>
+            <td>
+<p>position in second dimension (can grow)</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-length~195"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -409,11 +441,11 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-placeat_ga_triangle_vec"></span> <h3>private  subroutine <a href='../proc/placeat_ga_triangle_vec.html'>placeat_ga_triangle_vec</a>(me, val, pos, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-placeat_arrayga2d_int"></span> <h3>public  subroutine <a href='../proc/placeat_arrayga2d_int.html'>placeat_arrayga2d_int</a>(me, val, pos2, length)  
 </h3></div>
     <div class="card-body">
           
-  <p>adds the values starting from a given position inside the growing array.</p><a href="../proc/placeat_ga_triangle_vec.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>append an array of values to the growing 2d array.</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -428,8 +460,8 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~588"></span>
-              type(<a href='../type/grw_trianglearray_type.html'>grw_trianglearray_type</a>)
+              <span class="anchor" id="variable-me~767"></span>
+              type(<a href='../type/grw_int2darray_type.html'>grw_int2darray_type</a>)
             </td>
 <td></td>
               <td></td>            <td>
@@ -438,13 +470,13 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>array to append the value to</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~174"></span>
-              type(<a href='../type/tem_triangle_type.html'>tem_triangle_type</a>),
+              <span class="anchor" id="variable-val~189"></span>
+              integer,
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
@@ -453,12 +485,12 @@ implementation in a submodule of an interface in a parent module.
             <td>::</td>
             <td><strong>val</strong>(:)</td>
             <td>
-
+<p>array of values to append</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~141"></span>
+              <span class="anchor" id="variable-pos2~12"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -466,14 +498,14 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>pos</strong></td>
+            <td><strong>pos2</strong></td>
             <td>
-
+<p>position in second dimension (can grow)</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~192"></span>
+              <span class="anchor" id="variable-length~196"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -503,40 +535,18 @@ implementation in a submodule of an interface in a parent module.
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

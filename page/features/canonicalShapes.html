@@ -12,14 +12,29 @@
 
     <title>Canonical Shapes &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../../css/pygments.css" rel="stylesheet">
-    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../../css/brands.min.css" rel="stylesheet">
+    <link href="../../css/regular.min.css" rel="stylesheet">
+    <link href="../../css/solid.min.css" rel="stylesheet">
+    <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../../css/local.css" rel="stylesheet">
-      <link  href="../../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../../css/pygments.css" rel="stylesheet">
     <script src="../../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -136,11 +151,11 @@ treated as plane by the underlying code.</p>
 <h2 id="point">Point</h2>
 <p>A point is defined as the origin of the cube with no length vector. An
 example is shown below:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.7</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">}</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.9</span><span class="p">,</span><span class="w"> </span><span class="mf">2.2</span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -152,13 +167,13 @@ by origin and vector or by definition the center and a vector.</p>
 <h3 id="1-line-definition-by-direction-vector">1. Line Definition by direction vector</h3>
 <p>We specify the origin coordinates (starting point) and direction vector of
 the tracking line in the following way:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">},</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">}</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x1</span><span class="p">,</span><span class="w"> </span><span class="nv">y1</span><span class="p">,</span><span class="w"> </span><span class="nv">z1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">n</span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -177,20 +192,20 @@ line divided into five segments.</p>
 </code></pre></div>
 
 <p>Typically, a line will be defined as:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="c1">-- the origin of the line</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
-    <span class="c1">-- the length and direction vector of the line</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
-    <span class="c1">-- with how many points does the contiguous line have to be</span>
-    <span class="c1">-- segmented (default = 10)</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="mi">10</span><span class="p">},</span>
-    <span class="c1">-- how are the discrete points distributed</span>
-    <span class="c1">-- (default is equal if not defined)</span>
-    <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">-- the origin of the line</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span>
+<span class="w">    </span><span class="c1">-- the length and direction vector of the line</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span>
+<span class="w">    </span><span class="c1">-- with how many points does the contiguous line have to be</span>
+<span class="w">    </span><span class="c1">-- segmented (default = 10)</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">},</span>
+<span class="w">    </span><span class="c1">-- how are the discrete points distributed</span>
+<span class="w">    </span><span class="c1">-- (default is equal if not defined)</span>
+<span class="w">    </span><span class="nv">distribution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;equal&#39;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -208,13 +223,13 @@ vector along center.</p>
 <code>center = {0.,0.,0.}</code> and <code>direction = {1.,0.,0.}</code>, then the origin will be
 calculated as <code>origin = {-1.,0.,0.}</code>.
 Thus, general definition of a line by center in lua format will be:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">},</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">}</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="p">,</span><span class="w"> </span><span class="nv">y</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x1</span><span class="p">,</span><span class="w"> </span><span class="nv">y1</span><span class="p">,</span><span class="w"> </span><span class="nv">z1</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">n</span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -223,12 +238,12 @@ Thus, general definition of a line by center in lua format will be:</p>
 <p>Further, there can be a requirement to define a single or multiple lines.
 This can simply be done by placing origin and vector of other line within
 the object list. A generic form is shown below:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="p">{</span>
-      <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">z1</span><span class="p">},</span>
-      <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="n">x</span><span class="s1">&#39;, y&#39;</span><span class="p">,</span> <span class="n">z</span><span class="s1">&#39;},</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x1</span><span class="p">,</span><span class="w"> </span><span class="nv">y1</span><span class="p">,</span><span class="w"> </span><span class="nv">z1</span><span class="p">},</span>
+<span class="w">      </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">x</span><span class="s1">&#39;, y&#39;</span><span class="p">,</span><span class="w"> </span><span class="nv">z</span><span class="s1">&#39;},</span>
 <span class="s1">      segments = {n1}</span>
 <span class="s1">    },</span>
 <span class="s1">    {</span>
@@ -259,18 +274,18 @@ reference to origin.
 <p>For example plane at xy-plane normal to z-axis, offset from z-plane
 at <code>1.0</code>, starting at <code>x = -1.0</code> and <code>y = -1.0</code> with length and width as <code>2.0</code>
 will be defined as</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">vec</span><span class="o">=</span> <span class="p">{</span>
-      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-    <span class="p">},</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
-    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">bclabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">refinementlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -290,17 +305,17 @@ blocks inside.</p>
 <p>Similarly, there is a possibility of defining distribution of these segments
 which at the current moment is only equal. A typical Lua configurations
 script to define a plane will look like below:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">}</span>
-    <span class="p">},</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">10</span><span class="p">}</span> <span class="p">},</span>
-    <span class="n">distribution</span> <span class="o">=</span> <span class="s1">&#39;equal&#39;</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">10</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">distribution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;equal&#39;</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -322,14 +337,14 @@ pointB ----x
 
 <p>The same example above for the definition 1 is now defined using points
 instead of vectors:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">plane</span><span class="o">=</span><span class="p">{</span>
-  <span class="p">{</span>
-    <span class="n">pointA</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">pointB</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">plane</span><span class="o">=</span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">pointA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">pointB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">bclabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">refinementlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -353,18 +368,18 @@ coordinates and vectors A and B are defined for 2 combining triangles.
 </code></pre></div>
 
 <p>The Lua format for defining such a plane is:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="p">{</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">},</span>
-    <span class="p">}</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
-    <span class="n">bclabel</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.</span><span class="p">,</span><span class="w"> </span><span class="mf">2.</span><span class="p">,</span><span class="w"> </span><span class="mf">0.</span><span class="p">},</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">bclabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">refinementlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -382,19 +397,19 @@ reference to origin.
 ...- vecC - vector C from its origin ( defines box height )</p>
 <p>As an example a box starting at <code>x = -1.0</code>, <code>y = -1.0</code> and <code>z = -2.0</code>
 with length, width and height as <code>2.0</code> will be defined as</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="p">{</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
-    <span class="n">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">refinementlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -405,19 +420,19 @@ distribution of these segments which at the current moment is only equal.</p>
 <p>Box can also be defined by specifying the center and origin is then
 calculated according to the length of half vectors</p>
 <p>The Lua format for defining such a box is:</p>
-<div class="codehilite"><pre><span></span><code><span class="n">shape</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
-  <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">center</span> <span class="o">=</span> <span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">},</span>
-    <span class="n">halfvec</span><span class="o">=</span> <span class="p">{</span>
-      <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">},</span>
-      <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">}</span>
-    <span class="p">}</span>
-    <span class="n">segments</span> <span class="o">=</span> <span class="p">{</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">5</span><span class="p">}</span> <span class="p">},</span>
-    <span class="n">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
-    <span class="n">refinementlevel</span> <span class="o">=</span> <span class="mi">5</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">},</span>
+<span class="w">    </span><span class="nv">halfvec</span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nv">segments</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="mi">5</span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">bclabel</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">refinementlevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -434,40 +449,18 @@ origin.</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

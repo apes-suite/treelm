@@ -12,14 +12,29 @@
 
     <title>Using Lua functions for space time functions &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../../../css/pygments.css" rel="stylesheet">
-    <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../../../css/brands.min.css" rel="stylesheet">
+    <link href="../../../css/regular.min.css" rel="stylesheet">
+    <link href="../../../css/solid.min.css" rel="stylesheet">
+    <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../../../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../../../css/local.css" rel="stylesheet">
-      <link  href="../../../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../../../css/pygments.css" rel="stylesheet">
     <script src="../../../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -131,46 +146,46 @@
       <p>In this section we introduce the use on how to define 
 variables with Lua functions.</p>
 <p>Lua functions are defined inside the code like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">velocityX</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
-  <span class="n">velX</span> <span class="o">=</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tD</span><span class="p">)</span>
-  <span class="kr">return</span> <span class="n">velX</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nf">velocityX</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">,</span><span class="nv">z</span><span class="p">,</span><span class="nv">t</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">velX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">z</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.exp</span><span class="p">(</span><span class="o">-</span><span class="nv">t</span><span class="o">/</span><span class="nv">tD</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">velX</span>
 <span class="kr">end</span>
 </code></pre></div>
 
 <p>To use them for the simulation run you need to add it to the variable table.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="p">{</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_1&#39;</span><span class="p">,</span>
-    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">velocityX</span>
-  <span class="p">},</span>
-  <span class="c1">-- or in this way:</span>
-  <span class="p">{</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_2&#39;</span><span class="p">,</span>
-    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">fun</span> <span class="o">=</span> <span class="n">velocityX</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="c1">-- or for a special shape:</span>
-  <span class="p">{</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_3&#39;</span><span class="p">,</span>
-    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">fun</span> <span class="o">=</span> <span class="n">velocityX</span>
-      <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> 
-        <span class="c1">-- example: line</span>
-        <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span> 
-        <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
-          <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span> 
-          <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span> 
-        <span class="p">}</span> <span class="c1">-- object</span>
-      <span class="p">}</span> <span class="c1">-- shape</span>
-    <span class="p">}</span> <span class="c1">-- st_fun</span>
-  <span class="p">},</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_1&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="c1">-- or in this way:</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_2&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="c1">-- or for a special shape:</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_3&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
+<span class="w">      </span><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">        </span><span class="c1">-- example: line</span>
+<span class="w">        </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span><span class="w"> </span>
+<span class="w">          </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span><span class="w"> </span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">-- object</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="c1">-- shape</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">-- st_fun</span>
+<span class="w">  </span><span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -179,29 +194,29 @@ variables with Lua functions.</p>
 <p>For more possible shapes have a look at <a href="../canonicalShapes.html">Canonical Shapes</a>.</p>
 </div>
 <p>A combination of a spatial Lua function and a temporal Lua function is shown below.</p>
-<div class="codehilite"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mf">10.5</span>
+<div class="codehilite"><pre><span></span><code><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.5</span>
 
-<span class="kr">function</span> <span class="nf">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-  <span class="n">y</span> <span class="o">=</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
-  <span class="kr">return</span> <span class="n">y</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">x</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">a</span><span class="o">*</span><span class="nv">t</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">y</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span> <span class="nf">lua_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
-  <span class="n">res</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="n">a</span>
-  <span class="kr">return</span> <span class="n">res</span>
+<span class="kr">function</span><span class="w"> </span><span class="nf">lua_fun</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">,</span><span class="nv">z</span><span class="p">)</span>
+<span class="w">  </span><span class="nv">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span><span class="o">*</span><span class="nv">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">x</span><span class="o">*</span><span class="nv">z</span><span class="o">*</span><span class="nv">a</span>
+<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">res</span>
 <span class="kr">end</span>
 
-<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="p">{</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;two_lua&#39;</span><span class="p">,</span>
-    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="n">vartype</span> <span class="o">=</span> <span class="n">st_fun</span><span class="p">,</span>
-    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;combined&#39;</span><span class="p">,</span>
-      <span class="n">spatial</span> <span class="o">=</span> <span class="n">lua_fun</span><span class="p">,</span>
-      <span class="n">temporal</span> <span class="o">=</span> <span class="n">x</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+<span class="nv">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;two_lua&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">st_fun</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;combined&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">spatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lua_fun</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">temporal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
     </div>
@@ -214,40 +229,18 @@ variables with Lua functions.</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../../../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../../../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../../../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

@@ -12,14 +12,29 @@
 
     <title>append &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -77,20 +92,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.0% of total for procedures.</p>Including implementation: 148 statements,  0.4% of total for procedures.">4 statements</a>
+                 title="<p> 0.0% of total for procedures.</p>Including implementation: 77 statements,  0.2% of total for procedures.">3 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/tem_dyn_array.f90"> Source File</a>
+              <a href="../src/tem_element_module.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/tem_dyn_array.f90.html'>tem_dyn_array.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_element_module.f90.html'>tem_element_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_element_module.html'>tem_element_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">append</li>
           </ol>
         </nav>
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -134,8 +151,7 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/append~26.html#moduleprocedure-append_da_long">append_da_long</a>
-            <a class="list-group-item" href="../interface/append~26.html#moduleprocedure-append_da_veclong">append_da_veclong</a>
+            <a class="list-group-item" href="../interface/append~26.html#moduleprocedure-append_element">append_element</a>
         </div>
       </div>
     </div>
@@ -148,9 +164,8 @@
     </div>
 
     <div class="col-md-9" id='text'>
-      <h2>public interface append</h2>
-      <p>append a value to the dynamic array
-and return its position.</p>
+      <h2>private interface append</h2>
+      
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Calls</h3>
@@ -162,112 +177,142 @@ and return its position.</p>
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: interface~~append~26~~CallsGraph Pages: 1 -->
-<svg id="interfaceappend26CallsGraph" width="489pt" height="74pt"
- viewBox="0.00 0.00 489.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="interface~~append~26~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
+<svg id="interfaceappend26CallsGraph" width="610pt" height="158pt"
+ viewBox="0.00 0.00 610.00 158.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="interface~~append~26~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 154)">
 <title>interface~~append~26~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 485,-70 485,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-154 606,-154 606,4 -4,4"/>
 <!-- interface~append~26 -->
 <g id="interface~~append~26~~CallsGraph_node1" class="node">
 <title>interface~append~26</title>
-<polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
-<text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">append</text>
+<polygon fill="none" stroke="black" points="54,-66 0,-66 0,-42 54,-42 54,-66"/>
+<text text-anchor="middle" x="27" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50">append</text>
 </g>
-<!-- proc~append_da_long -->
+<!-- proc~append_element -->
 <g id="interface~~append~26~~CallsGraph_node2" class="node">
-<title>proc~append_da_long</title>
-<g id="a_interface~~append~26~~CallsGraph_node2"><a xlink:href="../proc/append_da_long.html" xlink:title="append_da_long">
-<polygon fill="#d9534f" stroke="#d9534f" points="199.5,-24 99.5,-24 99.5,0 199.5,0 199.5,-24"/>
-<text text-anchor="middle" x="149.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_long</text>
+<title>proc~append_element</title>
+<g id="a_interface~~append~26~~CallsGraph_node2"><a xlink:href="../proc/append_element.html" xlink:title="append_element">
+<polygon fill="#d9534f" stroke="#d9534f" points="193,-66 90,-66 90,-42 193,-42 193,-66"/>
+<text text-anchor="middle" x="141.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_element</text>
 </a>
 </g>
 </g>
-<!-- interface~append~26&#45;&gt;proc~append_da_long -->
+<!-- interface~append~26&#45;&gt;proc~append_element -->
 <g id="interface~~append~26~~CallsGraph_edge1" class="edge">
-<title>interface~append~26&#45;&gt;proc~append_da_long</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.15,-28.44C64.42,-26.65 76.67,-24.52 88.88,-22.39"/>
-<polygon fill="#000000" stroke="#000000" points="89.84,-25.78 99.09,-20.61 88.64,-18.88 89.84,-25.78"/>
+<title>interface~append~26&#45;&gt;proc~append_element</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.09,-54C61.83,-54 70.64,-54 79.61,-54"/>
+<polygon fill="#000000" stroke="#000000" points="79.76,-57.5 89.76,-54 79.76,-50.5 79.76,-57.5"/>
 </g>
-<!-- proc~append_da_veclong -->
+<!-- interface~append~4 -->
 <g id="interface~~append~26~~CallsGraph_node3" class="node">
-<title>proc~append_da_veclong</title>
-<g id="a_interface~~append~26~~CallsGraph_node3"><a xlink:href="../proc/append_da_veclong.html" xlink:title="append_da_veclong">
-<polygon fill="#d9534f" stroke="#d9534f" points="209,-66 90,-66 90,-42 209,-42 209,-66"/>
-<text text-anchor="middle" x="149.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_da_veclong</text>
+<title>interface~append~4</title>
+<g id="a_interface~~append~26~~CallsGraph_node3"><a xlink:href="../interface/append~4.html" xlink:title="append">
+<polygon fill="#a7506f" stroke="#a7506f" points="307.5,-108 253.5,-108 253.5,-84 307.5,-84 307.5,-108"/>
+<text text-anchor="middle" x="280.5" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append</text>
 </a>
 </g>
 </g>
-<!-- interface~append~26&#45;&gt;proc~append_da_veclong -->
+<!-- proc~append_element&#45;&gt;interface~append~4 -->
 <g id="interface~~append~26~~CallsGraph_edge2" class="edge">
-<title>interface~append~26&#45;&gt;proc~append_da_veclong</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.15,-37.56C61.87,-38.9 70.72,-40.44 79.82,-42.03"/>
-<polygon fill="#000000" stroke="#000000" points="79.31,-45.49 89.76,-43.76 80.51,-38.6 79.31,-45.49"/>
+<title>proc~append_element&#45;&gt;interface~append~4</title>
+<path fill="none" stroke="#000000" d="M181.76,-66.04C201.2,-71.99 224.5,-79.14 243.48,-84.96"/>
+<polygon fill="#000000" stroke="#000000" points="242.65,-88.36 253.24,-87.95 244.71,-81.67 242.65,-88.36"/>
 </g>
-<!-- interface~expand~27 -->
+<!-- interface~init~37 -->
 <g id="interface~~append~26~~CallsGraph_node4" class="node">
-<title>interface~expand~27</title>
-<g id="a_interface~~append~26~~CallsGraph_node4"><a xlink:href="../interface/expand~27.html" xlink:title="expand">
-<polygon fill="#a7506f" stroke="#a7506f" points="317.5,-66 263.5,-66 263.5,-42 317.5,-42 317.5,-66"/>
-<text text-anchor="middle" x="290.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+<title>interface~init~37</title>
+<g id="a_interface~~append~26~~CallsGraph_node4"><a xlink:href="../interface/init~37.html" xlink:title="init">
+<polygon fill="#a7506f" stroke="#a7506f" points="307.5,-66 253.5,-66 253.5,-42 307.5,-42 307.5,-66"/>
+<text text-anchor="middle" x="280.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init</text>
 </a>
 </g>
 </g>
-<!-- proc~append_da_long&#45;&gt;interface~expand~27 -->
+<!-- proc~append_element&#45;&gt;interface~init~37 -->
 <g id="interface~~append~26~~CallsGraph_edge3" class="edge">
-<title>proc~append_da_long&#45;&gt;interface~expand~27</title>
-<path fill="none" stroke="#000000" d="M190.33,-24.04C210.28,-30.06 234.24,-37.3 253.61,-43.16"/>
-<polygon fill="#000000" stroke="#000000" points="252.7,-46.54 263.28,-46.08 254.72,-39.83 252.7,-46.54"/>
+<title>proc~append_element&#45;&gt;interface~init~37</title>
+<path fill="none" stroke="#000000" d="M193.12,-54C209.72,-54 227.83,-54 243.15,-54"/>
+<polygon fill="#000000" stroke="#000000" points="243.26,-57.5 253.26,-54 243.26,-50.5 243.26,-57.5"/>
 </g>
-<!-- interface~sortedposofval~5 -->
+<!-- proc~tem_etypeisvalid -->
 <g id="interface~~append~26~~CallsGraph_node5" class="node">
-<title>interface~sortedposofval~5</title>
-<g id="a_interface~~append~26~~CallsGraph_node5"><a xlink:href="../interface/sortedposofval~5.html" xlink:title="sortedposofval">
-<polygon fill="#a7506f" stroke="#a7506f" points="336,-24 245,-24 245,0 336,0 336,-24"/>
-<text text-anchor="middle" x="290.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortedposofval</text>
+<title>proc~tem_etypeisvalid</title>
+<g id="a_interface~~append~26~~CallsGraph_node5"><a xlink:href="../proc/tem_etypeisvalid.html" xlink:title="tem_eTypeIsValid">
+<polygon fill="#d94e8f" stroke="#d94e8f" points="332,-24 229,-24 229,0 332,0 332,-24"/>
+<text text-anchor="middle" x="280.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_eTypeIsValid</text>
 </a>
 </g>
 </g>
-<!-- proc~append_da_long&#45;&gt;interface~sortedposofval~5 -->
+<!-- proc~append_element&#45;&gt;proc~tem_etypeisvalid -->
 <g id="interface~~append~26~~CallsGraph_edge4" class="edge">
-<title>proc~append_da_long&#45;&gt;interface~sortedposofval~5</title>
-<path fill="none" stroke="#000000" d="M199.51,-12C210.87,-12 223.04,-12 234.64,-12"/>
-<polygon fill="#000000" stroke="#000000" points="234.65,-15.5 244.65,-12 234.65,-8.5 234.65,-15.5"/>
+<title>proc~append_element&#45;&gt;proc~tem_etypeisvalid</title>
+<path fill="none" stroke="#000000" d="M181.76,-41.96C196.95,-37.31 214.5,-31.93 230.51,-27.02"/>
+<polygon fill="#000000" stroke="#000000" points="231.7,-30.31 240.24,-24.04 229.65,-23.62 231.7,-30.31"/>
 </g>
-<!-- proc~append_da_veclong&#45;&gt;interface~expand~27 -->
-<g id="interface~~append~26~~CallsGraph_edge5" class="edge">
-<title>proc~append_da_veclong&#45;&gt;interface~expand~27</title>
-<path fill="none" stroke="#000000" d="M209.05,-54C223.92,-54 239.47,-54 252.9,-54"/>
-<polygon fill="#000000" stroke="#000000" points="253.16,-57.5 263.16,-54 253.16,-50.5 253.16,-57.5"/>
-</g>
-<!-- proc~expand_da_label -->
+<!-- proc~append_ga_dynlong -->
 <g id="interface~~append~26~~CallsGraph_node6" class="node">
-<title>proc~expand_da_label</title>
-<g id="a_interface~~append~26~~CallsGraph_node6"><a xlink:href="../proc/expand_da_label.html" xlink:title="expand_da_label">
-<polygon fill="#d9534f" stroke="#d9534f" points="477.5,-66 375.5,-66 375.5,-42 477.5,-42 477.5,-66"/>
-<text text-anchor="middle" x="426.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_da_label</text>
+<title>proc~append_ga_dynlong</title>
+<g id="a_interface~~append~26~~CallsGraph_node6"><a xlink:href="../proc/append_ga_dynlong.html" xlink:title="append_ga_dynlong">
+<polygon fill="#d9534f" stroke="#d9534f" points="500,-150 380,-150 380,-126 500,-126 500,-150"/>
+<text text-anchor="middle" x="440" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong</text>
 </a>
 </g>
 </g>
-<!-- interface~expand~27&#45;&gt;proc~expand_da_label -->
-<g id="interface~~append~26~~CallsGraph_edge6" class="edge">
-<title>interface~expand~27&#45;&gt;proc~expand_da_label</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M317.65,-54C331.22,-54 348.39,-54 365.02,-54"/>
-<polygon fill="#000000" stroke="#000000" points="365.26,-57.5 375.26,-54 365.26,-50.5 365.26,-57.5"/>
+<!-- interface~append~4&#45;&gt;proc~append_ga_dynlong -->
+<g id="interface~~append~26~~CallsGraph_edge5" class="edge">
+<title>interface~append~4&#45;&gt;proc~append_ga_dynlong</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.51,-102.94C328.27,-108.47 358.09,-116.42 384.08,-123.35"/>
+<polygon fill="#000000" stroke="#000000" points="383.26,-126.76 393.83,-125.95 385.07,-120 383.26,-126.76"/>
 </g>
-<!-- proc~sortposofval_label -->
+<!-- proc~append_ga_dynlong_vec -->
 <g id="interface~~append~26~~CallsGraph_node7" class="node">
-<title>proc~sortposofval_label</title>
-<g id="a_interface~~append~26~~CallsGraph_node7"><a xlink:href="../proc/sortposofval_label.html" xlink:title="sortposofval_label">
-<polygon fill="#d94e8f" stroke="#d94e8f" points="481,-24 372,-24 372,0 481,0 481,-24"/>
-<text text-anchor="middle" x="426.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">sortposofval_label</text>
+<title>proc~append_ga_dynlong_vec</title>
+<g id="a_interface~~append~26~~CallsGraph_node7"><a xlink:href="../proc/append_ga_dynlong_vec.html" xlink:title="append_ga_dynlong_vec">
+<polygon fill="#d9534f" stroke="#d9534f" points="512,-108 368,-108 368,-84 512,-84 512,-108"/>
+<text text-anchor="middle" x="440" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_dynlong_vec</text>
 </a>
 </g>
 </g>
-<!-- interface~sortedposofval~5&#45;&gt;proc~sortposofval_label -->
+<!-- interface~append~4&#45;&gt;proc~append_ga_dynlong_vec -->
+<g id="interface~~append~26~~CallsGraph_edge6" class="edge">
+<title>interface~append~4&#45;&gt;proc~append_ga_dynlong_vec</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.51,-96C321.44,-96 339.45,-96 357.65,-96"/>
+<polygon fill="#000000" stroke="#000000" points="357.75,-99.5 367.75,-96 357.75,-92.5 357.75,-99.5"/>
+</g>
+<!-- proc~init_ga2d_real -->
+<g id="interface~~append~26~~CallsGraph_node8" class="node">
+<title>proc~init_ga2d_real</title>
+<g id="a_interface~~append~26~~CallsGraph_node8"><a xlink:href="../proc/init_ga2d_real.html" xlink:title="init_ga2d_real">
+<polygon fill="#d9534f" stroke="#d9534f" points="483.5,-66 396.5,-66 396.5,-42 483.5,-42 483.5,-66"/>
+<text text-anchor="middle" x="440" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">init_ga2d_real</text>
+</a>
+</g>
+</g>
+<!-- interface~init~37&#45;&gt;proc~init_ga2d_real -->
 <g id="interface~~append~26~~CallsGraph_edge7" class="edge">
-<title>interface~sortedposofval~5&#45;&gt;proc~sortposofval_label</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M336.12,-12C344.33,-12 353.04,-12 361.69,-12"/>
-<polygon fill="#000000" stroke="#000000" points="361.77,-15.5 371.77,-12 361.77,-8.5 361.77,-15.5"/>
+<title>interface~init~37&#45;&gt;proc~init_ga2d_real</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M307.51,-54C328.8,-54 359.6,-54 386.05,-54"/>
+<polygon fill="#000000" stroke="#000000" points="386.31,-57.5 396.31,-54 386.31,-50.5 386.31,-57.5"/>
+</g>
+<!-- interface~expand~3 -->
+<g id="interface~~append~26~~CallsGraph_node9" class="node">
+<title>interface~expand~3</title>
+<g id="a_interface~~append~26~~CallsGraph_node9"><a xlink:href="../interface/expand~3.html" xlink:title="expand">
+<polygon fill="#a7506f" stroke="#a7506f" points="602,-129 548,-129 548,-105 602,-105 602,-129"/>
+<text text-anchor="middle" x="575" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
+</a>
+</g>
+</g>
+<!-- proc~append_ga_dynlong&#45;&gt;interface~expand~3 -->
+<g id="interface~~append~26~~CallsGraph_edge8" class="edge">
+<title>proc~append_ga_dynlong&#45;&gt;interface~expand~3</title>
+<path fill="none" stroke="#000000" d="M500.11,-128.67C512.86,-126.65 525.97,-124.58 537.55,-122.76"/>
+<polygon fill="#000000" stroke="#000000" points="538.36,-126.17 547.69,-121.15 537.27,-119.26 538.36,-126.17"/>
+</g>
+<!-- proc~append_ga_dynlong_vec&#45;&gt;interface~expand~3 -->
+<g id="interface~~append~26~~CallsGraph_edge9" class="edge">
+<title>proc~append_ga_dynlong_vec&#45;&gt;interface~expand~3</title>
+<path fill="none" stroke="#000000" d="M512.17,-107.24C521.02,-108.63 529.75,-110.01 537.75,-111.28"/>
+<polygon fill="#000000" stroke="#000000" points="537.35,-114.76 547.78,-112.86 538.45,-107.84 537.35,-114.76"/>
 </g>
 </g>
 </svg>
@@ -355,11 +400,13 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-append_da_long"></span> <h3>public  subroutine <a href='../proc/append_da_long.html'>append_da_long</a>(me, val, length, pos, wasadded)  
+    <div class="card-header codesum"><span class="anchor" id="proc-append_element"></span> <h3>private  subroutine <a href='../proc/append_element.html'>append_element</a>(me, tID, property, eType, pntTID, sourceProc, nNeighIDs, haloNesting, needsUpdate, stencilElements, pos, wasAdded)  
 </h3></div>
     <div class="card-body">
           
-  <p>appending a value to the dynamic array</p><a href="../proc/append_da_long.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>append an element with its treeID, property, element type,
+position in Tree, position in boundary_ID, number of neighbors,
+procID</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -374,22 +421,22 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~457"></span>
-              type(<a href='../type/dyn_longarray_type.html'>dyn_longarray_type</a>)
+              <span class="anchor" id="variable-me~614"></span>
+              type(<a href='../type/tem_element_type.html'>tem_element_type</a>),
             </td>
-<td></td>
+<td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>element object</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~139"></span>
+              <span class="anchor" id="variable-tid~8"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -397,14 +444,29 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>val</strong></td>
+            <td><strong>tID</strong></td>
             <td>
-
+<p>element treeID</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~154"></span>
+              <span class="anchor" id="variable-property~8"></span>
+              integer(kind=long_k),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>property</strong></td>
+            <td>
+<p>property associated with the treeID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-etype~4"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -412,29 +474,120 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>length</strong></td>
+            <td><strong>eType</strong></td>
             <td>
-<p>optional length to expand the array</p>
+<p>element type</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~111"></span>
+              <span class="anchor" id="variable-pnttid~3"></span>
               integer,
             </td>
-<td>intent(out),</td>
+<td>intent(in),</td>
               <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>pntTID</strong></td>
+            <td>
+<p>count of this type
+pointer of the treeID</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-sourceproc~3"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>sourceProc</strong></td>
+            <td>
+<p>the procID which is adding the element</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nneighids"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nNeighIDs</strong></td>
+            <td>
+<p>number of neighbors</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-halonesting~2"></span>
+              integer,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>haloNesting</strong></td>
+            <td>
+<p>nesting level for haloElems</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-needsupdate~2"></span>
+              logical,
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>needsUpdate</strong></td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-stencilelements"></span>
+              type(<a href='../type/tem_stencilelement_type.html'>tem_stencilElement_type</a>),
+            </td>
+<td>intent(in),</td>
+              <td>optional</td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>stencilElements</strong>(:)</td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-pos~121"></span>
+              integer,
+            </td>
+<td>intent(out)</td>
+              <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>pos</strong></td>
             <td>
-<p>position in the array, if the value is found</p>
+<p>position of treeID</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-wasadded~3"></span>
+              <span class="anchor" id="variable-wasadded~30"></span>
               logical,
             </td>
 <td>intent(out),</td>
@@ -442,109 +595,9 @@ implementation in a submodule of an interface in a parent module.
               
             </td>
             <td>::</td>
-            <td><strong>wasadded</strong></td>
-            <td>
-<p>flag to indicate, if val was newly added</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-            <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-append_da_veclong"></span> <h3>public  subroutine <a href='../proc/append_da_veclong.html'>append_da_veclong</a>(me, val, length, pos, wasadded)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>appending a sorted list of values to the dynamic array</p><a href="../proc/append_da_veclong.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-me~458"></span>
-              type(<a href='../type/dyn_longarray_type.html'>dyn_longarray_type</a>)
-            </td>
-<td></td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>me</strong></td>
+            <td><strong>wasAdded</strong></td>
             <td>
 
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-val~140"></span>
-              integer(kind=long_k),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>val</strong>(:)</td>
-            <td>
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-length~155"></span>
-              integer,
-            </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>length</strong></td>
-            <td>
-<p>optional length to expand the array</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-pos~112"></span>
-              integer,
-            </td>
-<td>intent(out),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>pos</strong>(:)</td>
-            <td>
-<p>position in the array, the values are found at.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-wasadded~4"></span>
-              logical,
-            </td>
-<td>intent(out),</td>
-              <td>optional</td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>wasadded</strong>(:)</td>
-            <td>
-<p>flag to indicate, if val was newly added</p>
             </td>
         </tr>
     </tbody>
@@ -564,40 +617,18 @@ implementation in a submodule of an interface in a parent module.
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

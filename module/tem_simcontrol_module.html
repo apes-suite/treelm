@@ -12,14 +12,29 @@
 
     <title>tem_simControl_module &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -97,9 +112,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -179,17 +196,17 @@
  <code>abort_criteria</code> table is assumed.</p>
 <p>Thus, the general structure of the <code>sim_control</code> configuration has the
  following form:</p>
-<div class="codehilite"><pre><span></span><code>  <span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{},</span>
-    <span class="n">abort_criteria</span> <span class="o">=</span> <span class="p">{},</span>
-    <span class="n">delay_check</span> <span class="o">=</span> <span class="kc">false</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">sim_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nv">abort_criteria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">    </span><span class="nv">delay_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 
 <p>Alternatively, if there are no abort criteria to be specified, and
  <code>delay_check</code> should not be activated in general, just the
  <code>time_control</code> table may be specified:</p>
-<div class="codehilite"><pre><span></span><code>    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
 </code></pre></div>
 
 <p>See the <a href="../module/tem_timecontrol_module.html">tem_timeControl_module</a> for details on the <code>time_control</code> table.
@@ -199,17 +216,17 @@
  the computation. It relaxes the synchronization requirements but introduces
  a delay by one check interval until all processes get set status bits.</p>
 <p>A simple complete example without checks for steady state would be:</p>
-<div class="codehilite"><pre><span></span><code>  <span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-      <span class="n">max</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
-      <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">}</span>
-    <span class="p">},</span>
-    <span class="n">abort_criteria</span> <span class="o">=</span> <span class="p">{</span>
-      <span class="n">stop_file</span> <span class="o">=</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span>
-    <span class="p">},</span>
-    <span class="n">delay_check</span> <span class="o">=</span> <span class="kc">false</span>
-  <span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">sim_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
+<span class="w">      </span><span class="nv">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">abort_criteria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nv">stop_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;stop&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nv">delay_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">  </span><span class="p">}</span>
 </code></pre></div>
 <br>          <div class="card mb-4">
       <h3 class="card-header card-title bg-light">Uses</h3>
@@ -218,18 +235,18 @@
             <li class="list-group-item">
               <ul class="list-inline">
                   <li class="list-inline-item"><a href='tem_time_module.html'>tem_time_module</a></li>
-                  <li class="list-inline-item"><a href='tem_convergence_module.html'>tem_convergence_module</a></li>
-                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
-                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_timecontrol_module.html'>tem_timeControl_module</a></li>
-                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
                   <li class="list-inline-item"><a href='tem_status_module.html'>tem_status_module</a></li>
-                  <li class="list-inline-item"><a href='tem_timer_module.html'>tem_timer_module</a></li>
-                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_abortcriteria_module.html'>tem_abortCriteria_module</a></li>
+                  <li class="list-inline-item"><a href='tem_timecontrol_module.html'>tem_timeControl_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_table_module.html'>aot_table_module</a></li>
+                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='tem_timer_module.html'>tem_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
+                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
+                  <li class="list-inline-item"><a href='tem_convergence_module.html'>tem_convergence_module</a></li>
+                  <li class="list-inline-item"><a href='tem_abortcriteria_module.html'>tem_abortCriteria_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -685,7 +702,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-now~10"></span>
+              <span class="anchor" id="variable-now~2"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
               <td>public</td>
@@ -702,7 +719,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-timecontrol~12"></span>
+              <span class="anchor" id="variable-timecontrol~10"></span>
               type(<a href='../type/tem_timecontrol_type.html'>tem_timeControl_type</a>),
             </td>
               <td>public</td>
@@ -715,7 +732,7 @@ modules which it uses.
                 <td></td>
             <td>
 <p>Time control, when the simulation should end, and definition of
-special interval, at which regular actions should take place.</p><a href="../type/tem_simcontrol_type.html#variable-timecontrol~12" class="pull-right"><emph>Read more&hellip;</emph></a>
+special interval, at which regular actions should take place.</p><a href="../type/tem_simcontrol_type.html#variable-timecontrol~10" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -737,7 +754,7 @@ special interval, at which regular actions should take place.</p><a href="../typ
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-status~16"></span>
+              <span class="anchor" id="variable-status~13"></span>
               type(<a href='../type/tem_status_type.html'>tem_status_type</a>),
             </td>
               <td>public</td>
@@ -754,7 +771,7 @@ special interval, at which regular actions should take place.</p><a href="../typ
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-delay_check~3"></span>
+              <span class="anchor" id="variable-delay_check"></span>
               logical,
             </td>
               <td>public</td>
@@ -823,7 +840,7 @@ calls.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~768"></span>
+              <span class="anchor" id="variable-me~421"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -863,7 +880,7 @@ calls.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~769"></span>
+              <span class="anchor" id="variable-me~422"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -878,7 +895,7 @@ calls.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~183"></span>
+              <span class="anchor" id="variable-conf~108"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
             </td>
 <td></td>
@@ -893,7 +910,7 @@ calls.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-parent~36"></span>
+              <span class="anchor" id="variable-parent~18"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -909,7 +926,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~33"></span>
+              <span class="anchor" id="variable-key~22"></span>
               character(len=*),
             </td>
 <td></td>
@@ -924,7 +941,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-solveraborts~3"></span>
+              <span class="anchor" id="variable-solveraborts~2"></span>
               class(<a href='../type/tem_solveraborts_type.html'>tem_solverAborts_type</a>),
             </td>
 <td>intent(inout),</td>
@@ -964,7 +981,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~770"></span>
+              <span class="anchor" id="variable-me~423"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -979,7 +996,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~184"></span>
+              <span class="anchor" id="variable-conf~109"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/aot_out_type.html'>aot_out_type</a>)
             </td>
 <td></td>
@@ -994,7 +1011,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~34"></span>
+              <span class="anchor" id="variable-key~23"></span>
               character(len=*),
             </td>
 <td></td>
@@ -1034,7 +1051,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~771"></span>
+              <span class="anchor" id="variable-me~424"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1049,7 +1066,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~22"></span>
+              <span class="anchor" id="variable-outunit~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1089,7 +1106,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~772"></span>
+              <span class="anchor" id="variable-me~425"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1104,7 +1121,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~23"></span>
+              <span class="anchor" id="variable-outunit~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1144,7 +1161,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~773"></span>
+              <span class="anchor" id="variable-me~426"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1159,7 +1176,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~39"></span>
+              <span class="anchor" id="variable-proc~29"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1174,7 +1191,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dt~2"></span>
+              <span class="anchor" id="variable-dt"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1184,7 +1201,7 @@ found.</p>
             <td>::</td>
             <td><strong>dt</strong></td>
             <td>
-<p>Time step to use for updating the simulation time.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-dt~2" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Time step to use for updating the simulation time.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-dt" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -1205,7 +1222,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~24"></span>
+              <span class="anchor" id="variable-outunit~10"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1215,7 +1232,7 @@ found.</p>
             <td>::</td>
             <td><strong>outUnit</strong></td>
             <td>
-<p>Unit to write messages to.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-outunit~24" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Unit to write messages to.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-outunit~10" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -1245,7 +1262,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~774"></span>
+              <span class="anchor" id="variable-me~427"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1285,7 +1302,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~775"></span>
+              <span class="anchor" id="variable-me~428"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1321,40 +1338,18 @@ found.</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

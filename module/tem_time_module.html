@@ -12,14 +12,29 @@
 
     <title>tem_time_module &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -97,9 +112,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -222,12 +239,12 @@
 <li>running time (<code>clock</code>)</li>
 </ul>
 <p>Thus, the time definition takes the following general form:</p>
-<div class="codehilite"><pre><span></span><code>  <span class="p">{</span><span class="n">sim</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">iter</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">clock</span> <span class="o">=</span> <span class="mf">60.0</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="p">{</span><span class="nv">sim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="nv">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="nv">clock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">60.0</span><span class="p">}</span>
 </code></pre></div>
 
 <p>Any of these definitions may be left out. If the time definition is not
  a table the given value is interpreted as simultion time, equivalent to</p>
-<div class="codehilite"><pre><span></span><code> <span class="p">{</span><span class="n">sim</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="p">{</span><span class="nv">sim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">}</span>
 </code></pre></div>
 
 <p>For the handling of time evolution in an explicit solver, a time definition
@@ -246,11 +263,11 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
-                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_table_module.html'>aot_table_module</a></li>
+                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
+                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -987,7 +1004,7 @@ simply added to each other.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~3"></span>
+              <span class="anchor" id="variable-left~2"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1002,7 +1019,7 @@ simply added to each other.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~3"></span>
+              <span class="anchor" id="variable-right~2"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1058,7 +1075,7 @@ simply subtracted.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~4"></span>
+              <span class="anchor" id="variable-left~3"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1073,7 +1090,7 @@ simply subtracted.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~4"></span>
+              <span class="anchor" id="variable-right~3"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1128,7 +1145,7 @@ simply subtracted.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-left~5"></span>
+              <span class="anchor" id="variable-left~4"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1143,7 +1160,7 @@ simply subtracted.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~5"></span>
+              <span class="anchor" id="variable-right~4"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1300,7 +1317,7 @@ simply subtracted.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~84"></span>
+              <span class="anchor" id="variable-time"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1364,7 +1381,7 @@ arguments.</p><a href="../proc/tem_time_ge_each.html" class="pull-right"><emph>R
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~85"></span>
+              <span class="anchor" id="variable-time~2"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1426,7 +1443,7 @@ If any of the time components is larger, the result will be true.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~86"></span>
+              <span class="anchor" id="variable-time~3"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1489,7 +1506,7 @@ is larger or equal to the ones in trigger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~87"></span>
+              <span class="anchor" id="variable-time~4"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1631,7 +1648,7 @@ operation if used as a trigger.</p><a href="../proc/tem_time_needs_reduce.html" 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~140"></span>
+              <span class="anchor" id="variable-me~34"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1677,7 +1694,7 @@ sim or clock.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~141"></span>
+              <span class="anchor" id="variable-me~35"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1723,7 +1740,7 @@ definition.</p><a href="../proc/tem_time_sim_stamp.html" class="pull-right"><emp
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~88"></span>
+              <span class="anchor" id="variable-time~5"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1769,7 +1786,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~89"></span>
+              <span class="anchor" id="variable-time~6"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1800,6 +1817,66 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <div class="card-body">
           
   <p>Add two time definitions to each other (provides the plus operator).</p><a href="../proc/tem_time_add_time.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-left~2"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>left</strong></td>
+            <td>
+<p>First operant in the addition of times.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-right~2"></span>
+              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>right</strong></td>
+            <td>
+<p>Second operant in the addition of times.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>type(<a href='../type/tem_time_type.html'>tem_time_type</a>)</small>
+    </h4>
+    <p>Resulting sum of left and right.</p>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-tem_time_subtract_time"></span> <h3>private elemental function <a href='../proc/tem_time_subtract_time.html'>tem_time_subtract_time</a>(left, right) result(res)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subtract right time definition from left (provides the minus operator).</p><a href="../proc/tem_time_subtract_time.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1855,11 +1932,11 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-tem_time_subtract_time"></span> <h3>private elemental function <a href='../proc/tem_time_subtract_time.html'>tem_time_subtract_time</a>(left, right) result(res)  
+    <div class="card-header codesum"><span class="anchor" id="proc-tem_time_max"></span> <h3>private elemental function <a href='../proc/tem_time_max.html'>tem_time_max</a>(left, right) result(res)  
 </h3></div>
     <div class="card-body">
           
-  <p>Subtract right time definition from left (provides the minus operator).</p><a href="../proc/tem_time_subtract_time.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Get the maximum of two time definitions.</p><a href="../proc/tem_time_max.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1884,72 +1961,12 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
             <td>::</td>
             <td><strong>left</strong></td>
             <td>
-<p>First operant in the addition of times.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-right~4"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>right</strong></td>
-            <td>
-<p>Second operant in the addition of times.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>type(<a href='../type/tem_time_type.html'>tem_time_type</a>)</small>
-    </h4>
-    <p>Resulting sum of left and right.</p>
-
-    </div>
-  </div>
-
-              <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-tem_time_max"></span> <h3>private elemental function <a href='../proc/tem_time_max.html'>tem_time_max</a>(left, right) result(res)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>Get the maximum of two time definitions.</p><a href="../proc/tem_time_max.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-left~5"></span>
-              type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>left</strong></td>
-            <td>
 <p>First time operant to compare.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-right~5"></span>
+              <span class="anchor" id="variable-right~4"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1999,7 +2016,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~134"></span>
+              <span class="anchor" id="variable-me~28"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(out)</td>
@@ -2014,7 +2031,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~48"></span>
+              <span class="anchor" id="variable-conf"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>),
             </td>
 <td>intent(inout)</td>
@@ -2029,7 +2046,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~9"></span>
+              <span class="anchor" id="variable-key"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2044,7 +2061,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-parent~11"></span>
+              <span class="anchor" id="variable-parent"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2099,7 +2116,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~135"></span>
+              <span class="anchor" id="variable-me~29"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2114,7 +2131,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~49"></span>
+              <span class="anchor" id="variable-conf~2"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/aot_out_type.html'>aot_out_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2129,7 +2146,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~10"></span>
+              <span class="anchor" id="variable-key~2"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -2169,7 +2186,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~136"></span>
+              <span class="anchor" id="variable-me~30"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2184,7 +2201,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~5"></span>
+              <span class="anchor" id="variable-outunit~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2224,7 +2241,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~137"></span>
+              <span class="anchor" id="variable-me~31"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(out)</td>
@@ -2264,7 +2281,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~138"></span>
+              <span class="anchor" id="variable-me~32"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2304,7 +2321,7 @@ definition.</p><a href="../proc/tem_time_iter_stamp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~139"></span>
+              <span class="anchor" id="variable-me~33"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2372,40 +2389,18 @@ iterations. Default: 1.</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

@@ -70,6 +70,12 @@ module tem_aux_module
   public :: tem_global_vmhwm
   public :: utc_date_string
   public :: check_mpi_error
+  public :: check_aot_error
+
+  interface check_aot_error
+    module procedure check_aot_error_scalar
+    module procedure check_aot_error_vector
+  end interface check_aot_error
 
 
 contains
@@ -653,6 +659,76 @@ contains
   end subroutine check_mpi_error
   ! ------------------------------------------------------------------------ !
   ! ------------------------------------------------------------------------ !
+
+
+  ! ------------------------------------------------------------------------ !
+  !> Auxiliary subroutine to check on errors from attempting to get values
+  !! from the Lua script with aot_get_val.
+  !!
+  !! If a fatal error was encountered, the routine aborts the program!
+  subroutine check_aot_error_scalar( iError, key, event_string )
+    !> aoterr code to interpret (returned by aot_get_val)
+    integer, intent(in) :: iError
+    !> Lua key that was attempted to be read
+    character(len=*), intent(in) :: key
+    !> Optional event string to describe the circumstances
+    character(len=*), intent(in), optional :: event_string
+
+    if (btest(iError, aoterr_Fatal)) then
+      if (present(event_string)) then
+        write(logUnit(0),*) 'Lua Error while ' // trim(event_string) // '!'
+      else
+        write(logUnit(0),*) 'Encountered Lua Error for ' // trim(key) // '!'
+      end if
+      if (btest(iError, aoterr_NonExistent)) then
+        write(logUnit(0),*) ' -> expected value "'//trim(key)//'" not found!'
+      end if
+      if (btest(iError, aoterr_WrongType)) then
+        write(logUnit(0),*) ' -> value "'//trim(key)//'" has wrong type!'
+      end if
+      write(logUnit(0),*) 'Aborting... '
+      call tem_abort()
+    end if
+  end subroutine check_aot_error_scalar
+  ! ------------------------------------------------------------------------ !
+  ! ------------------------------------------------------------------------ !
+
+
+  ! ------------------------------------------------------------------------ !
+  !> Auxiliary subroutine to check on errors from attempting to get an array
+  !! of values from the Lua script with aot_get_val.
+  !!
+  !! If a fatal error was encountered, the routine aborts the program!
+  subroutine check_aot_error_vector( iError, key, event_string )
+    !> aoterr code to interpret (returned by aot_get_val)
+    integer, intent(in) :: iError(:)
+    !> Lua key that was attempted to be read
+    character(len=*), intent(in) :: key
+    !> Optional event string to describe the circumstances
+    character(len=*), intent(in), optional :: event_string
+
+    integer :: iComp
+
+    if (any(btest(iError, aoterr_Fatal))) then
+      if (present(event_string)) then
+        write(logUnit(0),*) 'Lua Error while ' // trim(event_string) // '!'
+      else
+        write(logUnit(0),*) 'Encountered Lua Error for ' // trim(key) // '!'
+      end if
+      do iComp=lbound(iError,1),ubound(iError,1)
+        if (btest(iError(iComp), aoterr_NonExistent)) then
+          write(logUnit(0),"(a,i0,a)") ' -> expected value "'//trim(key)//'[', &
+            &                        iComp, ']" not found!'
+        end if
+        if (btest(iError(iComp), aoterr_WrongType)) then
+          write(logUnit(0),"(a,i0,a)") ' -> value "'//trim(key)//'[', iComp, &
+            &                        ']" has wrong type!'
+        end if
+      end do
+      write(logUnit(0),*) 'Aborting... '
+      call tem_abort()
+    end if
+  end subroutine check_aot_error_vector
 
 end module tem_aux_module
 ! ---------------------------------------------------------------------------- !

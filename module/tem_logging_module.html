@@ -12,14 +12,29 @@
 
     <title>tem_logging_module &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -262,9 +279,9 @@
  into long or deeply nested loops.
  If there is the need for debug output in such parts, there is the possibility
  to enclose the calls in CoCo preprocessing commands:</p>
-<div class="codehilite"><pre><span></span><code> <span class="err">??</span> <span class="n">IF</span> <span class="p">(</span><span class="n">loglvl</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="n">THEN</span>
-   <span class="n">write</span><span class="p">(</span><span class="n">logunit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span> <span class="s1">&#39;We only write this if compilation includes this.&#39;</span>
- <span class="err">??</span> <span class="n">ENDIF</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="err">??</span><span class="w"> </span><span class="nf">IF</span><span class="w"> </span><span class="p">(</span><span class="nv">loglvl</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="nv">THEN</span>
+<span class="w">   </span><span class="nf">write</span><span class="p">(</span><span class="nf">logunit</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;We only write this if compilation includes this.&#39;</span>
+<span class="w"> </span><span class="err">??</span><span class="w"> </span><span class="nv">ENDIF</span>
 </code></pre></div>
 
 <p>As loglvl needs to be always defined you currently need to include the
@@ -273,7 +290,7 @@
  to the setfile (needs to be checked).
  To set a certain loglvl at compile time it is then necessary to set the
  COCOFLAGS environment variable:</p>
-<div class="codehilite"><pre><span></span><code> <span class="n">export</span> <span class="n">COCOFLAGS</span><span class="o">=</span><span class="s1">&#39;-Dloglvl=3&#39;</span>
+<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="nv">export</span><span class="w"> </span><span class="nv">COCOFLAGS</span><span class="o">=</span><span class="s1">&#39;-Dloglvl=3&#39;</span>
 </code></pre></div>
 
 <p>In addition there are some helping routines defined, that help to convert
@@ -289,9 +306,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
                   <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_table_module.html'>aot_table_module</a></li>
                   <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -910,7 +927,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~595"></span>
+              <span class="anchor" id="variable-me~54"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -925,7 +942,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~21"></span>
+              <span class="anchor" id="variable-level~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -969,7 +986,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~22"></span>
+              <span class="anchor" id="variable-level~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1023,7 +1040,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~596"></span>
+              <span class="anchor" id="variable-me~55"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1094,7 +1111,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~597"></span>
+              <span class="anchor" id="variable-me~56"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1109,7 +1126,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~3"></span>
+              <span class="anchor" id="variable-msg"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1148,7 +1165,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~4"></span>
+              <span class="anchor" id="variable-msg~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1197,7 +1214,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~598"></span>
+              <span class="anchor" id="variable-me~57"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1212,7 +1229,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~23"></span>
+              <span class="anchor" id="variable-level~15"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1227,7 +1244,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~5"></span>
+              <span class="anchor" id="variable-msg~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1266,7 +1283,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~24"></span>
+              <span class="anchor" id="variable-level~16"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1281,7 +1298,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~6"></span>
+              <span class="anchor" id="variable-msg~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -1338,7 +1355,7 @@ parameter
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~593"></span>
+              <span class="anchor" id="variable-me~52"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(out)</td>
@@ -1353,7 +1370,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~18"></span>
+              <span class="anchor" id="variable-level~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1368,7 +1385,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~10"></span>
+              <span class="anchor" id="variable-rank~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1383,7 +1400,7 @@ parameter
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~13"></span>
+              <span class="anchor" id="variable-filename~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1393,12 +1410,12 @@ parameter
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-<p>File to write output to, default is null device.</p><a href="../proc/tem_logging_init_logger.html#variable-filename~13" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>File to write output to, default is null device.</p><a href="../proc/tem_logging_init_logger.html#variable-filename~3" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-root_only~4"></span>
+              <span class="anchor" id="variable-root_only~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1471,7 +1488,7 @@ instead of null device).</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~19"></span>
+              <span class="anchor" id="variable-level~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1486,7 +1503,7 @@ instead of null device).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~11"></span>
+              <span class="anchor" id="variable-rank~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1501,7 +1518,7 @@ instead of null device).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~14"></span>
+              <span class="anchor" id="variable-filename~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -1511,12 +1528,12 @@ instead of null device).</p>
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-<p>File to write output to, default is standard out.</p><a href="../proc/tem_logging_init_primary.html#variable-filename~14" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>File to write output to, default is standard out.</p><a href="../proc/tem_logging_init_primary.html#variable-filename~4" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-root_only~5"></span>
+              <span class="anchor" id="variable-root_only~3"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -1597,7 +1614,7 @@ Default is 'I0'</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~177"></span>
+              <span class="anchor" id="variable-val~6"></span>
               real(kind=single_k),
             </td>
 <td>intent(in)</td>
@@ -1612,7 +1629,7 @@ Default is 'I0'</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~2"></span>
+              <span class="anchor" id="variable-logger"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -1657,7 +1674,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~179"></span>
+              <span class="anchor" id="variable-val~8"></span>
               real(kind=double_k),
             </td>
 <td>intent(in)</td>
@@ -1672,7 +1689,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~4"></span>
+              <span class="anchor" id="variable-logger~3"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -1717,7 +1734,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~181"></span>
+              <span class="anchor" id="variable-val~10"></span>
               integer(kind=int_k),
             </td>
 <td>intent(in)</td>
@@ -1732,7 +1749,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~6"></span>
+              <span class="anchor" id="variable-logger~5"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -1777,7 +1794,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~183"></span>
+              <span class="anchor" id="variable-val~12"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -1792,7 +1809,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~8"></span>
+              <span class="anchor" id="variable-logger~7"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -1836,7 +1853,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~185"></span>
+              <span class="anchor" id="variable-val~14"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -1881,7 +1898,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~178"></span>
+              <span class="anchor" id="variable-val~7"></span>
               real(kind=single_k),
             </td>
 <td>intent(in)</td>
@@ -1911,7 +1928,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~3"></span>
+              <span class="anchor" id="variable-logger~2"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -1956,7 +1973,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~180"></span>
+              <span class="anchor" id="variable-val~9"></span>
               real(kind=double_k),
             </td>
 <td>intent(in)</td>
@@ -1986,7 +2003,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~5"></span>
+              <span class="anchor" id="variable-logger~4"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2031,7 +2048,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~182"></span>
+              <span class="anchor" id="variable-val~11"></span>
               integer(kind=int_k),
             </td>
 <td>intent(in)</td>
@@ -2061,7 +2078,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~7"></span>
+              <span class="anchor" id="variable-logger~6"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2106,7 +2123,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~184"></span>
+              <span class="anchor" id="variable-val~13"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2136,7 +2153,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~9"></span>
+              <span class="anchor" id="variable-logger~8"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2180,7 +2197,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~186"></span>
+              <span class="anchor" id="variable-val~15"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -2269,7 +2286,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-funit~5"></span>
+              <span class="anchor" id="variable-funit"></span>
               integer,
             </td>
               <td>public</td>
@@ -2369,7 +2386,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~595"></span>
+              <span class="anchor" id="variable-me~54"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2384,7 +2401,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~21"></span>
+              <span class="anchor" id="variable-level~13"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2429,7 +2446,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~22"></span>
+              <span class="anchor" id="variable-level~14"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2474,7 +2491,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~596"></span>
+              <span class="anchor" id="variable-me~55"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2537,7 +2554,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~177"></span>
+              <span class="anchor" id="variable-val~6"></span>
               real(kind=single_k),
             </td>
 <td>intent(in)</td>
@@ -2552,7 +2569,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~2"></span>
+              <span class="anchor" id="variable-logger"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2598,7 +2615,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~178"></span>
+              <span class="anchor" id="variable-val~7"></span>
               real(kind=single_k),
             </td>
 <td>intent(in)</td>
@@ -2628,7 +2645,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~3"></span>
+              <span class="anchor" id="variable-logger~2"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2674,7 +2691,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~179"></span>
+              <span class="anchor" id="variable-val~8"></span>
               real(kind=double_k),
             </td>
 <td>intent(in)</td>
@@ -2689,7 +2706,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~4"></span>
+              <span class="anchor" id="variable-logger~3"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2735,7 +2752,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~180"></span>
+              <span class="anchor" id="variable-val~9"></span>
               real(kind=double_k),
             </td>
 <td>intent(in)</td>
@@ -2765,7 +2782,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~5"></span>
+              <span class="anchor" id="variable-logger~4"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2811,7 +2828,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~181"></span>
+              <span class="anchor" id="variable-val~10"></span>
               integer(kind=int_k),
             </td>
 <td>intent(in)</td>
@@ -2826,7 +2843,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~6"></span>
+              <span class="anchor" id="variable-logger~5"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2872,7 +2889,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~182"></span>
+              <span class="anchor" id="variable-val~11"></span>
               integer(kind=int_k),
             </td>
 <td>intent(in)</td>
@@ -2902,7 +2919,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~7"></span>
+              <span class="anchor" id="variable-logger~6"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -2948,7 +2965,7 @@ logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~183"></span>
+              <span class="anchor" id="variable-val~12"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2963,7 +2980,7 @@ logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~8"></span>
+              <span class="anchor" id="variable-logger~7"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -3009,7 +3026,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~184"></span>
+              <span class="anchor" id="variable-val~13"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -3039,7 +3056,7 @@ in the logger.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-logger~9"></span>
+              <span class="anchor" id="variable-logger~8"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in),</td>
@@ -3084,7 +3101,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~185"></span>
+              <span class="anchor" id="variable-val~14"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -3129,7 +3146,7 @@ in the logger.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~186"></span>
+              <span class="anchor" id="variable-val~15"></span>
               logical,
             </td>
 <td>intent(in)</td>
@@ -3195,7 +3212,7 @@ instead of null device).</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~19"></span>
+              <span class="anchor" id="variable-level~11"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3210,7 +3227,7 @@ instead of null device).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~11"></span>
+              <span class="anchor" id="variable-rank~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3225,7 +3242,7 @@ instead of null device).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~14"></span>
+              <span class="anchor" id="variable-filename~4"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3235,12 +3252,12 @@ instead of null device).</p>
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-<p>File to write output to, default is standard out.</p><a href="../proc/tem_logging_init_primary.html#variable-filename~14" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>File to write output to, default is standard out.</p><a href="../proc/tem_logging_init_primary.html#variable-filename~4" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-root_only~5"></span>
+              <span class="anchor" id="variable-root_only~3"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -3313,7 +3330,7 @@ logger.</p><a href="../proc/tem_logging_load.html" class="pull-right"><emph>Read
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~120"></span>
+              <span class="anchor" id="variable-conf~5"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
             </td>
 <td></td>
@@ -3328,7 +3345,7 @@ logger.</p><a href="../proc/tem_logging_load.html" class="pull-right"><emph>Read
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-thandle~53"></span>
+              <span class="anchor" id="variable-thandle~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3343,7 +3360,7 @@ logger.</p><a href="../proc/tem_logging_load.html" class="pull-right"><emph>Read
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~12"></span>
+              <span class="anchor" id="variable-rank~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3358,7 +3375,7 @@ logger.</p><a href="../proc/tem_logging_load.html" class="pull-right"><emph>Read
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~594"></span>
+              <span class="anchor" id="variable-me~53"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(out),</td>
@@ -3399,7 +3416,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~121"></span>
+              <span class="anchor" id="variable-conf~6"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
             </td>
 <td></td>
@@ -3414,7 +3431,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~13"></span>
+              <span class="anchor" id="variable-rank~5"></span>
               integer
             </td>
 <td></td>
@@ -3454,7 +3471,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~593"></span>
+              <span class="anchor" id="variable-me~52"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(out)</td>
@@ -3469,7 +3486,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~18"></span>
+              <span class="anchor" id="variable-level~10"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3484,7 +3501,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rank~10"></span>
+              <span class="anchor" id="variable-rank~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3499,7 +3516,7 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-filename~13"></span>
+              <span class="anchor" id="variable-filename~3"></span>
               character(len=*),
             </td>
 <td>intent(in),</td>
@@ -3509,12 +3526,12 @@ logging as global variable.</p><a href="../proc/tem_logging_load_primary.html" c
             <td>::</td>
             <td><strong>filename</strong></td>
             <td>
-<p>File to write output to, default is null device.</p><a href="../proc/tem_logging_init_logger.html#variable-filename~13" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>File to write output to, default is null device.</p><a href="../proc/tem_logging_init_logger.html#variable-filename~3" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-root_only~4"></span>
+              <span class="anchor" id="variable-root_only~2"></span>
               logical,
             </td>
 <td>intent(in),</td>
@@ -3587,7 +3604,7 @@ Default is 'I0'</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~597"></span>
+              <span class="anchor" id="variable-me~56"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3602,7 +3619,7 @@ Default is 'I0'</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~3"></span>
+              <span class="anchor" id="variable-msg"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3642,7 +3659,7 @@ Default is 'I0'</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~4"></span>
+              <span class="anchor" id="variable-msg~2"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3682,7 +3699,7 @@ Default is 'I0'</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~598"></span>
+              <span class="anchor" id="variable-me~57"></span>
               type(<a href='../type/tem_logging_type.html'>tem_logging_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3697,7 +3714,7 @@ Default is 'I0'</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~23"></span>
+              <span class="anchor" id="variable-level~15"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3712,7 +3729,7 @@ Default is 'I0'</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~5"></span>
+              <span class="anchor" id="variable-msg~3"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3752,7 +3769,7 @@ Default is 'I0'</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~24"></span>
+              <span class="anchor" id="variable-level~16"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3767,7 +3784,7 @@ Default is 'I0'</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-msg~6"></span>
+              <span class="anchor" id="variable-msg~4"></span>
               character(len=*),
             </td>
 <td>intent(in)</td>
@@ -3803,40 +3820,18 @@ Default is 'I0'</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

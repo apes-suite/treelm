@@ -12,14 +12,29 @@
 
     <title>tem_geometry_module &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -97,9 +112,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -217,17 +234,17 @@ therefore depends on the <a href="../module/treelmesh_module.html">treelmesh_mod
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
-                  <li class="list-inline-item"><a href='tem_float_module.html'>tem_float_module</a></li>
-                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
                   <li class="list-inline-item"><a href='treelmesh_module.html'>treelmesh_module</a></li>
-                  <li class="list-inline-item"><a href='tem_subtree_type_module.html'>tem_subTree_type_module</a></li>
-                  <li class="list-inline-item"><a href='tem_debug_module.html'>tem_debug_module</a></li>
-                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
-                  <li class="list-inline-item"><a href='tem_property_module.html'>tem_property_module</a></li>
+                  <li class="list-inline-item"><a href='tem_tools_module.html'>tem_tools_module</a></li>
                   <li class="list-inline-item"><a href='tem_param_module.html'>tem_param_module</a></li>
                   <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_tools_module.html'>tem_tools_module</a></li>
+                  <li class="list-inline-item"><a href='tem_debug_module.html'>tem_debug_module</a></li>
+                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='tem_subtree_type_module.html'>tem_subTree_type_module</a></li>
+                  <li class="list-inline-item"><a href='tem_float_module.html'>tem_float_module</a></li>
+                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
+                  <li class="list-inline-item"><a href='tem_property_module.html'>tem_property_module</a></li>
+                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -1596,7 +1613,7 @@ The order of the source points are according to the morton curve
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nvals~43"></span>
+              <span class="anchor" id="variable-nvals~22"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1753,7 +1770,7 @@ The order of the source points are according to the morton curve
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nvals~44"></span>
+              <span class="anchor" id="variable-nvals~23"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1807,7 +1824,7 @@ The order of the source points are according to the morton curve
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~172"></span>
+              <span class="anchor" id="variable-tree~91"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1846,7 +1863,7 @@ The order of the source points are according to the morton curve
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-subtree~17"></span>
+              <span class="anchor" id="variable-subtree~14"></span>
               type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>)
             </td>
 <td></td>
@@ -1911,7 +1928,7 @@ bounding cube</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~171"></span>
+              <span class="anchor" id="variable-tree~90"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1956,7 +1973,7 @@ bounding cube</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-subtree~16"></span>
+              <span class="anchor" id="variable-subtree~13"></span>
               type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2045,7 +2062,7 @@ bounding cube</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~94"></span>
+              <span class="anchor" id="variable-nelems~57"></span>
               integer,
             </td>
               <td>public</td>
@@ -2062,7 +2079,7 @@ bounding cube</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-list~4"></span>
+              <span class="anchor" id="variable-list~2"></span>
               integer,
             </td>
               <td>public</td>
@@ -2080,7 +2097,7 @@ tem_levelDesc_type)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-pos~153"></span>
+              <span class="anchor" id="variable-pos~71"></span>
               integer,
             </td>
               <td>public</td>
@@ -2171,7 +2188,7 @@ JZ: cells inside the stencil</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dir~7"></span>
+              <span class="anchor" id="variable-dir~3"></span>
               type(<a href='../type/tem_direction_type.html'>tem_direction_type</a>),
             </td>
               <td>public,</td>
@@ -2221,7 +2238,7 @@ point location on the finest possible level.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-mesh~10"></span>
+              <span class="anchor" id="variable-mesh~8"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2236,7 +2253,7 @@ point location on the finest possible level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-point~42"></span>
+              <span class="anchor" id="variable-point~18"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2251,7 +2268,7 @@ point location on the finest possible level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~30"></span>
+              <span class="anchor" id="variable-level~19"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2297,7 +2314,7 @@ account the size of the bounding cube given in the global info of the tree</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~169"></span>
+              <span class="anchor" id="variable-tree~88"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2312,7 +2329,7 @@ account the size of the bounding cube given in the global info of the tree</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-level~31"></span>
+              <span class="anchor" id="variable-level~20"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2358,7 +2375,7 @@ size of the bounding cube given in the global info of the tree</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~170"></span>
+              <span class="anchor" id="variable-tree~89"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2373,7 +2390,7 @@ size of the bounding cube given in the global info of the tree</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~30"></span>
+              <span class="anchor" id="variable-treeid~16"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2419,7 +2436,7 @@ given treeID in the complete mesh.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~173"></span>
+              <span class="anchor" id="variable-tree~92"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2434,7 +2451,7 @@ given treeID in the complete mesh.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~11"></span>
+              <span class="anchor" id="variable-treeid"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2480,7 +2497,7 @@ given ID in the complete mesh.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~174"></span>
+              <span class="anchor" id="variable-tree~93"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2495,7 +2512,7 @@ given ID in the complete mesh.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~12"></span>
+              <span class="anchor" id="variable-treeid~2"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2542,7 +2559,7 @@ origin and this end point.</p><a href="../proc/tem_endofid.html" class="pull-rig
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~175"></span>
+              <span class="anchor" id="variable-tree~94"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2557,7 +2574,7 @@ origin and this end point.</p><a href="../proc/tem_endofid.html" class="pull-rig
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~13"></span>
+              <span class="anchor" id="variable-treeid~3"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2603,7 +2620,7 @@ for a set of given element coordinates on the same refinement level.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-coord~130"></span>
+              <span class="anchor" id="variable-coord~49"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2618,7 +2635,7 @@ for a set of given element coordinates on the same refinement level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-npoints~12"></span>
+              <span class="anchor" id="variable-npoints~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2633,7 +2650,7 @@ for a set of given element coordinates on the same refinement level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-origin~48"></span>
+              <span class="anchor" id="variable-origin~13"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2648,7 +2665,7 @@ for a set of given element coordinates on the same refinement level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dx~13"></span>
+              <span class="anchor" id="variable-dx~9"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -2693,7 +2710,7 @@ for a set of given element coordinates on the same refinement level.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~176"></span>
+              <span class="anchor" id="variable-tree~95"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2708,7 +2725,7 @@ for a set of given element coordinates on the same refinement level.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~31"></span>
+              <span class="anchor" id="variable-treeid~17"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -2786,7 +2803,7 @@ or the negative of the found ID, if it is a virtual node.</p><a href="../proc/te
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-lower~13"></span>
+              <span class="anchor" id="variable-lower~9"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2801,7 +2818,7 @@ or the negative of the found ID, if it is a virtual node.</p><a href="../proc/te
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-upper~13"></span>
+              <span class="anchor" id="variable-upper~9"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2876,7 +2893,7 @@ or the negative of the found ID, if it is a virtual node.</p><a href="../proc/te
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-lower~14"></span>
+              <span class="anchor" id="variable-lower~10"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2891,7 +2908,7 @@ or the negative of the found ID, if it is a virtual node.</p><a href="../proc/te
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-upper~14"></span>
+              <span class="anchor" id="variable-upper~10"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -2937,7 +2954,7 @@ bounding cube</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~171"></span>
+              <span class="anchor" id="variable-tree~90"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2983,7 +3000,7 @@ bounding cube</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-subtree~16"></span>
+              <span class="anchor" id="variable-subtree~13"></span>
               type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3143,7 +3160,7 @@ The order of the source points are according to the morton curve
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nvals~43"></span>
+              <span class="anchor" id="variable-nvals~22"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3292,7 +3309,7 @@ The order of the source points are according to the morton curve
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nvals~44"></span>
+              <span class="anchor" id="variable-nvals~23"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3338,7 +3355,7 @@ and return only to root (efficiency reasons)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~177"></span>
+              <span class="anchor" id="variable-tree~96"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3388,7 +3405,7 @@ and return only to root (efficiency reasons)</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~758"></span>
+              <span class="anchor" id="variable-me~355"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -3403,7 +3420,7 @@ and return only to root (efficiency reasons)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~168"></span>
+              <span class="anchor" id="variable-tree~87"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3418,7 +3435,7 @@ and return only to root (efficiency reasons)</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nunit~10"></span>
+              <span class="anchor" id="variable-nunit~6"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -3474,7 +3491,7 @@ neighbors results are saved in the ElemList</p><a href="../proc/tem_eligiblechil
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-direction~7"></span>
+              <span class="anchor" id="variable-direction"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3518,7 +3535,7 @@ beforehand).</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-treeid~14"></span>
+              <span class="anchor" id="variable-treeid~4"></span>
               integer(kind=long_k)
             </td>
 <td></td>
@@ -3548,7 +3565,7 @@ beforehand).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elemlist~3"></span>
+              <span class="anchor" id="variable-elemlist"></span>
               type(<a href='../type/tem_longlist.html'>tem_longList</a>),
             </td>
 <td></td>
@@ -3578,7 +3595,7 @@ beforehand).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~95"></span>
+              <span class="anchor" id="variable-nelems~58"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3694,7 +3711,7 @@ beforehand).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elemlist~4"></span>
+              <span class="anchor" id="variable-elemlist~2"></span>
               type(<a href='../type/tem_longlist.html'>tem_longList</a>),
             </td>
 <td></td>
@@ -3724,7 +3741,7 @@ beforehand).</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~96"></span>
+              <span class="anchor" id="variable-nelems~59"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3868,7 +3885,7 @@ like boundary_ID or qVal</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~97"></span>
+              <span class="anchor" id="variable-nelems~60"></span>
               integer
             </td>
 <td></td>
@@ -3938,7 +3955,7 @@ like boundary_ID or qVal</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~172"></span>
+              <span class="anchor" id="variable-tree~91"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3978,7 +3995,7 @@ like boundary_ID or qVal</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-subtree~17"></span>
+              <span class="anchor" id="variable-subtree~14"></span>
               type(<a href='../type/tem_subtree_type.html'>tem_subTree_type</a>)
             </td>
 <td></td>
@@ -4029,40 +4046,18 @@ like boundary_ID or qVal</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

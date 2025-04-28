@@ -12,14 +12,29 @@
 
     <title>append &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -77,20 +92,20 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title="<p> 0.0% of total for procedures.</p>Including implementation: 34 statements,  0.1% of total for procedures.">4 statements</a>
+                 title="<p> 0.0% of total for procedures.</p>Including implementation: 52 statements,  0.1% of total for procedures.">4 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
               <i class="fa fa-code"></i>
-              <a href="../src/tem_grow_array.f90"> Source File</a>
+              <a href="../src/tem_spacetime_fun_module.f90"> Source File</a>
             </li>
         </ul>
       </div>
       <div class="col">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
-                <li class="breadcrumb-item"><a href='../sourcefile/tem_grow_array.f90.html'>tem_grow_array.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/tem_grow_array_module.html'>tem_grow_array_module</a></li>
+                <li class="breadcrumb-item"><a href='../sourcefile/tem_spacetime_fun_module.f90.html'>tem_spacetime_fun_module.f90</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_spacetime_fun_module.html'>tem_spacetime_fun_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">append</li>
           </ol>
         </nav>
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -134,8 +151,8 @@
       </a>
       <div id="modprocs-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../interface/append~15.html#moduleprocedure-append_ga_int">append_ga_int</a>
-            <a class="list-group-item" href="../interface/append~15.html#moduleprocedure-append_ga_int_vec">append_ga_int_vec</a>
+            <a class="list-group-item" href="../interface/append~15.html#moduleprocedure-append_stfunsingle_tolinklist">append_stFunSingle_ToLinkList</a>
+            <a class="list-group-item" href="../interface/append~15.html#moduleprocedure-append_stfunarray_tolinklist">append_stFunArray_ToLinkList</a>
         </div>
       </div>
     </div>
@@ -149,8 +166,7 @@
 
     <div class="col-md-9" id='text'>
       <h2>public interface append</h2>
-      <p>append a value to the dynamic array
-and return its position.</p>
+      
         <div class="card">
           <div class="card-header">
             <h3 class="card-title">Calls</h3>
@@ -162,82 +178,46 @@ and return its position.</p>
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: interface~~append~15~~CallsGraph Pages: 1 -->
-<svg id="interfaceappend15CallsGraph" width="448pt" height="74pt"
- viewBox="0.00 0.00 448.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg id="interfaceappend15CallsGraph" width="273pt" height="74pt"
+ viewBox="0.00 0.00 273.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="interface~~append~15~~CallsGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
 <title>interface~~append~15~~CallsGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 444,-70 444,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 269,-70 269,4 -4,4"/>
 <!-- interface~append~15 -->
 <g id="interface~~append~15~~CallsGraph_node1" class="node">
 <title>interface~append~15</title>
 <polygon fill="none" stroke="black" points="54,-45 0,-45 0,-21 54,-21 54,-45"/>
 <text text-anchor="middle" x="27" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">append</text>
 </g>
-<!-- proc~append_ga_int -->
+<!-- proc~append_stfunarray_tolinklist -->
 <g id="interface~~append~15~~CallsGraph_node2" class="node">
-<title>proc~append_ga_int</title>
-<g id="a_interface~~append~15~~CallsGraph_node2"><a xlink:href="../proc/append_ga_int.html" xlink:title="append_ga_int">
-<polygon fill="#d9534f" stroke="#d9534f" points="193,-66 102,-66 102,-42 193,-42 193,-66"/>
-<text text-anchor="middle" x="147.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_int</text>
+<title>proc~append_stfunarray_tolinklist</title>
+<g id="a_interface~~append~15~~CallsGraph_node2"><a xlink:href="../proc/append_stfunarray_tolinklist.html" xlink:title="append_stFunArray_ToLinkList">
+<polygon fill="#d9534f" stroke="#d9534f" points="263.5,-66 91.5,-66 91.5,-42 263.5,-42 263.5,-66"/>
+<text text-anchor="middle" x="177.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_stFunArray_ToLinkList</text>
 </a>
 </g>
 </g>
-<!-- interface~append~15&#45;&gt;proc~append_ga_int -->
+<!-- interface~append~15&#45;&gt;proc~append_stfunarray_tolinklist -->
 <g id="interface~~append~15~~CallsGraph_edge1" class="edge">
-<title>interface~append~15&#45;&gt;proc~append_ga_int</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.01,-37.61C65.19,-39.59 78.71,-41.99 91.92,-44.33"/>
-<polygon fill="#000000" stroke="#000000" points="91.46,-47.8 101.92,-46.1 92.68,-40.91 91.46,-47.8"/>
+<title>interface~append~15&#45;&gt;proc~append_stfunarray_tolinklist</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.21,-36.71C62.26,-37.85 71.64,-39.17 81.55,-40.57"/>
+<polygon fill="#000000" stroke="#000000" points="81.22,-44.06 91.62,-42 82.2,-37.13 81.22,-44.06"/>
 </g>
-<!-- proc~append_ga_int_vec -->
+<!-- proc~append_stfunsingle_tolinklist -->
 <g id="interface~~append~15~~CallsGraph_node3" class="node">
-<title>proc~append_ga_int_vec</title>
-<g id="a_interface~~append~15~~CallsGraph_node3"><a xlink:href="../proc/append_ga_int_vec.html" xlink:title="append_ga_int_vec">
-<polygon fill="#d9534f" stroke="#d9534f" points="205,-24 90,-24 90,0 205,0 205,-24"/>
-<text text-anchor="middle" x="147.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_ga_int_vec</text>
+<title>proc~append_stfunsingle_tolinklist</title>
+<g id="a_interface~~append~15~~CallsGraph_node3"><a xlink:href="../proc/append_stfunsingle_tolinklist.html" xlink:title="append_stFunSingle_ToLinkList">
+<polygon fill="#d9534f" stroke="#d9534f" points="265,-24 90,-24 90,0 265,0 265,-24"/>
+<text text-anchor="middle" x="177.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">append_stFunSingle_ToLinkList</text>
 </a>
 </g>
 </g>
-<!-- interface~append~15&#45;&gt;proc~append_ga_int_vec -->
+<!-- interface~append~15&#45;&gt;proc~append_stfunsingle_tolinklist -->
 <g id="interface~~append~15~~CallsGraph_edge2" class="edge">
-<title>interface~append~15&#45;&gt;proc~append_ga_int_vec</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.01,-28.39C61.81,-27.01 70.75,-25.42 79.93,-23.8"/>
-<polygon fill="#000000" stroke="#000000" points="80.71,-27.21 89.95,-22.02 79.49,-20.32 80.71,-27.21"/>
-</g>
-<!-- interface~expand~22 -->
-<g id="interface~~append~15~~CallsGraph_node4" class="node">
-<title>interface~expand~22</title>
-<g id="a_interface~~append~15~~CallsGraph_node4"><a xlink:href="../interface/expand~22.html" xlink:title="expand">
-<polygon fill="#a7506f" stroke="#a7506f" points="295,-45 241,-45 241,-21 295,-21 295,-45"/>
-<text text-anchor="middle" x="268" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand</text>
-</a>
-</g>
-</g>
-<!-- proc~append_ga_int&#45;&gt;interface~expand~22 -->
-<g id="interface~~append~15~~CallsGraph_edge3" class="edge">
-<title>proc~append_ga_int&#45;&gt;interface~expand~22</title>
-<path fill="none" stroke="#000000" d="M193.3,-46.06C205.67,-43.87 218.93,-41.52 230.75,-39.42"/>
-<polygon fill="#000000" stroke="#000000" points="231.47,-42.85 240.71,-37.66 230.25,-35.96 231.47,-42.85"/>
-</g>
-<!-- proc~append_ga_int_vec&#45;&gt;interface~expand~22 -->
-<g id="interface~~append~15~~CallsGraph_edge4" class="edge">
-<title>proc~append_ga_int_vec&#45;&gt;interface~expand~22</title>
-<path fill="none" stroke="#000000" d="M205.32,-22.07C214.09,-23.62 222.93,-25.19 231.08,-26.63"/>
-<polygon fill="#000000" stroke="#000000" points="230.5,-30.09 240.96,-28.38 231.72,-23.19 230.5,-30.09"/>
-</g>
-<!-- proc~expand_ga2d_real -->
-<g id="interface~~append~15~~CallsGraph_node5" class="node">
-<title>proc~expand_ga2d_real</title>
-<g id="a_interface~~append~15~~CallsGraph_node5"><a xlink:href="../proc/expand_ga2d_real.html" xlink:title="expand_ga2d_real">
-<polygon fill="#d9534f" stroke="#d9534f" points="440,-45 331,-45 331,-21 440,-21 440,-45"/>
-<text text-anchor="middle" x="385.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">expand_ga2d_real</text>
-</a>
-</g>
-</g>
-<!-- interface~expand~22&#45;&gt;proc~expand_ga2d_real -->
-<g id="interface~~append~15~~CallsGraph_edge5" class="edge">
-<title>interface~expand~22&#45;&gt;proc~expand_ga2d_real</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.21,-33C302.85,-33 311.55,-33 320.46,-33"/>
-<polygon fill="#000000" stroke="#000000" points="320.55,-36.5 330.55,-33 320.55,-29.5 320.55,-36.5"/>
+<title>interface~append~15&#45;&gt;proc~append_stfunsingle_tolinklist</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M54.21,-29.29C62.26,-28.15 71.64,-26.83 81.55,-25.43"/>
+<polygon fill="#000000" stroke="#000000" points="82.2,-28.87 91.62,-24 81.22,-21.94 82.2,-28.87"/>
 </g>
 </g>
 </svg>
@@ -325,11 +305,12 @@ implementation in a submodule of an interface in a parent module.
 
         <h2>Module Procedures</h2>
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-append_ga_int"></span> <h3>public  subroutine <a href='../proc/append_ga_int.html'>append_ga_int</a>(me, val, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-append_stfunsingle_tolinklist"></span> <h3>private  subroutine <a href='../proc/append_stfunsingle_tolinklist.html'>append_stFunSingle_ToLinkList</a>(me, st_fun, new)  
 </h3></div>
     <div class="card-body">
           
-  
+  <p>This routine appends new space time function to linked list of
+tem_st_fun_linkedList</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -344,47 +325,47 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~369"></span>
-              type(<a href='../type/grw_intarray_type.html'>grw_intarray_type</a>)
+              <span class="anchor" id="variable-me~321"></span>
+              type(<a href='../type/tem_st_fun_linkedlist_type.html'>tem_st_fun_linkedList_type</a>),
             </td>
-<td></td>
+<td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>Linked list to append the spacetime function to.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~92"></span>
-              integer,
+              <span class="anchor" id="variable-st_fun~2"></span>
+              type(<a href='../type/tem_spacetime_fun_type.html'>tem_spacetime_fun_type</a>),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>val</strong></td>
+            <td><strong>st_fun</strong></td>
             <td>
-
+<p>Spacetime fun information to add to the list.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~90"></span>
-              integer,
+              <span class="anchor" id="variable-new~2"></span>
+              type(<a href='../type/tem_st_fun_listelem_type.html'>tem_st_fun_listElem_type</a>),
             </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
+<td>intent(out),</td>
+              <td>optional,</td>            <td>
+              pointer
             </td>
             <td>::</td>
-            <td><strong>length</strong></td>
+            <td><strong>new</strong></td>
             <td>
-<p>optional length to expand the array</p>
+
             </td>
         </tr>
     </tbody>
@@ -395,11 +376,12 @@ implementation in a submodule of an interface in a parent module.
   </div>
 
             <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-append_ga_int_vec"></span> <h3>public  subroutine <a href='../proc/append_ga_int_vec.html'>append_ga_int_vec</a>(me, val, length)  
+    <div class="card-header codesum"><span class="anchor" id="proc-append_stfunarray_tolinklist"></span> <h3>private  subroutine <a href='../proc/append_stfunarray_tolinklist.html'>append_stFunArray_ToLinkList</a>(me, st_fun, new)  
 </h3></div>
     <div class="card-body">
           
-  
+  <p>This routine appends a new array of space time functions st_fun to the
+linked list me.</p><a href="../proc/append_stfunarray_tolinklist.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -414,47 +396,47 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~370"></span>
-              type(<a href='../type/grw_intarray_type.html'>grw_intarray_type</a>)
+              <span class="anchor" id="variable-me~320"></span>
+              type(<a href='../type/tem_st_fun_linkedlist_type.html'>tem_st_fun_linkedList_type</a>),
             </td>
-<td></td>
+<td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
             <td><strong>me</strong></td>
             <td>
-
+<p>Linked list to append the array of spacetime functions to.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-val~93"></span>
-              integer,
+              <span class="anchor" id="variable-st_fun"></span>
+              type(<a href='../type/tem_spacetime_fun_type.html'>tem_spacetime_fun_type</a>),
             </td>
 <td>intent(in)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>val</strong>(:)</td>
+            <td><strong>st_fun</strong>(:)</td>
             <td>
-
+<p>Spacetime fun information to add to the list.</p>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-length~91"></span>
-              integer,
+              <span class="anchor" id="variable-new"></span>
+              type(<a href='../type/tem_st_fun_listelem_type.html'>tem_st_fun_listElem_type</a>),
             </td>
-<td>intent(in),</td>
-              <td>optional</td>            <td>
-              
+<td>intent(out),</td>
+              <td>optional,</td>            <td>
+              pointer
             </td>
             <td>::</td>
-            <td><strong>length</strong></td>
+            <td><strong>new</strong></td>
             <td>
-<p>optional length to expand the array</p>
+
             </td>
         </tr>
     </tbody>
@@ -474,40 +456,18 @@ implementation in a submodule of an interface in a parent module.
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>

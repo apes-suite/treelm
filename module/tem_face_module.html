@@ -12,14 +12,29 @@
 
     <title>tem_face_module &ndash; Treelm</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="../css/pygments.css" rel="stylesheet">
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Font Awesome -->
+    <link href="../css/fontawesome.min.css" rel="stylesheet">
+    <link href="../css/brands.min.css" rel="stylesheet">
+    <link href="../css/regular.min.css" rel="stylesheet">
+    <link href="../css/solid.min.css" rel="stylesheet">
+    <link href="../css/v4-font-face.min.css" rel="stylesheet">
+    <link href="../css/v4-shims.min.css" rel="stylesheet">
+    <!-- MathJax -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { equationNumbers: { autoNumber: "AMS" } }
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML" async
+            integrity="sha256-DViIOMYdwlM/axqoGDPeUyf0urLoHMN4QACBKyB58Uw=" crossorigin="anonymous"></script>
+    <!-- Other scripts and stylesheets -->
     <link href="../css/local.css" rel="stylesheet">
-      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <link href="../css/pygments.css" rel="stylesheet">
     <script src="../js/svg-pan-zoom.min.js"></script>
   </head>
 
@@ -98,9 +113,11 @@
     </div>
   </div>
   <script>
-    $(function () {
-    $('[data-bs-toggle="tooltip"]').tooltip()
-    })
+    // Enable Bootstrap tooltips
+    (function () {
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    })();
   </script>
 
   </div>
@@ -265,24 +282,24 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
-                  <li class="list-inline-item"><a href='tem_facedata_module.html'>tem_faceData_module</a></li>
-                  <li class="list-inline-item"><a href='tem_spacetime_fun_module.html'>tem_spacetime_fun_module</a></li>
                   <li class="list-inline-item"><a href='treelmesh_module.html'>treelmesh_module</a></li>
-                  <li class="list-inline-item"><a href='tem_comm_module.html'>tem_comm_module</a></li>
-                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
-                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_construction_module.html'>tem_construction_module</a></li>
-                  <li class="list-inline-item"><a href='tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
-                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
-                  <li class="list-inline-item"><a href='tem_stencil_module.html'>tem_stencil_module</a></li>
-                  <li class="list-inline-item"><a href='tem_grow_array_module.html'>tem_grow_array_module</a></li>
+                  <li class="list-inline-item"><a href='tem_facedata_module.html'>tem_faceData_module</a></li>
                   <li class="list-inline-item"><a href='tem_comptefacerules_module.html'>tem_compteFaceRules_module</a></li>
-                  <li class="list-inline-item"><a href='tem_element_module.html'>tem_element_module</a></li>
-                  <li class="list-inline-item"><a href='tem_param_module.html'>tem_param_module</a></li>
+                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
+                  <li class="list-inline-item"><a href='tem_spacetime_fun_module.html'>tem_spacetime_fun_module</a></li>
+                  <li class="list-inline-item"><a href='tem_construction_module.html'>tem_construction_module</a></li>
                   <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='tem_param_module.html'>tem_param_module</a></li>
+                  <li class="list-inline-item"><a href='tem_grow_array_module.html'>tem_grow_array_module</a></li>
+                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='tem_stencil_module.html'>tem_stencil_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comm_module.html'>tem_comm_module</a></li>
+                  <li class="list-inline-item"><a href='tem_element_module.html'>tem_element_module</a></li>
                   <li class="list-inline-item"><a href='tem_bc_prop_module.html'>tem_bc_prop_module</a></li>
+                  <li class="list-inline-item"><a href='tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
+                  <li class="list-inline-item"><a href='tem_aux_module.html'>tem_aux_module</a></li>
+                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -735,7 +752,7 @@ n</p><a href="../proc/tem_isrecvface.html" class="pull-right"><emph>Read more&he
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~4"></span>
+              <span class="anchor" id="variable-facepos~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -750,7 +767,7 @@ n</p><a href="../proc/tem_isrecvface.html" class="pull-right"><emph>Read more&he
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~6"></span>
+              <span class="anchor" id="variable-faces~5"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -857,7 +874,7 @@ n</p><a href="../proc/tem_issendface.html" class="pull-right"><emph>Read more&he
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~5"></span>
+              <span class="anchor" id="variable-facepos~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -872,7 +889,7 @@ n</p><a href="../proc/tem_issendface.html" class="pull-right"><emph>Read more&he
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~8"></span>
+              <span class="anchor" id="variable-faces~7"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -979,7 +996,7 @@ r</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~6"></span>
+              <span class="anchor" id="variable-facepos~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -994,7 +1011,7 @@ r</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~11"></span>
+              <span class="anchor" id="variable-faces~10"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1040,7 +1057,7 @@ a downward (coarse-&gt;fine) dependency.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~9"></span>
+              <span class="anchor" id="variable-leftprp~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1055,7 +1072,7 @@ a downward (coarse-&gt;fine) dependency.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~9"></span>
+              <span class="anchor" id="variable-rightprp~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1101,7 +1118,7 @@ a upward (fine-&gt;coarse) dependency.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~10"></span>
+              <span class="anchor" id="variable-leftprp~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1116,7 +1133,7 @@ a upward (fine-&gt;coarse) dependency.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~10"></span>
+              <span class="anchor" id="variable-rightprp~9"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1289,7 +1306,7 @@ r</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~47"></span>
+              <span class="anchor" id="variable-elempos~38"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1382,7 +1399,7 @@ h
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~154"></span>
+              <span class="anchor" id="variable-tree~153"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1397,7 +1414,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~3"></span>
+              <span class="anchor" id="variable-boundary~2"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1412,7 +1429,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~7"></span>
+              <span class="anchor" id="variable-commpattern~6"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1427,7 +1444,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~31"></span>
+              <span class="anchor" id="variable-proc~34"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1442,7 +1459,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~3"></span>
+              <span class="anchor" id="variable-faces~2"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(out),</td>
@@ -1545,7 +1562,7 @@ s
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~19"></span>
+              <span class="anchor" id="variable-minlevel~18"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1575,7 +1592,7 @@ s
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~4"></span>
+              <span class="anchor" id="variable-faces~3"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1697,7 +1714,7 @@ direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~5"></span>
+              <span class="anchor" id="variable-faces~4"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1820,7 +1837,7 @@ direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~7"></span>
+              <span class="anchor" id="variable-faces~6"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1877,7 +1894,7 @@ the face values. To access it use tem_left and tem_right.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~155"></span>
+              <span class="anchor" id="variable-tree~154"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1892,7 +1909,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~4"></span>
+              <span class="anchor" id="variable-boundary~3"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1907,7 +1924,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~8"></span>
+              <span class="anchor" id="variable-commpattern~7"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1922,7 +1939,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~32"></span>
+              <span class="anchor" id="variable-proc~35"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2013,7 +2030,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~156"></span>
+              <span class="anchor" id="variable-tree~155"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2028,7 +2045,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stencil~24"></span>
+              <span class="anchor" id="variable-stencil~22"></span>
               type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2043,7 +2060,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~5"></span>
+              <span class="anchor" id="variable-boundary~4"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2058,7 +2075,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~9"></span>
+              <span class="anchor" id="variable-commpattern~8"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2088,7 +2105,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~33"></span>
+              <span class="anchor" id="variable-proc~36"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2183,7 +2200,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-stencil~25"></span>
+              <span class="anchor" id="variable-stencil~23"></span>
               type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2198,7 +2215,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~93"></span>
+              <span class="anchor" id="variable-nelems~78"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2299,7 +2316,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~20"></span>
+              <span class="anchor" id="variable-minlevel~19"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2344,7 +2361,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~9"></span>
+              <span class="anchor" id="variable-faces~8"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2384,7 +2401,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~21"></span>
+              <span class="anchor" id="variable-minlevel~20"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2429,7 +2446,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~10"></span>
+              <span class="anchor" id="variable-faces~9"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2469,7 +2486,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~12"></span>
+              <span class="anchor" id="variable-faces~11"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2576,7 +2593,7 @@ n
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~22"></span>
+              <span class="anchor" id="variable-minlevel~21"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2606,7 +2623,7 @@ n
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~13"></span>
+              <span class="anchor" id="variable-faces~12"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2708,7 +2725,7 @@ l</p><a href="../proc/tem_init_facedep.html" class="pull-right"><emph>Read more&
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~14"></span>
+              <span class="anchor" id="variable-faces~13"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2848,7 +2865,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dir~3"></span>
+              <span class="anchor" id="variable-dir~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3012,7 +3029,7 @@ level will be appended to this face descriptor.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~15"></span>
+              <span class="anchor" id="variable-faces~14"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3027,7 +3044,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~7"></span>
+              <span class="anchor" id="variable-facepos~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3042,7 +3059,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~8"></span>
+              <span class="anchor" id="variable-leftprp~7"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -3057,7 +3074,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~8"></span>
+              <span class="anchor" id="variable-rightprp~7"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -3201,7 +3218,7 @@ added to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dir~4"></span>
+              <span class="anchor" id="variable-dir~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3446,7 +3463,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~23"></span>
+              <span class="anchor" id="variable-minlevel~22"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3476,7 +3493,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~16"></span>
+              <span class="anchor" id="variable-faces~15"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3516,7 +3533,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facelist~2"></span>
+              <span class="anchor" id="variable-facelist"></span>
               type(<a href='../type/tem_facelist_type.html'>tem_faceList_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3638,7 +3655,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~17"></span>
+              <span class="anchor" id="variable-faces~16"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3695,7 +3712,7 @@ by this routine.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~44"></span>
+              <span class="anchor" id="variable-elempos~35"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3710,7 +3727,7 @@ by this routine.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dir~5"></span>
+              <span class="anchor" id="variable-dir~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3720,7 +3737,7 @@ by this routine.</p>
             <td>::</td>
             <td><strong>dir</strong></td>
             <td>
-<p>The spatial direction of the face.</p><a href="../proc/tem_get_faceneigh.html#variable-dir~5" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>The spatial direction of the face.</p><a href="../proc/tem_get_faceneigh.html#variable-dir~6" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -3815,7 +3832,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftelempos~2"></span>
+              <span class="anchor" id="variable-leftelempos"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3845,7 +3862,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightelemid~3"></span>
+              <span class="anchor" id="variable-rightelemid~2"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -3860,7 +3877,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightelempos~2"></span>
+              <span class="anchor" id="variable-rightelempos"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3890,7 +3907,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~18"></span>
+              <span class="anchor" id="variable-faces~17"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3992,7 +4009,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~24"></span>
+              <span class="anchor" id="variable-minlevel~23"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -4022,7 +4039,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~19"></span>
+              <span class="anchor" id="variable-faces~18"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4147,7 +4164,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~20"></span>
+              <span class="anchor" id="variable-faces~19"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4274,7 +4291,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~21"></span>
+              <span class="anchor" id="variable-faces~20"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4315,7 +4332,7 @@ does not exist this routine will not do anything.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faceid~4"></span>
+              <span class="anchor" id="variable-faceid~3"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -4345,7 +4362,7 @@ does not exist this routine will not do anything.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~22"></span>
+              <span class="anchor" id="variable-faces~21"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4396,40 +4413,18 @@ does not exist this routine will not do anything.</p>
           <div class="col">
             <p>
               Treelm
- was developed by University of Siegen<br>              &copy; 2024 
-<br /><small>f49cf9b176ae</small></p>
+ was developed by University of Siegen<br>              &copy; 2025 
+<br /><small>75d5a154054a</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2024-11-11T17:20:36.336178             </p>
+ on 2025-04-28T13:48:22.107063+0000             </p>
           </div>
         </div>
         <br>
       </div> <!-- /container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>    
-
-    <!-- MathJax JavaScript
-             ================================================== -->
-             <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/x-mathjax-config">
-          MathJax.Hub.Config({
-          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
-          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
-          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
-          });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-          <script src="../tipuesearch/tipuesearch_content.js"></script>
-          <script src="../tipuesearch/tipuesearch_set.js"></script>
-          <script src="../tipuesearch/tipuesearch.js"></script>
-
   </body>
 </html>
