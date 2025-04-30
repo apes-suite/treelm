@@ -11,6 +11,7 @@ def options(opt):
     '''Building options provided by the TreElM-Library.
        Remember, all options can be displayed with waf --help.'''
     opt.recurse('bin')
+    opt.load('coco')
     opt.recurse('aotus')
     opt.recurse('tem')
 
@@ -21,15 +22,9 @@ def configure(conf):
     conf.recurse('aotus', 'subconf')
     conf.recurse('bin', 'preconfigure')
     # Initialize the coco preprocessing tool
+    if not conf.options.coco_set:
+        conf.options.coco_set = 'default.coco'
     conf.load('coco')
-    conf.env['COCOSET'] = 'default.coco'
-    if not conf.options.coco_reports:
-      # Make coco silent, if not explicitly asked for reports:
-      if conf.env.COCOFLAGS:
-        conf.env.COCOFLAGS.insert(0, '-s')
-        conf.env.COCOFLAGS.append('-ad')
-      else:
-        conf.env.COCOFLAGS = ['-s', '-ad']
     conf.recurse('tem')
     conf.recurse('bin', 'postconfigure')
 
@@ -41,5 +36,4 @@ def build(bld):
     if not (bld.cmd == 'docu' and bld.env.fordonline):
         bld.recurse('aotus')
     fill_revision_string(bld, subdir='tem')
-    bld(rule='cp ${SRC} ${TGT}', source=bld.env.COCOSET, target='coco.set')
     bld.recurse('tem')
