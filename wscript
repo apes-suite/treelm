@@ -11,7 +11,6 @@ def options(opt):
     '''Building options provided by the TreElM-Library.
        Remember, all options can be displayed with waf --help.'''
     opt.recurse('bin')
-    opt.load('coco')
     opt.recurse('aotus')
     opt.recurse('tem')
 
@@ -21,10 +20,9 @@ def configure(conf):
     import os
     conf.recurse('aotus', 'subconf')
     conf.recurse('bin', 'preconfigure')
-    # Initialize the coco preprocessing tool
+    # Use default.coco as coco settings file by default
     if not conf.options.coco_set:
         conf.options.coco_set = 'default.coco'
-    conf.load('coco')
     conf.recurse('tem')
     conf.recurse('bin', 'postconfigure')
 
