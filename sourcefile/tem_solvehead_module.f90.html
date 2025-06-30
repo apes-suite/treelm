@@ -92,7 +92,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.1% of total for source files.">35 statements</a>
+                 title=" 0.1% of total for source files.">34 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -561,7 +561,7 @@ can be.
 <a id="ln-40" name="ln-40" href="#ln-40"></a><span class="w">  </span><span class="c">! include treelm modules</span>
 <a id="ln-41" name="ln-41" href="#ln-41"></a><span class="w">  </span><span class="k">use </span><span class="n">env_module</span><span class="p">,</span><span class="w">             </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">LabelLen</span><span class="p">,</span><span class="w"> </span><span class="n">PathLen</span>
 <a id="ln-42" name="ln-42" href="#ln-42"></a><span class="w">  </span><span class="c">! This module has to be created on the fly by the waf environment</span>
-<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">  </span><span class="k">use </span><span class="n">soi_revision_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">soi_solver_revision</span>
+<a id="ln-43" name="ln-43" href="#ln-43"></a><span class="w">  </span><span class="k">use </span><span class="n">soi_revision_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">soi_solver_revision</span><span class="p">,</span><span class="w"> </span><span class="n">soi_solver_version</span>
 <a id="ln-44" name="ln-44" href="#ln-44"></a>
 <a id="ln-45" name="ln-45" href="#ln-45"></a><span class="w">  </span><span class="c">! include aotus module</span>
 <a id="ln-46" name="ln-46" href="#ln-46"></a><span class="w">  </span><span class="k">use </span><span class="n">aotus_module</span><span class="p">,</span><span class="w">    </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">flu_State</span>
@@ -620,24 +620,22 @@ can be.
 <a id="ln-99" name="ln-99" href="#ln-99"></a>
 <a id="ln-100" name="ln-100" href="#ln-100"></a><span class="c">! ****************************************************************************** !</span>
 <a id="ln-101" name="ln-101" href="#ln-101"></a><span class="w">  </span><span class="c">!&gt; Routine to initialize solver head with name, version and revision number</span>
-<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_init_solveHead</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">solName</span><span class="p">,</span><span class="w"> </span><span class="n">version</span><span class="w"> </span><span class="p">)</span>
+<a id="ln-102" name="ln-102" href="#ln-102"></a><span class="w">  </span><span class="k">subroutine </span><span class="n">tem_init_solveHead</span><span class="p">(</span><span class="w"> </span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">solName</span><span class="w"> </span><span class="p">)</span>
 <a id="ln-103" name="ln-103" href="#ln-103"></a><span class="w">    </span><span class="c">!&gt; solver info</span>
 <a id="ln-104" name="ln-104" href="#ln-104"></a><span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="w"> </span><span class="n">tem_solveHead_type</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
 <a id="ln-105" name="ln-105" href="#ln-105"></a><span class="w">    </span><span class="c">!&gt; name of the solver</span>
 <a id="ln-106" name="ln-106" href="#ln-106"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">solName</span>
-<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="c">!&gt; version of the solver</span>
-<a id="ln-108" name="ln-108" href="#ln-108"></a><span class="w">    </span><span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=*</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">version</span>
-<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
-<a id="ln-110" name="ln-110" href="#ln-110"></a>
-<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">solName</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">solName</span><span class="p">)</span>
-<a id="ln-112" name="ln-112" href="#ln-112"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">version</span><span class="p">)</span>
-<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">revision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">soi_solver_revision</span>
-<a id="ln-114" name="ln-114" href="#ln-114"></a>
-<a id="ln-115" name="ln-115" href="#ln-115"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_init_solveHead</span>
-<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="c">! ****************************************************************************** !</span>
-<a id="ln-117" name="ln-117" href="#ln-117"></a>
-<a id="ln-118" name="ln-118" href="#ln-118"></a><span class="k">end module </span><span class="n">tem_solveHead_module</span>
-<a id="ln-119" name="ln-119" href="#ln-119"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-107" name="ln-107" href="#ln-107"></a><span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
+<a id="ln-108" name="ln-108" href="#ln-108"></a>
+<a id="ln-109" name="ln-109" href="#ln-109"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">solName</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nb">trim</span><span class="p">(</span><span class="n">solName</span><span class="p">)</span>
+<a id="ln-110" name="ln-110" href="#ln-110"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">soi_solver_version</span>
+<a id="ln-111" name="ln-111" href="#ln-111"></a><span class="w">    </span><span class="n">me</span><span class="p">%</span><span class="n">revision</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">soi_solver_revision</span>
+<a id="ln-112" name="ln-112" href="#ln-112"></a>
+<a id="ln-113" name="ln-113" href="#ln-113"></a><span class="w">  </span><span class="k">end subroutine </span><span class="n">tem_init_solveHead</span>
+<a id="ln-114" name="ln-114" href="#ln-114"></a><span class="c">! ****************************************************************************** !</span>
+<a id="ln-115" name="ln-115" href="#ln-115"></a>
+<a id="ln-116" name="ln-116" href="#ln-116"></a><span class="k">end module </span><span class="n">tem_solveHead_module</span>
+<a id="ln-117" name="ln-117" href="#ln-117"></a><span class="c">! ****************************************************************************** !</span>
 </pre></div>
 
       </section>
@@ -653,13 +651,13 @@ can be.
             <p>
               Treelm
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>eb56eb2bcc9a</small></p>
+<br /><small>9899d1376992</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-01T08:34:21.179097+0000             </p>
+ on 2025-06-30T12:57:23.432764+0000             </p>
           </div>
         </div>
         <br>

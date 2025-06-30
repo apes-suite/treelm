@@ -1,6 +1,6 @@
 ! Copyright (c) 2012-2013 Manuel Hasert <m.hasert@grs-sim.de>
 ! Copyright (c) 2012-2013 Simon Zimny <s.zimny@grs-sim.de>
-! Copyright (c) 2012-2014, 2017, 2019-2020 Harald Klimach <harald.klimach@uni-siegen.de>
+! Copyright (c) 2012-2014, 2017, 2019-2020, 2025 Harald Klimach <harald.klimach@dlr.de>
 ! Copyright (c) 2013-2014 Kartik Jain <kartik.jain@uni-siegen.de>
 ! Copyright (c) 2013-2014 Kannan Masilamani <kannan.masilamani@uni-siegen.de>
 ! Copyright (c) 2014, 2016 Peter Vitt <peter.vitt2@uni-siegen.de>
@@ -102,8 +102,6 @@ module tem_time_module
   public :: max
 
   public :: tem_time_needs_reduce
-  public :: tem_time_sim_stamp
-  public :: tem_time_iter_stamp
 
   !> Number of available different time definitions.
   integer, parameter, public :: tem_time_n_ids = 3
@@ -764,56 +762,6 @@ contains
       &           .or. (me%clock < huge(me%clock)) )
 
   end function tem_time_isDefined
-  ! ************************************************************************ !
-
-
-  ! ************************************************************************ !
-  !> Generate a time stamp from the simulation time in the given time
-  !! definition.
-  !!
-  !! This basically generates a string identifying the solution time and
-  !! writing it in a meaningful format, so that it can be easily recognized.
-  function tem_time_sim_stamp(time) result(timeStamp)
-    ! -------------------------------------------------------------------- !
-    !> Time definition to create the stamp off.
-    type(tem_time_type), intent(in) :: time
-
-    !> String representation of the given simulation time.
-    character(len=12) :: timeStamp
-    ! -------------------------------------------------------------------- !
-    ! -------------------------------------------------------------------- !
-
-    write(timeStamp, '(EN12.3)') time%sim
-
-    ! remove leading empty spaces in the timestamp
-    timeStamp = adjustl(timeStamp)
-
-  end function  tem_time_sim_stamp
-  ! ************************************************************************ !
-
-
-  ! ************************************************************************ !
-  !> Generate a time stamp from the iteration in the given time
-  !! definition.
-  !!
-  !! This basically generates a string identifying the solution time and
-  !! writing it in a meaningful format, so that it can be easily recognized.
-  function tem_time_iter_stamp(time) result(timeStamp)
-    ! -------------------------------------------------------------------- !
-    !> Time definition to create the stamp off.
-    type(tem_time_type), intent(in) :: time
-
-    !> String representation of the given simulation time.
-    character(len=labelLen) :: timeStamp
-    ! -------------------------------------------------------------------- !
-    ! -------------------------------------------------------------------- !
-
-    write(timeStamp, '(I0)') time%iter
-
-    ! remove leading empty spaces in the timestamp
-    timeStamp = adjustl(timeStamp)
-
-  end function  tem_time_iter_stamp
   ! ************************************************************************ !
 
 end module tem_time_module

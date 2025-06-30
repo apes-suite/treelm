@@ -40,7 +40,7 @@ module tem_solveHead_module
   ! include treelm modules
   use env_module,             only: LabelLen, PathLen
   ! This module has to be created on the fly by the waf environment
-  use soi_revision_module,    only: soi_solver_revision
+  use soi_revision_module,    only: soi_solver_revision, soi_solver_version
 
   ! include aotus module
   use aotus_module,    only: flu_State
@@ -99,17 +99,15 @@ module tem_solveHead_module
 
 ! ****************************************************************************** !
   !> Routine to initialize solver head with name, version and revision number
-  subroutine tem_init_solveHead( me, solName, version )
+  subroutine tem_init_solveHead( me, solName )
     !> solver info
     type( tem_solveHead_type), intent(out) :: me
     !> name of the solver
     character(len=*), intent(in) :: solName
-    !> version of the solver
-    character(len=*), intent(in) :: version
     ! ---------------------------------------------------------------------------
 
     me%solName  = trim(solName)
-    me%version = trim(version)
+    me%version = soi_solver_version
     me%revision = soi_solver_revision
 
   end subroutine tem_init_solveHead

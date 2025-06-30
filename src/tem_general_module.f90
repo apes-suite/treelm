@@ -220,12 +220,10 @@ contains
   ! ************************************************************************ !
   !> Initialize the environment. Should be the very first call in the program.
   !!
-  subroutine tem_start(codeName, version, general, comm, simControl)
+  subroutine tem_start(codeName, general, comm, simControl)
     ! ----------------------------------------------------------------------
     !> name of code
     character(len=*), intent(in) :: codeName
-    !> version of the code
-    character(len=*), intent(in) :: version
     !> encapsulates global parameters which are common for all solvers
     type(tem_general_type), intent(out) :: general
     !> mpi communicator if it is predefined as in apesmate
@@ -250,8 +248,7 @@ contains
 
     ! initialize solverHead
     call tem_init_solveHead( me      = general%solver, &
-      &                      solName = codeName,       &
-      &                      version = version         )
+      &                      solName = codeName        )
 
     if (present(simControl)) call tem_simControl_start(simControl)
 

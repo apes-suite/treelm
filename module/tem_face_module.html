@@ -282,24 +282,24 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='tem_construction_module.html'>tem_construction_module</a></li>
-                  <li class="list-inline-item"><a href='tem_param_module.html'>tem_param_module</a></li>
-                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
-                  <li class="list-inline-item"><a href='tem_comptefacerules_module.html'>tem_compteFaceRules_module</a></li>
-                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
-                  <li class="list-inline-item"><a href='tem_bc_prop_module.html'>tem_bc_prop_module</a></li>
-                  <li class="list-inline-item"><a href='tem_element_module.html'>tem_element_module</a></li>
-                  <li class="list-inline-item"><a href='tem_stencil_module.html'>tem_stencil_module</a></li>
-                  <li class="list-inline-item"><a href='tem_facedata_module.html'>tem_faceData_module</a></li>
                   <li class="list-inline-item"><a href='tem_aux_module.html'>tem_aux_module</a></li>
-                  <li class="list-inline-item"><a href='treelmesh_module.html'>treelmesh_module</a></li>
-                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
-                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
                   <li class="list-inline-item"><a href='tem_comm_module.html'>tem_comm_module</a></li>
-                  <li class="list-inline-item"><a href='tem_spacetime_fun_module.html'>tem_spacetime_fun_module</a></li>
+                  <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='tem_geometry_module.html'>tem_geometry_module</a></li>
+                  <li class="list-inline-item"><a href='tem_stencil_module.html'>tem_stencil_module</a></li>
                   <li class="list-inline-item"><a href='tem_dyn_array_module.html'>tem_dyn_array_module</a></li>
+                  <li class="list-inline-item"><a href='tem_construction_module.html'>tem_construction_module</a></li>
+                  <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='treelmesh_module.html'>treelmesh_module</a></li>
+                  <li class="list-inline-item"><a href='tem_param_module.html'>tem_param_module</a></li>
                   <li class="list-inline-item"><a href='tem_grow_array_module.html'>tem_grow_array_module</a></li>
+                  <li class="list-inline-item"><a href='tem_bc_prop_module.html'>tem_bc_prop_module</a></li>
+                  <li class="list-inline-item"><a href='tem_facedata_module.html'>tem_faceData_module</a></li>
+                  <li class="list-inline-item"><a href='tem_topology_module.html'>tem_topology_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comptefacerules_module.html'>tem_compteFaceRules_module</a></li>
+                  <li class="list-inline-item"><a href='tem_element_module.html'>tem_element_module</a></li>
+                  <li class="list-inline-item"><a href='tem_spacetime_fun_module.html'>tem_spacetime_fun_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -683,61 +683,7 @@ modules which it uses.
 </h3></div>
     <div class="card-body">
           
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>c
-h
-e
-c
-k</p>
-<p>i
-f</p>
-<p>t
-h
-e</p>
-<p>c
-u
-r
-r
-e
-n
-t</p>
-<p>r
-a
-n
-k</p>
-<p>w
-i
-l
-l</p>
-<p>r
-e
-c
-e
-i
-v
-e</p>
-<p>i
-n
-f
-o
-r
-m
-a
-t
-i
-o
-n</p><a href="../proc/tem_isrecvface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Subroutine to check if the current rank will receive information</p><a href="../proc/tem_isrecvface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -752,7 +698,78 @@ n</p><a href="../proc/tem_isrecvface.html" class="pull-right"><emph>Read more&he
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~4"></span>
+              <span class="anchor" id="variable-facepos"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>facePos</strong></td>
+            <td>
+<p>The position of the face in faces to be checked.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~4"></span>
+              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong></td>
+            <td>
+<p>The description of the faces.</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <h4>
+    Return Value
+    <small>integer</small>
+    </h4>
+    <p>Returns 0 if no information has to be received from remote ranks
+before a compute step can be done. In case that information has to be
+received it will return a non-zero positive value. Furhtermore,
+it determines whether information for the left face value
+(left adjacent element)
+or the right face value (right adjacent element) has to be received.
+In the first case it will return
+<a href="../module/tem_facedata_module.html#variable-tem_left">tem_left</a> and in the second case
+it will return
+<a href="../module/tem_facedata_module.html#variable-tem_right">tem_right</a>.
+If something went wrong, e.g. an unknown combination occurs,
+it will return -1.</p>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-tem_issendface"></span> <h3>private pure function <a href='../proc/tem_issendface.html'>tem_isSendFace</a>(facePos, faces) result(isSendFace)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Subroutine to check if the current rank will send information</p><a href="../proc/tem_issendface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-facepos~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -804,184 +821,11 @@ it will return -1.</p>
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-tem_issendface"></span> <h3>private pure function <a href='../proc/tem_issendface.html'>tem_isSendFace</a>(facePos, faces) result(isSendFace)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>c
-h
-e
-c
-k</p>
-<p>i
-f</p>
-<p>t
-h
-e</p>
-<p>c
-u
-r
-r
-e
-n
-t</p>
-<p>r
-a
-n
-k</p>
-<p>w
-i
-l
-l</p>
-<p>s
-e
-n
-d</p>
-<p>i
-n
-f
-o
-r
-m
-a
-t
-i
-o
-n</p><a href="../proc/tem_issendface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-facepos~5"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>facePos</strong></td>
-            <td>
-<p>The position of the face in faces to be checked.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faces~8"></span>
-              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faces</strong></td>
-            <td>
-<p>The description of the faces.</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-    <h4>
-    Return Value
-    <small>integer</small>
-    </h4>
-    <p>Returns 0 if no information has to be received from remote ranks
-before a compute step can be done. In case that information has to be
-received it will return a non-zero positive value. Furhtermore,
-it determines whether information for the left face value
-(left adjacent element)
-or the right face value (right adjacent element) has to be received.
-In the first case it will return
-<a href="../module/tem_facedata_module.html#variable-tem_left">tem_left</a> and in the second case
-it will return
-<a href="../module/tem_facedata_module.html#variable-tem_right">tem_right</a>.
-If something went wrong, e.g. an unknown combination occurs,
-it will return -1.</p>
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-tem_isfromfinerface"></span> <h3>private  function <a href='../proc/tem_isfromfinerface.html'>tem_isFromFinerFace</a>(facePos, faces) result(isFromFiner)  
 </h3></div>
     <div class="card-body">
           
-  <p>F
-u
-n
-c
-t
-i
-o
-n</p>
-<p>t
-o</p>
-<p>d
-e
-c
-i
-d
-e</p>
-<p>i
-f</p>
-<p>a</p>
-<p>c
-e
-r
-t
-a
-i
-n</p>
-<p>f
-a
-c
-e</p>
-<p>i
-s</p>
-<p>c
-o
-n
-s
-t
-r
-u
-c
-t
-e
-d</p>
-<p>f
-r
-o
-m</p>
-<p>f
-i
-n
-e
-r</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Function to decide if a certain face is constructed from finer</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -996,7 +840,7 @@ r</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~6"></span>
+              <span class="anchor" id="variable-facepos~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1011,7 +855,7 @@ r</p><a href="../proc/tem_isfromfinerface.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~11"></span>
+              <span class="anchor" id="variable-faces~9"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1057,7 +901,7 @@ a downward (coarse-&gt;fine) dependency.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~9"></span>
+              <span class="anchor" id="variable-leftprp~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1072,7 +916,7 @@ a downward (coarse-&gt;fine) dependency.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~9"></span>
+              <span class="anchor" id="variable-rightprp~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1118,7 +962,7 @@ a upward (fine-&gt;coarse) dependency.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~10"></span>
+              <span class="anchor" id="variable-leftprp~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1133,7 +977,7 @@ a upward (fine-&gt;coarse) dependency.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~10"></span>
+              <span class="anchor" id="variable-rightprp~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1224,59 +1068,7 @@ holds the union of firstPrp and secondPrp.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>R
-e
-t
-u
-r
-n
-s</p>
-<p>t
-h
-e</p>
-<p>p
-r
-o
-p
-e
-r
-t
-y</p>
-<p>o
-f</p>
-<p>a</p>
-<p>g
-i
-v
-e
-n</p>
-<p>e
-l
-e
-m
-e
-n
-t</p>
-<p>i
-n</p>
-<p>t
-h
-e</p>
-<p>l
-e
-v
-e
-l</p>
-<p>d
-e
-s
-c
-r
-i
-p
-t
-o
-r</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Returns the property of a given element in the level descriptor</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1291,7 +1083,7 @@ r</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&h
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~15"></span>
+              <span class="anchor" id="variable-leveldesc~12"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1306,7 +1098,7 @@ r</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~25"></span>
+              <span class="anchor" id="variable-elempos~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1341,50 +1133,7 @@ r</p><a href="../proc/tem_get_elemprp.html" class="pull-right"><emph>Read more&h
 </h3></div>
     <div class="card-body">
           
-  <p>R
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>g
-e
-t</p>
-<p>f
-a
-c
-e</p>
-<p>i
-n
-f
-o
-r
-m
-a
-t
-i
-o
-n</p>
-<p>f
-o
-r</p>
-<p>y
-o
-u
-r</p>
-<p>w
-h
-o
-l
-e</p>
-<p>m
-e
-s
-h
-.</p><a href="../proc/tem_build_face_info.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Routine to get face information for your whole mesh.</p><a href="../proc/tem_build_face_info.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1399,7 +1148,7 @@ h
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~80"></span>
+              <span class="anchor" id="variable-tree"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1414,7 +1163,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~2"></span>
+              <span class="anchor" id="variable-boundary"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1429,7 +1178,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~2"></span>
+              <span class="anchor" id="variable-commpattern"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1444,7 +1193,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~15"></span>
+              <span class="anchor" id="variable-proc~2"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1459,7 +1208,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~3"></span>
+              <span class="anchor" id="variable-faces"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(out),</td>
@@ -1474,7 +1223,7 @@ h
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neligiblechildren~2"></span>
+              <span class="anchor" id="variable-neligiblechildren"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1499,55 +1248,7 @@ h
 </h3></div>
     <div class="card-body">
           
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>b
-u
-i
-l
-d</p>
-<p>c
-o
-m
-m
-u
-n
-i
-c
-a
-t
-i
-o
-n</p>
-<p>b
-u
-f
-f
-e
-r
-s</p>
-<p>f
-o
-r</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s
-.</p><a href="../proc/tem_build_facebuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Subroutine to build communication buffers for the faces.</p><a href="../proc/tem_build_facebuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1562,7 +1263,7 @@ s
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~7"></span>
+              <span class="anchor" id="variable-minlevel"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1577,7 +1278,7 @@ s
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-maxlevel~9"></span>
+              <span class="anchor" id="variable-maxlevel"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1592,7 +1293,7 @@ s
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~4"></span>
+              <span class="anchor" id="variable-faces~2"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1608,7 +1309,7 @@ The created face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~5"></span>
+              <span class="anchor" id="variable-leveldesc~2"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1633,57 +1334,7 @@ The created face descriptor.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>b
-u
-i
-l
-d</p>
-<p>c
-o
-m
-m
-u
-n
-i
-c
-a
-t
-i
-o
-n</p>
-<p>b
-u
-f
-f
-e
-r
-s</p>
-<p>f
-o
-r</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s</p>
-<p>t
-h
-e</p><a href="../proc/tem_build_facerecvbuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Subroutine to build communication buffers for the faces the</p><a href="../proc/tem_build_facerecvbuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1698,7 +1349,7 @@ e</p><a href="../proc/tem_build_facerecvbuffers.html" class="pull-right"><emph>R
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~6"></span>
+              <span class="anchor" id="variable-leveldesc~3"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1714,7 +1365,7 @@ direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~5"></span>
+              <span class="anchor" id="variable-faces~3"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1756,57 +1407,7 @@ the face values. To access it use tem_left and tem_right.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>b
-u
-i
-l
-d</p>
-<p>c
-o
-m
-m
-u
-n
-i
-c
-a
-t
-i
-o
-n</p>
-<p>b
-u
-f
-f
-e
-r
-s</p>
-<p>f
-o
-r</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s</p>
-<p>t
-h
-e</p><a href="../proc/tem_build_facesendbuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Subroutine to build communication buffers for the faces the</p><a href="../proc/tem_build_facesendbuffers.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1821,7 +1422,7 @@ e</p><a href="../proc/tem_build_facesendbuffers.html" class="pull-right"><emph>R
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~7"></span>
+              <span class="anchor" id="variable-leveldesc~4"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1837,7 +1438,7 @@ direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~7"></span>
+              <span class="anchor" id="variable-faces~5"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1894,7 +1495,7 @@ the face values. To access it use tem_left and tem_right.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~81"></span>
+              <span class="anchor" id="variable-tree~2"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1909,7 +1510,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~3"></span>
+              <span class="anchor" id="variable-boundary~2"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1924,7 +1525,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~3"></span>
+              <span class="anchor" id="variable-commpattern~2"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1939,7 +1540,7 @@ the face values. To access it use tem_left and tem_right.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~16"></span>
+              <span class="anchor" id="variable-proc~3"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2030,7 +1631,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-tree~82"></span>
+              <span class="anchor" id="variable-tree~3"></span>
               type(<a href='../type/treelmesh_type.html'>treelmesh_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2045,7 +1646,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-stencil~5"></span>
+              <span class="anchor" id="variable-stencil"></span>
               type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2060,7 +1661,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-boundary~4"></span>
+              <span class="anchor" id="variable-boundary~3"></span>
               type(<a href='../type/tem_bc_prop_type.html'>tem_BC_prop_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2075,7 +1676,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-commpattern~4"></span>
+              <span class="anchor" id="variable-commpattern~3"></span>
               type(<a href='../type/tem_commpattern_type.html'>tem_commPattern_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2090,7 +1691,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~8"></span>
+              <span class="anchor" id="variable-leveldesc~5"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(out),</td>
@@ -2105,7 +1706,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~17"></span>
+              <span class="anchor" id="variable-proc~4"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -2130,62 +1731,7 @@ dimension stencils (+1, 0, -1) for each spatial direction.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>C
-r
-e
-a
-t
-e
-s</p>
-<p>t
-h
-e</p>
-<p>d
-i
-m
-e
-n
-s
-i
-o
-n
--
-b
-y
--
-d
-i
-m
-e
-n
-s
-i
-o
-n</p>
-<p>s
-t
-e
-n
-c
-i
-l
-s</p>
-<p>f
-o
-r</p>
-<p>a</p>
-<p>g
-i
-v
-e
-n</p>
-<p>s
-p
-a
-t
-i
-a
-l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Creates the dimension-by-dimension stencils for a given spatial</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -2200,7 +1746,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-stencil~6"></span>
+              <span class="anchor" id="variable-stencil~2"></span>
               type(<a href='../type/tem_stencilheader_type.html'>tem_stencilHeader_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2215,7 +1761,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-nelems~53"></span>
+              <span class="anchor" id="variable-nelems"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2230,7 +1776,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-direction~3"></span>
+              <span class="anchor" id="variable-direction"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2258,50 +1804,7 @@ l</p><a href="../proc/tem_define_dimstencil.html" class="pull-right"><emph>Read 
 </h3></div>
     <div class="card-body">
           
-  <p>R
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>g
-e
-n
-e
-r
-a
-t
-e</p>
-<p>t
-h
-e</p>
-<p>s
-e
-p
-a
-r
-a
-t
-e
-d</p>
-<p>l
-i
-s
-t
-s</p>
-<p>o
-f</p>
-<p>f
-a
-c
-e
-s</p>
-<p>f
-o
-r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Routine to generate the separated lists of faces for</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -2316,7 +1819,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~8"></span>
+              <span class="anchor" id="variable-minlevel~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2331,7 +1834,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-maxlevel~10"></span>
+              <span class="anchor" id="variable-maxlevel~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2346,7 +1849,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neligiblechildren~3"></span>
+              <span class="anchor" id="variable-neligiblechildren~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2361,7 +1864,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~9"></span>
+              <span class="anchor" id="variable-faces~7"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2401,7 +1904,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~9"></span>
+              <span class="anchor" id="variable-minlevel~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2416,7 +1919,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-maxlevel~11"></span>
+              <span class="anchor" id="variable-maxlevel~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2431,7 +1934,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neligiblechildren~4"></span>
+              <span class="anchor" id="variable-neligiblechildren~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2446,7 +1949,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~10"></span>
+              <span class="anchor" id="variable-faces~8"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2486,7 +1989,7 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~12"></span>
+              <span class="anchor" id="variable-faces~10"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -2497,6 +2000,91 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
             <td><strong>faces</strong></td>
             <td>
 <p>The created face descriptor.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neligiblechildren~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nEligibleChildren</strong></td>
+            <td>
+<p>The number of eligible children for the vertical face dependency</p>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-tem_facedep_vertical"></span> <h3>private  subroutine <a href='../proc/tem_facedep_vertical.html'>tem_faceDep_vertical</a>(minLevel, maxLevel, faces, nEligibleChildren)  
+</h3></div>
+    <div class="card-body">
+          
+  <p>Builds all the vertical dependencies in the face description.</p><a href="../proc/tem_facedep_vertical.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+
+  <h4>Arguments</h4>
+      <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th scope="col">Type</th>
+<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col"></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-minlevel~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>minLevel</strong></td>
+            <td>
+<p>Minimum level of your mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-maxlevel~4"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>maxLevel</strong></td>
+            <td>
+<p>Maximum level of your mesh.</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-faces~11"></span>
+              type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>faces</strong>(minLevel:maxLevel)</td>
+            <td>
+<p>Face descriptor where the faces will be appended to.</p>
             </td>
         </tr>
         <tr>
@@ -2522,63 +2110,11 @@ r</p><a href="../proc/tem_build_facelists.html" class="pull-right"><emph>Read mo
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-tem_facedep_vertical"></span> <h3>private  subroutine <a href='../proc/tem_facedep_vertical.html'>tem_faceDep_vertical</a>(minLevel, maxLevel, faces, nEligibleChildren)  
+    <div class="card-header codesum"><span class="anchor" id="proc-tem_init_facedep"></span> <h3>private  subroutine <a href='../proc/tem_init_facedep.html'>tem_init_faceDep</a>(faces, nEligibleChildren)  
 </h3></div>
     <div class="card-body">
           
-  <p>B
-u
-i
-l
-d
-s</p>
-<p>a
-l
-l</p>
-<p>t
-h
-e</p>
-<p>v
-e
-r
-t
-i
-c
-a
-l</p>
-<p>d
-e
-p
-e
-n
-d
-e
-n
-c
-i
-e
-s</p>
-<p>i
-n</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e</p>
-<p>d
-e
-s
-c
-r
-i
-p
-t
-i
-o
-n
-.</p><a href="../proc/tem_facedep_vertical.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Subroutine to initialize the container for the vertical</p><a href="../proc/tem_init_facedep.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -2593,47 +2129,18 @@ n
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~10"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>minLevel</strong></td>
-            <td>
-<p>Minimum level of your mesh.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-maxlevel~12"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>maxLevel</strong></td>
-            <td>
-<p>Maximum level of your mesh.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faces~13"></span>
-              type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
+              <span class="anchor" id="variable-faces~12"></span>
+              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
               <td></td>            <td>
               
             </td>
             <td>::</td>
-            <td><strong>faces</strong>(minLevel:maxLevel)</td>
+            <td><strong>faces</strong></td>
             <td>
-<p>Face descriptor where the faces will be appended to.</p>
+<p>The face description in which you want to initialize the vertical
+face dependency container.</p>
             </td>
         </tr>
         <tr>
@@ -2659,167 +2166,11 @@ n
   </div>
 
               <div class="card">
-    <div class="card-header codesum"><span class="anchor" id="proc-tem_init_facedep"></span> <h3>private  subroutine <a href='../proc/tem_init_facedep.html'>tem_init_faceDep</a>(faces, nEligibleChildren)  
-</h3></div>
-    <div class="card-body">
-          
-  <p>S
-u
-b
-r
-o
-u
-t
-i
-n
-e</p>
-<p>t
-o</p>
-<p>i
-n
-i
-t
-i
-a
-l
-i
-z
-e</p>
-<p>t
-h
-e</p>
-<p>c
-o
-n
-t
-a
-i
-n
-e
-r</p>
-<p>f
-o
-r</p>
-<p>t
-h
-e</p>
-<p>v
-e
-r
-t
-i
-c
-a
-l</p><a href="../proc/tem_init_facedep.html" class="pull-right"><emph>Read more&hellip;</emph></a>
-
-  <h4>Arguments</h4>
-      <table class="table table-striped varlist">
-    <thead>
-      <tr>
-        <th scope="col">Type</th>
-<th scope="col">Intent</th><th scope="col">Optional</th>        <th scope="col">Attributes</th>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col"></th>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-faces~14"></span>
-              type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
-            </td>
-<td>intent(inout)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>faces</strong></td>
-            <td>
-<p>The face description in which you want to initialize the vertical
-face dependency container.</p>
-            </td>
-        </tr>
-        <tr>
-            <td>
-              <span class="anchor" id="variable-neligiblechildren~7"></span>
-              integer,
-            </td>
-<td>intent(in)</td>
-              <td></td>            <td>
-              
-            </td>
-            <td>::</td>
-            <td><strong>nEligibleChildren</strong></td>
-            <td>
-<p>The number of eligible children for the vertical face dependency</p>
-            </td>
-        </tr>
-    </tbody>
-  </table>
-
-
-    </div>
-  </div>
-
-              <div class="card">
     <div class="card-header codesum"><span class="anchor" id="proc-tem_facedep_verticaldown"></span> <h3>private  subroutine <a href='../proc/tem_facedep_verticaldown.html'>tem_faceDep_verticalDown</a>(coarseFaces, fineFaces, dir, nEligibleChildren)  
 </h3></div>
     <div class="card-body">
           
-  <p>B
-u
-i
-l
-d
-s</p>
-<p>d
-o
-w
-n
-w
-a
-r
-d</p>
-<p>f
-a
-c
-e</p>
-<p>d
-e
-p
-n
-d
-e
-n
-c
-i
-e
-s</p>
-<p>(
-c
-o
-a
-r
-s
-e</p>
-<p>f
-a
-c
-e</p>
-<p>-</p>
-<blockquote></blockquote>
-<p>f
-i
-n
-e
-r</p>
-<p>f
-a
-c
-e
-s
-)
-.</p><a href="../proc/tem_facedep_verticaldown.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Builds downward face depndencies (coarse face -&gt; finer faces).</p><a href="../proc/tem_facedep_verticaldown.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -2883,7 +2234,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neligiblechildren~8"></span>
+              <span class="anchor" id="variable-neligiblechildren~7"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -2908,57 +2259,7 @@ level will be appended to this face descriptor.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>B
-u
-i
-l
-d
-s</p>
-<p>u
-p
-w
-a
-r
-d</p>
-<p>f
-a
-c
-e</p>
-<p>d
-e
-p
-n
-d
-e
-n
-c
-i
-e
-s</p>
-<p>(
-f
-i
-n
-e</p>
-<p>f
-a
-c
-e</p>
-<p>-</p>
-<blockquote></blockquote>
-<p>c
-o
-a
-r
-s
-e</p>
-<p>f
-a
-c
-e
-s
-)
-.</p><a href="../proc/tem_facedep_verticalup.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Builds upward face depndencies (fine face -&gt; coarse faces).</p><a href="../proc/tem_facedep_verticalup.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3029,7 +2330,7 @@ level will be appended to this face descriptor.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~15"></span>
+              <span class="anchor" id="variable-faces~13"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3044,7 +2345,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-facepos~7"></span>
+              <span class="anchor" id="variable-facepos~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3059,7 +2360,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftprp~8"></span>
+              <span class="anchor" id="variable-leftprp~6"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -3074,7 +2375,7 @@ level will be appended to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightprp~8"></span>
+              <span class="anchor" id="variable-rightprp~6"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -3099,64 +2400,7 @@ level will be appended to this face descriptor.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>A
-d
-d
-s</p>
-<p>a
-n</p>
-<p>d
-o
-w
-n
-w
-a
-r
-d</p>
-<p>f
-a
-c
-e</p>
-<p>d
-e
-p
-e
-n
-d
-e
-n
-c
-y</p>
-<p>(
-c
-o
-a
-r
-s
-e
--</p>
-<blockquote>
-<p>f
-i
-n
-e
-)</p>
-</blockquote>
-<p>t
-o</p>
-<p>t
-h
-e</p>
-<p>c
-o
-a
-r
-s
-e</p>
-<p>f
-a
-c
-e</p><a href="../proc/tem_adddep_down.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Adds an downward face dependency (coarse-&gt;fine) to the coarse face</p><a href="../proc/tem_adddep_down.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3236,7 +2480,7 @@ added to this face descriptor.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neligiblechildren~9"></span>
+              <span class="anchor" id="variable-neligiblechildren~8"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3261,60 +2505,7 @@ added to this face descriptor.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>A
-d
-d
-s</p>
-<p>a
-n</p>
-<p>u
-p
-w
-a
-r
-d</p>
-<p>f
-a
-c
-e</p>
-<p>d
-e
-p
-e
-n
-d
-e
-n
-c
-y</p>
-<p>(
-f
-i
-n
-e
--</p>
-<blockquote>
-<p>c
-o
-a
-r
-s
-e
-)</p>
-</blockquote>
-<p>t
-o</p>
-<p>t
-h
-e</p>
-<p>f
-i
-n
-e</p>
-<p>f
-a
-c
-e</p><a href="../proc/tem_adddep_up.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Adds an upward face dependency (fine-&gt;coarse) to the fine face</p><a href="../proc/tem_adddep_up.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3385,55 +2576,7 @@ added to this face descriptor.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>C
-o
-l
-l
-e
-c
-t
-s</p>
-<p>a
-l
-l</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s</p>
-<p>w
-h
-i
-c
-h</p>
-<p>h
-a
-v
-e</p>
-<p>a
-t</p>
-<p>l
-e
-a
-s
-t</p>
-<p>o
-n
-e</p>
-<p>n
-e
-i
-g
-h
-b
-o
-r
-i
-n
-g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Collects all the faces which have at least one neighboring</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3448,7 +2591,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~9"></span>
+              <span class="anchor" id="variable-leveldesc~6"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3463,7 +2606,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~11"></span>
+              <span class="anchor" id="variable-minlevel~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3478,7 +2621,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-maxlevel~13"></span>
+              <span class="anchor" id="variable-maxlevel~5"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3493,7 +2636,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~16"></span>
+              <span class="anchor" id="variable-faces~14"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3533,7 +2676,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-facelist~2"></span>
+              <span class="anchor" id="variable-facelist"></span>
               type(<a href='../type/tem_facelist_type.html'>tem_faceList_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3558,55 +2701,7 @@ g</p><a href="../proc/tem_collect_faces.html" class="pull-right"><emph>Read more
 </h3></div>
     <div class="card-body">
           
-  <p>C
-o
-l
-l
-e
-c
-t
-s</p>
-<p>a
-l
-l</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s</p>
-<p>o
-n</p>
-<p>a</p>
-<p>g
-i
-v
-e
-n</p>
-<p>l
-e
-v
-e
-l</p>
-<p>o
-f</p>
-<p>t
-h
-e</p>
-<p>m
-e
-s
-h</p>
-<p>i
-n</p>
-<p>a</p>
-<p>g
-i
-v
-e
-n</p><a href="../proc/tem_get_faces.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Collects all the faces on a given level of the mesh in a given</p><a href="../proc/tem_get_faces.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3621,7 +2716,7 @@ n</p><a href="../proc/tem_get_faces.html" class="pull-right"><emph>Read more&hel
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~10"></span>
+              <span class="anchor" id="variable-leveldesc~7"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3637,7 +2732,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-direction~4"></span>
+              <span class="anchor" id="variable-direction~2"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3655,7 +2750,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~17"></span>
+              <span class="anchor" id="variable-faces~15"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3697,7 +2792,7 @@ by this routine.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~11"></span>
+              <span class="anchor" id="variable-leveldesc~8"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -3712,7 +2807,7 @@ by this routine.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-elempos~22"></span>
+              <span class="anchor" id="variable-elempos~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3776,7 +2871,7 @@ or
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-neighpos~3"></span>
+              <span class="anchor" id="variable-neighpos~2"></span>
               integer,
             </td>
 <td>intent(out)</td>
@@ -3832,7 +2927,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-leftelempos~2"></span>
+              <span class="anchor" id="variable-leftelempos"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3862,7 +2957,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightelemid~3"></span>
+              <span class="anchor" id="variable-rightelemid~2"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -3877,7 +2972,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-rightelempos~2"></span>
+              <span class="anchor" id="variable-rightelempos"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -3907,7 +3002,7 @@ exist.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~18"></span>
+              <span class="anchor" id="variable-faces~16"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -3934,52 +3029,7 @@ overwritten by the new ones.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>E
-x
-t
-e
-n
-d
-s</p>
-<p>t
-h
-e</p>
-<p>p
-r
-o
-p
-e
-r
-t
-i
-e
-s</p>
-<p>o
-f</p>
-<p>t
-h
-e</p>
-<p>f
-a
-c
-e
-s</p>
-<p>w
-h
-i
-c
-h</p>
-<p>a
-r
-e</p>
-<p>m
-a
-r
-k
-e
-d</p>
-<p>a
-s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Extends the properties of the faces which are marked as</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -3994,7 +3044,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~12"></span>
+              <span class="anchor" id="variable-leveldesc~9"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -4009,7 +3059,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-minlevel~12"></span>
+              <span class="anchor" id="variable-minlevel~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -4024,7 +3074,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-maxlevel~14"></span>
+              <span class="anchor" id="variable-maxlevel~6"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -4039,7 +3089,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~19"></span>
+              <span class="anchor" id="variable-faces~17"></span>
               type(<a href='../type/tem_face_type.html'>tem_face_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4064,61 +3114,7 @@ s</p><a href="../proc/tem_extend_remoteprp.html" class="pull-right"><emph>Read m
 </h3></div>
     <div class="card-body">
           
-  <p>E
-x
-t
-e
-n
-d</p>
-<p>c
-o
-m
-m
-u
-n
-i
-c
-a
-t
-i
-o
-n</p>
-<p>p
-r
-o
-p
-e
-r
-t
-y</p>
-<p>f
-o
-r</p>
-<p>f
-a
-c
-e
-s</p>
-<p>b
-y</p>
-<p>t
-h
-e</p>
-<p>f
-i
-n
-e
-r</p>
-<p>p
-r
-o
-p
-e
-r
-t
-y</p>
-<p>i
-f</p><a href="../proc/tem_extend_commfromfinerprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Extend communication property for faces by the finer property if</p><a href="../proc/tem_extend_commfromfinerprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -4133,7 +3129,7 @@ f</p><a href="../proc/tem_extend_commfromfinerprp.html" class="pull-right"><emph
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~13"></span>
+              <span class="anchor" id="variable-leveldesc~10"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -4149,7 +3145,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-direction~5"></span>
+              <span class="anchor" id="variable-direction~3"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -4164,7 +3160,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~20"></span>
+              <span class="anchor" id="variable-faces~18"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4189,63 +3185,7 @@ faces for.</p>
 </h3></div>
     <div class="card-body">
           
-  <p>E
-x
-t
-e
-n
-d</p>
-<p>c
-o
-m
-m
-u
-n
-i
-c
-a
-t
-i
-o
-n</p>
-<p>p
-r
-o
-p
-e
-r
-t
-y</p>
-<p>f
-o
-r</p>
-<p>f
-a
-c
-e
-s</p>
-<p>b
-y</p>
-<p>t
-h
-e</p>
-<p>c
-o
-a
-r
-s
-e
-r</p>
-<p>p
-r
-o
-p
-e
-r
-t
-y</p>
-<p>i
-f</p><a href="../proc/tem_extend_commfromcoarserprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
+  <p>Extend communication property for faces by the coarser property if</p><a href="../proc/tem_extend_commfromcoarserprp.html" class="pull-right"><emph>Read more&hellip;</emph></a>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -4260,7 +3200,7 @@ f</p><a href="../proc/tem_extend_commfromcoarserprp.html" class="pull-right"><em
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-leveldesc~14"></span>
+              <span class="anchor" id="variable-leveldesc~11"></span>
               type(<a href='../type/tem_leveldesc_type.html'>tem_levelDesc_type</a>),
             </td>
 <td>intent(in)</td>
@@ -4276,7 +3216,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-direction~6"></span>
+              <span class="anchor" id="variable-direction~4"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -4291,7 +3231,7 @@ faces for.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~21"></span>
+              <span class="anchor" id="variable-faces~19"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4332,7 +3272,7 @@ does not exist this routine will not do anything.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-faceid~4"></span>
+              <span class="anchor" id="variable-faceid~3"></span>
               integer(kind=long_k),
             </td>
 <td>intent(in)</td>
@@ -4362,7 +3302,7 @@ does not exist this routine will not do anything.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-faces~22"></span>
+              <span class="anchor" id="variable-faces~20"></span>
               type(<a href='../type/tem_face_descriptor_type.html'>tem_face_descriptor_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -4414,13 +3354,13 @@ does not exist this routine will not do anything.</p>
             <p>
               Treelm
  was developed by University of Siegen<br>              &copy; 2025 
-<br /><small>eb56eb2bcc9a</small></p>
+<br /><small>9899d1376992</small></p>
           </div>
           <div class="col">
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-05-01T08:34:21.179097+0000             </p>
+ on 2025-06-30T12:57:23.432764+0000             </p>
           </div>
         </div>
         <br>

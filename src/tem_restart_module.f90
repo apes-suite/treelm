@@ -3,7 +3,7 @@
 ! Copyright (c) 2011-2012 Jens Zudrop <j.zudrop@grs-sim.de>
 ! Copyright (c) 2011-2016 Kannan Masilamani <kannan.masilamani@uni-siegen.de>
 ! Copyright (c) 2011-2012 Khaled Ibrahim <k.ibrahim@grs-sim.de>
-! Copyright (c) 2011-2019, 2021 Harald Klimach <harald.klimach@dlr.de>
+! Copyright (c) 2011-2019, 2021, 2025 Harald Klimach <harald.klimach@dlr.de>
 ! Copyright (c) 2012, 2014-2016 Jiaxing Qi <jiaxing.qi@uni-siegen.de>
 ! Copyright (c) 2012-2014 Kartik Jain <kartik.jain@uni-siegen.de>
 ! Copyright (c) 2012-2013 Melven Zoellner <yameta@freenet.de>
@@ -115,10 +115,13 @@ module tem_restart_module
     &                                tem_timeControl_load, &
     &                                tem_timeControl_align_trigger, &
     &                                tem_timeControl_dump
-  use tem_time_module,         only: tem_time_sim_stamp, tem_time_type, &
+  use tem_time_module,         only: tem_time_type, &
     &                                tem_time_out, tem_time_load,       &
     &                                tem_time_set_clock, tem_time_dump, &
     &                                tem_time_reset
+  use tem_timeformatter_module, only: tem_timeformatter_type, &
+    &                                 tem_timeformatter_init, &
+    &                                 tem_timeformatter_load
   use tem_tools_module,        only: tem_horizontalSpacer
   use tem_varSys_module,       only: tem_varSys_type, tem_varSys_out,  &
     &                                tem_varSys_load, tem_varSys_dump, &
@@ -258,6 +261,8 @@ module tem_restart_module
     type(tem_restartHeader_type)  :: header
     !> unit integer to write binary data to
     integer :: binaryUnit
+    !> Formatter for the timestamps to be used in file names
+    type(tem_timeformatter_type) :: timeform
     !> name and position of variables in global variable system
     type(tem_varMap_type) :: varMap
     !!> number of scalars of variables in varPos
@@ -283,12 +288,17 @@ contains
   !!                                              -- if any
   !!             write = 'restart/', -- Where to write the restart files to,
   !!                                 -- if any
-  !!             time = { min = 0, max = 10, interval = 10} -- when to output
+  !!             time = { min = 0, max = 10, interval = 10}, -- when to output
+  !!             timeform = { use_iter = false, simform = '(EN12.3)' }
   !!             }
   !!```
   !! Here, the restart is loaded from `restart/lastHeader.lua` and reads in the
   !! related data and configuration.
   !! Restart files are written out in `restart/` folder
+  !! The files will get a timestamp based simulated time in engineering notation
+  !! with three digits as configured in the timeform table.
+  !! This is the default timestamp format and can also be omitted.
+  !! See [[tem_timeformatter_load]].
   !!
   subroutine tem_load_restart( me, conf, tree, timing, globProc, parent_table, &
     &                          key )
@@ -422,6 +432,10 @@ contains
         &               val     = me%controller%writePrefix, &
         &               ErrCode = iError                     )
       me%controller%writeRestart = (iError == 0)
+
+      call tem_timeformatter_load(me     = me%timeform,  &
+        &                         conf   = conf,         &
+        &                         parent = restart_table )
 
       if (me%controller%writeRestart) then
         ! Read the time intervals for restart output from the Lua config.
@@ -1081,7 +1095,7 @@ contains
     ! -------------------------------------------------------------------- !
 
     ! Update the timestamp
-    me%header%timestamp = trim(tem_time_sim_stamp(timing))
+    me%header%timestamp = trim(me%timeform%stamp(timing))
 
     ! Set the iteration to know when the last restart file was written
     me%lastWritten = timing
@@ -1321,6 +1335,7 @@ contains
     integer :: iError
     type( flu_State ) :: conf
     character(len=labelLen) :: buffer
+    type(tem_timeformatter_type) :: timeform
     ! -------------------------------------------------------------------- !
     write(logUnit(1),*) 'Opening Restart Header '         &
       &                 // trim(me%controller%readFileName)
@@ -1373,7 +1388,8 @@ contains
       &                 me          = timing,            &
       &                 clock_start = timing%clock_start )
 
-    me%header%timestamp = trim(tem_time_sim_stamp(timing))
+    timeform = tem_timeformatter_init()
+    me%header%timestamp = trim(timeform%stamp(timing))
     write(logUnit(1),*) 'Restarting from point in time:'
     call tem_time_dump(timing, logUnit(1))
 

@@ -1,5 +1,5 @@
 ! Copyright (c) 2013-2014 Simon Zimny <s.zimny@grs-sim.de>
-! Copyright (c) 2013-2014, 2019, 2021 Harald Klimach <harald.klimach@dlr.de>
+! Copyright (c) 2013-2014, 2019, 2021, 2025 Harald Klimach <harald.klimach@dlr.de>
 ! Copyright (c) 2016 Tobias Schneider <tobias1.schneider@student.uni-siegen.de>
 ! Copyright (c) 2016 Peter Vitt <peter.vitt2@uni-siegen.de>
 !
@@ -33,12 +33,14 @@ module tem_stlb_io_module
   ! incude treelm modules
   use mpi
   use env_module,            only: single_k,rk, LabelLen, PathLen, rk_mpi, eps
-  use tem_logging_module,    only: logUnit
   use tem_aux_module,        only: tem_open, tem_abort
-  use tem_math_module,       only: cross_product3D
-  use tem_time_module,       only: tem_time_type, tem_time_sim_stamp
   use tem_comm_env_module,   only: tem_comm_env_type
   use tem_grow_array_module, only: grw_int2darray_type, init, append, destroy
+  use tem_logging_module,    only: logUnit
+  use tem_math_module,       only: cross_product3D
+  use tem_time_module,       only: tem_time_type
+  use tem_timeformatter_module, only: tem_timeformatter_type, &
+    &                                 tem_timeformatter_init
 
   implicit none
 
@@ -186,7 +188,7 @@ contains
   !!        as well)
   !!
   subroutine tem_dump_stlb( outprefix, nodes, triangles, proc, header,   &
-    &                       normals, time )
+    &                       normals, time, timeformatter                 )
     ! --------------------------------------------------------------------------
     !> output prefix for the filename
     character(len=*), intent(in) :: outprefix
@@ -203,7 +205,10 @@ contains
     real(kind=rk), optional, intent(in) :: normals(:,:)
     !> optional simulation time to be appended to the filename
     type(tem_time_type), optional, intent(in) :: time
+    !> optional formatter for the timestamp
+    type(tem_timeformatter_type), optional, intent(in) :: timeformatter
     ! --------------------------------------------------------------------------
+    type(tem_timeformatter_type) :: loc_timeformatter
     real(kind=single_k) :: loc_normals( 3, size( triangles, 2 ))
     integer :: iTria
     ! temporary vectors to calculate the normals
@@ -219,7 +224,7 @@ contains
     ! error variable
     integer :: iError
     ! timestamp for the filename
-    character(len=12) :: timeStamp
+    character(len=labelLen) :: timeStamp
     ! temporary min and max position for X,Y,Z coordinates in the linearized
     ! array of nodes
     integer :: minPos1, maxPos1, minPos2, maxPos2, minPos3, maxPos3
@@ -308,12 +313,17 @@ contains
       ! initialize the attribute to be empty
       attribute = ''
 
-      if( present( time ))then
-        timestamp = adjustl(tem_time_sim_stamp(time))
+      if ( present(time) ) then
+        if (present(timeformatter)) then
+          loc_timeformatter = timeformatter
+        else
+          loc_timeformatter = tem_timeformatter_init()
+        end if
+        timestamp = adjustl(loc_timeformatter%stamp(time))
         ! assemble the filename
-        write(filename,'(a)')trim(outprefix)//'_t'//trim(timestamp)//".stl"
+        write(filename,'(a)') trim(outprefix)//'_t'//trim(timestamp)//".stl"
       else
-        write(filename,'(a)')trim(outprefix)//".stl"
+        write(filename,'(a)') trim(outprefix)//".stl"
       end if
 
       ! open the output file and

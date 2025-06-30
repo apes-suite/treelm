@@ -4,7 +4,7 @@
 ! Copyright (c) 2016 Jiaxing Qi <jiaxing.qi@uni-siegen.de>
 ! Copyright (c) 2017 Verena Krupp <verena.krupp@uni-siegen.de>
 ! Copyright (c) 2017 Raphael Haupt <Raphael.Haupt@student.uni-siegen.de>
-! Copyright (c) 2017, 2019, 2021 Harald Klimach <harald.klimach@dlr.de>
+! Copyright (c) 2017, 2019, 2021, 2025 Harald Klimach <harald.klimach@dlr.de>
 !
 ! Redistribution and use in source and binary forms, with or without
 ! modification, are permitted provided that the following conditions are met:
@@ -49,7 +49,9 @@ module hvs_ascii_module
     &                                tem_get_point_chunk
   use tem_subtree_type_module, only: tem_subtree_type
   use treelmesh_module,        only: treelmesh_type
-  use tem_time_module,         only: tem_time_type, tem_time_sim_stamp
+  use tem_time_module,         only: tem_time_type
+  use tem_timeformatter_module, only: tem_timeformatter_type, &
+    &                                 tem_timeformatter_init
   use tem_timeControl_module,  only: tem_timeControl_type, tem_timeControl_out
   use tem_shape_module,        only: tem_shape_type, tem_shape_out
   use tem_logging_module,      only: logUnit
@@ -94,6 +96,9 @@ module hvs_ascii_module
     !> Basename of the VTK files to write
     character(len=pathLen) :: basename
 
+    !> Formatting for timestamps
+    type(tem_timeformatter_type) :: timeform
+
     !> Timestamp to construct the filename
     character(len=labelLen) :: timestamp
 
@@ -104,16 +109,17 @@ module hvs_ascii_module
     integer :: nChunks
   end type hvs_asciiSpatial_type
 
+
 contains
 
 
 ! ****************************************************************************** !
   !> Initialize ascii output format.
   !! initialize spatial reduction if reduction is active
-  subroutine hvs_ascii_init(ascii, varSys, varPos, basename, globProc,         &
-    &                       outProc, solver, geometry, nElems, glob_nElems,    &
-    &                       timeControl, useGetPoint, nPoints, glob_nPoints,   &
-    &                       nDofs)
+  subroutine hvs_ascii_init(ascii, varSys, varPos, basename, globProc,       &
+    &                       outProc, solver, geometry, nElems, glob_nElems,  &
+    &                       timeControl, useGetPoint, nPoints, glob_nPoints, &
+    &                       nDofs                                            )
     ! --------------------------------------------------------------------------!
     !> Ascii output file settings
     !! It must be intent inout since ascii%redSpatial
@@ -792,7 +798,7 @@ contains
   subroutine hvs_asciiSpatial_init(asciiSpatial, varSys, varPos, basename,     &
     &                              globProc, outProc, solver, geometry, nDofs, &
     &                              nElems, glob_nElems, useGetPoint, nPoints,  &
-    &                              glob_nPoints, timeControl                   )
+    &                              glob_nPoints, timeControl, timeform         )
     ! --------------------------------------------------------------------------!
     !> AsciiSpatial output file settings
     type(hvs_asciiSpatial_type), intent(inout) :: asciiSpatial
@@ -830,6 +836,9 @@ contains
 
     !> output timeControl
     type(tem_timeControl_type), optional, intent(in) :: timeControl
+
+    !> Formatting for timestamp
+    type(tem_timeformatter_type), optional, intent(in) :: timeform
 
     !> if get_point is to be used to track the point
     logical, intent(in) :: useGetPoint
@@ -876,6 +885,12 @@ contains
     asciiSpatial%nChunks = nChunks
 
     asciiSpatial%basename = trim(basename)
+    if (present(timeform)) then
+      asciiSpatial%timeform = timeform
+    else
+      asciiSpatial%timeform = tem_timeformatter_init()
+    end if
+
     ! write ascii header lua
     call hvs_ascii_write_header(out_format   = 'asciispatial', &
       &                         basename     = trim(basename), &
@@ -903,8 +918,8 @@ contains
   !!     e.g.: tracking/lineProbe_spatial_00001_01_01378.1.res
   !! Each process open its own files
   !!
-  subroutine hvs_asciiSpatial_open( asciiSpatial, outProc, time, varSys,      &
-    &                               varPos, nDofs )
+  subroutine hvs_asciiSpatial_open( asciiSpatial, outProc, time, varSys, &
+    &                               varPos, nDofs                        )
     ! ---------------------------------------------------------------------------
     !> asciiSpatial file output
     type(hvs_asciiSpatial_type ), intent(inout) :: asciiSpatial
@@ -928,7 +943,7 @@ contains
     ! Write the rank into the string buffer
     write(buffer,'(i5.5)') outProc%rank
 
-    asciiSpatial%timestamp = tem_time_sim_stamp( time )
+    asciiSpatial%timestamp = asciiSpatial%timeform%stamp(time)
 
     ! Generate ascii file name
     write(filename,'(a)') trim(asciiSpatial%basename)//'_p'//trim(buffer)      &

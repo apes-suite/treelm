@@ -2,7 +2,7 @@
 ! Copyright (c) 2015-2016 Jiaxing Qi <jiaxing.qi@uni-siegen.de>
 ! Copyright (c) 2016, 2019 Peter Vitt <peter.vitt2@uni-siegen.de>
 ! Copyright (c) 2016 Tobias Schneider <tobias1.schneider@student.uni-siegen.de>
-! Copyright (c) 2016, 2021 Harald Klimach <harald.klimach@dlr.de>
+! Copyright (c) 2016, 2021, 2025 Harald Klimach <harald.klimach@dlr.de>
 ! Copyright (c) 2016 Nikhil Anand <nikhil.anand@uni-siegen.de>
 ! Copyright (c) 2018 Raphael Haupt <Raphael.Haupt@student.uni-siegen.de>
 ! Copyright (c) 2021 Jana Gericke <jana.gericke@dlr.de>
@@ -62,9 +62,8 @@ module hvs_vtk_module
   use tem_comm_env_module,     only: tem_comm_env_type
   use tem_logging_module,      only: logunit
   use tem_subtree_type_module, only: tem_subtree_type
-  use tem_time_module,         only: tem_time_type,      &
-    &                                tem_time_sim_stamp, &
-    &                                tem_time_iter_stamp
+  use tem_timeformatter_module, only: tem_timeformatter_type
+  use tem_time_module,         only: tem_time_type
   use tem_tools_module,        only: upper_to_lower
   use tem_varsys_module,       only: tem_varsys_type
   use tem_vrtx_module,         only: tem_vrtx_type
@@ -225,14 +224,14 @@ contains
   !! We always write unstructured meshes, so we also write the header for the
   !! unstructured mesh here already.
   !! The actual mesh data is then to be written by hvs_vtk_write_meshdata.
-  subroutine hvs_vtk_open(vtk_file, use_iter, proc, time)
+  subroutine hvs_vtk_open(vtk_file, timeform, proc, time)
     !> The file description to open.
     type(hvs_vtk_file_type), intent(inout) :: vtk_file
 
     !> User specified settings for the output
     ! type(hvs_vtk_config_type), intent(in) :: vtk_config
     !> Whether to use iteration as part of filename
-    logical, intent(in) :: use_iter
+    type(tem_timeformatter_type), intent(in) :: timeform
 
     !> Parallel environment to use for  the output.
     type(tem_comm_env_type), intent(in) :: proc
@@ -245,6 +244,7 @@ contains
     ! ----------------------------------------------------------------------!
     character(len=PathLen) :: filename
     character(len=PathLen) :: headerline
+    character(len=LabelLen) :: timestring
     character :: linebreak
     integer :: pos
     character(len=labelLen) :: byte_order
@@ -262,15 +262,12 @@ contains
       write(filename,'(a)') trim(vtk_file%basename)
     end if
 
+    timestring = '0'
     vtk_file%timestamp = ''
     if (present(time)) then
-      if ( use_iter ) then
-        write(vtk_file%timestamp, '(a)') &
-          & '_t' // trim(tem_time_iter_stamp(time))
-      else
-        write(vtk_file%timestamp, '(a)') &
-          & '_t' // trim(tem_time_sim_stamp(time))
-      end if
+      timestring = trim(timeform%stamp(time))
+      write(vtk_file%timestamp, '(a)') &
+        & '_t' // trim(timestring)
     end if
 
     write(filename,'(a)') trim(filename) // trim(vtk_file%timestamp) // '.vtu'
@@ -364,7 +361,7 @@ contains
     if ( vtk_file%write_pvd ) then
       pos = INDEX(trim(filename), pathSep, .true.)
       write(headerline,'(a)') '  <DataSet timestep="' &
-        &                     //trim(tem_time_sim_stamp(time))//'" file="' &
+        &                     //trim(timestring)//'" file="' &
         &                     //trim(filename(pos+1:))//'"/>'
       write(vtk_file%pvdunit) trim(headerline)//linebreak
       flush(vtk_file%pvdunit)
@@ -890,11 +887,12 @@ contains
   !!
   !! The caller has to provide the vrtx, which can be created with the
   !! tem_calc_vrtx_coord-routine.
-  subroutine hvs_dump_debug_array( proc, tree, time, vrtx, debug_data)
+  subroutine hvs_dump_debug_array( proc, tree, time, timeform, vrtx, debug_data)
     !---------------------------------------------------------------------------
     type(tem_comm_env_type), intent(in) :: proc
     type(treelmesh_type), intent(in) :: tree
     type(tem_time_type), intent(in) :: time
+    type(tem_timeformatter_type), intent(in) :: timeform
     type(tem_vrtx_type) :: vrtx
     real(kind=rk) :: debug_data(tree%nElems)
     !---------------------------------------------------------------------------
@@ -915,7 +913,7 @@ contains
 
 
     call hvs_vtk_open( vtk_file = vtk_file,   &
-      &                use_iter = .true.,     &
+      &                timeform = timeform,   &
       &                proc     = proc,       &
       &                time     = time        )
 

@@ -1,7 +1,7 @@
 ! Copyright (c) 2015-2016 Kannan Masilamani <kannan.masilamani@uni-siegen.de>
 ! Copyright (c) 2015-2016 Jiaxing Qi <jiaxing.qi@uni-siegen.de>
 ! Copyright (c) 2016 Tobias Schneider <tobias1.schneider@student.uni-siegen.de>
-! Copyright (c) 2016, 2019 Harald Klimach <harald.klimach@uni-siegen.de>
+! Copyright (c) 2016, 2019, 2025 Harald Klimach <harald.klimach@dlr.de>
 ! Copyright (c) 2016 Nikhil Anand <nikhil.anand@uni-siegen.de>
 !
 ! Redistribution and use in source and binary forms, with or without
@@ -40,6 +40,8 @@ module hvs_output_module
   use tem_subtree_type_module,        only: tem_subtree_type, tem_dump_subTree
   use tem_subTree_module,             only: tem_updatePropertyBits
   use tem_time_module,                only: tem_time_type, tem_time_reset
+  use tem_timeformatter_module,       only: tem_timeformatter_type, &
+    &                                       tem_timeformatter_load
   use tem_tools_module,               only: upper_to_lower
   use tem_varsys_module,              only: tem_varsys_type
   use tem_varMap_module,              only: tem_varMap_type, tem_create_varMap
@@ -105,6 +107,9 @@ module hvs_output_module
     !> Kind of visualization file to use for the output.
     integer :: vis_kind
 
+    !> Description how to format timestamps
+    type(tem_timeformatter_type) :: timeform
+
     !> Description of the vtk configuration (used when vis_kind='vtk')
     type(hvs_vtk_config_type) :: vtk
 
@@ -140,6 +145,9 @@ module hvs_output_module
 
     !> Description for harvester output i.e restart format
     type(tem_restart_type) :: restart
+
+    !> Description how to format timestamps
+    type(tem_timeformatter_type) :: timeform
 
     !> Point in time for which this output should be done.
     type(tem_time_type) :: time
@@ -199,9 +207,11 @@ contains
     character(len=labelLen) :: vkind
     integer :: thandle
     integer :: iError
+    logical :: use_iter = .false.
     ! ----------------------------------------------------------------------!
     write(logUnit(3), *) '  Loading output table ...'
 
+    use_iter = .false.
     call aot_table_open( L       = conf,    &
       &                  parent  = parent,  &
       &                  thandle = thandle, &
@@ -283,6 +293,15 @@ contains
     end if
     write(logUnit(5),*) '  Output format: '//trim(vkind)
 
+    if (me%vis_kind == hvs_VTK) then
+      use_iter = me%vtk%iter_filename
+    end if
+
+    call tem_timeformatter_load( me               = me%timeform, &
+      &                          conf             = conf,        &
+      &                          parent           = thandle,     &
+      &                          use_iter_default = use_iter     )
+
     ! To decide whether to use get_point or get_element
     call aot_get_val( L       = conf,           &
       &               thandle = thandle,        &
@@ -314,9 +333,9 @@ contains
   !> Initialize the output for a given mesh.
   !!
   !! This creates vertex for a mesh and fill hvs_output_file_type.
-  subroutine hvs_output_init(out_file, out_config, tree, varsys, subtree,      &
-    &                        varPos, basename, timeControl, nDofs, globProc,   &
-    &                        solver, geometry, solSpec_unit)
+  subroutine hvs_output_init(out_file, out_config, tree, varsys, subtree,    &
+    &                        varPos, basename, timeControl, nDofs, globProc, &
+    &                        solver, geometry, solSpec_unit                  )
     ! --------------------------------------------------------------------------!
     !> Output file settings
     !! It must be intent inout since ascii%reduction and trasient%reduction
@@ -378,6 +397,8 @@ contains
     out_file%vis_kind = out_config%vis_kind
 
     out_file%useGetPoint = out_config%useGetPoint
+
+    out_file%timeform = out_config%timeform
 
     ! copy basename
     out_file%basename = trim(basename)
@@ -514,6 +535,7 @@ contains
         &                         nPoints      = nPoints,               &
         &                         glob_nPoints = glob_nPoints,          &
         &                         timeControl  = timeControl,           &
+        &                         timeform     = out_file%timeform,     &
         &                         solver       = solver,                &
         &                         geometry     = geometry               )
     case(hvs_Internal)
@@ -525,6 +547,7 @@ contains
 
       ! this restart object is not meant to read data!
       out_file%restart%controller%readRestart = .false.
+      out_file%restart%timeform = out_file%timeform
 
       ! create varMap for restart
       call tem_create_varMap(varName = varSys%varName%val(out_file%varPos), &
@@ -569,14 +592,9 @@ contains
   !!
   !! This writes the mesh data to the output files.
   !! Subsequently it can then be enriched by restart information.
-  subroutine hvs_output_open(out_file, use_iter, mesh, varsys, time, subtree )
+  subroutine hvs_output_open(out_file, mesh, varsys, time, subtree )
     ! --------------------------------------------------------------------------!
     type(hvs_output_file_type), intent(inout) :: out_file
-
-    !> The output configuration settings to use.
-    ! type(hvs_output_config_type), intent(in) :: out_config
-    ! Use iteration in filename?
-    logical, intent(in) :: use_iter
 
     !> Mesh of the data to visualize.
     type(treelmesh_type), intent(in) :: mesh
@@ -641,10 +659,10 @@ contains
           &                         varSys = varSys          )
       end if ! present subTree
     case(hvs_VTK)
-      call hvs_vtk_open( vtk_file = out_file%vtk,   &
-        &                use_iter = use_iter,       &
-        &                proc     = out_file%proc,  &
-        &                time     = out_file%time   )
+      call hvs_vtk_open( vtk_file = out_file%vtk,      &
+        &                timeform = out_file%timeform, &
+        &                proc     = out_file%proc,     &
+        &                time     = out_file%time      )
 
       call hvs_vtk_write_meshdata( vtk_file = out_file%vtk,  &
         &                          vrtx     = out_file%vrtx, &
