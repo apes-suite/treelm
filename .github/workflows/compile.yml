@@ -3,31 +3,19 @@ name: CheckCompilation
 on:
   pull_request:
     branches: [ "main" ]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
   merge_group:
     types: [checks_requested]
 
 jobs:
-  compilation:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - name: Install gfortran
-        run: |
-          sudo apt install -y gfortran
-
-      - name: Install Open MPI
-        run: |
-          sudo apt install -y openmpi-bin openmpi-common libopenmpi-dev
-
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-
-      - name: Build Treelm
-        run: |
-          FC=mpif90 bin/waf --mpicmd 'mpiexec --oversubscribe' distclean configure build debug
+  compile-test:
+    permissions:
+      checks: write
+      pull-requests: write
+    uses: apes-suite/reus/.github/workflows/compile.yml@v1.3.3
+    with:
+      name: Treelm
