@@ -92,7 +92,7 @@
 
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-html="true"
-                 title=" 0.0% of total for procedures.">10 statements</a>
+                 title=" 0.0% of total for procedures.">17 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -105,7 +105,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb justify-content-end mb-0">
                 <li class="breadcrumb-item"><a href='../sourcefile/tem_cylindricalwave_module.f90~2.html'>tem_cylindricalWave_module.f90</a></li>
-                <li class="breadcrumb-item"><a href='../module/tem_cylindricalwave_module.html'>tem_cylindricalWave_module</a></li>
+                <li class="breadcrumb-item"><a href='../module/tem_cylindricalwave_module~2.html'>tem_cylindricalWave_module</a></li>
             <li class="breadcrumb-item active" aria-current="page">tem_eval_cylindricalWave</li>
           </ol>
         </nav>
@@ -179,7 +179,7 @@
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~492"></span>
+              <span class="anchor" id="variable-me~545"></span>
               type(<a href='../type/tem_cylindricalwave_type~2.html'>tem_cylindricalWave_type</a>)
             </td>
 <td></td>
@@ -194,7 +194,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-coord~30"></span>
+              <span class="anchor" id="variable-coord~131"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -211,7 +211,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-time~95"></span>
+              <span class="anchor" id="variable-time~131"></span>
               real(kind=rk),
             </td>
 <td>intent(in)</td>
@@ -226,7 +226,7 @@
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-n~26"></span>
+              <span class="anchor" id="variable-n~118"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -244,7 +244,7 @@
 
       <h3>Return Value
         <small>
-          <span class="anchor" id="variable-res~110"></span>
+          <span class="anchor" id="variable-res~227"></span>
           real(kind=rk), (n)
         </small>
       </h3>
@@ -263,7 +263,7 @@
     
     <section>
     <h2><span class="anchor" id="src"></span>Source Code</h2>
-    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">tem_eval_cylindricalWave</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w">  </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <div class="hl codehilite"><pre><span></span><span class="w">  </span><span class="k">function </span><span class="n">tem_eval_cylindricalWave</span><span class="p">(</span><span class="n">me</span><span class="p">,</span><span class="w"> </span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="nb">time</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">result</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
 <span class="w">    </span><span class="c">!&gt; Spacetime function to evaluate</span>
 <span class="w">    </span><span class="k">type</span><span class="p">(</span><span class="n">tem_cylindricalWave_type</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">me</span>
 <span class="w">    </span><span class="c">!&gt; Number of arrays to return</span>
@@ -281,9 +281,18 @@
 <span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
 <span class="w">    </span><span class="c">! ---------------------------------------------------------------------------</span>
 
-<span class="w">    </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">    </span><span class="n">polar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cart2polar</span><span class="p">(</span><span class="n">coord</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
 
-<span class="w">  </span><span class="k">end function </span><span class="n">tem_eval_cylindricalWave</span>
+<span class="w">    </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="n">n</span>
+<span class="w">      </span><span class="k">if</span><span class="p">(</span><span class="n">polar</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">radius</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">        </span><span class="n">res</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">bessel_jn</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">radialConstant</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">polar</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="w">           </span><span class="p">&amp;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="kt">real</span><span class="p">(</span><span class="n">me</span><span class="p">%</span><span class="n">order</span><span class="p">,</span><span class="n">rk</span><span class="p">)</span><span class="o">*</span><span class="n">polar</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">me</span><span class="p">%</span><span class="n">radialConstant</span><span class="o">*</span><span class="nb">time</span><span class="p">)</span>
+<span class="w">      </span><span class="k">else</span>
+<span class="k">        </span><span class="n">res</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0_rk</span>
+<span class="w">      </span><span class="k">end if</span>
+<span class="k">    end do</span>
+
+<span class="k">  end function </span><span class="n">tem_eval_cylindricalWave</span>
 </pre></div>
 
     </section>
@@ -307,7 +316,7 @@
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-30T12:57:23.432764+0000             </p>
+ on 2025-07-02T13:06:23.655310+0000             </p>
           </div>
         </div>
         <br>

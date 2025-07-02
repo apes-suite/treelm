@@ -146,46 +146,46 @@
       <p>In this section we introduce the use on how to define 
 variables with Lua functions.</p>
 <p>Lua functions are defined inside the code like this:</p>
-<div class="codehilite"><pre><span></span><code><span class="kr">function</span><span class="w"> </span><span class="nf">velocityX</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">,</span><span class="nv">z</span><span class="p">,</span><span class="nv">t</span><span class="p">)</span>
-<span class="w">  </span><span class="nv">velX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.sin</span><span class="p">(</span><span class="nv">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">y</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">z</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">math.exp</span><span class="p">(</span><span class="o">-</span><span class="nv">t</span><span class="o">/</span><span class="nv">tD</span><span class="p">)</span>
-<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">velX</span>
+<div class="codehilite"><pre><span></span><code><span class="kr">function</span> <span class="nf">velocityX</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">velX</span> <span class="o">=</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="nb">math.exp</span><span class="p">(</span><span class="o">-</span><span class="n">t</span><span class="o">/</span><span class="n">tD</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="n">velX</span>
 <span class="kr">end</span>
 </code></pre></div>
 
 <p>To use them for the simulation run you need to add it to the variable table.</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_1&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="c1">-- or in this way:</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_2&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nv">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="c1">-- or for a special shape:</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;lua_fun_3&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
-<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nv">fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">velocityX</span>
-<span class="w">      </span><span class="nv">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
-<span class="w">        </span><span class="c1">-- example: line</span>
-<span class="w">        </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;canoND&#39;</span><span class="p">,</span><span class="w"> </span>
-<span class="w">        </span><span class="nv">object</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nv">origin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span><span class="w"> </span>
-<span class="w">          </span><span class="nv">vec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span><span class="w"> </span>
-<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="c1">-- object</span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="c1">-- shape</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="c1">-- st_fun</span>
-<span class="w">  </span><span class="p">},</span>
+<div class="codehilite"><pre><span></span><code><span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_1&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="n">velocityX</span>
+  <span class="p">},</span>
+  <span class="c1">-- or in this way:</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_2&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">fun</span> <span class="o">=</span> <span class="n">velocityX</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="c1">-- or for a special shape:</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;lua_fun_3&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="s1">&#39;st_fun&#39;</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">fun</span> <span class="o">=</span> <span class="n">velocityX</span>
+      <span class="n">shape</span> <span class="o">=</span> <span class="p">{</span> 
+        <span class="c1">-- example: line</span>
+        <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;canoND&#39;</span><span class="p">,</span> 
+        <span class="n">object</span> <span class="o">=</span> <span class="p">{</span>
+          <span class="n">origin</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span> 
+          <span class="n">vec</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">},</span> 
+        <span class="p">}</span> <span class="c1">-- object</span>
+      <span class="p">}</span> <span class="c1">-- shape</span>
+    <span class="p">}</span> <span class="c1">-- st_fun</span>
+  <span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -194,29 +194,29 @@ variables with Lua functions.</p>
 <p>For more possible shapes have a look at <a href="../canonicalShapes.html">Canonical Shapes</a>.</p>
 </div>
 <p>A combination of a spatial Lua function and a temporal Lua function is shown below.</p>
-<div class="codehilite"><pre><span></span><code><span class="nv">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.5</span>
+<div class="codehilite"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mf">10.5</span>
 
-<span class="kr">function</span><span class="w"> </span><span class="nf">x</span><span class="p">(</span><span class="nv">t</span><span class="p">)</span>
-<span class="w">  </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">math.cos</span><span class="p">(</span><span class="nv">a</span><span class="o">*</span><span class="nv">t</span><span class="p">)</span>
-<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">y</span>
+<span class="kr">function</span> <span class="nf">x</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">y</span> <span class="o">=</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+  <span class="kr">return</span> <span class="n">y</span>
 <span class="kr">end</span>
 
-<span class="kr">function</span><span class="w"> </span><span class="nf">lua_fun</span><span class="p">(</span><span class="nv">x</span><span class="p">,</span><span class="nv">y</span><span class="p">,</span><span class="nv">z</span><span class="p">)</span>
-<span class="w">  </span><span class="nv">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span><span class="o">*</span><span class="nv">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nv">x</span><span class="o">*</span><span class="nv">z</span><span class="o">*</span><span class="nv">a</span>
-<span class="w">  </span><span class="kr">return</span><span class="w"> </span><span class="nv">res</span>
+<span class="kr">function</span> <span class="nf">lua_fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+  <span class="n">res</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">z</span><span class="o">*</span><span class="n">a</span>
+  <span class="kr">return</span> <span class="n">res</span>
 <span class="kr">end</span>
 
-<span class="nv">variable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;two_lua&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">ncomponents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">vartype</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">st_fun</span><span class="p">,</span>
-<span class="w">    </span><span class="nv">st_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nv">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;combined&#39;</span><span class="p">,</span>
-<span class="w">      </span><span class="nv">spatial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">lua_fun</span><span class="p">,</span>
-<span class="w">      </span><span class="nv">temporal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">x</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
+<span class="n">variable</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="p">{</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;two_lua&#39;</span><span class="p">,</span>
+    <span class="n">ncomponents</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">vartype</span> <span class="o">=</span> <span class="n">st_fun</span><span class="p">,</span>
+    <span class="n">st_fun</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;combined&#39;</span><span class="p">,</span>
+      <span class="n">spatial</span> <span class="o">=</span> <span class="n">lua_fun</span><span class="p">,</span>
+      <span class="n">temporal</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
     </div>
@@ -236,7 +236,7 @@ variables with Lua functions.</p>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-30T12:57:23.432764+0000             </p>
+ on 2025-07-02T13:06:23.655310+0000             </p>
           </div>
         </div>
         <br>

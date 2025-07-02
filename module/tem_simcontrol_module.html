@@ -196,17 +196,17 @@
  <code>abort_criteria</code> table is assumed.</p>
 <p>Thus, the general structure of the <code>sim_control</code> configuration has the
  following form:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">sim_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">    </span><span class="nv">abort_criteria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{},</span>
-<span class="w">    </span><span class="nv">delay_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">  </span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>  <span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="n">abort_criteria</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="n">delay_check</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
 </code></pre></div>
 
 <p>Alternatively, if there are no abort criteria to be specified, and
  <code>delay_check</code> should not be activated in general, just the
  <code>time_control</code> table may be specified:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{}</span>
+<div class="codehilite"><pre><span></span><code>    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div>
 
 <p>See the <a href="../module/tem_timecontrol_module.html">tem_timeControl_module</a> for details on the <code>time_control</code> table.
@@ -216,17 +216,17 @@
  the computation. It relaxes the synchronization requirements but introduces
  a delay by one check interval until all processes get set status bits.</p>
 <p>A simple complete example without checks for steady state would be:</p>
-<div class="codehilite"><pre><span></span><code><span class="w">  </span><span class="nv">sim_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nv">time_control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nv">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
-<span class="w">      </span><span class="nv">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span>
-<span class="w">      </span><span class="nv">interval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="nv">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nv">abort_criteria</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nv">stop_file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;stop&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nv">delay_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
-<span class="w">  </span><span class="p">}</span>
+<div class="codehilite"><pre><span></span><code>  <span class="n">sim_control</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">time_control</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">min</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="n">max</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span>
+      <span class="n">interval</span> <span class="o">=</span> <span class="p">{</span><span class="n">iter</span> <span class="o">=</span> <span class="mi">5</span><span class="p">}</span>
+    <span class="p">},</span>
+    <span class="n">abort_criteria</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="n">stop_file</span> <span class="o">=</span> <span class="s1">&#39;stop&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">delay_check</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="p">}</span>
 </code></pre></div>
 <br>          <div class="card mb-4">
       <h3 class="card-header card-title bg-light">Uses</h3>
@@ -234,440 +234,26 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='tem_time_module.html'>tem_time_module</a></li>
-                  <li class="list-inline-item"><a href='tem_timer_module.html'>tem_timer_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
-                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
-                  <li class="list-inline-item"><a href='tem_status_module.html'>tem_status_module</a></li>
+                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
                   <li class="list-inline-item"><a href='env_module.html'>env_module</a></li>
+                  <li class="list-inline-item"><a href='tem_timer_module.html'>tem_timer_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_table_module.html'>aot_table_module</a></li>
+                  <li class="list-inline-item"><a href='http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm'>mpi</a></li>
                   <li class="list-inline-item"><a href='tem_abortcriteria_module.html'>tem_abortCriteria_module</a></li>
                   <li class="list-inline-item"><a href='tem_logging_module.html'>tem_logging_module</a></li>
+                  <li class="list-inline-item"><a href='tem_time_module.html'>tem_time_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aotus_module.html'>aotus_module</a></li>
+                  <li class="list-inline-item"><a href='tem_status_module.html'>tem_status_module</a></li>
+                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_out_module.html'>aot_out_module</a></li>
                   <li class="list-inline-item"><a href='tem_convergence_module.html'>tem_convergence_module</a></li>
-                  <li class="list-inline-item"><a href='https://apes-suite.github.io/aotus/module/aot_table_module.html'>aot_table_module</a></li>
-                  <li class="list-inline-item"><a href='tem_comm_env_module.html'>tem_comm_env_module</a></li>
                   <li class="list-inline-item"><a href='tem_timecontrol_module.html'>tem_timeControl_module</a></li>
               </ul>
             </li>
-            <li class="list-group-item">
-              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-<!-- Title: module~~tem_simcontrol_module~~UsesGraph Pages: 1 -->
-<svg id="moduletem_simcontrol_moduleUsesGraph" width="340pt" height="536pt"
- viewBox="0.00 0.00 340.00 536.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~tem_simcontrol_module~~UsesGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 532)">
-<title>module~~tem_simcontrol_module~~UsesGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-532 336,-532 336,4 -4,4"/>
-<!-- module~tem_simcontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node1" class="node">
-<title>module~tem_simcontrol_module</title>
-<polygon fill="none" stroke="black" points="332,-276 190,-276 190,-252 332,-252 332,-276"/>
-<text text-anchor="middle" x="261" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_simControl_module</text>
-</g>
-<!-- aot_out_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node2" class="node">
-<title>aot_out_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node2"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_out_module.html" xlink:title="aot_out_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="126,-528 28,-528 28,-504 126,-504 126,-528"/>
-<text text-anchor="middle" x="77" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_out_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;aot_out_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge1" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;aot_out_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.09,-276.21C251.43,-314.62 225.58,-434.09 154,-495 148.68,-499.53 142.45,-503.09 135.9,-505.88"/>
-<polygon fill="#000000" stroke="#000000" points="134.32,-502.73 126.13,-509.45 136.73,-509.31 134.32,-502.73"/>
-</g>
-<!-- aot_table_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node3" class="node">
-<title>aot_table_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node3"><a xlink:href="https://apes-suite.github.io/aotus/module/aot_table_module.html" xlink:title="aot_table_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="131,-486 23,-486 23,-462 131,-462 131,-486"/>
-<text text-anchor="middle" x="77" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aot_table_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;aot_table_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge2" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;aot_table_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.71,-276.35C247.07,-310.13 215.6,-404.74 154,-453 149.93,-456.19 145.4,-458.9 140.65,-461.19"/>
-<polygon fill="#000000" stroke="#000000" points="139.15,-458.02 131.28,-465.12 141.85,-464.48 139.15,-458.02"/>
-</g>
-<!-- aotus_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node4" class="node">
-<title>aotus_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node4"><a xlink:href="https://apes-suite.github.io/aotus/module/aotus_module.html" xlink:title="aotus_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="121,-444 33,-444 33,-420 121,-420 121,-444"/>
-<text text-anchor="middle" x="77" y="-429.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">aotus_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;aotus_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge3" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;aotus_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M254.8,-276.02C242.01,-304.16 206.17,-374.7 154,-411 147.05,-415.83 139.03,-419.56 130.86,-422.42"/>
-<polygon fill="#000000" stroke="#000000" points="129.76,-419.1 121.25,-425.41 131.84,-425.78 129.76,-419.1"/>
-</g>
-<!-- module~env_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node5" class="node">
-<title>module~env_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node5"><a xlink:href="../module/env_module.html" xlink:title="env_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="116,-402 38,-402 38,-378 116,-378 116,-402"/>
-<text text-anchor="middle" x="77" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">env_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~env_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge4" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~env_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.25,-276.07C234.74,-297.96 196.81,-344.2 154,-369 145.47,-373.94 135.73,-377.76 126.13,-380.71"/>
-<polygon fill="#000000" stroke="#000000" points="124.93,-377.41 116.24,-383.46 126.81,-384.15 124.93,-377.41"/>
-</g>
-<!-- module~tem_abortcriteria_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node6" class="node">
-<title>module~tem_abortcriteria_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node6"><a xlink:href="../module/tem_abortcriteria_module.html" xlink:title="tem_abortCriteria_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="153.5,-360 0.5,-360 0.5,-336 153.5,-336 153.5,-360"/>
-<text text-anchor="middle" x="77" y="-345.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_abortCriteria_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_abortcriteria_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge5" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_abortcriteria_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M242.76,-276.22C222.4,-290.17 187.08,-312.9 154,-327 149.04,-329.11 143.81,-331.07 138.51,-332.88"/>
-<polygon fill="#000000" stroke="#000000" points="137.38,-329.56 128.93,-335.96 139.52,-336.23 137.38,-329.56"/>
-</g>
-<!-- module~tem_comm_env_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node7" class="node">
-<title>module~tem_comm_env_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node7"><a xlink:href="../module/tem_comm_env_module.html" xlink:title="tem_comm_env_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="148.5,-318 5.5,-318 5.5,-294 148.5,-294 148.5,-318"/>
-<text text-anchor="middle" x="77" y="-303.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_comm_env_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_comm_env_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge6" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_comm_env_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M207.85,-276.04C186.71,-280.91 162.14,-286.58 140.09,-291.67"/>
-<polygon fill="#000000" stroke="#000000" points="139.12,-288.3 130.16,-293.96 140.69,-295.12 139.12,-288.3"/>
-</g>
-<!-- module~tem_convergence_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node8" class="node">
-<title>module~tem_convergence_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node8"><a xlink:href="../module/tem_convergence_module.html" xlink:title="tem_convergence_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="154,-276 0,-276 0,-252 154,-252 154,-276"/>
-<text text-anchor="middle" x="77" y="-261.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_convergence_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_convergence_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge7" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_convergence_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M189.89,-264C181.47,-264 172.8,-264 164.18,-264"/>
-<polygon fill="#000000" stroke="#000000" points="164.12,-260.5 154.12,-264 164.12,-267.5 164.12,-260.5"/>
-</g>
-<!-- module~tem_logging_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node9" class="node">
-<title>module~tem_logging_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node9"><a xlink:href="../module/tem_logging_module.html" xlink:title="tem_logging_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="139,-234 15,-234 15,-210 139,-210 139,-234"/>
-<text text-anchor="middle" x="77" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_logging_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_logging_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge8" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_logging_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M207.85,-251.96C186.71,-247.09 162.14,-241.42 140.09,-236.33"/>
-<polygon fill="#000000" stroke="#000000" points="140.69,-232.88 130.16,-234.04 139.12,-239.7 140.69,-232.88"/>
-</g>
-<!-- module~tem_status_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node10" class="node">
-<title>module~tem_status_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node10"><a xlink:href="../module/tem_status_module.html" xlink:title="tem_status_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="135,-192 19,-192 19,-168 135,-168 135,-192"/>
-<text text-anchor="middle" x="77" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_status_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_status_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge9" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_status_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M242.76,-251.78C222.4,-237.83 187.08,-215.1 154,-201 149.04,-198.89 143.81,-196.93 138.51,-195.12"/>
-<polygon fill="#000000" stroke="#000000" points="139.52,-191.77 128.93,-192.04 137.38,-198.44 139.52,-191.77"/>
-</g>
-<!-- module~tem_time_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node11" class="node">
-<title>module~tem_time_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node11"><a xlink:href="../module/tem_time_module.html" xlink:title="tem_time_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="131.5,-150 22.5,-150 22.5,-126 131.5,-126 131.5,-150"/>
-<text text-anchor="middle" x="77" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_time_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_time_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge10" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_time_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M251.25,-251.93C234.74,-230.04 196.81,-183.8 154,-159 150.03,-156.7 145.79,-154.64 141.43,-152.8"/>
-<polygon fill="#000000" stroke="#000000" points="142.33,-149.4 131.74,-149.11 139.84,-155.94 142.33,-149.4"/>
-</g>
-<!-- module~tem_timecontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node12" class="node">
-<title>module~tem_timecontrol_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node12"><a xlink:href="../module/tem_timecontrol_module.html" xlink:title="tem_timeControl_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="150.5,-108 3.5,-108 3.5,-84 150.5,-84 150.5,-108"/>
-<text text-anchor="middle" x="77" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timeControl_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_timecontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge11" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_timecontrol_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M254.8,-251.98C242.01,-223.84 206.17,-153.3 154,-117 151.63,-115.35 149.13,-113.83 146.55,-112.43"/>
-<polygon fill="#000000" stroke="#000000" points="148.01,-109.25 137.47,-108.11 145,-115.57 148.01,-109.25"/>
-</g>
-<!-- module~tem_timer_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node13" class="node">
-<title>module~tem_timer_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node13"><a xlink:href="../module/tem_timer_module.html" xlink:title="tem_timer_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="133.5,-66 20.5,-66 20.5,-42 133.5,-42 133.5,-66"/>
-<text text-anchor="middle" x="77" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_timer_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;module~tem_timer_module -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge12" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;module~tem_timer_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M256.71,-251.65C247.07,-217.87 215.6,-123.26 154,-75 150.61,-72.34 146.9,-70.02 143,-67.99"/>
-<polygon fill="#000000" stroke="#000000" points="144.19,-64.68 133.63,-63.77 141.31,-71.07 144.19,-64.68"/>
-</g>
-<!-- mpi -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_node14" class="node">
-<title>mpi</title>
-<g id="a_module~~tem_simcontrol_module~~UsesGraph_node14"><a xlink:href="http://www.mpi-forum.org/docs/mpi-3.1/mpi31-report/node410.htm" xlink:title="mpi">
-<polygon fill="#337ab7" stroke="#337ab7" points="104,-24 50,-24 50,0 104,0 104,-24"/>
-<text text-anchor="middle" x="77" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">mpi</text>
-</a>
-</g>
-</g>
-<!-- module~tem_simcontrol_module&#45;&gt;mpi -->
-<g id="module~~tem_simcontrol_module~~UsesGraph_edge13" class="edge">
-<title>module~tem_simcontrol_module&#45;&gt;mpi</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M258.09,-251.79C251.43,-213.38 225.58,-93.91 154,-33 142.95,-23.6 128.02,-18.38 114.32,-15.5"/>
-<polygon fill="#000000" stroke="#000000" points="114.63,-12 104.17,-13.71 113.42,-18.89 114.63,-12"/>
-</g>
-</g>
-</svg>
-</div>          <div>
-            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsesGraph-help-text">Help</a>
-          </div>
-          <div class="modal fade" id="UsesGraph-help-text" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-<p>Nodes of different colours represent the following: </p>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="518pt" height="32pt"
- viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
-<!-- Module -->
-<g id="node1" class="node">
-<title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node">
-<title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
-<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node">
-<title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
-<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node">
-<title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
-<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node">
-<title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
-<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node">
-<title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
-<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-<p>Solid arrows point from a submodule to the (sub)module which it is
-descended from. Dashed arrows point from a module or program unit to 
-modules which it uses.
-</p>
- </div>
-            </div>
-          </div>
-        </div>
-            </li>
         </ul>
       </div>
     </div>
 
-          <div class="card">
-      <h3 class="card-header card-title bg-light">Used by</h3>
-      <div class="card-body">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-<!-- Title: module~~tem_simcontrol_module~~UsedByGraph Pages: 1 -->
-<svg id="moduletem_simcontrol_moduleUsedByGraph" width="314pt" height="74pt"
- viewBox="0.00 0.00 314.00 74.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="module~~tem_simcontrol_module~~UsedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 70)">
-<title>module~~tem_simcontrol_module~~UsedByGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-70 310,-70 310,4 -4,4"/>
-<!-- module~tem_simcontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsedByGraph_node1" class="node">
-<title>module~tem_simcontrol_module</title>
-<polygon fill="none" stroke="black" points="142,-45 0,-45 0,-21 142,-21 142,-45"/>
-<text text-anchor="middle" x="71" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50">tem_simControl_module</text>
-</g>
-<!-- module~tem_general_module -->
-<g id="module~~tem_simcontrol_module~~UsedByGraph_node2" class="node">
-<title>module~tem_general_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsedByGraph_node2"><a xlink:href="../module/tem_general_module.html" xlink:title="tem_general_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="305,-66 179,-66 179,-42 305,-42 305,-66"/>
-<text text-anchor="middle" x="242" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_general_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_general_module&#45;&gt;module~tem_simcontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsedByGraph_edge1" class="edge">
-<title>module~tem_general_module&#45;&gt;module~tem_simcontrol_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M178.55,-46.24C169.94,-45.17 161.01,-44.06 152.14,-42.96"/>
-<polygon fill="#000000" stroke="#000000" points="152.52,-39.48 142.17,-41.72 151.66,-46.43 152.52,-39.48"/>
-</g>
-<!-- module~tem_tracking_module -->
-<g id="module~~tem_simcontrol_module~~UsedByGraph_node3" class="node">
-<title>module~tem_tracking_module</title>
-<g id="a_module~~tem_simcontrol_module~~UsedByGraph_node3"><a xlink:href="../module/tem_tracking_module.html" xlink:title="tem_tracking_module">
-<polygon fill="#337ab7" stroke="#337ab7" points="306,-24 178,-24 178,0 306,0 306,-24"/>
-<text text-anchor="middle" x="242" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">tem_tracking_module</text>
-</a>
-</g>
-</g>
-<!-- module~tem_tracking_module&#45;&gt;module~tem_simcontrol_module -->
-<g id="module~~tem_simcontrol_module~~UsedByGraph_edge2" class="edge">
-<title>module~tem_tracking_module&#45;&gt;module~tem_simcontrol_module</title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M177.59,-19.88C169.24,-20.92 160.6,-21.99 152.02,-23.06"/>
-<polygon fill="#000000" stroke="#000000" points="151.49,-19.6 142,-24.3 152.36,-26.54 151.49,-19.6"/>
-</g>
-</g>
-</svg>
-</div>          <div>
-            <a type="button" class="graph-help" data-bs-toggle="modal" href="#UsedByGraph-help-text">Help</a>
-          </div>
-          <div class="modal fade" id="UsedByGraph-help-text" tabindex="-1" role="dialog">
-            <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="-graph-help-label">Graph Key</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-<p>Nodes of different colours represent the following: </p>
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
- "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<!-- Generated by graphviz version 2.43.0 (0)
- -->
-<!-- Title: Graph Key Pages: 1 -->
-<svg width="518pt" height="32pt"
- viewBox="0.00 0.00 517.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
-<title>Graph Key</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-28 513.5,-28 513.5,4 -4,4"/>
-<!-- Module -->
-<g id="node1" class="node">
-<title>Module</title>
-<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
-<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Module</text>
-</g>
-<!-- Submodule -->
-<g id="node2" class="node">
-<title>Submodule</title>
-<polygon fill="#5bc0de" stroke="#5bc0de" points="145.5,-24 72.5,-24 72.5,0 145.5,0 145.5,-24"/>
-<text text-anchor="middle" x="109" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Submodule</text>
-</g>
-<!-- Subroutine -->
-<g id="node3" class="node">
-<title>Subroutine</title>
-<polygon fill="#d9534f" stroke="#d9534f" points="234,-24 164,-24 164,0 234,0 234,-24"/>
-<text text-anchor="middle" x="199" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Subroutine</text>
-</g>
-<!-- Function -->
-<g id="node4" class="node">
-<title>Function</title>
-<polygon fill="#d94e8f" stroke="#d94e8f" points="310,-24 252,-24 252,0 310,0 310,-24"/>
-<text text-anchor="middle" x="281" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Function</text>
-</g>
-<!-- Program -->
-<g id="node5" class="node">
-<title>Program</title>
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="386,-24 328,-24 328,0 386,0 386,-24"/>
-<text text-anchor="middle" x="357" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">Program</text>
-</g>
-<!-- This Page&#39;s Entity -->
-<g id="node6" class="node">
-<title>This Page&#39;s Entity</title>
-<polygon fill="none" stroke="black" points="509.5,-24 404.5,-24 404.5,0 509.5,0 509.5,-24"/>
-<text text-anchor="middle" x="457" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50">This Page&#39;s Entity</text>
-</g>
-</g>
-</svg>
-
-<p>Solid arrows point from a submodule to the (sub)module which it is
-descended from. Dashed arrows point from a module or program unit to 
-modules which it uses.
-</p>
- </div>
-            </div>
-          </div>
-        </div>
-            </li>
-        </ul>
-      </div>
-    </div>
-
+      
       <br>
 
 
@@ -702,7 +288,7 @@ modules which it uses.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-now"></span>
+              <span class="anchor" id="variable-now~10"></span>
               type(<a href='../type/tem_time_type.html'>tem_time_type</a>),
             </td>
               <td>public</td>
@@ -719,7 +305,7 @@ modules which it uses.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-timecontrol~5"></span>
+              <span class="anchor" id="variable-timecontrol~11"></span>
               type(<a href='../type/tem_timecontrol_type.html'>tem_timeControl_type</a>),
             </td>
               <td>public</td>
@@ -732,12 +318,12 @@ modules which it uses.
                 <td></td>
             <td>
 <p>Time control, when the simulation should end, and definition of
-special interval, at which regular actions should take place.</p><a href="../type/tem_simcontrol_type.html#variable-timecontrol~5" class="pull-right"><emph>Read more&hellip;</emph></a>
+special interval, at which regular actions should take place.</p><a href="../type/tem_simcontrol_type.html#variable-timecontrol~11" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-abortcriteria"></span>
+              <span class="anchor" id="variable-abortcriteria~2"></span>
               type(<a href='../type/tem_abortcriteria_type.html'>tem_abortCriteria_type</a>),
             </td>
               <td>public</td>
@@ -754,7 +340,7 @@ special interval, at which regular actions should take place.</p><a href="../typ
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-status~2"></span>
+              <span class="anchor" id="variable-status~13"></span>
               type(<a href='../type/tem_status_type.html'>tem_status_type</a>),
             </td>
               <td>public</td>
@@ -771,7 +357,7 @@ special interval, at which regular actions should take place.</p><a href="../typ
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-delay_check"></span>
+              <span class="anchor" id="variable-delay_check~3"></span>
               logical,
             </td>
               <td>public</td>
@@ -840,7 +426,7 @@ calls.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~154"></span>
+              <span class="anchor" id="variable-me~739"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -880,7 +466,7 @@ calls.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~155"></span>
+              <span class="anchor" id="variable-me~740"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -895,7 +481,7 @@ calls.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~58"></span>
+              <span class="anchor" id="variable-conf~172"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/flu_state.html'>flu_State</a>)
             </td>
 <td></td>
@@ -910,7 +496,7 @@ calls.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-parent~9"></span>
+              <span class="anchor" id="variable-parent~32"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -926,7 +512,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~13"></span>
+              <span class="anchor" id="variable-key~34"></span>
               character(len=*),
             </td>
 <td></td>
@@ -941,7 +527,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-solveraborts"></span>
+              <span class="anchor" id="variable-solveraborts~3"></span>
               class(<a href='../type/tem_solveraborts_type.html'>tem_solverAborts_type</a>),
             </td>
 <td>intent(inout),</td>
@@ -981,7 +567,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~156"></span>
+              <span class="anchor" id="variable-me~741"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -996,7 +582,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-conf~59"></span>
+              <span class="anchor" id="variable-conf~173"></span>
               type(<a href='https://apes-suite.github.io/aotus/type/aot_out_type.html'>aot_out_type</a>)
             </td>
 <td></td>
@@ -1011,7 +597,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-key~14"></span>
+              <span class="anchor" id="variable-key~35"></span>
               character(len=*),
             </td>
 <td></td>
@@ -1051,7 +637,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~157"></span>
+              <span class="anchor" id="variable-me~742"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1066,7 +652,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~4"></span>
+              <span class="anchor" id="variable-outunit~19"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1106,7 +692,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~158"></span>
+              <span class="anchor" id="variable-me~743"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1121,7 +707,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~5"></span>
+              <span class="anchor" id="variable-outunit~20"></span>
               integer,
             </td>
 <td>intent(in)</td>
@@ -1161,7 +747,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~159"></span>
+              <span class="anchor" id="variable-me~744"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1176,7 +762,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-proc~12"></span>
+              <span class="anchor" id="variable-proc~37"></span>
               type(<a href='../type/tem_comm_env_type.html'>tem_comm_env_type</a>),
             </td>
 <td>intent(in)</td>
@@ -1191,7 +777,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-dt"></span>
+              <span class="anchor" id="variable-dt~2"></span>
               real(kind=rk),
             </td>
 <td>intent(in),</td>
@@ -1201,7 +787,7 @@ found.</p>
             <td>::</td>
             <td><strong>dt</strong></td>
             <td>
-<p>Time step to use for updating the simulation time.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-dt" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Time step to use for updating the simulation time.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-dt~2" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
         <tr>
@@ -1222,7 +808,7 @@ found.</p>
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-outunit~6"></span>
+              <span class="anchor" id="variable-outunit~21"></span>
               integer,
             </td>
 <td>intent(in),</td>
@@ -1232,7 +818,7 @@ found.</p>
             <td>::</td>
             <td><strong>outUnit</strong></td>
             <td>
-<p>Unit to write messages to.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-outunit~6" class="pull-right"><emph>Read more&hellip;</emph></a>
+<p>Unit to write messages to.</p><a href="../proc/tem_simcontrol_syncupdate.html#variable-outunit~21" class="pull-right"><emph>Read more&hellip;</emph></a>
             </td>
         </tr>
     </tbody>
@@ -1262,7 +848,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~160"></span>
+              <span class="anchor" id="variable-me~745"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1302,7 +888,7 @@ found.</p>
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-me~161"></span>
+              <span class="anchor" id="variable-me~746"></span>
               type(<a href='../type/tem_simcontrol_type.html'>tem_simControl_type</a>),
             </td>
 <td>intent(inout)</td>
@@ -1345,7 +931,7 @@ found.</p>
             <p class="text-end">
               Documentation generated by
               <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
- on 2025-06-30T12:57:23.432764+0000             </p>
+ on 2025-07-02T13:06:23.655310+0000             </p>
           </div>
         </div>
         <br>
